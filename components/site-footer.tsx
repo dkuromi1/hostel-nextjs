@@ -17,7 +17,7 @@ export function SiteFooter() {
           </h2>
           <p className="max-w-[62ch] text-base leading-8 text-slate-300">
             Scodrinon Hostel sits on Kole Idromeno street, right in the middle
-            of Shkoder&apos;s cafe life, culture, and onward adventures. Message on
+            of Shkoder&apos;s cafe life, rich local culture, and gateway to adventure. Message on
             WhatsApp for the quickest direct booking response.
           </p>
           <div className="flex flex-wrap gap-3 text-sm">

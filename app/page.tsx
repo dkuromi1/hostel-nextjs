@@ -47,7 +47,7 @@ export const metadata = buildMetadata({
   image: "/images/promo_2.png",
 });
 
-const factIcons = [BedDouble, Croissant, Luggage, Bike];
+const factIcons = [BedDouble, Luggage, Croissant, Bike];
 
 export default function Home() {
   return (
@@ -117,11 +117,10 @@ export default function Home() {
                 autoPlay
                 muted
                 loop
-                playsInline
-                aria-label="Short video showing the atmosphere at Scodrinon Hostel"
-              >
-                <source src="/videos/videoplayback.mp4" type="video/mp4" />
-              </video>
+              <SeamlessLoopVideo
+                src="/videos/videoplayback.mp4"
+                label="Short video showing the atmosphere at Scodrinon Hostel"
+              />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.02),rgba(15,23,42,0.34))]" />
             </div>
 

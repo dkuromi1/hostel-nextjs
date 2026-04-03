@@ -59,7 +59,7 @@ export default function RootLayout({
       <body className="min-h-full bg-background font-sans text-foreground antialiased">
         <div className="relative flex min-h-screen flex-col overflow-x-clip">
           <SiteHeader />
-          <main className="flex-1 pb-24 xl:pb-0">{children}</main>
+          <main className="flex-1 pb-24 lg:pb-0">{children}</main>
           <SiteFooter />
           <StickyBookingBar />
         </div>
