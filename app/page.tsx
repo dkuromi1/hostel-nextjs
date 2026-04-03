@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
+  Award,
   BedDouble,
   Bike,
   Croissant,
@@ -9,6 +10,7 @@ import {
   MapPinned,
   Mountain,
   ShieldCheck,
+  Star,
   Wifi,
 } from "lucide-react";
 
@@ -32,7 +34,6 @@ import {
   extendReasons,
   faqItems,
   galleryItems,
-  heroHighlights,
   quickFacts,
   roomTypes,
   siteConfig,
@@ -77,16 +78,20 @@ export default function Home() {
 
             <BookingActions />
 
-            <ul className="grid gap-3 sm:grid-cols-2">
-              {heroHighlights.map((item) => (
-                <li
-                  key={item}
-                  className="rounded-[24px] border border-white/70 bg-white/78 px-4 py-3 text-sm leading-6 text-slate-700 shadow-[0_20px_55px_-38px_rgba(15,23,42,0.4)]"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <div className="flex flex-wrap gap-3">
+              <div className="inline-flex items-center gap-3 rounded-full border border-white/70 bg-white/82 px-4 py-3 text-sm text-slate-700 shadow-[0_20px_55px_-38px_rgba(15,23,42,0.4)]">
+                <div className="rounded-full bg-amber-500/12 p-2 text-amber-700">
+                  <Award className="size-4" strokeWidth={1.8} />
+                </div>
+                <span>2025 Booking.com Traveler Review Award</span>
+              </div>
+              <div className="inline-flex items-center gap-3 rounded-full border border-white/70 bg-white/82 px-4 py-3 text-sm text-slate-700 shadow-[0_20px_55px_-38px_rgba(15,23,42,0.4)]">
+                <div className="rounded-full bg-emerald-600/12 p-2 text-emerald-700">
+                  <Star className="size-4" strokeWidth={1.8} />
+                </div>
+                <span>9.7 on Hostelworld</span>
+              </div>
+            </div>
           </Reveal>
 
           <Reveal delay={120} className="grid gap-4 md:grid-cols-2">
