@@ -46,7 +46,7 @@ export default function ExperiencesPage() {
 
       <PageHero
         eyebrow="Experiences"
-        title="A hostel stay that slides easily between rooftop calm and full-day adventure."
+        title="A hostel stay that sits comfortably between rooftop calm and full-day adventure."
         description="Shkoder already has the right mix of city energy and access to nature. Scodrinon makes that even easier with a rooftop social hub, local events, and practical help for northbound plans."
         highlights={[
           "Rooftop movie nights and relaxed social energy",
