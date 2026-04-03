@@ -74,7 +74,7 @@ export function buildHostelSchema() {
     ],
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Kole Idromeno street",
+      streetAddress: "Kole Idromeno Street",
       addressLocality: "Shkoder",
       addressCountry: "AL",
     },

@@ -47,7 +47,7 @@ export const metadata = buildMetadata({
   image: "/images/promo_2.png",
 });
 
-const factIcons = [BedDouble, Croissant, Luggage, Bike];
+const factIcons = [BedDouble, Luggage, Croissant, Bike];
 
 export default function Home() {
   return (
@@ -69,7 +69,7 @@ export default function Home() {
               </h1>
               <p className="max-w-[64ch] text-lg leading-8 text-slate-600">
                 Scodrinon Hostel is a laidback, social, and safe base on lively
-                Kole Idromeno street. Come for a couple of nights, settle into
+                Kole Idromeno Street. Come for a couple of nights, settle into
                 the rooftop, and use the city as your launch point for the
                 Albanian Alps, Lake Shkoder, and everything in between.
               </p>
@@ -118,6 +118,7 @@ export default function Home() {
                 muted
                 loop
                 playsInline
+                preload="auto"
                 aria-label="Short video showing the atmosphere at Scodrinon Hostel"
               >
                 <source src="/videos/videoplayback.mp4" type="video/mp4" />

@@ -1,11 +1,11 @@
 import Image from "next/image";
 import {
-  BedDouble,
-  Croissant,
+  Snowflake,
+  BatteryCharging,
   LampDesk,
   Lock,
-  Snowflake,
   Wifi,
+  ShowerHead
 } from "lucide-react";
 
 import { CtaStrip } from "@/components/cta-strip";
@@ -34,7 +34,7 @@ export const metadata = buildMetadata({
   image: "/images/rooms_1.jpg",
 });
 
-const roomIcons = [BedDouble, LampDesk, Lock, Snowflake, Wifi, Croissant];
+const roomIcons = [Snowflake, Lock, LampDesk, BatteryCharging, Wifi, ShowerHead];
 
 export default function RoomsPage() {
   return (

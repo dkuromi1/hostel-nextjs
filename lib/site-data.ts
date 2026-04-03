@@ -4,7 +4,7 @@ export const siteConfig = {
   tagline: "The hostel you won't want to leave.",
   description:
     "A chill, social, and safe hostel on Kole Idromeno street in Shkoder with privacy pods, rooftop sunsets, breakfast, and direct WhatsApp booking.",
-  location: "Kole Idromeno street, Shkoder, Albania",
+  location: "Kole Idromeno Street, Shkoder, 4001, Albania",
   phoneDisplay: "+355 67 677 7117",
   phoneRaw: "355676777117",
   whatsappUrl:
