@@ -48,6 +48,15 @@ export function SiteFooter() {
               Booking.com
               <ArrowUpRight className="size-4" strokeWidth={1.8} />
             </a>
+            <a
+              href={siteConfig.hostelworldUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-3 font-semibold text-slate-100 transition hover:border-white/35"
+            >
+              Hostelworld
+              <ArrowUpRight className="size-4" strokeWidth={1.8} />
+            </a>
           </div>
         </div>
 

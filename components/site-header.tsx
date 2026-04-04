@@ -55,17 +55,30 @@ export function SiteHeader() {
           >
             WhatsApp Booking
           </a>
-          <a
-            href={siteConfig.bookingUrl}
-            target="_blank"
-            rel="noreferrer"
-            className={cn(
-              buttonVariants({ variant: "outline", size: "sm" }),
-              "rounded-full bg-white/80"
-            )}
-          >
-            Booking.com
-          </a>
+          <div className="flex min-w-[10.5rem] flex-col gap-1.5">
+            <a
+              href={siteConfig.bookingUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "sm" }),
+                "w-full justify-center rounded-full bg-white/80"
+              )}
+            >
+              Booking.com
+            </a>
+            <a
+              href={siteConfig.hostelworldUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "sm" }),
+                "w-full justify-center rounded-full border-orange-200/80 bg-orange-50/90 text-orange-900 hover:bg-orange-100/90"
+              )}
+            >
+              Hostelworld
+            </a>
+          </div>
         </div>
 
         <details className="relative lg:hidden">
@@ -109,6 +122,17 @@ export function SiteHeader() {
                   )}
                 >
                   View On Booking.com
+                </a>
+                <a
+                  href={siteConfig.hostelworldUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={cn(
+                    buttonVariants({ variant: "outline", size: "lg" }),
+                    "rounded-full border-orange-200/80 bg-orange-50/95 text-orange-950 hover:bg-orange-100"
+                  )}
+                >
+                  View On Hostelworld
                 </a>
               </div>
             </nav>
