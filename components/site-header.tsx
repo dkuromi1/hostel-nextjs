@@ -62,7 +62,7 @@ export function SiteHeader() {
               rel="noreferrer"
               className={cn(
                 buttonVariants({ variant: "outline", size: "sm" }),
-                "w-full justify-center rounded-full bg-white/80"
+                "w-full justify-center rounded-full border-blue-200/80 bg-blue-50/95 text-blue-950 hover:bg-blue-100/95"
               )}
             >
               Booking.com
@@ -118,7 +118,7 @@ export function SiteHeader() {
                   rel="noreferrer"
                   className={cn(
                     buttonVariants({ variant: "outline", size: "lg" }),
-                    "rounded-full bg-white/80"
+                    "rounded-full border-blue-200/80 bg-blue-50/95 text-blue-950 hover:bg-blue-100/95"
                   )}
                 >
                   View On Booking.com

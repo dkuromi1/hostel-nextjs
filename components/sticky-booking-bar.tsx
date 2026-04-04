@@ -15,12 +15,12 @@ export function StickyBookingBar() {
           <MessageCircleMore className="size-4 shrink-0" strokeWidth={1.8} />
           WhatsApp
         </a>
-        <div className="flex min-w-[7.25rem] flex-col gap-1">
+        <div className="flex min-w-[10.875rem] flex-col gap-1">
           <a
             href={siteConfig.bookingUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex flex-1 items-center justify-center rounded-full border border-slate-200 px-2 py-1.5 text-center text-xs font-semibold leading-tight text-slate-900 transition hover:bg-slate-50"
+            className="inline-flex flex-1 items-center justify-center rounded-full border border-blue-200/80 bg-blue-50/95 px-2 py-1.5 text-center text-xs font-semibold leading-tight text-blue-950 transition hover:bg-blue-100/95"
           >
             Booking.com
           </a>
