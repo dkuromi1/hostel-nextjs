@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Scodrinon Hostel",
   shortName: "Scodrinon",
-  tagline: "The hostel you won't want to leave.",
+  tagline: "The hostel you won't want to leave",
   description:
     "A chill, social, and safe hostel on Kole Idromeno street in Shkoder with privacy pods, rooftop sunsets, breakfast, and direct WhatsApp booking.",
   location: "Kole Idromeno Street, Shkoder, 4001, Albania",
@@ -13,7 +13,7 @@ export const siteConfig = {
   hostelworldUrl:
     "https://www.hostelworld.com/hostels/p/325721/scodrinon-hostel/",
   instagramUrl: "https://www.instagram.com/scodrinon_hostel/",
-  breakfastHours: "9:00 to 10:30am",
+  breakfastHours: "9:00 to 10:30am (excl. off season)",
   baseKeywords: [
     "Scodrinon Hostel",
     "hostel in Shkoder",
@@ -42,7 +42,7 @@ export const heroHighlights = [
 export const quickFacts = [
   "18-bed mixed dorm with spacious privacy pods",
   "4-bed dorms with male and female options",
-  "Free breakfast, WiFi, luggage storage, and 24h access",
+  "Free breakfast (excl. off season), WiFi, luggage storage, and 24h access",
   "Bike rentals, tours, laundry, and rooftop social events",
 ] as const;
 
@@ -84,7 +84,7 @@ export const sharedAmenities = [
   "Power sockets",
   "High-speed WiFi",
   "Clean modern bathrooms",
-  "Free breakfast",
+  "Free breakfast (excl. off season)",
   "24h access",
 ] as const;
 
@@ -106,22 +106,22 @@ export const extendReasons = [
   {
     title: "Sleep well, still meet people",
     description:
-      "The privacy pods give you a reset button after busy travel days, so the social side of hostel life stays fun instead of draining.",
+      "Privacy pods give you a reset button after a long day in the mountains, so the social side of hostel life stays a choice, not a chore.",
   },
   {
-    title: "Rooftop nights without party pressure",
+    title: "Rooftop nights, zero pressure",
     description:
-      "Sunset views, easy conversation, movie nights, and low-key hangs make it simple to connect without the hostel ever feeling chaotic.",
+      "Sunset views, easy conversation, and movie nights make it simple to connect without the space ever feeling chaotic. It’s social, but at your own pace.",
   },
   {
     title: "Everything starts right outside",
     description:
-      "You are already on Shkoder's main pedestrian street, surrounded by cafes, food, museums, and onward transport plans for north or south.",
+      "You’re already on Shkoder's main pedestrian street, surrounded by local eats, museums, and nightlife. Whether you're heading to the Alps or the coast, transport is just a short walk away.",
   },
   {
     title: "Staff who keep things straightforward",
     description:
-      "Honest local tips, breakfast that guests talk about, and help with hiking, bike rides, and day trips make the stay feel easy from day one.",
+      "Honest local tips, breakfast that guests talk about, and help with your hiking route. We handle the logistics so you can focus on the trip.",
   },
 ] as const;
 
@@ -151,30 +151,30 @@ export const experiencePillars = [
 
 export const eventCards = [
   {
-    title: "Bike Tours",
+    title: "Biking",
     description:
       "Ride through Shkoder's easy streets and open edges with local guidance and plenty of pause points.",
     image: "/images/event_bike_tour.png",
     alt: "Bike tour event from Scodrinon Hostel",
   },
+  // {
+  //   title: "Walking Tours",
+  //   description:
+  //     "A relaxed way to understand the city's architecture, stories, and hidden corners beyond the obvious stops.",
+  //   image: "/images/event_walking_tour.png",
+  //   alt: "Walking tour event from Scodrinon Hostel",
+  // },
   {
-    title: "Walking Tours",
+    title: "Local Food Nights",
     description:
-      "A relaxed way to understand the city's architecture, stories, and hidden corners beyond the obvious stops.",
-    image: "/images/event_walking_tour.png",
-    alt: "Walking tour event from Scodrinon Hostel",
-  },
-  {
-    title: "Traditional Food Nights",
-    description:
-      "Try Albanian flavors in a social format that feels warm, local, and easy to join even if you arrived alone.",
+      "Whether it’s rooftop raki or a local food crawl, we keep things social. It’s a warm, local atmosphere that’s easy to join—especially if you arrived alone.",
     image: "/images/event_traditional_food.png",
     alt: "Traditional food event at Scodrinon Hostel",
   },
   {
-    title: "Movie Nights and River Plans",
+    title: "River Days at the Drin",
     description:
-      "Some nights stay on the rooftop, others turn into tomorrow's excursion. Either way, it never feels forced.",
+      "We head out to the river regularly for swimming and sun. These trips are a hostel favorite—a chance to see a different side of Shkoder and spend the afternoon with a great crew.",
     image: "/images/event_happy_hour.png",
     alt: "Guests enjoying an evening event at Scodrinon Hostel",
   },
@@ -274,7 +274,7 @@ export const faqItems = [
   {
     question: "Are the pods actually private?",
     answer:
-      "The pod dorm is designed to give you real personal space: curtains, a reading light, a power socket, and a locker. It feels much closer to a private sleep setup than a standard open dorm.",
+      "The pod dorm is designed to give you real personal space: curtains, a reading light, two power sockets, and a locker. It feels much closer to a private sleep setup than a standard open dorm.",
   },
   {
     question: "Can the hostel help with Theth, Valbona, or local day trips?",
@@ -284,7 +284,7 @@ export const faqItems = [
   {
     question: "What is included in the stay?",
     answer:
-      "Breakfast, WiFi, luggage storage, rooftop social events, and 24h access are included. Bike rentals, guided tours, and laundry are available as paid extras.",
+      "Breakfast, WiFi, luggage storage, rooftop social events, and 24h access are included. Bike rentals, tours, and laundry are available as paid extras.",
   },
   {
     question: "What if I arrive early or leave late?",
