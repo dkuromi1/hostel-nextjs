@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 
+import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { navLinks, siteConfig } from "@/lib/site-data";
@@ -9,7 +10,7 @@ import { navLinks, siteConfig } from "@/lib/site-data";
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/70 bg-white/80 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-4 py-2  sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3">
           <div className="relative size-11 overflow-hidden rounded-2xl border border-emerald-700/10 bg-white shadow-[0_12px_30px_-18px_rgba(17,24,39,0.45)]">
             <Image
@@ -50,33 +51,35 @@ export function SiteHeader() {
             rel="noreferrer"
             className={cn(
               buttonVariants({ size: "sm" }),
-              "rounded-full bg-emerald-600 px-4 text-white hover:bg-emerald-700"
+              "h-9 rounded-full bg-emerald-600 px-4 text-white hover:bg-emerald-700"
             )}
           >
             WhatsApp Booking
           </a>
-          <div className="flex min-w-[10.5rem] flex-col gap-1.5">
+          <div className="flex shrink-0 items-center gap-1.5">
             <a
               href={siteConfig.bookingUrl}
               target="_blank"
               rel="noreferrer"
+              aria-label="Book on Booking.com"
               className={cn(
-                buttonVariants({ variant: "outline", size: "sm" }),
-                "w-full justify-center rounded-full border-blue-200/80 bg-blue-50/95 text-blue-950 hover:bg-blue-100/95"
+                buttonVariants({ variant: "outline", size: "icon" }),
+                "size-9 rounded-full border-blue-200/80 bg-blue-50/95 text-blue-950 hover:bg-blue-100/95"
               )}
             >
-              Booking.com
+              <BookingComLogo iconOnly />
             </a>
             <a
               href={siteConfig.hostelworldUrl}
               target="_blank"
               rel="noreferrer"
+              aria-label="Book on Hostelworld"
               className={cn(
-                buttonVariants({ variant: "outline", size: "sm" }),
-                "w-full justify-center rounded-full border-orange-200/80 bg-orange-50/90 text-orange-900 hover:bg-orange-100/90"
+                buttonVariants({ variant: "outline", size: "icon" }),
+                "size-9 rounded-full border-orange-200/80 bg-orange-50/90 text-orange-900 hover:bg-orange-100/90"
               )}
             >
-              Hostelworld
+              <HostelworldLogo iconOnly />
             </a>
           </div>
         </div>

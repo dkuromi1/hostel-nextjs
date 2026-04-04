@@ -60,20 +60,20 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-0 soft-grid opacity-40" />
         <div className="shell-container relative grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">          
           <Reveal className="space-y-8">
-            <Badge>Shkoder, Albania</Badge>
+            {/* <Badge>Shkoder, Albania</Badge> */}
             <div className="space-y-5">
               <p className="text-xs uppercase tracking-[0.28em] text-emerald-700">
                 {siteConfig.tagline}
               </p>
-              <h1 className="font-heading text-5xl leading-none tracking-[-0.08em] text-slate-950 md:text-7xl">
-                Rooftop sunsets, privacy pods, and the part of Shkoder you
-                actually want to wake up in.
+              <h1 className="font-heading text-4xl sm:text-6xl tracking-[-0.04em] text-slate-950">
+                Rooftop sunsets, privacy pods,<br className="hidden sm:block" /> 
+                <span className="text-blue-600">and the part of Shkoder you actually want to wake up in.</span>
               </h1>
               <p className="max-w-[64ch] text-lg leading-8 text-slate-600">
                 Scodrinon Hostel is a laidback, social, and safe base on lively
                 Kole Idromeno Street. Come for a couple of nights, settle into
                 the rooftop, and use the city as your launch point for the
-                Albanian Alps, Lake Shkoder, and everything in between.
+                Albanian Alps, Lake Shkoder, and Europe's 'Last Frontier'.
               </p>
             </div>
 
@@ -93,8 +93,14 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 px-4 py-5 shadow-[0_20px_55px_-40px_rgba(15,23,42,0.35)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_rgba(15,23,42,0.4)]"
                 >
-                  <div className="flex min-h-[3rem] items-center">
-                    <BookingComLogo />
+                  <div className="flex min-h-[3rem] flex-wrap items-center justify-between gap-x-2 gap-y-2">
+                    <BookingComLogo className="min-w-0 shrink-0" />
+                    <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600">
+                      <Star className="size-3" fill="currentColor" />
+                      <span className="text-[10px] font-bold uppercase tracking-wider">
+                        Top Rated
+                      </span>
+                    </div>
                   </div>
                   <div className="flex flex-1 flex-col justify-center py-1">
                     <div className="flex items-center justify-between gap-2">
@@ -103,7 +109,7 @@ export default function Home() {
                           <Award className="size-5" strokeWidth={1.8} />
                         </div>
                         <p className="text-sm font-medium leading-6 text-slate-800 transition-colors group-hover:text-blue-700">
-                          2025 Traveler Review Award
+                          2025 Traveller Review Award
                         </p>
                       </div>
                       <div className="shrink-0 rounded-tr-sm rounded-tl-sm rounded-br-sm rounded-bl-none bg-blue-600 px-3 py-1 text-center font-semibold text-white shadow-sm">
@@ -127,7 +133,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 px-4 py-5 shadow-[0_20px_55px_-40px_rgba(15,23,42,0.35)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_rgba(15,23,42,0.4)]"
                 >
-                  <div className="flex min-h-[3rem] items-center justify-between gap-2">
+                  <div className="flex min-h-[3rem] flex-wrap items-center justify-between gap-x-2 gap-y-2">
                     <HostelworldLogo className="h-7 w-auto shrink-0" />
                     <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600">
                       <Star className="size-3" fill="currentColor" />
@@ -210,7 +216,7 @@ export default function Home() {
                   Direct Booking
                 </p>
                 <p className="mt-3 font-heading text-2xl leading-none tracking-[-0.04em] text-slate-950">
-                  Message the hostel first for the fastest answer.
+                  Message the hostel first and book direct.
                 </p>
                 <p className="mt-3 text-sm leading-7 text-slate-600">
                   WhatsApp is the most direct way to confirm dates, room type,
@@ -249,7 +255,7 @@ export default function Home() {
             <SectionHeading
               eyebrow="Why People Stay Longer"
               title="The kind of hostel that makes short plans drift into a week."
-              description="The draw is not one dramatic feature. It is how the privacy, rooftop, location, and staff all work together so the stay feels easy from the start."
+              description="The draw is not one dramatic feature. It’s the way the privacy, rooftop, location, and staff all work together so the stay feels easy from the start."
             />
             <div className="media-frame relative min-h-[28rem]">
               <Image
@@ -348,7 +354,7 @@ export default function Home() {
             <SectionHeading
               eyebrow="Experiences"
               title="Built for slow rooftop nights and fast adventure planning."
-              description="Scodrinon works because the social side feels natural. You can join a walking tour, talk through your hiking route, or simply stay up on the terrace until the city lights switch on."
+              description="The social side here just happens. Join a walking tour, map out your hiking route with someone who’s just finished it, or simply stay up on the terrace until the city lights switch on."
             />
             <Link
               href="/experiences"
