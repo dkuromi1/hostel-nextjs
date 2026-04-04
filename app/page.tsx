@@ -66,7 +66,7 @@ export default function Home() {
                 {siteConfig.tagline}
               </p>
               <h1 className="font-heading text-5xl leading-none tracking-[-0.08em] text-slate-950 md:text-7xl">
-                Privacy pods, rooftop sunsets, and the part of Shkoder you
+                Rooftop sunsets, privacy pods, and the part of Shkoder you
                 actually want to wake up in.
               </h1>
               <p className="max-w-[64ch] text-lg leading-8 text-slate-600">

@@ -19,7 +19,6 @@ export function FaqList({ items }: FaqListProps) {
           <p className="mt-4 max-w-[62ch] text-base leading-8 text-slate-600">
             {item.answer}
           </p>
-          <div className="pointer-events-none absolute" />
         </details>
       ))}
     </div>

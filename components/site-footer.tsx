@@ -43,7 +43,7 @@ export function SiteFooter() {
               href={siteConfig.bookingUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-blue-400/25 bg-blue-500/15 px-4 py-3 font-semibold text-blue-100 transition hover:border-blue-400/40 hover:bg-blue-500/25"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-3 font-semibold text-slate-100 transition hover:border-white/35"
             >
               Booking.com
               <ArrowUpRight className="size-4" strokeWidth={1.8} />

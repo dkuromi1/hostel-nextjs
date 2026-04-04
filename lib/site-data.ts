@@ -232,7 +232,7 @@ export const galleryItems = [
   },
   {
     type: "video",
-    src: "/videos/videoplayback copy.mp4",
+    src: "/videos/videoplayback2.mp4",
     alt: "Traveler atmosphere video from Scodrinon Hostel",
     className: "md:col-span-4",
     aspect: "aspect-[4/5]",

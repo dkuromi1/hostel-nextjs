@@ -75,7 +75,7 @@ export default function ExperiencesPage() {
               playsInline
               aria-label="Short video of the hostel atmosphere"
             >
-              <source src="/videos/videoplayback copy.mp4" type="video/mp4" />
+              <source src="/videos/videoplayback2.mp4" type="video/mp4" />
             </video>
           </div>
           <div className="media-frame relative min-h-[15rem]">
