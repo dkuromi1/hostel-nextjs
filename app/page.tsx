@@ -14,6 +14,7 @@ import {
   Wifi,
 } from "lucide-react";
 
+import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
 import { BookingActions } from "@/components/booking-actions";
 import { CtaStrip } from "@/components/cta-strip";
 import { FaqList } from "@/components/faq-list";
@@ -57,7 +58,7 @@ export default function Home() {
 
       <section className="relative overflow-hidden px-4 pb-16 pt-14 sm:px-6 lg:px-8 lg:pt-20">
         <div className="pointer-events-none absolute inset-0 soft-grid opacity-40" />
-        <div className="shell-container relative grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+        <div className="shell-container relative grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">          
           <Reveal className="space-y-8">
             <Badge>Shkoder, Albania</Badge>
             <div className="space-y-5">
@@ -78,22 +79,79 @@ export default function Home() {
 
             <BookingActions />
 
-            <div className="flex flex-wrap gap-3">
-              <div className="inline-flex items-center gap-3 rounded-full border border-white/70 bg-white/82 px-4 py-3 text-sm text-slate-700 shadow-[0_20px_55px_-38px_rgba(15,23,42,0.4)]">
-                <div className="rounded-full bg-amber-500/12 p-2 text-amber-700">
-                  <Award className="size-4" strokeWidth={1.8} />
-                </div>
-                <span>2025 Booking.com Traveler Review Award</span>
+            <div className="glass-panel rounded-[28px] p-4 sm:p-5">
+              <div className="flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-slate-500">
+                <span className="faded-line h-px flex-1" />
+                Guest Ratings
+                <span className="faded-line h-px flex-1" />
               </div>
-              <div className="inline-flex items-center gap-3 rounded-full border border-white/70 bg-white/82 px-4 py-3 text-sm text-slate-700 shadow-[0_20px_55px_-38px_rgba(15,23,42,0.4)]">
-                <div className="rounded-full bg-emerald-600/12 p-2 text-emerald-700">
-                  <Star className="size-4" strokeWidth={1.8} />
-                </div>
-                <span>9.7 on Hostelworld</span>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {/* Booking.com Card */}
+                <a
+                      href="https://www.booking.com/hotel/al/scodrinon-hostel.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group block rounded-[24px] border border-slate-200/80 bg-white/90 px-4 py-5 shadow-[0_20px_55px_-40px_rgba(15,23,42,0.35)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_rgba(15,23,42,0.4)] relative overflow-hidden"
+                    >
+                      <BookingComLogo />
+                      <div className="mt-4 flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-2">
+                          <div className="rounded-full bg-blue-500/12 p-1.5 text-blue-700">
+                            <Award className="size-5" strokeWidth={1.8} />
+                          </div>
+                          <p className="text-sm font-medium leading-6 text-slate-800 group-hover:text-blue-700 transition-colors">
+                            2025 Traveler Review Award
+                          </p>
+                        </div>
+                        <div className="rounded-tr-sm rounded-tl-sm rounded-br-sm rounded-bl-none bg-blue-600 px-3 py-1 text-center font-semibold text-white shadow-sm">
+                          <p className="font-heading text-xl leading-none tracking-tight">
+                            9.5
+                          </p>
+                          <p className="text-[8px] uppercase tracking-wider text-blue-100">
+                            out of 10
+                          </p>
+                        </div>
+                      </div>
+                      <p className="mt-2 text-sm leading-6 text-slate-500">
+                        Awarded for consistent excellence in guest hospitality.
+                      </p>
+                    </a>
+                {/* Hostelworld Card */}
+                <a
+                  href="https://www.hostelworld.com/hostels/p/325721/scodrinon-hostel/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block rounded-[24px] border border-slate-200/80 bg-white/90 px-4 py-4 shadow-[0_20px_55px_-40px_rgba(15,23,42,0.35)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_rgba(15,23,42,0.4)]"
+                >
+                  <div className="flex items-center justify-between">
+                    <HostelworldLogo className="h-7 w-auto" />
+                    <div className="flex items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600">
+                      <Star className="size-3" fill="currentColor" />
+                      <span className="text-[10px] font-bold uppercase tracking-wider">
+                        Top Rated
+                      </span>
+                    </div>
+                  </div>
+                  <div className="mt-4 flex items-end gap-2">
+                    <div className="mb-1 rounded-full p-1 text-yellow-500">
+                      <Star className="size-5" strokeWidth={2} fill="currentColor" />
+                    </div>
+                    <span className="font-heading text-3xl leading-none tracking-[-0.05em] text-slate-950">
+                      9.7
+                    </span>
+                    <span className="pb-1 text-sm font-medium uppercase tracking-[0.18em] text-slate-500">
+                      Guest Score
+                    </span>
+                  </div>
+                  <p className="mt-1 text-sm leading-6 text-slate-500 group-hover:text-amber-700 transition-colors">
+                    Rated &apos;Superb&apos; by travelers on Hostelworld.
+                  </p>
+                </a>
               </div>
             </div>
           </Reveal>
 
+              
           <Reveal delay={120} className="grid gap-4 md:grid-cols-2">
             <div className="media-frame relative min-h-[24rem] md:row-span-2">
               <Image
