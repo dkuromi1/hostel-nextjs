@@ -1,3 +1,7 @@
+// page.tsx (FINAL IMPROVED LAYOUT - April 2026)
+// Fully updated with better hierarchy, mobile flow, visual balance, and modern spacing.
+// All original content, data, components, and animations preserved.
+
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -56,102 +60,110 @@ export default function Home() {
     <>
       <StructuredData data={[buildHostelSchema(), buildFaqSchema()]} />
 
-      <section className="relative overflow-hidden px-4 pb-16 pt-14 sm:px-6 lg:px-8 lg:pt-20">
+      {/* HERO - Improved balance + mobile-first stacking */}
+      <section className="relative overflow-hidden px-4 pb-12 pt-14 sm:px-6 lg:px-8 lg:pt-20">
         <div className="pointer-events-none absolute inset-0 soft-grid opacity-40" />
-        <div className="shell-container relative grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">          
-          <Reveal className="space-y-8">
-            {/* <Badge>Shkoder, Albania</Badge> */}
+        <div className="shell-container relative grid gap-12 lg:grid-cols-12 lg:items-center">
+          {/* Left content column */}
+          <Reveal className="lg:col-span-7 space-y-8">
             <div className="space-y-5">
               <p className="text-xs uppercase tracking-[0.28em] text-emerald-700">
                 {siteConfig.tagline}
               </p>
-              <h1 className="font-heading text-4xl sm:text-6xl tracking-[-0.04em] text-slate-950">
-                Rooftop sunsets, privacy pods,<br className="hidden sm:block" /> 
-                <span className="text-blue-600"> and the part of Shkodër you actually want to wake up in.</span>
+              <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl tracking-[-0.04em] leading-[1.05] text-slate-950">
+                Rooftop sunsets, privacy pods,
+                <br className="hidden sm:block" />
+                <span className="text-blue-600">and the part of Shkodër you actually want to wake up in.</span>
               </h1>
-              <p className="max-w-[64ch] text-lg leading-8 text-slate-600">
+              <p className="max-w-[58ch] text-lg leading-8 text-slate-600">
                 Scodrinon Hostel is a laidback, social, and safe base on lively
                 Kole Idromeno Street. Come for a couple of nights, settle into
                 the rooftop, and use the city as your launch point for the
-                Albanian Alps, Lake Shkoder, and Europe's 'Last Frontier'.
+                Albanian Alps, Lake Shkoder, and Europe&apos;s &apos;Last Frontier&apos;.
               </p>
             </div>
 
             <BookingActions />
           </Reveal>
 
-              
-          <Reveal delay={120} className="grid gap-4 md:grid-cols-2">
-            <div className="media-frame relative min-h-[24rem] md:row-span-2">
-              <Image
-                src="/images/rooftop_social.jpg"
-                alt="Guests enjoying the rooftop at Scodrinon Hostel"
-                fill
-                priority
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 40vw"
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.08),rgba(15,23,42,0.42))]" />
-              <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
-                <p className="text-xs uppercase tracking-[0.28em] text-emerald-100">
-                  Rooftop Evenings
-                </p>
-                <p className="mt-2 max-w-xs font-heading text-2xl leading-none tracking-[-0.05em]">
-                  The social center of the hostel, without the party-hostel
-                  chaos.
-                </p>
-              </div>
-            </div>
-
-            <div className="media-frame relative min-h-[17rem]">
-              <video
-                className="h-full w-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-                aria-label="Short video showing the atmosphere at Scodrinon Hostel"
-              >
-                <source src="/videos/videoplayback.mp4" type="video/mp4" />
-              </video>
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.02),rgba(15,23,42,0.34))]" />
-            </div>
-
-            <div className="grid gap-4">
-              <div className="media-frame relative min-h-[12rem]">
+          {/* Right visual column - much cleaner mobile stacking */}
+          <Reveal delay={80} className="lg:col-span-5">
+            <div className="grid grid-cols-2 gap-4 lg:gap-5">
+              {/* Large rooftop image */}
+              <div className="media-frame relative col-span-2 aspect-[16/13] lg:aspect-auto lg:min-h-[28rem]">
                 <Image
-                  src="/images/rooms_1.jpg"
-                  alt="Privacy pod dorm room at Scodrinon Hostel"
+                  src="/images/rooftop_social.jpg"
+                  alt="Guests enjoying the rooftop at Scodrinon Hostel"
                   fill
+                  priority
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 25vw"
+                  sizes="(max-width: 1024px) 100vw, 45vw"
                 />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.08),rgba(15,23,42,0.42))]" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <p className="text-xs uppercase tracking-[0.28em] text-emerald-100">
+                    Rooftop Evenings
+                  </p>
+                  <p className="mt-2 max-w-xs font-heading text-2xl leading-none tracking-[-0.05em]">
+                    The social center of the hostel, without the party-hostel
+                    chaos.
+                  </p>
+                </div>
               </div>
-              <div className="glass-panel rounded-[28px] p-5">
-                <p className="text-xs uppercase tracking-[0.24em] text-amber-700">
-                  Direct Booking
-                </p>
-                <p className="mt-3 font-heading text-2xl leading-none tracking-[-0.04em] text-slate-950">
-                  Message the hostel first and book direct.
-                </p>
-                <p className="mt-3 text-sm leading-7 text-slate-600">
-                  WhatsApp is the most direct way to confirm dates, room type,
-                  arrival timing, and any Theth or Valbona planning.
-                </p>
+
+              {/* Video */}
+              <div className="media-frame relative aspect-[9/16]">
+                <video
+                  className="h-full w-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  aria-label="Short video showing the atmosphere at Scodrinon Hostel"
+                >
+                  <source src="/videos/videoplayback.mp4" type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.02),rgba(15,23,42,0.34))]" />
+              </div>
+
+              {/* Small image + direct booking card */}
+              <div className="flex flex-col gap-4">
+                <div className="media-frame relative aspect-[4/3] flex-2 [min-h-[13rem]]">
+                  <Image
+                    src="/images/rooms_1.jpg"
+                    alt="Privacy pod dorm room at Scodrinon Hostel"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 50vw, 22vw"
+                  />
+                </div>
+
+                <div className="glass-panel flex-1 rounded-[28px] p-5">
+                  <p className="text-xs uppercase tracking-[0.24em] text-amber-700">
+                    Direct Booking
+                  </p>
+                  <p className="mt-3 font-heading text-2xl leading-none tracking-[-0.04em] text-slate-950">
+                    Message the hostel first and book direct.
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-slate-600">
+                    WhatsApp is the most direct way to confirm dates, room type,
+                    arrival timing, and any Theth or Valbona planning.
+                  </p>
+                </div>
               </div>
             </div>
           </Reveal>
         </div>
       </section>
 
-      <section className="px-4 pb-6 sm:px-6 lg:px-8">
-        <div className="shell-container grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      {/* Quick Facts */}
+      <section className="px-4 pb-8 sm:px-6 lg:px-8">
+        <div className="shell-container grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {quickFacts.map((fact, index) => {
             const Icon = factIcons[index];
-
             return (
-              <Reveal key={fact} delay={index * 80}>
+              <Reveal key={fact} delay={index * 60}>
                 <Panel className="h-full px-5 py-5">
                   <div className="flex items-start gap-4">
                     <div className="rounded-2xl bg-emerald-600/10 p-3 text-emerald-700">
@@ -166,7 +178,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-4 pb-12 pt-2 sm:px-6 lg:px-8">
+      {/* Guest Ratings */}
+      <section className="px-4 pb-12 sm:px-6 lg:px-8">
         <div className="shell-container">
           <div className="glass-panel rounded-[28px] p-4 sm:p-5">
             <div className="flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-slate-500">
@@ -215,6 +228,7 @@ export default function Home() {
                   Awarded for consistent excellence in guest hospitality.
                 </p>
               </a>
+
               {/* Hostelworld Card */}
               <a
                 href={siteConfig.hostelworldUrl}
@@ -253,9 +267,10 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Why People Stay Longer */}
       <section className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="shell-container grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <Reveal className="space-y-8">
+        <div className="shell-container grid gap-10 lg:grid-cols-12">
+          <Reveal className="lg:col-span-5 space-y-8">
             <SectionHeading
               eyebrow="Why People Stay Longer"
               title="The kind of hostel that makes short plans drift into a week."
@@ -272,10 +287,10 @@ export default function Home() {
             </div>
           </Reveal>
 
-          <div className="grid gap-4">
+          <div className="lg:col-span-7 grid gap-4">
             {extendReasons.map((reason, index) => (
               <Reveal key={reason.title} delay={index * 80}>
-                <Panel className="p-6">
+                <Panel className="p-7">
                   <h3 className="font-heading text-2xl leading-none tracking-[-0.04em] text-slate-950">
                     {reason.title}
                   </h3>
@@ -289,6 +304,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Rooms */}
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="shell-container space-y-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
@@ -352,6 +368,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Experiences */}
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="shell-container space-y-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
@@ -372,8 +389,8 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-            <Reveal>
+          <div className="grid gap-6 lg:grid-cols-12">
+            <Reveal className="lg:col-span-7">
               <Panel className="overflow-hidden">
                 <div className="relative min-h-[30rem]">
                   <Image
@@ -396,7 +413,7 @@ export default function Home() {
               </Panel>
             </Reveal>
 
-            <div className="grid gap-6">
+            <div className="lg:col-span-5 grid gap-6">
               {experiencePillars.slice(1).map((pillar, index) => (
                 <Reveal key={pillar.title} delay={index * 100}>
                   <Panel className="overflow-hidden">
@@ -455,6 +472,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Gallery */}
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="shell-container space-y-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
@@ -510,9 +528,10 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Included + FAQ */}
       <section className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="shell-container grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <Reveal className="space-y-8">
+        <div className="shell-container grid gap-10 lg:grid-cols-12">
+          <Reveal className="lg:col-span-7 space-y-8">
             <SectionHeading
               eyebrow="Included"
               title="The basics are not treated like extras."
@@ -562,8 +581,8 @@ export default function Home() {
             </div>
           </Reveal>
 
-          <Reveal delay={120}>
-            <Panel className="p-6">
+          <Reveal delay={120} className="lg:col-span-5">
+            <Panel className="p-6 h-full">
               <SectionHeading
                 eyebrow="FAQ"
                 title="A few things travelers usually ask before they book."
@@ -577,6 +596,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Final CTA */}
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="shell-container">
           <CtaStrip
