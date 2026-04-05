@@ -51,8 +51,8 @@ export function BookingActions({
           target="_blank"
           rel="noreferrer"
           className={cn(
-            buttonVariants({ variant: "secondary", size: compact ? "sm" : "lg" }),
-            "h-auto min-h-12 rounded-full border-white/70 bg-white/80 px-5 py-3 text-sm text-slate-900 hover:bg-sky-950"
+            buttonVariants({ variant: "outline", size: compact ? "sm" : "lg" }),
+            "h-auto min-h-12 rounded-full border-white/70 bg-white/80 px-5 py-3 text-sm text-slate-900 hover:bg-white"
           )}
         >
           <span>View On Hostelworld</span>
