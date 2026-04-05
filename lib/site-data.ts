@@ -94,13 +94,13 @@ export const freeServices = [
   "Breakfast every morning from 9:00 to 10:30am",
   "Early take-away breakfast when you need to leave sooner",
   "High-speed WiFi in rooms and common areas",
-  "Luggage storage before or after your stay",
+  "Luggage storage before or during your stay",
   "Rooftop social events and a helpful WhatsApp group",
 ] as const;
 
 export const paidServices = [
   "Bike rentals for city rides and lakeside days",
-  "Guided bike and walking tours",
+  "Guided tours",
   "Laundry for longer trips",
 ] as const;
 
@@ -129,41 +129,49 @@ export const extendReasons = [
 
 export const experiencePillars = [
   {
-    title: "Rooftop Magic",
+    title: "Your Adventure Basecamp",
     description:
-      "The rooftop is the social heart of the hostel: mountain light at sunset, city views after dark, and a pace that feels relaxed from the first drink to the last chat.",
-    image: "/images/rooftop_social.jpg",
-    alt: "Guests relaxing on the Scodrinon Hostel rooftop at sunset",
-  },
-  {
-    title: "Adventure Basecamp",
-    description:
-      "Use Shkoder as your launch point for Theth and Valbona, Lake Shkoder kayaking and swims, river excursions, and onward travel toward Montenegro, Tirane, or Sarande.",
+      "Drop your heavy bags and get out there. We’ll help you sort the logistics for the Theth and Valbona trek, boat trips up the Shala River, and kayaking out on Lake Shkodër.",
     image: "/images/hiking_1.jpg",
     alt: "Hiking and mountain views near Shkoder, Albanian Alps trips from Scodrinon Hostel",
   },
   {
-    title: "Culture at Your Door",
+    title: "River Days at the Drin",
     description:
-      "Step outside into Kole Idromeno street for coffee, dinner, museums, nightlife, Rozafa Castle plans, and the everyday rhythm that makes Shkoder feel memorable.",
+      "We head out to the river regularly for swimming and sun. These trips are a hostel favorite — a chance to see a different side of Shkoder and spend the afternoon with a great crew.",
+    image: "/images/drin_swimming_trip.jpeg",
+    alt: "Guests enjoying an evening event at Scodrinon Hostel",
+  },
+  {
+    title: "Right in the Center",
+    description:
+    "Step out our front door directly onto Kole Idromeno, Shkodër’s main pedestrian street. From your first morning espresso to late-night drinks, the city's best food, culture, and rhythm are literally at your doorstep.",
     image: "/images/shkoder_pedestrian_street.jpg",
     alt: "Pedestrian street scene near Scodrinon Hostel on Kole Idromeno, Shkoder",
+  },
+  {
+    title: "Rooftop Magic",
+    description:
+      "The rooftop is the social heart of the hostel: mountain light at sunset, city views after dark, and a pace that feels relaxed from the first drink to the last chat.",
+    image: "/images/event_happy_hour.jpg",
+    alt: "Guests relaxing on the Scodrinon Hostel rooftop at sunset",
   },
 ] as const;
 
 export const eventCards = [
+
   {
-    title: "River Days at the Drin",
+    title: "Local Food Nights",
     description:
-      "We head out to the river regularly for swimming and sun. These trips are a hostel favorite—a chance to see a different side of Shkoder and spend the afternoon with a great crew.",
-    image: "/images/event_happy_hour.png",
-    alt: "Guests enjoying an evening event at Scodrinon Hostel",
+      "Whether it’s rooftop raki or a local food crawl, we keep things social. It’s a warm, local atmosphere that’s easy to join—especially if you arrived alone.",
+    image: "/images/local_food_night.jpeg",
+    alt: "Traditional food event at Scodrinon Hostel",
   },
   {
-    title: "Rent a Bike",
+    title: "Explore the Bicycle Capital",
     description:
-      "Ride through Shkoder's easy streets and open edges with local guidance and plenty of pause points.",
-    image: "/images/event_bike_tour.png",
+      "Shkodër runs on two wheels. Grab a rental and explore the city's flat streets, lake paths, and cafes exactly how the locals do.",
+    image: "/images/biking_in _shkodra.jpeg",
     alt: "Bike tour event from Scodrinon Hostel",
   },
   // {
@@ -173,13 +181,6 @@ export const eventCards = [
   //   image: "/images/event_walking_tour.png",
   //   alt: "Walking tour event from Scodrinon Hostel",
   // },
-  {
-    title: "Local Food Nights",
-    description:
-      "Whether it’s rooftop raki or a local food crawl, we keep things social. It’s a warm, local atmosphere that’s easy to join—especially if you arrived alone.",
-    image: "/images/event_traditional_food.png",
-    alt: "Traditional food event at Scodrinon Hostel",
-  },
 ] as const;
 
 export const galleryItems = [
@@ -206,38 +207,24 @@ export const galleryItems = [
   },
   {
     type: "image",
+    src: "/images/rooms_2.jpg",
+    alt: "4 Bed Room at Scodrinon Hostel",
+    className: "md:col-span-4",
+    aspect: "aspect-[4/5]",
+  },
+  {
+    type: "image",
     src: "/images/room_18bed3.jpg",
     alt: "Privacy pods and dorm layout at Scodrinon Hostel 18-bed room",
     className: "md:col-span-3",
-    aspect: "aspect-[4/5]",
+    aspect: "aspect-[4/6]",
   },
   {
     type: "image",
-    src: "/images/hiking_1.jpg",
-    alt: "Albanian Alps hiking from Shkoder base stay at Scodrinon Hostel",
-    className: "md:col-span-4",
-    aspect: "aspect-[4/5]",
-  },
-  {
-    type: "image",
-    src: "/images/hiking_2.jpg",
-    alt: "Mountain trail and outdoor adventure near Shkoder, Albania",
-    className: "md:col-span-4",
-    aspect: "aspect-[4/5]",
-  },
-  {
-    type: "image",
-    src: "/images/rooftop_social_group.jpeg",
-    alt: "Guests socializing on the rooftop terrace at Scodrinon Hostel",
-    className: "md:col-span-6",
-    aspect: "aspect-[6/5]",
-  },
-  {
-    type: "image",
-    src: "/images/indoor_common_1.jpg",
-    alt: "Bright indoor common area at Scodrinon Hostel",
-    className: "md:col-span-3",
-    aspect: "aspect-[4/5]",
+    src: "/images/rooftop_social_3.webp",
+    alt: "Guests enjoying games on the outdoor patio at Scodrinon Hostel",
+    className: "md:col-span-5",
+    aspect: "aspect-[5/4]",
   },
   {
     type: "image",
@@ -245,6 +232,76 @@ export const galleryItems = [
     alt: "Hostel lounge and seating at Scodrinon in Shkoder",
     className: "md:col-span-3",
     aspect: "aspect-[4/5]",
+  },
+  {
+    type: "image",
+    src: "/images/rooftop_social_4.jpg",
+    alt: "Relaxing on the rooftop terrace at Scodrinon Hostel",
+    className: "md:col-span-5",
+    aspect: "aspect-[5/4]",
+  },
+  {
+    type: "image",
+    src: "/images/promo_3.jpg",
+    alt: "Spectaular views while hiking in the Albainain Alps",
+    className: "md:col-span-3",
+    aspect: "aspect-[3/5]",
+  },
+  {
+    type: "image",
+    src: "/images/rooftop_social_5.jpg",
+    alt: "Chill afternoons on the covered patio at Scodrinon Hostel",
+    className: "md:col-span-4",
+    aspect: "aspect-[5/4]",
+  },
+  {
+    type: "image",
+    src: "/images/rooftop_social_6.jpg",
+    alt: "Local food outing from Scodrinon Hostel",
+    className: "md:col-span-4",
+    aspect: "aspect-[5/6]",
+  },
+  {
+    type: "image",
+    src: "/images/hiking_3.jpg",
+    alt: "Hikers using Scodrinon Hostel as a basecamp",
+    className: "md:col-span-3",
+    aspect: "aspect-[4/5]",
+  },
+  {
+    type: "image",
+    src: "/images/room_18bed_5.jpg",
+    alt: "Privacy pod dorm at Scodrinon Hostel in Shkodra",
+    className: "md:col-span-4",
+    aspect: "aspect-[1/1]",
+  },
+  {
+    type: "image",
+    src: "/images/drin_swimming_trip3.jpg",
+    alt: "Having fun on the river trip",
+    className: "md:col-span-3",
+    aspect: "aspect-[4/5]",
+  },
+  {
+    type: "image",
+    src: "/images/hiking_2.jpg",
+    alt: "Mountain trail and outdoor adventure near Shkoder, Albania",
+    className: "md:col-span-3",
+    aspect: "aspect-[4/5]",
+  },
+  {
+    type: "image",
+    src: "/images/rooftop_relax.png",
+    alt: "Guests relaxing on the rooftop terrace at Scodrinon Hostel",
+    className: "md:col-span-5",
+    aspect: "aspect-[6/5]",
+  },
+  {
+    type: "image",
+    src: "/images/drin_swimming_trip2.jpeg",
+    alt: "Regular Drin river excursions at Scodrinon Hostel",
+    className: "md:col-span-4",
+    aspect: "aspect-[5/4]",
   },
   {
     type: "image",
@@ -265,12 +322,89 @@ export const galleryItems = [
     src: "/images/breakfast_1.jpg",
     alt: "Breakfast spread at Scodrinon Hostel, Shkoder",
     className: "md:col-span-4",
+    aspect: "aspect-[7/4]",
+  },
+  {
+    type: "image",
+    src: "/images/rooftop_social_group.jpeg",
+    alt: "Guests socializing on the rooftop terrace at Scodrinon Hostel",
+    className: "md:col-span-5",
+    aspect: "aspect-[6/5]",
+  },
+  {
+    type: "image",
+    src: "/images/hiking_1.jpg",
+    alt: "Albanian Alps hiking from Shkoder base stay at Scodrinon Hostel",
+    className: "md:col-span-4",
     aspect: "aspect-[4/5]",
   },
   {
     type: "image",
-    src: "/images/bathroom_1.jpg",
-    alt: "Clean shared bathroom at Scodrinon Hostel",
+    src: "/images/coworking.jpg",
+    alt: "Coworking and workations using the high-speed internet at Scodrinon Hostel",
+    className: "md:col-span-3",
+    aspect: "aspect-[4/5]",
+  },
+  {
+    type: "image",
+    src: "/images/secure_dorm_lockers.webp",
+    alt: "Secure lockers for dorm guests at Scodrinon Hostel",
+    className: "md:col-span-4",
+    aspect: "aspect-[5/4]",
+  },
+  {
+    type: "image",
+    src: "/images/indoor_common_1.jpg",
+    alt: "Bright indoor common area at Scodrinon Hostel",
+    className: "md:col-span-3",
+    aspect: "aspect-[4/5]",
+  },
+  {
+    type: "image",
+    src: "/images/showers_2.jpg",
+    alt: "Shower area at Scodrinon Hostel, Shkoder",
+    className: "md:col-span-3",
+    aspect: "aspect-[4/5]",
+  },
+  {
+    type: "image",
+    src: "/images/shkoder_pedestrian_street.jpg",
+    alt: "Kole Idromeno pedestrian street life near Scodrinon Hostel",
+    className: "md:col-span-5",
+    aspect: "aspect-[5/4]",
+  },
+  {
+    type: "image",
+    src: "/images/rooftop_panorama.jpg",
+    alt: "Panoramic rooftop view at Scodrinon Hostel",
+    className: "md:col-span-6",
+    aspect: "aspect-[16/8]",
+  },
+  {
+    type: "image",
+    src: "/images/events_pool.jpg",
+    alt: "Evening events and outings",
+    className: "md:col-span-4",
+    aspect: "aspect-[4/5]",
+  },
+  {
+    type: "image",
+    src: "/images/rooftop_social2.png",
+    alt: "Travelers socializing on the hostel rooftop",
+    className: "md:col-span-4",
+    aspect: "aspect-[4/5]",
+  },
+  {
+    type: "image",
+    src: "/images/rooftop_view_day2.jpg",
+    alt: "Daytime rooftop outlook in Shkoder",
+    className: "md:col-span-4",
+    aspect: "aspect-[4/5]",
+  },
+  {
+    type: "image",
+    src: "/images/bar_3.jpg",
+    alt: "Evening drinks and conversation at the hostel",
     className: "md:col-span-3",
     aspect: "aspect-[4/5]",
   },
@@ -290,64 +424,8 @@ export const galleryItems = [
   },
   {
     type: "image",
-    src: "/images/showers_2.jpg",
-    alt: "Shower area at Scodrinon Hostel, Shkoder",
-    className: "md:col-span-3",
-    aspect: "aspect-[4/5]",
-  },
-  {
-    type: "image",
-    src: "/images/secure_dorm_lockers.webp",
-    alt: "Secure lockers for dorm guests at Scodrinon Hostel",
-    className: "md:col-span-4",
-    aspect: "aspect-[4/5]",
-  },
-  {
-    type: "image",
-    src: "/images/shkoder_pedestrian_street.jpg",
-    alt: "Kole Idromeno pedestrian street life near Scodrinon Hostel",
-    className: "md:col-span-5",
-    aspect: "aspect-[5/4]",
-  },
-  {
-    type: "image",
-    src: "/images/rooftop_panorama.jpg",
-    alt: "Panoramic rooftop view at Scodrinon Hostel",
-    className: "md:col-span-8",
-    aspect: "aspect-[16/8]",
-  },
-  {
-    type: "image",
-    src: "/images/rooms_1.jpg",
-    alt: "Privacy pod dorm at Scodrinon Hostel",
-    className: "md:col-span-5",
-    aspect: "aspect-[5/4]",
-  },
-  {
-    type: "image",
-    src: "/images/rooftop_social2.png",
-    alt: "Travelers socializing on the hostel rooftop",
-    className: "md:col-span-4",
-    aspect: "aspect-[4/5]",
-  },
-  {
-    type: "image",
-    src: "/images/rooftop_view_day2.jpg",
-    alt: "Daytime rooftop outlook in Shkoder",
-    className: "md:col-span-4",
-    aspect: "aspect-[4/5]",
-  },
-  {
-    type: "image",
-    src: "/images/rooftop_relax.png",
-    alt: "Guests relaxing on the rooftop terrace at Scodrinon Hostel",
-    className: "md:col-span-6",
-    aspect: "aspect-[6/5]",
-  },
-  {
-    type: "image",
-    src: "/images/bar_3.jpg",
-    alt: "Evening drinks and conversation at the hostel",
+    src: "/images/bathroom_1.jpg",
+    alt: "Clean shared bathroom at Scodrinon Hostel",
     className: "md:col-span-3",
     aspect: "aspect-[4/5]",
   },
@@ -403,7 +481,7 @@ export const faqItems = [
 export const contactChecklist = [
   "Your dates",
   "How many guests are coming",
-  "Whether you want the pod dorm or a 4-bed room",
+  "Whether you want the mixed pod dorm or a 4-bed room",
   "Your arrival time into Shkoder",
-  "Any hiking, bike, or river plans you want help with",
+  "Any hiking, bike, or transport plans you want help with",
 ] as const;

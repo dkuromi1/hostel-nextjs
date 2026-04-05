@@ -238,7 +238,7 @@ export default function ExperiencesPage() {
             eyebrow="Plan The Stay"
             title="Send your dates and let the hostel help shape the rest."
             description="You can book the bed and ask about hikes, bike rides, river excursions, or the easiest onward route in the same WhatsApp conversation."
-            image="/images/rooftop_social.jpg"
+            image="/images/rooftop_social_3.webp"
             alt="Guests on the Scodrinon Hostel rooftop"
           />
         </div>

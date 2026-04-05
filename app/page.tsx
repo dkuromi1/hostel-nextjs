@@ -1,7 +1,3 @@
-// page.tsx (FINAL IMPROVED LAYOUT - April 2026)
-// Fully updated with better hierarchy, mobile flow, visual balance, and modern spacing.
-// All original content, data, components, and animations preserved.
-
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -73,11 +69,11 @@ export default function Home() {
               <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl tracking-[-0.04em] leading-[1.05] text-slate-950">
                 Rooftop sunsets, privacy pods,
                 <br className="hidden sm:block" />
-                <span className="text-blue-600">and the part of Shkodër you actually want to wake up in.</span>
+                <span className="text-blue-600"> and the part of Shkodër you actually want to wake up in.</span>
               </h1>
               <p className="max-w-[58ch] text-lg leading-8 text-slate-600">
-                Scodrinon Hostel is a laidback, social, and safe base on lively
-                Kole Idromeno Street. Come for a couple of nights, settle into
+                Scodrinon Hostel is a laidback, social, and safe base on the lively
+                Kole Idromeno pedestrian street. Come for a couple of nights, settle into
                 the rooftop, and use the city as your launch point for the
                 Albanian Alps, Lake Shkoder, and Europe&apos;s &apos;Last Frontier&apos;.
               </p>
@@ -390,9 +386,9 @@ export default function Home() {
           </div>
 
           <div className="grid gap-6 lg:grid-cols-12">
-            <Reveal className="lg:col-span-7">
-              <Panel className="overflow-hidden">
-                <div className="relative min-h-[30rem]">
+            <Reveal className="lg:col-span-6 h-full">
+              <Panel className="overflow-hidden h-full">
+                <div className="relative h-full min-h-[30rem]">
                   <Image
                     src={experiencePillars[0].image}
                     alt={experiencePillars[0].alt}
@@ -413,7 +409,7 @@ export default function Home() {
               </Panel>
             </Reveal>
 
-            <div className="lg:col-span-5 grid gap-6">
+            <div className="lg:col-span-6 grid gap-6">
               {experiencePillars.slice(1).map((pillar, index) => (
                 <Reveal key={pillar.title} delay={index * 100}>
                   <Panel className="overflow-hidden">

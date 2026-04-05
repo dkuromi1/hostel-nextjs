@@ -57,24 +57,24 @@ export default function RoomsPage() {
           "Curtained privacy pods in the mixed dorm",
           "Four-bed dorms with male and female options",
           "Air-con, lockers, reading lights, sockets, and WiFi",
-          "Breakfast included every morning",
+          "All rooms include breakfast every morning",
         ]}
       >
         <div className="grid gap-4 md:grid-cols-2">
           <div className="media-frame relative min-h-[22rem] md:row-span-2">
             <Image
-              src="/images/room_18bed2.jpg"
-              alt="18-bed privacy pod dorm at Scodrinon Hostel, Shkoder"
+              src="/images/rooms_1.jpg"
+              alt="Four-bed dorm room at Scodrinon Hostel, Shkoder"
               fill
               className="object-cover"
               priority
               sizes="(max-width: 768px) 100vw, 40vw"
-            />
+              />
           </div>
           <div className="media-frame relative min-h-[14rem]">
             <Image
-              src="/images/room_4bed_m.jpg"
-              alt="Four-bed dorm room at Scodrinon Hostel, Shkoder"
+              src="/images/room_18bed2.jpg"
+              alt="18-bed privacy pod dorm at Scodrinon Hostel, Shkoder"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 25vw"
@@ -249,8 +249,8 @@ export default function RoomsPage() {
             eyebrow="Book Your Bed"
             title="Tell the team what kind of room you want and lock it in directly."
             description="If you already know your dates, message on WhatsApp and ask for the pod dorm or a four-bed option. Booking.com and Hostelworld stay there if you prefer those platforms."
-            image="/images/room_4bed_m.jpg"
-            alt="Four-bed dorm room at Scodrinon Hostel, Shkoder"
+            image="/images/ambiance2.jpg"
+            alt="evening ambiance at Scodrinon Hostel, Shkoder"
           />
         </div>
       </section>
