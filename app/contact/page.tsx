@@ -29,7 +29,7 @@ export const metadata = buildMetadata({
   description:
     "Book Scodrinon Hostel directly on WhatsApp or use Booking.com and Hostelworld. Find the hostel links, booking checklist, and arrival details here.",
   path: "/contact",
-  image: "/images/street.jpg",
+  image: "/images/shkoder_pedestrian_street.jpg",
 });
 
 export default function ContactPage() {
@@ -73,7 +73,7 @@ export default function ContactPage() {
           <div className="grid gap-4 md:grid-cols-2">
             <div className="media-frame relative min-h-[16rem]">
               <Image
-                src="/images/street.jpg"
+                src="/images/ambiance_2.jpg"
                 alt="Street outside Scodrinon Hostel on Kole Idromeno"
                 fill
                 className="object-cover"

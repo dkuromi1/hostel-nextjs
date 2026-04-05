@@ -62,8 +62,10 @@ export function buildHostelSchema() {
     url: getSiteUrl("/"),
     image: [
       getSiteUrl("/images/promo_2.png"),
-      getSiteUrl("/images/rooms_1.jpg"),
+      getSiteUrl("/images/room_18bed2.jpg"),
       getSiteUrl("/images/rooftop_social.jpg"),
+      getSiteUrl("/images/hiking_1.jpg"),
+      getSiteUrl("/images/shkoder_pedestrian_street.jpg"),
     ],
     logo: getSiteUrl("/logo.png"),
     telephone: siteConfig.phoneDisplay,

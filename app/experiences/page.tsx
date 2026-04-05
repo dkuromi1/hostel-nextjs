@@ -1,11 +1,10 @@
 import Image from "next/image";
 import {
-  Compass,
-  Film,
-  Mountain,
+  Waves,
   ShieldCheck,
   Sunset,
   UtensilsCrossed,
+  Bike 
 } from "lucide-react";
 
 import { CtaStrip } from "@/components/cta-strip";
@@ -29,7 +28,7 @@ export const metadata = buildMetadata({
   image: "/images/rooftop_social2.png",
 });
 
-const icons = [Compass, Mountain, UtensilsCrossed, Film];
+const icons = [Waves, Bike, UtensilsCrossed];
 
 export default function ExperiencesPage() {
   return (
@@ -80,8 +79,8 @@ export default function ExperiencesPage() {
           </div>
           <div className="media-frame relative min-h-[15rem]">
             <Image
-              src="/images/rooftop_view_day2.jpg"
-              alt="View over Shkoder from the rooftop"
+              src="/images/hiking_1.jpg"
+              alt="Hiking and Albanian Alps trips from Shkoder, Scodrinon Hostel base"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 25vw"
@@ -212,8 +211,8 @@ export default function ExperiencesPage() {
             <div className="grid gap-4">
               <div className="media-frame relative min-h-[18rem]">
                 <Image
-                  src="/images/rooftop_view_day.jpg"
-                  alt="Day view from the rooftop at Scodrinon Hostel"
+                  src="/images/hiking_2.jpg"
+                  alt="Mountain hiking near Shkoder and day trips from Scodrinon Hostel"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 38vw"
@@ -221,8 +220,8 @@ export default function ExperiencesPage() {
               </div>
               <div className="media-frame relative min-h-[18rem]">
                 <Image
-                  src="/images/street.jpg"
-                  alt="Street life outside Scodrinon Hostel on Kole Idromeno"
+                  src="/images/hiking_1.jpg"
+                  alt="Theth and Valbona hiking day trips from Scodrinon Hostel"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 38vw"

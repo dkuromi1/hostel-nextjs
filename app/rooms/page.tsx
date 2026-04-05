@@ -31,7 +31,7 @@ export const metadata = buildMetadata({
   description:
     "See the privacy pod dorm and four-bed dorm options at Scodrinon Hostel, plus breakfast, WiFi, lockers, air-con, and other included amenities.",
   path: "/rooms",
-  image: "/images/rooms_1.jpg",
+  image: "/images/room_18bed2.jpg",
 });
 
 const roomIcons = [Snowflake, Lock, LampDesk, BatteryCharging, Wifi, ShowerHead];
@@ -63,8 +63,8 @@ export default function RoomsPage() {
         <div className="grid gap-4 md:grid-cols-2">
           <div className="media-frame relative min-h-[22rem] md:row-span-2">
             <Image
-              src="/images/rooms_1.jpg"
-              alt="Privacy pod dorm room at Scodrinon Hostel"
+              src="/images/room_18bed2.jpg"
+              alt="18-bed privacy pod dorm at Scodrinon Hostel, Shkoder"
               fill
               className="object-cover"
               priority
@@ -73,8 +73,8 @@ export default function RoomsPage() {
           </div>
           <div className="media-frame relative min-h-[14rem]">
             <Image
-              src="/images/rooms_2.jpg"
-              alt="Four-bed dorm room at Scodrinon Hostel"
+              src="/images/room_4bed_m.jpg"
+              alt="Four-bed dorm room at Scodrinon Hostel, Shkoder"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 25vw"
@@ -85,7 +85,7 @@ export default function RoomsPage() {
               Hotel Privacy, Hostel Price
             </p>
             <p className="mt-3 font-heading text-2xl leading-none tracking-[-0.04em] text-slate-950">
-              The pod dorm is the reason so many people start with two nights
+              The great dorms are one of the reasons so many people start with two nights
               and extend.
             </p>
           </div>
@@ -168,8 +168,8 @@ export default function RoomsPage() {
             <div className="grid gap-4">
               <div className="media-frame relative min-h-[20rem]">
                 <Image
-                  src="/images/ambiance.jpg"
-                  alt="Interior atmosphere at Scodrinon Hostel"
+                  src="/images/indoor_common_1.jpg"
+                  alt="Indoor common area and lounge at Scodrinon Hostel"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 38vw"
@@ -177,8 +177,8 @@ export default function RoomsPage() {
               </div>
               <div className="media-frame relative min-h-[18rem]">
                 <Image
-                  src="/images/ambiance_2.jpg"
-                  alt="Calm interior corner inside Scodrinon Hostel"
+                  src="/images/indoor_common_2.jpg"
+                  alt="Hostel interior seating and common space at Scodrinon"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 38vw"
@@ -231,8 +231,8 @@ export default function RoomsPage() {
               </div>
               <div className="mt-8 media-frame relative min-h-[18rem]">
                 <Image
-                  src="/images/breakfast.jpg"
-                  alt="Breakfast at Scodrinon Hostel"
+                  src="/images/breakfast_1.jpg"
+                  alt="Breakfast included at Scodrinon Hostel, Shkoder"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 38vw"
@@ -249,8 +249,8 @@ export default function RoomsPage() {
             eyebrow="Book Your Bed"
             title="Tell the team what kind of room you want and lock it in directly."
             description="If you already know your dates, message on WhatsApp and ask for the pod dorm or a four-bed option. Booking.com and Hostelworld stay there if you prefer those platforms."
-            image="/images/rooms_2.jpg"
-            alt="Four-bed dorm room at Scodrinon Hostel"
+            image="/images/room_4bed_m.jpg"
+            alt="Four-bed dorm room at Scodrinon Hostel, Shkoder"
           />
         </div>
       </section>

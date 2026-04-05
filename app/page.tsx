@@ -78,89 +78,6 @@ export default function Home() {
             </div>
 
             <BookingActions />
-
-            <div className="glass-panel rounded-[28px] p-4 sm:p-5">
-              <div className="flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-slate-500">
-                <span className="faded-line h-px flex-1" />
-                Guest Ratings
-                <span className="faded-line h-px flex-1" />
-              </div>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:items-stretch">
-                {/* Booking.com Card */}
-                <a
-                  href={siteConfig.bookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 px-4 py-5 shadow-[0_20px_55px_-40px_rgba(15,23,42,0.35)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_rgba(15,23,42,0.4)]"
-                >
-                  <div className="flex min-h-[3rem] flex-wrap items-center justify-between gap-x-2 gap-y-2">
-                    <BookingComLogo className="min-w-0 shrink-0" />
-                    <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600">
-                      <Star className="size-3" fill="currentColor" />
-                      <span className="text-[10px] font-bold uppercase tracking-wider">
-                        Top Rated
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex flex-1 flex-col justify-center py-1">
-                    <div className="flex items-center justify-between gap-2">
-                      <div className="flex min-w-0 items-center gap-2">
-                        <div className="shrink-0 rounded-full bg-blue-500/12 p-1.5 text-blue-700">
-                          <Award className="size-5" strokeWidth={1.8} />
-                        </div>
-                        <p className="text-sm font-medium leading-6 text-slate-800 transition-colors group-hover:text-blue-700">
-                          2025 Traveller Review Award
-                        </p>
-                      </div>
-                      <div className="shrink-0 rounded-tr-sm rounded-tl-sm rounded-br-sm rounded-bl-none bg-blue-600 px-3 py-1 text-center font-semibold text-white shadow-sm">
-                        <p className="font-heading text-xl leading-none tracking-tight">
-                          9.5
-                        </p>
-                        <p className="text-[8px] uppercase tracking-wider text-blue-100">
-                          out of 10
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <p className="mt-auto pt-2 text-sm leading-6 text-slate-500">
-                    Awarded for consistent excellence in guest hospitality.
-                  </p>
-                </a>
-                {/* Hostelworld Card */}
-                <a
-                  href={siteConfig.hostelworldUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 px-4 py-5 shadow-[0_20px_55px_-40px_rgba(15,23,42,0.35)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_rgba(15,23,42,0.4)]"
-                >
-                  <div className="flex min-h-[3rem] flex-wrap items-center justify-between gap-x-2 gap-y-2">
-                    <HostelworldLogo className="h-7 w-auto shrink-0" />
-                    <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600">
-                      <Star className="size-3" fill="currentColor" />
-                      <span className="text-[10px] font-bold uppercase tracking-wider">
-                        Top Rated
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex flex-1 flex-col justify-center py-1">
-                    <div className="flex items-end gap-2">
-                      <div className="mb-1 rounded-full p-1 text-yellow-500">
-                        <Star className="size-5" strokeWidth={2} fill="currentColor" />
-                      </div>
-                      <span className="font-heading text-3xl leading-none tracking-[-0.05em] text-slate-950">
-                        9.7
-                      </span>
-                      <span className="pb-1 text-sm font-medium uppercase tracking-[0.18em] text-slate-500">
-                        Guest Score
-                      </span>
-                    </div>
-                  </div>
-                  <p className="mt-auto pt-2 text-sm leading-6 text-slate-500 transition-colors group-hover:text-amber-700">
-                    Rated &apos;Superb&apos; by travelers on Hostelworld.
-                  </p>
-                </a>
-              </div>
-            </div>
           </Reveal>
 
               
@@ -249,6 +166,93 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="px-4 pb-12 pt-2 sm:px-6 lg:px-8">
+        <div className="shell-container">
+          <div className="glass-panel rounded-[28px] p-4 sm:p-5">
+            <div className="flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-slate-500">
+              <span className="faded-line h-px flex-1" />
+              Guest Ratings
+              <span className="faded-line h-px flex-1" />
+            </div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:items-stretch">
+              {/* Booking.com Card */}
+              <a
+                href={siteConfig.bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 px-4 py-5 shadow-[0_20px_55px_-40px_rgba(15,23,42,0.35)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_rgba(15,23,42,0.4)]"
+              >
+                <div className="flex min-h-[3rem] flex-wrap items-center justify-between gap-x-2 gap-y-2">
+                  <BookingComLogo className="min-w-0 shrink-0" />
+                  <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600">
+                    <Star className="size-3" fill="currentColor" />
+                    <span className="text-[10px] font-bold uppercase tracking-wider">
+                      Top Rated
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-1 flex-col justify-center py-1">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex min-w-0 items-center gap-2">
+                      <div className="shrink-0 rounded-full bg-blue-500/12 p-1.5 text-blue-700">
+                        <Award className="size-5" strokeWidth={1.8} />
+                      </div>
+                      <p className="text-sm font-medium leading-6 text-slate-800 transition-colors group-hover:text-blue-700">
+                        2025 Traveller Review Award
+                      </p>
+                    </div>
+                    <div className="shrink-0 rounded-tr-sm rounded-tl-sm rounded-br-sm rounded-bl-none bg-blue-600 px-3 py-1 text-center font-semibold text-white shadow-sm">
+                      <p className="font-heading text-xl leading-none tracking-tight">
+                        9.5
+                      </p>
+                      <p className="text-[8px] uppercase tracking-wider text-blue-100">
+                        out of 10
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <p className="mt-auto pt-2 text-sm leading-6 text-slate-500">
+                  Awarded for consistent excellence in guest hospitality.
+                </p>
+              </a>
+              {/* Hostelworld Card */}
+              <a
+                href={siteConfig.hostelworldUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 px-4 py-5 shadow-[0_20px_55px_-40px_rgba(15,23,42,0.35)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_rgba(15,23,42,0.4)]"
+              >
+                <div className="flex min-h-[3rem] flex-wrap items-center justify-between gap-x-2 gap-y-2">
+                  <HostelworldLogo className="h-7 w-auto shrink-0" />
+                  <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600">
+                    <Star className="size-3" fill="currentColor" />
+                    <span className="text-[10px] font-bold uppercase tracking-wider">
+                      Top Rated
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-1 flex-col justify-center py-1">
+                  <div className="flex items-end gap-2">
+                    <div className="mb-1 rounded-full p-1 text-yellow-500">
+                      <Star className="size-5" strokeWidth={2} fill="currentColor" />
+                    </div>
+                    <span className="font-heading text-3xl leading-none tracking-[-0.05em] text-slate-950">
+                      9.7
+                    </span>
+                    <span className="pb-1 text-sm font-medium uppercase tracking-[0.18em] text-slate-500">
+                      Guest Score
+                    </span>
+                  </div>
+                </div>
+                <p className="mt-auto pt-2 text-sm leading-6 text-slate-500 transition-colors group-hover:text-amber-700">
+                  Rated &apos;Superb&apos; by travelers on Hostelworld.
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="shell-container grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <Reveal className="space-y-8">
@@ -259,7 +263,7 @@ export default function Home() {
             />
             <div className="media-frame relative min-h-[28rem]">
               <Image
-                src="/images/rooftop_relax.png"
+                src="/images/rooftop_social2.png"
                 alt="Travelers relaxing on the rooftop of Scodrinon Hostel"
                 fill
                 className="object-cover"
@@ -472,7 +476,7 @@ export default function Home() {
           </div>
 
           <div className="grid gap-4 md:grid-cols-12">
-            {galleryItems.slice(0, 5).map((item, index) => (
+            {galleryItems.slice(0, 12).map((item, index) => (
               <Reveal
                 key={`${item.src}-${index}`}
                 delay={index * 70}
@@ -512,7 +516,7 @@ export default function Home() {
             <SectionHeading
               eyebrow="Included"
               title="The basics are not treated like extras."
-              description="Breakfast, WiFi, luggage storage, and a genuinely usable rooftop make the stay feel generous instead of stripped down."
+              description="Breakfast, luggage storage, WiFi, and a genuinely usable rooftop make the stay feel generous instead of stripped down."
             />
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="glass-panel rounded-[28px] p-5">
