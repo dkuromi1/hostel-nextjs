@@ -4,11 +4,11 @@ export const siteConfig = {
   tagline: "The hostel you won't want to leave",
   description:
     "A chill, social, and safe hostel on Kole Idromeno street in Shkoder with privacy pods, rooftop sunsets, breakfast, and direct WhatsApp booking.",
-  location: "Kole Idromeno Street, Shkoder, 4001, Albania",
-  phoneDisplay: "+355 67 677 7117",
-  phoneRaw: "355676777117",
+  location: "Kole Idromeno Street, Shkodër, 4001, Albania",
+  phoneDisplay: "+355 68 531 0744",
+  phoneRaw: "355685310744",
   whatsappUrl:
-    "https://wa.me/355676777117?text=Hi%20Scodrinon%20Hostel%2C%20I%E2%80%99d%20like%20to%20book%20a%20bed.",
+    "https://wa.me/355685310744text=Hi%20Scodrinon%20Hostel%2C%20I%E2%80%99d%20like%20to%20book%20a%20bed.",
   bookingUrl: "https://www.booking.com/hotel/al/scodrinon-hostel.html",
   hostelworldUrl:
     "https://www.hostelworld.com/hostels/p/325721/scodrinon-hostel/",
@@ -17,6 +17,7 @@ export const siteConfig = {
   baseKeywords: [
     "Scodrinon Hostel",
     "hostel in Shkoder",
+    "hostel in Shkodra",
     "hostel in Shkoder Albania",
     "privacy pod hostel Albania",
     "Shkoder backpacker hostel",
@@ -371,8 +372,8 @@ export const faqItems = [
     question: "How should I book direct?",
     answer:
       "Send your dates, bed preference, and approximate arrival time on WhatsApp. Direct booking is the main call to action on the site because it is the fastest way to get a clear answer from the team.",
-    },
-    {
+  },
+  {
     question: "Is Scodrinon good for solo travelers?",
     answer:
       "Yes. The hostel is social and welcoming, but it avoids the pressure-cooker party feel. That balance works especially well for solo travelers who want connection and rest in the same stay.",

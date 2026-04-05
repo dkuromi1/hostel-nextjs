@@ -67,7 +67,7 @@ export default function Home() {
               </p>
               <h1 className="font-heading text-4xl sm:text-6xl tracking-[-0.04em] text-slate-950">
                 Rooftop sunsets, privacy pods,<br className="hidden sm:block" /> 
-                <span className="text-blue-600">and the part of Shkoder you actually want to wake up in.</span>
+                <span className="text-blue-600"> and the part of Shkodër you actually want to wake up in.</span>
               </h1>
               <p className="max-w-[64ch] text-lg leading-8 text-slate-600">
                 Scodrinon Hostel is a laidback, social, and safe base on lively

@@ -27,7 +27,7 @@ export function SiteHeader() {
               {siteConfig.name}
             </p>
             <p className="mt-1 text-xs uppercase tracking-[0.24em] text-slate-500">
-              Shkoder, Albania
+              Shkodër, Albania
             </p>
           </div>
         </Link>

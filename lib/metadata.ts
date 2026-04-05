@@ -74,6 +74,7 @@ export function buildHostelSchema() {
       siteConfig.bookingUrl,
       siteConfig.hostelworldUrl,
     ],
+    priceRange: "€8 - €10",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Kole Idromeno Street",
