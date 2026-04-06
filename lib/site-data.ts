@@ -8,7 +8,7 @@ export const siteConfig = {
   phoneDisplay: "+355 68 531 0744",
   phoneRaw: "355685310744",
   whatsappUrl:
-    "https://wa.me/355685310744text=Hi%20Scodrinon%20Hostel%2C%20I%E2%80%99d%20like%20to%20book%20a%20bed.",
+    "https://wa.me/355685310744?text=Hi%20Scodrinon%20Hostel%2C%20I%E2%80%99d%20like%20to%20book%20a%20bed.",
   bookingUrl: "https://www.booking.com/hotel/al/scodrinon-hostel.html",
   hostelworldUrl:
     "https://www.hostelworld.com/hostels/p/325721/scodrinon-hostel/",

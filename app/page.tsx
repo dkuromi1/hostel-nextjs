@@ -55,8 +55,6 @@ export default function Home() {
   return (
     <>
       <StructuredData data={[buildHostelSchema(), buildFaqSchema()]} />
-
-      {/* HERO - Improved balance + mobile-first stacking */}
       <section className="relative overflow-hidden px-4 pb-12 pt-14 sm:px-6 lg:px-8 lg:pt-20">
         <div className="pointer-events-none absolute inset-0 soft-grid opacity-40" />
         <div className="shell-container relative grid gap-12 lg:grid-cols-12 lg:items-center">
@@ -130,6 +128,7 @@ export default function Home() {
                     src="/images/rooms_1.jpg"
                     alt="Privacy pod dorm room at Scodrinon Hostel"
                     fill
+                    priority
                     className="object-cover"
                     sizes="(max-width: 1024px) 50vw, 22vw"
                   />

@@ -85,9 +85,7 @@ export function SiteFooter() {
             <p>
                 {/* STEP 2: Make the address a clickable Google Maps link */}
                 <a
-                  href={`https://maps.google.com/?q=${encodeURIComponent(
-                    siteConfig.name + " " + siteConfig.location
-                  )}`}
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.name + " " + siteConfig.location)}`}
                   target="_blank"
                   rel="noreferrer"
                   className="group inline-flex items-start gap-2 transition-colors hover:text-white"
