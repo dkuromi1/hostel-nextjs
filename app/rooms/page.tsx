@@ -5,7 +5,8 @@ import {
   LampDesk,
   Lock,
   Wifi,
-  ShowerHead
+  ShowerHead,
+  Star,
 } from "lucide-react";
 
 import { CtaStrip } from "@/components/cta-strip";
@@ -82,11 +83,10 @@ export default function RoomsPage() {
           </div>
           <div className="glass-panel rounded-[28px] p-5">
             <p className="text-xs uppercase tracking-[0.24em] text-emerald-700">
-              Hotel Privacy, Hostel Price
+              Beds From €15 / Night
             </p>
             <p className="mt-3 font-heading text-2xl leading-none tracking-[-0.04em] text-slate-950">
-              The great dorms are one of the reasons so many people start with two nights
-              and extend.
+              Hotel privacy at a hostel price. It's why so many guests book two nights and end up extending.
             </p>
           </div>
         </div>
@@ -102,7 +102,7 @@ export default function RoomsPage() {
           <div className="grid gap-6 lg:grid-cols-2">
             {roomTypes.map((room, index) => (
               <Reveal key={room.name} delay={index * 100}>
-                <Panel className="overflow-hidden">
+                <Panel className="overflow-hidden h-full flex flex-col">
                   <div className="relative min-h-[19rem]">
                     <Image
                       src={room.image}
@@ -112,11 +112,19 @@ export default function RoomsPage() {
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                   </div>
-                  <div className="space-y-5 p-6">
+                  <div className="flex flex-1 flex-col space-y-5 p-6">
                     <div>
-                      <p className="text-xs uppercase tracking-[0.24em] text-emerald-700">
-                        {room.label}
-                      </p>
+                      <div className="flex items-center justify-between">
+                          <p className="text-xs uppercase tracking-[0.24em] text-emerald-700">
+                            {room.label}
+                          </p>
+                          {/* STEP 1B: Optional Price Badge (Requires adding price string to site-data.ts) */}
+                          {"price" in room && (
+                            <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold tracking-wide text-emerald-800">
+                              {String(room.price)}
+                            </span>
+                          )}
+                        </div>
                       <h2 className="mt-3 font-heading text-3xl leading-none tracking-[-0.05em] text-slate-950">
                         {room.name}
                       </h2>
@@ -124,7 +132,7 @@ export default function RoomsPage() {
                         {room.description}
                       </p>
                     </div>
-                    <ul className="grid gap-3">
+                    <ul className="grid gap-3 mt-auto">
                       {room.bullets.map((bullet) => (
                         <li
                           key={bullet}
@@ -165,7 +173,7 @@ export default function RoomsPage() {
           </Reveal>
 
           <Reveal delay={120}>
-            <div className="grid gap-4">
+            <div className="grid gap-4 h-full">
               <div className="media-frame relative min-h-[20rem]">
                 <Image
                   src="/images/indoor_common_1.jpg"
@@ -184,6 +192,19 @@ export default function RoomsPage() {
                   sizes="(max-width: 1024px) 100vw, 38vw"
                 />
               </div>
+              <Panel className="flex flex-col justify-center bg-emerald-900 p-8 text-white sm:p-10">
+                <div className="flex gap-1 text-emerald-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="size-4 fill-current" />
+                  ))}
+                </div>
+                <blockquote className="mt-6 font-heading text-2xl leading-snug tracking-[-0.02em] text-white sm:text-3xl">
+                  "The pods actually gave me the best sleep I've had in the Balkans. It feels like a boutique hotel but with a perfect hostel vibe."
+                </blockquote>
+                <p className="mt-6 font-medium text-emerald-200">
+                  — Sarah, UK <span className="opacity-70">(Hostelworld)</span>
+                </p>
+              </Panel>
             </div>
           </Reveal>
         </div>
