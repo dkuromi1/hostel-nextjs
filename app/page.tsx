@@ -577,18 +577,6 @@ export default function Home() {
             </div>
           </Reveal>
 
-          <Reveal delay={120} className="lg:col-span-5">
-            <Panel className="p-6 h-full">
-              <SectionHeading
-                eyebrow="FAQ"
-                title="A few things travelers usually ask before they book."
-                description="If you want a quick answer, skip the forms and message on WhatsApp instead."
-              />
-              <div className="mt-8">
-                <FaqList items={faqItems} />
-              </div>
-            </Panel>
-          </Reveal>
         </div>
       </section>
 

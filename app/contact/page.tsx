@@ -1,9 +1,11 @@
 import Image from "next/image";
 import {
   ArrowUpRight,
+  CheckCircle2,
+  ChevronDown,
+  Clock,
   MapPinned,
   MessageCircleMore,
-  Ticket,
 } from "lucide-react";
 
 import { BookingActions } from "@/components/booking-actions";
@@ -18,6 +20,7 @@ import { Panel } from "@/components/ui/panel";
 import { buildBreadcrumbSchema, buildMetadata } from "@/lib/metadata";
 import {
   contactChecklist,
+  faqItems,
   freeServices,
   paidServices,
   siteConfig,
@@ -43,15 +46,9 @@ export default function ContactPage() {
       />
 
       <PageHero
-        eyebrow="Contact"
-        title="Direct booking should feel as easy as sending one message."
-        description="WhatsApp is the most prominent route because it is the fastest and clearest way to speak with the hostel team. If you prefer booking platforms, those links are right here too."
-        highlights={[
-          "WhatsApp first for the quickest reply",
-          "Booking.com and Hostelworld as backup options",
-          "Ask about beds, arrival times, and local plans in one message",
-          "Instagram for day-to-day hostel atmosphere",
-        ]}
+        eyebrow="Contact & Book"
+        title="Skip the fees. Book directly with a simple message."
+        description="We prefer WhatsApp because it's the fastest way to answer your questions and secure your bed. (But if you prefer the booking apps, you'll find those links here too)."
       >
         <div className="grid gap-4">
           <Panel className="p-6 sm:p-7">
@@ -67,7 +64,7 @@ export default function ContactPage() {
               from Shkoder after your stay.
             </p>
             <div className="mt-6">
-              <BookingActions className="max-w-4xl" />
+              <BookingActions className="max-w-4xl" whatsappOnly={true}/>
             </div>
           </Panel>
           <div className="grid gap-4 md:grid-cols-2">
@@ -96,19 +93,20 @@ export default function ContactPage() {
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="shell-container grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
           <Reveal>
-            <Panel className="p-6 sm:p-8">
+            <Panel className="p-6 sm:p-8 h-full">
               <SectionHeading
-                eyebrow="What To Send"
-                title="A quick WhatsApp message works best when it includes the basics."
-                description="Keep it short. The team just needs enough detail to steer you into the right room and answer quickly."
+                eyebrow="Quick Booking"
+                title="What to include in your message."
+                description="Keep it short. Just send us a quick note with these details, and our team will get your stay sorted in no time."
               />
               <div className="mt-8 grid gap-3">
                 {contactChecklist.map((item) => (
                   <div
                     key={item}
-                    className="rounded-2xl bg-slate-50 px-4 py-3 text-sm leading-7 text-slate-700"
+                    className="flex items-center gap-3 rounded-2xl bg-slate-50 px-4 py-3 text-sm leading-7 text-slate-700"
                   >
-                    {item}
+                    <CheckCircle2 className="size-5 shrink-0 text-emerald-600" />
+                    <span>{item}</span>
                   </div>
                 ))}
               </div>
@@ -116,7 +114,7 @@ export default function ContactPage() {
           </Reveal>
 
           <Reveal delay={120}>
-            <Panel className="p-6 sm:p-8">
+            <Panel className="p-6 sm:p-8 h-full">
               <p className="text-xs uppercase tracking-[0.24em] text-amber-700">
                 Contact Details
               </p>
@@ -133,41 +131,33 @@ export default function ContactPage() {
                     className="mt-1 size-5 shrink-0 text-emerald-700"
                     strokeWidth={1.8}
                   />
-                  <span>{siteConfig.location}</span>
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                      siteConfig.name + " " + siteConfig.location
+                    )}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline decoration-slate-300 underline-offset-4 hover:text-emerald-700 transition-colors"
+                  >
+                    {siteConfig.location}
+                  </a>
                 </p>
                 <p className="flex items-start gap-3">
-                  <Ticket
+                  <Clock
                     className="mt-1 size-5 shrink-0 text-emerald-700"
                     strokeWidth={1.8}
                   />
-                  <span>Breakfast, WiFi, luggage storage, and 24h access</span>
+                  <span>Reception: 24 hour access | Check-in: 2pm</span>
                 </p>
               </div>
-              <div className="mt-8 grid gap-3">
-                <a
-                  href={siteConfig.instagramUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={cn(
-                    buttonVariants({ variant: "outline", size: "lg" }),
-                    "rounded-full bg-white"
-                  )}
-                >
-                  <InstagramGlyph className="size-4" strokeWidth={1.8} />
-                  View Instagram
-                </a>
-                <a
-                  href={siteConfig.bookingUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={cn(
-                    buttonVariants({ variant: "secondary", size: "lg" }),
-                    "rounded-full bg-sky-900 text-white hover:bg-sky-950"
-                  )}
-                >
-                  Booking.com
-                  <ArrowUpRight className="size-4" strokeWidth={1.8} />
-                </a>
+              <div className="mt-8 media-frame relative min-h-[18rem]">
+                <Image
+                  src="/images/outdoor_common_2.jpg"
+                  alt="Outdoor ambiance at Scodrinon Hostel"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 38vw"
+                />
               </div>
             </Panel>
           </Reveal>
@@ -175,13 +165,13 @@ export default function ContactPage() {
       </section>
 
       <section className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="shell-container grid gap-6 lg:grid-cols-2">
+        <div className="shell-container grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
           <Reveal>
-            <Panel className="p-6 sm:p-8">
+            <Panel className="p-6 sm:p-8 h-full">
               <SectionHeading
-                eyebrow="Included"
-                title="Useful things that are already part of the stay."
-                description="Good direct booking conversations usually include what is covered and what can be added if you need it."
+                eyebrow="Always Included"
+                title="Everything you need for a comfortable stay."
+                description="We don't believe in nickel-and-diming our guests. Here are some things you get for free when you book a bed with us."
               />
               <div className="mt-8 grid gap-3">
                 {freeServices.map((service) => (
@@ -195,32 +185,31 @@ export default function ContactPage() {
               </div>
             </Panel>
           </Reveal>
+
           <Reveal delay={120}>
-            <Panel className="p-6 sm:p-8">
-              <p className="text-xs uppercase tracking-[0.24em] text-amber-700">
-                Optional Extras
-              </p>
-              <h2 className="mt-4 font-heading text-4xl leading-none tracking-[-0.05em] text-slate-950">
-                Add practical help if you need it.
-              </h2>
-              <div className="mt-8 grid gap-3">
-                {paidServices.map((service) => (
-                  <div
-                    key={service}
-                    className="rounded-2xl bg-amber-50 px-4 py-3 text-sm leading-7 text-slate-700"
+            <Panel className="p-6 sm:p-8 h-full">
+              <SectionHeading
+                eyebrow="FAQs"
+                title="Common questions."
+                description="Here are a few things people usually ask before they arrive."
+              />
+              <div className="mt-8 flex flex-col gap-4">
+                {faqItems.map((faq, i) => (
+                  <details
+                    key={i}
+                    className="group rounded-2xl bg-slate-50 p-5 open:bg-slate-100 transition-colors"
                   >
-                    {service}
-                  </div>
+                    <summary className="font-heading text-lg font-medium text-slate-900 cursor-pointer list-none flex justify-between items-center gap-4">
+                      {faq.question}
+                      <span className="transition-transform duration-300 group-open:rotate-180 shrink-0">
+                        <ChevronDown className="size-5 text-slate-500" />
+                      </span>
+                    </summary>
+                    <p className="mt-3 text-base leading-7 text-slate-600 pr-6">
+                      {faq.answer}
+                    </p>
+                  </details>
                 ))}
-              </div>
-              <div className="mt-8 media-frame relative min-h-[18rem]">
-                <Image
-                  src="/images/ambiance_3.jpg"
-                  alt="Interior ambiance at Scodrinon Hostel"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 38vw"
-                />
               </div>
             </Panel>
           </Reveal>
@@ -230,9 +219,9 @@ export default function ContactPage() {
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="shell-container">
           <CtaStrip
-            eyebrow="Message The Hostel"
-            title="If you have the dates, you have enough to start the booking."
-            description="WhatsApp gets top billing because it is the most direct path to a confirmed stay. Booking.com and Hostelworld remain one click behind it."
+            eyebrow="Ready to visit?"
+            title="Got your dates? Let's get you booked."
+            description="Drop us a message on WhatsApp and we'll confirm your bed right away. We can't wait to welcome you to Shkoder."
             image="/images/promo_2.png"
             alt="Promotional image for Scodrinon Hostel"
           />
