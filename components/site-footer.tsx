@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, MessageCircleMore } from "lucide-react";
+import { ArrowUpRight, MessageCircleMore, MapPinned } from "lucide-react";
 
 import { InstagramGlyph } from "@/components/instagram-glyph";
 import { navLinks, siteConfig } from "@/lib/site-data";
@@ -82,7 +82,22 @@ export function SiteFooter() {
               Details
             </p>
             <div className="mt-4 space-y-3 text-base text-slate-300">
-              <p>{siteConfig.location}</p>
+            <p>
+                {/* STEP 2: Make the address a clickable Google Maps link */}
+                <a
+                  href={`https://maps.google.com/?q=${encodeURIComponent(
+                    siteConfig.name + " " + siteConfig.location
+                  )}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group inline-flex items-start gap-2 transition-colors hover:text-white"
+                >
+                  <MapPinned className="mt-1 size-4 shrink-0 text-emerald-500 transition-transform group-hover:scale-110" />
+                  <span className="underline decoration-slate-700 underline-offset-4 group-hover:decoration-slate-400">
+                    {siteConfig.location}
+                  </span>
+                </a>
+              </p>
               <p>Free breakfast: {siteConfig.breakfastHours}</p>
               <p>24h access, luggage storage, rooftop social nights</p>
             </div>
