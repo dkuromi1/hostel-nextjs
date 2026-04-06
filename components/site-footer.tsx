@@ -6,7 +6,7 @@ import { navLinks, siteConfig } from "@/lib/site-data";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-white/70 bg-slate-950 px-4 py-14 text-slate-200 sm:px-6 lg:px-8">
+    <footer className="border-t border-white/70 bg-slate-950 px-4 py-14 text-slate-200 sm:px-6 lg:px-8 pb-24 lg:pb-14">
       <div className="mx-auto grid max-w-[1400px] gap-10 lg:grid-cols-[1.2fr_0.8fr]">
         <div className="space-y-5">
           <p className="text-xs uppercase tracking-[0.28em] text-emerald-300/90">

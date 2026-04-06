@@ -34,6 +34,7 @@ export function Reveal({
       },
       {
         threshold: 0.2,
+        rootMargin: "50px",
       }
     );
 

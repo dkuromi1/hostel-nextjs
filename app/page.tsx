@@ -114,6 +114,7 @@ export default function Home() {
                   loop
                   playsInline
                   preload="auto"
+                  poster="/images/video-poster.webp"
                   aria-label="Short video showing the atmosphere at Scodrinon Hostel"
                 >
                   <source src="/videos/videoplayback.mp4" type="video/mp4" />
