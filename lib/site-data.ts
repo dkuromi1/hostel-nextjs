@@ -23,6 +23,7 @@ export const siteConfig = {
     "Shkoder backpacker hostel",
     "Theth Valbona hostel base",
   ],
+  basePrice: "€8",
 } as const;
 
 export const navLinks = [
@@ -484,4 +485,37 @@ export const contactChecklist = [
   "Whether you want the mixed pod dorm or a 4-bed room",
   "Your arrival time into Shkoder",
   "Any hiking, bike, or transport plans you want help with",
+] as const;
+
+export const testimonials = [
+  {
+    quote: "loved this hostel so much!most amazing view from the terrace, breakfast was always fresh and staff were so welcoming and always wiling to help! Loved the hostel and shkoder so much that i kept extending my stay!",
+    author: "Malee, 18-24, Italy",
+    source: "Hostelworld",
+    rating: 5,
+  },
+  {
+    quote: "Great hostel! Great staff (Rob and the beautiful volunteers). Great free coffee every morning. Amazing social atmosphere. It literally felt like a home far from home.",
+    author: "Female, 31-40, Israel",
+    source: "Hostelworld",
+    rating: 5,
+  },
+  {
+    quote: "Top tier hostel! Modern spacious beds with well air conditioned rooms. Perfect location right in town. Relaxed and chill place to stay. Was super easy to organise day trips around the city through staff. Clean facilities and beautiful roof top terrace!",
+    author: "Mollie, New Zealand",
+    source: "Booking.com",
+    rating: 5,
+  },
+  {
+    quote: "Prime location, super comfy beds that feel like a small bedroom. Friendly, helpful staff, clean facilities, and a beautiful rooftop space to enjoy.",
+    author: "Female, 18-24, Canada",
+    source: "Hostelworld",
+    rating: 5,
+  },
+  {
+    quote: "Beds were so incredibly comfortable. The people, volunteers and owner were just amazing, so helpful and nice. The views from the rooftop were just incredible, and the location is to die for",
+    author: "Piper, Australia",
+    source: "Booking.com",
+    rating: 5,
+  },
 ] as const;

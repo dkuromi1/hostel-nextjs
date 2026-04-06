@@ -15,6 +15,7 @@ import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { StructuredData } from "@/components/structured-data";
 import { Panel } from "@/components/ui/panel";
+import { TestimonialCarousel } from "@/components/testimonial-carousel";
 import {
   buildBreadcrumbSchema,
   buildMetadata,
@@ -25,7 +26,9 @@ import {
   paidServices,
   roomTypes,
   sharedAmenities,
+  siteConfig,
 } from "@/lib/site-data";
+import { testimonials } from "@/lib/site-data";
 
 export const metadata = buildMetadata({
   title: "Rooms And Privacy Pods In Shkoder",
@@ -83,7 +86,7 @@ export default function RoomsPage() {
           </div>
           <div className="glass-panel rounded-[28px] p-5">
             <p className="text-xs uppercase tracking-[0.24em] text-emerald-700">
-              Beds From €15 / Night
+              Beds From <strong>{siteConfig.basePrice} / Night</strong>
             </p>
             <p className="mt-3 font-heading text-2xl leading-none tracking-[-0.04em] text-slate-950">
               Hotel privacy at a hostel price. It's why so many guests book two nights and end up extending.
@@ -192,19 +195,7 @@ export default function RoomsPage() {
                   sizes="(max-width: 1024px) 100vw, 38vw"
                 />
               </div>
-              <Panel className="flex flex-col justify-center bg-emerald-900 p-8 text-white sm:p-10">
-                <div className="flex gap-1 text-emerald-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="size-4 fill-current" />
-                  ))}
-                </div>
-                <blockquote className="mt-6 font-heading text-2xl leading-snug tracking-[-0.02em] text-white sm:text-3xl">
-                  "The pods actually gave me the best sleep I've had in the Balkans. It feels like a boutique hotel but with a perfect hostel vibe."
-                </blockquote>
-                <p className="mt-6 font-medium text-emerald-200">
-                  — Sarah, UK <span className="opacity-70">(Hostelworld)</span>
-                </p>
-              </Panel>
+              <TestimonialCarousel testimonials={testimonials} className="h-full" />
             </div>
           </Reveal>
         </div>
