@@ -5,6 +5,7 @@ import {
   Award,
   BedDouble,
   Bike,
+  Check,
   Croissant,
   Luggage,
   MapPinned,
@@ -158,10 +159,10 @@ export default function Home() {
           {quickFacts.map((fact, index) => {
             const Icon = factIcons[index];
             return (
-              <Reveal key={fact} delay={index * 60}>
-                <Panel className="h-full px-5 py-5">
+              <Reveal key={fact} delay={index * 120}>
+                <Panel className="group h-full px-5 py-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md">
                   <div className="text-sm leading-7 text-slate-700">
-                    <div className="float-left mb-1 mr-4 rounded-2xl bg-emerald-600/10 p-3 text-emerald-700">
+                    <div className="float-left mb-1 mr-4 rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
                       <Icon className="size-5" strokeWidth={1.8} />
                     </div>
                     {fact}
@@ -284,14 +285,19 @@ export default function Home() {
 
           <div className="lg:col-span-7 grid gap-4">
             {extendReasons.map((reason, index) => (
-              <Reveal key={reason.title} delay={index * 80}>
-                <Panel className="p-7">
-                  <h3 className="font-heading text-2xl leading-none tracking-[-0.04em] text-slate-950">
-                    {reason.title}
-                  </h3>
-                  <p className="mt-3 text-base leading-8 text-slate-600">
-                    {reason.description}
-                  </p>
+              <Reveal key={reason.title} delay={index * 150}>
+                <Panel className="group relative overflow-hidden p-7 transition-all hover:border-emerald-500/20 hover:shadow-md">
+                  <div className="pointer-events-none absolute -right-2 -top-4 select-none text-[8rem] font-bold leading-none text-slate-900/[0.03] transition-transform duration-500 group-hover:-translate-x-2 group-hover:translate-y-2">
+                    0{index + 1}
+                  </div>
+                  <div className="relative">
+                    <h3 className="font-heading text-2xl leading-none tracking-[-0.04em] text-slate-950">
+                      {reason.title}
+                    </h3>
+                    <p className="mt-3 text-base leading-8 text-slate-600">
+                      {reason.description}
+                    </p>
+                  </div>
                 </Panel>
               </Reveal>
             ))}
@@ -354,9 +360,10 @@ export default function Home() {
                       {room.bullets.map((bullet) => (
                         <li
                           key={bullet}
-                          className="rounded-2xl bg-slate-50 px-4 py-3 text-sm leading-7 text-slate-700"
+                          className="flex items-start gap-3 rounded-2xl border border-slate-100 bg-white px-4 py-3 text-sm leading-7 text-slate-700 shadow-[0_2px_10px_-4px_rgba(15,23,42,0.05)] transition-colors hover:border-emerald-100 hover:bg-emerald-50/40"
                         >
-                          {bullet}
+                          <Check className="mt-1 size-4 shrink-0 text-emerald-600" />
+                          <span>{bullet}</span>
                         </li>
                       ))}
                     </ul>
@@ -548,9 +555,11 @@ export default function Home() {
               description="Breakfast, luggage storage, WiFi, and a genuinely usable rooftop make the stay feel generous instead of stripped down."
             />
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="glass-panel rounded-[28px] p-5">
-                <ShieldCheck className="size-5 text-emerald-700" strokeWidth={1.8} />
-                <p className="mt-4 font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+              <div className="group glass-panel rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
+                <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                  <ShieldCheck className="size-5" strokeWidth={1.8} />
+                </div>
+                <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
                   Safe, welcoming atmosphere
                 </p>
                 <p className="mt-3 text-sm leading-7 text-slate-600">
@@ -558,9 +567,11 @@ export default function Home() {
                   comfortable for solo travelers.
                 </p>
               </div>
-              <div className="glass-panel rounded-[28px] p-5">
-                <Wifi className="size-5 text-emerald-700" strokeWidth={1.8} />
-                <p className="mt-4 font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+              <div className="group glass-panel rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
+                <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                  <Wifi className="size-5" strokeWidth={1.8} />
+                </div>
+                <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
                   Good day-to-day comfort
                 </p>
                 <p className="mt-3 text-sm leading-7 text-slate-600">
@@ -568,9 +579,11 @@ export default function Home() {
                   standard rather than upsells.
                 </p>
               </div>
-              <div className="glass-panel rounded-[28px] p-5">
-                <MapPinned className="size-5 text-emerald-700" strokeWidth={1.8} />
-                <p className="mt-4 font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+              <div className="group glass-panel rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
+                <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                  <MapPinned className="size-5" strokeWidth={1.8} />
+                </div>
+                <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
                   Best-positioned base
                 </p>
                 <p className="mt-3 text-sm leading-7 text-slate-600">
@@ -578,9 +591,11 @@ export default function Home() {
                   on the city promenade.
                 </p>
               </div>
-              <div className="glass-panel rounded-[28px] p-5">
-                <Mountain className="size-5 text-emerald-700" strokeWidth={1.8} />
-                <p className="mt-4 font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+              <div className="group glass-panel rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
+                <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                  <Mountain className="size-5" strokeWidth={1.8} />
+                </div>
+                <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
                   Ready for northbound plans
                 </p>
                 <p className="mt-3 text-sm leading-7 text-slate-600">

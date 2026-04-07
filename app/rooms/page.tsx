@@ -7,6 +7,12 @@ import {
   Wifi,
   ShowerHead,
   Star,
+  Check,
+  Blinds,
+  Bed,
+  Users,
+  Croissant,
+  Coffee,
 } from "lucide-react";
 
 import { CtaStrip } from "@/components/cta-strip";
@@ -58,10 +64,10 @@ export default function RoomsPage() {
         title="Sleep like you booked a thoughtful hostel, not a compromise."
         description="Scodrinon keeps the comfort side of the stay strong: privacy pods, smaller dorm options, clean shared bathrooms, breakfast, and the essentials that matter when you are traveling for real."
         highlights={[
-          "Curtained privacy pods in the mixed dorm",
-          "Four-bed dorms with male and female options",
-          "Air-con, lockers, reading lights, sockets, and WiFi",
-          "All rooms include breakfast every morning",
+          { text: "Curtained privacy pods in the mixed dorm", icon: Blinds },
+          { text: "Four-bed dorms with male and female options", icon: Bed },
+          { text: "Air-con, lockers, reading lights, sockets, and WiFi", icon: Snowflake },
+          { text: "All rooms include breakfast every morning", icon: Coffee },
         ]}
       >
         <div className="grid gap-4 md:grid-cols-2">
@@ -138,9 +144,10 @@ export default function RoomsPage() {
                       {room.bullets.map((bullet) => (
                         <li
                           key={bullet}
-                          className="rounded-2xl bg-slate-50 px-4 py-3 text-sm leading-7 text-slate-700"
+                          className="flex items-start gap-3 rounded-2xl border border-slate-100 bg-white px-4 py-3 text-sm leading-7 text-slate-700 shadow-[0_2px_10px_-4px_rgba(15,23,42,0.05)] transition-colors hover:border-emerald-100 hover:bg-emerald-50/40"
                         >
-                          {bullet}
+                          <Check className="mt-1 size-4 shrink-0 text-emerald-600" />
+                          <span>{bullet}</span>
                         </li>
                       ))}
                     </ul>
@@ -165,8 +172,10 @@ export default function RoomsPage() {
                 const Icon = roomIcons[index];
 
                 return (
-                  <Panel key={item} className="flex items-center gap-3 px-5 py-4">
-                    <Icon className="size-5 shrink-0 text-emerald-700" strokeWidth={1.8} />
+                  <Panel key={item} className="group flex items-center gap-4 px-5 py-3 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md">
+                    <div className="inline-flex rounded-xl bg-emerald-600/10 p-2.5 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                      <Icon className="size-5 shrink-0" strokeWidth={1.8} />
+                    </div>
                     <p className="text-sm font-medium leading-none text-slate-700">
                       {item}
                     </p>
@@ -215,9 +224,10 @@ export default function RoomsPage() {
                 {freeServices.map((service) => (
                   <div
                     key={service}
-                    className="rounded-2xl bg-slate-50 px-4 py-3 text-sm leading-7 text-slate-700"
+                    className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-slate-50/80 px-4 py-3 text-sm leading-7 text-slate-700 transition-all duration-500 hover:bg-white hover:border-emerald-200 hover:shadow-sm"
                   >
-                    {service}
+                    <div className="absolute inset-x-0 bottom-0 h-[2px] origin-left scale-x-0 bg-emerald-500 transition-transform duration-500 group-hover:scale-x-100" />
+                    <span className="relative z-10 transition-colors duration-300 group-hover:text-emerald-950">{service}</span>
                   </div>
                 ))}
               </div>
@@ -236,9 +246,10 @@ export default function RoomsPage() {
                 {paidServices.map((service) => (
                   <div
                     key={service}
-                    className="rounded-2xl bg-amber-50 px-4 py-3 text-sm leading-7 text-slate-700"
+                    className="group relative overflow-hidden rounded-2xl border border-amber-100/30 bg-amber-50/50 px-4 py-3 text-sm leading-7 text-slate-700 transition-all duration-500 hover:bg-white hover:border-amber-200 hover:shadow-sm"
                   >
-                    {service}
+                    <div className="absolute inset-x-0 bottom-0 h-[2px] origin-left scale-x-0 bg-amber-500 transition-transform duration-500 group-hover:scale-x-100" />
+                    <span className="relative z-10 transition-colors duration-300 group-hover:text-amber-950">{service}</span>
                   </div>
                 ))}
               </div>

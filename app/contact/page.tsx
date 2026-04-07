@@ -177,9 +177,10 @@ export default function ContactPage() {
                 {freeServices.map((service) => (
                   <div
                     key={service}
-                    className="rounded-2xl bg-slate-50 px-4 py-3 text-sm leading-7 text-slate-700"
+                    className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-slate-50/80 px-4 py-3 text-sm leading-7 text-slate-700 transition-all duration-500 hover:bg-white hover:border-emerald-200 hover:shadow-sm"
                   >
-                    {service}
+                    <div className="absolute inset-x-0 bottom-0 h-[2px] origin-left scale-x-0 bg-emerald-500 transition-transform duration-500 group-hover:scale-x-100" />
+                    <span className="relative z-10 transition-colors duration-300 group-hover:text-emerald-950">{service}</span>
                   </div>
                 ))}
               </div>
@@ -197,17 +198,17 @@ export default function ContactPage() {
                 {faqItems.map((faq, i) => (
                   <details
                     key={i}
-                    className="group rounded-2xl bg-slate-50 p-5 open:bg-slate-100 transition-colors"
+                    className="group rounded-2xl border border-transparent bg-slate-50 p-5 transition-all duration-300 hover:border-emerald-200/50 hover:bg-white hover:shadow-sm open:border-emerald-200/50 open:bg-white open:shadow-sm"
                   >
-                    <summary className="font-heading text-lg font-medium text-slate-900 cursor-pointer list-none flex justify-between items-center gap-4">
-                      {faq.question}
-                      <span className="transition-transform duration-300 group-open:rotate-180 shrink-0">
-                        <ChevronDown className="size-5 text-slate-500" />
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-heading text-lg font-medium text-slate-900 outline-none transition-colors group-hover:text-emerald-900 group-open:text-emerald-950">
+                      <span className="pr-4">{faq.question}</span>
+                      <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-slate-200/50 text-slate-500 transition-all duration-300 group-hover:bg-emerald-100 group-hover:text-emerald-600 group-open:rotate-180 group-open:bg-emerald-100 group-open:text-emerald-700">
+                        <ChevronDown className="size-4" strokeWidth={2.2} />
                       </span>
                     </summary>
-                    <p className="mt-3 text-base leading-7 text-slate-600 pr-6">
+                    <div className="mt-3 pr-6 text-base leading-7 text-slate-600">
                       {faq.answer}
-                    </p>
+                    </div>
                   </details>
                 ))}
               </div>

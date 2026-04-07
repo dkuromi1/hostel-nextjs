@@ -70,7 +70,7 @@ export function SiteFooter() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-base text-slate-200 transition hover:text-white"
+                  className="inline-block text-base text-slate-200 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:text-white"
                 >
                   {item.label}
                 </Link>

@@ -1,14 +1,20 @@
-import type { ReactNode } from "react";
+import type { ReactNode, ElementType } from "react";
+import { Check } from "lucide-react";
 
 import { BookingActions } from "@/components/booking-actions";
 import { Reveal } from "@/components/reveal";
 import { Badge } from "@/components/ui/badge";
 
+type HighlightItem = {
+  text: string;
+  icon?: ElementType;
+};
+
 type PageHeroProps = {
   eyebrow: string;
   title: string;
   description: string;
-  highlights?: readonly string[];
+  highlights?: readonly (string | HighlightItem)[];
   children: ReactNode;
 };
 
@@ -36,14 +42,19 @@ export function PageHero({
           <BookingActions />
           {highlights ? (
             <ul className="grid gap-3 sm:grid-cols-2">
-              {highlights.map((item) => (
-                <li
-                  key={item}
-                  className="rounded-2xl border border-emerald-600/10 bg-white/70 px-4 py-3 text-sm text-slate-700 shadow-[0_16px_40px_-28px_rgba(11,32,29,0.45)]"
-                >
-                  {item}
-                </li>
-              ))}
+              {highlights.map((item) => {
+                const text = typeof item === "string" ? item : item.text;
+                const Icon = typeof item === "object" && item.icon ? item.icon : Check;
+                return (
+                  <li
+                    key={text}
+                    className="flex items-center gap-3 rounded-2xl border border-emerald-600/10 bg-white/70 px-4 py-3 text-sm text-slate-700 shadow-[0_16px_40px_-28px_rgba(11,32,29,0.45)] transition-colors hover:border-emerald-200 hover:bg-emerald-50/50"
+                  >
+                    <Icon className="size-4 shrink-0 text-emerald-600" />
+                    <span>{text}</span>
+                  </li>
+                );
+              })}
             </ul>
           ) : null}
         </Reveal>

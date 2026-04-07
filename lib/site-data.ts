@@ -488,9 +488,9 @@ export const galleryItems = [
 
 export const faqItems = [
   {
-    question: "How should I book direct?",
+    question: "What if I arrive early or leave late?",
     answer:
-      "Send your dates, bed preference, and approximate arrival time on WhatsApp. Direct booking is the main call to action on the site because it is the fastest way to get a clear answer from the team.",
+      "Luggage storage makes the awkward travel-day timing easier. Message on WhatsApp in advance if you are arriving after 10pm or want to coordinate around your arrival or departure.",
   },
   {
     question: "Is Scodrinon good for solo travelers?",
@@ -510,12 +510,7 @@ export const faqItems = [
   {
     question: "What is included in the stay?",
     answer:
-      "Breakfast, WiFi, luggage storage, rooftop social events, and 24h access are included. Bike rentals, tours, and laundry are available as paid extras.",
-  },
-  {
-    question: "What if I arrive early or leave late?",
-    answer:
-      "Luggage storage makes the awkward travel-day timing easier. Message on WhatsApp in advance if you are arriving after 10pm or want to coordinate around your arrival or departure.",
+      "Breakfast, WiFi, luggage storage, rooftop social events, and 24h access are included. Bike rentals, tours, and laundry and towels are available as paid extras.",
   },
 ] as const;
 
