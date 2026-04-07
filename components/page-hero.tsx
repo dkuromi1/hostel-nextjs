@@ -16,6 +16,7 @@ type PageHeroProps = {
   description: string;
   highlights?: readonly (string | HighlightItem)[];
   children: ReactNode;
+  hideActions?: boolean;
 };
 
 export function PageHero({
@@ -24,6 +25,7 @@ export function PageHero({
   description,
   highlights,
   children,
+  hideActions = false,
 }: PageHeroProps) {
   return (
     <section className="relative overflow-hidden px-4 pb-14 pt-28 sm:px-6 lg:px-8">
@@ -39,7 +41,7 @@ export function PageHero({
               {description}
             </p>
           </div>
-          <BookingActions />
+          {!hideActions && <BookingActions />}
           {highlights ? (
             <ul className="grid gap-3 sm:grid-cols-2">
               {highlights.map((item) => {

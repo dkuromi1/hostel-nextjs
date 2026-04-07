@@ -61,8 +61,7 @@ export const roomTypes = [
       "18-bed privacy pod dorm with curtained beds and personal space at Scodrinon Hostel, Shkoder",
     bullets: [
       "Curtained pod layout for real personal space",
-      "Reading light and power socket at every bed",
-      "Air-con, secure locker, and fast WiFi included",
+      "Reading light and 2 power sockets at every bed",
       "Easy to meet people without feeling exposed all night",
     ],
   },
@@ -76,7 +75,6 @@ export const roomTypes = [
     alt: "Four-bed dorm room at Scodrinon Hostel, Shkoder",
     bullets: [
       "Male and female options available",
-      "Air-con, lockers, reading lights, and sockets",
       "Good fit for early hikes and slower mornings",
       "A solid balance between privacy and price",
     ],
@@ -100,6 +98,7 @@ export const freeServices = [
   "High-speed WiFi in rooms and common areas",
   "Luggage storage before or during your stay",
   "Rooftop social events and a helpful WhatsApp group",
+  "Clean modern bathrooms and showers",
 ] as const;
 
 export const paidServices = [

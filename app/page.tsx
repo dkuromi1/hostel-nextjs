@@ -13,6 +13,10 @@ import {
   ShieldCheck,
   Star,
   Wifi,
+  Snowflake,
+  Lock,
+  LampDesk,
+  BatteryCharging,
 } from "lucide-react";
 
 import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
@@ -51,8 +55,27 @@ export const metadata = buildMetadata({
 });
 
 const factIcons = [BedDouble, Luggage, Croissant, Bike];
+const roomIcons = [Snowflake, Lock, LampDesk, BatteryCharging];
 
 export default function Home() {
+  const getRoomFeatures = (roomName: string) => {
+    if (roomName.includes("18-Bed")) {
+      return [
+        { icon: Snowflake, label: "A/C & Heat" },
+        { icon: Lock, label: "Secure Lockers" },
+        { icon: BatteryCharging, label: "2 Power Sockets" },
+        { icon: Wifi, label: "High-speed WiFi" },
+        { icon: LampDesk, label: "Reading Light" }
+      ];
+    }
+    return [
+      { icon: Snowflake, label: "A/C & Heat" },
+      { icon: Lock, label: "Secure Lockers" },
+      { icon: BatteryCharging, label: "Socket" },
+      { icon: Wifi, label: "High-speed WiFi" }
+    ];
+  };
+
   return (
     <>
       <StructuredData data={[buildHostelSchema(), buildFaqSchema()]} />
@@ -334,8 +357,8 @@ export default function Home() {
           <div className="grid gap-6 lg:grid-cols-2">
             {roomTypes.map((room, index) => (
               <Reveal key={room.name} delay={index * 100}>
-                <Panel className="overflow-hidden">
-                  <div className="relative min-h-[18rem]">
+                <Panel className="flex h-full flex-col overflow-hidden">
+                  <div className="relative min-h-[20rem]">
                     <Image
                       src={room.image}
                       alt={room.alt}
@@ -343,30 +366,60 @@ export default function Home() {
                       className="object-cover"
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 px-6 py-4">
+                      <Badge className="bg-white/20 text-white backdrop-blur-md">
+                        {room.price} per night
+                      </Badge>
+                    </div>
                   </div>
-                  <div className="space-y-5 p-6">
+
+                  <div className="space-y-6 p-6 sm:p-8">
                     <div>
                       <p className="text-xs uppercase tracking-[0.24em] text-emerald-700">
                         {room.label}
                       </p>
-                      <h3 className="mt-3 font-heading text-3xl leading-none tracking-[-0.05em] text-slate-950">
+                      <h3 className="mt-3 font-heading text-4xl leading-none tracking-[-0.05em] text-slate-950">
                         {room.name}
                       </h3>
-                      <p className="mt-3 text-base leading-8 text-slate-600">
+                      <p className="mt-4 text-base leading-8 text-slate-600">
                         {room.description}
                       </p>
                     </div>
-                    <ul className="grid gap-3">
-                      {room.bullets.map((bullet) => (
-                        <li
-                          key={bullet}
-                          className="flex items-start gap-3 rounded-2xl border border-slate-100 bg-white px-4 py-3 text-sm leading-7 text-slate-700 shadow-[0_2px_10px_-4px_rgba(15,23,42,0.05)] transition-colors hover:border-emerald-100 hover:bg-emerald-50/40"
+
+                    <div className="grid grid-cols-2 gap-2">
+                      {getRoomFeatures(room.name).map((feature, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50/50 p-2.5 text-slate-600"
                         >
-                          <Check className="mt-1 size-4 shrink-0 text-emerald-600" />
-                          <span>{bullet}</span>
-                        </li>
+                          <feature.icon className="size-4 shrink-0 text-emerald-600" />
+                          <span className="text-[11px] font-medium tracking-tight">
+                            {feature.label}
+                          </span>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
+
+                    <div className="space-y-3">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">
+                        Room Details
+                      </p>
+                      <ul className="grid gap-3">
+                        {room.bullets.map((bullet) => (
+                          <li
+                            key={bullet}
+                            className="flex items-start gap-2.5 text-sm leading-6 text-slate-700"
+                          >
+                            <Check
+                              className="mt-1 size-4 shrink-0 text-emerald-600"
+                              strokeWidth={2}
+                            />
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </Panel>
               </Reveal>

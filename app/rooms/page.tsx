@@ -20,6 +20,7 @@ import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { StructuredData } from "@/components/structured-data";
+import { Badge } from "@/components/ui/badge";
 import { Panel } from "@/components/ui/panel";
 import { TestimonialCarousel } from "@/components/testimonial-carousel";
 import {
@@ -47,6 +48,24 @@ export const metadata = buildMetadata({
 const roomIcons = [Snowflake, Lock, LampDesk, BatteryCharging, Wifi, ShowerHead];
 
 export default function RoomsPage() {
+  const getRoomFeatures = (roomName: string) => {
+    if (roomName.includes("18-Bed")) {
+      return [
+        { icon: Snowflake, label: "A/C & Heat" },
+        { icon: Lock, label: "Secure Lockers" },
+        { icon: BatteryCharging, label: "2 Power Sockets" },
+        { icon: Wifi, label: "High-speed WiFi" },
+        { icon: LampDesk, label: "Reading Light" }
+      ];
+    }
+    return [
+      { icon: Snowflake, label: "A/C & Heat" },
+      { icon: Lock, label: "Secure Lockers" },
+      { icon: BatteryCharging, label: "Socket" },
+      { icon: Wifi, label: "High-speed WiFi" }
+    ];
+  };
+
   return (
     <>
       <StructuredData
@@ -63,10 +82,11 @@ export default function RoomsPage() {
         eyebrow="Rooms"
         title="Sleep like you booked a thoughtful hostel, not a compromise."
         description="Scodrinon keeps the comfort side of the stay strong: privacy pods, smaller dorm options, clean shared bathrooms, breakfast, and the essentials that matter when you are traveling for real."
+        hideActions={true}
         highlights={[
           { text: "Curtained privacy pods in the mixed dorm", icon: Blinds },
           { text: "Four-bed dorms with male and female options", icon: Bed },
-          { text: "Air-con, lockers, reading lights, sockets, and WiFi", icon: Snowflake },
+          { text: "A/C and heat, secure lockers, power sockets, and WiFi", icon: Snowflake },
           { text: "All rooms include breakfast every morning", icon: Coffee },
         ]}
       >
@@ -108,49 +128,75 @@ export default function RoomsPage() {
             title="Two room styles, both built around a better night's sleep."
             description="You can stay social without giving up your own space. The pod dorm leans into privacy; the four-bed rooms lean into calm."
           />
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="grid gap-8 lg:grid-cols-2">
             {roomTypes.map((room, index) => (
               <Reveal key={room.name} delay={index * 100}>
-                <Panel className="overflow-hidden h-full flex flex-col">
-                  <div className="relative min-h-[19rem]">
+                <Panel className="flex h-full flex-col overflow-hidden">
+                  <div className="relative min-h-[22rem]">
                     <Image
                       src={room.image}
                       alt={room.alt}
                       fill
                       className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      sizes="(max-width: 1024px) 100vw, 45vw"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 px-6 py-4">
+                      <Badge className="bg-white/20 text-white backdrop-blur-md">
+                        {room.price} per night
+                      </Badge>
+                    </div>
                   </div>
-                  <div className="flex flex-1 flex-col space-y-5 p-6">
-                    <div>
-                      <div className="flex items-center justify-between">
+
+                  <div className="flex flex-1 flex-col justify-between p-7 lg:p-9">
+                    <div className="space-y-6">
+                      <div>
                         <p className="text-xs uppercase tracking-[0.24em] text-emerald-700">
                           {room.label}
                         </p>
-                        {"price" in room && (
-                          <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold tracking-wide text-emerald-800">
-                            {String(room.price)}
-                          </span>
-                        )}
+                        <h2 className="mt-3 font-heading text-4xl leading-none tracking-[-0.05em] text-slate-950">
+                          {room.name}
+                        </h2>
+                        <p className="mt-4 text-lg leading-8 text-slate-600">
+                          {room.description}
+                        </p>
                       </div>
-                      <h2 className="mt-3 font-heading text-3xl leading-none tracking-[-0.05em] text-slate-950">
-                        {room.name}
-                      </h2>
-                      <p className="mt-3 text-base leading-8 text-slate-600">
-                        {room.description}
-                      </p>
+
+
+                      <div className="grid grid-cols-2 gap-2">
+                        {getRoomFeatures(room.name).map((feature, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50/50 p-2.5 text-slate-600 transition-colors hover:bg-white"
+                          >
+                            <feature.icon className="size-4 shrink-0 text-emerald-600" />
+                            <span className="text-xs font-medium tracking-tight">
+                              {feature.label}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="space-y-3">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">
+                          Room Details
+                        </p>
+                        <ul className="grid gap-3 sm:grid-cols-2">
+                          {room.bullets.map((bullet) => (
+                            <li
+                              key={bullet}
+                              className="flex items-start gap-2.5 text-sm leading-6 text-slate-600"
+                            >
+                              <Check
+                                className="mt-1 size-4 shrink-0 text-emerald-600"
+                                strokeWidth={2}
+                              />
+                              <span>{bullet}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                    <ul className="grid gap-3 mt-auto">
-                      {room.bullets.map((bullet) => (
-                        <li
-                          key={bullet}
-                          className="flex items-start gap-3 rounded-2xl border border-slate-100 bg-white px-4 py-3 text-sm leading-7 text-slate-700 shadow-[0_2px_10px_-4px_rgba(15,23,42,0.05)] transition-colors hover:border-emerald-100 hover:bg-emerald-50/40"
-                        >
-                          <Check className="mt-1 size-4 shrink-0 text-emerald-600" />
-                          <span>{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
                 </Panel>
               </Reveal>
@@ -159,57 +205,8 @@ export default function RoomsPage() {
         </div>
       </section>
 
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="shell-container grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-          <Reveal className="space-y-8">
-            <SectionHeading
-              eyebrow="Privacy Pod Details"
-              title="The pod dorm works because it feels more personal than a standard shared room."
-              description="Curtains cut down the visual noise. Reading lights let you stay on your own rhythm. Power sockets and lockers stay within reach. The result is more rest and less compromise."
-            />
-            <div className="grid gap-4 sm:grid-cols-2">
-              {sharedAmenities.slice(0, 6).map((item, index) => {
-                const Icon = roomIcons[index];
 
-                return (
-                  <Panel key={item} className="group flex items-center gap-4 px-5 py-3 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md">
-                    <div className="inline-flex rounded-xl bg-emerald-600/10 p-2.5 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
-                      <Icon className="size-5 shrink-0" strokeWidth={1.8} />
-                    </div>
-                    <p className="text-sm font-medium leading-none text-slate-700">
-                      {item}
-                    </p>
-                  </Panel>
-                );
-              })}
-            </div>
-          </Reveal>
 
-          <Reveal delay={120}>
-            <div className="grid gap-4 h-full">
-              <div className="media-frame relative min-h-[20rem]">
-                <Image
-                  src="/images/indoor_common_1.jpg"
-                  alt="Indoor common area and lounge at Scodrinon Hostel"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 38vw"
-                />
-              </div>
-              <div className="media-frame relative min-h-[18rem]">
-                <Image
-                  src="/images/indoor_common_2.jpg"
-                  alt="Hostel interior seating and common space at Scodrinon"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 38vw"
-                />
-              </div>
-              <TestimonialCarousel testimonials={testimonials} className="h-full" />
-            </div>
-          </Reveal>
-        </div>
-      </section>
 
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="shell-container grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
@@ -263,6 +260,38 @@ export default function RoomsPage() {
                 />
               </div>
             </Panel>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="px-4 py-16 sm:px-6 lg:px-8">
+        <div className="shell-container">
+          <Reveal>
+            <div className="grid gap-6 lg:grid-cols-2">
+              <div className="grid grid-cols-2 gap-4 lg:grid-cols-1">
+                <div className="media-frame relative min-h-[12rem] lg:min-h-[15rem]">
+                  <Image
+                    src="/images/indoor_common_1.jpg"
+                    alt="Social common area at Scodrinon Hostel"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 50vw, 45vw"
+                  />
+                </div>
+                <div className="media-frame relative min-h-[12rem] lg:min-h-[15rem]">
+                  <Image
+                    src="/images/ambiance_3.jpg"
+                    alt="Fresh breakfast served at Scodrinon Hostel"
+                    fill
+                    className="object-cover object-[50%_40%]"
+                    sizes="(max-width: 1024px) 50vw, 45vw"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <TestimonialCarousel testimonials={testimonials} className="h-full" />
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>
