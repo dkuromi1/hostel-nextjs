@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { StickyBookingBar } from "@/components/sticky-booking-bar";
+import { TitoTheCat } from "@/components/tito-the-cat";
 import { getSiteUrl } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site-data";
 import "./globals.css";
@@ -62,6 +63,7 @@ export default function RootLayout({
           <main className="flex-1 pb-24 lg:pb-0">{children}</main>
           <SiteFooter />
           <StickyBookingBar />
+          <TitoTheCat />
         </div>
       </body>
     </html>
