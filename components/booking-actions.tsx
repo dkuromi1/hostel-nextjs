@@ -29,7 +29,7 @@ export function BookingActions({
         rel="noreferrer"
         className={cn(
           buttonVariants({ size: compact ? "sm" : "lg" }),
-          "h-auto min-h-12 rounded-full bg-emerald-600 px-5 py-3 text-sm text-white shadow-[0_18px_40px_-24px_rgba(5,150,105,0.8)] hover:bg-emerald-700"
+          "h-auto min-h-12 rounded-full bg-emerald-600 px-5 py-3 text-sm text-white shadow-[0_18px_40px_-24px_rgba(5,150,105,0.8)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-emerald-700"
         )}
       >
         <MessageCircleMore className="size-4" strokeWidth={1.8} />
@@ -43,7 +43,7 @@ export function BookingActions({
             rel="noreferrer"
             className={cn(
               buttonVariants({ variant: "outline", size: compact ? "sm" : "lg" }),
-              "h-auto min-h-12 rounded-full border-white/70 bg-white/80 px-5 py-3 text-sm text-slate-900 hover:bg-white"
+              "h-auto min-h-12 rounded-full border-white/70 bg-white/80 px-5 py-3 text-sm text-slate-900 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-white"
             )}
           >
             <span>View On Booking.com</span>
@@ -55,7 +55,7 @@ export function BookingActions({
             rel="noreferrer"
             className={cn(
               buttonVariants({ variant: "outline", size: compact ? "sm" : "lg" }),
-              "h-auto min-h-12 rounded-full border-white/70 bg-white/80 px-5 py-3 text-sm text-slate-900 hover:bg-white"
+              "h-auto min-h-12 rounded-full border-white/70 bg-white/80 px-5 py-3 text-sm text-slate-900 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-white"
             )}
           >
             <span>View On Hostelworld</span>

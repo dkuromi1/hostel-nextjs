@@ -51,7 +51,7 @@ export function SiteHeader() {
             rel="noreferrer"
             className={cn(
               buttonVariants({ size: "sm" }),
-              "h-9 rounded-full bg-emerald-600 px-4 text-white hover:bg-emerald-700"
+              "h-9 rounded-full bg-emerald-600 px-4 text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-emerald-700"
             )}
           >
             WhatsApp Booking
@@ -64,7 +64,7 @@ export function SiteHeader() {
               aria-label="Book on Booking.com"
               className={cn(
                 buttonVariants({ variant: "outline", size: "icon" }),
-                "size-9 rounded-full border-blue-200/80 bg-blue-50/95 text-blue-950 hover:bg-blue-100/95"
+                "size-9 rounded-full border-blue-200/80 bg-blue-50/95 text-blue-950 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-blue-100/95"
               )}
             >
               <BookingComLogo iconOnly />
@@ -76,7 +76,7 @@ export function SiteHeader() {
               aria-label="Book on Hostelworld"
               className={cn(
                 buttonVariants({ variant: "outline", size: "icon" }),
-                "size-9 rounded-full border-orange-200/80 bg-orange-50/90 text-orange-900 hover:bg-orange-100/90"
+                "size-9 rounded-full border-orange-200/80 bg-orange-50/90 text-orange-900 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-orange-100/90"
               )}
             >
               <HostelworldLogo iconOnly />

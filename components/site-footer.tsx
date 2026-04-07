@@ -25,7 +25,7 @@ export function SiteFooter() {
               href={siteConfig.whatsappUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-3 font-semibold text-white transition hover:bg-emerald-700"
+              className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-3 font-semibold text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-emerald-700"
             >
               <MessageCircleMore className="size-4" strokeWidth={1.8} />
               {siteConfig.phoneDisplay}
@@ -34,7 +34,7 @@ export function SiteFooter() {
               href={siteConfig.instagramUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-3 font-semibold text-slate-100 transition hover:border-white/35"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-3 font-semibold text-slate-100 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:border-white/35"
             >
               <InstagramGlyph className="size-4" strokeWidth={1.8} />
               Instagram
@@ -43,7 +43,7 @@ export function SiteFooter() {
               href={siteConfig.bookingUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-3 font-semibold text-slate-100 transition hover:border-white/35"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-3 font-semibold text-slate-100 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:border-white/35"
             >
               Booking.com
               <ArrowUpRight className="size-4" strokeWidth={1.8} />
@@ -52,7 +52,7 @@ export function SiteFooter() {
               href={siteConfig.hostelworldUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-3 font-semibold text-slate-100 transition hover:border-white/35"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-3 font-semibold text-slate-100 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:border-white/35"
             >
               Hostelworld
               <ArrowUpRight className="size-4" strokeWidth={1.8} />
