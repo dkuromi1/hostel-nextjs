@@ -55,7 +55,7 @@ export default function Home() {
   return (
     <>
       <StructuredData data={[buildHostelSchema(), buildFaqSchema()]} />
-      <section className="relative overflow-hidden px-4 pb-12 pt-14 sm:px-6 lg:px-8 lg:pt-20">
+      <section className="relative overflow-hidden px-4 pb-12 pt-14 sm:px-6 lg:px-8">
         <div className="pointer-events-none absolute inset-0 soft-grid opacity-40" />
         <div className="shell-container relative grid gap-12 lg:grid-cols-12 lg:items-center">
           {/* Left content column */}
@@ -65,8 +65,7 @@ export default function Home() {
                 {siteConfig.tagline}
               </p>
               <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl tracking-[-0.04em] leading-[1.05] text-slate-950">
-                Rooftop sunsets, privacy pods,
-                <br className="hidden sm:block" />
+                <span className="block sm:inline">Rooftop sunsets, privacy pods,</span>
                 <span className="text-blue-600"> and the part of Shkodër you actually want to wake up in.</span>
               </h1>
               <p className="max-w-[58ch] text-lg leading-8 text-slate-600">
@@ -161,11 +160,11 @@ export default function Home() {
             return (
               <Reveal key={fact} delay={index * 60}>
                 <Panel className="h-full px-5 py-5">
-                  <div className="flex items-start gap-4">
-                    <div className="rounded-2xl bg-emerald-600/10 p-3 text-emerald-700">
+                  <div className="text-sm leading-7 text-slate-700">
+                    <div className="float-left mb-1 mr-4 rounded-2xl bg-emerald-600/10 p-3 text-emerald-700">
                       <Icon className="size-5" strokeWidth={1.8} />
                     </div>
-                    <p className="text-sm leading-7 text-slate-700">{fact}</p>
+                    {fact}
                   </div>
                 </Panel>
               </Reveal>
@@ -305,19 +304,24 @@ export default function Home() {
         <div className="shell-container space-y-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
-              eyebrow="Rooms"
+              eyebrow={`Rooms from ${roomTypes[0].price}`}
               title="Sleep properly, then head back out."
               description="Every room keeps the basics right: air-con, lockers, reading lights, sockets, and fast WiFi. The difference is how much privacy and calm you want around you."
             />
             <Link
               href="/rooms"
               className={cn(
-                buttonVariants({ variant: "outline", size: "lg" }),
-                "rounded-full bg-white/80"
+                "group inline-flex items-center justify-center gap-3 rounded-full px-6 py-3",
+                "border border-slate-200 bg-white/80 text-slate-900 backdrop-blur-md",
+                "text-sm font-semibold tracking-tight",
+                "transition-all duration-300 hover:bg-white hover:border-slate-300 hover:shadow-xl hover:shadow-slate-200/50",
+                "active:scale-95"
               )}
             >
               Explore Rooms
-              <ArrowRight className="size-4" strokeWidth={1.8} />
+              <div className="flex size-5 items-center justify-center rounded-full bg-slate-900 text-white transition-transform duration-300 group-hover:translate-x-1">
+                <ArrowRight className="size-3" strokeWidth={3} />
+              </div>
             </Link>
           </div>
 
@@ -364,6 +368,67 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Gallery */}
+      <section className="px-4 py-16 sm:px-6 lg:px-8">
+        <div className="shell-container space-y-10">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <SectionHeading
+              eyebrow="Gallery"
+              title="A better feel for the place than a stock-photo promise."
+              description="Every photo and video on the site comes from the real hostel. The look stays bright, relaxed, and honest because that is what guests actually walk into."
+            />
+            <Link
+              href="/gallery"
+              className={cn(
+                "group inline-flex items-center justify-center gap-3 rounded-full px-6 py-3",
+                "border border-slate-200 bg-white/80 text-slate-900 backdrop-blur-md",
+                "text-sm font-semibold tracking-tight",
+                "transition-all duration-300 hover:bg-white hover:border-slate-300 hover:shadow-xl hover:shadow-slate-200/50",
+                "active:scale-95"
+              )}
+            >
+              Open Gallery
+              <div className="flex size-5 items-center justify-center rounded-full bg-slate-900 text-white transition-transform duration-300 group-hover:translate-x-1">
+                <ArrowRight className="size-3" strokeWidth={3} />
+              </div>
+            </Link>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-12">
+            {galleryItems.slice(0, 12).map((item, index) => (
+              <Reveal
+                key={`${item.src}-${index}`}
+                delay={index * 70}
+                className={item.className}
+              >
+                <div className={cn("media-frame relative", item.aspect)}>
+                  {item.type === "image" ? (
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  ) : (
+                    <video
+                      className="h-full w-full object-cover"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      aria-label={item.alt}
+                    >
+                      <source src={item.src} type="video/mp4" />
+                    </video>
+                  )}
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Experiences */}
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="shell-container space-y-10">
@@ -376,17 +441,22 @@ export default function Home() {
             <Link
               href="/experiences"
               className={cn(
-                buttonVariants({ variant: "outline", size: "lg" }),
-                "rounded-full bg-white/80"
+                "group inline-flex items-center justify-center gap-3 rounded-full px-6 py-3",
+                "border border-slate-200 bg-white/80 text-slate-900 backdrop-blur-md",
+                "text-sm font-semibold tracking-tight",
+                "transition-all duration-300 hover:bg-white hover:border-slate-300 hover:shadow-xl hover:shadow-slate-200/50",
+                "active:scale-95"
               )}
             >
               See Experiences
-              <ArrowRight className="size-4" strokeWidth={1.8} />
+              <div className="flex size-5 items-center justify-center rounded-full bg-slate-900 text-white transition-transform duration-300 group-hover:translate-x-1">
+                <ArrowRight className="size-3" strokeWidth={3} />
+              </div>
             </Link>
           </div>
 
           <div className="grid gap-6 lg:grid-cols-12">
-            <Reveal className="lg:col-span-6 h-full">
+            <Reveal className="lg:col-span-5 h-full">
               <Panel className="overflow-hidden h-full">
                 <div className="relative h-full min-h-[30rem]">
                   <Image
@@ -409,7 +479,7 @@ export default function Home() {
               </Panel>
             </Reveal>
 
-            <div className="lg:col-span-6 grid gap-6">
+            <div className="lg:col-span-7 grid gap-6">
               {experiencePillars.slice(1).map((pillar, index) => (
                 <Reveal key={pillar.title} delay={index * 100}>
                   <Panel className="overflow-hidden">
@@ -462,62 +532,6 @@ export default function Home() {
                     </div>
                   </div>
                 </Panel>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Gallery */}
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="shell-container space-y-10">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <SectionHeading
-              eyebrow="Gallery"
-              title="A better feel for the place than a stock-photo promise."
-              description="Every photo and video on the site comes from the real hostel. The look stays bright, relaxed, and honest because that is what guests actually walk into."
-            />
-            <Link
-              href="/gallery"
-              className={cn(
-                buttonVariants({ variant: "outline", size: "lg" }),
-                "rounded-full bg-white/80"
-              )}
-            >
-              Open Gallery
-              <ArrowRight className="size-4" strokeWidth={1.8} />
-            </Link>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-12">
-            {galleryItems.slice(0, 12).map((item, index) => (
-              <Reveal
-                key={`${item.src}-${index}`}
-                delay={index * 70}
-                className={item.className}
-              >
-                <div className={cn("media-frame relative", item.aspect)}>
-                  {item.type === "image" ? (
-                    <Image
-                      src={item.src}
-                      alt={item.alt}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  ) : (
-                    <video
-                      className="h-full w-full object-cover"
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      aria-label={item.alt}
-                    >
-                      <source src={item.src} type="video/mp4" />
-                    </video>
-                  )}
-                </div>
               </Reveal>
             ))}
           </div>

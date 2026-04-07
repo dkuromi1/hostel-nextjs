@@ -3,6 +3,7 @@ import Image from "next/image";
 import { BookingActions } from "@/components/booking-actions";
 import { Badge } from "@/components/ui/badge";
 import { Panel } from "@/components/ui/panel";
+import { cn } from "@/lib/utils";
 
 type CtaStripProps = {
   eyebrow: string;
@@ -10,6 +11,7 @@ type CtaStripProps = {
   description: string;
   image: string;
   alt: string;
+  imageClassName?: string;
 };
 
 export function CtaStrip({
@@ -18,6 +20,7 @@ export function CtaStrip({
   description,
   image,
   alt,
+  imageClassName,
 }: CtaStripProps) {
   return (
     <Panel className="overflow-hidden bg-slate-950 text-white">
@@ -39,7 +42,7 @@ export function CtaStrip({
             src={image}
             alt={alt}
             fill
-            className="object-cover"
+            className={cn("object-cover", imageClassName)}
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.1),rgba(2,6,23,0.45))]" />

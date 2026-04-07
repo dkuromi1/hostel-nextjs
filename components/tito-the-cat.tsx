@@ -17,7 +17,7 @@ export function TitoTheCat() {
   const titoRef = useRef<HTMLDivElement>(null);
   const [state, setState] = useState<AnimationState>("hidden");
   const [jumpY, setJumpY] = useState(0);
-  
+
   const [positionMode, setPositionMode] = useState<"fixed" | "absolute">("fixed");
   const [absoluteTop, setAbsoluteTop] = useState<number | undefined>(undefined);
   const [facingRight, setFacingRight] = useState(false);
@@ -39,8 +39,8 @@ export function TitoTheCat() {
       const elements = document.querySelectorAll(
         '.shell-container > div, .media-frame, .glass-panel, [class*="bg-slate-950"], details'
       );
-      
-      const feetY = titoRect.bottom; 
+
+      const feetY = titoRect.bottom;
       let bestTopEdge = 0;
 
       elements.forEach((el) => {
@@ -58,15 +58,15 @@ export function TitoTheCat() {
       }
 
       setState("jumping");
-    }, 13500); 
+    }, 13500);
 
     const tFurther = setTimeout(() => setState("walking-further"), 14100);
-    
+
     const tTurn = setTimeout(() => {
-      setFacingRight(true); 
+      setFacingRight(true);
       setState("turned-back");
-    }, 16500); 
-    
+    }, 16500);
+
     const tDone = setTimeout(() => setState("done"), 22000);
 
     return () => {
@@ -86,9 +86,9 @@ export function TitoTheCat() {
     if (state === "idle") return "translateX(150px)";
     if (state === "walking-in") return "translateX(-60px)";
     if (state === "paused") return "translateX(-60px)";
-    if (state === "jumping") return "translateX(-110px)"; 
+    if (state === "jumping") return "translateX(-110px)";
     if (state === "walking-further") return "translateX(-250px)";
-    if (state === "turned-back") return "translateX(150px)"; 
+    if (state === "turned-back") return "translateX(150px)";
     return "translateX(150px)";
   };
 
@@ -100,9 +100,9 @@ export function TitoTheCat() {
     return "0s";
   };
 
-  const isWalking = 
-    state === "walking-in" || 
-    state === "walking-further" || 
+  const isWalking =
+    state === "walking-in" ||
+    state === "walking-further" ||
     state === "turned-back";
 
   return (
@@ -138,7 +138,7 @@ export function TitoTheCat() {
           className="flex flex-col items-center"
           style={{
             transform: `translateY(${jumpY}px)`,
-            transition: "transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)", 
+            transition: "transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)",
           }}
         >
           <div
@@ -149,7 +149,12 @@ export function TitoTheCat() {
                 : "translate-y-2 opacity-0"
             )}
           >
-            Hi, I'm Tito! 🐾
+            Hi, I'm Tito! <span style={{
+              color: 'transparent',
+              textShadow: '0 0 0 yellow'
+            }}>
+              🐾
+            </span>
             <div className="absolute -bottom-1.5 right-4 size-3 rotate-45 bg-slate-900" />
           </div>
 

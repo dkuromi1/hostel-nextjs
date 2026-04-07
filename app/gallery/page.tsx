@@ -134,6 +134,7 @@ export default function GalleryPage() {
             description="The fastest move is still the direct one: WhatsApp first, then Booking.com and Hostelworld right behind it."
             image="/images/rooftop_view.jpg"
             alt="Rooftop view from Scodrinon Hostel at sunset"
+            imageClassName="object-[50%_50%]"
           />
         </div>
       </section>

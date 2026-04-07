@@ -4,7 +4,7 @@ import {
   ShieldCheck,
   Sunset,
   UtensilsCrossed,
-  Bike 
+  Bike
 } from "lucide-react";
 
 import { CtaStrip } from "@/components/cta-strip";
@@ -57,25 +57,22 @@ export default function ExperiencesPage() {
         <div className="grid gap-4 md:grid-cols-2">
           <div className="media-frame relative min-h-[24rem] md:row-span-2">
             <Image
-              src="/images/rooftop_social2.png"
-              alt="Guests socializing on the Scodrinon Hostel rooftop"
+              src="/images/hiking_3.jpg"
+              alt="Adventure Basecamp Shkoder, Scodrinon Hostel"
               fill
               priority
-              className="object-cover"
+              className="object-cover object-[30%_center]"
               sizes="(max-width: 768px) 100vw, 40vw"
             />
           </div>
           <div className="media-frame relative min-h-[15rem]">
-            <video
-              className="h-full w-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              aria-label="Short video of the hostel atmosphere"
-            >
-              <source src="/videos/videoplayback2.mp4" type="video/mp4" />
-            </video>
+            <Image
+              src="/images/hiking_4.webp"
+              alt="Hiking and Albanian Alps trips from Shkoder, Scodrinon Hostel base"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 25vw"
+            />
           </div>
           <div className="media-frame relative min-h-[15rem]">
             <Image
@@ -240,6 +237,7 @@ export default function ExperiencesPage() {
             description="You can book the bed and ask about hikes, bike rides, river excursions, or the easiest onward route in the same WhatsApp conversation."
             image="/images/rooftop_social_3.webp"
             alt="Guests on the Scodrinon Hostel rooftop"
+            imageClassName="object-[60%_100%]"
           />
         </div>
       </section>

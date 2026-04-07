@@ -82,7 +82,7 @@ export function SiteFooter() {
               Details
             </p>
             <div className="mt-4 space-y-3 text-base text-slate-300">
-            <p>
+              <p>
                 {/* STEP 2: Make the address a clickable Google Maps link */}
                 <a
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.name + " " + siteConfig.location)}`}
@@ -97,7 +97,7 @@ export function SiteFooter() {
                 </a>
               </p>
               <p>Free breakfast: {siteConfig.breakfastHours}</p>
-              <p>24h access, luggage storage, rooftop social nights</p>
+              <p>Check-in: {siteConfig.checkInHours}, 24h access (message ahead if arriving after 10pm), luggage storage, rooftop social nights</p>
             </div>
           </div>
         </div>

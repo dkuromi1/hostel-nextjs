@@ -23,14 +23,15 @@ export const siteConfig = {
     "Shkoder backpacker hostel",
     "Theth Valbona hostel base",
   ],
-  basePrice: "€8",
+  checkInHours: "2pm - 10pm",
+  // NOTE: to change the base price, edit the room price of the 18 bed under `roomTypes` below
 } as const;
 
 export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/rooms", label: "Rooms" },
-  { href: "/experiences", label: "Experiences" },
   { href: "/gallery", label: "Gallery" },
+  { href: "/experiences", label: "Experiences" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
@@ -42,15 +43,16 @@ export const heroHighlights = [
 ] as const;
 
 export const quickFacts = [
-  "18-bed mixed dorm with spacious privacy pods",
-  "4-bed dorms with male and female options",
-  "Free: breakfast (excl. off season), WiFi, luggage storage, rooftop social events, and 24h access",
-  "Bike rentals, transportation and tours, laundry services available",
+  "Spacious privacy pods in our mixed dorm create a personal bedroom feel within a social space",
+  "Boutique 4-bed male or female dorms, offering a bright, high-end sanctuary for peaceful stays",
+  "Free: breakfast (excl. off season), WiFi, luggage storage, 24h access, and rooftop social events",
+  "Adventure-ready services including laundry, bike rentals, and transportation or tours arrangements",
 ] as const;
 
 export const roomTypes = [
   {
     name: "18-Bed Pod Dorm",
+    price: "€8",
     label: "Best for solo travelers who want privacy without losing the hostel vibe",
     description:
       "The signature room at Scodrinon pairs the energy of a social hostel with the comfort of a private sleep setup.",
@@ -66,6 +68,7 @@ export const roomTypes = [
   },
   {
     name: "4-Bed Dorms",
+    price: "€10",
     label: "Best for lighter sleepers, small groups, and guests wanting a calmer setup",
     description:
       "The four-bed rooms keep the same clean, modern essentials while giving you a quieter rhythm after a long day out in Shkoder or the Alps.",
@@ -154,7 +157,7 @@ export const experiencePillars = [
     title: "Rooftop Magic",
     description:
       "The rooftop is the social heart of the hostel: mountain light at sunset, city views after dark, and a pace that feels relaxed from the first drink to the last chat.",
-    image: "/images/event_happy_hour.jpg",
+    image: "/images/rooftop_social_4_flare.jpg",
     alt: "Guests relaxing on the Scodrinon Hostel rooftop at sunset",
   },
 ] as const;
@@ -198,7 +201,7 @@ export const galleryItems = [
     type: "image",
     src: "/images/ambiance_1.jpg",
     alt: "Common area ambiance at Scodrinon Hostel",
-    className: "md:col-span-3",
+    className: "md:col-span-4",
     aspect: "aspect-[4/5]",
   },
   {
@@ -238,7 +241,7 @@ export const galleryItems = [
     type: "image",
     src: "/images/indoor_common_2.jpg",
     alt: "Hostel lounge and seating at Scodrinon in Shkoder",
-    className: "md:col-span-3",
+    className: "md:col-span-4",
     aspect: "aspect-[4/5]",
   },
   {
@@ -262,7 +265,7 @@ export const galleryItems = [
     type: "image",
     src: "/images/rooftop_social_5.jpg",
     alt: "Chill afternoons on the covered patio at Scodrinon Hostel",
-    className: "md:col-span-4",
+    className: "md:col-span-5",
     aspect: "aspect-[5/4]",
   },
   {
@@ -512,7 +515,7 @@ export const faqItems = [
   {
     question: "What if I arrive early or leave late?",
     answer:
-      "Luggage storage makes the awkward travel-day timing easier. Message on WhatsApp in advance if you want to coordinate around your arrival or departure.",
+      "Luggage storage makes the awkward travel-day timing easier. Message on WhatsApp in advance if you are arriving after 10pm or want to coordinate around your arrival or departure.",
   },
 ] as const;
 
@@ -527,7 +530,7 @@ export const contactChecklist = [
 export const testimonials = [
   {
     quote: "loved this hostel so much!most amazing view from the terrace, breakfast was always fresh and staff were so welcoming and always wiling to help! Loved the hostel and shkoder so much that i kept extending my stay!",
-    author: "Malee, 18-24, Italy",
+    author: "Male, 18-24, Italy",
     source: "Hostelworld",
     rating: 5,
   },

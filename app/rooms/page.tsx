@@ -73,7 +73,7 @@ export default function RoomsPage() {
               className="object-cover"
               priority
               sizes="(max-width: 768px) 100vw, 40vw"
-              />
+            />
           </div>
           <div className="media-frame relative min-h-[14rem]">
             <Image
@@ -86,7 +86,7 @@ export default function RoomsPage() {
           </div>
           <div className="glass-panel rounded-[28px] p-5">
             <p className="text-xs uppercase tracking-[0.24em] text-emerald-700">
-              Beds From <strong>{siteConfig.basePrice} / Night</strong>
+              Beds From <strong>{roomTypes[0].price} / Night</strong>
             </p>
             <p className="mt-3 font-heading text-2xl leading-none tracking-[-0.04em] text-slate-950">
               Hotel privacy at a hostel price. It's why so many guests book two nights and end up extending.
@@ -118,16 +118,15 @@ export default function RoomsPage() {
                   <div className="flex flex-1 flex-col space-y-5 p-6">
                     <div>
                       <div className="flex items-center justify-between">
-                          <p className="text-xs uppercase tracking-[0.24em] text-emerald-700">
-                            {room.label}
-                          </p>
-                          {/* STEP 1B: Optional Price Badge (Requires adding price string to site-data.ts) */}
-                          {"price" in room && (
-                            <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold tracking-wide text-emerald-800">
-                              {String(room.price)}
-                            </span>
-                          )}
-                        </div>
+                        <p className="text-xs uppercase tracking-[0.24em] text-emerald-700">
+                          {room.label}
+                        </p>
+                        {"price" in room && (
+                          <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold tracking-wide text-emerald-800">
+                            {String(room.price)}
+                          </span>
+                        )}
+                      </div>
                       <h2 className="mt-3 font-heading text-3xl leading-none tracking-[-0.05em] text-slate-950">
                         {room.name}
                       </h2>
@@ -166,9 +165,11 @@ export default function RoomsPage() {
                 const Icon = roomIcons[index];
 
                 return (
-                  <Panel key={item} className="px-5 py-5">
-                    <Icon className="size-5 text-emerald-700" strokeWidth={1.8} />
-                    <p className="mt-4 text-sm leading-7 text-slate-700">{item}</p>
+                  <Panel key={item} className="flex items-center gap-3 px-5 py-4">
+                    <Icon className="size-5 shrink-0 text-emerald-700" strokeWidth={1.8} />
+                    <p className="text-sm font-medium leading-none text-slate-700">
+                      {item}
+                    </p>
                   </Panel>
                 );
               })}
@@ -263,6 +264,7 @@ export default function RoomsPage() {
             description="If you already know your dates, message on WhatsApp and ask for the pod dorm or a four-bed option. Booking.com and Hostelworld stay there if you prefer those platforms."
             image="/images/ambiance2.jpg"
             alt="evening ambiance at Scodrinon Hostel, Shkoder"
+            imageClassName="object-[50%_80%]"
           />
         </div>
       </section>

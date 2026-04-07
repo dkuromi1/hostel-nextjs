@@ -64,7 +64,7 @@ export default function ContactPage() {
               from Shkoder after your stay.
             </p>
             <div className="mt-6">
-              <BookingActions className="max-w-4xl" whatsappOnly={true}/>
+              <BookingActions className="max-w-4xl" whatsappOnly={true} />
             </div>
           </Panel>
           <div className="grid gap-4 md:grid-cols-2">
@@ -147,7 +147,7 @@ export default function ContactPage() {
                     className="mt-1 size-5 shrink-0 text-emerald-700"
                     strokeWidth={1.8}
                   />
-                  <span>Reception: 24 hour access | Check-in: 2pm</span>
+                  <span>Reception: 24 hour access | Check-in: {siteConfig.checkInHours}</span>
                 </p>
               </div>
               <div className="mt-8 media-frame relative min-h-[18rem]">
@@ -224,6 +224,7 @@ export default function ContactPage() {
             description="Drop us a message on WhatsApp and we'll confirm your bed right away. We can't wait to welcome you to Shkoder."
             image="/images/promo_2.png"
             alt="Promotional image for Scodrinon Hostel"
+            imageClassName="object-[50%_20%]"
           />
         </div>
       </section>
