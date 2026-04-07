@@ -146,7 +146,7 @@ export const experiencePillars = [
   {
     title: "Right in the Center",
     description:
-    "Step out our front door directly onto Kole Idromeno, Shkodër’s main pedestrian street. From your first morning espresso to late-night drinks, the city's best food, culture, and rhythm are literally at your doorstep.",
+      "Step out our front door directly onto Kole Idromeno, Shkodër’s main pedestrian street. From your first morning espresso to late-night drinks, the city's best food, culture, and rhythm are literally at your doorstep.",
     image: "/images/shkoder_pedestrian_street.jpg",
     alt: "Pedestrian street scene near Scodrinon Hostel on Kole Idromeno, Shkoder",
   },
@@ -186,6 +186,7 @@ export const eventCards = [
 
 export const galleryItems = [
   {
+    id: "breakfast-served",
     type: "image",
     src: "/images/breakfast.jpg",
     alt: "Breakfast served at Scodrinon Hostel",
@@ -193,6 +194,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "common-area",
     type: "image",
     src: "/images/ambiance_1.jpg",
     alt: "Common area ambiance at Scodrinon Hostel",
@@ -200,6 +202,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "patio-seating",
     type: "image",
     src: "/images/patio.jpg",
     alt: "Patio seating at Scodrinon Hostel",
@@ -207,6 +210,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "four-bed-room",
     type: "image",
     src: "/images/rooms_2.jpg",
     alt: "4 Bed Room at Scodrinon Hostel",
@@ -214,6 +218,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "pods-layout",
     type: "image",
     src: "/images/room_18bed3.jpg",
     alt: "Privacy pods and dorm layout at Scodrinon Hostel 18-bed room",
@@ -221,6 +226,7 @@ export const galleryItems = [
     aspect: "aspect-[4/6]",
   },
   {
+    id: "outdoor-games",
     type: "image",
     src: "/images/rooftop_social_3.webp",
     alt: "Guests enjoying games on the outdoor patio at Scodrinon Hostel",
@@ -228,6 +234,7 @@ export const galleryItems = [
     aspect: "aspect-[5/4]",
   },
   {
+    id: "lounge-seating",
     type: "image",
     src: "/images/indoor_common_2.jpg",
     alt: "Hostel lounge and seating at Scodrinon in Shkoder",
@@ -235,6 +242,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "rooftop-terrace-relax",
     type: "image",
     src: "/images/rooftop_social_4.jpg",
     alt: "Relaxing on the rooftop terrace at Scodrinon Hostel",
@@ -242,6 +250,7 @@ export const galleryItems = [
     aspect: "aspect-[5/4]",
   },
   {
+    id: "hiking-alps",
     type: "image",
     src: "/images/promo_3.jpg",
     alt: "Spectaular views while hiking in the Albainain Alps",
@@ -249,6 +258,7 @@ export const galleryItems = [
     aspect: "aspect-[3/5]",
   },
   {
+    id: "covered-patio",
     type: "image",
     src: "/images/rooftop_social_5.jpg",
     alt: "Chill afternoons on the covered patio at Scodrinon Hostel",
@@ -256,6 +266,7 @@ export const galleryItems = [
     aspect: "aspect-[5/4]",
   },
   {
+    id: "food-outing",
     type: "image",
     src: "/images/rooftop_social_6.jpg",
     alt: "Local food outing from Scodrinon Hostel",
@@ -263,6 +274,7 @@ export const galleryItems = [
     aspect: "aspect-[5/6]",
   },
   {
+    id: "hiking-basecamp",
     type: "image",
     src: "/images/hiking_3.jpg",
     alt: "Hikers using Scodrinon Hostel as a basecamp",
@@ -270,6 +282,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "pod-dorm-detail",
     type: "image",
     src: "/images/room_18bed_5.jpg",
     alt: "Privacy pod dorm at Scodrinon Hostel in Shkodra",
@@ -277,6 +290,7 @@ export const galleryItems = [
     aspect: "aspect-[1/1]",
   },
   {
+    id: "river-trip-fun",
     type: "image",
     src: "/images/drin_swimming_trip3.jpg",
     alt: "Having fun on the river trip",
@@ -284,6 +298,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "mountain-trail",
     type: "image",
     src: "/images/hiking_2.jpg",
     alt: "Mountain trail and outdoor adventure near Shkoder, Albania",
@@ -291,6 +306,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "rooftop-terrace-social",
     type: "image",
     src: "/images/rooftop_relax.png",
     alt: "Guests relaxing on the rooftop terrace at Scodrinon Hostel",
@@ -298,6 +314,7 @@ export const galleryItems = [
     aspect: "aspect-[6/5]",
   },
   {
+    id: "drin-river-excursion",
     type: "image",
     src: "/images/drin_swimming_trip2.jpeg",
     alt: "Regular Drin river excursions at Scodrinon Hostel",
@@ -305,6 +322,7 @@ export const galleryItems = [
     aspect: "aspect-[5/4]",
   },
   {
+    id: "outdoor-common-space",
     type: "image",
     src: "/images/outdoor_common_1.jpg",
     alt: "Outdoor common space at Scodrinon Hostel",
@@ -312,6 +330,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "courtyard-seating",
     type: "image",
     src: "/images/outdoor_common_2.jpg",
     alt: "Courtyard and outdoor seating at Scodrinon Hostel",
@@ -319,6 +338,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "breakfast-spread-shkoder",
     type: "image",
     src: "/images/breakfast_1.jpg",
     alt: "Breakfast spread at Scodrinon Hostel, Shkoder",
@@ -326,6 +346,7 @@ export const galleryItems = [
     aspect: "aspect-[7/4]",
   },
   {
+    id: "socializing-rooftop",
     type: "image",
     src: "/images/rooftop_social_group.jpeg",
     alt: "Guests socializing on the rooftop terrace at Scodrinon Hostel",
@@ -333,6 +354,7 @@ export const galleryItems = [
     aspect: "aspect-[6/5]",
   },
   {
+    id: "hiking-shkoder-base",
     type: "image",
     src: "/images/hiking_1.jpg",
     alt: "Albanian Alps hiking from Shkoder base stay at Scodrinon Hostel",
@@ -340,6 +362,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "coworking-internet",
     type: "image",
     src: "/images/coworking.jpg",
     alt: "Coworking and workations using the high-speed internet at Scodrinon Hostel",
@@ -347,6 +370,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "secure-lockers",
     type: "image",
     src: "/images/secure_dorm_lockers.webp",
     alt: "Secure lockers for dorm guests at Scodrinon Hostel",
@@ -354,6 +378,7 @@ export const galleryItems = [
     aspect: "aspect-[5/4]",
   },
   {
+    id: "indoor-common-area",
     type: "image",
     src: "/images/indoor_common_1.jpg",
     alt: "Bright indoor common area at Scodrinon Hostel",
@@ -361,6 +386,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "shower-area",
     type: "image",
     src: "/images/showers_2.jpg",
     alt: "Shower area at Scodrinon Hostel, Shkoder",
@@ -368,6 +394,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "pedestrian-street-life",
     type: "image",
     src: "/images/shkoder_pedestrian_street.jpg",
     alt: "Kole Idromeno pedestrian street life near Scodrinon Hostel",
@@ -375,6 +402,7 @@ export const galleryItems = [
     aspect: "aspect-[5/4]",
   },
   {
+    id: "panoramic-rooftop",
     type: "image",
     src: "/images/rooftop_panorama.jpg",
     alt: "Panoramic rooftop view at Scodrinon Hostel",
@@ -382,6 +410,7 @@ export const galleryItems = [
     aspect: "aspect-[16/8]",
   },
   {
+    id: "evening-events",
     type: "image",
     src: "/images/events_pool.jpg",
     alt: "Evening events and outings",
@@ -389,6 +418,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "travelers-socializing",
     type: "image",
     src: "/images/rooftop_social2.png",
     alt: "Travelers socializing on the hostel rooftop",
@@ -396,6 +426,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "daytime-rooftop-outlook",
     type: "image",
     src: "/images/rooftop_view_day2.jpg",
     alt: "Daytime rooftop outlook in Shkoder",
@@ -403,6 +434,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "evening-drinks",
     type: "image",
     src: "/images/bar_3.jpg",
     alt: "Evening drinks and conversation at the hostel",
@@ -410,6 +442,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "bathroom-modern",
     type: "image",
     src: "/images/bathroom_2.jpg",
     alt: "Modern bathroom facilities at Scodrinon Hostel",
@@ -417,6 +450,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "guest-showers",
     type: "image",
     src: "/images/showers_1.jpg",
     alt: "Guest showers at Scodrinon Hostel",
@@ -424,6 +458,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "shared-bathroom",
     type: "image",
     src: "/images/bathroom_1.jpg",
     alt: "Clean shared bathroom at Scodrinon Hostel",
@@ -431,6 +466,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "rooftop-video-1",
     type: "video",
     src: "/videos/videoplayback.mp4",
     alt: "Short rooftop video from Scodrinon Hostel",
@@ -438,6 +474,7 @@ export const galleryItems = [
     aspect: "aspect-[4/5]",
   },
   {
+    id: "traveler-video-2",
     type: "video",
     src: "/videos/videoplayback2.mp4",
     alt: "Traveler atmosphere video from Scodrinon Hostel",

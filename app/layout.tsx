@@ -52,8 +52,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: ReactNode;
+  modal: ReactNode;
 }>) {
   return (
     <html lang="en" className="h-full scroll-smooth">
@@ -61,6 +63,7 @@ export default function RootLayout({
         <div className="relative flex min-h-screen flex-col overflow-x-clip">
           <SiteHeader />
           <main className="flex-1 pb-24 lg:pb-0">{children}</main>
+          {modal}
           <SiteFooter />
           <StickyBookingBar />
           <TitoTheCat />
