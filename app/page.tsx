@@ -17,6 +17,7 @@ import {
   Lock,
   LampDesk,
   BatteryCharging,
+  Moon, Sparkles, MapPin, Compass,
 } from "lucide-react";
 
 import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
@@ -56,6 +57,7 @@ export const metadata = buildMetadata({
 
 const factIcons = [BedDouble, Luggage, Croissant, Bike];
 const roomIcons = [Snowflake, Lock, LampDesk, BatteryCharging];
+const reasonIcons = [Moon, Sparkles, MapPin, Compass];
 
 export default function Home() {
   const getRoomFeatures = (roomName: string) => {
@@ -163,11 +165,11 @@ export default function Home() {
                     Direct Booking
                   </p>
                   <p className="mt-3 font-heading text-2xl leading-none tracking-[-0.04em] text-slate-950">
-                    Message the hostel first and book direct.
+                    Message the hostel and book direct
                   </p>
                   <p className="mt-3 text-sm leading-7 text-slate-600">
                     WhatsApp is the most direct way to confirm dates, room type,
-                    arrival timing, and any Theth or Valbona planning.
+                    arrival time, and any trip planning.
                   </p>
                 </div>
               </div>
@@ -265,16 +267,23 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="flex flex-1 flex-col justify-center py-1">
-                  <div className="flex items-end gap-2">
-                    <div className="mb-1 rounded-full p-1 text-yellow-500">
-                      <Star className="size-5" strokeWidth={2} fill="currentColor" />
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex min-w-0 items-center gap-2">
+                      <div className="shrink-0 rounded-full bg-amber-500/12 p-1.5 text-amber-700">
+                        <Star className="size-5" strokeWidth={1.8} />
+                      </div>
+                      <p className="text-sm font-medium leading-6 text-slate-800 transition-colors group-hover:text-amber-700">
+                        'Superb' Guest Rating
+                      </p>
                     </div>
-                    <span className="font-heading text-3xl leading-none tracking-[-0.05em] text-slate-950">
-                      9.7
-                    </span>
-                    <span className="pb-1 text-sm font-medium uppercase tracking-[0.18em] text-slate-500">
-                      Guest Score
-                    </span>
+                    <div className="relative h-15 w-25 shrink-0 overflow-hidden rounded-md shadow-sm">
+                      <Image
+                        src="/images/hostelworld_reviews.png"
+                        alt="9.9 score on Hostelworld"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
                   </div>
                 </div>
                 <p className="mt-auto pt-2 text-sm leading-6 text-slate-500 transition-colors group-hover:text-amber-700">
@@ -286,47 +295,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why People Stay Longer */}
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="shell-container grid gap-10 lg:grid-cols-12">
-          <Reveal className="lg:col-span-5 space-y-8">
-            <SectionHeading
-              eyebrow="Why People Stay Longer"
-              title="The kind of hostel that makes short plans drift into a week."
-              description="The draw is not one dramatic feature. It’s the way the privacy, rooftop, location, and staff all work together so the stay feels easy from the start."
-            />
-            <div className="media-frame relative min-h-[28rem]">
-              <Image
-                src="/images/rooftop_social2.png"
-                alt="Travelers relaxing on the rooftop of Scodrinon Hostel"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 40vw"
-              />
-            </div>
-          </Reveal>
 
-          <div className="lg:col-span-7 grid gap-4">
-            {extendReasons.map((reason, index) => (
-              <Reveal key={reason.title} delay={index * 150}>
-                <Panel className="group relative overflow-hidden p-7 transition-all hover:border-emerald-500/20 hover:shadow-md">
-                  <div className="pointer-events-none absolute -right-2 -top-4 select-none text-[8rem] font-bold leading-none text-slate-900/[0.03] transition-transform duration-500 group-hover:-translate-x-2 group-hover:translate-y-2">
-                    0{index + 1}
-                  </div>
-                  <div className="relative">
-                    <h3 className="font-heading text-2xl leading-none tracking-[-0.04em] text-slate-950">
-                      {reason.title}
-                    </h3>
-                    <p className="mt-3 text-base leading-8 text-slate-600">
-                      {reason.description}
-                    </p>
-                  </div>
-                </Panel>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Rooms */}
       <section className="px-4 py-16 sm:px-6 lg:px-8">
@@ -335,7 +304,7 @@ export default function Home() {
             <SectionHeading
               eyebrow={`Rooms from ${roomTypes[0].price}`}
               title="Sleep properly, then head back out."
-              description="Every room keeps the basics right: air-con, lockers, reading lights, sockets, and fast WiFi. The difference is how much privacy and calm you want around you."
+              description="Every room keeps the basics right: heat and A/C, secure lockers, reading lights, sockets, and fast WiFi. The difference is how much privacy and calm you want around you."
             />
             <Link
               href="/rooms"
@@ -598,12 +567,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Included + FAQ */}
+      {/* Included */}
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="shell-container grid gap-10 lg:grid-cols-12">
           <Reveal className="lg:col-span-7 space-y-8">
             <SectionHeading
-              eyebrow="Included"
+              eyebrow="The Scodrinon Standard"
               title="The basics are not treated like extras."
               description="Breakfast, luggage storage, WiFi, and a genuinely usable rooftop make the stay feel generous instead of stripped down."
             />
@@ -659,6 +628,61 @@ export default function Home() {
             </div>
           </Reveal>
 
+        </div>
+      </section>
+
+      {/* Why People Stay Longer */}
+      <section className="px-4 py-20 sm:px-6 lg:px-8 bg-slate-50/50">
+        <div className="shell-container grid gap-12 lg:grid-cols-12 lg:items-center">
+          
+          <Reveal className="space-y-8 lg:col-span-5">
+            <SectionHeading
+              eyebrow="Why People Stay Longer"
+              title="The kind of hostel that makes short plans drift into a week."
+              description="The draw is not one dramatic feature. It’s the way the privacy, rooftop, location, and staff all work together so the stay feels easy from the start."
+            />
+            {/* Elevated Premium Image Styling */}
+            <div className="media-frame relative min-h-[32rem] overflow-hidden rounded-3xl shadow-2xl shadow-slate-200/50">
+              <Image
+                src="/images/rooftop_social2.png"
+                alt="Travelers relaxing on the rooftop of Scodrinon Hostel"
+                fill
+                className="object-cover transition-transform duration-1000 hover:scale-105"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+              />
+            </div>
+          </Reveal>
+
+          {/* Premium 2x2 Feature Grid */}
+          <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7">
+            {extendReasons.map((reason, index) => {
+              const Icon = reasonIcons[index] || ArrowRight; // Fallback to ArrowRight
+              return (
+                <Reveal key={reason.title} delay={index * 100}>
+                  <Panel 
+                    className="group relative flex h-full flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-500 hover:-translate-y-1 hover:border-slate-300 hover:shadow-xl hover:shadow-emerald-900/5"
+                  >
+                    {/* The Premium Hover Accent Line */}
+                    <div className="absolute left-0 top-0 h-1 w-0 bg-emerald-500 transition-all duration-500 ease-out group-hover:w-full" />
+                    
+                    <div>
+                      {/* Elegant Icon Container instead of the watermark */}
+                      <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-slate-100 text-slate-600 transition-colors duration-500 group-hover:bg-emerald-50 group-hover:text-emerald-600">
+                        <Icon className="size-5" strokeWidth={1.5} />
+                      </div>
+                      
+                      <h3 className="mb-3 font-heading text-xl leading-tight tracking-tight text-slate-900">
+                        {reason.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-slate-600">
+                        {reason.description}
+                      </p>
+                    </div>
+                  </Panel>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
       </section>
 

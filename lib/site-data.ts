@@ -93,7 +93,7 @@ export const sharedAmenities = [
 ] as const;
 
 export const freeServices = [
-  "Breakfast every morning from 9:00 to 10:30am",
+  "Breakfast every morning from 9:00 to 10:30am (excl. off season)",
   "Early take-away breakfast when you need to leave sooner",
   "High-speed WiFi in rooms and common areas",
   "Luggage storage before or during your stay",
@@ -132,6 +132,13 @@ export const extendReasons = [
 
 export const experiencePillars = [
   {
+    title: "Right in the Center",
+    description:
+      "Step out our front door directly onto Kole Idromeno, Shkodër’s main pedestrian street. From your first morning espresso to late-night drinks, the city's best food, culture, and rhythm are literally at your doorstep.",
+    image: "/images/shkoder_pedestrian_street.jpg",
+    alt: "Pedestrian street scene near Scodrinon Hostel on Kole Idromeno, Shkoder",
+  },
+  {
     title: "Your Adventure Basecamp",
     description:
       "Drop your heavy bags and get out there. We’ll help you sort the logistics for the Theth and Valbona trek, boat trips up the Shala River, and kayaking out on Lake Shkodër.",
@@ -144,13 +151,6 @@ export const experiencePillars = [
       "We head out to the river regularly for swimming and sun. These trips are a hostel favorite — a chance to see a different side of Shkoder and spend the afternoon with a great crew.",
     image: "/images/drin_swimming_trip.jpeg",
     alt: "Guests enjoying an evening event at Scodrinon Hostel",
-  },
-  {
-    title: "Right in the Center",
-    description:
-      "Step out our front door directly onto Kole Idromeno, Shkodër’s main pedestrian street. From your first morning espresso to late-night drinks, the city's best food, culture, and rhythm are literally at your doorstep.",
-    image: "/images/shkoder_pedestrian_street.jpg",
-    alt: "Pedestrian street scene near Scodrinon Hostel on Kole Idromeno, Shkoder",
   },
   {
     title: "Rooftop Magic",
