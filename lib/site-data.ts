@@ -164,9 +164,9 @@ export const experiencePillars = [
 export const eventCards = [
 
   {
-    title: "Local Food Nights",
+    title: "Spontaneous Socials",
     description:
-      "Whether it’s rooftop raki or a local food crawl, we keep things social. It’s a warm, local atmosphere that’s easy to join—especially if you arrived alone.",
+      "Whether it’s rooftop raki or a local food crawl, we prioritize warm, unscripted moments that make it easy for solo travelers to join. It’s social, but never forced.",
     image: "/images/local_food_night.jpeg",
     alt: "Traditional food event at Scodrinon Hostel",
   },
@@ -174,7 +174,7 @@ export const eventCards = [
     title: "Explore the Bicycle Capital",
     description:
       "Shkodër runs on two wheels. Grab a rental and explore the city's flat streets, lake paths, and cafes exactly how the locals do.",
-    image: "/images/biking_in _shkodra.jpeg",
+    image: "/images/biking_in_shkodra.jpeg",
     alt: "Bike tour event from Scodrinon Hostel",
   },
   // {
@@ -442,6 +442,14 @@ export const galleryItems = [
     alt: "Evening drinks and conversation at the hostel",
     className: "md:col-span-3",
     aspect: "aspect-[4/5]",
+  },
+  {
+    id: "rooftop-clouds",
+    type: "image",
+    src: "/images/rooftop_view_3.jpg",
+    alt: "daytime view fro the best hostel rooftop in Shkoder",
+    className: "md:col-span-4",
+    aspect: "aspect-[5/4]",
   },
   {
     id: "bathroom-modern",

@@ -606,7 +606,7 @@ export default function Home() {
                   <MapPinned className="size-5" strokeWidth={1.8} />
                 </div>
                 <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
-                  Best-positioned base
+                  Best-positioned city base
                 </p>
                 <p className="mt-3 text-sm leading-7 text-slate-600">
                   Cafes, restaurants, museums, and nightlife are right outside
@@ -663,7 +663,7 @@ export default function Home() {
                     className="group relative flex h-full flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-500 hover:-translate-y-1 hover:border-slate-300 hover:shadow-xl hover:shadow-emerald-900/5"
                   >
                     {/* The Premium Hover Accent Line */}
-                    <div className="absolute left-0 top-0 h-1 w-0 bg-emerald-500 transition-all duration-500 ease-out group-hover:w-full" />
+                    <div className="absolute left-0 bottom-0 h-1 w-0 bg-emerald-500 transition-all duration-500 ease-out group-hover:w-full" />
                     
                     <div>
                       {/* Elegant Icon Container instead of the watermark */}
