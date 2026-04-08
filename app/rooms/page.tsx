@@ -168,14 +168,16 @@ export default function RoomsPage() {
                           </p>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-2">
+                        <div className="flex flex-wrap gap-2">
                           {getRoomFeatures(room.name).map((feature, idx) => (
                             <div
                               key={idx}
-                              className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50/50 p-2.5 text-slate-600 transition-colors hover:bg-white"
+                              /* Added w-fit and adjusted padding/gap to make them tighter "pills" */
+                              className="flex w-fit items-center gap-2 rounded-xl border border-slate-100 bg-slate-50/50 px-3 py-2 text-slate-600"
                             >
-                              <feature.icon className="size-4 shrink-0 text-emerald-600" />
-                              <span className="text-xs font-medium tracking-tight">
+                              <feature.icon className="size-3.5 shrink-0 text-emerald-600" />
+                              {/* Added whitespace-nowrap to prevent labels like "High-speed WiFi" from breaking internally */}
+                              <span className="whitespace-nowrap text-[11px] font-medium tracking-tight">
                                 {feature.label}
                               </span>
                             </div>

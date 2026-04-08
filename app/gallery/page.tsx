@@ -36,12 +36,12 @@ export default function GalleryPage() {
             title="Scroll through the stay before you step into it."
             description="The layout stays image-led on purpose. You should be able to understand the hostel in a few swipes: the rooftop, the pods, the breakfast, and the overall pace of the place."
           />
-          <div className="grid gap-4 md:grid-cols-12">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-12">
             {galleryItems.map((item, index) => (
               <Reveal
                 key={item.id}
                 delay={index * 50}
-                className={item.className}
+                className={cn("col-span-1", item.className)}
               >
                 <Link
                   href={`/gallery/${item.id}`}
@@ -55,7 +55,7 @@ export default function GalleryPage() {
                         alt={item.alt}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, 33vw"
+                        sizes="(max-width: 768px) 50vw, 33vw"
                       />
                     ) : (
                       <div className="h-full w-full">
@@ -77,6 +77,7 @@ export default function GalleryPage() {
                         </div>
                       </div>
                     )}
+                    <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
                   </div>
                 </Link>
               </Reveal>

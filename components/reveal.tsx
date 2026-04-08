@@ -17,12 +17,17 @@ export function Reveal({
 }: RevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const node = ref.current;
+    // Disable reveal on mobile (< 640px) as requested for swipable sections
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
 
+    const node = ref.current;
     if (!node) {
-      return;
+      return () => window.removeEventListener("resize", checkMobile);
     }
 
     const observer = new IntersectionObserver(
@@ -33,23 +38,26 @@ export function Reveal({
         }
       },
       {
-        threshold: 0.2,
-        rootMargin: "50px",
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px",
       }
     );
 
     observer.observe(node);
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", checkMobile);
+    };
   }, []);
 
   return (
     <div
       ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={{ transitionDelay: isMobile ? "0ms" : `${delay}ms` }}
       className={cn(
         "transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transform-none motion-reduce:opacity-100",
-        isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0",
+        (isVisible || isMobile) ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0",
         className
       )}
       {...props}

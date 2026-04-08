@@ -36,18 +36,18 @@ export function BookingActions({
         <span>Message Us On WhatsApp</span>
       </a>
       {!whatsappOnly && (
-        <div className="flex w-full min-w-0 flex-col gap-3 sm:w-auto sm:shrink-0 sm:flex-row sm:flex-nowrap sm:gap-3">
+        <div className="flex w-full min-w-0 flex-row gap-2 sm:w-auto sm:shrink-0 sm:flex-nowrap sm:gap-3">
           <a
             href={siteConfig.bookingUrl}
             target="_blank"
             rel="noreferrer"
             className={cn(
               buttonVariants({ variant: "outline", size: compact ? "sm" : "lg" }),
-              "h-auto min-h-12 rounded-full border-white/70 bg-white/80 px-5 py-3 text-sm text-slate-900 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-white"
+              "h-auto min-h-12 flex-1 justify-center rounded-full border-white/70 bg-white/80 px-3 py-3 text-sm text-slate-900 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-white"
             )}
           >
-            <span>View On Booking.com</span>
-            <ArrowUpRight className="size-4" strokeWidth={1.8} />
+            <span className="truncate">Booking.com</span>
+            <ArrowUpRight className="size-4 shrink-0" strokeWidth={1.8} />
           </a>
           <a
             href={siteConfig.hostelworldUrl}
@@ -55,11 +55,11 @@ export function BookingActions({
             rel="noreferrer"
             className={cn(
               buttonVariants({ variant: "outline", size: compact ? "sm" : "lg" }),
-              "h-auto min-h-12 rounded-full border-white/70 bg-white/80 px-5 py-3 text-sm text-slate-900 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-white"
+              "h-auto min-h-12 flex-1 justify-center rounded-full border-white/70 bg-white/80 px-3 py-3 text-sm text-slate-900 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-white"
             )}
           >
-            <span>View On Hostelworld</span>
-            <ArrowUpRight className="size-4" strokeWidth={1.8} />
+            <span className="truncate">Hostelworld</span>
+            <ArrowUpRight className="size-4 shrink-0" strokeWidth={1.8} />
           </a>
         </div>
       )}

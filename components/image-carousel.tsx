@@ -24,6 +24,11 @@ export function ImageCarousel({
 }: ImageCarouselProps) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
+    const [touchStart, setTouchStart] = useState<number | null>(null);
+    const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+    // Minimum distance for a swipe to be registered
+    const minSwipeDistance = 50;
 
     const next = useCallback(() => {
         setCurrentIndex((current) => (current + 1) % images.length);
@@ -34,6 +39,31 @@ export function ImageCarousel({
             current === 0 ? images.length - 1 : current - 1
         );
     }, [images.length]);
+
+    const handleTouchStart = (e: React.TouchEvent) => {
+        setTouchEnd(null);
+        setTouchStart(e.targetTouches[0].clientX);
+        setIsHovered(true);
+    };
+
+    const handleTouchMove = (e: React.TouchEvent) => {
+        setTouchEnd(e.targetTouches[0].clientX);
+    };
+
+    const handleTouchEnd = () => {
+        setIsHovered(false);
+        if (!touchStart || !touchEnd) return;
+
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > minSwipeDistance;
+        const isRightSwipe = distance < -minSwipeDistance;
+
+        if (isLeftSwipe) {
+            next();
+        } else if (isRightSwipe) {
+            prev();
+        }
+    };
 
     // Auto-play interval
     useEffect(() => {
@@ -49,9 +79,9 @@ export function ImageCarousel({
             className={cn("group relative w-full overflow-hidden rounded-[24px]", className)}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            // Add touch support pauses
-            onTouchStart={() => setIsHovered(true)}
-            onTouchEnd={() => setIsHovered(false)}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
         >
             {/* Sliding Track */}
             <div
@@ -77,14 +107,14 @@ export function ImageCarousel({
                     <button
                         onClick={prev}
                         aria-label="Previous image"
-                        className="absolute left-3 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-slate-800 opacity-40 shadow-sm backdrop-blur transition-all duration-300 hover:scale-105 hover:bg-white focus:opacity-100 group-hover:opacity-100 sm:left-4"
+                        className="absolute left-3 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-slate-800 opacity-0 shadow-sm backdrop-blur transition-all duration-300 hover:scale-105 hover:bg-white focus:opacity-100 group-hover:opacity-100 sm:left-4"
                     >
                         <ChevronLeft className="size-5" />
                     </button>
                     <button
                         onClick={next}
                         aria-label="Next image"
-                        className="absolute right-3 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-slate-800 opacity-40 shadow-sm backdrop-blur transition-all duration-300 hover:scale-105 hover:bg-white focus:opacity-100 group-hover:opacity-100 sm:right-4"
+                        className="absolute right-3 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-slate-800 opacity-0 shadow-sm backdrop-blur transition-all duration-300 hover:scale-105 hover:bg-white focus:opacity-100 group-hover:opacity-100 sm:right-4"
                     >
                         <ChevronRight className="size-5" />
                     </button>
@@ -93,7 +123,7 @@ export function ImageCarousel({
 
             {/* Navigation Dots */}
             {images.length > 1 && (
-                <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 rounded-full bg-slate-900/30 px-3 py-2 backdrop-blur-md">
+                <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2 rounded-full bg-slate-900/30 px-3 py-2 backdrop-blur-md">
                     {images.map((_, index) => (
                         <button
                             key={index}

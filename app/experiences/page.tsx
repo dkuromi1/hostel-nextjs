@@ -22,7 +22,6 @@ import {
   buildMetadata,
   buildHostelSchema,
 } from "@/lib/metadata";
-import { eventCards, experiencePillars } from "@/lib/site-data";
 
 export const metadata = buildMetadata({
   title: "Rooftop Events And Adventure Base In Shkoder",

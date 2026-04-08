@@ -144,62 +144,6 @@ export const extendReasons = [
   },
 ] as const;
 
-export const experiencePillars = [
-  {
-    title: "Right in the Center",
-    description:
-      "Step out our front door directly onto Kole Idromeno, Shkodër’s main pedestrian street. From your first morning espresso to late-night drinks, the city's best food, culture, and rhythm are literally at your doorstep.",
-    image: "/images/shkoder_pedestrian_street.jpg",
-    alt: "Pedestrian street scene near Scodrinon Hostel on Kole Idromeno, Shkoder",
-  },
-  {
-    title: "Your Adventure Basecamp",
-    description:
-      "Drop your heavy bags and get out there. We’ll help you sort the logistics for the Theth and Valbona trek, boat trips up the Shala River, and kayaking out on Lake Shkodër.",
-    image: "/images/hiking_1.jpg",
-    alt: "Hiking and mountain views near Shkoder, Albanian Alps trips from Scodrinon Hostel",
-  },
-  {
-    title: "River Days at the Drin",
-    description:
-      "We head out to the river regularly for swimming and sun. These trips are a hostel favorite — a chance to see a different side of Shkoder and spend the afternoon with a great crew.",
-    image: "/images/drin_swimming_trip.jpeg",
-    alt: "Guests enjoying an evening event at Scodrinon Hostel",
-  },
-  {
-    title: "Rooftop Magic",
-    description:
-      "The rooftop is the social heart of the hostel: mountain light at sunset, city views after dark, and a pace that feels relaxed from the first drink to the last chat.",
-    image: "/images/rooftop_social_4_flare.jpg",
-    alt: "Guests relaxing on the Scodrinon Hostel rooftop at sunset",
-  },
-] as const;
-
-export const eventCards = [
-
-  {
-    title: "Spontaneous Socials",
-    description:
-      "Whether it’s rooftop raki or a local food crawl, we prioritize warm, unscripted moments that make it easy for solo travelers to join. It’s social, but never forced.",
-    image: "/images/local_food_night.jpeg",
-    alt: "Traditional food event at Scodrinon Hostel",
-  },
-  {
-    title: "Explore the Bicycle Capital",
-    description:
-      "Shkodër runs on two wheels. Grab a rental and explore the city's flat streets, lake paths, and cafes exactly how the locals do.",
-    image: "/images/biking_in_shkodra.jpeg",
-    alt: "Bike tour event from Scodrinon Hostel",
-  },
-  // {
-  //   title: "Walking Tours",
-  //   description:
-  //     "A relaxed way to understand the city's architecture, stories, and hidden corners beyond the obvious stops.",
-  //   image: "/images/event_walking_tour.png",
-  //   alt: "Walking tour event from Scodrinon Hostel",
-  // },
-] as const;
-
 export const galleryItems = [
   {
     id: "breakfast-served",
@@ -514,19 +458,19 @@ export const faqItems = [
       "Luggage storage makes the awkward travel-day timing easier. Message on WhatsApp in advance if you are arriving after 10pm or want to coordinate around your arrival or departure.",
   },
   {
-    question: "Is Scodrinon good for solo travelers?",
+    question: "Can the hostel help with Theth, Valbona, or local day trips?",
     answer:
-      "Yes. The hostel is social and welcoming, but it avoids the pressure-cooker party feel. That balance works especially well for solo travelers who want connection and rest in the same stay.",
+      "Yes. Scodrinon works well as a base for Albanian Alps hikes, Lake Shkoder plans, Komani Lake. and Shala River excursions, and onward travel. The staff can help you sort out the practical side.",
+  },
+  {
+    question: "Why is Scodrinon good for solo travelers?",
+    answer:
+      "The hostel is social and welcoming, but it avoids the pressure-cooker party feel. That balance works especially well for solo travelers who want connection and rest in the same stay.",
   },
   {
     question: "Are the pods actually private?",
     answer:
       "The pod dorm is designed to give you real personal space: curtains, a reading light, two power sockets, and a locker. It feels much closer to a private sleep setup than a standard open dorm.",
-  },
-  {
-    question: "Can the hostel help with Theth, Valbona, or local day trips?",
-    answer:
-      "Yes. Scodrinon works well as a base for Albanian Alps hikes, Lake Shkoder plans, river excursions, and onward travel. The staff can help you sort out the practical side.",
   },
   {
     question: "What is included in the stay?",

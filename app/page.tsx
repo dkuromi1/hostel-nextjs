@@ -24,9 +24,11 @@ import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
 import { BookingActions } from "@/components/booking-actions";
 import { CtaStrip } from "@/components/cta-strip";
 import { FaqList } from "@/components/faq-list";
+import { ImageCarousel } from "@/components/image-carousel";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { StructuredData } from "@/components/structured-data";
+import { SwipableRow } from "@/components/swipable-row";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
@@ -36,16 +38,72 @@ import {
   buildMetadata,
 } from "@/lib/metadata";
 import {
-  eventCards,
-  experiencePillars,
   extendReasons,
   faqItems,
+  fourBedDormImages,
   galleryItems,
+  podDormImages,
   quickFacts,
   roomTypes,
   siteConfig,
 } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
+
+const experiencePillars = [
+  {
+    title: "Right in the Center",
+    description:
+      "Step out our front door directly onto Kole Idromeno, Shkodër’s main pedestrian street. From your first morning espresso to late-night drinks, the city's best food, culture, and rhythm are literally at your doorstep.",
+    image: "/images/shkoder_pedestrian_street.jpg",
+    alt: "Pedestrian street scene near Scodrinon Hostel on Kole Idromeno, Shkoder",
+  },
+  {
+    title: "Your Adventure Basecamp",
+    description:
+      "Drop your heavy bags and get out there. We’ll help you sort the logistics for the Theth and Valbona trek, boat trips up the Shala River, and kayaking out on Lake Shkodër.",
+    image: "/images/hiking_1.jpg",
+    alt: "Hiking and mountain views near Shkoder, Albanian Alps trips from Scodrinon Hostel",
+  },
+
+] as const;
+
+const eventCards = [
+  {
+    title: "River Days at the Drin",
+    description:
+      "We head out to the river regularly for swimming and sun. These trips are a hostel favorite — a chance to see a different side of Shkoder and spend the afternoon with a great crew.",
+    image: "/images/drin_swimming_trip.jpeg",
+    alt: "Guests enjoying an evening event at Scodrinon Hostel",
+  },
+  {
+    title: "Spontaneous Socials",
+    description:
+      "Whether it’s rooftop raki or a local food crawl, we prioritize warm, unscripted moments that make it easy for solo travelers to join. It’s social, but never forced.",
+    image: "/images/local_food_night.jpeg",
+    alt: "Traditional food event at Scodrinon Hostel",
+  },
+  {
+    title: "Explore the Bicycle Capital",
+    description:
+      "Shkodër runs on two wheels. Grab a rental and explore the city's flat streets, lake paths, and cafes exactly how the locals do.",
+    image: "/images/biking_in_shkodra.jpeg",
+    alt: "Bike tour event from Scodrinon Hostel",
+  },
+  {
+    title: "Rooftop Magic",
+    description:
+      "The rooftop is the social heart of the hostel: mountain light at sunset, city views after dark, and a pace that feels relaxed from the first drink to the last chat.",
+    image: "/images/rooftop_social_4_flare.jpg",
+    alt: "Guests relaxing on the Scodrinon Hostel rooftop at sunset",
+  },
+  // {
+  //   title: "Walking Tours",
+  //   description:
+  //     "A relaxed way to understand the city's architecture, stories, and hidden corners beyond the obvious stops.",
+  //   image: "/images/event_walking_tour.png",
+  //   alt: "Walking tour event from Scodrinon Hostel",
+  // },
+] as const;
 
 export const metadata = buildMetadata({
   title: "Hostel In Shkoder With Privacy Pods And Rooftop Views",
@@ -178,13 +236,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quick Facts */}
       <section className="px-4 pb-8 sm:px-6 lg:px-8">
-        <div className="shell-container grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <SwipableRow itemCount={quickFacts.length} className="sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-4">
           {quickFacts.map((fact, index) => {
             const Icon = factIcons[index];
             return (
-              <Reveal key={fact} delay={index * 120}>
+              <Reveal key={fact} delay={index * 120} className="min-w-[75vw] snap-center sm:min-w-0">
                 <Panel className="group h-full px-5 py-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md">
                   <div className="text-sm leading-7 text-slate-700">
                     <div className="float-left mb-1 mr-4 rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
@@ -196,7 +253,7 @@ export default function Home() {
               </Reveal>
             );
           })}
-        </div>
+        </SwipableRow>
       </section>
 
       {/* Guest Ratings */}
@@ -327,15 +384,13 @@ export default function Home() {
             {roomTypes.map((room, index) => (
               <Reveal key={room.name} delay={index * 100}>
                 <Panel className="flex h-full flex-col overflow-hidden">
-                  <div className="relative min-h-[20rem]">
-                    <Image
-                      src={room.image}
-                      alt={room.alt}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
+                  <div className="relative min-h-[18rem]">
+                    <ImageCarousel
+                      images={room.name.includes("18-Bed") ? podDormImages : fourBedDormImages}
+                      className="absolute inset-0 h-full rounded-none"
+                      autoPlayInterval={0}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
                     <div className="absolute inset-x-0 bottom-0 px-6 py-4">
                       <Badge className="bg-white/20 text-white backdrop-blur-md">
                         {room.price} per night
@@ -356,14 +411,16 @@ export default function Home() {
                       </p>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="flex flex-wrap gap-2">
                       {getRoomFeatures(room.name).map((feature, idx) => (
                         <div
                           key={idx}
-                          className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50/50 p-2.5 text-slate-600"
+                          /* Added w-fit and adjusted padding/gap to make them tighter "pills" */
+                          className="flex w-fit items-center gap-2 rounded-xl border border-slate-100 bg-slate-50/50 px-3 py-2 text-slate-600"
                         >
-                          <feature.icon className="size-4 shrink-0 text-emerald-600" />
-                          <span className="text-[11px] font-medium tracking-tight">
+                          <feature.icon className="size-3.5 shrink-0 text-emerald-600" />
+                          {/* Added whitespace-nowrap to prevent labels like "High-speed WiFi" from breaking internally */}
+                          <span className="whitespace-nowrap text-[11px] font-medium tracking-tight">
                             {feature.label}
                           </span>
                         </div>
@@ -423,41 +480,52 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-12">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-12">
             {galleryItems.slice(0, 12).map((item, index) => (
               <Reveal
                 key={`${item.src}-${index}`}
                 delay={index * 70}
-                className={item.className}
+                className={cn("col-span-1", item.className)}
               >
-                <div className={cn("media-frame relative", item.aspect)}>
-                  {item.type === "image" ? (
-                    <Image
-                      src={item.src}
-                      alt={item.alt}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  ) : (
-                    <video
-                      className="h-full w-full object-cover"
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      aria-label={item.alt}
-                    >
-                      <source src={item.src} type="video/mp4" />
-                    </video>
-                  )}
-                </div>
+                {/* 1. Wrap the content in a Link pointing to the gallery ID */}
+                {/* 2. Use scroll={false} to prevent the page from jumping when the modal opens */}
+                <Link
+                  href={`/gallery/${item.id}`}
+                  scroll={false}
+                  className="group block h-full w-full"
+                >
+                  <div className={cn(
+                    "media-frame relative cursor-zoom-in overflow-hidden",
+                    item.aspect
+                  )}>
+                    {item.type === "image" ? (
+                      <Image
+                        src={item.src}
+                        alt={item.alt}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 768px) 50vw, 33vw"
+                      />
+                    ) : (
+                      <video
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                      >
+                        <source src={item.src} type="video/mp4" />
+                      </video>
+                    )}
+
+                    <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
+                  </div>
+                </Link>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
-
       {/* Experiences */}
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="shell-container space-y-10">
@@ -537,18 +605,18 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <SwipableRow itemCount={eventCards.length} className="sm:grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-2">
             {eventCards.map((event, index) => (
-              <Reveal key={event.title} delay={index * 60}>
+              <Reveal key={event.title} delay={index * 60} className="min-w-[82vw] snap-center sm:min-w-0">
                 <Panel className="overflow-hidden">
-                  <div className="grid gap-0 sm:grid-cols-[0.92fr_1.08fr]">
+                  <div className="grid gap-0 md:grid-cols-[0.92fr_1.08fr]">
                     <div className="relative min-h-[14rem]">
                       <Image
                         src={event.image}
                         alt={event.alt}
                         fill
                         className="object-cover"
-                        sizes="(max-width: 640px) 100vw, 24vw"
+                        sizes="(max-width: 768px) 100vw, 24vw"
                       />
                     </div>
                     <div className="p-5">
@@ -563,128 +631,233 @@ export default function Home() {
                 </Panel>
               </Reveal>
             ))}
-          </div>
+          </SwipableRow>
         </div>
       </section>
 
       {/* Included */}
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="shell-container grid gap-10 lg:grid-cols-12">
-          <Reveal className="lg:col-span-7 space-y-8">
+      <section className="py-16">
+        {/* Mobile layout: heading + swipable row at section level (no grid constraint) */}
+        <div className="sm:hidden px-4 space-y-6">
+          <Reveal>
             <SectionHeading
               eyebrow="The Scodrinon Standard"
               title="The basics are not treated like extras."
               description="Breakfast, luggage storage, WiFi, and a genuinely usable rooftop make the stay feel generous instead of stripped down."
             />
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="group glass-panel rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
-                <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
-                  <ShieldCheck className="size-5" strokeWidth={1.8} />
-                </div>
-                <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
-                  Safe, welcoming atmosphere
-                </p>
-                <p className="mt-3 text-sm leading-7 text-slate-600">
-                  Designed to feel open and social while still being especially
-                  comfortable for solo travelers.
-                </p>
-              </div>
-              <div className="group glass-panel rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
-                <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
-                  <Wifi className="size-5" strokeWidth={1.8} />
-                </div>
-                <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
-                  Good day-to-day comfort
-                </p>
-                <p className="mt-3 text-sm leading-7 text-slate-600">
-                  Fast WiFi, clean bathrooms, lockers, sockets, and air-con are
-                  standard rather than upsells.
-                </p>
-              </div>
-              <div className="group glass-panel rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
-                <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
-                  <MapPinned className="size-5" strokeWidth={1.8} />
-                </div>
-                <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
-                  Best-positioned city base
-                </p>
-                <p className="mt-3 text-sm leading-7 text-slate-600">
-                  Cafes, restaurants, museums, and nightlife are right outside
-                  on the city promenade.
-                </p>
-              </div>
-              <div className="group glass-panel rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
-                <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
-                  <Mountain className="size-5" strokeWidth={1.8} />
-                </div>
-                <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
-                  Ready for northbound plans
-                </p>
-                <p className="mt-3 text-sm leading-7 text-slate-600">
-                  Theth, Valbona, lake days, river excursions, and Montenegro
-                  routes are easy to talk through from here.
-                </p>
-              </div>
-            </div>
           </Reveal>
+        </div>
+        <div className="sm:hidden mt-6">
+          <SwipableRow itemCount={4} className="">
+            <div className="group glass-panel min-w-[80vw] snap-center rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
+              <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                <ShieldCheck className="size-5" strokeWidth={1.8} />
+              </div>
+              <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+                Safe, welcoming atmosphere
+              </p>
+              <p className="mt-3 text-sm leading-7 text-slate-600">
+                Designed to feel open and social while still being especially
+                comfortable for solo travelers.
+              </p>
+            </div>
+            <div className="group glass-panel min-w-[80vw] snap-center rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
+              <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                <Wifi className="size-5" strokeWidth={1.8} />
+              </div>
+              <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+                Good day-to-day comfort
+              </p>
+              <p className="mt-3 text-sm leading-7 text-slate-600">
+                Fast WiFi, clean bathrooms, lockers, sockets, and air-con are
+                standard rather than upsells.
+              </p>
+            </div>
+            <div className="group glass-panel min-w-[80vw] snap-center rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
+              <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                <MapPinned className="size-5" strokeWidth={1.8} />
+              </div>
+              <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+                Best-positioned city base
+              </p>
+              <p className="mt-3 text-sm leading-7 text-slate-600">
+                Cafes, restaurants, museums, and nightlife are right outside
+                on the city promenade.
+              </p>
+            </div>
+            <div className="group glass-panel min-w-[80vw] snap-center rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
+              <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                <Mountain className="size-5" strokeWidth={1.8} />
+              </div>
+              <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+                Ready for northbound plans
+              </p>
+              <p className="mt-3 text-sm leading-7 text-slate-600">
+                Theth, Valbona, lake days, river excursions, and Montenegro
+                routes are easy to talk through from here.
+              </p>
+            </div>
+          </SwipableRow>
+        </div>
 
+        {/* Desktop layout: original grid with shell-container */}
+        <div className="hidden sm:block px-6 lg:px-8">
+          <div className="shell-container grid gap-10 lg:grid-cols-12">
+            <Reveal className="lg:col-span-7 space-y-8">
+              <SectionHeading
+                eyebrow="The Scodrinon Standard"
+                title="The basics are not treated like extras."
+                description="Breakfast, luggage storage, WiFi, and a genuinely usable rooftop make the stay feel generous instead of stripped down."
+              />
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="group glass-panel rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
+                  <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                    <ShieldCheck className="size-5" strokeWidth={1.8} />
+                  </div>
+                  <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+                    Safe, welcoming atmosphere
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-slate-600">
+                    Designed to feel open and social while still being especially
+                    comfortable for solo travelers.
+                  </p>
+                </div>
+                <div className="group glass-panel rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
+                  <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                    <Wifi className="size-5" strokeWidth={1.8} />
+                  </div>
+                  <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+                    Good day-to-day comfort
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-slate-600">
+                    Fast WiFi, clean bathrooms, lockers, sockets, and air-con are
+                    standard rather than upsells.
+                  </p>
+                </div>
+                <div className="group glass-panel rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
+                  <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                    <MapPinned className="size-5" strokeWidth={1.8} />
+                  </div>
+                  <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+                    Best-positioned city base
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-slate-600">
+                    Cafes, restaurants, museums, and nightlife are right outside
+                    on the city promenade.
+                  </p>
+                </div>
+                <div className="group glass-panel rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
+                  <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                    <Mountain className="size-5" strokeWidth={1.8} />
+                  </div>
+                  <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+                    Ready for northbound plans
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-slate-600">
+                    Theth, Valbona, lake days, river excursions, and Montenegro
+                    routes are easy to talk through from here.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
       {/* Why People Stay Longer */}
-      <section className="px-4 py-20 sm:px-6 lg:px-8 bg-slate-50/50">
-        <div className="shell-container grid gap-12 lg:grid-cols-12 lg:items-center">
-          
-          <Reveal className="space-y-8 lg:col-span-5">
+      <section className="py-20 bg-slate-50/50">
+        {/* Mobile: flat heading + image + full-width swipable row */}
+        <div className="sm:hidden px-4 space-y-6">
+          <Reveal>
             <SectionHeading
               eyebrow="Why People Stay Longer"
               title="The kind of hostel that makes short plans drift into a week."
-              description="The draw is not one dramatic feature. It’s the way the privacy, rooftop, location, and staff all work together so the stay feels easy from the start."
+              description="The draw is not one dramatic feature. It's the way the privacy, rooftop, location, and staff all work together so the stay feels easy from the start."
             />
-            {/* Elevated Premium Image Styling */}
-            <div className="media-frame relative min-h-[32rem] overflow-hidden rounded-3xl shadow-2xl shadow-slate-200/50">
-              <Image
-                src="/images/rooftop_social2.png"
-                alt="Travelers relaxing on the rooftop of Scodrinon Hostel"
-                fill
-                className="object-cover transition-transform duration-1000 hover:scale-105"
-                sizes="(max-width: 1024px) 100vw, 40vw"
-              />
-            </div>
           </Reveal>
-
-          {/* Premium 2x2 Feature Grid */}
-          <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7">
+          <div className="media-frame relative min-h-[20rem] overflow-hidden rounded-3xl shadow-2xl shadow-slate-200/50">
+            <Image
+              src="/images/rooftop_social2.png"
+              alt="Travelers relaxing on the rooftop of Scodrinon Hostel"
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
+          </div>
+        </div>
+        <div className="sm:hidden mt-6">
+          <SwipableRow itemCount={extendReasons.length} className="">
             {extendReasons.map((reason, index) => {
-              const Icon = reasonIcons[index] || ArrowRight; // Fallback to ArrowRight
+              const Icon = reasonIcons[index] || ArrowRight;
               return (
-                <Reveal key={reason.title} delay={index * 100}>
-                  <Panel 
-                    className="group relative flex h-full flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-500 hover:-translate-y-1 hover:border-slate-300 hover:shadow-xl hover:shadow-emerald-900/5"
-                  >
-                    {/* The Premium Hover Accent Line */}
-                    <div className="absolute left-0 bottom-0 h-1 w-0 bg-emerald-500 transition-all duration-500 ease-out group-hover:w-full" />
-                    
-                    <div>
-                      {/* Elegant Icon Container instead of the watermark */}
-                      <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-slate-100 text-slate-600 transition-colors duration-500 group-hover:bg-emerald-50 group-hover:text-emerald-600">
-                        <Icon className="size-5" strokeWidth={1.5} />
-                      </div>
-                      
-                      <h3 className="mb-3 font-heading text-xl leading-tight tracking-tight text-slate-900">
-                        {reason.title}
-                      </h3>
-                      <p className="text-sm leading-relaxed text-slate-600">
-                        {reason.description}
-                      </p>
+                <Panel
+                  key={reason.title}
+                  className="group relative flex min-w-[80vw] snap-center flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-500 hover:border-slate-300 hover:shadow-xl hover:shadow-emerald-900/5"
+                >
+                  <div className="absolute left-0 bottom-0 h-1 w-0 bg-emerald-500 transition-all duration-500 ease-out group-hover:w-full" />
+                  <div>
+                    <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-slate-100 text-slate-600">
+                      <Icon className="size-5" strokeWidth={1.5} />
                     </div>
-                  </Panel>
-                </Reveal>
+                    <h3 className="mb-3 font-heading text-xl leading-tight tracking-tight text-slate-900">
+                      {reason.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-slate-600">
+                      {reason.description}
+                    </p>
+                  </div>
+                </Panel>
               );
             })}
+          </SwipableRow>
+        </div>
+
+        {/* Desktop: original grid with shell-container */}
+        <div className="hidden sm:block sm:px-6 lg:px-8">
+          <div className="shell-container grid gap-12 lg:grid-cols-12 lg:items-center">
+            <Reveal className="space-y-8 lg:col-span-5">
+              <SectionHeading
+                eyebrow="Why People Stay Longer"
+                title="The kind of hostel that makes short plans drift into a week."
+                description="The draw is not one dramatic feature. It's the way the privacy, rooftop, location, and staff all work together so the stay feels easy from the start."
+              />
+              <div className="media-frame relative min-h-[32rem] overflow-hidden rounded-3xl shadow-2xl shadow-slate-200/50">
+                <Image
+                  src="/images/rooftop_social2.png"
+                  alt="Travelers relaxing on the rooftop of Scodrinon Hostel"
+                  fill
+                  className="object-cover transition-transform duration-1000 hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                />
+              </div>
+            </Reveal>
+            <div className="lg:col-span-7 grid gap-4 sm:grid-cols-2">
+              {extendReasons.map((reason, index) => {
+                const Icon = reasonIcons[index] || ArrowRight;
+                return (
+                  <Reveal key={reason.title} delay={index * 100}>
+                    <Panel className="group relative flex h-full flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-500 hover:-translate-y-1 hover:border-slate-300 hover:shadow-xl hover:shadow-emerald-900/5">
+                      <div className="absolute left-0 bottom-0 h-1 w-0 bg-emerald-500 transition-all duration-500 ease-out group-hover:w-full" />
+                      <div>
+                        <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-slate-100 text-slate-600 transition-colors duration-500 group-hover:bg-emerald-50 group-hover:text-emerald-600">
+                          <Icon className="size-5" strokeWidth={1.5} />
+                        </div>
+                        <h3 className="mb-3 font-heading text-xl leading-tight tracking-tight text-slate-900">
+                          {reason.title}
+                        </h3>
+                        <p className="text-sm leading-relaxed text-slate-600">
+                          {reason.description}
+                        </p>
+                      </div>
+                    </Panel>
+                  </Reveal>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
+
 
       {/* Final CTA */}
       <section className="px-4 py-16 sm:px-6 lg:px-8">
