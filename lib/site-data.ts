@@ -52,7 +52,7 @@ export const quickFacts = [
 export const roomTypes = [
   {
     name: "18-Bed Pod Dorm",
-    price: "€8",
+    price: "€8",  //Edit Base Price here
     label: "Best for solo travelers who want privacy without losing the hostel vibe",
     description:
       "The signature room at Scodrinon pairs the energy of a social hostel with the comfort of a private sleep setup.",
@@ -80,6 +80,20 @@ export const roomTypes = [
     ],
   },
 ] as const;
+
+// Edit 18 bed carousel images here
+export const podDormImages = [
+  { src: "/images/rooms_18bed.jpg", alt: "Privacy Pod Dorm Room at Scodrinon Hostel" },
+  { src: "/images/room_18bed4.jpg", alt: "Inside the privacy pod" },
+  { src: "/images/secure_dorm_lockers.webp", alt: "Secure lockers in the dorm" },
+];
+
+// Edit 4 bed carousel images here
+export const fourBedDormImages = [
+  { src: "/images/rooms_1.jpg", alt: "Four Bed Dorm Room at Scodrinon Hostel" },
+  { src: "/images/rooms_2.jpg", alt: "Alternative angle of the 4-bed dorm" },
+  { src: "/images/room_4bed_m.jpg", alt: "Men's 4-bed dorm at Scodrinon Hostel" },
+];
 
 export const sharedAmenities = [
   "Air-con in all rooms",

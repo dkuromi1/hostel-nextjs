@@ -6,12 +6,9 @@ import {
   Lock,
   Wifi,
   ShowerHead,
-  Star,
   Check,
   Blinds,
   Bed,
-  Users,
-  Croissant,
   Coffee,
 } from "lucide-react";
 
@@ -23,6 +20,7 @@ import { StructuredData } from "@/components/structured-data";
 import { Badge } from "@/components/ui/badge";
 import { Panel } from "@/components/ui/panel";
 import { TestimonialCarousel } from "@/components/testimonial-carousel";
+import { ImageCarousel } from "@/components/image-carousel";
 import {
   buildBreadcrumbSchema,
   buildMetadata,
@@ -32,8 +30,9 @@ import {
   freeServices,
   paidServices,
   roomTypes,
-  sharedAmenities,
   siteConfig,
+  podDormImages,
+  fourBedDormImages,
 } from "@/lib/site-data";
 import { testimonials } from "@/lib/site-data";
 
@@ -44,8 +43,6 @@ export const metadata = buildMetadata({
   path: "/rooms",
   image: "/images/room_18bed2.jpg",
 });
-
-const roomIcons = [Snowflake, Lock, LampDesk, BatteryCharging, Wifi, ShowerHead];
 
 export default function RoomsPage() {
   const getRoomFeatures = (roomName: string) => {
@@ -129,84 +126,90 @@ export default function RoomsPage() {
             description="You can stay social without giving up your own space. The pod dorm leans into privacy; the four-bed rooms lean into calm."
           />
           <div className="grid gap-8 lg:grid-cols-2">
-            {roomTypes.map((room, index) => (
-              <Reveal key={room.name} delay={index * 100}>
-                <Panel className="flex h-full flex-col overflow-hidden">
-                  <div className="relative min-h-[22rem]">
-                    <Image
-                      src={room.image}
-                      alt={room.alt}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 45vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 px-6 py-4">
-                      <Badge className="bg-white/20 text-white backdrop-blur-md">
-                        {room.price} per night
-                      </Badge>
+            {roomTypes.map((room, index) => {
+              // Determine which image array to use based on the room name
+              const isPodDorm = room.name.includes("18-Bed");
+              const carouselImages = isPodDorm ? podDormImages : fourBedDormImages;
+
+              return (
+                <Reveal key={room.name} delay={index * 100}>
+                  <Panel className="flex h-full flex-col overflow-hidden">
+
+                    {/* Updated Image Carousel Section */}
+                    <div className="relative min-h-[22rem]">
+                      <ImageCarousel
+                        images={carouselImages}
+                        className="absolute inset-0 h-full w-full !rounded-none"
+                        autoPlayInterval={0}
+                      />
+
+                      {/* Gradient overlay - pointer-events-none is crucial here so arrows are clickable! */}
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+
+                      {/* Price Badge - pointer-events-none to prevent blocking dots/arrows */}
+                      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 px-6 py-4">
+                        <Badge className="bg-white/20 text-white shadow-sm backdrop-blur-md">
+                          {room.price} per night
+                        </Badge>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="flex flex-1 flex-col justify-between p-7 lg:p-9">
-                    <div className="space-y-6">
-                      <div>
-                        <p className="text-xs uppercase tracking-[0.24em] text-emerald-700">
-                          {room.label}
-                        </p>
-                        <h2 className="mt-3 font-heading text-4xl leading-none tracking-[-0.05em] text-slate-950">
-                          {room.name}
-                        </h2>
-                        <p className="mt-4 text-lg leading-8 text-slate-600">
-                          {room.description}
-                        </p>
-                      </div>
+                    <div className="flex flex-1 flex-col justify-between p-7 lg:p-9">
+                      <div className="space-y-6">
+                        <div>
+                          <p className="text-xs uppercase tracking-[0.24em] text-emerald-700">
+                            {room.label}
+                          </p>
+                          <h2 className="mt-3 font-heading text-4xl leading-none tracking-[-0.05em] text-slate-950">
+                            {room.name}
+                          </h2>
+                          <p className="mt-4 text-lg leading-8 text-slate-600">
+                            {room.description}
+                          </p>
+                        </div>
 
-
-                      <div className="grid grid-cols-2 gap-2">
-                        {getRoomFeatures(room.name).map((feature, idx) => (
-                          <div
-                            key={idx}
-                            className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50/50 p-2.5 text-slate-600 transition-colors hover:bg-white"
-                          >
-                            <feature.icon className="size-4 shrink-0 text-emerald-600" />
-                            <span className="text-xs font-medium tracking-tight">
-                              {feature.label}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-
-                      <div className="space-y-3">
-                        <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">
-                          Room Details
-                        </p>
-                        <ul className="grid gap-3 sm:grid-cols-2">
-                          {room.bullets.map((bullet) => (
-                            <li
-                              key={bullet}
-                              className="flex items-start gap-2.5 text-sm leading-6 text-slate-600"
+                        <div className="grid grid-cols-2 gap-2">
+                          {getRoomFeatures(room.name).map((feature, idx) => (
+                            <div
+                              key={idx}
+                              className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50/50 p-2.5 text-slate-600 transition-colors hover:bg-white"
                             >
-                              <Check
-                                className="mt-1 size-4 shrink-0 text-emerald-600"
-                                strokeWidth={2}
-                              />
-                              <span>{bullet}</span>
-                            </li>
+                              <feature.icon className="size-4 shrink-0 text-emerald-600" />
+                              <span className="text-xs font-medium tracking-tight">
+                                {feature.label}
+                              </span>
+                            </div>
                           ))}
-                        </ul>
+                        </div>
+
+                        <div className="space-y-3">
+                          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">
+                            Room Details
+                          </p>
+                          <ul className="grid gap-3 sm:grid-cols-2">
+                            {room.bullets.map((bullet) => (
+                              <li
+                                key={bullet}
+                                className="flex items-start gap-2.5 text-sm leading-6 text-slate-600"
+                              >
+                                <Check
+                                  className="mt-1 size-4 shrink-0 text-emerald-600"
+                                  strokeWidth={2}
+                                />
+                                <span>{bullet}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Panel>
-              </Reveal>
-            ))}
+                  </Panel>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
-
-
-
 
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="shell-container grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
