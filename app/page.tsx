@@ -665,53 +665,61 @@ export default function Home() {
               itemCount={4} 
               className="-mx-8 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-4"
             >
-              <div className="group glass-panel min-w-[80vw] snap-center sm:min-w-0 rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
-                <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
-                  <ShieldCheck className="size-5" strokeWidth={1.8} />
+              <div className="group relative flex min-w-[82vw] snap-center sm:min-w-0 flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
+                <div>
+                  <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-600/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                    <ShieldCheck className="size-5" strokeWidth={1.8} />
+                  </div>
+                  <h3 className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+                    Safe, welcoming atmosphere
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-slate-600">
+                    Designed to feel open and social while still being especially
+                    comfortable for solo travelers.
+                  </p>
                 </div>
-                <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
-                  Safe, welcoming atmosphere
-                </p>
-                <p className="mt-3 text-sm leading-7 text-slate-600">
-                  Designed to feel open and social while still being especially
-                  comfortable for solo travelers.
-                </p>
               </div>
-              <div className="group glass-panel min-w-[80vw] snap-center sm:min-w-0 rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
-                <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
-                  <Wifi className="size-5" strokeWidth={1.8} />
+              <div className="group relative flex min-w-[82vw] snap-center sm:min-w-0 flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
+                <div>
+                  <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-600/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                    <Wifi className="size-5" strokeWidth={1.8} />
+                  </div>
+                  <h3 className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+                    Good day-to-day comfort
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-slate-600">
+                    Fast WiFi, clean bathrooms, lockers, sockets, and air-con are
+                    standard rather than upsells.
+                  </p>
                 </div>
-                <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
-                  Good day-to-day comfort
-                </p>
-                <p className="mt-3 text-sm leading-7 text-slate-600">
-                  Fast WiFi, clean bathrooms, lockers, sockets, and air-con are
-                  standard rather than upsells.
-                </p>
               </div>
-              <div className="group glass-panel min-w-[80vw] snap-center sm:min-w-0 rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
-                <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
-                  <MapPinned className="size-5" strokeWidth={1.8} />
+              <div className="group relative flex min-w-[82vw] snap-center sm:min-w-0 flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
+                <div>
+                  <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-600/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                    <MapPinned className="size-5" strokeWidth={1.8} />
+                  </div>
+                  <h3 className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+                    Best-positioned city base
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-slate-600">
+                    Cafes, restaurants, museums, and nightlife are right outside
+                    on the city promenade.
+                  </p>
                 </div>
-                <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
-                  Best-positioned city base
-                </p>
-                <p className="mt-3 text-sm leading-7 text-slate-600">
-                  Cafes, restaurants, museums, and nightlife are right outside
-                  on the city promenade.
-                </p>
               </div>
-              <div className="group glass-panel min-w-[80vw] snap-center sm:min-w-0 rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
-                <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
-                  <Mountain className="size-5" strokeWidth={1.8} />
+              <div className="group relative flex min-w-[82vw] snap-center sm:min-w-0 flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
+                <div>
+                  <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-600/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                    <Mountain className="size-5" strokeWidth={1.8} />
+                  </div>
+                  <h3 className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+                    Ready for northbound plans
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-slate-600">
+                    Theth, Valbona, lake days, river excursions, and Montenegro
+                    routes are easy to talk through from here.
+                  </p>
                 </div>
-                <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
-                  Ready for northbound plans
-                </p>
-                <p className="mt-3 text-sm leading-7 text-slate-600">
-                  Theth, Valbona, lake days, river excursions, and Montenegro
-                  routes are easy to talk through from here.
-                </p>
               </div>
             </SwipableRow>
           </div>
