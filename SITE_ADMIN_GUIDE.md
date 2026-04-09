@@ -31,6 +31,8 @@ Edit the `siteConfig` object at the top. This drives **WhatsApp**, **Booking.com
 | `breakfastHours` | Breakfast time text |
 | `baseKeywords` | Default SEO keyword list (used with page metadata) |
 
+NOTE: Base price is picked up from the 18 bed dorm price in `roomTypes`
+
 **Important:** If you change the **WhatsApp number**, update **`phoneDisplay`**, **`phoneRaw`**, and **`whatsappUrl`** together. The booking buttons use `whatsappUrl` from this file.
 
 ---
@@ -42,11 +44,9 @@ Still in **`lib/site-data.ts`**:
 - **`navLinks`** — Top menu labels and page order (only change if you know what you are doing; wrong paths break links).
 - **`heroHighlights`** — Short bullets on the home hero.
 - **`quickFacts`** — Quick fact lines (home and elsewhere).
-- **`roomTypes`** — Room names, descriptions, bullet lists, and **which photo** each room uses (`image` + `alt`).
+- **`roomTypes`** — Room names, price, descriptions, bullet lists, and **which photo** each room uses (`image` + `alt`).
 - **`sharedAmenities`**, **`freeServices`**, **`paidServices`** — Amenity and service lists.
 - **`extendReasons`** — “Why stay longer” style blocks (title + paragraph each).
-- **`experiencePillars`** — Experiences section cards (text + image path + alt).
-- **`eventCards`** — Home page event tiles (title, description, image, alt).  
   - To **hide** an event: put `//` at the start of each line of that block (see the commented “Walking Tours” example in the file).  
   - To **show** it again: remove those `//` lines.
 - **`galleryItems`** — **Gallery grid** and the **first five items** also appear on the home page preview. Order in this list = order on the site.
