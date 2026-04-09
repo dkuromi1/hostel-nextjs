@@ -30,6 +30,7 @@ import { AnimatedText } from "@/components/animated-text";
 import { SectionHeading } from "@/components/section-heading";
 import { StructuredData } from "@/components/structured-data";
 import { SwipableRow } from "@/components/swipable-row";
+import { TestimonialCarousel } from "@/components/testimonial-carousel";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
@@ -48,6 +49,7 @@ import {
   roomTypes,
   siteConfig,
 } from "@/lib/site-data";
+import { testimonials } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
 const experiencePillars = [
@@ -150,15 +152,15 @@ export default function Home() {
                 {siteConfig.tagline}
               </p>
               <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl tracking-[-0.04em] leading-[1.05] text-slate-950 text-balance">
-                <AnimatedText 
-                  text="Rooftop sunsets, privacy pods," 
-                  className="block sm:inline" 
-                  wordClassName="text-slate-950" 
+                <AnimatedText
+                  text="Rooftop sunsets, privacy pods,"
+                  className="block sm:inline"
+                  wordClassName="text-slate-950"
                 />
                 {" "}
-                <AnimatedText 
-                  text="and the part of Shkodër you actually want to wake up in." 
-                  className="text-blue-600" 
+                <AnimatedText
+                  text="and the part of Shkodër you actually want to wake up in."
+                  className="text-blue-600"
                   delayOffset={350}
                 />
               </h1>
@@ -647,132 +649,77 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Included */}
-      <section className="py-16">
-        {/* Mobile layout: heading + swipable row at section level (no grid constraint) */}
-        <div className="sm:hidden px-4 space-y-6">
-          <Reveal>
-            <SectionHeading
-              eyebrow="The Scodrinon Standard"
-              title="The basics are not treated like extras."
-              description="Breakfast, luggage storage, WiFi, and a genuinely usable rooftop make the stay feel generous instead of stripped down."
-            />
-          </Reveal>
-        </div>
-        <div className="sm:hidden mt-6">
-          <SwipableRow itemCount={4} className="">
-            <div className="group glass-panel min-w-[80vw] snap-center rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
-              <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
-                <ShieldCheck className="size-5" strokeWidth={1.8} />
-              </div>
-              <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
-                Safe, welcoming atmosphere
-              </p>
-              <p className="mt-3 text-sm leading-7 text-slate-600">
-                Designed to feel open and social while still being especially
-                comfortable for solo travelers.
-              </p>
-            </div>
-            <div className="group glass-panel min-w-[80vw] snap-center rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
-              <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
-                <Wifi className="size-5" strokeWidth={1.8} />
-              </div>
-              <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
-                Good day-to-day comfort
-              </p>
-              <p className="mt-3 text-sm leading-7 text-slate-600">
-                Fast WiFi, clean bathrooms, lockers, sockets, and air-con are
-                standard rather than upsells.
-              </p>
-            </div>
-            <div className="group glass-panel min-w-[80vw] snap-center rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
-              <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
-                <MapPinned className="size-5" strokeWidth={1.8} />
-              </div>
-              <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
-                Best-positioned city base
-              </p>
-              <p className="mt-3 text-sm leading-7 text-slate-600">
-                Cafes, restaurants, museums, and nightlife are right outside
-                on the city promenade.
-              </p>
-            </div>
-            <div className="group glass-panel min-w-[80vw] snap-center rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
-              <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
-                <Mountain className="size-5" strokeWidth={1.8} />
-              </div>
-              <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
-                Ready for northbound plans
-              </p>
-              <p className="mt-3 text-sm leading-7 text-slate-600">
-                Theth, Valbona, lake days, river excursions, and Montenegro
-                routes are easy to talk through from here.
-              </p>
-            </div>
-          </SwipableRow>
-        </div>
-
-        {/* Desktop layout: original grid with shell-container */}
-        <div className="hidden sm:block px-6 lg:px-8">
-          <div className="shell-container grid gap-10 lg:grid-cols-12">
-            <Reveal className="lg:col-span-7 space-y-8">
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="shell-container flex flex-col gap-10 lg:flex-row lg:items-stretch">
+          {/* Left Column: Standard Content */}
+          <div className="flex-1 space-y-8 lg:max-w-[60%]">
+            <Reveal>
               <SectionHeading
                 eyebrow="The Scodrinon Standard"
                 title="The basics are not treated like extras."
                 description="Breakfast, luggage storage, WiFi, and a genuinely usable rooftop make the stay feel generous instead of stripped down."
               />
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="group glass-panel rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
-                  <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
-                    <ShieldCheck className="size-5" strokeWidth={1.8} />
-                  </div>
-                  <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
-                    Safe, welcoming atmosphere
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">
-                    Designed to feel open and social while still being especially
-                    comfortable for solo travelers.
-                  </p>
-                </div>
-                <div className="group glass-panel rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
-                  <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
-                    <Wifi className="size-5" strokeWidth={1.8} />
-                  </div>
-                  <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
-                    Good day-to-day comfort
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">
-                    Fast WiFi, clean bathrooms, lockers, sockets, and air-con are
-                    standard rather than upsells.
-                  </p>
-                </div>
-                <div className="group glass-panel rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
-                  <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
-                    <MapPinned className="size-5" strokeWidth={1.8} />
-                  </div>
-                  <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
-                    Best-positioned city base
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">
-                    Cafes, restaurants, museums, and nightlife are right outside
-                    on the city promenade.
-                  </p>
-                </div>
-                <div className="group glass-panel rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
-                  <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
-                    <Mountain className="size-5" strokeWidth={1.8} />
-                  </div>
-                  <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
-                    Ready for northbound plans
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">
-                    Theth, Valbona, lake days, river excursions, and Montenegro
-                    routes are easy to talk through from here.
-                  </p>
-                </div>
-              </div>
             </Reveal>
+            
+            <SwipableRow 
+              itemCount={4} 
+              className="-mx-8 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-4"
+            >
+              <div className="group glass-panel min-w-[80vw] snap-center sm:min-w-0 rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
+                <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                  <ShieldCheck className="size-5" strokeWidth={1.8} />
+                </div>
+                <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+                  Safe, welcoming atmosphere
+                </p>
+                <p className="mt-3 text-sm leading-7 text-slate-600">
+                  Designed to feel open and social while still being especially
+                  comfortable for solo travelers.
+                </p>
+              </div>
+              <div className="group glass-panel min-w-[80vw] snap-center sm:min-w-0 rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
+                <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                  <Wifi className="size-5" strokeWidth={1.8} />
+                </div>
+                <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+                  Good day-to-day comfort
+                </p>
+                <p className="mt-3 text-sm leading-7 text-slate-600">
+                  Fast WiFi, clean bathrooms, lockers, sockets, and air-con are
+                  standard rather than upsells.
+                </p>
+              </div>
+              <div className="group glass-panel min-w-[80vw] snap-center sm:min-w-0 rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
+                <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                  <MapPinned className="size-5" strokeWidth={1.8} />
+                </div>
+                <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+                  Best-positioned city base
+                </p>
+                <p className="mt-3 text-sm leading-7 text-slate-600">
+                  Cafes, restaurants, museums, and nightlife are right outside
+                  on the city promenade.
+                </p>
+              </div>
+              <div className="group glass-panel min-w-[80vw] snap-center sm:min-w-0 rounded-[28px] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg">
+                <div className="mb-4 inline-flex rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                  <Mountain className="size-5" strokeWidth={1.8} />
+                </div>
+                <p className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+                  Ready for northbound plans
+                </p>
+                <p className="mt-3 text-sm leading-7 text-slate-600">
+                  Theth, Valbona, lake days, river excursions, and Montenegro
+                  routes are easy to talk through from here.
+                </p>
+              </div>
+            </SwipableRow>
           </div>
+
+          {/* Right Column: Testimonials */}
+          <Reveal delay={200} className="lg:w-[40%] flex flex-col">
+            <TestimonialCarousel testimonials={testimonials} className="h-full" />
+          </Reveal>
         </div>
       </section>
 
