@@ -751,12 +751,11 @@ export default function Home() {
               return (
                 <Panel
                   key={reason.title}
-                  className="group relative flex min-w-[80vw] snap-center flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-500 hover:border-slate-300 hover:shadow-xl hover:shadow-emerald-900/5"
+                  className="group relative flex min-w-[82vw] snap-center flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
                 >
-                  <div className="absolute left-0 bottom-0 h-1 w-0 bg-emerald-500 transition-all duration-500 ease-out group-hover:w-full" />
                   <div>
-                    <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-slate-100 text-slate-600">
-                      <Icon className="size-5" strokeWidth={1.5} />
+                    <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-600/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                      <Icon className="size-5" strokeWidth={1.8} />
                     </div>
                     <h3 className="mb-3 font-heading text-xl leading-tight tracking-tight text-slate-900">
                       {reason.title}
@@ -795,11 +794,10 @@ export default function Home() {
                 const Icon = reasonIcons[index] || ArrowRight;
                 return (
                   <Reveal key={reason.title} delay={index * 100}>
-                    <Panel className="group relative flex h-full flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-500 hover:-translate-y-1 hover:border-slate-300 hover:shadow-xl hover:shadow-emerald-900/5">
-                      <div className="absolute left-0 bottom-0 h-1 w-0 bg-emerald-500 transition-all duration-500 ease-out group-hover:w-full" />
+                    <Panel className="group relative flex h-full flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md">
                       <div>
-                        <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-slate-100 text-slate-600 transition-colors duration-500 group-hover:bg-emerald-50 group-hover:text-emerald-600">
-                          <Icon className="size-5" strokeWidth={1.5} />
+                        <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-600/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                          <Icon className="size-5" strokeWidth={1.8} />
                         </div>
                         <h3 className="mb-3 font-heading text-xl leading-tight tracking-tight text-slate-900">
                           {reason.title}
