@@ -26,6 +26,7 @@ import { CtaStrip } from "@/components/cta-strip";
 import { FaqList } from "@/components/faq-list";
 import { ImageCarousel } from "@/components/image-carousel";
 import { Reveal } from "@/components/reveal";
+import { AnimatedText } from "@/components/animated-text";
 import { SectionHeading } from "@/components/section-heading";
 import { StructuredData } from "@/components/structured-data";
 import { SwipableRow } from "@/components/swipable-row";
@@ -148,9 +149,18 @@ export default function Home() {
               <p className="text-xs uppercase tracking-[0.28em] text-emerald-700">
                 {siteConfig.tagline}
               </p>
-              <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl tracking-[-0.04em] leading-[1.05] text-slate-950">
-                <span className="block sm:inline">Rooftop sunsets, privacy pods,</span>
-                <span className="text-blue-600"> and the part of Shkodër you actually want to wake up in.</span>
+              <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl tracking-[-0.04em] leading-[1.05] text-slate-950 text-balance">
+                <AnimatedText 
+                  text="Rooftop sunsets, privacy pods," 
+                  className="block sm:inline" 
+                  wordClassName="text-slate-950" 
+                />
+                {" "}
+                <AnimatedText 
+                  text="and the part of Shkodër you actually want to wake up in." 
+                  className="text-blue-600" 
+                  delayOffset={350}
+                />
               </h1>
               <p className="max-w-[58ch] text-lg leading-8 text-slate-600">
                 Scodrinon Hostel is a laidback, social, and safe base on the lively
