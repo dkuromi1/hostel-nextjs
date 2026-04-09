@@ -169,7 +169,7 @@ export default function Home() {
               {/* Large rooftop image */}
               <div className="media-frame relative col-span-2 aspect-[16/13] lg:aspect-auto lg:min-h-[28rem]">
                 <Image
-                  src="/images/rooftop_social.jpg"
+                  src="/images/rooftop_social.webp"
                   alt="Guests enjoying the rooftop at Scodrinon Hostel"
                   fill
                   priority

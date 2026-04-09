@@ -63,7 +63,7 @@ export function buildHostelSchema() {
     image: [
       getSiteUrl("/images/promo_2.png"),
       getSiteUrl("/images/room_18bed2.jpg"),
-      getSiteUrl("/images/rooftop_social.jpg"),
+      getSiteUrl("/images/rooftop_social.webp"),
       getSiteUrl("/images/hiking_1.jpg"),
       getSiteUrl("/images/shkoder_pedestrian_street.jpg"),
     ],

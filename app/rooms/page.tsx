@@ -90,7 +90,7 @@ export default function RoomsPage() {
         <div className="grid gap-4 md:grid-cols-2">
           <div className="media-frame relative min-h-[22rem] md:row-span-2">
             <Image
-              src="/images/rooms_1.jpg"
+              src="/images/rooms_2.jpg"
               alt="Four-bed dorm room at Scodrinon Hostel, Shkoder"
               fill
               className="object-cover"

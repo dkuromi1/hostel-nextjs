@@ -308,7 +308,7 @@ export const galleryItems = [
   {
     id: "socializing-rooftop",
     type: "image",
-    src: "/images/rooftop_social_group.jpeg",
+    src: "/images/rooftop_social.webp",
     alt: "Guests socializing on the rooftop terrace at Scodrinon Hostel",
     className: "md:col-span-5",
     aspect: "aspect-[6/5]",
