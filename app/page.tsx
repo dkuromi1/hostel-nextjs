@@ -247,23 +247,25 @@ export default function Home() {
       </section>
 
       <section className="px-4 pb-8 sm:px-6 lg:px-8">
-        <SwipableRow itemCount={quickFacts.length} className="sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-4">
-          {quickFacts.map((fact, index) => {
-            const Icon = factIcons[index];
-            return (
-              <Reveal key={fact} delay={index * 120} className="min-w-[75vw] snap-center sm:min-w-0">
-                <Panel className="group h-full px-5 py-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md">
-                  <div className="text-sm leading-7 text-slate-700">
-                    <div className="float-left mb-1 mr-4 rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
-                      <Icon className="size-5" strokeWidth={1.8} />
+        <div className="shell-container">
+          <SwipableRow itemCount={quickFacts.length} className="-mx-8 sm:mx-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-4">
+            {quickFacts.map((fact, index) => {
+              const Icon = factIcons[index];
+              return (
+                <Reveal key={fact} delay={index * 120} className="min-w-[75vw] snap-center sm:min-w-0">
+                  <Panel className="group h-full px-5 py-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md">
+                    <div className="text-sm leading-7 text-slate-700">
+                      <div className="float-left mb-1 mr-4 rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                        <Icon className="size-5" strokeWidth={1.8} />
+                      </div>
+                      {fact}
                     </div>
-                    {fact}
-                  </div>
-                </Panel>
-              </Reveal>
-            );
-          })}
-        </SwipableRow>
+                  </Panel>
+                </Reveal>
+              );
+            })}
+          </SwipableRow>
+        </div>
       </section>
 
       {/* Guest Ratings */}
@@ -615,7 +617,7 @@ export default function Home() {
             </div>
           </div>
 
-          <SwipableRow itemCount={eventCards.length} className="sm:grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-2">
+          <SwipableRow itemCount={eventCards.length} className="-mx-8 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-2">
             {eventCards.map((event, index) => (
               <Reveal key={event.title} delay={index * 60} className="min-w-[82vw] snap-center sm:min-w-0">
                 <Panel className="overflow-hidden">
