@@ -54,20 +54,19 @@ import { cn } from "@/lib/utils";
 
 const experiencePillars = [
   {
-    title: "Right in the Center",
-    description:
-      "Step out our front door directly onto Kole Idromeno, Shkodër’s main pedestrian street. From your first morning espresso to late-night drinks, the city's best food, culture, and rhythm are literally at your doorstep.",
-    image: "/images/shkoder_pedestrian_street.jpg",
-    alt: "Pedestrian street scene near Scodrinon Hostel on Kole Idromeno, Shkoder",
-  },
-  {
     title: "Your Adventure Basecamp",
     description:
       "Drop your heavy bags and get out there. We’ll help you sort the logistics for the Theth and Valbona trek, boat trips up the Shala River, and kayaking out on Lake Shkodër.",
     image: "/images/hiking_1.jpg",
     alt: "Hiking and mountain views near Shkoder, Albanian Alps trips from Scodrinon Hostel",
   },
-
+  {
+    title: "Right in the Center",
+    description:
+      "Step out our front door directly onto Kole Idromeno, Shkodër’s main pedestrian street. From your first morning espresso to late-night drinks, the city's best food, culture, and rhythm are literally at your doorstep.",
+    image: "/images/shkoder_pedestrian_street.jpg",
+    alt: "Pedestrian street scene near Scodrinon Hostel on Kole Idromeno, Shkoder",
+  },
 ] as const;
 
 const eventCards = [
@@ -545,7 +544,7 @@ export default function Home() {
         <div className="shell-container space-y-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
-              eyebrow="Experiences"
+              eyebrow="Discover & Connect"
               title="Built for slow rooftop nights and fast adventure planning."
               description="The social side here just happens. Join a walking tour, map out your hiking route with someone who’s just finished it, or simply stay up on the terrace until the city lights switch on."
             />
@@ -579,10 +578,10 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.04),rgba(15,23,42,0.55))]" />
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <p className="text-xs uppercase tracking-[0.28em] text-emerald-100">
+                    <p className="text-sm uppercase tracking-[0.28em] text-emerald-100 [text-shadow:0_2px_10px_rgba(0,0,0,0.9)]">
                       {experiencePillars[0].title}
                     </p>
-                    <p className="mt-3 max-w-lg text-base leading-8 text-slate-100">
+                    <p className="mt-3 max-w-lg text-base leading-8 text-slate-100 [text-shadow:0_2px_10px_rgba(0,0,0,0.9)]">
                       {experiencePillars[0].description}
                     </p>
                   </div>
@@ -591,31 +590,57 @@ export default function Home() {
             </Reveal>
 
             <div className="lg:col-span-7 grid gap-6">
-              {experiencePillars.slice(1).map((pillar, index) => (
-                <Reveal key={pillar.title} delay={index * 100}>
-                  <Panel className="overflow-hidden">
-                    <div className="grid gap-0 md:grid-cols-[0.9fr_1.1fr]">
-                      <div className="relative min-h-[16rem]">
-                        <Image
-                          src={pillar.image}
-                          alt={pillar.alt}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 768px) 100vw, 24vw"
-                        />
-                      </div>
-                      <div className="space-y-3 p-6">
-                        <h3 className="font-heading text-3xl leading-none tracking-[-0.05em] text-slate-950">
-                          {pillar.title}
-                        </h3>
-                        <p className="text-base leading-8 text-slate-600">
-                          {pillar.description}
-                        </p>
-                      </div>
-                    </div>
-                  </Panel>
-                </Reveal>
-              ))}
+              {experiencePillars.slice(1).map((pillar, index) => {
+                const isSecondElement = index === 0;
+                const Icon = reasonIcons[index + 1] || ArrowRight;
+
+                return (
+                  <Reveal key={pillar.title} delay={index * 100}>
+                    <Panel className="overflow-hidden h-full">
+                      {isSecondElement ? (
+                        <div className="relative h-full min-h-[22rem]">
+                          <Image
+                            src={pillar.image}
+                            alt={pillar.alt}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 1024px) 100vw, 35vw"
+                          />
+                          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.04),rgba(15,23,42,0.6))]" />
+                          <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                            <p className="text-sm uppercase tracking-[0.28em] text-emerald-100 [text-shadow:0_2px_10px_rgba(0,0,0,0.9)]">
+                              {pillar.title}
+                            </p>
+                            <p className="mt-3 text-base leading-8 text-slate-100 [text-shadow:0_2px_10px_rgba(0,0,0,0.9)]">
+                              {pillar.description}
+                            </p>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="grid gap-0 md:grid-cols-[0.9fr_1.1fr]">
+                          <div className="relative min-h-[16rem]">
+                            <Image
+                              src={pillar.image}
+                              alt={pillar.alt}
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 768px) 100vw, 24vw"
+                            />
+                          </div>
+                          <div className="space-y-3 p-6">
+                            <h3 className="font-heading text-3xl leading-none tracking-[-0.05em] text-slate-950">
+                              {pillar.title}
+                            </h3>
+                            <p className="text-base leading-8 text-slate-600">
+                              {pillar.description}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                    </Panel>
+                  </Reveal>
+                );
+              })}
             </div>
           </div>
 
@@ -660,9 +685,9 @@ export default function Home() {
                 description="Breakfast, luggage storage, WiFi, and a genuinely usable rooftop make the stay feel generous instead of stripped down."
               />
             </Reveal>
-            
-            <SwipableRow 
-              itemCount={4} 
+
+            <SwipableRow
+              itemCount={4}
               className="-mx-8 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-4"
             >
               <div className="group relative flex min-w-[82vw] snap-center sm:min-w-0 flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
