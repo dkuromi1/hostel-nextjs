@@ -63,7 +63,7 @@ export function TitoTheCat() {
       }
     });
 
-    const finalJumpY = bestTopEdge > 0 ? (bestTopEdge - feetY + 5) : -70;
+    const finalJumpY = bestTopEdge > 0 ? (bestTopEdge - feetY) : -70;
     setJumpY(finalJumpY);
     setState("jumping");
   }, []);

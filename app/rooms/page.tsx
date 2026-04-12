@@ -95,6 +95,7 @@ export default function RoomsPage() {
               fill
               className="object-cover"
               priority
+              fetchPriority="high"
               sizes="(max-width: 768px) 100vw, 40vw"
             />
           </div>
@@ -104,6 +105,8 @@ export default function RoomsPage() {
               alt="18-bed privacy pod dorm at Scodrinon Hostel, Shkoder"
               fill
               className="object-cover"
+              priority
+              fetchPriority="high"
               sizes="(max-width: 768px) 100vw, 25vw"
             />
           </div>
@@ -118,7 +121,7 @@ export default function RoomsPage() {
         </div>
       </PageHero>
 
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-16">
         <div className="shell-container space-y-10">
           <SectionHeading
             eyebrow="Choose Your Setup"
@@ -147,9 +150,9 @@ export default function RoomsPage() {
                       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
 
                       {/* Price Badge - pointer-events-none to prevent blocking dots/arrows */}
-                      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 px-6 py-4">
-                        <Badge className="bg-white/20 text-white shadow-sm backdrop-blur-md">
-                          {room.price} per night
+                      <div className="pointer-events-none absolute left-0 top-0 z-10 p-5 sm:inset-x-0 sm:bottom-0 sm:top-auto sm:px-6 sm:py-4">
+                        <Badge className="bg-white/20 text-white shadow-sm backdrop-blur-md pointer-events-auto">
+                          {room.price}/night
                         </Badge>
                       </div>
                     </div>
@@ -213,7 +216,7 @@ export default function RoomsPage() {
         </div>
       </section>
 
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-16">
         <div className="shell-container grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <Reveal>
             <Panel className="p-6 sm:p-8">
@@ -269,7 +272,7 @@ export default function RoomsPage() {
         </div>
       </section>
 
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-16">
         <div className="shell-container">
           <Reveal>
             <div className="grid gap-6 lg:grid-cols-2">
@@ -301,7 +304,7 @@ export default function RoomsPage() {
         </div>
       </section>
 
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-16">
         <div className="shell-container">
           <CtaStrip
             eyebrow="Book Your Bed"

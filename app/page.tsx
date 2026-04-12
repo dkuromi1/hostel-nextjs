@@ -34,12 +34,16 @@ import { TestimonialCarousel } from "@/components/testimonial-carousel";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
+import { HeroBookingBar } from "@/components/hero-booking-bar";
 import {
   buildFaqSchema,
+
   buildHostelSchema,
   buildMetadata,
 } from "@/lib/metadata";
 import {
+  eventCards,
+  experiencePillars,
   extendReasons,
   faqItems,
   fourBedDormImages,
@@ -48,71 +52,17 @@ import {
   quickFacts,
   roomTypes,
   siteConfig,
+  testimonials,
 } from "@/lib/site-data";
-import { testimonials } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
-const experiencePillars = [
-  {
-    title: "Your Adventure Basecamp",
-    description:
-      "Drop your heavy bags and get out there. We’ll help you sort the logistics for the Theth and Valbona trek, boat trips up the Shala River, and kayaking out on Lake Shkodër.",
-    image: "/images/hiking_1.jpg",
-    alt: "Hiking and mountain views near Shkoder, Albanian Alps trips from Scodrinon Hostel",
-  },
-  {
-    title: "Right in the Center",
-    description:
-      "Step out our front door directly onto Kole Idromeno, Shkodër’s main pedestrian street. From your first morning espresso to late-night drinks, the city's best food, culture, and rhythm are literally at your doorstep.",
-    image: "/images/shkoder_pedestrian_street.jpg",
-    alt: "Pedestrian street scene near Scodrinon Hostel on Kole Idromeno, Shkoder",
-  },
-] as const;
-
-const eventCards = [
-  {
-    title: "River Days at the Drin",
-    description:
-      "We head out to the river regularly for swimming and sun. These trips are a hostel favorite — a chance to see a different side of Shkoder and spend the afternoon with a great crew.",
-    image: "/images/drin_swimming_trip.jpeg",
-    alt: "Guests enjoying an evening event at Scodrinon Hostel",
-  },
-  {
-    title: "Spontaneous Socials",
-    description:
-      "Whether it’s rooftop raki or a local food crawl, we prioritize warm, unscripted moments that make it easy for solo travelers to join. It’s social, but never forced.",
-    image: "/images/local_food_night.jpeg",
-    alt: "Traditional food event at Scodrinon Hostel",
-  },
-  {
-    title: "Explore the Bicycle Capital",
-    description:
-      "Shkodër runs on two wheels. Grab a rental and explore the city's flat streets, lake paths, and cafes exactly how the locals do.",
-    image: "/images/biking_in_shkodra.jpeg",
-    alt: "Bike tour event from Scodrinon Hostel",
-  },
-  {
-    title: "Rooftop Magic",
-    description:
-      "The rooftop is the social heart of the hostel: mountain light at sunset, city views after dark, and a pace that feels relaxed from the first drink to the last chat.",
-    image: "/images/rooftop_social_4_flare.jpg",
-    alt: "Guests relaxing on the Scodrinon Hostel rooftop at sunset",
-  },
-  // {
-  //   title: "Walking Tours",
-  //   description:
-  //     "A relaxed way to understand the city's architecture, stories, and hidden corners beyond the obvious stops.",
-  //   image: "/images/event_walking_tour.png",
-  //   alt: "Walking tour event from Scodrinon Hostel",
-  // },
-] as const;
 
 export const metadata = buildMetadata({
   title: "Hostel In Shkoder With Privacy Pods And Rooftop Views",
   description:
     "Book Scodrinon Hostel direct on WhatsApp for privacy pods, rooftop sunsets, breakfast, and a safe social vibe in the center of Shkoder.",
   path: "/",
-  image: "/images/promo_2.png",
+  image: "/logo.png",
 });
 
 const factIcons = [BedDouble, Luggage, Croissant, Bike];
@@ -141,136 +91,219 @@ export default function Home() {
   return (
     <>
       <StructuredData data={[buildHostelSchema(), buildFaqSchema()]} />
-      <section className="relative overflow-hidden px-4 pb-12 pt-14 sm:px-6 lg:px-8">
-        <div className="pointer-events-none absolute inset-0 soft-grid opacity-40" />
-        <div className="shell-container relative grid gap-12 lg:grid-cols-12 lg:items-center">
-          {/* Left content column */}
-          <Reveal className="lg:col-span-7 space-y-8">
-            <div className="space-y-5">
-              <p className="text-xs uppercase tracking-[0.28em] text-emerald-700">
-                {siteConfig.tagline}
-              </p>
-              <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl tracking-[-0.04em] leading-[1.05] text-slate-950 text-balance">
-                <AnimatedText
-                  text="Rooftop sunsets, privacy pods,"
-                  className="block sm:inline"
-                  wordClassName="text-slate-950"
-                />
-                {" "}
-                <AnimatedText
-                  text="and the part of Shkodër you actually want to wake up in."
-                  className="text-blue-600"
-                  delayOffset={350}
-                />
-              </h1>
-              <p className="max-w-[58ch] text-lg leading-8 text-slate-600">
-                Scodrinon Hostel is a laidback, social, and safe base on the lively
-                Kole Idromeno pedestrian street. Come for a couple of nights, settle into
-                the rooftop, and use the city as your launch point for the
-                Albanian Alps, Lake Shkoder, and Europe&apos;s &apos;Last Frontier&apos;.
-              </p>
+
+      {/* Immersive Hero Banner */}
+      <section className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden pb-12 pt-24 sm:pb-20 sm:pt-32">
+        {/* Background Image with Overlays */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/hiking_2.jpg"
+            alt="Hiking in the Accursed Mountains near Shkoder"
+            fill
+            priority
+            fetchPriority="high"
+            className="object-cover"
+            style={{ objectPosition: "60% center" }}
+            sizes="100vw"
+          />
+          {/* Using absolute Z-indexing and an explicit CSS gradient string bypassing Tailwind stop opacity bugs known in Vercel+Tailwind v4 deployments */}
+          <div className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(to_bottom,rgba(2,6,23,0.82)_0%,rgba(2,6,23,0.45)_50%,rgba(2,6,23,0.92)_100%)]" />
+          <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(circle_at_30%_30%,rgba(16,185,129,0.1),transparent_50%)]" />
+        </div>
+
+        <div className="shell-container relative z-10 w-full">
+          <div className="max-w-4xl space-y-8 sm:space-y-10">
+            <div className="flex flex-col items-start gap-6">
+              <div className="flex flex-col gap-5">
+                <p className="text-xs font-medium uppercase tracking-[0.28em] text-emerald-400">
+                  {siteConfig.tagline}
+                </p>
+                <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl tracking-[-0.05em] leading-[0.95] text-white">
+                  <AnimatedText
+                    text="Rooftop sunsets, privacy pods,"
+                    className="block"
+                    wordClassName="text-white"
+                    delayOffset={0}
+                  />
+                  {" "}
+                  <AnimatedText
+                    text="and the part of Shkodër you actually want to wake up in."
+                    className="text-emerald-400"
+                    delayOffset={200}
+                  />
+                </h1>
+                <p className="max-w-[50ch] text-lg leading-relaxed text-slate-300 antialiased [text-shadow:0_1px_4px_rgba(0,0,0,0.4)] sm:text-xl lg:text-2xl">
+                  Scodrinon Hostel is a laidback, social, and safe base on the lively
+                  Kole Idromeno pedestrian street. Settle into the rooftop, and use
+                  Shkodër as your launch point for the Theth-Valbona trek, Lake Shkodër,
+                  and Europe&apos;s &apos;Last Frontier&apos;.
+                </p>
+              </div>
             </div>
 
-            <BookingActions />
-          </Reveal>
+            <div className="w-full pt-4">
+              <SwipableRow
+                itemCount={quickFacts.length}
+                className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
+              >
+                {quickFacts.map((fact, index) => {
+                  const Icon = factIcons[index];
+                  return (
+                    <div key={fact} className="min-w-[85%] snap-center sm:min-w-0">
+                      <div className="group relative overflow-hidden rounded-[24px] border border-white/10 bg-white/5 p-5 backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:border-white/20">
+                        <div className="text-sm leading-7 text-white/90">
+                          <div className="float-left mb-1 mr-4 flex size-10 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-400">
+                            <Icon className="size-5" strokeWidth={2} />
+                          </div>
+                          {fact}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+                {/* Trailing Spacer for mobile snapping */}
+                <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
+              </SwipableRow>
+            </div>
 
-          {/* Right visual column - much cleaner mobile stacking */}
-          <Reveal delay={80} className="lg:col-span-5">
-            <div className="grid grid-cols-2 gap-4 lg:gap-5">
-              {/* Large rooftop image */}
-              <div className="media-frame relative col-span-2 aspect-[16/13] lg:aspect-auto lg:min-h-[28rem]">
+            {/* 
+              FUTURE EDITORS: Do not remove the HeroBookingBar component code. 
+              It is currently commented out but should remain available for future use.
+            */}
+            {/* <Reveal delay={200}>
+              <HeroBookingBar />
+            </Reveal> */}
+          </div>
+        </div>
+      </section>
+
+
+      {/* Repurposed Media Section - "The Atmosphere" */}
+      <section className="py-8 sm:py-16">
+        <div className="shell-container">
+          <Reveal delay={80}>
+            {/* Desktop: 2-col [3fr_1fr], 2-row grid with explicit placement
+                Row 1: [Rooftop Socials] [Room image]
+                Row 2: [Direct Booking] [Video (portrait)]
+                Mobile: flex-col — Rooftop, then [Room+Booking | Video] */}
+            <div className="flex flex-col gap-4 lg:grid lg:grid-cols-[2fr_1fr] lg:grid-rows-[1fr_auto] lg:gap-5">
+
+              {/* DESKTOP ONLY: Direct Booking card — row 2, col 1 */}
+              <div className="hidden lg:flex lg:row-start-2 lg:items-center lg:justify-between glass-panel rounded-[28px] p-6 gap-6">
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-700">
+                    Direct Booking
+                  </p>
+                  <p className="mt-2 font-heading text-2xl leading-tight tracking-tight text-slate-950">
+                    Message the hostel and book direct
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                    WhatsApp is the most direct way to confirm dates, room type, arrival time, and any trip planning.
+                  </p>
+                </div>
+                <a
+                  href={siteConfig.whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={cn(
+                    buttonVariants({ size: "lg" }),
+                    "shrink-0 rounded-full bg-emerald-700 px-7 font-semibold text-white transition-all duration-300 hover:bg-emerald-800 active:scale-95"
+                  )}
+                >
+                  Book on WhatsApp
+                </a>
+              </div>
+
+              {/* Rooftop image — full width mobile (first visible), row 1 col 1 on desktop */}
+              <div className="media-frame relative aspect-[16/10] sm:aspect-[21/9] lg:row-start-1 lg:aspect-auto lg:min-h-[22rem]">
                 <Image
                   src="/images/rooftop_social.webp"
                   alt="Guests enjoying the rooftop at Scodrinon Hostel"
                   fill
-                  priority
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 66vw, 924px"
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.08),rgba(15,23,42,0.42))]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <p className="text-xs uppercase tracking-[0.28em] text-emerald-100">
-                    Rooftop Evenings
+                  <p className="text-xs uppercase tracking-[0.28em] text-emerald-400">
+                    Rooftop Socials
                   </p>
-                  <p className="mt-2 max-w-xs font-heading text-2xl leading-none tracking-[-0.05em]">
-                    The social center of the hostel, without the party-hostel
-                    chaos.
+                  <p className="mt-2 max-w-sm font-heading text-2xl leading-tight tracking-tight">
+                    The social center of the hostel, without the party-hostel chaos.
                   </p>
                 </div>
               </div>
 
-              {/* Video */}
-              <div className="media-frame relative aspect-[9/16]">
-                <video
-                  className="h-full w-full object-cover"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="auto"
-                  poster="/images/video-poster.webp"
-                  aria-label="Short video showing the atmosphere at Scodrinon Hostel"
-                >
-                  <source src="/videos/videoplayback.mp4" type="video/mp4" />
-                </video>
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.02),rgba(15,23,42,0.34))]" />
+              {/* Right column — row-span-2 col-2 on desktop; second on mobile */}
+              <div className="flex flex-col gap-4 lg:col-start-2 lg:row-start-1 lg:row-span-2">
+
+                {/* 2-col on mobile: [Room+Booking | Video]; 1-col stacked on desktop: Room then Video */}
+                <div className="grid grid-cols-[3fr_2fr] gap-4 lg:grid-cols-1 lg:h-full">
+
+                  {/* Room image + mobile booking (left on mobile, top on desktop) */}
+                  <div className="flex min-w-0 flex-col gap-4">
+                    <div className="media-frame relative aspect-[4/3]">
+                      <Image
+                        src="/images/rooms_1.jpg"
+                        alt="Privacy pod dorm room at Scodrinon Hostel"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 60vw, (max-width: 1400px) 33vw, 466px"
+                      />
+                    </div>
+
+                    {/* Mobile-only booking card */}
+                    <div className="glass-panel rounded-[28px] p-5 lg:hidden">
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-700">
+                        Direct Booking
+                      </p>
+                      <p className="mt-2 font-heading text-lg leading-tight tracking-tight text-slate-950">
+                        <span className="sm:hidden">Message us to book direct</span>
+                        <span className="hidden sm:inline">Message the hostel and book direct</span>
+                      </p>
+                      <p className="mt-2 text-xs leading-relaxed text-slate-600">
+                        <span className="sm:hidden">Just send us the dates, room type, arrival time, and any trip planning.</span>
+                        <span className="hidden sm:inline">WhatsApp is the most direct way to confirm dates, room type, arrival time, and any trip planning.</span>
+                      </p>
+                      <a
+                        href={siteConfig.whatsappUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={cn(
+                          buttonVariants({ size: "sm" }),
+                          "mt-4 w-full rounded-full bg-emerald-700 font-semibold text-white transition-all duration-300 hover:bg-emerald-800 active:scale-95"
+                        )}
+                      >
+                        Book on WhatsApp
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Video (right on mobile, bottom on desktop — keeps portrait aspect) */}
+                  <div className="media-frame relative aspect-[9/16]">
+                    <video
+                      className="h-full w-full object-cover"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="auto"
+                      poster="/images/video-poster.webp"
+                    >
+                      <source src="/videos/videoplayback.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </div>
               </div>
 
-              {/* Small image + direct booking card */}
-              <div className="flex flex-col gap-4">
-                <div className="media-frame relative aspect-[4/3] flex-2 [min-h-[13rem]]">
-                  <Image
-                    src="/images/rooms_1.jpg"
-                    alt="Privacy pod dorm room at Scodrinon Hostel"
-                    fill
-                    priority
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 50vw, 22vw"
-                  />
-                </div>
-
-                <div className="glass-panel flex-1 rounded-[28px] p-5">
-                  <p className="text-xs uppercase tracking-[0.24em] text-amber-700">
-                    Direct Booking
-                  </p>
-                  <p className="mt-3 font-heading text-2xl leading-none tracking-[-0.04em] text-slate-950">
-                    Message the hostel and book direct
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">
-                    WhatsApp is the most direct way to confirm dates, room type,
-                    arrival time, and any trip planning.
-                  </p>
-                </div>
-              </div>
             </div>
           </Reveal>
         </div>
       </section>
 
-      <section className="px-4 pb-8 sm:px-6 lg:px-8">
-        <div className="shell-container">
-          <SwipableRow itemCount={quickFacts.length} className="-mx-8 sm:mx-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-4">
-            {quickFacts.map((fact, index) => {
-              const Icon = factIcons[index];
-              return (
-                <Reveal key={fact} delay={index * 120} className="min-w-[75vw] snap-center sm:min-w-0">
-                  <Panel className="group h-full px-5 py-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md">
-                    <div className="text-sm leading-7 text-slate-700">
-                      <div className="float-left mb-1 mr-4 rounded-2xl bg-emerald-600/10 p-3 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
-                        <Icon className="size-5" strokeWidth={1.8} />
-                      </div>
-                      {fact}
-                    </div>
-                  </Panel>
-                </Reveal>
-              );
-            })}
-          </SwipableRow>
-        </div>
-      </section>
 
       {/* Guest Ratings */}
-      <section className="px-4 pb-12 sm:px-6 lg:px-8">
+      <section className="pb-8 sm:pb-16">
         <div className="shell-container">
           <div className="glass-panel rounded-[28px] p-4 sm:p-5">
             <div className="flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-slate-500">
@@ -305,11 +338,11 @@ export default function Home() {
                         2025 Traveller Review Award
                       </p>
                     </div>
-                    <div className="shrink-0 rounded-tr-sm rounded-tl-sm rounded-br-sm rounded-bl-none bg-blue-600 px-3 py-1 text-center font-semibold text-white shadow-sm">
+                    <div className="shrink-0 rounded-tr-sm rounded-tl-sm rounded-br-sm rounded-bl-none bg-blue-700 px-3 py-1 text-center font-semibold text-white shadow-sm">
                       <p className="font-heading text-xl leading-none tracking-tight">
                         9.5
                       </p>
-                      <p className="text-[8px] uppercase tracking-wider text-blue-100">
+                      <p className="text-[8px] uppercase tracking-wider text-blue-50">
                         out of 10
                       </p>
                     </div>
@@ -352,6 +385,7 @@ export default function Home() {
                         alt="9.9 score on Hostelworld"
                         fill
                         className="object-contain"
+                        sizes="100px"
                       />
                     </div>
                   </div>
@@ -368,7 +402,7 @@ export default function Home() {
 
 
       {/* Rooms */}
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-16">
         <div className="shell-container space-y-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
@@ -404,9 +438,9 @@ export default function Home() {
                       autoPlayInterval={0}
                     />
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 px-6 py-4">
-                      <Badge className="bg-white/20 text-white backdrop-blur-md">
-                        {room.price} per night
+                    <div className="pointer-events-none absolute left-0 top-0 p-5 sm:inset-x-0 sm:bottom-0 sm:top-auto sm:px-6 sm:py-4 z-10">
+                      <Badge className="bg-white/20 text-white shadow-sm backdrop-blur-md pointer-events-auto">
+                        {room.price}/night
                       </Badge>
                     </div>
                   </div>
@@ -468,13 +502,13 @@ export default function Home() {
       </section>
 
       {/* Gallery */}
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-16">
         <div className="shell-container space-y-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
               eyebrow="Gallery"
-              title="A better feel for the place than a stock-photo promise."
-              description="Every photo and video on the site comes from the real hostel. The look stays bright, relaxed, and honest because that is what guests actually walk into."
+              title="A real feel for the place before you arrive."
+              description="Every photo and video is from the hostel itself—so what you see here is exactly what you’ll walk into: bright, relaxed, and honest."
             />
             <Link
               href="/gallery"
@@ -493,22 +527,17 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-12">
-            {galleryItems.slice(0, 12).map((item, index) => (
-              <Reveal
-                key={`${item.src}-${index}`}
-                delay={index * 70}
-                className={cn("col-span-1", item.className)}
-              >
-                {/* 1. Wrap the content in a Link pointing to the gallery ID */}
-                {/* 2. Use scroll={false} to prevent the page from jumping when the modal opens */}
+          <div className="flow-root">
+            <div className="columns-2 gap-4 md:columns-3">
+              {galleryItems.slice(0, 12).map((item, index) => (
                 <Link
+                  key={`${item.src}-${index}`}
                   href={`/gallery/${item.id}`}
                   scroll={false}
-                  className="group block h-full w-full"
+                  className="group pb-4 inline-block w-full align-top cursor-zoom-in break-inside-avoid"
                 >
                   <div className={cn(
-                    "media-frame relative cursor-zoom-in overflow-hidden",
+                    "media-frame relative overflow-hidden",
                     item.aspect
                   )}>
                     {item.type === "image" ? (
@@ -516,8 +545,8 @@ export default function Home() {
                         src={item.src}
                         alt={item.alt}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 768px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-500 will-change-transform group-hover:scale-105"
+                        sizes="(max-width: 768px) 50vw, (max-width: 1400px) 33vw, 466px"
                       />
                     ) : (
                       <video
@@ -534,17 +563,17 @@ export default function Home() {
                     <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
                   </div>
                 </Link>
-              </Reveal>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
       {/* Experiences */}
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-16">
         <div className="shell-container space-y-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
-              eyebrow="Discover & Connect"
+              eyebrow="Discover & Connect at Scodrinon Hostel"
               title="Built for slow rooftop nights and fast adventure planning."
               description="The social side here just happens. Join a walking tour, map out your hiking route with someone who’s just finished it, or simply stay up on the terrace until the city lights switch on."
             />
@@ -574,7 +603,7 @@ export default function Home() {
                     alt={experiencePillars[0].alt}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 55vw"
+                    sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 42vw, 588px"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.04),rgba(15,23,42,0.55))]" />
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
@@ -604,7 +633,7 @@ export default function Home() {
                             alt={pillar.alt}
                             fill
                             className="object-cover"
-                            sizes="(max-width: 1024px) 100vw, 35vw"
+                            sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 58vw, 812px"
                           />
                           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.04),rgba(15,23,42,0.6))]" />
                           <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
@@ -624,7 +653,7 @@ export default function Home() {
                               alt={pillar.alt}
                               fill
                               className="object-cover"
-                              sizes="(max-width: 768px) 100vw, 24vw"
+                              sizes="(max-width: 768px) 100vw, (max-width: 1400px) 26vw, 364px"
                             />
                           </div>
                           <div className="space-y-3 p-6">
@@ -655,7 +684,7 @@ export default function Home() {
                         alt={event.alt}
                         fill
                         className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 24vw"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1400px) 23vw, 322px"
                       />
                     </div>
                     <div className="p-5">
@@ -674,13 +703,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-16">
         <div className="shell-container flex flex-col gap-10 lg:flex-row lg:items-stretch">
           {/* Left Column: Standard Content */}
           <div className="flex-1 space-y-8 lg:max-w-[60%]">
             <Reveal>
               <SectionHeading
-                eyebrow="The Scodrinon Standard"
+                eyebrow="Simply Scodrinon"
                 title="The basics are not treated like extras."
                 description="Breakfast, luggage storage, WiFi, and a genuinely usable rooftop make the stay feel generous instead of stripped down."
               />
@@ -692,7 +721,7 @@ export default function Home() {
             >
               <div className="group relative flex min-w-[82vw] snap-center sm:min-w-0 flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
                 <div>
-                  <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-600/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                  <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
                     <ShieldCheck className="size-5" strokeWidth={1.8} />
                   </div>
                   <h3 className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
@@ -706,7 +735,7 @@ export default function Home() {
               </div>
               <div className="group relative flex min-w-[82vw] snap-center sm:min-w-0 flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
                 <div>
-                  <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-600/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                  <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
                     <Wifi className="size-5" strokeWidth={1.8} />
                   </div>
                   <h3 className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
@@ -720,7 +749,7 @@ export default function Home() {
               </div>
               <div className="group relative flex min-w-[82vw] snap-center sm:min-w-0 flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
                 <div>
-                  <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-600/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                  <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
                     <MapPinned className="size-5" strokeWidth={1.8} />
                   </div>
                   <h3 className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
@@ -734,7 +763,7 @@ export default function Home() {
               </div>
               <div className="group relative flex min-w-[82vw] snap-center sm:min-w-0 flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
                 <div>
-                  <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-600/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                  <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
                     <Mountain className="size-5" strokeWidth={1.8} />
                   </div>
                   <h3 className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
@@ -769,7 +798,7 @@ export default function Home() {
           </Reveal>
           <div className="media-frame relative min-h-[20rem] overflow-hidden rounded-3xl shadow-2xl shadow-slate-200/50">
             <Image
-              src="/images/rooftop_social2.png"
+              src="/images/rooftop_social2.jpg"
               alt="Travelers relaxing on the rooftop of Scodrinon Hostel"
               fill
               className="object-cover"
@@ -787,7 +816,7 @@ export default function Home() {
                   className="group relative flex min-w-[82vw] snap-center flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
                 >
                   <div>
-                    <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-600/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                    <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
                       <Icon className="size-5" strokeWidth={1.8} />
                     </div>
                     <h3 className="mb-3 font-heading text-xl leading-tight tracking-tight text-slate-900">
@@ -814,11 +843,11 @@ export default function Home() {
               />
               <div className="media-frame relative min-h-[32rem] overflow-hidden rounded-3xl shadow-2xl shadow-slate-200/50">
                 <Image
-                  src="/images/rooftop_social2.png"
+                  src="/images/rooftop_social2.jpg"
                   alt="Travelers relaxing on the rooftop of Scodrinon Hostel"
                   fill
                   className="object-cover transition-transform duration-1000 hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 42vw, 588px"
                 />
               </div>
             </Reveal>
@@ -829,7 +858,7 @@ export default function Home() {
                   <Reveal key={reason.title} delay={index * 100}>
                     <Panel className="group relative flex h-full flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md">
                       <div>
-                        <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-600/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-600/20">
+                        <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
                           <Icon className="size-5" strokeWidth={1.8} />
                         </div>
                         <h3 className="mb-3 font-heading text-xl leading-tight tracking-tight text-slate-900">
@@ -850,7 +879,7 @@ export default function Home() {
 
 
       {/* Final CTA */}
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-16">
         <div className="shell-container">
           <CtaStrip
             eyebrow="Direct Booking First"

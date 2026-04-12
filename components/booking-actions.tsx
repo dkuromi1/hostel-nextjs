@@ -1,4 +1,4 @@
-import { ArrowUpRight, MessageCircleMore } from "lucide-react";
+import { MessageCircleMore } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -29,7 +29,7 @@ export function BookingActions({
         rel="noreferrer"
         className={cn(
           buttonVariants({ size: compact ? "sm" : "lg" }),
-          "h-auto min-h-12 rounded-full bg-emerald-600 px-5 py-3 text-sm text-white shadow-[0_18px_40px_-24px_rgba(5,150,105,0.8)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-emerald-700"
+          "h-auto min-h-12 rounded-full bg-emerald-700 px-5 py-3 text-sm text-white shadow-[0_18px_40px_-24px_rgba(5,150,105,0.8)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-emerald-800"
         )}
       >
         <MessageCircleMore className="size-4" strokeWidth={1.8} />
@@ -47,7 +47,6 @@ export function BookingActions({
             )}
           >
             <span className="truncate">Booking.com</span>
-            <ArrowUpRight className="size-4 shrink-0" strokeWidth={1.8} />
           </a>
           <a
             href={siteConfig.hostelworldUrl}
@@ -59,7 +58,6 @@ export function BookingActions({
             )}
           >
             <span className="truncate">Hostelworld</span>
-            <ArrowUpRight className="size-4 shrink-0" strokeWidth={1.8} />
           </a>
         </div>
       )}

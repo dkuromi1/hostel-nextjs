@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 
 import { SiteFooter } from "@/components/site-footer";
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: getSiteUrl("/images/promo_2.png"),
+        url: getSiteUrl("/images/promo_2.jpg"),
         alt: siteConfig.name,
       },
     ],
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${siteConfig.name} | Shkoder, Albania`,
     description: siteConfig.description,
-    images: [getSiteUrl("/images/promo_2.png")],
+    images: [getSiteUrl("/images/promo_2.jpg")],
   },
   icons: {
     icon: "/favicon.ico",
@@ -50,6 +50,16 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
 };
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+};
+
+
+import Script from "next/script";
 
 export default function RootLayout({
   children,
@@ -60,10 +70,32 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://wa.me" />
+        <link rel="preconnect" href="https://www.booking.com" />
+        <link rel="preconnect" href="https://www.hostelworld.com" />
+        <link rel="preconnect" href="https://www.instagram.com" />
+        <link rel="dns-prefetch" href="https://wa.me" />
+        <link rel="dns-prefetch" href="https://www.booking.com" />
+      </head>
       <body className="min-h-full bg-background font-sans text-foreground antialiased">
+        <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js" strategy="beforeInteractive" />
+        <Script id="netlify-identity-init" strategy="afterInteractive">
+          {`
+            if (window.netlifyIdentity) {
+              window.netlifyIdentity.on("init", (user) => {
+                if (!user) {
+                  window.netlifyIdentity.on("login", () => {
+                    document.location.href = "/admin/";
+                  });
+                }
+              });
+            }
+          `}
+        </Script>
         <div className="relative flex min-h-screen flex-col overflow-x-clip">
           <SiteHeader />
-          <main className="flex-1 pb-24 lg:pb-0">{children}</main>
+          <main className="flex-1 pb-[calc(6rem+env(safe-area-inset-bottom,0px))] lg:pb-0">{children}</main>
           {modal}
           <SiteFooter />
           <StickyBookingBar />

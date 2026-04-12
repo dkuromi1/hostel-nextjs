@@ -1,6 +1,5 @@
 import Image from "next/image";
 import {
-  ArrowUpRight,
   CheckCircle2,
   ChevronDown,
   Clock,
@@ -90,7 +89,7 @@ export default function ContactPage() {
         </div>
       </PageHero>
 
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-16">
         <div className="shell-container grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
           <Reveal>
             <Panel className="p-6 sm:p-8 h-full">
@@ -164,7 +163,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-16">
         <div className="shell-container grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
           <Reveal>
             <Panel className="p-6 sm:p-8 h-full">
@@ -217,13 +216,13 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-16">
         <div className="shell-container">
           <CtaStrip
             eyebrow="Ready to visit?"
             title="Got your dates? Let's get you booked."
             description="Drop us a message on WhatsApp and we'll confirm your bed right away. We can't wait to welcome you to Shkoder."
-            image="/images/promo_2.png"
+            image="/images/promo_2.jpg"
             alt="Promotional image for Scodrinon Hostel"
             imageClassName="object-[50%_20%]"
           />

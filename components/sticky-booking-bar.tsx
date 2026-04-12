@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/site-data";
 
 export function StickyBookingBar() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-white/80 bg-white/92 px-4 py-3 shadow-[0_-20px_40px_-30px_rgba(15,23,42,0.45)] backdrop-blur lg:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-white/80 bg-white/92 px-4 pt-[6px] pb-[calc(6px+env(safe-area-inset-bottom,0px))] shadow-[0_-20px_40px_-30px_rgba(15,23,42,0.45)] backdrop-blur lg:hidden">
       <div className="mx-auto flex max-w-[1400px] items-center gap-2">
         <a
           href={siteConfig.whatsappUrl}
@@ -15,7 +15,7 @@ export function StickyBookingBar() {
           rel="noreferrer"
           className={cn(
             buttonVariants({ size: "sm" }),
-            "flex h-9 min-w-0 flex-1 items-center justify-center gap-2 rounded-full bg-emerald-600 px-3 font-semibold text-white transition hover:bg-emerald-700"
+            "flex h-9 min-w-0 flex-1 items-center justify-center gap-2 rounded-full bg-emerald-700 px-3 font-semibold text-white transition hover:bg-emerald-800"
           )}
         >
           <MessageCircleMore className="size-4 shrink-0" strokeWidth={1.8} />

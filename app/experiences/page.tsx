@@ -28,7 +28,7 @@ export const metadata = buildMetadata({
   description:
     "See how Scodrinon Hostel works as a social rooftop hangout and a launch point for Theth, Valbona, Lake Shkoder, river trips, and city culture.",
   path: "/experiences",
-  image: "/images/rooftop_social2.png",
+  image: "/images/rooftop_social2.jpg",
 });
 
 const icons = [Waves, Bike, UtensilsCrossed];
@@ -47,7 +47,7 @@ export default function ExperiencesPage() {
       />
 
       {/* The Northbound Launchpad */}
-      <section className="px-4 py-20 sm:px-6 lg:px-8 bg-white">
+      <section className="py-8 sm:py-16">
         <div className="shell-container grid gap-12 lg:grid-cols-12 lg:items-center">
 
           {/* Left Side: Editorial Context & Logistics */}
@@ -82,7 +82,7 @@ export default function ExperiencesPage() {
                   className="group flex items-start gap-5 transition-all duration-300 hover:translate-x-2"
                 >
                   {/* Interactive Icon Box */}
-                  <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 transition-all duration-300 group-hover:bg-emerald-600 group-hover:text-white group-hover:shadow-lg group-hover:shadow-emerald-600/20">
+                  <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 transition-all duration-300 group-hover:bg-emerald-700 group-hover:text-white group-hover:shadow-lg group-hover:shadow-emerald-600/20">
                     <item.icon className="size-5" strokeWidth={1.5} />
                   </div>
                   <div>
@@ -108,6 +108,8 @@ export default function ExperiencesPage() {
                   src="/images/hiking_3.jpg"
                   alt="Hiking the Albanian Alps from Shkoder"
                   fill
+                  priority
+                  fetchPriority="high"
                   className="object-cover object-[30%_center] transition-transform duration-1000 hover:scale-105"
                   sizes="(max-width: 1024px) 50vw, 30vw"
                 />
@@ -145,7 +147,7 @@ export default function ExperiencesPage() {
       </section>
 
       {/* Local Texture Section */}
-      <section className="px-4 py-20 sm:px-6 lg:px-8 bg-slate-50/50">
+      <section className="py-8 sm:py-16">
         <div className="shell-container space-y-12">
 
           {/* Section Header */}
@@ -178,7 +180,7 @@ export default function ExperiencesPage() {
                 description: "Shkodër is best explored on two wheels. Grab an on-site rental and navigate the flat streets, historic center, and scenic lake paths exactly how the locals do.",
                 icon: Bike,
                 image: "/images/biking_in_shkodra.jpeg",
-                focus: "50% 30%",
+                focus: "50% 40%",
               },
             ].map((item, index) => (
               <Reveal key={item.title} delay={index * 100} className="h-full">
@@ -221,7 +223,7 @@ export default function ExperiencesPage() {
         </div>
       </section>
 
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-16">
         <div className="shell-container grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <Reveal className="space-y-8">
             <SectionHeading
@@ -272,7 +274,7 @@ export default function ExperiencesPage() {
         </div>
       </section>
 
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-16">
         <div className="shell-container">
           <CtaStrip
             eyebrow="Plan The Stay"

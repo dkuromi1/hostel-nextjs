@@ -42,15 +42,17 @@ export default function PhotoModal({
                         src={item.src}
                         autoPlay
                         controls
-                        className="block max-h-[85vh] max-w-[95vw] object-contain"
+                        className="block h-[85vh] w-auto max-w-[95vw] object-contain"
                     />
                 ) : (
-                    /* Using standard img here so intrinsic size dictates the w-fit Panel properly,
-                       avoiding the srcset-collapse issue with Next/Image and w-auto. */
-                    <img
+                    <Image
                         src={item.src}
                         alt={item.alt}
-                        className="block max-h-[85vh] max-w-[95vw] object-contain"
+                        width={1200}
+                        height={800}
+                        priority
+                        className="block h-[85vh] w-auto max-w-[95vw] object-contain"
+                        sizes="(max-height: 85vh) 95vw, 1200px"
                     />
                 )}
 

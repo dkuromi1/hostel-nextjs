@@ -57,6 +57,7 @@ export function Reveal({
       style={{ transitionDelay: isMobile ? "0ms" : `${delay}ms` }}
       className={cn(
         "transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transform-none motion-reduce:opacity-100",
+        "max-sm:translate-y-0 max-sm:opacity-100 max-sm:transition-none",
         (isVisible || isMobile) ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0",
         className
       )}

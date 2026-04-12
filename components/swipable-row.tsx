@@ -17,47 +17,91 @@ export function SwipableRow({
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // Update active dot as user swipes
   useEffect(() => {
     const scrollNode = scrollRef.current;
     if (!scrollNode) return;
 
     const handleScroll = () => {
       const { scrollLeft, clientWidth } = scrollNode;
-      // Calculate index based on 640px logic
-      const index = Math.round(scrollLeft / (clientWidth * 0.8)); // Adjust for peek
-      const safeIndex = Math.max(0, Math.min(index, itemCount - 1));
-      if (safeIndex !== activeIndex) {
-        setActiveIndex(safeIndex);
-      }
+      const kids = Array.from(scrollNode.children) as HTMLElement[];
+      if (kids.length === 0) return;
+
+      const containerCenter = scrollLeft + clientWidth / 2;
+      let closestIndex = 0;
+      let minDistance = Infinity;
+
+      kids.forEach((child, i) => {
+        const childCenter = child.offsetLeft + child.clientWidth / 2;
+        const distance = Math.abs(containerCenter - childCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIndex = i;
+        }
+      });
+
+      const safeIndex = Math.min(closestIndex, itemCount - 1);
+      setActiveIndex(safeIndex);
     };
 
     scrollNode.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => scrollNode.removeEventListener("scroll", handleScroll);
-  }, [activeIndex, itemCount]);
+  }, [itemCount]); // intentionally omit activeIndex to avoid re-subscribing
+
+  // Click a dot → scroll the container to centre that child
+  const goToItem = (index: number) => {
+    setActiveIndex(index);
+    const scrollNode = scrollRef.current;
+    if (!scrollNode) return;
+    
+    const kids = Array.from(scrollNode.children) as HTMLElement[];
+    const child = kids[index];
+    if (!child) return;
+    
+    // Disable CSS snap temporarily (Safari/iOS bug fix for smooth scroll)
+    const originalSnap = scrollNode.style.scrollSnapType;
+    scrollNode.style.scrollSnapType = 'none';
+
+    const targetLeft =
+      child.offsetLeft - (scrollNode.clientWidth - child.offsetWidth) / 2;
+      
+    scrollNode.scrollTo({ left: targetLeft, behavior: "smooth" });
+    
+    // Restore snap after approx smooth scroll duration
+    setTimeout(() => {
+      if (scrollRef.current) {
+        scrollRef.current.style.scrollSnapType = originalSnap || '';
+      }
+    }, 600);
+  };
 
   return (
     <div className="space-y-6">
       <div
         ref={scrollRef}
         className={cn(
-          "flex gap-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-4 sm:grid sm:overflow-visible sm:pb-0",
+          "relative flex gap-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-4 sm:grid sm:overflow-visible sm:pb-0",
           className
         )}
       >
         {children}
       </div>
 
-      {/* Dots Indicator - Only visible below 640px (sm) */}
+      {/* Dots – mobile only */}
       {itemCount > 1 && (
-        <div className="flex justify-center gap-2 sm:hidden">
+        <div className="relative z-10 flex justify-center gap-2 sm:hidden" role="group" aria-label="Carousel navigation">
           {Array.from({ length: itemCount }).map((_, i) => (
             <div
               key={i}
+              onClick={() => goToItem(i)}
               className={cn(
-                "h-1.5 rounded-full transition-all duration-300",
+                "relative cursor-pointer h-1.5 rounded-full transition-all duration-300",
+                "before:absolute before:left-1/2 before:top-1/2 before:h-11",
+                "before:w-[calc(100%+8px)] before:-translate-x-1/2 before:-translate-y-1/2 before:content-['']",
                 i === activeIndex
-                  ? "w-6 bg-emerald-600"
-                  : "w-1.5 bg-slate-300"
+                  ? "w-6 bg-emerald-700"
+                  : "w-1.5 bg-slate-300 hover:bg-slate-400"
               )}
             />
           ))}

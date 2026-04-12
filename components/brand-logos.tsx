@@ -10,7 +10,7 @@ export function BookingComLogo({ className, iconOnly }: LogoProps) {
   const mark = (
     <div
       className={cn(
-        "relative flex size-8 shrink-0 items-center justify-center rounded-[22%] bg-[#003580] shadow-sm",
+        "relative flex size-8 shrink-0 items-center justify-center rounded-[22%] bg-[#003580] shadow-[0_2px_8px_-2px_rgba(0,0,0,0.4)]",
         iconOnly && className
       )}
     >
@@ -39,7 +39,7 @@ export function HostelworldLogo({ className, iconOnly }: LogoProps) {
   const mark = (
     <div
       className={cn(
-        "flex size-8 shrink-0 items-center justify-center rounded-[22%] bg-[#F25621] shadow-sm",
+        "flex size-8 shrink-0 items-center justify-center rounded-[22%] bg-[#F25621] shadow-[0_2px_8px_-2px_rgba(0,0,0,0.4)]",
         iconOnly && className
       )}
     >

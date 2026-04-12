@@ -95,7 +95,7 @@ export function ImageCarousel({
                             alt={img.alt}
                             fill
                             className="object-cover"
-                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 50vw, 700px"
                         />
                     </div>
                 ))}
@@ -125,12 +125,12 @@ export function ImageCarousel({
             {images.length > 1 && (
                 <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2 rounded-full bg-slate-900/30 px-3 py-2 backdrop-blur-md">
                     {images.map((_, index) => (
-                        <button
+                        <div
                             key={index}
                             onClick={() => setCurrentIndex(index)}
-                            aria-label={`Go to slide ${index + 1}`}
                             className={cn(
-                                "h-1.5 rounded-full transition-all duration-300",
+                                "cursor-pointer relative h-1.5 rounded-full transition-all duration-300",
+                                "before:absolute before:left-1/2 before:top-1/2 before:h-11 before:w-[calc(100%+8px)] before:-translate-x-1/2 before:-translate-y-1/2 before:content-['']",
                                 index === currentIndex
                                     ? "w-6 bg-white"
                                     : "w-1.5 bg-white/60 hover:bg-white/90"

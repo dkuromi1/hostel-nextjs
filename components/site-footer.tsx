@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, MessageCircleMore, MapPinned } from "lucide-react";
+import { MessageCircleMore, MapPinned } from "lucide-react";
 
 import { InstagramGlyph } from "@/components/instagram-glyph";
 import { navLinks, siteConfig } from "@/lib/site-data";
@@ -25,7 +25,7 @@ export function SiteFooter() {
               href={siteConfig.whatsappUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-3 font-semibold text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-emerald-700"
+              className="inline-flex items-center gap-2 rounded-full bg-emerald-700 px-4 py-3 font-semibold text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-emerald-800"
             >
               <MessageCircleMore className="size-4" strokeWidth={1.8} />
               {siteConfig.phoneDisplay}
@@ -46,7 +46,6 @@ export function SiteFooter() {
               className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-3 font-semibold text-slate-100 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:border-white/35"
             >
               Booking.com
-              <ArrowUpRight className="size-4" strokeWidth={1.8} />
             </a>
             <a
               href={siteConfig.hostelworldUrl}
@@ -55,7 +54,6 @@ export function SiteFooter() {
               className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-3 font-semibold text-slate-100 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:border-white/35"
             >
               Hostelworld
-              <ArrowUpRight className="size-4" strokeWidth={1.8} />
             </a>
           </div>
         </div>
@@ -99,6 +97,18 @@ export function SiteFooter() {
               <p>Free breakfast: {siteConfig.breakfastHours}</p>
               <p>Check-in: {siteConfig.checkInHours}, 24h access (message ahead if arriving after 10pm), luggage storage, rooftop social nights</p>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Attribution Row */}
+      <div className="mx-auto mt-16 max-w-[1400px] border-t border-white/5 pt-8">
+        <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-slate-400">
+            © {new Date().getFullYear()} {siteConfig.shortName}. All rights reserved.
+          </p>
+          <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400/80 transition-opacity hover:opacity-100">
+            <span>Built in Next.js 16 & Tailwind 4 by hostel volunteer Darryl</span>
           </div>
         </div>
       </div>

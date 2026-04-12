@@ -109,6 +109,10 @@
 @utility media-frame {
   @apply overflow-hidden rounded-[30px] border border-white/70 bg-white/80;
   box-shadow: 0 24px 70px -42px rgba(15, 23, 42, 0.4);
+  /* Fix Safari corner clipping and flickering during transitions */
+  isolation: isolate;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 @utility faded-line {
@@ -126,3 +130,16 @@
     display: none; /* Chrome, Safari and Opera */
   }
 }
+
+@utility pb-safe {
+  padding-bottom: min(env(safe-area-inset-bottom, 0px), 44px);
+}
+
+@utility pt-safe {
+  padding-top: min(env(safe-area-inset-top, 0px), 60px);
+}
+
+@utility min-h-screen-safe {
+  min-height: calc(100vh - env(safe-area-inset-bottom, 0px));
+}
+

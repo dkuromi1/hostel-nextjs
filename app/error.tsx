@@ -32,7 +32,7 @@ export default function Error({
             onClick={() => reset()}
             className={cn(
               buttonVariants({ size: "lg" }),
-              "rounded-full bg-emerald-600 text-white hover:bg-emerald-700"
+              "rounded-full bg-emerald-700 text-white hover:bg-emerald-800"
             )}
           >
             <RefreshCw className="size-4" strokeWidth={1.8} />

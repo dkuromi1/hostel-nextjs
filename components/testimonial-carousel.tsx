@@ -88,12 +88,12 @@ export function TestimonialCarousel({
       <div className="mt-2 flex items-center justify-between border-t border-emerald-800/50 pt-4">
         <div className="flex gap-2">
           {testimonials.map((_, index) => (
-            <button
+            <div
               key={index}
               onClick={() => setCurrentIndex(index)}
-              aria-label={`Go to slide ${index + 1}`}
               className={cn(
-                "h-2 rounded-full transition-all duration-300",
+                "cursor-pointer relative h-2 rounded-full transition-all duration-300",
+                "before:absolute before:left-1/2 before:top-1/2 before:h-11 before:w-[calc(100%+8px)] before:-translate-x-1/2 before:-translate-y-1/2 before:content-['']",
                 index === currentIndex
                   ? "w-8 bg-emerald-400"
                   : "w-2 bg-emerald-700 hover:bg-emerald-500"

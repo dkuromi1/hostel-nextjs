@@ -21,7 +21,7 @@ export default function NotFound() {
             href="/"
             className={cn(
               buttonVariants({ size: "lg" }),
-              "rounded-full bg-emerald-600 text-white hover:bg-emerald-700"
+              "rounded-full bg-emerald-700 text-white hover:bg-emerald-800"
             )}
           >
             Go Home

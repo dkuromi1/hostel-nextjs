@@ -29,24 +29,21 @@ export default function GalleryPage() {
         ])}
       />
 
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-16">
         <div className="shell-container space-y-10">
           <SectionHeading
             eyebrow="Visual Tour"
             title="Scroll through the stay before you step into it."
-            description="The layout stays image-led on purpose. You should be able to understand the hostel in a few swipes: the rooftop, the pods, the breakfast, and the overall pace of the place."
+            description="Get a feel for the hostel in a few swipes: the rooftop, the pods, the breakfast, and the overall vibe of the place."
           />
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-12">
-            {galleryItems.map((item, index) => (
-              <Reveal
-                key={item.id}
-                delay={index * 50}
-                className={cn("col-span-1", item.className)}
-              >
+          <div className="flow-root">
+            <div className="columns-2 gap-4 md:columns-3 lg:columns-4">
+              {galleryItems.map((item, index) => (
                 <Link
+                  key={item.id}
                   href={`/gallery/${item.id}`}
                   scroll={false}
-                  className="group block cursor-zoom-in"
+                  className="group pb-4 inline-block w-full align-top cursor-zoom-in break-inside-avoid"
                 >
                   <div className={cn("media-frame relative overflow-hidden", item.aspect)}>
                     {item.type === "image" ? (
@@ -54,7 +51,9 @@ export default function GalleryPage() {
                         src={item.src}
                         alt={item.alt}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        priority={index < 4}
+                        fetchPriority={index < 4 ? "high" : "auto"}
+                        className="object-cover transition-transform duration-500 will-change-transform group-hover:scale-105"
                         sizes="(max-width: 768px) 50vw, 33vw"
                       />
                     ) : (
@@ -80,13 +79,13 @@ export default function GalleryPage() {
                     <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
                   </div>
                 </Link>
-              </Reveal>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-16">
         <div className="shell-container grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
           <Reveal>
             <Panel className="p-6 sm:p-8">
@@ -127,7 +126,7 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-16">
         <div className="shell-container">
           <CtaStrip
             eyebrow="Ready To Stay"
