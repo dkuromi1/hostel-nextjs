@@ -64,7 +64,7 @@ export function MobileNav() {
                   className={cn(
                     "rounded-2xl px-4 py-3 text-base font-medium transition-colors",
                     isActive 
-                      ? "bg-emerald-50 text-slate-900 font-semibold" 
+                      ? "text-slate-950 font-semibold ring-1 ring-emerald-600/30" 
                       : "text-slate-700 hover:bg-slate-50 hover:text-slate-900"
                   )}
                 >

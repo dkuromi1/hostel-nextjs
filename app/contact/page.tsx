@@ -199,13 +199,13 @@ export default function ContactPage() {
                     key={i}
                     className="group rounded-2xl border border-transparent bg-slate-50 p-5 transition-all duration-300 hover:border-emerald-200/50 hover:bg-white hover:shadow-sm open:border-emerald-200/50 open:bg-white open:shadow-sm"
                   >
-                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-heading text-lg font-medium text-slate-900 outline-none transition-colors group-hover:text-emerald-900 group-open:text-emerald-950">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-heading text-base font-medium text-slate-900 outline-none transition-colors group-hover:text-emerald-900 group-open:text-emerald-950">
                       <span className="pr-4">{faq.question}</span>
                       <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-slate-200/50 text-slate-500 transition-all duration-300 group-hover:bg-emerald-100 group-hover:text-emerald-600 group-open:rotate-180 group-open:bg-emerald-100 group-open:text-emerald-700">
                         <ChevronDown className="size-4" strokeWidth={2.2} />
                       </span>
                     </summary>
-                    <div className="mt-3 pr-6 text-base leading-7 text-slate-600">
+                    <div className="mt-3 pr-6 text-sm leading-7 text-slate-600">
                       {faq.answer}
                     </div>
                   </details>

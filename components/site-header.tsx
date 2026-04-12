@@ -55,13 +55,13 @@ export function SiteHeader() {
             <div>
               <p className={cn(
                 "font-heading text-lg leading-none tracking-[-0.05em] transition-colors",
-                isTransparent ? "text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]" : "text-slate-950"
+                isTransparent ? "text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]" : "text-slate-950"
               )}>
                 {siteConfig.name}
               </p>
               <p className={cn(
                 "mt-1 text-xs uppercase tracking-[0.24em] transition-colors",
-                isTransparent ? "text-emerald-300" : "text-slate-500"
+                isTransparent ? "text-sky-200/90 [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]" : "text-slate-500"
               )}>
                 Shkodër, Albania
               </p>

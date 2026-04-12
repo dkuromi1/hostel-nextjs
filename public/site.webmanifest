@@ -1,0 +1,23 @@
+{
+  "name": "Scodrinon Hostel",
+  "short_name": "Scodrinon",
+  "description": "A chill, social, and safe hostel on Kole Idromeno street in Shkoder.",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#020617",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+}

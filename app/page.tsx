@@ -107,36 +107,36 @@ export default function Home() {
             sizes="100vw"
           />
           {/* Using absolute Z-indexing and an explicit CSS gradient string bypassing Tailwind stop opacity bugs known in Vercel+Tailwind v4 deployments */}
-          <div className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(to_bottom,rgba(2,6,23,0.82)_0%,rgba(2,6,23,0.45)_50%,rgba(2,6,23,0.92)_100%)]" />
-          <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(circle_at_30%_30%,rgba(16,185,129,0.1),transparent_50%)]" />
+          <div className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(to_bottom,rgba(2,6,23,0.6)_0%,rgba(2,6,23,0.3)_50%,rgba(2,6,23,0.75)_100%)]" />
+
         </div>
 
         <div className="shell-container relative z-10 w-full">
           <div className="max-w-4xl space-y-8 sm:space-y-10">
             <div className="flex flex-col items-start gap-6">
               <div className="flex flex-col gap-5">
-                <p className="text-xs font-medium uppercase tracking-[0.28em] text-emerald-400">
+                <p className="text-xs font-medium uppercase tracking-[0.28em] text-white/90 antialiased">
                   {siteConfig.tagline}
                 </p>
                 <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl tracking-[-0.05em] leading-[0.95] text-white">
                   <AnimatedText
                     text="Rooftop sunsets, privacy pods,"
                     className="block"
-                    wordClassName="text-white"
+                    wordClassName="text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]"
                     delayOffset={0}
                   />
                   {" "}
                   <AnimatedText
                     text="and the part of Shkodër you actually want to wake up in."
-                    className="text-emerald-400"
+                    className="text-sky-300"
+                    wordClassName="text-sky-300 [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]"
                     delayOffset={200}
                   />
                 </h1>
                 <p className="max-w-[50ch] text-lg leading-relaxed text-slate-300 antialiased [text-shadow:0_1px_4px_rgba(0,0,0,0.4)] sm:text-xl lg:text-2xl">
-                  Scodrinon Hostel is a laidback, social, and safe base on the lively
-                  Kole Idromeno pedestrian street. Settle into the rooftop, and use
-                  Shkodër as your launch point for the Theth-Valbona trek, Lake Shkodër,
-                  and Europe&apos;s &apos;Last Frontier&apos;.
+                  Ideally placed on Shkodër’s vibrant pedestrian street. A social
+                  gateway to legendary rooftop sunsets, the Theth-Valbona trek, and
+                  the raw beauty of Europe&apos;s last frontier.
                 </p>
               </div>
             </div>
@@ -225,7 +225,7 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <p className="text-xs uppercase tracking-[0.28em] text-emerald-400">
+                  <p className="text-xs uppercase tracking-[0.28em] text-sky-200/90 [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]">
                     Rooftop Socials
                   </p>
                   <p className="mt-2 max-w-sm font-heading text-2xl leading-tight tracking-tight">
@@ -382,7 +382,7 @@ export default function Home() {
                     <div className="relative h-15 w-25 shrink-0 overflow-hidden rounded-md shadow-sm">
                       <Image
                         src="/images/hostelworld_reviews.png"
-                        alt="9.9 score on Hostelworld"
+                        alt="10 score on Hostelworld"
                         fill
                         className="object-contain"
                         sizes="100px"
@@ -607,7 +607,7 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.04),rgba(15,23,42,0.55))]" />
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <p className="text-sm uppercase tracking-[0.28em] text-emerald-100 [text-shadow:0_2px_10px_rgba(0,0,0,0.9)]">
+                    <p className="text-sm uppercase tracking-[0.28em] text-sky-100/90 [text-shadow:0_2px_10px_rgba(0,0,0,0.9)]">
                       {experiencePillars[0].title}
                     </p>
                     <p className="mt-3 max-w-lg text-base leading-8 text-slate-100 [text-shadow:0_2px_10px_rgba(0,0,0,0.9)]">
@@ -637,7 +637,7 @@ export default function Home() {
                           />
                           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.04),rgba(15,23,42,0.6))]" />
                           <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                            <p className="text-sm uppercase tracking-[0.28em] text-emerald-100 [text-shadow:0_2px_10px_rgba(0,0,0,0.9)]">
+                            <p className="text-sm uppercase tracking-[0.28em] text-sky-100/90 [text-shadow:0_2px_10px_rgba(0,0,0,0.9)]">
                               {pillar.title}
                             </p>
                             <p className="mt-3 text-base leading-8 text-slate-100 [text-shadow:0_2px_10px_rgba(0,0,0,0.9)]">

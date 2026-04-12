@@ -20,7 +20,7 @@ export function buildMetadata({
   title,
   description,
   path = "/",
-  image = "/images/promo_2.png",
+  image = "/images/promo_2.jpg",
   keywords = siteConfig.baseKeywords,
 }: MetadataInput): Metadata {
   return {
@@ -61,7 +61,7 @@ export function buildHostelSchema() {
     description: siteConfig.description,
     url: getSiteUrl("/"),
     image: [
-      getSiteUrl("/images/promo_2.png"),
+      getSiteUrl("/images/promo_2.jpg"),
       getSiteUrl("/images/room_18bed2.jpg"),
       getSiteUrl("/images/rooftop_social.webp"),
       getSiteUrl("/images/hiking_1.jpg"),

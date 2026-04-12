@@ -1,16 +1,20 @@
 {
   "faqItems": [
     {
-      "question": "What if I arrive early or leave late?",
+      "question": "What if I arrive late?",
       "answer": "Luggage storage makes the awkward travel-day timing easier. Message on WhatsApp in advance if you are arriving after 10pm or want to coordinate around your arrival or departure."
     },
     {
       "question": "Can the hostel help with Theth, Valbona, or local day trips?",
-      "answer": "Yes. Scodrinon works well as a base for Albanian Alps hikes, Lake Shkoder plans, Komani Lake. and Shala River excursions, and onward travel. The staff can help you sort out the practical side."
+      "answer": "Yes. Yes. The team can help with timing, early breakfast, luggage storage, and practical local advice before you leave for the Albanian Alps."
     },
     {
-      "question": "Why is Scodrinon good for solo travelers?",
-      "answer": "The hostel is social and welcoming, but it avoids the pressure-cooker party feel. That balance works especially well for solo travelers who want connection and rest in the same stay."
+      "question": "What if I leave early for a bus or hike?",
+      "answer": "Breakfast is served from 9:00 to 10:30, but early takeaway can be arranged when you are heading off before normal breakfast hours."
+    },
+    {
+      "question": "Is it a good hostel for solo female travellers?",
+      "answer": "That is a big part of the hostel's appeal. Female travellers regularly choose Scodrinon for the pod setup, central location, lockers, female dorm options, and calm rooftop atmosphere."
     },
     {
       "question": "Are the pods actually private?",
@@ -19,6 +23,10 @@
     {
       "question": "What is included in the stay?",
       "answer": "Breakfast, WiFi, luggage storage, rooftop social events, and 24h access are included. Bike rentals, tours, and laundry and towels are available as paid extras."
+    },
+    {
+      "question": "Is it a party hostel?",
+      "answer": "No. It is social and easygoing, with rooftop evenings and group chats, but the tone is relaxed rather than loud or all-night."
     }
   ]
 }
