@@ -1,0 +1,9 @@
+{
+  "navLinks": [
+    { "href": "/", "label": "Home" },
+    { "href": "/rooms", "label": "Rooms" },
+    { "href": "/gallery", "label": "Gallery" },
+    { "href": "/experiences", "label": "Experiences" },
+    { "href": "/contact", "label": "Contact" }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "heroHighlights": [
+    "Privacy pods with curtains, reading lights, sockets, and lockers",
+    "Rooftop sunsets with mountain and city views",
+    "Historic home on lively Kole Idromeno street",
+    "A calm, social vibe that feels safe for solo travelers"
+  ],
+  "quickFacts": [
+    "Spacious privacy pods in our mixed dorm create a personal bedroom feel within a social space",
+    "Boutique 4-bed male or female dorms, offering a bright, high-end sanctuary for peaceful stays",
+    "Free: breakfast (excl. off season), WiFi, luggage storage, 24h access, and rooftop social events",
+    "Adventure-ready services including transportation or tours arrangements, laundry, and bike rentals"
+  ],
+  "sharedAmenities": [
+    "Air-con in all rooms",
+    "Secure lockers",
+    "Reading lights",
+    "Power sockets",
+    "High-speed WiFi",
+    "Clean modern bathrooms",
+    "Free breakfast (excl. off season)",
+    "24h access"
+  ],
+  "freeServices": [
+    "Breakfast every morning from 9:00 to 10:30am (excl. off season)",
+    "Early take-away breakfast when you need to leave sooner",
+    "High-speed WiFi in rooms and common areas",
+    "Luggage storage before or during your stay",
+    "Rooftop social events and a helpful WhatsApp group",
+    "Clean modern bathrooms and showers"
+  ],
+  "paidServices": [
+    "Bike rentals for city rides and lakeside days",
+    "Guided tours",
+    "Laundry for longer trips"
+  ],
+  "extendReasons": [
+    {
+      "title": "Sleep well, still meet people",
+      "description": "Privacy pods give you a reset button after a long day in the mountains, so the social side of hostel life stays a choice, not a chore."
+    },
+    {
+      "title": "Rooftop nights, zero pressure",
+      "description": "Sunset views, easy conversation, and movie nights make it simple to connect without the space ever feeling chaotic. It’s social, but at your own pace."
+    },
+    {
+      "title": "Everything starts right outside",
+      "description": "You’re already on Shkoder's main pedestrian street, surrounded by local eats, museums, and nightlife. Whether you're heading to the Alps or the coast, transport is just a short walk away."
+    },
+    {
+      "title": "Staff who keep things straightforward",
+      "description": "Honest local tips, breakfast that guests talk about, and help with your hiking route. We handle the logistics so you can focus on the trip."
+    }
+  ],
+  "experiencePillars": [
+    {
+      "title": "Your Adventure Basecamp",
+      "description": "Drop your heavy bags and get out there. We’ll help you sort the logistics for the Theth and Valbona trek, boat trips up the Shala River, and kayaking out on Lake Shkodër.",
+      "image": "/images/hiking_1.jpg",
+      "alt": "Hiking and mountain views near Shkoder, Albanian Alps trips from Scodrinon Hostel"
+    },
+    {
+      "title": "Right in the Center",
+      "description": "Step out our front door directly onto Kole Idromeno, Shkodër’s main pedestrian street. From your first morning espresso to late-night drinks, the city's best food, culture, and rhythm are literally at your doorstep.",
+      "image": "/images/shkoder_pedestrian_street.jpg",
+      "alt": "Pedestrian street scene near Scodrinon Hostel on Kole Idromeno, Shkoder"
+    }
+  ],
+  "eventCards": [
+    {
+      "title": "River Days at the Drin",
+      "description": "We head out to the river regularly for swimming and sun. These trips are a hostel favorite — a chance to see a different side of Shkoder and spend the afternoon with a great crew.",
+      "image": "/images/drin_swimming_trip.jpeg",
+      "alt": "Guests enjoying an evening event at Scodrinon Hostel"
+    },
+    {
+      "title": "Spontaneous Socials",
+      "description": "Whether it’s rooftop raki or a local food crawl, we prioritize warm, unscripted moments that make it easy for solo travelers to join. It’s social, but never forced.",
+      "image": "/images/local_food_night.jpeg",
+      "alt": "Traditional food event at Scodrinon Hostel"
+    },
+    {
+      "title": "Explore the Bicycle Capital",
+      "description": "Shkodër runs on two wheels. Grab a rental and explore the city's flat streets, lake paths, and cafes exactly how the locals do.",
+      "image": "/images/biking_in_shkodra.jpeg",
+      "alt": "Bike tour event from Scodrinon Hostel"
+    },
+    {
+      "title": "Rooftop Magic",
+      "description": "The rooftop is the social heart of the hostel: mountain light at sunset, city views after dark, and a pace that feels relaxed from the first drink to the last chat.",
+      "image": "/images/rooftop_social_4_flare.jpg",
+      "alt": "Guests relaxing on the Scodrinon Hostel rooftop at sunset"
+    }
+  ],
+  "contactChecklist": [
+    "Your dates",
+    "How many guests are coming",
+    "Whether you want the mixed pod dorm or a 4-bed room",
+    "Your arrival time into Shkoder",
+    "Any hiking, bike, or transport plans you want help with"
+  ]
+}

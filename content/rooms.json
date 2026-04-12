@@ -1,0 +1,58 @@
+{
+  "roomTypes": [
+    {
+      "name": "18-Bed Pod Dorm",
+      "price": "€12",
+      "label": "Best for solo travelers who want privacy without losing the hostel vibe",
+      "description": "The signature room at Scodrinon pairs the energy of a social hostel with the comfort of a private sleep setup.",
+      "image": "/images/rooms_18bed.jpg",
+      "alt": "18-bed privacy pod dorm with curtained beds and personal space at Scodrinon Hostel, Shkoder",
+      "bullets": [
+        "Curtained pod layout for real personal space",
+        "Reading light and 2 power sockets at every bed",
+        "Easy to meet people without feeling exposed all night"
+      ],
+      "images": [
+        {
+          "src": "/images/rooms_18bed.jpg",
+          "alt": "Privacy Pod Dorm Room at Scodrinon Hostel"
+        },
+        {
+          "src": "/images/room_18bed4.webp",
+          "alt": "Inside the privacy pod"
+        },
+        {
+          "src": "/images/secure_dorm_lockers.webp",
+          "alt": "Secure lockers in the dorm"
+        }
+      ]
+    },
+    {
+      "name": "4-Bed Dorms",
+      "price": "€15",
+      "label": "Best for lighter sleepers, small groups, and guests wanting a calmer setup",
+      "description": "The four-bed rooms keep the same clean, modern essentials while giving you a quieter rhythm after a long day out in Shkoder or the Alps.",
+      "image": "/images/rooms_1.jpg",
+      "alt": "Four-bed dorm room at Scodrinon Hostel, Shkoder",
+      "bullets": [
+        "Male and female options available",
+        "Good fit for early hikes and slower mornings",
+        "A solid balance between privacy and price"
+      ],
+      "images": [
+        {
+          "src": "/images/rooms_1.jpg",
+          "alt": "Four Bed Dorm Room at Scodrinon Hostel"
+        },
+        {
+          "src": "/images/rooms_2.jpg",
+          "alt": "Alternative angle of the 4-bed dorm"
+        },
+        {
+          "src": "/images/room_4bed_m.webp",
+          "alt": "Men's 4-bed dorm at Scodrinon Hostel"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "settings"
+    label: "Settings"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "site_config"
+        label: "Site Configuration"
+        file: "content/settings.json"
+        fields:
+          - { label: "Volunteers Needed", name: "volunteersNeeded", widget: "boolean", default: false }
+          - { label: "Hostel Name", name: "name", widget: "string" }
+          - { label: "Short Name", name: "shortName", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Location", name: "location", widget: "string" }
+          - { label: "Phone (Display)", name: "phoneDisplay", widget: "string" }
+          - { label: "Phone (Raw Number)", name: "phoneRaw", widget: "string", hint: "Format: 355685310744" }
+          - { label: "WhatsApp URL", name: "whatsappUrl", widget: "string" }
+          - { label: "Booking.com URL", name: "bookingUrl", widget: "string" }
+          - { label: "Hostelworld URL", name: "hostelworldUrl", widget: "string" }
+          - { label: "Instagram URL", name: "instagramUrl", widget: "string" }
+          - { label: "Breakfast Hours", name: "breakfastHours", widget: "string" }
+          - { label: "Check-in Hours", name: "checkInHours", widget: "string" }
+          - { label: "Keywords", name: "baseKeywords", widget: "list", summary: "{{fields.item}}" }
+      
+      - name: "navigation"
+        label: "Navigation Links"
+        file: "content/navigation.json"
+        fields:
+          - label: "Links"
+            name: "navLinks"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "href", widget: "string" }
+
+  - name: "rooms"
+    label: "Rooms"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "room_types"
+        label: "Room Types"
+        file: "content/rooms.json"
+        fields:
+          - label: "Rooms"
+            name: "roomTypes"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Price", name: "price", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Main Image", name: "image", widget: "image" }
+              - { label: "Image Alt Text", name: "alt", widget: "string" }
+              - { label: "Bullets", name: "bullets", widget: "list" }
+              - label: "Carousel Images"
+                name: "images"
+                widget: "list"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt", name: "alt", widget: "string" }
+
+  - name: "content"
+    label: "Site Content"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "homepage"
+        label: "Homepage Sections"
+        file: "content/homepage.json"
+        fields:
+          - { label: "Hero Highlights", name: "heroHighlights", widget: "list" }
+          - { label: "Quick Facts", name: "quickFacts", widget: "list" }
+          - { label: "Shared Amenities", name: "sharedAmenities", widget: "list" }
+          - { label: "Free Services", name: "freeServices", widget: "list" }
+          - { label: "Paid Services", name: "paidServices", widget: "list" }
+          - label: "Reasons to Extend"
+            name: "extendReasons"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+          - label: "Experience Pillars"
+            name: "experiencePillars"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+          - label: "Event Cards"
+            name: "eventCards"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+
+  - name: "faqs"
+    label: "FAQs"
+    editor:
+      preview: false
+    files:
+      - name: "faq_content"
+        label: "FAQ Content"
+        file: "content/faq.json"
+        fields:
+          - label: "FAQ Items"
+            name: "faqItems"
+            widget: "list"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Answer", name: "answer", widget: "text" }
+
+  - name: "testimonials"
+    label: "Testimonials"
+    editor:
+      preview: false
+    files:
+      - name: "testimonials_content"
+        label: "Testimonials Content"
+        file: "content/testimonials.json"
+        fields:
+          - label: "Reviews"
+            name: "testimonials"
+            widget: "list"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Author", name: "author", widget: "string" }
+              - { label: "Source", name: "source", widget: "string" }
+              - { label: "Rating", name: "rating", widget: "number", min: 1, max: 5 }
+
+  - name: "gallery"
+    label: "Gallery"
+    editor:
+      preview: false
+    files:
+      - name: "gallery_content"
+        label: "Gallery Content"
+        file: "content/gallery.json"
+        fields:
+          - label: "Gallery Items"
+            name: "galleryItems"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Type", name: "type", widget: "select", options: ["image", "video"] }
+              - { label: "Source", name: "src", widget: "file" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+              - { label: "Aspect Ratio", name: "aspect", widget: "string", hint: "e.g. aspect-[4/5]" }
