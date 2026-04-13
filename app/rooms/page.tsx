@@ -222,7 +222,7 @@ export default function RoomsPage() {
             <Panel className="p-6 sm:p-8">
               <SectionHeading
                 eyebrow="Included In Your Stay"
-                title="The daily setup is simple, useful, and traveler-friendly."
+                title="Everything you need for a comfortable stay."
                 description="The site stays honest about what you get. No padded feature list, just the things that make the stay smoother."
               />
               <div className="mt-8 grid gap-3">
