@@ -91,29 +91,8 @@ export default function ContactPage() {
       </PageHero>
 
       <section className="py-8 sm:py-16">
-        <div className="shell-container grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
+        <div className="shell-container grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <Reveal>
-            <Panel className="p-6 sm:p-8 h-full">
-              <SectionHeading
-                eyebrow="Quick Booking"
-                title="What to include in your message."
-                description="Keep it short. Just send us a quick note with these details, and our team will get your stay sorted in no time."
-              />
-              <div className="mt-8 grid gap-3">
-                {contactChecklist.map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-center gap-3 rounded-2xl bg-slate-50 px-4 py-3 text-sm leading-7 text-slate-700"
-                  >
-                    <CheckCircle2 className="size-5 shrink-0 text-emerald-600" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </Panel>
-          </Reveal>
-
-          <Reveal delay={120}>
             <Panel className="p-6 sm:p-8 h-full">
               <p className="text-xs uppercase tracking-[0.24em] text-amber-700">
                 Contact Details
@@ -152,31 +131,6 @@ export default function ContactPage() {
               </div>
               <div className="mt-8 media-frame relative aspect-[4/3] w-full overflow-hidden">
                 <LocationMap />
-              </div>
-            </Panel>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="py-8 sm:py-16">
-        <div className="shell-container grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
-          <Reveal>
-            <Panel className="p-6 sm:p-8 h-full">
-              <SectionHeading
-                eyebrow="Always Included"
-                title="Everything you need for a comfortable stay."
-                description="We don't believe in nickel-and-diming our guests. Here are some things you get for free when you book a bed with us."
-              />
-              <div className="mt-8 grid gap-3">
-                {freeServices.map((service) => (
-                  <div
-                    key={service}
-                    className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-slate-50/80 px-4 py-3 text-sm leading-7 text-slate-700 transition-all duration-500 hover:bg-white hover:border-emerald-200 hover:shadow-sm"
-                  >
-                    <div className="absolute inset-x-0 bottom-0 h-[2px] origin-left scale-x-0 bg-emerald-500 transition-transform duration-500 group-hover:scale-x-100" />
-                    <span className="relative z-10 transition-colors duration-300 group-hover:text-emerald-950">{service}</span>
-                  </div>
-                ))}
               </div>
             </Panel>
           </Reveal>
