@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { galleryItems } from "@/lib/site-data";
@@ -8,64 +9,21 @@ import { SectionHeading } from "@/components/section-heading";
 import { Panel } from "@/components/ui/panel";
 import { Reveal } from "@/components/reveal";
 import { CtaStrip } from "@/components/cta-strip";
+import { GalleryMasonry } from "@/components/gallery-masonry";
 
 export function GalleryView() {
-  return (
-    <>
-      <section className="py-8 sm:py-16">
-        <div className="shell-container space-y-10">
-          <SectionHeading
-            eyebrow="Visual Tour"
-            title="Scroll through the stay before you step into it."
-            description="Get a feel for the hostel in a few swipes: the rooftop, the pods, the breakfast, and the overall vibe of the place."
-          />
-          <div className="flow-root">
-            <div className="columns-2 gap-4 md:columns-3 lg:columns-4">
-              {galleryItems.map((item, index) => (
-                <Link
-                  key={item.id}
-                  href={`/gallery/${item.id}`}
-                  scroll={false}
-                  className="group pb-4 inline-block w-full align-top cursor-zoom-in break-inside-avoid"
-                >
-                  <div className={cn("media-frame relative overflow-hidden", item.aspect)}>
-                    {item.type === "image" ? (
-                      <Image
-                        src={item.src}
-                        alt={item.alt}
-                        fill
-                        priority={index < 4}
-                        fetchPriority={index < 4 ? "high" : "auto"}
-                        className="object-cover transition-transform duration-500 will-change-transform group-hover:scale-105"
-                        sizes="(max-width: 768px) 50vw, 33vw"
-                      />
-                    ) : (
-                      <div className="h-full w-full">
-                        <video
-                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
-                          aria-label={item.alt}
-                        >
-                          <source src={item.src} type="video/mp4" />
-                        </video>
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors group-hover:bg-black/20">
-                          <div className="rounded-full bg-white/20 p-3 backdrop-blur-md">
-                            <div className="size-0 border-y-8 border-l-12 border-y-transparent border-l-white ml-1" />
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                    <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+    return (
+        <>
+            <section className="py-8 sm:py-16">
+                <div className="shell-container space-y-10">
+                    <SectionHeading
+                        eyebrow="Visual Tour"
+                        title="Scroll through the stay before you step into it."
+                        description="Get a feel for the hostel in a few swipes: the rooftop, the pods, the breakfast, and the overall vibe of the place."
+                    />
+                    <GalleryMasonry items={galleryItems} />
+                </div>
+            </section>
 
       <section className="py-8 sm:py-16">
         <div className="shell-container grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">

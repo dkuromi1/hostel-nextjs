@@ -35,6 +35,7 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
 import { HeroBookingBar } from "@/components/hero-booking-bar";
+import { GalleryMasonry } from "@/components/gallery-masonry";
 import {
   buildFaqSchema,
 
@@ -528,43 +529,10 @@ export default function Home() {
           </div>
 
           <div className="flow-root">
-            <div className="columns-2 gap-4 md:columns-3">
-              {galleryItems.slice(0, 12).map((item, index) => (
-                <Link
-                  key={`${item.src}-${index}`}
-                  href={`/gallery/${item.id}`}
-                  scroll={false}
-                  className="group pb-4 inline-block w-full align-top cursor-zoom-in break-inside-avoid"
-                >
-                  <div className={cn(
-                    "media-frame relative overflow-hidden",
-                    item.aspect
-                  )}>
-                    {item.type === "image" ? (
-                      <Image
-                        src={item.src}
-                        alt={item.alt}
-                        fill
-                        className="object-cover transition-transform duration-500 will-change-transform group-hover:scale-105"
-                        sizes="(max-width: 768px) 50vw, (max-width: 1400px) 33vw, 466px"
-                      />
-                    ) : (
-                      <video
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                      >
-                        <source src={item.src} type="video/mp4" />
-                      </video>
-                    )}
-
-                    <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
-                  </div>
-                </Link>
-              ))}
-            </div>
+            <GalleryMasonry
+              items={galleryItems.slice(0, 12)}
+              columns={{ mobile: 2, tablet: 3, desktop: 3 }}
+            />
           </div>
         </div>
       </section>
