@@ -4,6 +4,17 @@ This site is built with **Next.js** and integrated with **Decap CMS**. You can u
 
 ---
 
+## Why This Site Is Unique:
+
+This platform was custom-engineered to move travelers from browsing to booking by using "high-trust" design and unique engagement features. 
+
+*   **Modern Brand Styling:** Uses a professional "Glassmorphic" design style and a slate-midnight palette to signal a high-end, boutique experience.
+*   **Speed as a Conversion Tool:** The site is built off the latest React 19 ecosystem to ensure pages load instantly, preventing impatient travelers from leaving.
+*   **Custom Gallery Code:** Includes hybrid state-URL synchronization, intercepted modal architecture, predictive asset pipeline, hardware-acceleration, and intelligent history management
+*   **Mobile-First Design:** Engineered specifically for the "on-the-go" traveler with touch-optimized swiping and simplified booking flows.
+
+---
+
 ## The Primary Method: Using the Admin Dashboard
 
 The easiest way to update the site is through the **Admin Panel**.

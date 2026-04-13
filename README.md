@@ -6,11 +6,16 @@ The site is fully optimized for speed, SEO, and direct bookings via WhatsApp, pr
 
 ## Main Features
 
-*   **Extremely Fast Stack**: Built with Next.js 16 (Server Components, advanced routing) and React 19 to deliver incredibly fast, static, and dynamically optimized pages.
-*   **Modern Aesthetics & Responsive Design**: Styled with Tailwind CSS v4 and UI components from Radix UI and shadcn using Glassmorphism & 'Bento Box' styled UI. Designed to look and perform well on mobile screens, where most travelers book.
-*   **Centralized Content Management**: No complex CMS administration. All site data (room pricing, faqs, images, booking links) lives directly in a single configuration file (`lib/site-data.ts`).
+This project is engineered beyond typical static hospitality sites, using advanced React patterns and a cutting-edge stack:
+
+*   **Next.js 16 & React 19 Engine**: Running on the latest versions of the React ecosystem for peak rendering performance and future-ready architecture.
+*   **Tailwind CSS 4.0 & Radix UI**: Utilizing the next-gen styling engine for ultra-fast, zero-runtime CSS and headless components.
+*   **Fluid Glassmorphism**: A comprehensive design system built on high-fidelity `backdrop-blur` effects and dynamic Z-index layering. 'Bento Box' styled UI designed to look and perform well on mobile screens, where most travelers book.
 *   **Rich Media Experiences**: Includes an optimized image and video masonry gallery with interactive lightbox modals using hardware acceleration so scrolling and zooming are smooth.
+*   **Shadow-Routing & URL Syncing**: The gallery implementation uses custom `window.history` synchronization to enable deep-linking and browser history support without triggering expensive Server Component re-renders.
+*   **Predictive Asset Prefetching**: Custom pre-fetching logic that anticipates user navigation in media-heavy views, resulting in an "instant-load" experience.
 *   **Automated Structured Data (SEO)**: Built-in dynamic JSON-LD injection (`lib/metadata.ts`) representing business details and FAQ schemas to Google search crawlers for better rich snippet visibility.
+*   **Centralized Content Management**: No complex CMS administration. All site data (room pricing, faqs, images, booking links) lives directly in a single configuration file (`lib/site-data.ts`).
 
 ---
 
