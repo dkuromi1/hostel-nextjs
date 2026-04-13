@@ -10,6 +10,7 @@ import {
 import { BookingActions } from "@/components/booking-actions";
 import { CtaStrip } from "@/components/cta-strip";
 import { InstagramGlyph } from "@/components/instagram-glyph";
+import { LocationMap } from "@/components/location-map";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
@@ -149,14 +150,8 @@ export default function ContactPage() {
                   <span>Reception: 24 hour access | Check-in: {siteConfig.checkInHours}</span>
                 </p>
               </div>
-              <div className="mt-8 media-frame relative min-h-[18rem]">
-                <Image
-                  src="/images/outdoor_common_2.jpg"
-                  alt="Outdoor ambiance at Scodrinon Hostel"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 38vw"
-                />
+              <div className="mt-8 media-frame relative aspect-[4/3] w-full overflow-hidden">
+                <LocationMap />
               </div>
             </Panel>
           </Reveal>

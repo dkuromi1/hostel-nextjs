@@ -15,6 +15,35 @@ This platform was custom-engineered to move travelers from browsing to booking b
 
 ---
 
+## 📍 Location & Map Management
+
+The site's interactive map is powered by Mapbox GL JS and managed in the `components/location-map-inner.tsx` file.
+
+### Mapbox Access Token
+You must provide a valid public access token in your `.env.local` file:
+```bash
+NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=your_token_here
+```
+> [!IMPORTANT]
+> To enable the **Satellite View**, ensure your Mapbox account has the "Satellite Streets" style enabled in your dashboard.
+
+### Updating Coordinates
+All key map coordinates are centralized at the top of `components/location-map-inner.tsx`:
+- **HOSTEL_COORDS**: Used for the primary pulsing marker and centripetal anchor.
+- **BUS_STATION_COORDS**: The primary arrival point label.
+- **RECOMMENDED_POIS**: A list of objects where you can add/remove local recommendations (Eat, Shop, See).
+
+### Custom Visual Layers
+The map includes three bespoke visual overlays:
+1. **5-Minute Walk Area**: A dashed perimeter automatically generated around the hostel coordinates.
+2. **Pedonale Highlight**: A custom LineString that highlights the promenade. To update the path, edit the `PEDONALE_COORDS` array.
+3. **3D Buildings**: Automatically applied in 'Streets' view for buildings with height data in Mapbox.
+
+> [!TIP]
+> Use [Google Maps](https://maps.google.com) to find new coordinates. Right-click on any spot and copy the latitude/longitude, but remember that Mapbox uses **[Longitude, Latitude]** order (the inverse of Google Maps).
+
+---
+
 ## The Primary Method: Using the Admin Dashboard
 
 The easiest way to update the site is through the **Admin Panel**.
