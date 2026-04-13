@@ -28,8 +28,8 @@ export function PageHero({
   hideActions = false,
 }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden px-4 pb-14 pt-28 sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-[1400px] gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+    <section className="relative overflow-hidden pb-14 pt-28">
+      <div className="shell-container grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
         <Reveal className="relative z-10 flex flex-col items-start gap-8">
           <Badge>{eyebrow}</Badge>
           <div className="flex flex-col gap-5">
