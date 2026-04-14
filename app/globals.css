@@ -60,9 +60,9 @@
 }
 
 @utility bg-texture {
-  background-image: 
-    linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
   background-size: 100px 100px;
 }
 
@@ -127,18 +127,21 @@
 }
 
 @utility faded-line {
-  background: linear-gradient(
-    90deg,
-    rgba(15, 23, 42, 0),
-    rgba(15, 23, 42, 0.12),
-    rgba(15, 23, 42, 0)
-  );
+  background: linear-gradient(90deg,
+      rgba(15, 23, 42, 0),
+      rgba(15, 23, 42, 0.12),
+      rgba(15, 23, 42, 0));
 }
+
 @utility hide-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+
+  /* Firefox */
   &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
+    display: none;
+    /* Chrome, Safari and Opera */
   }
 }
 
@@ -153,4 +156,3 @@
 @utility min-h-screen-safe {
   min-height: calc(100vh - env(safe-area-inset-bottom, 0px));
 }
-
