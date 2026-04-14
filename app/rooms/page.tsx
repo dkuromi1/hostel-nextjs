@@ -136,7 +136,7 @@ export default function RoomsPage() {
 
               return (
                 <Reveal key={room.name} delay={index * 100}>
-                  <Panel className="flex h-full flex-col overflow-hidden">
+                  <Panel className="group relative flex h-full flex-col overflow-hidden transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md">
 
                     {/* Updated Image Carousel Section */}
                     <div className="relative min-h-[22rem]">
@@ -175,10 +175,9 @@ export default function RoomsPage() {
                           {getRoomFeatures(room.name).map((feature, idx) => (
                             <div
                               key={idx}
-                              /* Added w-fit and adjusted padding/gap to make them tighter "pills" */
-                              className="flex w-fit items-center gap-2 rounded-xl border border-slate-100 bg-slate-50/50 px-3 py-2 text-slate-600"
+                              className="group flex w-fit items-center gap-2 rounded-xl border border-slate-100 bg-slate-50/50 px-3 py-2 text-slate-600 transition-all duration-300 hover:border-emerald-500/10 hover:shadow-sm hover:bg-white"
                             >
-                              <feature.icon className="size-3.5 shrink-0 text-emerald-600" />
+                              <feature.icon className="size-3.5 shrink-0 text-emerald-600 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110" />
                               {/* Added whitespace-nowrap to prevent labels like "High-speed WiFi" from breaking internally */}
                               <span className="whitespace-nowrap text-[11px] font-medium tracking-tight">
                                 {feature.label}
@@ -229,10 +228,9 @@ export default function RoomsPage() {
                 {freeServices.map((service) => (
                   <div
                     key={service}
-                    className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-slate-50/80 px-4 py-3 text-sm leading-7 text-slate-700 transition-all duration-500 hover:bg-white hover:border-emerald-200 hover:shadow-sm"
+                    className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-slate-50/80 px-4 py-3 text-sm leading-7 text-slate-700 transition-all duration-300 hover:bg-white hover:border-emerald-500/20 hover:shadow-md"
                   >
-                    <div className="absolute inset-x-0 bottom-0 h-[2px] origin-left scale-x-0 bg-emerald-500 transition-transform duration-500 group-hover:scale-x-100" />
-                    <span className="relative z-10 transition-colors duration-300 group-hover:text-emerald-950">{service}</span>
+                    <span className="relative z-10">{service}</span>
                   </div>
                 ))}
               </div>
@@ -251,10 +249,9 @@ export default function RoomsPage() {
                 {paidServices.map((service) => (
                   <div
                     key={service}
-                    className="group relative overflow-hidden rounded-2xl border border-amber-100/30 bg-amber-50/50 px-4 py-3 text-sm leading-7 text-slate-700 transition-all duration-500 hover:bg-white hover:border-amber-200 hover:shadow-sm"
+                    className="group relative overflow-hidden rounded-2xl border border-amber-100/30 bg-amber-50/50 px-4 py-3 text-sm leading-7 text-slate-700 transition-all duration-300 hover:bg-white hover:border-amber-500/20 hover:shadow-md"
                   >
-                    <div className="absolute inset-x-0 bottom-0 h-[2px] origin-left scale-x-0 bg-amber-500 transition-transform duration-500 group-hover:scale-x-100" />
-                    <span className="relative z-10 transition-colors duration-300 group-hover:text-amber-950">{service}</span>
+                    <span className="relative z-10">{service}</span>
                   </div>
                 ))}
               </div>

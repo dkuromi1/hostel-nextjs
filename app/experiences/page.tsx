@@ -188,11 +188,8 @@ export default function ExperiencesPage() {
             ].map((item, index) => (
               <Reveal key={item.title} delay={index * 100} className="h-full">
                 <Panel
-                  className="group relative flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-500 hover:-translate-y-1 hover:border-slate-300 hover:shadow-xl hover:shadow-emerald-900/5"
+                  className="group relative flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
                 >
-                  {/* The Premium Hover Accent Line */}
-                  <div className="absolute left-0 top-0 z-20 h-1 w-0 bg-emerald-500 transition-all duration-500 ease-out group-hover:w-full" />
-
                   {/* Card Image Header */}
                   <div className="relative h-56 w-full overflow-hidden bg-slate-100">
                     <Image
@@ -208,7 +205,7 @@ export default function ExperiencesPage() {
                   {/* Card Content Area */}
                   <div className="flex flex-1 flex-col px-8 pb-8">
                     {/* Floating Icon Box (Overlaps the image and white background) */}
-                    <div className="relative -mt-6 mb-6 flex size-12 items-center justify-center rounded-2xl bg-white text-slate-600 shadow-lg shadow-slate-200/50 transition-colors duration-500 group-hover:bg-emerald-50 group-hover:text-emerald-600">
+                    <div className="relative -mt-6 mb-6 flex size-12 items-center justify-center rounded-2xl bg-white text-slate-600 shadow-lg shadow-slate-200/50 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-50 group-hover:text-emerald-600">
                       <item.icon className="size-5" strokeWidth={1.5} />
                     </div>
 
@@ -240,9 +237,7 @@ export default function ExperiencesPage() {
           <SwipableRow itemCount={thingsToDo.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {thingsToDo.map((item, index) => (
               <Reveal key={item.title} delay={index * 100} className="min-w-[85%] snap-center sm:min-w-0 h-full">
-                <Panel className="group relative flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-500 hover:-translate-y-1 hover:border-slate-300 hover:shadow-xl">
-                  <div className="absolute left-0 top-0 z-20 h-1 w-0 bg-sky-500 transition-all duration-500 ease-out group-hover:w-full" />
-                  
+                <Panel className="group relative flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-300 hover:border-sky-500/20 hover:shadow-md">
                   <div className="relative h-48 w-full overflow-hidden bg-slate-100">
                     <Image
                       src={item.image}
@@ -254,7 +249,7 @@ export default function ExperiencesPage() {
                   </div>
 
                   <div className="flex flex-1 flex-col p-6">
-                    <div className="mb-3 flex items-center gap-2 text-sky-700">
+                    <div className="mb-3 flex w-fit items-center gap-2 text-sky-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105 origin-left">
                       <MapPin className="size-4" strokeWidth={2} />
                       <span className="text-[10px] font-bold uppercase tracking-widest">
                         Local Spot
