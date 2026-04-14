@@ -186,7 +186,7 @@ export default function Home() {
 
       {/* Repurposed Media Section - "The Atmosphere" */}
       <section className="py-8 sm:py-16">
-        <div className="shell-container">
+        <div className="shell-container max-w-5xl">
           <div className="flex flex-col gap-4 lg:grid lg:grid-cols-[2fr_1fr] lg:grid-rows-[1fr_auto] lg:gap-5">
 
             {/* DESKTOP ONLY: Direct Booking card — row 2, col 1 */}
