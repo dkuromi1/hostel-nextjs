@@ -693,13 +693,13 @@ export default function Home() {
             >
               <div className="group relative flex min-w-[82vw] snap-center sm:min-w-0 flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
                 <div>
-                  <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
+                  <div className="float-left mb-3 mr-5 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
                     <ShieldCheck className="size-5" strokeWidth={1.8} />
                   </div>
-                  <h3 className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+                  <h3 className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950 pt-1">
                     Safe, welcoming atmosphere
                   </h3>
-                  <p className="mt-4 text-sm leading-7 text-slate-600">
+                  <p className="mt-3 text-sm leading-7 text-slate-600">
                     Designed to feel open and social while still being especially
                     comfortable for solo travelers.
                   </p>
@@ -707,13 +707,13 @@ export default function Home() {
               </div>
               <div className="group relative flex min-w-[82vw] snap-center sm:min-w-0 flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
                 <div>
-                  <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
+                  <div className="float-left mb-3 mr-5 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
                     <Wifi className="size-5" strokeWidth={1.8} />
                   </div>
-                  <h3 className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+                  <h3 className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950 pt-1">
                     Good day-to-day comfort
                   </h3>
-                  <p className="mt-4 text-sm leading-7 text-slate-600">
+                  <p className="mt-3 text-sm leading-7 text-slate-600">
                     Fast WiFi, clean bathrooms, lockers, sockets, and air-con are
                     standard rather than upsells.
                   </p>
@@ -721,13 +721,13 @@ export default function Home() {
               </div>
               <div className="group relative flex min-w-[82vw] snap-center sm:min-w-0 flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
                 <div>
-                  <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
+                  <div className="float-left mb-3 mr-5 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
                     <MapPinned className="size-5" strokeWidth={1.8} />
                   </div>
-                  <h3 className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+                  <h3 className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950 pt-1">
                     Best-positioned city base
                   </h3>
-                  <p className="mt-4 text-sm leading-7 text-slate-600">
+                  <p className="mt-3 text-sm leading-7 text-slate-600">
                     Cafes, restaurants, museums, and nightlife are right outside
                     on the city promenade.
                   </p>
@@ -735,13 +735,13 @@ export default function Home() {
               </div>
               <div className="group relative flex min-w-[82vw] snap-center sm:min-w-0 flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
                 <div>
-                  <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
+                  <div className="float-left mb-3 mr-5 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
                     <Mountain className="size-5" strokeWidth={1.8} />
                   </div>
-                  <h3 className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
+                  <h3 className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950 pt-1">
                     Ready for northbound plans
                   </h3>
-                  <p className="mt-4 text-sm leading-7 text-slate-600">
+                  <p className="mt-3 text-sm leading-7 text-slate-600">
                     Theth, Valbona, lake days, river excursions, and Montenegro
                     routes are easy to talk through from here.
                   </p>
@@ -788,10 +788,10 @@ export default function Home() {
                   className="group relative flex min-w-[82vw] snap-center flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
                 >
                   <div>
-                    <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
+                    <div className="float-left mb-3 mr-4 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
                       <Icon className="size-5" strokeWidth={1.8} />
                     </div>
-                    <h3 className="mb-3 font-heading text-xl leading-tight tracking-tight text-slate-900">
+                    <h3 className="mb-2 font-heading text-xl leading-tight tracking-tight text-slate-900 pt-1">
                       {reason.title}
                     </h3>
                     <p className="text-sm leading-relaxed text-slate-600">
@@ -830,10 +830,10 @@ export default function Home() {
                   <Reveal key={reason.title} delay={index * 100}>
                     <Panel className="group relative flex h-full flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md">
                       <div>
-                        <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
+                        <div className="float-left mb-3 mr-4 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
                           <Icon className="size-5" strokeWidth={1.8} />
                         </div>
-                        <h3 className="mb-3 font-heading text-xl leading-tight tracking-tight text-slate-900">
+                        <h3 className="mb-2 font-heading text-xl leading-tight tracking-tight text-slate-900 pt-1">
                           {reason.title}
                         </h3>
                         <p className="text-sm leading-relaxed text-slate-600">
