@@ -291,7 +291,7 @@ export default function Home() {
                     muted
                     loop
                     playsInline
-                    preload="auto"
+                    preload="none"
                     poster="/images/video-poster.webp"
                   >
                     <source src="/videos/videoplayback.mp4" type="video/mp4" />

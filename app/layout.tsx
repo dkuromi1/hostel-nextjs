@@ -75,11 +75,13 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.booking.com" />
         <link rel="preconnect" href="https://www.hostelworld.com" />
         <link rel="preconnect" href="https://www.instagram.com" />
+        <link rel="preconnect" href="https://api.mapbox.com" />
         <link rel="dns-prefetch" href="https://wa.me" />
         <link rel="dns-prefetch" href="https://www.booking.com" />
+        <link rel="dns-prefetch" href="https://api.mapbox.com" />
       </head>
       <body className="min-h-full bg-background font-sans text-foreground antialiased">
-        <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js" strategy="beforeInteractive" />
+        <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js" strategy="lazyOnload" />
         <Script id="netlify-identity-init" strategy="afterInteractive">
           {`
             if (window.netlifyIdentity) {
