@@ -227,8 +227,7 @@ export default function Home() {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 66vw, 924px"
                 />
-                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent p-6 pt-32 text-white">
                   <p className="text-xs uppercase tracking-[0.28em] text-sky-200/90">
                     Rooftop Socials
                   </p>
@@ -442,8 +441,7 @@ export default function Home() {
                       className="absolute inset-0 h-full rounded-none"
                       autoPlayInterval={0}
                     />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
-                    <div className="pointer-events-none absolute left-0 top-0 p-5 sm:inset-x-0 sm:bottom-0 sm:top-auto sm:px-6 sm:py-4 z-10">
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent z-10 flex p-5 sm:px-6 sm:py-4 items-start sm:items-end">
                       <Badge className="bg-white/20 text-white shadow-sm backdrop-blur-md pointer-events-auto">
                         {room.price}/night
                       </Badge>
@@ -577,8 +575,7 @@ export default function Home() {
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 42vw, 588px"
                   />
-                  <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent p-6 pt-32 text-white">
                     <p className="text-sm uppercase tracking-[0.28em] text-sky-100/90">
                       {experiencePillars[0].title}
                     </p>
@@ -607,8 +604,7 @@ export default function Home() {
                             className="object-cover"
                             sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 58vw, 812px"
                           />
-                          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
-                          <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent p-6 pt-32 text-white">
                             <p className="text-sm uppercase tracking-[0.28em] text-sky-100/90">
                               {pillar.title}
                             </p>
