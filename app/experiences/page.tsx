@@ -34,7 +34,7 @@ export const metadata = buildMetadata({
   description:
     "See how Scodrinon Hostel works as a social rooftop hangout and a launch point for Theth, Valbona, Lake Shkoder, river trips, and city culture.",
   path: "/experiences",
-  image: "/images/rooftop_social2.jpg",
+  image: "/images/rooftop_social_2.jpg",
 });
 
 const icons = [Waves, Bike, UtensilsCrossed];

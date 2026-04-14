@@ -284,7 +284,7 @@ export default function Home() {
                 </Reveal>
 
                 {/* Video (right on mobile, bottom on desktop) */}
-                <Reveal delay={300} className="media-frame relative flex items-center bg-black">
+                <Reveal delay={300} className="media-frame relative flex items-start lg:items-center self-start lg:self-auto">
                   <video
                     className="w-full h-auto"
                     autoPlay
@@ -478,7 +478,7 @@ export default function Home() {
                     </div>
 
                     <div className="space-y-3">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-600">
                         Room Details
                       </p>
                       <ul className="grid gap-3">
@@ -533,7 +533,6 @@ export default function Home() {
           <div className="flow-root">
             <GalleryMasonry
               items={galleryItems.slice(0, 12)}
-              columns={{ mobile: 2, tablet: 3, desktop: 3 }}
             />
           </div>
         </div>

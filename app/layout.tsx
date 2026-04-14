@@ -69,15 +69,15 @@ export default function RootLayout({
   modal: ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full scroll-smooth">
+    <html lang="en" className="h-full scroll-smooth" data-scroll-behavior="smooth">
       <head>
         <link rel="preconnect" href="https://wa.me" />
         <link rel="preconnect" href="https://www.booking.com" />
         <link rel="preconnect" href="https://www.hostelworld.com" />
-        <link rel="preconnect" href="https://www.instagram.com" />
         <link rel="preconnect" href="https://api.mapbox.com" />
         <link rel="dns-prefetch" href="https://wa.me" />
         <link rel="dns-prefetch" href="https://www.booking.com" />
+        <link rel="dns-prefetch" href="https://www.instagram.com" />
         <link rel="dns-prefetch" href="https://api.mapbox.com" />
       </head>
       <body className="min-h-full bg-background font-sans text-foreground antialiased">

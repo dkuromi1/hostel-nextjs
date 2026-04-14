@@ -28,7 +28,7 @@ export function buildMetadata({
     description,
     keywords: [...keywords],
     alternates: {
-      canonical: path,
+      canonical: getSiteUrl(path),
     },
     openGraph: {
       title,
@@ -88,7 +88,7 @@ export function buildHostelSchema() {
       "Rooftop terrace",
       "Luggage storage",
       "24h access",
-      "Bike rentals",
+      "Bike rentals (across the street)",
       "Walking tours",
     ].map((name) => ({
       "@type": "LocationFeatureSpecification",

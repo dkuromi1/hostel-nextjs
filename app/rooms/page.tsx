@@ -187,7 +187,7 @@ export default function RoomsPage() {
                         </div>
 
                         <div className="space-y-3">
-                          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">
+                          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-600">
                             Room Details
                           </p>
                           <ul className="grid gap-3 sm:grid-cols-2">
@@ -257,7 +257,7 @@ export default function RoomsPage() {
               </div>
               <div className="mt-8 media-frame relative w-full aspect-[4/3] sm:aspect-[16/9]">
                 <Image
-                  src="/images/rooftop_social2.jpg"
+                  src="/images/rooftop_social_2.jpg"
                   alt="Breakfast included at Scodrinon Hostel, Shkoder"
                   fill
                   className="object-cover object-[50%_30%]"
@@ -307,7 +307,7 @@ export default function RoomsPage() {
             eyebrow="Book Your Bed"
             title="Tell the team what kind of room you want and lock it in directly."
             description="If you already know your dates, message on WhatsApp and ask for the pod dorm or a four-bed option. Booking.com and Hostelworld stay there if you prefer those platforms."
-            image="/images/ambiance2.jpg"
+            image="/images/ambiance_4.jpg"
             alt="evening ambiance at Scodrinon Hostel, Shkoder"
             imageClassName="object-[50%_80%]"
           />

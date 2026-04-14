@@ -75,9 +75,9 @@ export function TestimonialCarousel({
               <blockquote className="mt-6 font-heading text-2xl leading-snug tracking-[-0.02em] text-white sm:text-3xl">
                 "{testimonial.quote}"
               </blockquote>
-              <p className="mt-6 font-medium text-slate-300">
+              <p className="mt-6 font-medium text-slate-200">
                 — {testimonial.author}{" "}
-                <span className="opacity-70">({testimonial.source})</span>
+                <span className="opacity-90">({testimonial.source})</span>
               </p>
             </div>
           );

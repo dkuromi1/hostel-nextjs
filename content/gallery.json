@@ -94,7 +94,7 @@
     {
       "id": "pod-dorm-detail",
       "type": "image",
-      "src": "/images/room_18bed_5.jpg",
+      "src": "/images/room_18bed5.jpg",
       "alt": "Privacy pod dorm at Scodrinon Hostel in Shkodra",
       "aspect": "aspect-[1/1]"
     },
@@ -255,7 +255,7 @@
     {
       "id": "travelers-socializing",
       "type": "image",
-      "src": "/images/rooftop_social2.jpg",
+      "src": "/images/rooftop_social_2.jpg",
       "alt": "Travelers socializing on the hostel rooftop",
       "aspect": "aspect-[6/4]"
     },
