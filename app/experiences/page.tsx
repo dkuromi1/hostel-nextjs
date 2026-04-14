@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   Waves,
   ShieldCheck,
@@ -10,6 +11,7 @@ import {
   Mountain,
   Sparkles,
   MapPin,
+  Navigation,
 } from "lucide-react";
 
 import { CtaStrip } from "@/components/cta-strip";
@@ -156,8 +158,8 @@ export default function ExperiencesPage() {
           {/* Section Header */}
           <Reveal className="max-w-3xl">
             <SectionHeading
-              eyebrow="Connection & Discovery"
-              title="Local Texture"
+              eyebrow="Local Texture"
+              title="Connection & Discovery"
               description="Skip the forced hostel itinerary. We offer a grounded atmosphere where meeting people and discovering the city’s character happens at your own pace."
             />
           </Reveal>
@@ -170,6 +172,7 @@ export default function ExperiencesPage() {
                 description: "Just outside the city, the Drin river offers a slow, scenic contrast to the Alps. We help arrange simple boat excursions for a quiet, sun-drenched afternoon on the water.",
                 icon: Waves,
                 image: "/images/drin_swimming_trip2.jpeg",
+                focus: "50% 40%",
               },
               {
                 title: "Spontaneous Socials",
@@ -249,11 +252,27 @@ export default function ExperiencesPage() {
                   </div>
 
                   <div className="flex flex-1 flex-col p-6">
-                    <div className="mb-3 flex w-fit items-center gap-2 text-sky-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105 origin-left">
-                      <MapPin className="size-4" strokeWidth={2} />
-                      <span className="text-[10px] font-bold uppercase tracking-widest">
-                        Local Spot
-                      </span>
+                    <div className="mb-3 flex flex-wrap items-center gap-2">
+                      <Link
+                        href={`/contact?poi=${encodeURIComponent(item.title)}#map`}
+                        className="group flex w-fit items-center gap-1.5 rounded-full border border-sky-100 bg-sky-50 px-2.5 py-1 text-sky-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-200 hover:bg-sky-100 hover:shadow-sm"
+                      >
+                        <MapPin className="size-3.5 transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110" strokeWidth={2} />
+                        <span className="text-[9px] font-bold uppercase tracking-widest whitespace-nowrap">
+                          View on Our Local Map
+                        </span>
+                      </Link>
+                      <a
+                        href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(item.title + ' Shkoder')}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group flex w-fit items-center gap-1.5 rounded-full border border-slate-200 bg-white px-2.5 py-1 text-slate-600 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50 hover:shadow-sm"
+                      >
+                        <Navigation className="size-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2.5} />
+                        <span className="text-[9px] font-bold uppercase tracking-widest whitespace-nowrap">
+                          Directions
+                        </span>
+                      </a>
                     </div>
                     <h3 className="mb-2 font-heading text-xl leading-tight tracking-tight text-slate-900">
                       {item.title}

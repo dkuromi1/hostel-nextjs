@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import poisData from '@/content/pois.json';
+import { useSearchParams } from 'next/navigation';
 
 interface LocationMapInnerProps {
     accessToken: string;
@@ -69,6 +70,9 @@ const getPoiColor = (category: string) => {
 };
 
 export default function LocationMapInner({ accessToken }: LocationMapInnerProps) {
+    const searchParams = useSearchParams();
+    const poiQuery = searchParams?.get('poi') || '';
+
     const mapContainerRef = useRef<HTMLDivElement>(null);
     const mapRef = useRef<mapboxgl.Map | null>(null);
     const [isSatellite, setIsSatellite] = React.useState(false);
@@ -381,7 +385,22 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         });
 
         map.on('load', () => {
-            map.flyTo({ center: HOSTEL_COORDS, zoom: 15.5, speed: 0.8, curve: 1, essential: true });
+            let targetCenter: [number, number] = HOSTEL_COORDS;
+            let targetZoom = 15.5;
+
+            if (poiQuery) {
+                const q = poiQuery.toLowerCase();
+                const matchedPoi = RECOMMENDED_POIS.find((p: any) => q.includes(p.name.toLowerCase()) || p.name.toLowerCase().includes(q));
+                if (matchedPoi) {
+                    targetCenter = matchedPoi.coords as [number, number];
+                    targetZoom = 16.5;
+                } else if (q.includes("pedestrian") || q.includes("idromeno")) {
+                    targetCenter = PEDONALE_COORDS[1] as [number, number];
+                    targetZoom = 16.5;
+                }
+            }
+
+            map.flyTo({ center: targetCenter, zoom: targetZoom, speed: 0.8, curve: 1, essential: true });
             applyCustomizations(map);
 
             // Force a resize calculation after the initial fly-to and parent layout stabilization

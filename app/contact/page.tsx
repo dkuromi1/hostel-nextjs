@@ -134,7 +134,7 @@ export default function ContactPage() {
             </Reveal>
 
             <Reveal className="flex-1" delay={50}>
-              <div className="media-frame relative min-h-[400px] h-full w-full overflow-hidden rounded-3xl">
+              <div id="map" className="media-frame relative min-h-[400px] h-full w-full overflow-hidden rounded-3xl">
                 <LocationMap />
               </div>
             </Reveal>

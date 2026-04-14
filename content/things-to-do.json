@@ -2,14 +2,14 @@
   "thingsToDo": [
     {
       "title": "Rozafa Castle",
-      "description": "Perched on a rocky hill with views across Lake Shkodër and three rivers. Best visited an hour before sunset for the golden lighting across the valleys.",
+      "description": "Perched on a rocky hill with beautiful views across Lake Shkodër and three rivers! Best visited an hour before sunset for the golden lighting across the valleys.",
       "image": "/images/rosafa_castle.webp",
       "alt": "View from Rozafa Castle in Shkoder"
     },
     {
       "title": "The Pedestrian Street (Kolë Idromeno)",
-      "description": "The lively Venetian-style pedestrian street starting right outside the hostel. Lined with independent cafes, restaurants, and evening promenades.",
-      "image": "/images/shkoder_pedestrian_street_2.webp",
+      "description": "The lively Venetian-style pedestrian street starting right outside the hostel! Lined with independent cafes, restaurants, and evening promenades.",
+      "image": "/images/shkoder_pedestrian_street_3.webp",
       "alt": "Walking down the Pedonale in Shkoder"
     },
     {
@@ -26,7 +26,7 @@
     },
     {
       "title": "Marubi National Photography Museum",
-      "description": "A quiet, modern exhibition featuring over 150 years of Albanian history through the incredibly detailed lenses of the Marubi family. Less than a minute walk from the hostel!",
+      "description": "A quiet, modern exhibition featuring over 150 years of Albanian history through the incredibly detailed lenses of the Marubi family. Just a few doors down from the hostel!",
       "image": "/images/marubi_museum.png",
       "alt": "Inside the Marubi National Photography Museum"
     }
