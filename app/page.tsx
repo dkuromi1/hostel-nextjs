@@ -675,160 +675,28 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Why People Stay Longer */}
       <section className="py-8 sm:py-16">
-        <div className="shell-container flex flex-col gap-10 lg:flex-row lg:items-stretch">
+        <div className="shell-container flex flex-col gap-10 lg:flex-row lg:items-start relative">
           {/* Left Column: Standard Content */}
           <div className="flex-1 space-y-8 lg:max-w-[60%]">
             <Reveal>
-              <SectionHeading
-                eyebrow="Simply Scodrinon"
-                title="The basics are not treated like extras."
-                description="Breakfast, luggage storage, WiFi, and a genuinely usable rooftop make the stay feel generous instead of stripped down."
-              />
-            </Reveal>
-
-            <SwipableRow
-              itemCount={4}
-              className="-mx-8 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-4"
-            >
-              <div className="group relative flex min-w-[82vw] snap-center sm:min-w-0 flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
-                <div>
-                  <div className="float-left mb-3 mr-5 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
-                    <ShieldCheck className="size-5" strokeWidth={1.8} />
-                  </div>
-                  <h3 className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950 pt-1">
-                    Safe, welcoming atmosphere
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">
-                    Designed to feel open and social while still being especially
-                    comfortable for solo travelers.
-                  </p>
-                </div>
-              </div>
-              <div className="group relative flex min-w-[82vw] snap-center sm:min-w-0 flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
-                <div>
-                  <div className="float-left mb-3 mr-5 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
-                    <Wifi className="size-5" strokeWidth={1.8} />
-                  </div>
-                  <h3 className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950 pt-1">
-                    Good day-to-day comfort
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">
-                    Fast WiFi, clean bathrooms, lockers, sockets, and air-con are
-                    standard rather than upsells.
-                  </p>
-                </div>
-              </div>
-              <div className="group relative flex min-w-[82vw] snap-center sm:min-w-0 flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
-                <div>
-                  <div className="float-left mb-3 mr-5 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
-                    <MapPinned className="size-5" strokeWidth={1.8} />
-                  </div>
-                  <h3 className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950 pt-1">
-                    Best-positioned city base
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">
-                    Cafes, restaurants, museums, and nightlife are right outside
-                    on the city promenade.
-                  </p>
-                </div>
-              </div>
-              <div className="group relative flex min-w-[82vw] snap-center sm:min-w-0 flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
-                <div>
-                  <div className="float-left mb-3 mr-5 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
-                    <Mountain className="size-5" strokeWidth={1.8} />
-                  </div>
-                  <h3 className="font-heading text-xl leading-none tracking-[-0.04em] text-slate-950 pt-1">
-                    Ready for northbound plans
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">
-                    Theth, Valbona, lake days, river excursions, and Montenegro
-                    routes are easy to talk through from here.
-                  </p>
-                </div>
-              </div>
-            </SwipableRow>
-          </div>
-
-          {/* Right Column: Testimonials */}
-          <Reveal delay={200} className="lg:w-[40%] flex flex-col">
-            <TestimonialCarousel testimonials={testimonials} className="h-full" />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Why People Stay Longer */}
-      <section className="py-20 bg-slate-50/50">
-        {/* Mobile: flat heading + image + full-width swipable row */}
-        <div className="sm:hidden px-4 space-y-6">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Why People Stay Longer"
-              title="The kind of hostel that makes short plans drift into a week."
-              description="The draw is not one dramatic feature. It's the way the privacy, rooftop, location, and staff all work together so the stay feels easy from the start."
-            />
-          </Reveal>
-          <div className="media-frame relative min-h-[20rem] overflow-hidden rounded-3xl shadow-2xl shadow-slate-200/50">
-            <Image
-              src="/images/rooftop_social2.jpg"
-              alt="Travelers relaxing on the rooftop of Scodrinon Hostel"
-              fill
-              className="object-cover"
-              sizes="100vw"
-            />
-          </div>
-        </div>
-        <div className="sm:hidden mt-6">
-          <SwipableRow itemCount={extendReasons.length} className="">
-            {extendReasons.map((reason, index) => {
-              const Icon = reasonIcons[index] || ArrowRight;
-              return (
-                <Panel
-                  key={reason.title}
-                  className="group relative flex min-w-[82vw] snap-center flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
-                >
-                  <div>
-                    <div className="float-left mb-3 mr-4 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
-                      <Icon className="size-5" strokeWidth={1.8} />
-                    </div>
-                    <h3 className="mb-2 font-heading text-xl leading-tight tracking-tight text-slate-900 pt-1">
-                      {reason.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-slate-600">
-                      {reason.description}
-                    </p>
-                  </div>
-                </Panel>
-              );
-            })}
-          </SwipableRow>
-        </div>
-
-        {/* Desktop: original grid with shell-container */}
-        <div className="hidden sm:block sm:px-6 lg:px-8">
-          <div className="shell-container grid gap-12 lg:grid-cols-12 lg:items-center">
-            <Reveal className="space-y-8 lg:col-span-5">
               <SectionHeading
                 eyebrow="Why People Stay Longer"
                 title="The kind of hostel that makes short plans drift into a week."
                 description="The draw is not one dramatic feature. It's the way the privacy, rooftop, location, and staff all work together so the stay feels easy from the start."
               />
-              <div className="media-frame relative min-h-[32rem] overflow-hidden rounded-3xl shadow-2xl shadow-slate-200/50">
-                <Image
-                  src="/images/rooftop_social2.jpg"
-                  alt="Travelers relaxing on the rooftop of Scodrinon Hostel"
-                  fill
-                  className="object-cover transition-transform duration-1000 hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 42vw, 588px"
-                />
-              </div>
             </Reveal>
-            <div className="lg:col-span-7 grid gap-4 sm:grid-cols-2">
+
+            <SwipableRow
+              itemCount={extendReasons.length}
+              className="-mx-8 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-4"
+            >
               {extendReasons.map((reason, index) => {
                 const Icon = reasonIcons[index] || ArrowRight;
                 return (
-                  <Reveal key={reason.title} delay={index * 100}>
-                    <Panel className="group relative flex h-full flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md">
+                  <Reveal key={reason.title} delay={index * 100} className="min-w-[82vw] snap-center sm:min-w-0">
+                    <div className="group relative flex h-full flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
                       <div>
                         <div className="float-left mb-3 mr-4 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
                           <Icon className="size-5" strokeWidth={1.8} />
@@ -840,12 +708,17 @@ export default function Home() {
                           {reason.description}
                         </p>
                       </div>
-                    </Panel>
+                    </div>
                   </Reveal>
                 );
               })}
-            </div>
+            </SwipableRow>
           </div>
+
+          {/* Right Column: Testimonials */}
+          <Reveal delay={200} className="lg:w-[40%] flex flex-col lg:sticky lg:top-32">
+            <TestimonialCarousel testimonials={testimonials} className="w-full" />
+          </Reveal>
         </div>
       </section>
 
