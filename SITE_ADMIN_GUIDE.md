@@ -22,7 +22,7 @@ The site's interactive map is powered by Mapbox GL JS and managed in the `compon
 ### Mapbox Access Token
 You must provide a valid public access token in your `.env.local` file:
 ```bash
-NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=your_token_here
+MAPBOX_ACCESS_TOKEN=your_token_here
 ```
 > [!IMPORTANT]
 > To enable the **Satellite View**, ensure your Mapbox account has the "Satellite Streets" style enabled in your dashboard.
