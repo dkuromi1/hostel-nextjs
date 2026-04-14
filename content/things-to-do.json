@@ -1,0 +1,34 @@
+{
+  "thingsToDo": [
+    {
+      "title": "Rozafa Castle",
+      "description": "Perched on a rocky hill with views across Lake Shkodër and three rivers. Best visited an hour before sunset for the golden lighting across the valleys.",
+      "image": "/images/rosafa_castle.webp",
+      "alt": "View from Rozafa Castle in Shkoder"
+    },
+    {
+      "title": "The Pedonale (Kole Idromeno)",
+      "description": "The lively Venetian-style pedestrian street starting right outside the hostel. Lined with independent cafes, restaurants, and evening promenades.",
+      "image": "/images/shkoder_pedestrian_street_2.webp",
+      "alt": "Walking down the Pedonale in Shkoder"
+    },
+    {
+      "title": "Lake Shkodër & Shiroka",
+      "description": "Grab a bike and cycle out past the Buna bridge to the sleepy village of Shiroka. Stop for fresh carp by the water and a clear view of the Montenegrin mountains.",
+      "image": "/images/lake_shkoder.png",
+      "alt": "Biking along Lake Shkoder towards Shiroka"
+    },
+    {
+      "title": "Marubi National Photography Museum",
+      "description": "A quiet, modern exhibition featuring over 150 years of Albanian history through the incredibly detailed lenses of the Marubi family.",
+      "image": "/images/marubi_museum.png",
+      "alt": "Inside the Marubi National Photography Museum"
+    },
+    {
+      "title": "Mesi Bridge (Ura e Mesit)",
+      "description": "A stunning, curved Ottoman bridge resting over the shallow, opal waters of the Kir River, built in 1768 to connect the city with the northern highlands.",
+      "image": "/images/mesi_bridge.png",
+      "alt": "The historic Ottoman Mesi Bridge in Shkoder"
+    }
+  ]
+}

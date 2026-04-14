@@ -9,6 +9,7 @@ import {
   Bus,
   Mountain,
   Sparkles,
+  MapPin,
 } from "lucide-react";
 
 import { CtaStrip } from "@/components/cta-strip";
@@ -22,6 +23,7 @@ import {
   buildMetadata,
   buildHostelSchema,
 } from "@/lib/metadata";
+import { thingsToDo } from "@/lib/site-data";
 
 export const metadata = buildMetadata({
   title: "Rooftop Events And Adventure Base In Shkoder",
@@ -210,6 +212,54 @@ export default function ExperiencesPage() {
                     </div>
 
                     <h3 className="mb-3 font-heading text-xl leading-tight tracking-tight text-slate-900">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-slate-600">
+                      {item.description}
+                    </p>
+                  </div>
+                </Panel>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Things To Do Section */}
+      <section className="py-8 sm:py-16 bg-slate-50/50">
+        <div className="shell-container space-y-12">
+          <Reveal className="max-w-3xl">
+            <SectionHeading
+              eyebrow="Beyond the Hostel"
+              title="Things to do in Shkodër"
+              description="Whether you have an afternoon to kill before your hike or a few days to wander, here’s what makes the city worth sticking around for."
+            />
+          </Reveal>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {thingsToDo.map((item, index) => (
+              <Reveal key={item.title} delay={index * 100} className="h-full">
+                <Panel className="group relative flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-500 hover:-translate-y-1 hover:border-slate-300 hover:shadow-xl">
+                  <div className="absolute left-0 top-0 z-20 h-1 w-0 bg-sky-500 transition-all duration-500 ease-out group-hover:w-full" />
+                  
+                  <div className="relative h-48 w-full overflow-hidden bg-slate-100">
+                    <Image
+                      src={item.image}
+                      alt={item.alt}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+
+                  <div className="flex flex-1 flex-col p-6">
+                    <div className="mb-3 flex items-center gap-2 text-sky-700">
+                      <MapPin className="size-4" strokeWidth={2} />
+                      <span className="text-[10px] font-bold uppercase tracking-widest">
+                        Local Spot
+                      </span>
+                    </div>
+                    <h3 className="mb-2 font-heading text-xl leading-tight tracking-tight text-slate-900">
                       {item.title}
                     </h3>
                     <p className="text-sm leading-relaxed text-slate-600">

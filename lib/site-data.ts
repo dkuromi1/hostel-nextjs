@@ -5,6 +5,7 @@ import homepage from "../content/homepage.json";
 import faq from "../content/faq.json";
 import testimonialsData from "../content/testimonials.json";
 import gallery from "../content/gallery.json";
+import thingsToDoData from "../content/things-to-do.json";
 
 export const siteConfig = {
   ...settings,
@@ -36,3 +37,5 @@ export const faqItems = faq.faqItems;
 export const contactChecklist = homepage.contactChecklist;
 
 export const testimonials = testimonialsData.testimonials;
+
+export const thingsToDo = thingsToDoData.thingsToDo;
