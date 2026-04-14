@@ -137,7 +137,7 @@ export default function Home() {
                 <p className="max-w-[50ch] text-lg leading-relaxed text-slate-300 antialiased [text-shadow:0_1px_4px_rgba(0,0,0,0.4)] sm:text-xl lg:text-2xl">
                   Ideally placed on Shkodër’s vibrant pedestrian street. A social
                   gateway to legendary rooftop sunsets, the Theth-Valbona trek, and
-                  the raw beauty of Europe&apos;s last frontier.
+                  the raw beauty of Europe&apos;s &apos;last frontier&apos;.
                 </p>
               </div>
             </div>
@@ -150,7 +150,12 @@ export default function Home() {
                 {quickFacts.map((fact, index) => {
                   const Icon = factIcons[index];
                   return (
-                    <div key={fact} className="min-w-[85%] snap-center sm:min-w-0">
+                    <Reveal
+                      key={fact}
+                      delay={500 + index * 120}
+                      duration={1400}
+                      className="min-w-[85%] snap-center sm:min-w-0"
+                    >
                       <div className="group relative overflow-hidden rounded-[24px] border border-white/10 bg-white/5 p-5 backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:border-white/20">
                         <div className="text-sm leading-7 text-white/90">
                           <div className="float-left mb-1 mr-4 flex size-10 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-400">
@@ -159,7 +164,7 @@ export default function Home() {
                           {fact}
                         </div>
                       </div>
-                    </div>
+                    </Reveal>
                   );
                 })}
                 {/* Trailing Spacer for mobile snapping */}
@@ -182,15 +187,11 @@ export default function Home() {
       {/* Repurposed Media Section - "The Atmosphere" */}
       <section className="py-8 sm:py-16">
         <div className="shell-container">
-          <Reveal delay={80}>
-            {/* Desktop: 2-col [3fr_1fr], 2-row grid with explicit placement
-                Row 1: [Rooftop Socials] [Room image]
-                Row 2: [Direct Booking] [Video (portrait)]
-                Mobile: flex-col — Rooftop, then [Room+Booking | Video] */}
-            <div className="flex flex-col gap-4 lg:grid lg:grid-cols-[2fr_1fr] lg:grid-rows-[1fr_auto] lg:gap-5">
+          <div className="flex flex-col gap-4 lg:grid lg:grid-cols-[2fr_1fr] lg:grid-rows-[1fr_auto] lg:gap-5">
 
-              {/* DESKTOP ONLY: Direct Booking card — row 2, col 1 */}
-              <div className="hidden lg:flex lg:row-start-2 lg:items-center lg:justify-between glass-panel rounded-[28px] p-6 gap-6">
+            {/* DESKTOP ONLY: Direct Booking card — row 2, col 1 */}
+            <Reveal delay={200} className="hidden lg:flex lg:row-start-2">
+              <div className="h-full flex items-center justify-between glass-panel rounded-[28px] p-6 gap-6 w-full">
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-700">
                     Direct Booking
@@ -214,9 +215,11 @@ export default function Home() {
                   Book on WhatsApp
                 </a>
               </div>
+            </Reveal>
 
-              {/* Rooftop image — full width mobile (first visible), row 1 col 1 on desktop */}
-              <div className="media-frame relative aspect-[16/10] sm:aspect-[21/9] lg:row-start-1 lg:aspect-auto lg:min-h-[22rem]">
+            {/* Rooftop image — full width mobile (first visible), row 1 col 1 on desktop */}
+            <Reveal delay={0} className="lg:row-start-1">
+              <div className="media-frame relative aspect-[16/10] sm:aspect-[21/9] lg:aspect-auto lg:min-h-[22rem] h-full overflow-hidden">
                 <Image
                   src="/images/rooftop_social.webp"
                   alt="Guests enjoying the rooftop at Scodrinon Hostel"
@@ -224,9 +227,9 @@ export default function Home() {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 66vw, 924px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <p className="text-xs uppercase tracking-[0.28em] text-sky-200/90 [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]">
+                  <p className="text-xs uppercase tracking-[0.28em] text-sky-200/90">
                     Rooftop Socials
                   </p>
                   <p className="mt-2 max-w-sm font-heading text-2xl leading-tight tracking-tight">
@@ -234,71 +237,71 @@ export default function Home() {
                   </p>
                 </div>
               </div>
+            </Reveal>
 
-              {/* Right column — row-span-2 col-2 on desktop; second on mobile */}
-              <div className="flex flex-col gap-4 lg:col-start-2 lg:row-start-1 lg:row-span-2">
+            {/* Right column — row-span-2 col-2 on desktop; second on mobile */}
+            <div className="flex flex-col gap-4 lg:col-start-2 lg:row-start-1 lg:row-span-2">
 
-                {/* 2-col on mobile: [Room+Booking | Video]; 1-col stacked on desktop: Room then Video */}
-                <div className="grid grid-cols-[3fr_2fr] gap-4 lg:grid-cols-1 lg:h-full">
+              {/* 2-col on mobile: [Room+Booking | Video]; 1-col stacked on desktop: Room then Video */}
+              <div className="grid grid-cols-[3fr_2fr] gap-4 lg:grid-cols-1 lg:h-full">
 
-                  {/* Room image + mobile booking (left on mobile, top on desktop) */}
-                  <div className="flex min-w-0 flex-col gap-4">
-                    <div className="media-frame relative aspect-[4/3]">
-                      <Image
-                        src="/images/rooms_1.jpg"
-                        alt="Privacy pod dorm room at Scodrinon Hostel"
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 1024px) 60vw, (max-width: 1400px) 33vw, 466px"
-                      />
-                    </div>
-
-                    {/* Mobile-only booking card */}
-                    <div className="glass-panel rounded-[28px] p-5 lg:hidden">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-700">
-                        Direct Booking
-                      </p>
-                      <p className="mt-2 font-heading text-lg leading-tight tracking-tight text-slate-950">
-                        <span className="sm:hidden">Message us to book direct</span>
-                        <span className="hidden sm:inline">Message the hostel and book direct</span>
-                      </p>
-                      <p className="mt-2 text-xs leading-relaxed text-slate-600">
-                        <span className="sm:hidden">Just send us the dates, room type, arrival time, and any trip planning.</span>
-                        <span className="hidden sm:inline">WhatsApp is the most direct way to confirm dates, room type, arrival time, and any trip planning.</span>
-                      </p>
-                      <a
-                        href={siteConfig.whatsappUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={cn(
-                          buttonVariants({ size: "sm" }),
-                          "mt-4 w-full rounded-full bg-emerald-700 font-semibold text-white transition-all duration-300 hover:bg-emerald-800 active:scale-95"
-                        )}
-                      >
-                        Book on WhatsApp
-                      </a>
-                    </div>
+                {/* Room image + mobile booking (left on mobile, top on desktop) */}
+                <Reveal delay={100} className="flex min-w-0 flex-col gap-4 h-full">
+                  <div className="media-frame relative aspect-[4/3] h-full lg:h-auto">
+                    <Image
+                      src="/images/rooms_1.jpg"
+                      alt="Privacy pod dorm room at Scodrinon Hostel"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 60vw, (max-width: 1400px) 33vw, 466px"
+                    />
                   </div>
 
-                  {/* Video (right on mobile, bottom on desktop — keeps portrait aspect) */}
-                  <div className="media-frame relative aspect-[9/16]">
-                    <video
-                      className="h-full w-full object-cover"
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      preload="auto"
-                      poster="/images/video-poster.webp"
+                  {/* Mobile-only booking card */}
+                  <div className="glass-panel rounded-[28px] p-5 lg:hidden">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-700">
+                      Direct Booking
+                    </p>
+                    <p className="mt-2 font-heading text-lg leading-tight tracking-tight text-slate-950">
+                      <span className="sm:hidden">Message us to book direct</span>
+                      <span className="hidden sm:inline">Message the hostel and book direct</span>
+                    </p>
+                    <p className="mt-2 text-xs leading-relaxed text-slate-600">
+                      <span className="sm:hidden">Just send us the dates, room type, arrival time, and any trip planning.</span>
+                      <span className="hidden sm:inline">WhatsApp is the most direct way to confirm dates, room type, arrival time, and any trip planning.</span>
+                    </p>
+                    <a
+                      href={siteConfig.whatsappUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={cn(
+                        buttonVariants({ size: "sm" }),
+                        "mt-4 w-full rounded-full bg-emerald-700 font-semibold text-white transition-all duration-300 hover:bg-emerald-800 active:scale-95"
+                      )}
                     >
-                      <source src="/videos/videoplayback.mp4" type="video/mp4" />
-                    </video>
+                      Book on WhatsApp
+                    </a>
                   </div>
-                </div>
-              </div>
+                </Reveal>
 
+                {/* Video (right on mobile, bottom on desktop — keeps portrait aspect) */}
+                <Reveal delay={300} className="media-frame relative aspect-[9/16] h-full">
+                  <video
+                    className="h-full w-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                    poster="/images/video-poster.webp"
+                  >
+                    <source src="/videos/videoplayback.mp4" type="video/mp4" />
+                  </video>
+                </Reveal>
+              </div>
             </div>
-          </Reveal>
+
+          </div>
         </div>
       </section>
 
@@ -306,97 +309,98 @@ export default function Home() {
       {/* Guest Ratings */}
       <section className="pb-8 sm:pb-16">
         <div className="shell-container">
-          <div className="glass-panel rounded-[28px] p-4 sm:p-5">
-            <div className="flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-slate-500">
-              <span className="faded-line h-px flex-1" />
-              Guest Ratings
-              <span className="faded-line h-px flex-1" />
-            </div>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:items-stretch">
-              {/* Booking.com Card */}
-              <a
-                href={siteConfig.bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 px-4 py-5 shadow-[0_20px_55px_-40px_rgba(15,23,42,0.35)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_rgba(15,23,42,0.4)]"
-              >
-                <div className="flex min-h-[3rem] flex-wrap items-center justify-between gap-x-2 gap-y-2">
-                  <BookingComLogo className="min-w-0 shrink-0" />
-                  <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600">
-                    <Star className="size-3" fill="currentColor" />
-                    <span className="text-[10px] font-bold uppercase tracking-wider">
-                      Top Rated
-                    </span>
+          <Reveal>
+            <div className="glass-panel rounded-[28px] p-4 sm:p-5">
+              <div className="flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-slate-500">
+                <span className="faded-line h-px flex-1" />
+                Guest Ratings
+                <span className="faded-line h-px flex-1" />
+              </div>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:items-stretch">
+                {/* Booking.com Card */}
+                <a
+                  href={siteConfig.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 px-4 py-5 shadow-[0_20px_55px_-40px_rgba(15,23,42,0.35)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_rgba(15,23,42,0.4)]"
+                >
+                  <div className="flex min-h-[3rem] flex-wrap items-center justify-between gap-x-2 gap-y-2">
+                    <BookingComLogo className="min-w-0 shrink-0" />
+                    <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600">
+                      <Star className="size-3" fill="currentColor" />
+                      <span className="text-[10px] font-bold uppercase tracking-wider">
+                        Top Rated
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div className="flex flex-1 flex-col justify-center py-1">
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="flex min-w-0 items-center gap-2">
-                      <div className="shrink-0 rounded-full bg-blue-500/12 p-1.5 text-blue-700">
-                        <Award className="size-5" strokeWidth={1.8} />
+                  <div className="flex flex-1 flex-col justify-center py-1">
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex min-w-0 items-center gap-2">
+                        <div className="shrink-0 rounded-full bg-blue-500/12 p-1.5 text-blue-700">
+                          <Award className="size-5" strokeWidth={1.8} />
+                        </div>
+                        <p className="text-sm font-medium leading-6 text-slate-800 transition-colors group-hover:text-blue-700">
+                          2025 Traveller Review Award
+                        </p>
                       </div>
-                      <p className="text-sm font-medium leading-6 text-slate-800 transition-colors group-hover:text-blue-700">
-                        2025 Traveller Review Award
-                      </p>
-                    </div>
-                    <div className="shrink-0 rounded-tr-sm rounded-tl-sm rounded-br-sm rounded-bl-none bg-blue-700 px-3 py-1 text-center font-semibold text-white shadow-sm">
-                      <p className="font-heading text-xl leading-none tracking-tight">
-                        9.5
-                      </p>
-                      <p className="text-[8px] uppercase tracking-wider text-blue-50">
-                        out of 10
-                      </p>
+                      <div className="shrink-0 rounded-tr-sm rounded-tl-sm rounded-br-sm rounded-bl-none bg-blue-700 px-3 py-1 text-center font-semibold text-white shadow-sm">
+                        <p className="font-heading text-xl leading-none tracking-tight">
+                          9.5
+                        </p>
+                        <p className="text-[8px] uppercase tracking-wider text-blue-50">
+                          out of 10
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <p className="mt-auto pt-2 text-sm leading-6 text-slate-500">
-                  Awarded for consistent excellence in guest hospitality.
-                </p>
-              </a>
+                  <p className="mt-auto pt-2 text-sm leading-6 text-slate-500">
+                    Awarded for consistent excellence in guest hospitality.
+                  </p>
+                </a>
 
-              {/* Hostelworld Card */}
-              <a
-                href={siteConfig.hostelworldUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 px-4 py-5 shadow-[0_20px_55px_-40px_rgba(15,23,42,0.35)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_rgba(15,23,42,0.4)]"
-              >
-                <div className="flex min-h-[3rem] flex-wrap items-center justify-between gap-x-2 gap-y-2">
-                  <HostelworldLogo className="h-7 w-auto shrink-0" />
-                  <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600">
-                    <Star className="size-3" fill="currentColor" />
-                    <span className="text-[10px] font-bold uppercase tracking-wider">
-                      Top Rated
-                    </span>
+                {/* Hostelworld Card */}
+                <a
+                  href={siteConfig.hostelworldUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 px-4 py-5 shadow-[0_20px_55px_-40px_rgba(15,23,42,0.35)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_rgba(15,23,42,0.4)]"
+                >
+                  <div className="flex min-h-[3rem] flex-wrap items-center justify-between gap-x-2 gap-y-2">
+                    <HostelworldLogo className="h-7 w-auto shrink-0" />
+                    <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600">
+                      <Star className="size-3" fill="currentColor" />
+                      <span className="text-[10px] font-bold uppercase tracking-wider">
+                        Top Rated
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div className="flex flex-1 flex-col justify-center py-1">
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="flex min-w-0 items-center gap-2">
-                      <div className="shrink-0 rounded-full bg-amber-500/12 p-1.5 text-amber-700">
-                        <Star className="size-5" strokeWidth={1.8} />
+                  <div className="flex flex-1 flex-col justify-center py-1">
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex min-w-0 items-center gap-2">
+                        <div className="shrink-0 rounded-full bg-amber-500/12 p-1.5 text-amber-700">
+                          <Star className="size-5" strokeWidth={1.8} />
+                        </div>
+                        <p className="text-sm font-medium leading-6 text-slate-800 transition-colors group-hover:text-amber-700">
+                          'Superb' Guest Rating
+                        </p>
                       </div>
-                      <p className="text-sm font-medium leading-6 text-slate-800 transition-colors group-hover:text-amber-700">
-                        'Superb' Guest Rating
-                      </p>
-                    </div>
-                    <div className="relative h-15 w-25 shrink-0 overflow-hidden rounded-md shadow-sm">
-                      <Image
-                        src="/images/hostelworld_reviews.png"
-                        alt="10 score on Hostelworld"
-                        fill
-                        className="object-contain"
-                        sizes="100px"
-                      />
+                      <div className="relative h-15 w-25 shrink-0 overflow-hidden rounded-md shadow-sm">
+                        <Image
+                          src="/images/hostelworld_reviews.png"
+                          alt="10 score on Hostelworld"
+                          fill
+                          className="object-contain"
+                          sizes="100px"
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <p className="mt-auto pt-2 text-sm leading-6 text-slate-500 transition-colors group-hover:text-amber-700">
-                  Rated &apos;Superb&apos; by travelers on Hostelworld.
-                </p>
-              </a>
+                  <p className="mt-auto pt-2 text-sm leading-6 text-slate-500 transition-colors group-hover:text-amber-700">
+                  </p>
+                </a>
+              </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -563,7 +567,7 @@ export default function Home() {
           </div>
 
           <div className="grid gap-6 lg:grid-cols-12">
-            <Reveal className="lg:col-span-5 h-full">
+            <Reveal delay={0} className="lg:col-span-5 h-full">
               <Panel className="overflow-hidden h-full">
                 <div className="relative h-full min-h-[30rem]">
                   <Image
@@ -573,12 +577,12 @@ export default function Home() {
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 42vw, 588px"
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.04),rgba(15,23,42,0.55))]" />
+                  <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <p className="text-sm uppercase tracking-[0.28em] text-sky-100/90 [text-shadow:0_2px_10px_rgba(0,0,0,0.9)]">
+                    <p className="text-sm uppercase tracking-[0.28em] text-sky-100/90">
                       {experiencePillars[0].title}
                     </p>
-                    <p className="mt-3 max-w-lg text-base leading-8 text-slate-100 [text-shadow:0_2px_10px_rgba(0,0,0,0.9)]">
+                    <p className="mt-3 max-w-lg text-base leading-8 text-slate-100">
                       {experiencePillars[0].description}
                     </p>
                   </div>
@@ -592,7 +596,7 @@ export default function Home() {
                 const Icon = reasonIcons[index + 1] || ArrowRight;
 
                 return (
-                  <Reveal key={pillar.title} delay={index * 100}>
+                  <Reveal key={pillar.title} delay={150 + index * 100}>
                     <Panel className="overflow-hidden h-full">
                       {isSecondElement ? (
                         <div className="relative h-full min-h-[22rem]">
@@ -603,12 +607,12 @@ export default function Home() {
                             className="object-cover"
                             sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 58vw, 812px"
                           />
-                          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.04),rgba(15,23,42,0.6))]" />
+                          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
                           <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                            <p className="text-sm uppercase tracking-[0.28em] text-sky-100/90 [text-shadow:0_2px_10px_rgba(0,0,0,0.9)]">
+                            <p className="text-sm uppercase tracking-[0.28em] text-sky-100/90">
                               {pillar.title}
                             </p>
-                            <p className="mt-3 text-base leading-8 text-slate-100 [text-shadow:0_2px_10px_rgba(0,0,0,0.9)]">
+                            <p className="mt-3 text-base leading-8 text-slate-100">
                               {pillar.description}
                             </p>
                           </div>

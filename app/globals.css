@@ -59,6 +59,13 @@
   --font-mono: "SFMono-Regular", "SF Mono", "Menlo", monospace;
 }
 
+@utility bg-texture {
+  background-image: 
+    linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+  background-size: 100px 100px;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/60;
@@ -69,10 +76,14 @@
   }
 
   body {
-    background:
-      radial-gradient(circle at top left, rgba(5, 150, 105, 0.14), transparent 34%),
-      radial-gradient(circle at 85% 10%, rgba(245, 182, 77, 0.14), transparent 28%),
-      linear-gradient(180deg, #f8faf7 0%, #f2f4ef 100%);
+    background-color: var(--background);
+    background-image:
+      radial-gradient(circle at top left, rgba(5, 150, 105, 0.12), transparent 45%),
+      radial-gradient(circle at 85% 10%, rgba(245, 182, 77, 0.12), transparent 35%),
+      linear-gradient(rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 100px 100px, 100px 100px;
+    background-attachment: fixed;
     @apply text-foreground;
   }
 

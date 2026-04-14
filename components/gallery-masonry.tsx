@@ -5,8 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-import { Reveal } from "@/components/reveal";
-
 type GalleryItem = {
     id: string;
     type: "image" | "video";
@@ -42,12 +40,12 @@ export function GalleryMasonry({ items, columns = { mobile: 2, tablet: 3, deskto
     }, [items, columns]);
 
     const renderItem = (item: GalleryItem & { globalIndex: number }, isPriority: boolean) => (
-        <Reveal key={item.id} delay={Math.min(item.globalIndex * 40, 600)}>
-            <Link
-                href={`/gallery/${item.id}`}
-                scroll={false}
-                className="group block w-full cursor-zoom-in"
-            >
+        <Link
+            key={item.id}
+            href={`/gallery/${item.id}`}
+            scroll={false}
+            className="group block w-full cursor-zoom-in"
+        >
                 <div className={cn("media-frame relative overflow-hidden", item.aspect)}>
                     {item.type === "image" ? (
                         <Image
@@ -78,10 +76,9 @@ export function GalleryMasonry({ items, columns = { mobile: 2, tablet: 3, deskto
                             </div>
                         </div>
                     )}
-                    <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
-                </div>
-            </Link>
-        </Reveal>
+                <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
+            </div>
+        </Link>
     );
 
     return (

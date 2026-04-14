@@ -7,12 +7,14 @@ import { cn } from "@/lib/utils";
 
 type RevealProps = HTMLAttributes<HTMLDivElement> & {
   delay?: number;
+  duration?: number;
 };
 
 export function Reveal({
   children,
   className,
   delay = 0,
+  duration = 1000,
   ...props
 }: RevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -54,9 +56,12 @@ export function Reveal({
   return (
     <div
       ref={ref}
-      style={{ transitionDelay: isMobile ? "0ms" : `${delay}ms` }}
+      style={{ 
+        transitionDelay: isMobile ? "0ms" : `${delay}ms`,
+        transitionDuration: isMobile ? "0ms" : `${duration}ms`
+      }}
       className={cn(
-        "transition-all duration-[1000ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transform-none motion-reduce:opacity-100",
+        "transition-all ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transform-none motion-reduce:opacity-100",
         "max-sm:translate-y-0 max-sm:opacity-100 max-sm:transition-none",
         (isVisible || isMobile) ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0",
         className
