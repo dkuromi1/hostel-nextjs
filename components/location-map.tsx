@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from 'next/dynamic';
+import { useState, useEffect, useRef } from 'react';
 import { Panel } from './ui/panel';
 import { MapPin } from 'lucide-react';
 
@@ -12,6 +13,26 @@ const LocationMapInner = dynamic(() => import('./location-map-inner'), {
 
 export function LocationMap() {
   const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    const node = containerRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '400px' } // Load slightly before it enters the viewport
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   if (!token) {
     return (
@@ -26,8 +47,8 @@ export function LocationMap() {
   }
 
   return (
-    <div className="relative h-full w-full">
-      <LocationMapInner accessToken={token} />
+    <div ref={containerRef} className="relative h-full w-full">
+      {shouldLoad ? <LocationMapInner accessToken={token} /> : <MapSkeleton />}
     </div>
   );
 }

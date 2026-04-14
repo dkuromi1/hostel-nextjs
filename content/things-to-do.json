@@ -15,19 +15,19 @@
     {
       "title": "Lake Shkodër & Shiroka Village",
       "description": "Grab a bike and cycle out past the Buna bridge to the sleepy village of Shiroka. Stop for fresh carp by the water and a clear view of the Montenegrin mountains.",
-      "image": "/images/lake_shkoder.png",
+      "image": "/images/lake_shkoder.jpg",
       "alt": "Biking along Lake Shkoder towards Shiroka"
     },
     {
       "title": "Mesi Bridge (Ura e Mesit)",
       "description": "A stunning, curved Ottoman bridge resting over the shallow, opal waters of the Kir River, built in 1768 to connect the city with the northern highlands. A great spot for a swim!",
-      "image": "/images/mesi_bridge.png",
+      "image": "/images/mesi_bridge.jpg",
       "alt": "The historic Ottoman Mesi Bridge in Shkoder"
     },
     {
       "title": "Marubi National Photography Museum",
       "description": "A quiet, modern exhibition featuring over 150 years of Albanian history through the incredibly detailed lenses of the Marubi family. Just a few doors down from the hostel!",
-      "image": "/images/marubi_museum.png",
+      "image": "/images/marubi_museum.jpg",
       "alt": "Inside the Marubi National Photography Museum"
     }
   ]

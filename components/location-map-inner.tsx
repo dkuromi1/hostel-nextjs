@@ -21,8 +21,16 @@ const PEDONALE_COORDS: [number, number][] = [
 
 const RECOMMENDED_POIS = poisData.recommendedPois;
 
+// Detect mobile/low-power device — runs once at module level
+const isMobileDevice = () => {
+    if (typeof window === 'undefined') return false;
+    const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const isNarrow = window.innerWidth < 768;
+    return hasTouch && isNarrow;
+};
+
 // Helper to generate a Geographical circle for the 5-minute walk radius
-const createGeoJSONCircle = (center: [number, number], radiusInKm: number, points: number = 64) => {
+const createGeoJSONCircle = (center: [number, number], radiusInKm: number, points: number = 32) => {
     const coords = {
         latitude: center[1],
         longitude: center[0]
@@ -69,17 +77,49 @@ const getPoiColor = (category: string) => {
     }
 };
 
+/**
+ * Apply mobile-safe marker label styles.
+ * On mobile/low-power GPUs (e.g. Pixel 7 Mali-G710), backdrop-filter: blur()
+ * creates a separate compositing layer per element on top of the WebGL canvas.
+ * With 13+ markers, this causes catastrophic GPU memory usage → Aw Snap.
+ * We use a higher-opacity solid background on mobile instead.
+ */
+const applyLabelStyle = (el: HTMLElement, isMobile: boolean, overrides?: Partial<CSSStyleDeclaration>) => {
+    el.style.padding = '3px 8px';
+    el.style.color = '#0f172a';
+    el.style.fontSize = '9px';
+    el.style.fontWeight = '600';
+    el.style.borderRadius = '4px';
+    el.style.whiteSpace = 'nowrap';
+    el.style.textDecoration = 'none';
+    el.style.display = 'flex';
+    el.style.flexDirection = 'column';
+    el.style.alignItems = 'center';
+    el.style.gap = '1px';
+
+    // Premium glassmorphism for all devices
+    el.style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
+    el.style.backdropFilter = 'blur(4px)';
+    el.style.border = '1px solid rgba(226, 232, 240, 0.5)';
+    el.style.boxShadow = '0 4px 6px -1px rgb(0 0 0 / 0.05)';
+
+    // Apply any overrides
+    if (overrides) {
+        Object.assign(el.style, overrides);
+    }
+};
+
 export default function LocationMapInner({ accessToken }: LocationMapInnerProps) {
     const searchParams = useSearchParams();
     const poiQuery = searchParams?.get('poi') || '';
 
     const mapContainerRef = useRef<HTMLDivElement>(null);
     const mapRef = useRef<mapboxgl.Map | null>(null);
+    const sensitiveMarkersRef = useRef<HTMLElement[]>([]);
     const [isSatellite, setIsSatellite] = React.useState(false);
-    const [currentZoom, setCurrentZoom] = React.useState(14);
 
     // Reusable function to apply our "Boutique" customizations
-    const applyCustomizations = (map: mapboxgl.Map) => {
+    const applyCustomizations = (map: mapboxgl.Map, mobile: boolean) => {
         const style = map.getStyle();
         if (!style) return;
         
@@ -152,14 +192,16 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                 'layout': {},
                 'paint': {
                     'line-color': '#0284c7', // Darker Scodrinon Sky
-                    'line-width': 1.5,
+                    'line-width': 3.5,
                     'line-dasharray': [2, 2],
-                    'line-opacity': 0.8
+                    'line-opacity': 0.95
                 }
             }, labelLayerId);
         }
 
-        // 3. 3D BUILDINGS: Add extrusions (STREETS ONLY)
+        // 4. 3D BUILDINGS: Add extrusions (STREETS ONLY, DESKTOP ONLY)
+        // On mobile GPUs (especially Mali-G710 on Pixel 7), fill-extrusion layers
+        // with interpolated height expressions cause WebGL OOM → Aw Snap crashes.
         const isSatelliteStyle = style.sprite?.includes('satellite') || style.name?.toLowerCase().includes('satellite');
 
         // Remove existing if it exists
@@ -189,6 +231,24 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
     useEffect(() => {
         if (!mapContainerRef.current) return;
 
+        const mobile = isMobileDevice();
+
+        // Resolve initial position synchronously to prevent memory spikes from flying after load
+        const q = poiQuery ? poiQuery.toLowerCase() : '';
+        let initialCenter = HOSTEL_COORDS;
+        let initialZoom = 15.5;
+
+        if (q) {
+            const matchedPoi = RECOMMENDED_POIS.find((p: any) => q.includes(p.name.toLowerCase()) || p.name.toLowerCase().includes(q));
+            if (matchedPoi) {
+                initialCenter = matchedPoi.coords as [number, number];
+                initialZoom = 16.5;
+            } else if (q.includes("pedestrian") || q.includes("idromeno")) {
+                initialCenter = PEDONALE_COORDS[1] as [number, number];
+                initialZoom = 16.5;
+            }
+        }
+
         mapboxgl.accessToken = accessToken;
 
         const map = new mapboxgl.Map({
@@ -198,7 +258,9 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             zoom: 13,
             pitch: 45,
             bearing: -17.6,
-            antialias: true
+            antialias: false, // Disabled: antialias=true on high-DPI mobile devices causes WebGL OOM crashes
+            fadeDuration: 300,
+            maxTileCacheSize: mobile ? 20 : undefined, // Cap tile cache on mobile to limit memory footprint
         });
 
         mapRef.current = map;
@@ -206,6 +268,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'bottom-right');
         map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
 
+        // --- 1. HOSTEL MARKER ---
         const el = document.createElement('div');
         el.className = 'marker-group';
         el.style.display = 'flex';
@@ -226,20 +289,16 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         label.href = 'https://www.google.com/maps/dir/?api=1&destination=Scodrinon+Hostel+Shkoder';
         label.target = '_blank';
         label.rel = 'noreferrer';
-        label.style.marginBottom = '6px';
-        label.style.padding = '6px 14px';
-        label.style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
-        label.style.backdropFilter = 'blur(4px)';
-        label.style.color = '#0f172a';
-        label.style.borderRadius = '8px';
-        label.style.boxShadow = '0 10px 15px -3px rgb(0 0 0 / 0.1)';
-        label.style.whiteSpace = 'nowrap';
-        label.style.border = '0.5px solid #0ea5e9';
-        label.style.textDecoration = 'none';
-        label.style.display = 'flex';
-        label.style.flexDirection = 'column';
-        label.style.alignItems = 'center';
-        label.style.gap = '1px';
+        applyLabelStyle(label, mobile, {
+            marginBottom: '6px',
+            padding: '6px 14px',
+            borderRadius: '8px',
+            fontSize: '12px',
+            border: '0.5px solid #0ea5e9',
+        });
+        if (!mobile) {
+            label.style.boxShadow = '0 10px 15px -3px rgb(0 0 0 / 0.1)';
+        }
 
         const mainText = document.createElement('div');
         mainText.innerText = 'Scodrinon Hostel';
@@ -302,21 +361,17 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         busLabel.target = '_blank';
         busLabel.rel = 'noreferrer';
         busLabel.innerText = 'Central Bus Stop';
-        busLabel.style.marginBottom = '4px';
-        busLabel.style.padding = '4px 10px';
-        busLabel.style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
-        busLabel.style.backdropFilter = 'blur(4px)';
-        busLabel.style.color = '#0f172a'; // slate-900
-        busLabel.style.fontSize = '10px';
-        busLabel.style.fontWeight = '600';
-        busLabel.style.borderRadius = '6px';
-        busLabel.style.whiteSpace = 'nowrap';
-        busLabel.style.border = '0.5px solid white';
-        busLabel.style.textDecoration = 'none';
-        busLabel.style.boxShadow = '0 4px 6px -1px rgb(0 0 0 / 0.1)';
+        applyLabelStyle(busLabel, mobile, {
+            marginBottom: '4px',
+            padding: '4px 10px',
+            fontSize: '10px',
+            borderRadius: '6px',
+            border: '0.5px solid white',
+        });
 
         busEl.appendChild(busLabel);
         busEl.appendChild(busCircle);
+        sensitiveMarkersRef.current.push(busEl);
         new mapboxgl.Marker({ element: busEl, anchor: 'bottom' }).setLngLat(BUS_STATION_COORDS).addTo(map);
 
 
@@ -345,53 +400,59 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             poiLabel.target = '_blank';
             poiLabel.rel = 'noreferrer';
             poiLabel.innerText = poi.name;
-            poiLabel.style.marginBottom = '4px';
-            poiLabel.style.padding = '3px 8px';
-            poiLabel.style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
-            poiLabel.style.backdropFilter = 'blur(4px)';
-            poiLabel.style.color = '#0f172a';
-            poiLabel.style.fontSize = '9px';
-            poiLabel.style.fontWeight = '600';
-            poiLabel.style.borderRadius = '4px';
-            poiLabel.style.whiteSpace = 'nowrap';
-            poiLabel.style.textDecoration = 'none';
-            poiLabel.style.border = '1px solid rgba(226, 232, 240, 0.5)';
-            poiLabel.style.boxShadow = '0 4px 6px -1px rgb(0 0 0 / 0.05)';
-            poiLabel.style.display = 'flex';
-            poiLabel.style.flexDirection = 'column';
-            poiLabel.style.alignItems = 'center';
-            poiLabel.style.gap = '1px';
+            applyLabelStyle(poiLabel, mobile);
 
             poiEl.appendChild(poiLabel);
             poiEl.appendChild(poiCircle);
 
             // Set initial visibility
-            const initialZoom = map.getZoom();
-            if ((poi as any).minZoom && initialZoom < (poi as any).minZoom) {
+            const currentZoom = map.getZoom();
+            if ((poi as any).minZoom && currentZoom < (poi as any).minZoom) {
                 poiEl.classList.add('zoom-hidden');
+            }
+
+            if ((poi as any).minZoom) {
+                sensitiveMarkersRef.current.push(poiEl);
             }
 
             new mapboxgl.Marker({ element: poiEl, anchor: 'bottom' }).setLngLat(poi.coords as [number, number]).addTo(map);
         });
 
-        // Add move listener to toggle sensitive markers reliably
+        // Throttled move handler — uses cached marker refs instead of querySelectorAll on every frame.
+        // On mobile, the per-frame DOM traversal + class toggling caused layout thrashing.
+        let moveThrottleId: ReturnType<typeof requestAnimationFrame> | null = null;
         map.on('move', () => {
-            const zoom = map.getZoom();
-            setCurrentZoom(zoom);
+            if (moveThrottleId !== null) return;
+            moveThrottleId = requestAnimationFrame(() => {
+                moveThrottleId = null;
+                const zoom = map.getZoom();
 
-            const sensitiveMarkers = document.querySelectorAll('.zoom-sensitive');
-            sensitiveMarkers.forEach(m => {
-                const el = m as HTMLElement;
-                const minZoom = parseFloat(el.getAttribute('data-min-zoom') || '0');
-                el.classList.toggle('zoom-hidden', zoom < minZoom);
+                // Toggle sensitive markers using cached refs
+                sensitiveMarkersRef.current.forEach(el => {
+                    const minZoom = parseFloat(el.getAttribute('data-min-zoom') || '0');
+                    el.classList.toggle('zoom-hidden', zoom < minZoom);
+                });
+
+                // Toggle Legend without causing React re-renders
+                const legend = document.getElementById('map-legend');
+                if (legend) {
+                    if (zoom <= 11) {
+                        legend.classList.add('opacity-0', 'pointer-events-none');
+                        legend.classList.remove('opacity-100');
+                    } else {
+                        legend.classList.remove('opacity-0', 'pointer-events-none');
+                        legend.classList.add('opacity-100');
+                    }
+                }
             });
         });
 
         map.on('load', () => {
-            map.flyTo({ center: HOSTEL_COORDS, zoom: 15.5, speed: 0.8, curve: 1, essential: true });
-            applyCustomizations(map);
+            // Smooth fly-in animation from regional overview to hostel
+            map.flyTo({ center: initialCenter, zoom: initialZoom, speed: 0.8, curve: 1, essential: true });
+            applyCustomizations(map, mobile);
 
-            // Force a resize calculation after the initial fly-to and parent layout stabilization
+            // Force a resize calculation after parent layout stabilization
             setTimeout(() => {
                 if (mapRef.current) mapRef.current.resize();
             }, 100);
@@ -399,7 +460,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
 
         // Crucial: Re-apply customizations whenever the style is changed
         map.on('style.load', () => {
-            applyCustomizations(map);
+            applyCustomizations(map, mobile);
 
             // Re-calculate size after style swap to prevent 'gray box' issues
             setTimeout(() => {
@@ -408,8 +469,12 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         });
 
         return () => {
+            if (moveThrottleId !== null) cancelAnimationFrame(moveThrottleId);
+            sensitiveMarkersRef.current = [];
             map.remove();
-            document.head.removeChild(style);
+            if (document.head.contains(style)) {
+                document.head.removeChild(style);
+            }
         };
     }, [accessToken]);
 
@@ -451,14 +516,14 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             {/* Custom Boutique Toggle */}
             <button
                 onClick={toggleStyle}
-                className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur-md transition-all hover:bg-black/60 active:scale-95"
+                className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white transition-all hover:bg-black/60 active:scale-95"
             >
                 <div className="size-2 rounded-full bg-sky-400 shadow-[0_0_8px_#38bdf8]" />
                 {isSatellite ? 'View Streets' : 'View Satellite'}
             </button>
 
-            {/* Map Legend - Hidden at regional zoom levels (< 11) */}
-            <div className={`absolute bottom-4 left-4 z-10 flex flex-col gap-2 rounded-xl border border-slate-200 bg-white/40 p-2.5 text-[9px] font-bold uppercase tracking-widest text-slate-900 shadow-lg backdrop-blur-md transition-opacity duration-500 ${currentZoom <= 11 ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+            {/* Map Legend - Hidden at regional zoom levels (< 11) using DOM manipulation */}
+            <div id="map-legend" className="absolute bottom-4 left-4 z-10 flex flex-col gap-2 rounded-xl border border-slate-200 bg-white/40 backdrop-blur-md p-2.5 text-[9px] font-bold uppercase tracking-widest text-slate-900 shadow-lg transition-opacity duration-500 opacity-100">
                 <div className="flex items-center gap-3">
                     <div className="h-0.5 w-6 border-t border-dashed border-sky-600 opacity-90" />
                     <span>5 Minute Walk Area</span>
