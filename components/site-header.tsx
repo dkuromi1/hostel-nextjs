@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useScrollPosition } from "@/lib/use-scroll-position";
 
 import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
 import { MobileNav } from "@/components/mobile-nav";
@@ -13,17 +14,11 @@ import { cn } from "@/lib/utils";
 import { navLinks, siteConfig } from "@/lib/site-data";
 
 export function SiteHeader() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const scrollY = useScrollPosition();
+  const isScrolled = scrollY > 50;
+
   const pathname = usePathname();
   const isHome = pathname === "/";
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // On the homepage, if not scrolled, we want it transparent with white text
   const isTransparent = isHome && !isScrolled;

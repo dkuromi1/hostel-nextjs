@@ -22,26 +22,31 @@ export function SwipableRow({
     const scrollNode = scrollRef.current;
     if (!scrollNode) return;
 
+    let scrollThrottleId: ReturnType<typeof requestAnimationFrame> | null = null;
     const handleScroll = () => {
-      const { scrollLeft, clientWidth } = scrollNode;
-      const kids = Array.from(scrollNode.children) as HTMLElement[];
-      if (kids.length === 0) return;
+      if (scrollThrottleId !== null) return;
+      scrollThrottleId = requestAnimationFrame(() => {
+        scrollThrottleId = null;
+        const { scrollLeft, clientWidth } = scrollNode;
+        const kids = Array.from(scrollNode.children) as HTMLElement[];
+        if (kids.length === 0) return;
 
-      const containerCenter = scrollLeft + clientWidth / 2;
-      let closestIndex = 0;
-      let minDistance = Infinity;
+        const containerCenter = scrollLeft + clientWidth / 2;
+        let closestIndex = 0;
+        let minDistance = Infinity;
 
-      kids.forEach((child, i) => {
-        const childCenter = child.offsetLeft + child.clientWidth / 2;
-        const distance = Math.abs(containerCenter - childCenter);
-        if (distance < minDistance) {
-          minDistance = distance;
-          closestIndex = i;
-        }
+        kids.forEach((child, i) => {
+          const childCenter = child.offsetLeft + child.clientWidth / 2;
+          const distance = Math.abs(containerCenter - childCenter);
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestIndex = i;
+          }
+        });
+
+        const safeIndex = Math.min(closestIndex, itemCount - 1);
+        setActiveIndex(safeIndex);
       });
-
-      const safeIndex = Math.min(closestIndex, itemCount - 1);
-      setActiveIndex(safeIndex);
     };
 
     scrollNode.addEventListener("scroll", handleScroll, { passive: true });

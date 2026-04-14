@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { useScrollPosition } from "@/lib/use-scroll-position";
 import { MessageCircleMore } from "lucide-react";
 
 import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
@@ -10,21 +11,11 @@ import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/site-data";
 
 export function StickyBookingBar() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const scrollY = useScrollPosition();
+  const isScrolled = scrollY > 50;
+  
   const pathname = usePathname();
   const isHome = pathname === "/";
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    
-    // Initial check
-    handleScroll();
-    
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const isTransparent = isHome && !isScrolled;
 

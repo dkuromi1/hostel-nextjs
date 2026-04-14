@@ -2,6 +2,7 @@
 
 import type { HTMLAttributes } from "react";
 import { useEffect, useRef, useState } from "react";
+import { useIsMobile } from "@/lib/use-is-mobile";
 
 import { cn } from "@/lib/utils";
 
@@ -19,17 +20,12 @@ export function Reveal({
 }: RevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
+  const isMobile = useIsMobile();
+  
   useEffect(() => {
-    // Disable reveal on mobile (< 640px) as requested for swipable sections
-    const checkMobile = () => setIsMobile(window.innerWidth < 640);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-
     const node = ref.current;
     if (!node) {
-      return () => window.removeEventListener("resize", checkMobile);
+      return;
     }
 
     const observer = new IntersectionObserver(
@@ -49,7 +45,6 @@ export function Reveal({
 
     return () => {
       observer.disconnect();
-      window.removeEventListener("resize", checkMobile);
     };
   }, []);
 
