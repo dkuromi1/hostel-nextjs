@@ -80,7 +80,10 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
 
     // Reusable function to apply our "Boutique" customizations
     const applyCustomizations = (map: mapboxgl.Map) => {
-        const layers = map.getStyle().layers;
+        const style = map.getStyle();
+        if (!style) return;
+        
+        const layers = style.layers;
         const labelLayerId = layers?.find(
             (layer) => layer.type === 'symbol' && layer.layout?.['text-field']
         )?.id;
@@ -157,7 +160,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         }
 
         // 3. 3D BUILDINGS: Add extrusions (STREETS ONLY)
-        const isSatelliteStyle = map.getStyle().sprite?.includes('satellite') || map.getStyle().name?.toLowerCase().includes('satellite');
+        const isSatelliteStyle = style.sprite?.includes('satellite') || style.name?.toLowerCase().includes('satellite');
 
         // Remove existing if it exists
         if (map.getLayer('add-3d-buildings')) map.removeLayer('add-3d-buildings');
@@ -385,22 +388,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         });
 
         map.on('load', () => {
-            let targetCenter: [number, number] = HOSTEL_COORDS;
-            let targetZoom = 15.5;
-
-            if (poiQuery) {
-                const q = poiQuery.toLowerCase();
-                const matchedPoi = RECOMMENDED_POIS.find((p: any) => q.includes(p.name.toLowerCase()) || p.name.toLowerCase().includes(q));
-                if (matchedPoi) {
-                    targetCenter = matchedPoi.coords as [number, number];
-                    targetZoom = 16.5;
-                } else if (q.includes("pedestrian") || q.includes("idromeno")) {
-                    targetCenter = PEDONALE_COORDS[1] as [number, number];
-                    targetZoom = 16.5;
-                }
-            }
-
-            map.flyTo({ center: targetCenter, zoom: targetZoom, speed: 0.8, curve: 1, essential: true });
+            map.flyTo({ center: HOSTEL_COORDS, zoom: 15.5, speed: 0.8, curve: 1, essential: true });
             applyCustomizations(map);
 
             // Force a resize calculation after the initial fly-to and parent layout stabilization
@@ -424,6 +412,26 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             document.head.removeChild(style);
         };
     }, [accessToken]);
+
+    // Handle dynamic POI queries via URL params without remounting the map
+    useEffect(() => {
+        if (!mapRef.current || !poiQuery) return;
+        
+        const q = poiQuery.toLowerCase();
+        let targetCenter = HOSTEL_COORDS;
+        let targetZoom = 15.5;
+
+        const matchedPoi = RECOMMENDED_POIS.find((p: any) => q.includes(p.name.toLowerCase()) || p.name.toLowerCase().includes(q));
+        if (matchedPoi) {
+            targetCenter = matchedPoi.coords as [number, number];
+            targetZoom = 16.5;
+        } else if (q.includes("pedestrian") || q.includes("idromeno")) {
+            targetCenter = PEDONALE_COORDS[1] as [number, number];
+            targetZoom = 16.5;
+        }
+
+        mapRef.current.flyTo({ center: targetCenter, zoom: targetZoom, speed: 1.2, curve: 1, essential: true });
+    }, [poiQuery]);
 
     const toggleStyle = () => {
         if (!mapRef.current) return;

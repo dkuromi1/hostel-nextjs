@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 
 import { CtaStrip } from "@/components/cta-strip";
+import { LocationMap } from "@/components/location-map";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
@@ -254,7 +255,7 @@ export default function ExperiencesPage() {
                   <div className="flex flex-1 flex-col p-6">
                     <div className="mb-3 flex flex-wrap items-center gap-2">
                       <Link
-                        href={`/contact?poi=${encodeURIComponent(item.title)}#map`}
+                        href={`?poi=${encodeURIComponent(item.title)}#map`}
                         className="group flex w-fit items-center gap-1.5 rounded-full border border-sky-100 bg-sky-50 px-2.5 py-1 text-sky-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-200 hover:bg-sky-100 hover:shadow-sm"
                       >
                         <MapPin className="size-3.5 transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110" strokeWidth={2} />
@@ -287,56 +288,11 @@ export default function ExperiencesPage() {
             {/* Trailing Spacer for mobile snapping */}
             <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
           </SwipableRow>
-        </div>
-      </section>
 
-      <section className="py-8 sm:py-16">
-        <div className="shell-container grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-          <Reveal className="space-y-8">
-            <SectionHeading
-              eyebrow="The Vibe"
-              title="Social enough to connect, calm enough to actually enjoy it."
-              description="The rooftop is the place where conversations start, plans get made, and the whole stay finds its rhythm. It feels welcoming instead of overwhelming."
-            />
-            <div className="grid gap-4 sm:grid-cols-2">
-              <Panel className="px-5 py-5">
-                <Sunset className="size-5 text-emerald-700" strokeWidth={1.8} />
-                <p className="mt-4 font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
-                  Sunset is the real daily event
-                </p>
-                <p className="mt-3 text-sm leading-7 text-slate-600">
-                  Mountain light, city roofs, and the easy transition from day
-                  trips to dinner plans make the terrace a natural meeting point.
-                </p>
-              </Panel>
-              <Panel className="px-5 py-5">
-                <ShieldCheck
-                  className="size-5 text-emerald-700"
-                  strokeWidth={1.8}
-                />
-                <p className="mt-4 font-heading text-xl leading-none tracking-[-0.04em] text-slate-950">
-                  Great for solo travelers
-                </p>
-                <p className="mt-3 text-sm leading-7 text-slate-600">
-                  The social tone is warm and safe, without the pressure to turn
-                  every night into a party.
-                </p>
-              </Panel>
+          <Reveal className="w-full pt-4 sm:pt-8 w-full max-w-[1400px] mx-auto">
+            <div id="map" className="media-frame relative h-[500px] w-full overflow-hidden rounded-[2rem] shadow-xl shadow-slate-200/50 ring-1 ring-slate-200">
+              <LocationMap />
             </div>
-          </Reveal>
-
-          <Reveal delay={120}>
-            <Panel className="overflow-hidden">
-              <div className="relative min-h-[32rem]">
-                <Image
-                  src="/images/rooftop_view_3.jpg"
-                  alt="Rooftop view from terrace at Scodrinon Hostel"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 48vw"
-                />
-              </div>
-            </Panel>
           </Reveal>
         </div>
       </section>
