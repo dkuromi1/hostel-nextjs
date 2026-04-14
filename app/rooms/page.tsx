@@ -258,12 +258,12 @@ export default function RoomsPage() {
                   </div>
                 ))}
               </div>
-              <div className="mt-8 media-frame relative min-h-[18rem]">
+              <div className="mt-8 media-frame relative w-full aspect-[4/3] sm:aspect-[16/9]">
                 <Image
-                  src="/images/breakfast_1.jpg"
+                  src="/images/rooftop_social2.jpg"
                   alt="Breakfast included at Scodrinon Hostel, Shkoder"
                   fill
-                  className="object-cover"
+                  className="object-cover object-[50%_30%]"
                   sizes="(max-width: 1024px) 100vw, 38vw"
                 />
               </div>

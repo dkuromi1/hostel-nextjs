@@ -283,10 +283,10 @@ export default function Home() {
                   </div>
                 </Reveal>
 
-                {/* Video (right on mobile, bottom on desktop — keeps portrait aspect) */}
-                <Reveal delay={300} className="media-frame relative aspect-[9/16] h-full">
+                {/* Video (right on mobile, bottom on desktop) */}
+                <Reveal delay={300} className="media-frame relative flex items-center bg-black">
                   <video
-                    className="h-full w-full object-cover"
+                    className="w-full h-auto"
                     autoPlay
                     muted
                     loop
