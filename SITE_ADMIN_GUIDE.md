@@ -22,16 +22,16 @@ The site's interactive map is powered by Mapbox GL JS and managed in the `compon
 ### Mapbox Access Token
 You must provide a valid public access token in your `.env.local` file:
 ```bash
-NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=your_token_here
+NEXT_PUBLIC_MAPBOX_TOKEN=your_token_here
 ```
 > [!IMPORTANT]
 > To enable the **Satellite View**, ensure your Mapbox account has the "Satellite Streets" style enabled in your dashboard.
 
 ### Updating Coordinates
-All key map coordinates are centralized at the top of `components/location-map-inner.tsx`:
-- **HOSTEL_COORDS**: Used for the primary pulsing marker and centripetal anchor.
-- **BUS_STATION_COORDS**: The primary arrival point label.
-- **RECOMMENDED_POIS**: A list of objects where you can add/remove local recommendations (Eat, Shop, See).
+Key map coordinates are defined as follows:
+- **HOSTEL_COORDS**: Used for the primary pulsing marker and centripetal anchor (located at the top of `components/location-map-inner.tsx`).
+- **BUS_STATION_COORDS**: The primary arrival point label (located at the top of `components/location-map-inner.tsx`).
+- **RECOMMENDED_POIS**: A list of objects where you can add/remove local recommendations (Eat, Shop, See) located in `content/pois.json`.
 
 ### Custom Visual Layers
 The map includes three bespoke visual overlays:
@@ -73,6 +73,8 @@ If the CMS is unavailable, the site's data is stored in **JSON files** within th
 | **`faq.json`** | All questions and answers. |
 | **`testimonials.json`** | Guest reviews and ratings. |
 | **`gallery.json`** | Every photo and video in the gallery grid. |
+| **`pois.json`** | Map markers for recommended places (Eat, Shop, See). |
+| **`things-to-do.json`** | Top local attractions showcased on the site. |
 
 **Important:** If you change the **WhatsApp number**, update **`phoneDisplay`**, **`phoneRaw`**, and **`whatsappUrl`** together. The booking buttons use `whatsappUrl` from this file.
 ---

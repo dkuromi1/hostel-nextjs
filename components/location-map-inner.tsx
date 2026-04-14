@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import poisData from '@/content/pois.json';
 
 interface LocationMapInnerProps {
     accessToken: string;
@@ -17,18 +18,7 @@ const PEDONALE_COORDS: [number, number][] = [
     [19.5171140522808, 42.069314649661514]
 ];
 
-const RECOMMENDED_POIS = [
-    { name: 'Fontana', coords: [19.51683043811039, 42.068970393417366, 0], category: 'eat', minZoom: 15 },
-    { name: 'Puri', coords: [19.51009801624253, 42.06929457675185, 0], category: 'eat', minZoom: 13 },
-    { name: 'Traditional Food', coords: [19.51465274620761, 42.0672268599382, 0], category: 'eat', minZoom: 13 },
-    { name: 'Ristorante Montalcino', coords: [19.51331291568257, 42.06797338188613, 0], category: 'eat', minZoom: 13 },
-    { name: 'Venetian Art Mask Factory', coords: [19.52961397179209, 42.08179583849546, 0], category: 'see', minZoom: 10 },
-    { name: 'Rozafa Castle', coords: [19.493844659339743, 42.04664614803619, 0], category: 'see', minZoom: 10 },
-    { name: 'Mesi Bridge', coords: [19.57507048757086, 42.114467845122725, 0], category: 'see', minZoom: 9 },
-    { name: 'Shiroka Village', coords: [19.4574742901822, 42.05937487786602, 0], category: 'see', minZoom: 9 },
-    { name: 'Lonely Tree Hike', coords: [19.468276251483733, 42.04246677134261, 0], category: 'see', minZoom: 9 },
-    { name: 'Theth Return Bus Location)', coords: [19.772315376603874, 42.39677313338882, 0], category: 'transit', minZoom: 6 }
-];
+const RECOMMENDED_POIS = poisData.recommendedPois;
 
 // Helper to generate a Geographical circle for the 5-minute walk radius
 const createGeoJSONCircle = (center: [number, number], radiusInKm: number, points: number = 64) => {
