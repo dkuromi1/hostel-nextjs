@@ -266,7 +266,7 @@ export default function Home() {
                       <span className="hidden sm:inline">Message the hostel and book direct</span>
                     </p>
                     <p className="mt-2 text-xs leading-relaxed text-slate-600">
-                      <span className="sm:hidden">Just send us the dates, room type, arrival time, and any trip planning.</span>
+                      <span className="sm:hidden">Just send us the dates, room type, arrival time.</span>
                       <span className="hidden sm:inline">WhatsApp is the most direct way to confirm dates, room type, arrival time, and any trip planning.</span>
                     </p>
                     <a
