@@ -92,48 +92,53 @@ export default function ContactPage() {
 
       <section className="py-8 sm:py-16">
         <div className="shell-container grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-          <Reveal>
-            <Panel className="p-6 sm:p-8 h-full">
-              <p className="text-xs uppercase tracking-[0.24em] text-amber-700">
-                Contact Details
-              </p>
-              <div className="mt-6 space-y-4 text-base leading-8 text-slate-700">
-                <p className="flex items-start gap-3">
-                  <MessageCircleMore
-                    className="mt-1 size-5 shrink-0 text-emerald-700"
-                    strokeWidth={1.8}
-                  />
-                  <span>{siteConfig.phoneDisplay}</span>
+          <div className="flex flex-col gap-6 h-full">
+            <Reveal>
+              <Panel className="p-6 sm:p-8">
+                <p className="text-xs uppercase tracking-[0.24em] text-amber-700">
+                  Contact Details
                 </p>
-                <p className="flex items-start gap-3">
-                  <MapPinned
-                    className="mt-1 size-5 shrink-0 text-emerald-700"
-                    strokeWidth={1.8}
-                  />
-                  <a
-                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                      siteConfig.name + " " + siteConfig.location
-                    )}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="underline decoration-slate-300 underline-offset-4 hover:text-emerald-700 transition-colors"
-                  >
-                    {siteConfig.location}
-                  </a>
-                </p>
-                <p className="flex items-start gap-3">
-                  <Clock
-                    className="mt-1 size-5 shrink-0 text-emerald-700"
-                    strokeWidth={1.8}
-                  />
-                  <span>Reception: 24 hour access | Check-in: {siteConfig.checkInHours}</span>
-                </p>
-              </div>
-              <div className="mt-8 media-frame relative aspect-[4/3] w-full overflow-hidden">
+                <div className="mt-6 space-y-4 text-base leading-8 text-slate-700">
+                  <p className="flex items-start gap-3">
+                    <MessageCircleMore
+                      className="mt-1 size-5 shrink-0 text-emerald-700"
+                      strokeWidth={1.8}
+                    />
+                    <span>{siteConfig.phoneDisplay}</span>
+                  </p>
+                  <p className="flex items-start gap-3">
+                    <MapPinned
+                      className="mt-1 size-5 shrink-0 text-emerald-700"
+                      strokeWidth={1.8}
+                    />
+                    <a
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                        siteConfig.name + " " + siteConfig.location
+                      )}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline decoration-slate-300 underline-offset-4 hover:text-emerald-700 transition-colors"
+                    >
+                      {siteConfig.location}
+                    </a>
+                  </p>
+                  <p className="flex items-start gap-3">
+                    <Clock
+                      className="mt-1 size-5 shrink-0 text-emerald-700"
+                      strokeWidth={1.8}
+                    />
+                    <span>Reception: 24 hour access | Check-in: {siteConfig.checkInHours}</span>
+                  </p>
+                </div>
+              </Panel>
+            </Reveal>
+
+            <Reveal className="flex-1" delay={50}>
+              <div className="media-frame relative min-h-[400px] h-full w-full overflow-hidden rounded-3xl">
                 <LocationMap />
               </div>
-            </Panel>
-          </Reveal>
+            </Reveal>
+          </div>
 
           <Reveal delay={120}>
             <Panel className="p-6 sm:p-8 h-full">
