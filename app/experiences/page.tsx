@@ -170,7 +170,7 @@ export default function ExperiencesPage() {
             {[
               {
                 title: "The Drin River Escape",
-                description: "Just outside the city, the Drin river offers a slow, scenic contrast to the Alps. We help arrange simple boat excursions for a quiet, sun-drenched afternoon on the water.",
+                description: "Just outside the city, the Drin river offers a cool, scenic contrast to the Alps. We organize regular group swimming trips to our favorite spots along the water for a perfect, sun-drenched afternoon.",
                 icon: Waves,
                 image: "/images/drin_swimming_trip2.jpeg",
                 focus: "50% 40%",
@@ -184,7 +184,7 @@ export default function ExperiencesPage() {
               },
               {
                 title: "Bicycle Capital Access",
-                description: "Shkodër is best explored on two wheels. Grab an on-site rental and navigate the flat streets, historic center, and scenic lake paths exactly how the locals do.",
+                description: "Shkodër is best explored on two wheels. Grab a rental from across the street and navigate the flat streets, historic center, and scenic lake paths exactly how the locals do.",
                 icon: Bike,
                 image: "/images/biking_in_shkodra.jpeg",
                 focus: "50% 40%",

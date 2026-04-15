@@ -328,7 +328,6 @@ export default function Home() {
                 <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl tracking-[-0.05em] leading-[0.95] text-white">
                   <AnimatedText
                     text="Rooftop sunsets, privacy pods,"
-                    className="block"
                     wordClassName="text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]"
                     delayOffset={0}
                   />
