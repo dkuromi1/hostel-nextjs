@@ -22,6 +22,8 @@ type GalleryMasonryProps = {
     category?: string;
 };
 
+const PRIORITY_IMAGE_COUNT = 2;
+
 export function GalleryMasonry({ items, columns = { mobile: 2, tablet: 3, desktop: 4 } }: GalleryMasonryProps) {
     const renderItem = (item: GalleryItem, isPriority: boolean) => (
         <Link
@@ -45,9 +47,7 @@ export function GalleryMasonry({ items, columns = { mobile: 2, tablet: 3, deskto
                     <div className="h-full w-full">
                         <video
                             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                            autoPlay
                             muted
-                            loop
                             playsInline
                             aria-label={item.alt}
                         >
@@ -74,7 +74,7 @@ export function GalleryMasonry({ items, columns = { mobile: 2, tablet: 3, deskto
         )}>
             {items.map((item, itemIdx) => (
                 <div key={item.id} className="mb-4 inline-block w-full break-inside-avoid">
-                    {renderItem(item, itemIdx < 6)}
+                    {renderItem(item, itemIdx < PRIORITY_IMAGE_COUNT)}
                 </div>
             ))}
         </div>
