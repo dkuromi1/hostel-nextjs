@@ -3,6 +3,7 @@
 import * as React from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { getGalleryItemIndex } from "@/lib/gallery";
 import { galleryItems } from "@/lib/site-data";
 import { Panel } from "@/components/ui/panel";
 import { cn } from "@/lib/utils";
@@ -26,7 +27,7 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
     const decodedId = decodeURIComponent(currentId);
 
     const [activeIndex, setActiveIndex] = React.useState(() =>
-        galleryItems.findIndex((p) => p.id === decodedId)
+        getGalleryItemIndex(decodedId)
     );
 
     // Sync from URL changes (like when the user clicks 'Back' or 'Forward')
@@ -34,7 +35,7 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
         const match = pathname.match(/\/gallery\/([^/]+)/);
         if (match && match[1]) {
             const urlId = decodeURIComponent(match[1]);
-            const index = galleryItems.findIndex((p) => p.id === urlId);
+            const index = getGalleryItemIndex(urlId);
             if (index !== -1 && index !== activeIndex) {
                 setActiveIndex(index);
             }
