@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { RefreshCw } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
@@ -13,6 +14,10 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  useEffect(() => {
+    console.error(error);
+  }, [error]);
+
   return (
     <div className="shell-container py-20">
       <div className="mx-auto max-w-3xl rounded-[34px] border border-white/70 bg-white/85 p-8 shadow-[0_24px_80px_-42px_rgba(15,23,42,0.35)]">
@@ -50,7 +55,11 @@ export default function Error({
             WhatsApp Booking
           </a>
         </div>
-        <p className="mt-6 text-sm text-slate-500">{error.message}</p>
+        {error.digest ? (
+          <p className="mt-6 text-sm text-slate-500">
+            Reference: {error.digest}
+          </p>
+        ) : null}
       </div>
     </div>
   );
