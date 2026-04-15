@@ -5,14 +5,12 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { StickyBookingBar } from "@/components/sticky-booking-bar";
 import { TitoTheCat } from "@/components/tito-the-cat";
-import { getSiteUrl } from "@/lib/metadata";
+import { getSiteUrl, metadataBase } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site-data";
 import "./globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase,
   title: {
     default: `${siteConfig.name} | Shkoder, Albania`,
     template: `%s | ${siteConfig.name}`,
