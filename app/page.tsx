@@ -66,9 +66,57 @@ export const metadata = buildMetadata({
   image: "/logo.png",
 });
 
-const factIcons = [BedDouble, Luggage, Croissant, Bike];
 const roomIcons = [Snowflake, Lock, LampDesk, BatteryCharging];
 const reasonIcons = [Moon, Sparkles, MapPin, Compass];
+
+function getQuickFactIcon(fact: string) {
+  const normalizedFact = fact.toLowerCase();
+
+  if (
+    normalizedFact.includes("privacy pod") ||
+    normalizedFact.includes("mixed dorm") ||
+    normalizedFact.includes("bedroom feel")
+  ) {
+    return BedDouble;
+  }
+
+  if (
+    normalizedFact.includes("4-bed") ||
+    normalizedFact.includes("male or female dorm")
+  ) {
+    return Luggage;
+  }
+
+  if (
+    normalizedFact.includes("safe") ||
+    normalizedFact.includes("sanctuary") ||
+    normalizedFact.includes("peaceful")
+  ) {
+    return ShieldCheck;
+  }
+
+  if (
+    normalizedFact.includes("breakfast") ||
+    normalizedFact.includes("wi-fi") ||
+    normalizedFact.includes("wifi") ||
+    normalizedFact.includes("luggage storage") ||
+    normalizedFact.includes("24h access")
+  ) {
+    return Croissant;
+  }
+
+  if (
+    normalizedFact.includes("adventure") ||
+    normalizedFact.includes("transportation") ||
+    normalizedFact.includes("tour") ||
+    normalizedFact.includes("laundry") ||
+    normalizedFact.includes("bike")
+  ) {
+    return Bike;
+  }
+
+  return Check;
+}
 
 export default function Home() {
   const getRoomFeatures = (roomName: string) => {
@@ -148,7 +196,7 @@ export default function Home() {
                 className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
               >
                 {quickFacts.map((fact, index) => {
-                  const Icon = factIcons[index];
+                  const Icon = getQuickFactIcon(fact);
                   return (
                     <Reveal
                       key={fact}
