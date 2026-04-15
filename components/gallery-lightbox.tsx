@@ -9,11 +9,10 @@ import { galleryItems } from "@/lib/site-data";
 import { Panel } from "@/components/ui/panel";
 import { cn } from "@/lib/utils";
 
-// Eagerly fetch an image into the browser cache without triggering any React render.
-function preloadImage(src: string) {
-    if (typeof window === "undefined" || !src) return;
+function preloadImage(item: any) {
+    if (typeof window === "undefined" || !item || item.type !== "image") return;
     const img = new window.Image();
-    img.src = src;
+    img.src = item.src;
 }
 
 
@@ -66,8 +65,8 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
 
         const after = (newIndex + 1) % galleryItems.length;
         const before = newIndex === 0 ? galleryItems.length - 1 : newIndex - 1;
-        preloadImage(galleryItems[after].src);
-        preloadImage(galleryItems[before].src);
+        preloadImage(galleryItems[after]);
+        preloadImage(galleryItems[before]);
     }, []);
 
     const goToNext = React.useCallback(() => {
@@ -85,8 +84,8 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
         if (activeIndex === -1) return;
         const next = (activeIndex + 1) % galleryItems.length;
         const prev = activeIndex === 0 ? galleryItems.length - 1 : activeIndex - 1;
-        preloadImage(galleryItems[next].src);
-        preloadImage(galleryItems[prev].src);
+        preloadImage(galleryItems[next]);
+        preloadImage(galleryItems[prev]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []); // intentionally runs once on mount only
 
@@ -132,6 +131,22 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
 
     if (!item) return null;
 
+    const videoRef = React.useRef<HTMLVideoElement>(null);
+
+    React.useEffect(() => {
+        const video = videoRef.current;
+        if (item && item.type === "video" && video) {
+            video.currentTime = 0;
+            video.play().catch(() => {});
+        }
+        return () => {
+            if (video) {
+                video.pause();
+                video.removeAttribute('src');
+            }
+        };
+    }, [item]);
+
     return (
         <div
             className="fixed inset-0 z-[110] flex items-center justify-center bg-slate-950/90 p-4 backdrop-blur-sm animate-in fade-in duration-300"
@@ -149,9 +164,11 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
             <Panel className="relative w-fit max-w-[95vw] overflow-hidden border-white/10 bg-slate-950/80 backdrop-blur-2xl shadow-2xl [transform:translateZ(0)] group">
                 {item.type === "video" ? (
                     <video
+                        ref={videoRef}
+                        key={item.id}
                         src={item.src}
-                        autoPlay
                         controls
+                        playsInline
                         className="block max-h-[85vh] max-w-[95vw] w-auto h-auto min-w-[30vw] min-h-[30vh]"
                     />
                 ) : (
