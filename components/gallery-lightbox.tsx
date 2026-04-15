@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { getGalleryItemIndex } from "@/lib/gallery";
@@ -13,6 +14,23 @@ function preloadImage(src: string) {
     if (typeof window === "undefined" || !src) return;
     const img = new window.Image();
     img.src = src;
+}
+
+function getAspectRatio(aspectClass: string) {
+    const match = aspectClass.match(/aspect-\[(\d+)\/(\d+)\]/);
+
+    if (!match) {
+        return 1;
+    }
+
+    const width = Number(match[1]);
+    const height = Number(match[2]);
+
+    if (!width || !height) {
+        return 1;
+    }
+
+    return width / height;
 }
 
 interface GalleryLightboxProps {
@@ -129,6 +147,8 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
 
     if (!item) return null;
 
+    const imageAspectRatio = item.type === "image" ? getAspectRatio(item.aspect) : null;
+
     return (
         <div
             className="fixed inset-0 z-[110] flex items-center justify-center bg-slate-950/90 p-4 backdrop-blur-sm animate-in fade-in duration-300"
@@ -154,14 +174,25 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
                     />
                 ) : (
                     // key={item.id} makes React swap the DOM node on navigation.
-                    // Because the new image was preloaded, the browser paints it
-                    // instantly from cache — no network round-trip, no blank frame.
-                    <img
+                    // The wrapper uses the gallery aspect ratio so next/image can
+                    // preserve the existing lightbox sizing constraints cleanly.
+                    <div
                         key={item.id}
-                        src={item.src}
-                        alt={item.alt}
-                        className="block max-h-[85vh] max-w-[95vw] w-auto h-auto"
-                    />
+                        className="relative"
+                        style={{
+                            width: `min(95vw, calc(85vh * ${imageAspectRatio ?? 1}))`,
+                            aspectRatio: imageAspectRatio ?? 1,
+                        }}
+                    >
+                        <Image
+                            src={item.src}
+                            alt={item.alt}
+                            fill
+                            priority
+                            sizes="95vw"
+                            className="object-contain"
+                        />
+                    </div>
                 )}
 
                 {/* Navigation Arrows */}
