@@ -118,6 +118,164 @@ function getQuickFactIcon(fact: string) {
   return Check;
 }
 
+function CompactGuestRatingsStrip() {
+  return (
+    <div className="grid w-full gap-3 sm:grid-cols-2">
+      <a
+        href={siteConfig.bookingUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group flex items-center justify-between gap-3 rounded-[22px] border border-white/16 bg-slate-950/42 px-4 py-3 text-white shadow-[0_18px_45px_-30px_rgba(2,6,23,0.7)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-slate-950/52"
+      >
+        <div className="flex min-w-0 items-center gap-3">
+          <BookingComLogo iconOnly className="size-9" />
+          <div className="min-w-0">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/65">
+              Booking.com
+            </p>
+            <p className="truncate text-sm font-medium text-white/92">
+              2025 Traveller Review Award
+            </p>
+          </div>
+        </div>
+        <div className="shrink-0 rounded-2xl bg-white/12 px-3 py-2 text-right ring-1 ring-white/12">
+          <p className="font-heading text-xl leading-none tracking-tight text-white text-center">
+            9.5
+          </p>
+          <p className="mt-1 text-[8px] uppercase tracking-[0.2em] text-white/60">
+            out of 10
+          </p>
+        </div>
+      </a>
+
+      <a
+        href={siteConfig.hostelworldUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group flex items-center justify-between gap-3 rounded-[22px] border border-white/16 bg-slate-950/42 px-4 py-3 text-white shadow-[0_18px_45px_-30px_rgba(2,6,23,0.7)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-slate-950/52"
+      >
+        <div className="flex min-w-0 items-center gap-3">
+          <HostelworldLogo iconOnly className="size-9" />
+          <div className="min-w-0">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/65">
+              Hostelworld
+            </p>
+            <p className="truncate text-sm font-medium text-white/92">
+              Superb guest rating
+            </p>
+          </div>
+        </div>
+        <div className="shrink-0 rounded-2xl bg-white/12 px-3 py-2 text-right ring-1 ring-white/12">
+          <p className="font-heading text-xl leading-none tracking-tight text-white text-center">
+            10
+          </p>
+          <p className="mt-1 text-[8px] uppercase tracking-[0.2em] text-white/60">
+            top score
+          </p>
+        </div>
+      </a>
+    </div>
+  );
+}
+
+function GuestRatingsSection() {
+  return (
+    <section className="pb-8 sm:pb-16">
+      <div className="shell-container">
+        <Reveal>
+          <div className="glass-panel rounded-[28px] p-4 sm:p-5">
+            <div className="flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-slate-500">
+              <span className="faded-line h-px flex-1" />
+              Guest Ratings
+              <span className="faded-line h-px flex-1" />
+            </div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:items-stretch">
+              <a
+                href={siteConfig.bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 px-4 py-5 shadow-[0_20px_55px_-40px_rgba(15,23,42,0.35)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_rgba(15,23,42,0.4)]"
+              >
+                <div className="flex min-h-[3rem] flex-wrap items-center justify-between gap-x-2 gap-y-2">
+                  <BookingComLogo className="min-w-0 shrink-0" />
+                  <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600">
+                    <Star className="size-3" fill="currentColor" />
+                    <span className="text-[10px] font-bold uppercase tracking-wider">
+                      Top Rated
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-1 flex-col justify-center py-1">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex min-w-0 items-center gap-2">
+                      <div className="shrink-0 rounded-full bg-blue-500/12 p-1.5 text-blue-700">
+                        <Award className="size-5" strokeWidth={1.8} />
+                      </div>
+                      <p className="text-sm font-medium leading-6 text-slate-800 transition-colors group-hover:text-blue-700">
+                        2025 Traveller Review Award
+                      </p>
+                    </div>
+                    <div className="shrink-0 rounded-tr-sm rounded-tl-sm rounded-br-sm rounded-bl-none bg-blue-700 px-3 py-1 text-center font-semibold text-white shadow-sm">
+                      <p className="font-heading text-xl leading-none tracking-tight">
+                        9.5
+                      </p>
+                      <p className="text-[8px] uppercase tracking-wider text-blue-50">
+                        out of 10
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <p className="mt-auto pt-2 text-sm leading-6 text-slate-500">
+                  Awarded for consistent excellence in guest hospitality.
+                </p>
+              </a>
+
+              <a
+                href={siteConfig.hostelworldUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 px-4 py-5 shadow-[0_20px_55px_-40px_rgba(15,23,42,0.35)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_rgba(15,23,42,0.4)]"
+              >
+                <div className="flex min-h-[3rem] flex-wrap items-center justify-between gap-x-2 gap-y-2">
+                  <HostelworldLogo className="h-7 w-auto shrink-0" />
+                  <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600">
+                    <Star className="size-3" fill="currentColor" />
+                    <span className="text-[10px] font-bold uppercase tracking-wider">
+                      Top Rated
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-1 flex-col justify-center py-1">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex min-w-0 items-center gap-2">
+                      <div className="shrink-0 rounded-full bg-amber-500/12 p-1.5 text-amber-700">
+                        <Star className="size-5" strokeWidth={1.8} />
+                      </div>
+                      <p className="text-sm font-medium leading-6 text-slate-800 transition-colors group-hover:text-amber-700">
+                        &apos;Superb&apos; Guest Rating
+                      </p>
+                    </div>
+                    <div className="relative h-15 w-25 shrink-0 overflow-hidden rounded-md shadow-sm">
+                      <Image
+                        src="/images/hostelworld_reviews.png"
+                        alt="10 score on Hostelworld"
+                        fill
+                        className="object-contain"
+                        sizes="100px"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <p className="mt-auto pt-2 text-sm leading-6 text-slate-500 transition-colors group-hover:text-amber-700" />
+              </a>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   const getRoomFeatures = (roomName: string) => {
     if (roomName.includes("18-Bed")) {
@@ -204,9 +362,9 @@ export default function Home() {
                       duration={1400}
                       className="min-w-[85%] snap-center sm:min-w-0"
                     >
-                      <div className="group relative overflow-hidden rounded-[24px] border border-white/10 bg-white/5 p-5 backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:border-white/20">
-                        <div className="text-sm leading-7 text-white/90">
-                          <div className="float-left mb-1 mr-4 flex size-10 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-400">
+                      <div className="group relative overflow-hidden rounded-[24px] border border-white/18 bg-slate-950/42 p-5 backdrop-blur-[3px] transition-all duration-300 hover:border-white/24 hover:bg-slate-950/52">
+                        <div className="text-sm leading-7 text-white/95">
+                          <div className="float-left mb-1 mr-4 flex size-10 items-center justify-center rounded-xl bg-emerald-500/24 text-emerald-300">
                             <Icon className="size-5" strokeWidth={2} />
                           </div>
                           {fact}
