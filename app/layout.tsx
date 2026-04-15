@@ -56,9 +56,6 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
-
-import Script from "next/script";
-
 export default function RootLayout({
   children,
   modal,
@@ -72,27 +69,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://wa.me" />
         <link rel="preconnect" href="https://www.booking.com" />
         <link rel="preconnect" href="https://www.hostelworld.com" />
-        <link rel="preconnect" href="https://api.mapbox.com" />
         <link rel="dns-prefetch" href="https://wa.me" />
         <link rel="dns-prefetch" href="https://www.booking.com" />
         <link rel="dns-prefetch" href="https://www.instagram.com" />
-        <link rel="dns-prefetch" href="https://api.mapbox.com" />
       </head>
       <body className="min-h-full bg-background font-sans text-foreground antialiased">
-        <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js" strategy="lazyOnload" />
-        <Script id="netlify-identity-init" strategy="afterInteractive">
-          {`
-            if (window.netlifyIdentity) {
-              window.netlifyIdentity.on("init", (user) => {
-                if (!user) {
-                  window.netlifyIdentity.on("login", () => {
-                    document.location.href = "/admin/";
-                  });
-                }
-              });
-            }
-          `}
-        </Script>
         <div className="relative flex min-h-screen flex-col overflow-x-clip">
           <SiteHeader />
           <main className="flex-1 pb-[calc(6rem+env(safe-area-inset-bottom,0px))] lg:pb-0">{children}</main>
