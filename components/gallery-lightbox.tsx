@@ -16,22 +16,7 @@ function preloadImage(src: string) {
     img.src = src;
 }
 
-function getAspectRatio(aspectClass: string) {
-    const match = aspectClass.match(/aspect-\[(\d+)\/(\d+)\]/);
 
-    if (!match) {
-        return 1;
-    }
-
-    const width = Number(match[1]);
-    const height = Number(match[2]);
-
-    if (!width || !height) {
-        return 1;
-    }
-
-    return width / height;
-}
 
 interface GalleryLightboxProps {
     currentId: string;
@@ -147,8 +132,6 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
 
     if (!item) return null;
 
-    const imageAspectRatio = item.type === "image" ? getAspectRatio(item.aspect) : null;
-
     return (
         <div
             className="fixed inset-0 z-[110] flex items-center justify-center bg-slate-950/90 p-4 backdrop-blur-sm animate-in fade-in duration-300"
@@ -166,33 +149,17 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
             <Panel className="relative w-fit max-w-[95vw] overflow-hidden border-white/10 bg-slate-950/80 backdrop-blur-2xl shadow-2xl [transform:translateZ(0)] group">
                 {item.type === "video" ? (
                     <video
-                        key={item.id}
                         src={item.src}
                         autoPlay
                         controls
-                        className="block max-h-[85vh] max-w-[95vw] w-auto h-auto"
+                        className="block max-h-[85vh] max-w-[95vw] w-auto h-auto min-w-[30vw] min-h-[30vh]"
                     />
                 ) : (
-                    // key={item.id} makes React swap the DOM node on navigation.
-                    // The wrapper uses the gallery aspect ratio so next/image can
-                    // preserve the existing lightbox sizing constraints cleanly.
-                    <div
-                        key={item.id}
-                        className="relative"
-                        style={{
-                            width: `min(95vw, calc(85vh * ${imageAspectRatio ?? 1}))`,
-                            aspectRatio: imageAspectRatio ?? 1,
-                        }}
-                    >
-                        <Image
-                            src={item.src}
-                            alt={item.alt}
-                            fill
-                            priority
-                            sizes="95vw"
-                            className="object-contain"
-                        />
-                    </div>
+                    <img
+                        src={item.src}
+                        alt={item.alt}
+                        className="block max-h-[85vh] max-w-[95vw] w-auto h-auto min-w-[30vw] min-h-[30vh]"
+                    />
                 )}
 
                 {/* Navigation Arrows */}

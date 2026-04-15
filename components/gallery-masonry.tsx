@@ -9,7 +9,7 @@ type GalleryItem = {
     type: "image" | "video";
     src: string;
     alt: string;
-    aspect: string;
+    aspect?: string;
 };
 
 type GalleryMasonryProps = {
@@ -32,21 +32,18 @@ export function GalleryMasonry({ items, columns = { mobile: 2, tablet: 3, deskto
             scroll={false}
             className="group block w-full cursor-zoom-in"
         >
-            <div className={cn("media-frame relative overflow-hidden", item.aspect)}>
+            <div className="media-frame relative overflow-hidden">
                 {item.type === "image" ? (
-                    <Image
+                    <img
                         src={item.src}
                         alt={item.alt}
-                        fill
-                        priority={isPriority}
-                        fetchPriority={isPriority ? "high" : "auto"}
-                        className="object-cover transition-transform duration-500 will-change-transform group-hover:scale-105"
-                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        loading={isPriority ? "eager" : "lazy"}
+                        className="w-full h-auto min-h-[200px] object-cover transition-transform duration-500 will-change-transform group-hover:scale-105"
                     />
                 ) : (
-                    <div className="h-full w-full">
+                    <div className="w-full h-auto">
                         <video
-                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
                             muted
                             playsInline
                             aria-label={item.alt}
