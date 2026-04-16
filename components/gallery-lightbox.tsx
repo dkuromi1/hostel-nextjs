@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { getGalleryItemIndex } from "@/lib/gallery";
@@ -9,7 +8,9 @@ import { galleryItems } from "@/lib/site-data";
 import { Panel } from "@/components/ui/panel";
 import { cn } from "@/lib/utils";
 
-function preloadImage(item: any) {
+type GalleryItem = (typeof galleryItems)[number];
+
+function preloadImage(item?: GalleryItem) {
     if (typeof window === "undefined" || !item || item.type !== "image") return;
     const img = new window.Image();
     img.src = item.src;
@@ -24,6 +25,7 @@ interface GalleryLightboxProps {
 export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
     const router = useRouter();
     const pathname = usePathname();
+    const videoRef = React.useRef<HTMLVideoElement>(null);
 
     // Decode in case of deep links with special chars
     const decodedId = decodeURIComponent(currentId);
@@ -129,10 +131,6 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
         }
     }, [router]);
 
-    if (!item) return null;
-
-    const videoRef = React.useRef<HTMLVideoElement>(null);
-
     React.useEffect(() => {
         const video = videoRef.current;
         if (item && item.type === "video" && video) {
@@ -146,6 +144,8 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
             }
         };
     }, [item]);
+
+    if (!item) return null;
 
     return (
         <div
