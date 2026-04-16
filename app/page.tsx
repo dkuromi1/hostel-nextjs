@@ -140,7 +140,7 @@ function CompactGuestRatingsStrip() {
         </div>
         <div className="shrink-0 rounded-2xl bg-white/12 px-3 py-2 text-right ring-1 ring-white/12">
           <p className="font-heading text-xl leading-none tracking-tight text-white text-center">
-            9.5
+            {siteConfig.bookingRating}
           </p>
           <p className="mt-1 text-[8px] uppercase tracking-[0.2em] text-white/60">
             out of 10
@@ -167,10 +167,10 @@ function CompactGuestRatingsStrip() {
         </div>
         <div className="shrink-0 rounded-2xl bg-white/12 px-3 py-2 text-right ring-1 ring-white/12">
           <p className="font-heading text-xl leading-none tracking-tight text-white text-center">
-            10
+            {siteConfig.hostelworldRating}
           </p>
           <p className="mt-1 text-[8px] uppercase tracking-[0.2em] text-white/60">
-            (115 Reviews)
+            ({siteConfig.hostelworldReviews} Reviews)
           </p>
         </div>
       </a>
@@ -217,7 +217,7 @@ function GuestRatingsSection() {
                     </div>
                     <div className="shrink-0 rounded-tr-sm rounded-tl-sm rounded-br-sm rounded-bl-none bg-blue-700 px-3 py-1 text-center font-semibold text-white shadow-sm">
                       <p className="font-heading text-xl leading-none tracking-tight">
-                        9.5
+                        {siteConfig.bookingRating}
                       </p>
                       <p className="text-[8px] uppercase tracking-wider text-blue-50">
                         out of 10
