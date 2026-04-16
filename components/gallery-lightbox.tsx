@@ -169,6 +169,8 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
                         src={item.src}
                         controls
                         playsInline
+                        preload="metadata"
+                        poster={item.poster}
                         className="block max-h-[85vh] max-w-[95vw] w-auto h-auto min-w-[30vw] min-h-[30vh]"
                     />
                 ) : (

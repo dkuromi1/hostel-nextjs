@@ -10,6 +10,7 @@ type GalleryItem = {
     src: string;
     alt: string;
     aspect?: string;
+    poster?: string;
 };
 
 type GalleryMasonryProps = {
@@ -46,6 +47,8 @@ export function GalleryMasonry({ items, columns = { mobile: 2, tablet: 3, deskto
                             className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
                             muted
                             playsInline
+                            preload="metadata"
+                            poster={item.poster}
                             aria-label={item.alt}
                         >
                             <source src={item.src} type="video/mp4" />

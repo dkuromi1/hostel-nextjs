@@ -214,6 +214,7 @@
       "id": "rosafa-video-1",
       "type": "video",
       "src": "/videos/rosafa_castle_milena.mp4",
+      "poster": "/images/rosafa_castle_milena.webp",
       "alt": "Short video from Rosafa Castle"
     },
     {
@@ -256,12 +257,14 @@
       "id": "hostel-video-1",
       "type": "video",
       "src": "/videos/videoplayback.mp4",
+      "poster": "/images/video-poster.webp",
       "alt": "Short rooftop video from Scodrinon Hostel"
     },
     {
       "id": "events-video-",
       "type": "video",
       "src": "/videos/videoplayback2.mp4",
+      "poster": "/images/video-poster2.webp",
       "alt": "Traveler atmosphere video from Scodrinon Hostel"
     }
   ]
