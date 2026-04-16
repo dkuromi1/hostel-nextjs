@@ -39,17 +39,19 @@ export function GalleryMasonry({ items, columns = { mobile: 2, tablet: 3, deskto
                         src={item.src}
                         alt={item.alt}
                         loading={isPriority ? "eager" : "lazy"}
-                        className="w-full h-auto min-h-[200px] object-cover transition-transform duration-500 will-change-transform group-hover:scale-105"
+                        className="w-full h-auto bg-slate-100/50 object-cover transition-transform duration-500 will-change-transform group-hover:scale-105"
+                        style={item.aspect ? { aspectRatio: item.aspect } : undefined}
                     />
                 ) : (
-                    <div className="w-full h-auto">
+                    <div className="w-full h-auto bg-slate-100/50" style={item.aspect ? { aspectRatio: item.aspect } : undefined}>
                         <video
-                            className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                             muted
                             playsInline
                             preload="metadata"
                             poster={item.poster}
                             aria-label={item.alt}
+                            style={item.aspect ? { aspectRatio: item.aspect } : undefined}
                         >
                             <source src={item.src} type="video/mp4" />
                         </video>
