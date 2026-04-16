@@ -1,5 +1,8 @@
 import type { NextConfig } from "next";
 import { networkInterfaces } from "node:os";
+import withSerwistInit from "@serwist/next";
+
+const isDev = process.env.NODE_ENV === "development";
 
 function getAllowedDevOrigins() {
   const hosts = new Set(["localhost", "127.0.0.1"]);
@@ -15,9 +18,15 @@ function getAllowedDevOrigins() {
   return Array.from(hosts);
 }
 
+const withSerwist = withSerwistInit({
+  swSrc: "app/sw.ts",
+  swDest: "public/sw.js",
+  disable: isDev,
+});
+
 const nextConfig: NextConfig = {
-  allowedDevOrigins:
-    process.env.NODE_ENV === "development" ? getAllowedDevOrigins() : undefined,
+  turbopack: {},
+  allowedDevOrigins: isDev ? getAllowedDevOrigins() : undefined,
 };
 
-export default nextConfig;
+export default withSerwist(nextConfig);
