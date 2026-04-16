@@ -1,8 +1,8 @@
 {
   "recommendedPois": [
     { "name": "Puri", "coords": [19.51009801624253, 42.06929457675185, 0], "category": "eat", "minZoom": 13 },
-    { "name": "Pasta e Vino", "coords": [19.51488598410907, 42.06707444829828, 0], "category": "eat", "minZoom": 13 },
     { "name": "Traditional Food", "coords": [19.51465274620761, 42.0672268599382, 0], "category": "eat", "minZoom": 13 },
+    { "name": "Pasta e Vino", "coords": [19.51488598410907, 42.06707444829828, 0], "category": "eat", "minZoom": 13 },
     { "name": "Ristorante Montalcino", "coords": [19.51331291568257, 42.06797338188613, 0], "category": "eat", "minZoom": 13 },
     { "name": "Venetian Art Mask Factory", "coords": [19.52961397179209, 42.08179583849546, 0], "category": "see", "minZoom": 10 },
     { "name": "Photography Museum", "coords": [19.51562698413464, 42.06853017247063, 0], "category": "see", "minZoom": 14 },

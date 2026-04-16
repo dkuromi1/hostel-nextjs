@@ -13,7 +13,7 @@ import { siteConfig } from "@/lib/site-data";
 export function StickyBookingBar() {
   const scrollY = useScrollPosition();
   const isScrolled = scrollY > 50;
-  
+
   const pathname = usePathname();
   const isHome = pathname === "/";
 
@@ -22,8 +22,8 @@ export function StickyBookingBar() {
   return (
     <div className={cn(
       "fixed inset-x-0 bottom-0 z-40 px-4 pt-[6px] pb-[calc(6px+env(safe-area-inset-bottom,0px))] transition-all duration-300 lg:hidden [transform:translateZ(0)]",
-      isTransparent 
-        ? "border-t border-white/5 bg-slate-950/50 backdrop-blur-md" 
+      isTransparent
+        ? "border-t border-white/5 bg-slate-950/50 backdrop-blur-md"
         : "border-t border-white/80 bg-white/92 shadow-[0_-20px_40px_-30px_rgba(15,23,42,0.45)] backdrop-blur"
     )}>
       <div className="mx-auto flex max-w-[1400px] items-center gap-2">
@@ -38,7 +38,7 @@ export function StickyBookingBar() {
           )}
         >
           <MessageCircleMore className="size-4 shrink-0" strokeWidth={1.8} />
-          WhatsApp
+          Book on WhatsApp
         </a>
         <div className="flex shrink-0 items-center gap-1.5">
           <a
@@ -49,8 +49,8 @@ export function StickyBookingBar() {
             className={cn(
               buttonVariants({ variant: "outline", size: "icon" }),
               "size-9 rounded-full transition-all",
-              isTransparent 
-                ? "border-white/20 bg-slate-950/20 text-white backdrop-blur-sm hover:bg-slate-950/40" 
+              isTransparent
+                ? "border-white/20 bg-slate-950/20 text-white backdrop-blur-sm hover:bg-slate-950/40"
                 : "border-blue-200/80 bg-blue-50/95 text-blue-950 hover:bg-blue-100/95"
             )}
           >
@@ -64,8 +64,8 @@ export function StickyBookingBar() {
             className={cn(
               buttonVariants({ variant: "outline", size: "icon" }),
               "size-9 rounded-full transition-all",
-              isTransparent 
-                ? "border-white/20 bg-slate-950/20 text-white backdrop-blur-sm hover:bg-slate-950/40" 
+              isTransparent
+                ? "border-white/20 bg-slate-950/20 text-white backdrop-blur-sm hover:bg-slate-950/40"
                 : "border-orange-200/80 bg-orange-50/90 text-orange-900 hover:bg-orange-100/90"
             )}
           >

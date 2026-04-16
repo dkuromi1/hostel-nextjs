@@ -2,7 +2,7 @@
   "thingsToDo": [
     {
       "title": "Rozafa Castle",
-      "description": "Perched on a rocky hill with beautiful views across Lake Shkodër and three rivers! Best visited an hour before sunset for the golden lighting across the valleys.",
+      "description": "The city's top attraction. Perched on a rocky hill with beautiful views across Lake Shkodër and three rivers. Best visited an hour before sunset for the golden lighting across the valleys. Admission is included in the hostel price!",
       "image": "/images/rosafa_castle.webp",
       "alt": "View from Rozafa Castle in Shkoder"
     },
@@ -19,7 +19,7 @@
       "alt": "Biking along Lake Shkoder towards Shiroka"
     },
     {
-      "title": "Mesi Bridge (Ura e Mesit)",
+      "title": "Mesi Bridge (The Old Bridge)",
       "description": "A stunning, curved Ottoman bridge resting over the shallow, opal waters of the Kir River, built in 1768 to connect the city with the northern highlands. A great spot for a swim!",
       "image": "/images/mesi_bridge.jpg",
       "alt": "The historic Ottoman Mesi Bridge in Shkoder"

@@ -63,8 +63,8 @@ export function MobileNav() {
                   onClick={() => setOpen(false)}
                   className={cn(
                     "rounded-2xl px-4 py-3 text-base font-medium transition-colors",
-                    isActive 
-                      ? "text-slate-950 font-semibold ring-1 ring-emerald-600/30" 
+                    isActive
+                      ? "text-slate-950 font-semibold ring-1 ring-emerald-600/30"
                       : "text-slate-700 hover:bg-slate-50 hover:text-slate-900"
                   )}
                 >
@@ -83,7 +83,7 @@ export function MobileNav() {
                   "h-10 rounded-full bg-emerald-700 text-white hover:bg-emerald-800"
                 )}
               >
-                Message Us On WhatsApp
+                Book On WhatsApp
               </a>
               <div className="grid grid-cols-2 gap-3">
                 <a

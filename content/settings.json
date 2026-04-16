@@ -10,9 +10,9 @@
   "bookingUrl": "https://www.booking.com/hotel/al/scodrinon-hostel.html",
   "hostelworldUrl": "https://www.hostelworld.com/hostels/p/325721/scodrinon-hostel/",
   "instagramUrl": "https://www.instagram.com/scodrinon_hostel/",
-  "breakfastHours": "9:00 to 10:30am (excl. off season)",
+  "breakfastHours": "8:00 to 9:30am (excl. off season)",
   "checkInHours": "2pm - 10pm",
-  "volunteersNeeded": false,
+  "volunteersNeeded": true,
   "baseKeywords": [
     "Scodrinon Hostel",
     "hostel in Shkoder",
