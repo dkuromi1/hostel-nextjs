@@ -170,7 +170,7 @@ function CompactGuestRatingsStrip() {
             10
           </p>
           <p className="mt-1 text-[8px] uppercase tracking-[0.2em] text-white/60">
-            top score
+            (115 Reviews)
           </p>
         </div>
       </a>
