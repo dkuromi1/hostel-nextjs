@@ -2,6 +2,7 @@ import Link from "next/link";
 import { MessageCircleMore, MapPinned } from "lucide-react";
 
 import { InstagramGlyph } from "@/components/instagram-glyph";
+import { PwaInstallButton } from "@/components/pwa-install-button";
 import { navLinks, siteConfig } from "@/lib/site-data";
 
 export function SiteFooter() {
@@ -107,7 +108,8 @@ export function SiteFooter() {
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-slate-400">
             © {new Date().getFullYear()} {siteConfig.shortName}. All rights reserved.
           </p>
-          <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400/80 transition-opacity hover:opacity-100">
+          <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400/80">
+            <PwaInstallButton />
             <span>Built in Next.js 16 & Tailwind 4 by hostel volunteer Darryl</span>
           </div>
         </div>
