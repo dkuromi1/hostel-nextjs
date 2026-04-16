@@ -106,7 +106,7 @@ export function SiteFooter() {
       <div className="mx-auto mt-16 max-w-[1400px] border-t border-white/5 pt-8">
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-slate-400">
-            © {new Date().getFullYear()} {siteConfig.shortName}. All rights reserved.
+            © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400/80">
             <PwaInstallButton />

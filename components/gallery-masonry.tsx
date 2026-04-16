@@ -25,6 +25,35 @@ type GalleryMasonryProps = {
 
 const PRIORITY_IMAGE_COUNT = 2;
 
+function distributeItems(items: GalleryItem[], numColumns: number) {
+    const columnData = Array.from({ length: numColumns }, () => ({
+        height: 0,
+        items: [] as { item: GalleryItem; originalIndex: number }[]
+    }));
+
+    items.forEach((item, index) => {
+        let shortestCol = 0;
+        let minHeight = columnData[0].height;
+        for (let i = 1; i < numColumns; i++) {
+            if (columnData[i].height < minHeight) {
+                minHeight = columnData[i].height;
+                shortestCol = i;
+            }
+        }
+
+        let heightToAdd = 1;
+        if (item.aspect) {
+            const [w, h] = item.aspect.split('/').map(Number);
+            if (w && h) heightToAdd = h / w;
+        }
+
+        columnData[shortestCol].items.push({ item, originalIndex: index });
+        columnData[shortestCol].height += heightToAdd;
+    });
+
+    return columnData.map(col => col.items);
+}
+
 export function GalleryMasonry({ items, columns = { mobile: 2, tablet: 3, desktop: 4 } }: GalleryMasonryProps) {
     const renderItem = (item: GalleryItem, isPriority: boolean) => (
         <Link
@@ -67,18 +96,40 @@ export function GalleryMasonry({ items, columns = { mobile: 2, tablet: 3, deskto
         </Link>
     );
 
-    return (
-        <div className={cn(
-            "gap-4",
-            columns.mobile === 2 ? "columns-2" : "columns-1",
-            columns.tablet === 3 ? "md:columns-3" : "md:columns-2",
-            columns.desktop === 4 ? "lg:columns-4" : "lg:columns-3"
-        )}>
-            {items.map((item, itemIdx) => (
-                <div key={item.id} className="mb-4 inline-block w-full break-inside-avoid">
-                    {renderItem(item, itemIdx < PRIORITY_IMAGE_COUNT)}
+    const MasonryLayout = ({ colCount, className }: { colCount: number, className?: string }) => {
+        if (colCount === 1) {
+            return (
+                <div className={cn("flex flex-col gap-4", className)}>
+                    {items.map((item, idx) => (
+                        <div key={item.id} className="w-full">
+                            {renderItem(item, idx < PRIORITY_IMAGE_COUNT)}
+                        </div>
+                    ))}
                 </div>
-            ))}
+            );
+        }
+
+        const cols = distributeItems(items, colCount);
+        return (
+            <div className={cn("flex gap-4", className)}>
+                {cols.map((colItems, colIdx) => (
+                    <div key={colIdx} className="flex flex-col gap-4 flex-1">
+                        {colItems.map(({ item, originalIndex }) => (
+                            <div key={item.id} className="w-full">
+                                {renderItem(item, originalIndex < PRIORITY_IMAGE_COUNT)}
+                            </div>
+                        ))}
+                    </div>
+                ))}
+            </div>
+        );
+    };
+
+    return (
+        <div className="w-full">
+            <MasonryLayout colCount={columns.desktop || 4} className="hidden lg:flex" />
+            <MasonryLayout colCount={columns.tablet || 3} className="hidden md:flex lg:hidden" />
+            <MasonryLayout colCount={columns.mobile || 2} className="flex md:hidden" />
         </div>
     );
 }
