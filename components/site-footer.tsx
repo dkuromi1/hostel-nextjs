@@ -7,9 +7,9 @@ import { navLinks, siteConfig } from "@/lib/site-data";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-white/70 bg-slate-950 px-4 py-14 text-slate-200 sm:px-6 lg:px-8 pb-24 lg:pb-14">
-      <div className="mx-auto grid max-w-[1400px] gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-        <div className="space-y-5">
+    <footer className="border-t border-white/70 bg-slate-950 py-14 text-slate-200 pb-24 lg:pb-14">
+      <div className="shell-container flex flex-col justify-between gap-10 lg:flex-row">
+        <div className="space-y-5 lg:max-w-xl">
           <p className="text-xs uppercase tracking-[0.28em] text-emerald-300/90">
             {siteConfig.tagline}
           </p>
@@ -59,7 +59,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="grid gap-8 sm:grid-cols-2">
+        <div className="grid gap-8 sm:grid-cols-2 lg:gap-16 lg:w-auto">
           <div>
             <p className="text-xs uppercase tracking-[0.24em] text-slate-400">
               Explore
@@ -103,7 +103,7 @@ export function SiteFooter() {
       </div>
 
       {/* Bottom Attribution Row */}
-      <div className="mx-auto mt-16 max-w-[1400px] border-t border-white/5 pt-8">
+      <div className="shell-container mt-16 border-t border-white/5 pt-8">
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-slate-400">
             © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
