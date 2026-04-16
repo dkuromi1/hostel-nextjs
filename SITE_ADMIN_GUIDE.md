@@ -10,8 +10,9 @@ This platform was custom-engineered to move travelers from browsing to booking b
 
 *   **Modern Brand Styling:** Uses a professional "Glassmorphic" design style and a slate-midnight palette to signal a high-end, boutique experience.
 *   **Speed as a Conversion Tool:** The site is built off the latest React 19 ecosystem to ensure pages load instantly, preventing impatient travelers from leaving.
-*   **Custom Gallery Code:** Includes hybrid state-URL synchronization, intercepted modal architecture, predictive asset pipeline, hardware-acceleration, and intelligent history management
-*   **Mobile-First Design:** Engineered specifically for the "on-the-go" traveler with touch-optimized swiping and simplified booking flows.
+*   **Progressive Web App (PWA):** Fully installable on phone home screens (iOS/Android) with offline caching via Service Worker, custom app icons, and an integrated native "Install" button.
+*   **Custom Gallery Code:** Includes hybrid state-URL synchronization, intercepted modal architecture, touch-optimized swiping, hardware-acceleration, and intelligent history management.
+*   **Mobile-First Design:** Engineered specifically for the "on-the-go" traveler with touch-friendly elements and simplified booking flows.
 
 ---
 
@@ -87,11 +88,13 @@ When editing a Room or a Gallery item in the dashboard, you will see an **"Uploa
 - JPEG or WebP formats are preferred for speed. 
 - Graphics with transparency:** PNG or WebP
 
-### Manual Uploads
+### Manual Uploads & App Icons
 If uploading manually via GitHub or FTP:
 1. **Images:** Put files in `public/images/`.
 2. **Videos:** Put files in `public/videos/`.
 3. **Logo:** `public/logo.png`.
+4. **PWA App Icons:** Update `public/icon.png`, `public/icon512_maskable.png`, `public/icon512_rounded.png`, `public/apple-icon.png`, and `public/favicon.ico` to change the app icons.
+5. **App Details (PWA Manifest):** The `public/site.webmanifest` file controls the app's installed name, background colors, and display mode.
 
 ---
 
