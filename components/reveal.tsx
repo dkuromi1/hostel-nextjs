@@ -43,11 +43,6 @@ export function Reveal({
             }
       }
       className={cn(className)}
-      style={{ 
-        willChange: "transform, opacity", // Hint GPU
-        transform: "translateZ(0)", // Force 3D layer
-        backfaceVisibility: "hidden" // Extra Safari stability
-      }}
       {...(props as React.ComponentPropsWithoutRef<typeof motion.div>)}
     >
       {children}
