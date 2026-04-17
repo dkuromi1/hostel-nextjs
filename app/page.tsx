@@ -523,16 +523,16 @@ export default function Home() {
             <Link
               href="/rooms"
               className={cn(
-                "group inline-flex items-center justify-center gap-3 rounded-full px-6 py-3",
-                "border border-slate-200 bg-white/80 text-slate-900 backdrop-blur-md",
+                "group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full px-7 py-3.5",
+                "bg-slate-900 text-white shadow-lg shadow-slate-900/20",
                 "text-sm font-semibold tracking-tight",
-                "transition-all duration-300 hover:bg-white hover:border-slate-300 hover:shadow-xl hover:shadow-slate-200/50",
-                "active:scale-95"
+                "transition-all duration-300 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/30 hover:-translate-y-0.5",
+                "active:scale-95 active:translate-y-0.5"
               )}
             >
-              Explore Rooms
-              <div className="flex size-5 items-center justify-center rounded-full bg-slate-900 text-white transition-transform duration-300 group-hover:translate-x-1">
-                <ArrowRight className="size-3" strokeWidth={3} />
+              <span>Explore Rooms</span>
+              <div className="relative flex size-6 items-center justify-center rounded-full bg-white/20 text-white transition-all duration-300 group-hover:bg-emerald-500 group-hover:scale-110">
+                <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
               </div>
             </Link>
           </div>
@@ -622,16 +622,16 @@ export default function Home() {
             <Link
               href="/gallery"
               className={cn(
-                "group inline-flex items-center justify-center gap-3 rounded-full px-6 py-3",
-                "border border-slate-200 bg-white/80 text-slate-900 backdrop-blur-md",
+                "group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full px-7 py-3.5",
+                "bg-slate-900 text-white shadow-lg shadow-slate-900/20",
                 "text-sm font-semibold tracking-tight",
-                "transition-all duration-300 hover:bg-white hover:border-slate-300 hover:shadow-xl hover:shadow-slate-200/50",
-                "active:scale-95"
+                "transition-all duration-300 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/30 hover:-translate-y-0.5",
+                "active:scale-95 active:translate-y-0.5"
               )}
             >
-              Open Gallery
-              <div className="flex size-5 items-center justify-center rounded-full bg-slate-900 text-white transition-transform duration-300 group-hover:translate-x-1">
-                <ArrowRight className="size-3" strokeWidth={3} />
+              <span>Open Gallery</span>
+              <div className="relative flex size-6 items-center justify-center rounded-full bg-white/20 text-white transition-all duration-300 group-hover:bg-emerald-500 group-hover:scale-110">
+                <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
               </div>
             </Link>
           </div>
@@ -655,16 +655,16 @@ export default function Home() {
             <Link
               href="/experiences"
               className={cn(
-                "group inline-flex items-center justify-center gap-3 rounded-full px-6 py-3",
-                "border border-slate-200 bg-white/80 text-slate-900 backdrop-blur-md",
+                "group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full px-7 py-3.5",
+                "bg-slate-900 text-white shadow-lg shadow-slate-900/20",
                 "text-sm font-semibold tracking-tight",
-                "transition-all duration-300 hover:bg-white hover:border-slate-300 hover:shadow-xl hover:shadow-slate-200/50",
-                "active:scale-95"
+                "transition-all duration-300 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/30 hover:-translate-y-0.5",
+                "active:scale-95 active:translate-y-0.5"
               )}
             >
-              See Experiences
-              <div className="flex size-5 items-center justify-center rounded-full bg-slate-900 text-white transition-transform duration-300 group-hover:translate-x-1">
-                <ArrowRight className="size-3" strokeWidth={3} />
+              <span>See Experiences</span>
+              <div className="relative flex size-6 items-center justify-center rounded-full bg-white/20 text-white transition-all duration-300 group-hover:bg-emerald-500 group-hover:scale-110">
+                <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
               </div>
             </Link>
           </div>
