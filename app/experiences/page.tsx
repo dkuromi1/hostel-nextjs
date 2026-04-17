@@ -240,64 +240,66 @@ export default function ExperiencesPage() {
             />
           </Reveal>
 
-          <SwipableRow itemCount={thingsToDo.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {thingsToDo.map((item, index) => (
-              <Reveal key={item.title} delay={index * 100} className="min-w-[85%] snap-center sm:min-w-0 h-full">
-                <Panel className="group relative flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-300 hover:border-sky-500/20 hover:shadow-md">
-                  <div className="relative h-48 w-full overflow-hidden bg-slate-100">
-                    <Image
-                      src={item.image}
-                      alt={item.alt}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  </div>
-
-                  <div className="flex flex-1 flex-col p-6">
-                    <div className="mb-3 flex flex-wrap items-center gap-2">
-                      <Link
-                        href={`?poi=${encodeURIComponent(
-                          item.title === "Theth & Valbona Treks"
-                            ? THETH_VALBONA_MAP_QUERY
-                            : item.title
-                        )}#map`}
-                        className="group flex w-fit items-center gap-1.5 rounded-full border border-sky-100 bg-sky-50 px-2.5 py-1 text-sky-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-200 hover:bg-sky-100 hover:shadow-sm"
-                      >
-                        <MapPin className="size-3.5 transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110" strokeWidth={2} />
-                        <span className="text-[9px] font-bold uppercase tracking-widest whitespace-nowrap">
-                          View on Our Local Map
-                        </span>
-                      </Link>
-                      <a
-                        href={
-                          item.title === "Theth & Valbona Treks"
-                            ? THETH_SIDE_TRAILHEAD_GOOGLE_MAPS
-                            : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(item.title + ' Shkoder')}`
-                        }
-                        target="_blank"
-                        rel="noreferrer"
-                        className="group flex w-fit items-center gap-1.5 rounded-full border border-slate-200 bg-white px-2.5 py-1 text-slate-600 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50 hover:shadow-sm"
-                      >
-                        <Navigation className="size-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2.5} />
-                        <span className="text-[9px] font-bold uppercase tracking-widest whitespace-nowrap">
-                          Directions
-                        </span>
-                      </a>
+          <Reveal delay={100}>
+            <SwipableRow itemCount={thingsToDo.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {thingsToDo.map((item, index) => (
+                <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full">
+                  <Panel className="group relative flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-300 hover:border-sky-500/20 hover:shadow-md">
+                    <div className="relative h-48 w-full overflow-hidden bg-slate-100">
+                      <Image
+                        src={item.image}
+                        alt={item.alt}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
                     </div>
-                    <h3 className="mb-2 font-heading text-xl leading-tight tracking-tight text-slate-900">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-slate-600">
-                      {item.description}
-                    </p>
-                  </div>
-                </Panel>
-              </Reveal>
-            ))}
-            {/* Trailing Spacer for mobile snapping */}
-            <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
-          </SwipableRow>
+
+                    <div className="flex flex-1 flex-col p-6">
+                      <div className="mb-3 flex flex-wrap items-center gap-2">
+                        <Link
+                          href={`?poi=${encodeURIComponent(
+                            item.title === "Theth & Valbona Treks"
+                              ? THETH_VALBONA_MAP_QUERY
+                              : item.title
+                          )}#map`}
+                          className="group flex w-fit items-center gap-1.5 rounded-full border border-sky-100 bg-sky-50 px-2.5 py-1 text-sky-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-200 hover:bg-sky-100 hover:shadow-sm"
+                        >
+                          <MapPin className="size-3.5 transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110" strokeWidth={2} />
+                          <span className="text-[9px] font-bold uppercase tracking-widest whitespace-nowrap">
+                            View on Our Local Map
+                          </span>
+                        </Link>
+                        <a
+                          href={
+                            item.title === "Theth & Valbona Treks"
+                              ? THETH_SIDE_TRAILHEAD_GOOGLE_MAPS
+                              : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(item.title + ' Shkoder')}`
+                          }
+                          target="_blank"
+                          rel="noreferrer"
+                          className="group flex w-fit items-center gap-1.5 rounded-full border border-slate-200 bg-white px-2.5 py-1 text-slate-600 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50 hover:shadow-sm"
+                        >
+                          <Navigation className="size-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2.5} />
+                          <span className="text-[9px] font-bold uppercase tracking-widest whitespace-nowrap">
+                            Directions
+                          </span>
+                        </a>
+                      </div>
+                      <h3 className="mb-2 font-heading text-xl leading-tight tracking-tight text-slate-900">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-slate-600">
+                        {item.description}
+                      </p>
+                    </div>
+                  </Panel>
+                </div>
+              ))}
+              {/* Trailing Spacer for mobile snapping */}
+              <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
+            </SwipableRow>
+          </Reveal>
 
           <Reveal className="w-full pt-4 sm:pt-8 w-full max-w-[1400px] mx-auto">
             <div id="map" className="media-frame relative h-[500px] w-full overflow-hidden rounded-[2rem] shadow-xl shadow-slate-200/50 ring-1 ring-slate-200">

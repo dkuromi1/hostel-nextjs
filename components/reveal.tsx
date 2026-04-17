@@ -1,8 +1,7 @@
 "use client";
 
 import type { HTMLAttributes } from "react";
-import { useEffect, useRef, useState } from "react";
-import { useIsMobile } from "@/lib/use-is-mobile";
+import { motion, useReducedMotion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -15,55 +14,43 @@ export function Reveal({
   children,
   className,
   delay = 0,
-  duration = 1000,
+  // duration is kept in the API for backwards-compatibility but spring physics
+  // dictate the actual feel — damping/stiffness are the real controls.
+  duration: _duration,
   ...props
 }: RevealProps) {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const isMobile = useIsMobile();
-  
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px",
-      }
-    );
-
-    observer.observe(node);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div
-      ref={ref}
+    <motion.div
+      // Keep initial constant (same on server and client) to avoid SSR hydration
+      // mismatches. useReducedMotion() returns null on the server and can differ
+      // from the client value, so we must never use it to change `initial`.
+      // Instead, we only vary the transition: duration:0 for reduced motion gives
+      // an instant snap to the visible state without any layout shift.
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={
+        shouldReduceMotion
+          ? { duration: 0 }
+          : {
+              type: "spring",
+              damping: 18, // Lower damping for more bounce
+              stiffness: 160, // Higher stiffness for faster snap
+              delay: delay / 1000, // convert ms → seconds for Framer
+              velocity: 2, // Add some initial velocity for more "life"
+            }
+      }
+      className={cn(className)}
       style={{ 
-        transitionDelay: isMobile ? "0ms" : `${delay}ms`,
-        transitionDuration: isMobile ? "0ms" : `${duration}ms`
+        willChange: "transform, opacity", // Hint GPU
+        transform: "translateZ(0)", // Force 3D layer
+        backfaceVisibility: "hidden" // Extra Safari stability
       }}
-      className={cn(
-        "transition-all ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transform-none motion-reduce:opacity-100",
-        "max-sm:translate-y-0 max-sm:opacity-100 max-sm:transition-none",
-        (isVisible || isMobile) ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0",
-        className
-      )}
-      {...props}
+      {...(props as React.ComponentPropsWithoutRef<typeof motion.div>)}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }

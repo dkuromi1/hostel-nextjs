@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { Panel } from "@/components/ui/panel";
 import { cn } from "@/lib/utils";
@@ -24,16 +25,30 @@ export function TestimonialCarousel({
 }: TestimonialCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  // Use a ref for direction so rapid clicks always read the latest value
+  // without triggering extra re-renders.
+  const directionRef = useRef(1);
+  const [direction, setDirection] = useState(1);
 
   const next = useCallback(() => {
-    setCurrentIndex((current) => (current + 1) % testimonials.length);
+    directionRef.current = 1;
+    setDirection(1);
+    setCurrentIndex((c) => (c + 1) % testimonials.length);
   }, [testimonials.length]);
 
   const prev = useCallback(() => {
-    setCurrentIndex((current) =>
-      current === 0 ? testimonials.length - 1 : current - 1
-    );
+    directionRef.current = -1;
+    setDirection(-1);
+    setCurrentIndex((c) => (c === 0 ? testimonials.length - 1 : c - 1));
   }, [testimonials.length]);
+
+  const goTo = useCallback((index: number) => {
+    const d = index > currentIndex ? 1 : -1;
+    directionRef.current = d;
+    setDirection(d);
+    setCurrentIndex(index);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentIndex]);
 
   // Auto-play interval
   useEffect(() => {
@@ -44,55 +59,68 @@ export function TestimonialCarousel({
 
   if (!testimonials?.length) return null;
 
+  const testimonial = testimonials[currentIndex];
+
+  const variants = {
+    enter: (d: number) => ({ x: d > 0 ? 56 : -56, opacity: 0 }),
+    center: {
+      x: 0,
+      opacity: 1,
+      transition: { type: "spring" as const, damping: 24, stiffness: 180 },
+    },
+    exit: (d: number) => ({
+      x: d > 0 ? -40 : 40,
+      opacity: 0,
+      transition: { duration: 0.18, ease: [0.4, 0, 1, 1] as [number, number, number, number] },
+    }),
+  };
+
   return (
     <Panel
       className={cn(
-        "relative flex flex-col justify-between bg-slate-700 p-8 text-white sm:p-10 transition-colors",
+        "relative flex flex-col justify-between bg-slate-700 p-8 text-white sm:p-10",
         className
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="grid">
-        {testimonials.map((testimonial, index) => {
-          const isActive = index === currentIndex;
-
-          return (
-            <div
-              key={index}
-              className={cn(
-                "col-start-1 row-start-1 flex flex-col justify-center transition-opacity duration-700 ease-in-out",
-                isActive
-                  ? "pointer-events-auto z-10 opacity-100"
-                  : "pointer-events-none z-0 opacity-0"
-              )}
-            >
-              <div className="flex gap-1 text-amber-500">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="size-4 fill-current" />
-                ))}
-              </div>
-              <blockquote className="mt-6 font-heading text-2xl leading-snug tracking-[-0.02em] text-white sm:text-3xl">
-                "{testimonial.quote}"
-              </blockquote>
-              <p className="mt-6 font-medium text-slate-200">
-                — {testimonial.author}{" "}
-                <span className="opacity-90">({testimonial.source})</span>
-              </p>
+      {/* Clip horizontal overflow from slide animation without clipping shadows */}
+      <div className="overflow-hidden">
+        <AnimatePresence custom={direction} mode="wait">
+          <motion.div
+            key={currentIndex}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+          >
+            <div className="flex gap-1 text-amber-500">
+              {[...Array(testimonial.rating)].map((_, i) => (
+                <Star key={i} className="size-4 fill-current" />
+              ))}
             </div>
-          );
-        })}
+            <blockquote className="mt-6 font-heading text-2xl leading-snug tracking-[-0.02em] text-white sm:text-3xl">
+              &ldquo;{testimonial.quote}&rdquo;
+            </blockquote>
+            <p className="mt-6 font-medium text-slate-200">
+              — {testimonial.author}{" "}
+              <span className="opacity-90">({testimonial.source})</span>
+            </p>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Navigation Controls */}
-      <div className="mt-2 flex items-center justify-between border-t border-slate-700/50 pt-4">
+      <div className="mt-6 flex items-center justify-between border-t border-slate-700/50 pt-4">
         <div className="flex gap-2">
           {testimonials.map((_, index) => (
-            <div
+            <button
               key={index}
-              onClick={() => setCurrentIndex(index)}
+              onClick={() => goTo(index)}
+              aria-label={`Go to testimonial ${index + 1}`}
               className={cn(
-                "cursor-pointer relative h-2 rounded-full transition-all duration-300",
+                "relative h-2 cursor-pointer rounded-full transition-all duration-300",
                 "before:absolute before:left-1/2 before:top-1/2 before:h-11 before:w-[calc(100%+8px)] before:-translate-x-1/2 before:-translate-y-1/2 before:content-['']",
                 index === currentIndex
                   ? "w-8 bg-amber-500"

@@ -351,7 +351,7 @@ export default function Home() {
               </Reveal>
             </div>
 
-            <div className="w-full pt-4">
+            <Reveal delay={500}>
               <SwipableRow
                 itemCount={quickFacts.length}
                 className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
@@ -359,10 +359,8 @@ export default function Home() {
                 {quickFacts.map((fact, index) => {
                   const Icon = getQuickFactIcon(fact);
                   return (
-                    <Reveal
+                    <div
                       key={fact}
-                      delay={500 + index * 120}
-                      duration={1400}
                       className="min-w-[85%] snap-center sm:min-w-0"
                     >
                       <div className="group relative overflow-hidden rounded-[24px] border border-white/18 bg-slate-950/42 p-5 backdrop-blur-[3px] transition-all duration-300 hover:border-white/24 hover:bg-slate-950/52">
@@ -373,13 +371,13 @@ export default function Home() {
                           {fact}
                         </div>
                       </div>
-                    </Reveal>
+                    </div>
                   );
                 })}
                 {/* Trailing Spacer for mobile snapping */}
                 <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
               </SwipableRow>
-            </div>
+            </Reveal>
 
             {/* 
               FUTURE EDITORS: Do not remove the HeroBookingBar component code. 
@@ -748,33 +746,35 @@ export default function Home() {
             </div>
           </div>
 
-          <SwipableRow itemCount={eventCards.length} className="-mx-8 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-2">
-            {eventCards.map((event, index) => (
-              <Reveal key={event.title} delay={index * 60} className="min-w-[82vw] snap-center sm:min-w-0">
-                <Panel className="overflow-hidden">
-                  <div className="grid gap-0 md:grid-cols-[0.92fr_1.08fr]">
-                    <div className="relative min-h-[14rem]">
-                      <Image
-                        src={event.image}
-                        alt={event.alt}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1400px) 23vw, 322px"
-                      />
+          <Reveal delay={120}>
+            <SwipableRow itemCount={eventCards.length} className="-mx-8 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-2">
+              {eventCards.map((event, index) => (
+                <div key={event.title} className="min-w-[82vw] snap-center sm:min-w-0">
+                  <Panel className="overflow-hidden">
+                    <div className="grid gap-0 md:grid-cols-[0.92fr_1.08fr]">
+                      <div className="relative min-h-[14rem]">
+                        <Image
+                          src={event.image}
+                          alt={event.alt}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1400px) 23vw, 322px"
+                        />
+                      </div>
+                      <div className="p-5">
+                        <h3 className="font-heading text-2xl leading-none tracking-[-0.04em] text-slate-950">
+                          {event.title}
+                        </h3>
+                        <p className="mt-3 text-sm leading-7 text-slate-600">
+                          {event.description}
+                        </p>
+                      </div>
                     </div>
-                    <div className="p-5">
-                      <h3 className="font-heading text-2xl leading-none tracking-[-0.04em] text-slate-950">
-                        {event.title}
-                      </h3>
-                      <p className="mt-3 text-sm leading-7 text-slate-600">
-                        {event.description}
-                      </p>
-                    </div>
-                  </div>
-                </Panel>
-              </Reveal>
-            ))}
-          </SwipableRow>
+                  </Panel>
+                </div>
+              ))}
+            </SwipableRow>
+          </Reveal>
         </div>
       </section>
 
@@ -796,31 +796,33 @@ export default function Home() {
               />
             </Reveal>
 
-            <SwipableRow
-              itemCount={extendReasons.length}
-              className="-mx-8 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-4"
-            >
-              {extendReasons.map((reason, index) => {
-                const Icon = reasonIcons[index] || ArrowRight;
-                return (
-                  <Reveal key={reason.title} delay={index * 100 + 200} className="min-w-[82vw] snap-center sm:min-w-0">
-                    <div className="group relative flex h-full flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
-                      <div>
-                        <div className="float-left mb-3 mr-4 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
-                          <Icon className="size-5" strokeWidth={1.8} />
+            <Reveal delay={300}>
+              <SwipableRow
+                itemCount={extendReasons.length}
+                className="-mx-8 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-4"
+              >
+                {extendReasons.map((reason, index) => {
+                  const Icon = reasonIcons[index] || ArrowRight;
+                  return (
+                    <div key={reason.title} className="min-w-[82vw] snap-center sm:min-w-0">
+                      <div className="group relative flex h-full flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
+                        <div>
+                          <div className="float-left mb-3 mr-4 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
+                            <Icon className="size-5" strokeWidth={1.8} />
+                          </div>
+                          <h3 className="mb-2 font-heading text-xl leading-tight tracking-tight text-slate-900 pt-1">
+                            {reason.title}
+                          </h3>
+                          <p className="text-sm leading-relaxed text-slate-600">
+                            {reason.description}
+                          </p>
                         </div>
-                        <h3 className="mb-2 font-heading text-xl leading-tight tracking-tight text-slate-900 pt-1">
-                          {reason.title}
-                        </h3>
-                        <p className="text-sm leading-relaxed text-slate-600">
-                          {reason.description}
-                        </p>
                       </div>
                     </div>
-                  </Reveal>
-                );
-              })}
-            </SwipableRow>
+                  );
+                })}
+              </SwipableRow>
+            </Reveal>
           </div>
         </div>
       </section>
