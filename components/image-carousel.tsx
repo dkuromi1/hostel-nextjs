@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, type PanInfo } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -17,6 +18,8 @@ type ImageCarouselProps = {
     autoPlayInterval?: number; // Set to 0 to disable autoplay
 };
 
+const SWIPE_THRESHOLD = 50; // px — minimum drag distance to trigger a slide change
+
 export function ImageCarousel({
     images,
     className,
@@ -24,11 +27,7 @@ export function ImageCarousel({
 }: ImageCarouselProps) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
-    const [touchStart, setTouchStart] = useState<number | null>(null);
-    const [touchEnd, setTouchEnd] = useState<number | null>(null);
-
-    // Minimum distance for a swipe to be registered
-    const minSwipeDistance = 50;
+    const [isDragging, setIsDragging] = useState(false);
 
     const next = useCallback(() => {
         setCurrentIndex((current) => (current + 1) % images.length);
@@ -40,30 +39,15 @@ export function ImageCarousel({
         );
     }, [images.length]);
 
-    const handleTouchStart = (e: React.TouchEvent) => {
-        setTouchEnd(null);
-        setTouchStart(e.targetTouches[0].clientX);
-        setIsHovered(true);
-    };
-
-    const handleTouchMove = (e: React.TouchEvent) => {
-        setTouchEnd(e.targetTouches[0].clientX);
-    };
-
-    const handleTouchEnd = () => {
-        setIsHovered(false);
-        if (!touchStart || !touchEnd) return;
-
-        const distance = touchStart - touchEnd;
-        const isLeftSwipe = distance > minSwipeDistance;
-        const isRightSwipe = distance < -minSwipeDistance;
-
-        if (isLeftSwipe) {
-            next();
-        } else if (isRightSwipe) {
-            prev();
-        }
-    };
+    // Resolve swipe direction from Framer Motion's PanInfo
+    const handleDragEnd = useCallback(
+        (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+            setIsDragging(false);
+            if (info.offset.x < -SWIPE_THRESHOLD) next();
+            else if (info.offset.x > SWIPE_THRESHOLD) prev();
+        },
+        [next, prev]
+    );
 
     // Auto-play interval
     useEffect(() => {
@@ -79,32 +63,37 @@ export function ImageCarousel({
             className={cn("group relative w-full overflow-hidden rounded-[24px]", className)}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
         >
-            {/* Sliding Track */}
-            <div
-                className="flex h-full w-full transition-transform duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]"
-                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            {/* Sliding Track — driven by Framer Motion spring, draggable on all devices */}
+            <motion.div
+                className="flex h-full w-full"
+                animate={{ x: `-${currentIndex * 100}%` }}
+                transition={{ type: "spring", stiffness: 300, damping: 35, mass: 0.8 }}
+                drag="x"
+                dragElastic={0.15}
+                onDragStart={() => setIsDragging(true)}
+                onDragEnd={handleDragEnd}
+                style={{ cursor: isDragging ? "grabbing" : "grab" }}
             >
                 {images.map((img, index) => (
-                    <div key={index} className="relative h-full w-full shrink-0">
+                    <div key={index} className="relative h-full w-full shrink-0" style={{ minWidth: "100%" }}>
                         <Image
                             src={img.src}
                             alt={img.alt}
                             fill
-                            className="object-cover"
+                            draggable={false} // prevent browser native image drag interfering with FM
+                            className="pointer-events-none object-cover"
                             sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 50vw, 700px"
                         />
                     </div>
                 ))}
-            </div>
+            </motion.div>
 
             {/* Navigation Arrows (Fade in on hover on desktop) */}
             {images.length > 1 && (
                 <>
                     <button
+                        type="button"
                         onClick={prev}
                         aria-label="Previous image"
                         className="absolute left-3 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-slate-800 opacity-0 shadow-sm backdrop-blur transition-all duration-300 hover:scale-105 hover:bg-white focus:opacity-100 group-hover:opacity-100 sm:left-4"
@@ -112,6 +101,7 @@ export function ImageCarousel({
                         <ChevronLeft className="size-5" />
                     </button>
                     <button
+                        type="button"
                         onClick={next}
                         aria-label="Next image"
                         className="absolute right-3 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-slate-800 opacity-0 shadow-sm backdrop-blur transition-all duration-300 hover:scale-105 hover:bg-white focus:opacity-100 group-hover:opacity-100 sm:right-4"

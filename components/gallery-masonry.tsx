@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 type GalleryItem = {
     id: string;
@@ -55,6 +57,25 @@ function distributeItems(items: GalleryItem[], numColumns: number) {
 }
 
 export function GalleryMasonry({ items, columns = { mobile: 2, tablet: 3, desktop: 4 } }: GalleryMasonryProps) {
+    const [columnCount, setColumnCount] = useState(4); // Default to desktop
+
+    useEffect(() => {
+        const updateColumns = () => {
+            const width = window.innerWidth;
+            if (width < 768) {
+                setColumnCount(columns.mobile || 2);
+            } else if (width < 1024) {
+                setColumnCount(columns.tablet || 3);
+            } else {
+                setColumnCount(columns.desktop || 4);
+            }
+        };
+
+        updateColumns();
+        window.addEventListener("resize", updateColumns);
+        return () => window.removeEventListener("resize", updateColumns);
+    }, [columns]);
+
     const renderItem = (item: GalleryItem, isPriority: boolean) => (
         <Link
             key={item.id}
@@ -62,19 +83,26 @@ export function GalleryMasonry({ items, columns = { mobile: 2, tablet: 3, deskto
             scroll={false}
             className="group block w-full cursor-zoom-in"
         >
-            <div className="media-frame relative overflow-hidden">
+            <div className="media-frame relative overflow-hidden bg-slate-100/50">
                 {item.type === "image" ? (
-                    <img
+                    <motion.img
+                        layoutId={`gallery-media-${item.id}`}
                         src={item.src}
                         alt={item.alt}
                         loading={isPriority ? "eager" : "lazy"}
-                        className="w-full h-auto bg-slate-100/50 object-cover transition-transform duration-500 will-change-transform group-hover:scale-105"
+                        // Use whileHover for the zoom effect to avoid CSS transition conflicts
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                        className="w-full h-auto object-cover will-change-transform"
                         style={item.aspect ? { aspectRatio: item.aspect } : undefined}
                     />
                 ) : (
                     <div className="w-full h-auto bg-slate-100/50" style={item.aspect ? { aspectRatio: item.aspect } : undefined}>
-                        <video
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        <motion.video
+                            layoutId={`gallery-media-${item.id}`}
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                            className="w-full h-full object-cover will-change-transform"
                             muted
                             playsInline
                             preload="metadata"
@@ -83,7 +111,7 @@ export function GalleryMasonry({ items, columns = { mobile: 2, tablet: 3, deskto
                             style={item.aspect ? { aspectRatio: item.aspect } : undefined}
                         >
                             <source src={item.src} type="video/mp4" />
-                        </video>
+                        </motion.video>
                         <div className="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors group-hover:bg-black/20">
                             <div className="rounded-full bg-white/20 p-3 backdrop-blur-md">
                                 <div className="size-0 border-y-8 border-l-12 border-y-transparent border-l-white ml-1" />
@@ -91,27 +119,16 @@ export function GalleryMasonry({ items, columns = { mobile: 2, tablet: 3, deskto
                         </div>
                     </div>
                 )}
-                <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
+                <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10 pointer-events-none" />
             </div>
         </Link>
     );
 
-    const MasonryLayout = ({ colCount, className }: { colCount: number, className?: string }) => {
-        if (colCount === 1) {
-            return (
-                <div className={cn("flex flex-col gap-4", className)}>
-                    {items.map((item, idx) => (
-                        <div key={item.id} className="w-full">
-                            {renderItem(item, idx < PRIORITY_IMAGE_COUNT)}
-                        </div>
-                    ))}
-                </div>
-            );
-        }
+    const cols = distributeItems(items, columnCount);
 
-        const cols = distributeItems(items, colCount);
-        return (
-            <div className={cn("flex gap-4", className)}>
+    return (
+        <div className="w-full">
+            <div className="flex gap-4">
                 {cols.map((colItems, colIdx) => (
                     <div key={colIdx} className="flex flex-col gap-4 flex-1">
                         {colItems.map(({ item, originalIndex }) => (
@@ -122,14 +139,6 @@ export function GalleryMasonry({ items, columns = { mobile: 2, tablet: 3, deskto
                     </div>
                 ))}
             </div>
-        );
-    };
-
-    return (
-        <div className="w-full">
-            <MasonryLayout colCount={columns.desktop || 4} className="hidden lg:flex" />
-            <MasonryLayout colCount={columns.tablet || 3} className="hidden md:flex lg:hidden" />
-            <MasonryLayout colCount={columns.mobile || 2} className="flex md:hidden" />
         </div>
     );
 }
