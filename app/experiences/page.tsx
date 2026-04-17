@@ -154,81 +154,6 @@ export default function ExperiencesPage() {
         </div>
       </section>
 
-      {/* Local Texture Section */}
-      <section className="py-8 sm:py-16">
-        <div className="shell-container space-y-12">
-
-          {/* Section Header */}
-          <Reveal className="max-w-3xl">
-            <SectionHeading
-              eyebrow="Local Texture"
-              title="Connection & Discovery"
-              description="Skip the forced hostel itinerary. We offer a grounded atmosphere where meeting people and discovering the city’s character happens at your own pace."
-            />
-          </Reveal>
-
-          {/* Premium 3-Column Image Grid */}
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              {
-                title: "The Drin River Escape",
-                description: "Just outside the city, the Drin river offers a cool, scenic contrast to the Alps. We organize regular group swimming trips to our favorite spots along the water for a perfect, sun-drenched afternoon.",
-                icon: Waves,
-                image: "/images/drin_swimming_trip2.jpeg",
-                focus: "50% 40%",
-              },
-              {
-                title: "Spontaneous Socials",
-                description: "Whether it’s rooftop raki or an informal food crawl, we prioritize warm, unscripted moments that make it easy for solo travelers to join. It’s social, but never forced.",
-                icon: Sparkles,
-                image: "/images/rooftop_social_7.webp",
-                focus: "50% 40%",
-              },
-              {
-                title: "Bicycle Capital Access",
-                description: "Shkodër is best explored on two wheels. Grab a rental from across the street and navigate the flat streets, historic center, and scenic lake paths exactly how the locals do.",
-                icon: Bike,
-                image: "/images/biking_in_shkodra.jpeg",
-                focus: "50% 40%",
-              },
-            ].map((item, index) => (
-              <Reveal key={item.title} delay={index * 100} className="h-full">
-                <Panel
-                  className="group relative flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
-                >
-                  {/* Card Image Header */}
-                  <div className="relative h-56 w-full overflow-hidden bg-slate-100">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      style={{ objectPosition: item.focus || "center" }}
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  </div>
-
-                  {/* Card Content Area */}
-                  <div className="flex flex-1 flex-col px-8 pb-8">
-                    {/* Floating Icon Box (Overlaps the image and white background) */}
-                    <div className="relative -mt-6 mb-6 flex size-12 items-center justify-center rounded-2xl bg-white text-slate-600 shadow-lg shadow-slate-200/50 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-50 group-hover:text-emerald-600">
-                      <item.icon className="size-5" strokeWidth={1.5} />
-                    </div>
-
-                    <h3 className="mb-3 font-heading text-xl leading-tight tracking-tight text-slate-900">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-slate-600">
-                      {item.description}
-                    </p>
-                  </div>
-                </Panel>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Things To Do Section */}
       <section className="py-8 sm:py-16 bg-slate-50/50">
         <div className="shell-container space-y-12">
@@ -306,6 +231,81 @@ export default function ExperiencesPage() {
               <LocationMap />
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* Local Texture Section */}
+      <section className="py-8 sm:py-16">
+        <div className="shell-container space-y-12">
+
+          {/* Section Header */}
+          <Reveal className="max-w-3xl">
+            <SectionHeading
+              eyebrow="Local Texture"
+              title="Connection & Discovery"
+              description="Skip the forced hostel itinerary. We offer a grounded atmosphere where meeting people and discovering the city’s character happens at your own pace."
+            />
+          </Reveal>
+
+          {/* Premium 3-Column Image Grid */}
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              {
+                title: "The Drin River Escape",
+                description: "Just outside the city, the Drin river offers a cool, scenic contrast to the Alps. We organize regular group swimming trips to our favorite spots along the water for a perfect, sun-drenched afternoon.",
+                icon: Waves,
+                image: "/images/drin_swimming_trip2.jpeg",
+                focus: "50% 40%",
+              },
+              {
+                title: "Spontaneous Socials",
+                description: "Whether it’s rooftop raki or an informal food crawl, we prioritize warm, unscripted moments that make it easy for solo travelers to join. It’s social, but never forced.",
+                icon: Sparkles,
+                image: "/images/rooftop_social_7.webp",
+                focus: "50% 40%",
+              },
+              {
+                title: "Bicycle Capital Access",
+                description: "Shkodër is best explored on two wheels. Grab a rental from across the street and navigate the flat streets, historic center, and scenic lake paths exactly how the locals do.",
+                icon: Bike,
+                image: "/images/biking_in_shkodra.jpeg",
+                focus: "50% 40%",
+              },
+            ].map((item, index) => (
+              <Reveal key={item.title} delay={index * 100} className="h-full">
+                <Panel
+                  className="group relative flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
+                >
+                  {/* Card Image Header */}
+                  <div className="relative h-56 w-full overflow-hidden bg-slate-100">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      style={{ objectPosition: item.focus || "center" }}
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
+
+                  {/* Card Content Area */}
+                  <div className="flex flex-1 flex-col px-8 pb-8">
+                    {/* Floating Icon Box (Overlaps the image and white background) */}
+                    <div className="relative -mt-6 mb-6 flex size-12 items-center justify-center rounded-2xl bg-white text-slate-600 shadow-lg shadow-slate-200/50 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-50 group-hover:text-emerald-600">
+                      <item.icon className="size-5" strokeWidth={1.5} />
+                    </div>
+
+                    <h3 className="mb-3 font-heading text-xl leading-tight tracking-tight text-slate-900">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-slate-600">
+                      {item.description}
+                    </p>
+                  </div>
+                </Panel>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
