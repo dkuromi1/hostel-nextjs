@@ -19,9 +19,6 @@ export const metadata: Metadata = {
   keywords: [...siteConfig.baseKeywords],
   applicationName: siteConfig.name,
   category: "travel",
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     title: `${siteConfig.name} | Shkoder, Albania`,
     description: siteConfig.description,
