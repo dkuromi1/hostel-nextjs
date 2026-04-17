@@ -12,6 +12,10 @@
     { "name": "Rozafa Castle", "coords": [19.493844659339743, 42.04664614803619, 0], "category": "see", "minZoom": 9 },
     { "name": "Mesi Bridge", "coords": [19.57507048757086, 42.114467845122725, 0], "category": "see", "minZoom": 9 },
     { "name": "Shiroka Village", "coords": [19.4574742901822, 42.05937487786602, 0], "category": "see", "minZoom": 9 },
-    { "name": "Theth Return Bus Location", "coords": [19.772315376603874, 42.39677313338882, 0], "category": "transit", "minZoom": 6 }
+    { "name": "Theth Drop Off/Pick Up Location", "coords": [19.772315376603874, 42.39677313338882, 0], "category": "transit", "minZoom": 6 },
+    { "name": "Komani Lake Ferry Location (Shala & Valbona)", "coords": [ 19.826066248202096, 42.10881657873157, 0], "category": "transit", "minZoom": 6 },
+    { "name": "Fierze Ferry (Valbona) Drop Off/Pick Up Location", "coords": [20.009769719020607, 42.26435854079236, 0], "category": "transit", "minZoom": 6 },
+    { "name": "Valbona Village", "coords": [19.88570882131251, 42.444877303358666, 0], "category": "transit", "minZoom": 6 },
+    { "name": "Blini Park (Shala River Trip Stop)", "coords": [19.80642220690339, 42.19953460048828, 0], "category": "transit", "minZoom": 6 }    
   ]
 }
