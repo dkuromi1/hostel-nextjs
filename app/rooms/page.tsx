@@ -63,6 +63,26 @@ export default function RoomsPage() {
     ];
   };
 
+  const formatServiceText = (text: string) => {
+    return text.split(/(\*\*.*?\*\*|~~.*?~~)/g).map((part, i) => {
+      if (part.startsWith("**") && part.endsWith("**")) {
+        return (
+          <strong key={i} className="font-bold text-slate-950">
+            {part.slice(2, -2)}
+          </strong>
+        );
+      }
+      if (part.startsWith("~~") && part.endsWith("~~")) {
+        return (
+          <span key={i} className="text-red-600 line-through decoration-red-600/50">
+            {part.slice(2, -2)}
+          </span>
+        );
+      }
+      return part;
+    });
+  };
+
   return (
     <>
       <StructuredData
@@ -230,7 +250,7 @@ export default function RoomsPage() {
                     key={service}
                     className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-slate-50/80 px-4 py-3 text-sm leading-7 text-slate-700 transition-all duration-300 hover:bg-white hover:border-emerald-500/20 hover:shadow-md"
                   >
-                    <span className="relative z-10">{service}</span>
+                    <span className="relative z-10">{formatServiceText(service)}</span>
                   </div>
                 ))}
               </div>
@@ -251,7 +271,7 @@ export default function RoomsPage() {
                     key={service}
                     className="group relative overflow-hidden rounded-2xl border border-amber-100/30 bg-amber-50/50 px-4 py-3 text-sm leading-7 text-slate-700 transition-all duration-300 hover:bg-white hover:border-amber-500/20 hover:shadow-md"
                   >
-                    <span className="relative z-10">{service}</span>
+                    <span className="relative z-10">{formatServiceText(service)}</span>
                   </div>
                 ))}
               </div>
