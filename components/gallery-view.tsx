@@ -12,18 +12,18 @@ import { CtaStrip } from "@/components/cta-strip";
 import { GalleryMasonry } from "@/components/gallery-masonry";
 
 export function GalleryView() {
-    return (
-        <>
-            <section className="py-8 sm:py-16">
-                <div className="shell-container space-y-10">
-                    <SectionHeading
-                        eyebrow="Visual Tour"
-                        title="Scroll through the stay before you step into it."
-                        description="Get a feel for the hostel in a few swipes: the rooftop, the pods, the breakfast, and the overall vibe of the place."
-                    />
-                    <GalleryMasonry items={galleryItems} />
-                </div>
-            </section>
+  return (
+    <>
+      <section className="py-8 sm:py-16">
+        <div className="shell-container space-y-10">
+          <SectionHeading
+            eyebrow="Visual Tour"
+            title="Scroll through the stay before you step into it."
+            description="Get a feel for the hostel in a few swipes: the rooftop, the pods, the breakfast, and the overall vibe of the place."
+          />
+          <GalleryMasonry items={galleryItems} />
+        </div>
+      </section>
 
       <section className="py-8 sm:py-16">
         <div className="shell-container grid gap-6 lg:grid-cols-[1.05fr_0.95fr] items-start">
@@ -47,7 +47,7 @@ export function GalleryView() {
                     What you see is exactly what you get.
                   </h2>
                   <p className="mt-4 text-base leading-8 text-slate-600">
-                    We’re proud of our 9.5 rating, but our real pride is our space. No heavy filters or staged tricks—just real, comfortable environments ready for your next adventure.
+                    We’re proud of our 9.5 rating, but our real pride is our space. No heavy filters or staged tricks. Just real, comfortable environments ready for your next adventure.
                   </p>
                 </div>
               </div>
