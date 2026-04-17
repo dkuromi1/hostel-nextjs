@@ -10,6 +10,7 @@ This project is engineered beyond typical static hospitality sites, using advanc
 
 *   **Next.js 16 & React 19 Engine**: Running on the latest versions of the React ecosystem for peak rendering performance and future-ready architecture.
 *   **Tailwind CSS 4.0 & Radix UI**: Utilizing the next-gen styling engine for ultra-fast, zero-runtime CSS and headless components.
+*   **Framer Motion**: Powering fluid, hardware-accelerated animations, beautiful scroll reveals, and elegant layout transitions across the interface to deliver a premium user experience.
 *   **Mapbox GL JS**: Cinematic, interactive maps with 3D extrusions and satellite switching for an immersive location experience.
 *   **Boutique Location Experience**: Features a custom-integrated map interface including satellite view, 3D building extrusions for urban orientation, and curated local recommendations (Eat, Shop, See, Transit).
 *   **Fluid Glassmorphism**: A comprehensive design system built on high-fidelity `backdrop-blur` effects and dynamic Z-index layering. 'Bento Box' styled UI designed to look and perform well on mobile screens, where most travelers book.
