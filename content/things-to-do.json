@@ -29,6 +29,12 @@
       "description": "A quiet, modern exhibition featuring over 150 years of Albanian history through the incredibly detailed lenses of the Marubi family. Just a few doors down from the hostel!",
       "image": "/images/marubi_museum.jpg",
       "alt": "Inside the Marubi National Photography Museum"
+    },
+    {
+      "title": "Theth & Valbona Treks",
+      "description": "Explore the heart of the Albanian Alps for the famous Theth to Valbona hike. We'll help organize your transport and securely store your main luggage for free while you trek through the majestic Albanian Alps. Prices: €12 to Theth or €35 to Valbona (includes the iconic Komani Lake ferry and a €5 discount)",
+      "image": "/images/komani_lake.jpg",
+      "alt": "Hiking in the Albanian Alps near Theth and Valbona"
     }
   ]
 }

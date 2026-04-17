@@ -38,6 +38,8 @@ export const metadata = buildMetadata({
 });
 
 const icons = [Waves, Bike, UtensilsCrossed];
+const THETH_VALBONA_MAP_QUERY = "theth-valbona-midpoint";
+const THETH_SIDE_TRAILHEAD_GOOGLE_MAPS = "https://www.google.com/maps/dir/?api=1&destination=42.397171,19.772164";
 
 export default function ExperiencesPage() {
   return (
@@ -255,7 +257,11 @@ export default function ExperiencesPage() {
                   <div className="flex flex-1 flex-col p-6">
                     <div className="mb-3 flex flex-wrap items-center gap-2">
                       <Link
-                        href={`?poi=${encodeURIComponent(item.title)}#map`}
+                        href={`?poi=${encodeURIComponent(
+                          item.title === "Theth & Valbona Treks"
+                            ? THETH_VALBONA_MAP_QUERY
+                            : item.title
+                        )}#map`}
                         className="group flex w-fit items-center gap-1.5 rounded-full border border-sky-100 bg-sky-50 px-2.5 py-1 text-sky-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-200 hover:bg-sky-100 hover:shadow-sm"
                       >
                         <MapPin className="size-3.5 transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110" strokeWidth={2} />
@@ -264,7 +270,11 @@ export default function ExperiencesPage() {
                         </span>
                       </Link>
                       <a
-                        href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(item.title + ' Shkoder')}`}
+                        href={
+                          item.title === "Theth & Valbona Treks"
+                            ? THETH_SIDE_TRAILHEAD_GOOGLE_MAPS
+                            : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(item.title + ' Shkoder')}`
+                        }
                         target="_blank"
                         rel="noreferrer"
                         className="group flex w-fit items-center gap-1.5 rounded-full border border-slate-200 bg-white px-2.5 py-1 text-slate-600 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50 hover:shadow-sm"

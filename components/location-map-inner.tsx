@@ -12,6 +12,13 @@ interface LocationMapInnerProps {
 
 const HOSTEL_COORDS: [number, number] = [19.51698538503564, 42.06928812985387]; // [lng, lat]
 const BUS_STATION_COORDS: [number, number] = [19.512929288055442, 42.06755637830981];
+const THETH_DROPOFF_COORDS: [number, number] = [19.772315376603874, 42.39677313338882];
+const VALBONA_VILLAGE_COORDS: [number, number] = [19.88570882131251, 42.444877303358666];
+const THETH_VALBONA_MIDPOINT_COORDS: [number, number] = [
+    (THETH_DROPOFF_COORDS[0] + VALBONA_VILLAGE_COORDS[0]) / 2,
+    (THETH_DROPOFF_COORDS[1] + VALBONA_VILLAGE_COORDS[1]) / 2,
+];
+const THETH_VALBONA_MAP_QUERY = 'theth-valbona-midpoint';
 const PEDONALE_COORDS: [number, number][] = [
     [19.513800410509983, 42.067007048478274],
     [19.514691128164753, 42.06795226804246],
@@ -243,6 +250,9 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             if (matchedPoi) {
                 initialCenter = matchedPoi.coords as [number, number];
                 initialZoom = 16.5;
+            } else if (q === THETH_VALBONA_MAP_QUERY || (q.includes('theth') && q.includes('valbona'))) {
+                initialCenter = THETH_VALBONA_MIDPOINT_COORDS;
+                initialZoom = 10.5;
             } else if (q.includes("pedestrian") || q.includes("idromeno")) {
                 initialCenter = PEDONALE_COORDS[1] as [number, number];
                 initialZoom = 16.5;
@@ -490,6 +500,9 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         if (matchedPoi) {
             targetCenter = matchedPoi.coords as [number, number];
             targetZoom = 16.5;
+        } else if (q === THETH_VALBONA_MAP_QUERY || (q.includes('theth') && q.includes('valbona'))) {
+            targetCenter = THETH_VALBONA_MIDPOINT_COORDS;
+            targetZoom = 10.5;
         } else if (q.includes("pedestrian") || q.includes("idromeno")) {
             targetCenter = PEDONALE_COORDS[1] as [number, number];
             targetZoom = 16.5;
