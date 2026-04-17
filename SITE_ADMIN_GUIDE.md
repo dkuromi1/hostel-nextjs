@@ -11,6 +11,7 @@ This platform was custom-engineered to move travelers from browsing to booking b
 *   **Modern Brand Styling:** Uses a professional "Glassmorphic" design style and a slate-midnight palette to signal a high-end, boutique experience.
 *   **Speed as a Conversion Tool:** The site is built off the latest React 19 ecosystem to ensure pages load instantly, preventing impatient travelers from leaving.
 *   **Progressive Web App (PWA):** Fully installable on phone home screens (iOS/Android) with offline caching via Service Worker, custom app icons, and an integrated native "Install" button.
+*   **Premium Animations:** Powered by Framer Motion for hardware-accelerated, fluid transitions and beautiful scroll reveals.
 *   **Custom Gallery Code:** Includes hybrid state-URL synchronization, intercepted modal architecture, touch-optimized swiping, hardware-acceleration, and intelligent history management.
 *   **Mobile-First Design:** Engineered specifically for the "on-the-go" traveler with touch-friendly elements and simplified booking flows.
 
