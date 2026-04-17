@@ -293,6 +293,9 @@ export default function RoomsPage() {
         <div className="shell-container">
           <Reveal>
             <div className="grid gap-6 lg:grid-cols-2">
+              <div className="flex flex-col">
+                <TestimonialCarousel testimonials={testimonials} className="h-full" />
+              </div>
               <div className="grid grid-cols-2 gap-4 lg:grid-cols-1">
                 <div className="media-frame relative min-h-[12rem] lg:min-h-[15rem]">
                   <Image
@@ -312,9 +315,6 @@ export default function RoomsPage() {
                     sizes="(max-width: 1024px) 50vw, 45vw"
                   />
                 </div>
-              </div>
-              <div className="flex flex-col">
-                <TestimonialCarousel testimonials={testimonials} className="h-full" />
               </div>
             </div>
           </Reveal>
