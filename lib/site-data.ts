@@ -30,7 +30,16 @@ export const extendReasons = homepage.extendReasons;
 export const experiencePillars = homepage.experiencePillars;
 export const eventCards = homepage.eventCards;
 
-export const galleryItems = gallery.galleryItems as any[]; // Cast to bypass strict literal checks for id/type/aspect
+export interface GalleryItem {
+  id: string;
+  type: string;
+  aspect: string;
+  src: string;
+  alt?: string;
+  [key: string]: unknown;
+}
+
+export const galleryItems = gallery.galleryItems as GalleryItem[]; // Cast to bypass strict literal checks for id/type/aspect
 
 export const faqItems = faq.faqItems;
 

@@ -26,7 +26,14 @@ const PEDONALE_COORDS: [number, number][] = [
     [19.5171140522808, 42.069314649661514]
 ];
 
-const RECOMMENDED_POIS = poisData.recommendedPois;
+interface MapPOI {
+    name: string;
+    category: string;
+    coords: number[];
+    minZoom?: number;
+}
+
+const RECOMMENDED_POIS = poisData.recommendedPois as MapPOI[];
 
 // Detect mobile/low-power device — runs once at module level
 const isMobileDevice = () => {
@@ -55,15 +62,15 @@ const createGeoJSONCircle = (center: [number, number], radiusInKm: number, point
     ret.push(ret[0]); // Close the polygon
 
     return {
-        'type': 'FeatureCollection',
-        'features': [{
-            'type': 'Feature',
-            'geometry': {
-                'type': 'Polygon',
-                'coordinates': [ret]
+        type: 'FeatureCollection' as const,
+        features: [{
+            type: 'Feature' as const,
+            geometry: {
+                type: 'Polygon' as const,
+                coordinates: [ret]
             }
         }]
-    } as any;
+    };
 };
 
 // Standard SVG Map Pin path (Material style)
@@ -153,15 +160,16 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         // 2. PEDONALE STREET HIGHLIGHT
         if (!map.getSource('pedonale-street')) {
             map.addSource('pedonale-street', {
-                'type': 'geojson',
-                'data': {
-                    'type': 'Feature',
-                    'geometry': {
-                        'type': 'LineString',
-                        'coordinates': PEDONALE_COORDS
+                type: 'geojson',
+                data: {
+                    type: 'Feature',
+                    properties: {},
+                    geometry: {
+                        type: 'LineString',
+                        coordinates: PEDONALE_COORDS
                     }
                 }
-            } as any);
+            } as mapboxgl.AnySourceData);
         }
 
         if (!map.getLayer('pedonale-line')) {
@@ -246,7 +254,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         let initialZoom = 15.5;
 
         if (q) {
-            const matchedPoi = RECOMMENDED_POIS.find((p: any) => q.includes(p.name.toLowerCase()) || p.name.toLowerCase().includes(q));
+            const matchedPoi = RECOMMENDED_POIS.find((p) => q.includes(p.name.toLowerCase()) || p.name.toLowerCase().includes(q));
             if (matchedPoi) {
                 initialCenter = matchedPoi.coords as [number, number];
                 initialZoom = 16.5;
@@ -389,9 +397,9 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         RECOMMENDED_POIS.forEach(poi => {
             const poiEl = document.createElement('div');
             poiEl.className = 'poi-marker-group';
-            if ((poi as any).minZoom) {
+            if (poi.minZoom) {
                 poiEl.classList.add('zoom-sensitive');
-                poiEl.setAttribute('data-min-zoom', (poi as any).minZoom.toString());
+                poiEl.setAttribute('data-min-zoom', poi.minZoom.toString());
             }
             poiEl.style.display = 'flex';
             poiEl.style.flexDirection = 'column';
@@ -417,11 +425,11 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
 
             // Set initial visibility
             const currentZoom = map.getZoom();
-            if ((poi as any).minZoom && currentZoom < (poi as any).minZoom) {
+            if (poi.minZoom && currentZoom < poi.minZoom) {
                 poiEl.classList.add('zoom-hidden');
             }
 
-            if ((poi as any).minZoom) {
+            if (poi.minZoom) {
                 sensitiveMarkersRef.current.push(poiEl);
             }
 
@@ -496,7 +504,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         let targetCenter = HOSTEL_COORDS;
         let targetZoom = 15.5;
 
-        const matchedPoi = RECOMMENDED_POIS.find((p: any) => q.includes(p.name.toLowerCase()) || p.name.toLowerCase().includes(q));
+        const matchedPoi = RECOMMENDED_POIS.find((p) => q.includes(p.name.toLowerCase()) || p.name.toLowerCase().includes(q));
         if (matchedPoi) {
             targetCenter = matchedPoi.coords as [number, number];
             targetZoom = 16.5;
