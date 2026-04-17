@@ -37,5 +37,6 @@ export const faqItems = faq.faqItems;
 export const contactChecklist = homepage.contactChecklist;
 
 export const testimonials = testimonialsData.testimonials;
+export const bookingAwardImage = homepage.bookingAwardImage;
 
 export const thingsToDo = thingsToDoData.thingsToDo;

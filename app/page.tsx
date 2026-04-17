@@ -778,12 +778,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why People Stay Longer */}
+      {/* why people stay longer & testimonials */}
       <section className="py-8 sm:py-16">
         <div className="shell-container flex flex-col gap-10 lg:flex-row lg:items-start relative">
-          {/* Left Column: Standard Content */}
+          {/* Left Column: Testimonials */}
+          <Reveal delay={0} className="lg:w-[40%] flex flex-col lg:sticky lg:top-32">
+            <TestimonialCarousel testimonials={testimonials} className="w-full" />
+          </Reveal>
+
+          {/* Right Column: Vibe Content */}
           <div className="flex-1 space-y-8 lg:max-w-[60%]">
-            <Reveal>
+            <Reveal delay={100}>
               <SectionHeading
                 eyebrow="Why People Stay Longer"
                 title="The kind of hostel that makes short plans drift into a week."
@@ -798,7 +803,7 @@ export default function Home() {
               {extendReasons.map((reason, index) => {
                 const Icon = reasonIcons[index] || ArrowRight;
                 return (
-                  <Reveal key={reason.title} delay={index * 100} className="min-w-[82vw] snap-center sm:min-w-0">
+                  <Reveal key={reason.title} delay={index * 100 + 200} className="min-w-[82vw] snap-center sm:min-w-0">
                     <div className="group relative flex h-full flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
                       <div>
                         <div className="float-left mb-3 mr-4 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
@@ -817,11 +822,6 @@ export default function Home() {
               })}
             </SwipableRow>
           </div>
-
-          {/* Right Column: Testimonials */}
-          <Reveal delay={200} className="lg:w-[40%] flex flex-col lg:sticky lg:top-32">
-            <TestimonialCarousel testimonials={testimonials} className="w-full" />
-          </Reveal>
         </div>
       </section>
 

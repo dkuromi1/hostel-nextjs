@@ -98,5 +98,6 @@
     "Whether you want the mixed pod dorm or a 4-bed room",
     "Your arrival time into Shkoder",
     "Any hiking, bike, or transport plans you want help with"
-  ]
+  ],
+  "bookingAwardImage": "/images/booking_award.jpg"
 }

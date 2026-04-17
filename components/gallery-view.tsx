@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { galleryItems } from "@/lib/site-data";
+import { galleryItems, bookingAwardImage } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { SectionHeading } from "@/components/section-heading";
 import { Panel } from "@/components/ui/panel";
@@ -26,23 +26,13 @@ export function GalleryView() {
             </section>
 
       <section className="py-8 sm:py-16">
-        <div className="shell-container grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="shell-container grid gap-6 lg:grid-cols-[1.05fr_0.95fr] items-start">
           <Reveal>
-            <Panel className="p-6 sm:p-8">
-              <SectionHeading
-                eyebrow="Our Vibe"
-                title="Bright, clean, social, and easy to settle into."
-                description="Take a look around. Our spaces blend modern design with welcoming warmth. And that rooftop you keep seeing? That’s where the true hostel magic happens and travelers come together."
-              />
-            </Panel>
-          </Reveal>
-
-          <Reveal delay={120}>
             <Panel className="overflow-hidden">
               <div className="grid gap-0 sm:grid-cols-[1.05fr_0.95fr] h-full">
                 <div className="relative min-h-[16rem] h-full bg-[#003b95]">
                   <Image
-                    src="/images/booking_award.jpg"
+                    src={bookingAwardImage}
                     alt="Booking award displayed at Scodrinon Hostel"
                     fill
                     className="object-contain p-4"
@@ -61,6 +51,16 @@ export function GalleryView() {
                   </p>
                 </div>
               </div>
+            </Panel>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <Panel className="p-6 sm:p-8">
+              <SectionHeading
+                eyebrow="Our Vibe"
+                title="Bright, clean, social, and easy to settle into."
+                description="Take a look around. Our spaces blend modern design with welcoming warmth. And that rooftop you keep seeing? That’s where the true hostel magic happens and travelers come together."
+              />
             </Panel>
           </Reveal>
         </div>
