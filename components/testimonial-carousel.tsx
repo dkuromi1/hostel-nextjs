@@ -43,12 +43,14 @@ export function TestimonialCarousel({
   }, [testimonials.length]);
 
   const goTo = useCallback((index: number) => {
-    const d = index > currentIndex ? 1 : -1;
-    directionRef.current = d;
-    setDirection(d);
-    setCurrentIndex(index);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentIndex]);
+    setCurrentIndex((c) => {
+      if (c === index) return c;
+      const d = index > c ? 1 : -1;
+      directionRef.current = d;
+      setDirection(d);
+      return index;
+    });
+  }, []);
 
   // Auto-play interval
   useEffect(() => {
