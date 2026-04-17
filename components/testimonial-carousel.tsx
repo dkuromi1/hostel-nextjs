@@ -115,7 +115,7 @@ export function TestimonialCarousel({
       <div className="mt-6 flex items-center justify-between border-t border-slate-700/50 pt-4">
         <div className="flex gap-2">
           {testimonials.map((_, index) => (
-            <button
+            <div
               key={index}
               onClick={() => goTo(index)}
               aria-label={`Go to testimonial ${index + 1}`}
@@ -123,8 +123,8 @@ export function TestimonialCarousel({
                 "relative h-2 cursor-pointer rounded-full transition-all duration-300",
                 "before:absolute before:left-1/2 before:top-1/2 before:h-11 before:w-[calc(100%+8px)] before:-translate-x-1/2 before:-translate-y-1/2 before:content-['']",
                 index === currentIndex
-                  ? "w-8 bg-amber-500"
-                  : "w-2 bg-slate-600 hover:bg-slate-500"
+                  ? "w-8 bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.4)]"
+                  : "w-2 bg-white/20 hover:bg-white/30"
               )}
             />
           ))}
@@ -133,14 +133,14 @@ export function TestimonialCarousel({
           <button
             onClick={prev}
             aria-label="Previous testimonial"
-            className="flex size-10 items-center justify-center rounded-full bg-slate-600 text-slate-100 transition-colors hover:bg-slate-700 hover:text-white"
+            className="flex size-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-110 active:scale-95"
           >
             <ChevronLeft className="size-5" />
           </button>
           <button
             onClick={next}
             aria-label="Next testimonial"
-            className="flex size-10 items-center justify-center rounded-full bg-slate-600 text-slate-100 transition-colors hover:bg-slate-700 hover:text-white"
+            className="flex size-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-110 active:scale-95"
           >
             <ChevronRight className="size-5" />
           </button>

@@ -138,11 +138,11 @@ function CompactGuestRatingsStrip() {
             </p>
           </div>
         </div>
-        <div className="shrink-0 rounded-2xl bg-white/12 px-3 py-2 text-right ring-1 ring-white/12">
+        <div className="shrink-0 rounded-2xl bg-white/8 px-3 py-2 text-right ring-1 ring-white/12 shadow-sm">
           <p className="font-heading text-xl leading-none tracking-tight text-white text-center">
             {siteConfig.bookingRating}
           </p>
-          <p className="mt-1 text-[8px] uppercase tracking-[0.2em] text-white/60">
+          <p className="mt-1 text-[8px] uppercase tracking-[0.2em] text-white/100">
             out of 10
           </p>
         </div>
@@ -165,11 +165,11 @@ function CompactGuestRatingsStrip() {
             </p>
           </div>
         </div>
-        <div className="shrink-0 rounded-2xl bg-white/12 px-3 py-2 text-right ring-1 ring-white/12">
+        <div className="shrink-0 rounded-2xl bg-white/8 px-3 py-2 text-right ring-1 ring-white/12 shadow-sm">
           <p className="font-heading text-xl leading-none tracking-tight text-white text-center">
             {siteConfig.hostelworldRating}
           </p>
-          <p className="mt-1 text-[8px] uppercase tracking-[0.2em] text-white/60">
+          <p className="mt-1 text-[8px] uppercase tracking-[0.2em] text-white/100">
             ({siteConfig.hostelworldReviews} Reviews)
           </p>
         </div>
