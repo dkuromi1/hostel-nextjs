@@ -10,7 +10,7 @@ interface LocationMapInnerProps {
     accessToken: string;
 }
 
-const HOSTEL_COORDS: [number, number] = [19.51698538503564, 42.06928812985387]; // [lng, lat]
+const HOSTEL_COORDS: number[] = [19.51698538503564, 42.069258]; // [lng, lat]
 const BUS_STATION_COORDS: [number, number] = [19.512929288055442, 42.06755637830981];
 const THETH_DROPOFF_COORDS: [number, number] = [19.772315376603874, 42.39677313338882];
 const VALBONA_VILLAGE_COORDS: [number, number] = [19.88570882131251, 42.444877303358666];
@@ -137,7 +137,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
     const applyCustomizations = (map: mapboxgl.Map, mobile: boolean) => {
         const style = map.getStyle();
         if (!style) return;
-        
+
         const layers = style.layers;
         const labelLayerId = layers?.find(
             (layer) => layer.type === 'symbol' && layer.layout?.['text-field']
@@ -287,22 +287,26 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'bottom-right');
         map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
 
-        // --- 1. HOSTEL MARKER ---
+        // --- 1. HOSTEL MARKER (Premium Floating Pin) ---
+        const elevation = HOSTEL_COORDS[2] || 0;
+
         const el = document.createElement('div');
-        el.className = 'marker-group';
+        el.className = 'hostel-marker-container';
+        el.setAttribute('data-poi', 'hostel');
         el.style.display = 'flex';
         el.style.flexDirection = 'column';
         el.style.alignItems = 'center';
         el.style.cursor = 'pointer';
         el.style.zIndex = '20';
+        el.style.position = 'relative';
 
-        const circle = document.createElement('div');
-        circle.className = 'marker';
-        circle.style.width = '20px';
-        circle.style.height = '20px';
-        circle.style.backgroundColor = '#0ea5e9';
-        circle.style.borderRadius = '50%';
-        circle.style.border = '2px solid white';
+        // Floating Head (Label + Icon)
+        const floatingHead = document.createElement('div');
+        floatingHead.style.display = 'flex';
+        floatingHead.style.flexDirection = 'column';
+        floatingHead.style.alignItems = 'center';
+        floatingHead.style.animation = 'marker-float 3s ease-in-out infinite';
+        floatingHead.style.marginBottom = `${elevation}px`;
 
         const label = document.createElement('a');
         label.href = 'https://www.google.com/maps/dir/?api=1&destination=Scodrinon+Hostel+Shkoder';
@@ -315,6 +319,8 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             fontSize: '12px',
             border: '0.5px solid #0ea5e9',
         });
+        label.classList.add('poi-label-el');
+        label.setAttribute('data-poi-label', 'hostel');
         if (!mobile) {
             label.style.boxShadow = '0 10px 15px -3px rgb(0 0 0 / 0.1)';
         }
@@ -334,19 +340,61 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
 
         label.appendChild(mainText);
         label.appendChild(subText);
-        el.appendChild(label);
-        el.appendChild(circle);
+        floatingHead.appendChild(label);
+
+        const circle = document.createElement('div');
+        circle.className = 'marker-head';
+        circle.style.width = '20px';
+        circle.style.height = '20px';
+        circle.style.backgroundColor = '#0ea5e9';
+        circle.style.borderRadius = '50%';
+        circle.style.border = '2px solid white';
+        circle.style.boxShadow = '0 4px 6px -1px rgb(0 0 0 / 0.1)';
+        floatingHead.appendChild(circle);
+
+        // Vertical Stem
+        const stem = document.createElement('div');
+        stem.style.position = 'absolute';
+        stem.style.bottom = '4px';
+        stem.style.width = '2px';
+        stem.style.height = `${elevation}px`;
+        stem.style.background = 'linear-gradient(to top, rgba(14, 165, 233, 0.8), rgba(14, 165, 233, 0.2))';
+        stem.style.zIndex = '-1';
+
+        // Ground Reference (Shadow/Dot)
+        const groundDot = document.createElement('div');
+        groundDot.style.width = '8px';
+        groundDot.style.height = '4px';
+        groundDot.style.backgroundColor = 'rgba(15, 23, 42, 0.4)';
+        groundDot.style.borderRadius = '50%';
+        groundDot.style.filter = 'blur(1px)';
+        groundDot.style.position = 'absolute';
+        groundDot.style.bottom = '0';
+
+        el.appendChild(floatingHead);
+        el.appendChild(stem);
+        el.appendChild(groundDot);
 
         const style = document.createElement('style');
         style.innerHTML = `
-            .marker { position: relative; }
-            .marker::after {
+            .marker-head { position: relative; }
+            .marker-head::after {
                 content: ""; position: absolute; top: -2px; left: -2px; width: 20px; height: 20px;
                 border: 2px solid #0ea5e9; border-radius: 50%; animation: map-ping 2s infinite; opacity: 0;
+            }
+            @keyframes marker-float {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-8px); }
             }
             @keyframes map-ping { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(3); opacity: 0; } }
             .poi-marker-group { transition: opacity 0.3s ease-in-out; }
             .zoom-hidden { opacity: 0 !important; pointer-events: none !important; }
+            .poi-highlight { 
+                outline: 2px solid #0ea5e9 !important; 
+                outline-offset: 2px;
+                box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.2) !important;
+                z-index: 50 !important; 
+            }
         `;
         document.head.appendChild(style);
 
@@ -387,6 +435,8 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             borderRadius: '6px',
             border: '0.5px solid white',
         });
+        busLabel.classList.add('poi-label-el');
+        busLabel.setAttribute('data-poi-label', 'central bus stop');
 
         busEl.appendChild(busLabel);
         busEl.appendChild(busCircle);
@@ -420,6 +470,8 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             poiLabel.rel = 'noreferrer';
             poiLabel.innerText = poi.name;
             applyLabelStyle(poiLabel, mobile);
+            poiLabel.classList.add('poi-label-el');
+            poiLabel.setAttribute('data-poi-label', poi.name.toLowerCase());
 
             poiEl.appendChild(poiLabel);
             poiEl.appendChild(poiCircle);
@@ -500,21 +552,29 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
     // Handle dynamic POI queries via URL params without remounting the map
     useEffect(() => {
         if (!mapRef.current || !poiQuery) return;
-        
+
         const q = poiQuery.toLowerCase();
         let targetCenter = HOSTEL_COORDS;
         let targetZoom = 15.5;
+
+        // Clear previous highlights
+        document.querySelectorAll('.poi-label-el').forEach(el => el.classList.remove('poi-highlight'));
 
         const matchedPoi = RECOMMENDED_POIS.find((p) => q.includes(p.name.toLowerCase()) || p.name.toLowerCase().includes(q));
         if (matchedPoi) {
             targetCenter = matchedPoi.coords as [number, number];
             targetZoom = 16.5;
+            const el = document.querySelector(`[data-poi-label="${matchedPoi.name.toLowerCase()}"]`);
+            if (el) el.classList.add('poi-highlight');
         } else if (q === THETH_VALBONA_MAP_QUERY || (q.includes('theth') && q.includes('valbona'))) {
             targetCenter = THETH_VALBONA_MIDPOINT_COORDS;
             targetZoom = 10.5;
         } else if (q.includes("pedestrian") || q.includes("idromeno")) {
             targetCenter = PEDONALE_COORDS[1] as [number, number];
             targetZoom = 16.5;
+        } else if (q.includes('hostel') || q === 'scodrinon') {
+            const el = document.querySelector(`[data-poi-label="hostel"]`);
+            if (el) el.classList.add('poi-highlight');
         }
 
         mapRef.current.flyTo({ center: targetCenter, zoom: targetZoom, speed: 1.2, curve: 1, essential: true });
@@ -553,6 +613,27 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                 <div className="flex items-center gap-3">
                     <div className="h-1.5 w-6 rounded-full bg-sky-400/40" />
                     <span>The Pedestrian Street</span>
+                </div>
+                
+                <div className="my-1 h-px w-full bg-slate-900/10" />
+                
+                <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+                    <div className="flex items-center gap-2">
+                        <div className="size-2 rounded-full bg-[#10b981]" />
+                        <span>Eat / Drink</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <div className="size-2 rounded-full bg-[#0ea5e9]" />
+                        <span>See / Do</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <div className="size-2 rounded-full bg-[#f43f5e]" />
+                        <span>Shop</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <div className="size-2 rounded-full bg-[#64748b]" />
+                        <span>Transit</span>
+                    </div>
                 </div>
             </div>
         </div>
