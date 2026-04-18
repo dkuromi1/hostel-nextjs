@@ -34,6 +34,7 @@ import { SwipableRow } from "@/components/swipable-row";
 import { TestimonialCarousel } from "@/components/testimonial-carousel";
 import { Badge } from "@/components/ui/badge";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { SectionLabel } from "@/components/ui/section-label";
 import { buttonVariants } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
 import { HeroBookingBar } from "@/components/hero-booking-bar";
@@ -402,7 +403,7 @@ export default function Home() {
             <Reveal delay={200} className="hidden lg:flex lg:row-start-2">
               <div className="h-full flex items-center justify-between glass-panel rounded-[28px] p-6 gap-6 w-full">
                 <div>
-                  <Eyebrow className="mb-2">Direct Booking</Eyebrow>
+                  <SectionLabel variant="emerald" className="mb-4">Direct Booking</SectionLabel>
                   <p className="mt-2 font-heading text-2xl leading-tight tracking-tight text-slate-950">
                     Message the hostel and book direct
                   </p>
@@ -465,7 +466,7 @@ export default function Home() {
 
                   {/* Mobile-only booking card */}
                   <div className="glass-panel rounded-[28px] p-5 lg:hidden">
-                    <Eyebrow className="mb-2">Direct Booking</Eyebrow>
+                    <SectionLabel variant="emerald" className="mb-4">Direct Booking</SectionLabel>
                     <p className="mt-2 font-heading text-lg leading-tight tracking-tight text-slate-950">
                       <span className="sm:hidden">Message us to book direct</span>
                       <span className="hidden sm:inline">Message the hostel and book direct</span>
@@ -554,7 +555,9 @@ export default function Home() {
 
                   <div className="space-y-6 p-6 sm:p-8">
                     <div>
-                      <Eyebrow className="mb-3">{room.label}</Eyebrow>
+                      <SectionLabel variant="emerald" className="mb-3">
+                        {room.label}
+                      </SectionLabel>
                       <h3 className="mt-3 font-heading text-4xl leading-none tracking-[-0.05em] text-slate-950">
                         {room.name}
                       </h3>
@@ -580,7 +583,7 @@ export default function Home() {
                     </div>
 
                     <div className="space-y-3">
-                      <Eyebrow className="mb-4 text-[10px]" variant="default">Room Details</Eyebrow>
+                      <SectionLabel weight="bold" className="mb-4">Room Details</SectionLabel>
                       <ul className="grid gap-3">
                         {room.bullets.map((bullet) => (
                           <li

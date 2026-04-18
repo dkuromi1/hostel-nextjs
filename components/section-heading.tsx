@@ -1,11 +1,13 @@
 import { cn } from "@/lib/utils";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { SectionLabel } from "@/components/ui/section-label";
 
 type SectionHeadingProps = {
   eyebrow: string;
   title: string;
   description: string;
   className?: string;
+  variant?: "default" | "simple";
 };
 
 export function SectionHeading({
@@ -13,10 +15,15 @@ export function SectionHeading({
   title,
   description,
   className,
+  variant = "default",
 }: SectionHeadingProps) {
   return (
     <div className={cn("flex max-w-2xl flex-col items-start gap-5", className)}>
-      <Eyebrow>{eyebrow}</Eyebrow>
+      {variant === "default" ? (
+        <Eyebrow>{eyebrow}</Eyebrow>
+      ) : (
+        <SectionLabel>{eyebrow}</SectionLabel>
+      )}
       <div className="flex flex-col gap-3">
         <h2 className="font-heading text-4xl leading-none tracking-[-0.06em] text-foreground md:text-6xl">
           {title}

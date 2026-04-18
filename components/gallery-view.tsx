@@ -10,6 +10,7 @@ import { Panel } from "@/components/ui/panel";
 import { Reveal } from "@/components/reveal";
 import { CtaStrip } from "@/components/cta-strip";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { SectionLabel } from "@/components/ui/section-label";
 import { GalleryMasonry } from "@/components/gallery-masonry";
 
 export function GalleryView() {
@@ -41,7 +42,7 @@ export function GalleryView() {
                   />
                 </div>
                 <div className="p-6 flex flex-col justify-center">
-                  <Eyebrow variant="sun" className="mb-4">Highly Rated</Eyebrow>
+                  <SectionLabel variant="sun" className="mb-4">Highly Rated</SectionLabel>
                   <h2 className="mt-4 font-heading text-3xl leading-none tracking-[-0.05em] text-slate-950">
                     What you see is exactly what you get.
                   </h2>
@@ -56,6 +57,7 @@ export function GalleryView() {
           <Reveal delay={120}>
             <Panel className="p-6 sm:p-8">
               <SectionHeading
+                variant="simple"
                 eyebrow="Our Vibe"
                 title="Bright, clean, social, and easy to settle into."
                 description="Take a look around. Our spaces blend modern design with welcoming warmth. And that rooftop you keep seeing? That’s where the true hostel magic happens and travelers come together."

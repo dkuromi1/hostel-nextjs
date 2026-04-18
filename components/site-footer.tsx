@@ -61,7 +61,7 @@ export function SiteFooter() {
         <div className="grid gap-8 sm:grid-cols-[20%_auto_1fr] lg:gap-10 lg:max-w-[750px] shrink min-w-0">
           {/* Explore */}
           <div className="min-w-0">
-            <p className="text-xs uppercase tracking-[0.24em] text-slate-400">
+            <p className="text-xs uppercase tracking-[0.24em] text-slate-200">
               Explore
             </p>
             <div className="mt-4 grid gap-3">
@@ -79,7 +79,7 @@ export function SiteFooter() {
 
           {/* WhatsApp Community Section */}
           <div className="flex flex-col items-start gap-4 min-w-0">
-            <p className="text-xs uppercase tracking-[0.24em] text-slate-400">
+            <p className="text-xs uppercase tracking-[0.24em] text-slate-200">
               Community
             </p>
             {/* Desktop QR Code */}
@@ -109,7 +109,7 @@ export function SiteFooter() {
 
           {/* Details */}
           <div className="min-w-0">
-            <p className="text-xs uppercase tracking-[0.24em] text-slate-400">
+            <p className="text-xs uppercase tracking-[0.24em] text-slate-200">
               Details
             </p>
             <div className="mt-4 space-y-3 text-base text-slate-300">

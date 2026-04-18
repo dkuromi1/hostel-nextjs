@@ -18,6 +18,7 @@ import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { StructuredData } from "@/components/structured-data";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { SectionLabel } from "@/components/ui/section-label";
 import { Badge } from "@/components/ui/badge";
 import { Panel } from "@/components/ui/panel";
 import { TestimonialCarousel } from "@/components/testimonial-carousel";
@@ -132,7 +133,7 @@ export default function RoomsPage() {
             />
           </div>
           <div className="glass-panel rounded-[28px] p-5">
-            <Eyebrow className="mb-4">Beds From {roomTypes[0].price} / Night</Eyebrow>
+            <SectionLabel variant="emerald" className="mb-4">Beds From <strong>{roomTypes[0].price} / Night</strong></SectionLabel>
             <p className="mt-3 font-heading text-2xl leading-none tracking-[-0.04em] text-slate-950">
               Hotel privacy at a hostel price. It's why so many guests book two nights and end up extending.
             </p>
@@ -179,7 +180,9 @@ export default function RoomsPage() {
                     <div className="flex flex-1 flex-col justify-between p-7 lg:p-9">
                       <div className="space-y-6">
                         <div>
-                          <Eyebrow className="mb-3">{room.label}</Eyebrow>
+                          <SectionLabel variant="emerald" className="mb-3">
+                            {room.label}
+                          </SectionLabel>
                           <h2 className="mt-3 font-heading text-4xl leading-none tracking-[-0.05em] text-slate-950">
                             {room.name}
                           </h2>
@@ -204,7 +207,7 @@ export default function RoomsPage() {
                         </div>
 
                         <div className="space-y-3">
-                          <Eyebrow className="mb-4 text-[10px]" variant="default">Room Details</Eyebrow>
+                          <SectionLabel weight="bold" className="mb-4">Room Details</SectionLabel>
                           <ul className="grid gap-3 sm:grid-cols-2">
                             {room.bullets.map((bullet) => (
                               <li
@@ -254,7 +257,7 @@ export default function RoomsPage() {
 
           <Reveal delay={120}>
             <Panel className="p-6 sm:p-8">
-              <Eyebrow variant="sun" className="mb-4">Extra Help When You Want It</Eyebrow>
+              <SectionLabel variant="sun" className="mb-4">Extra Help When You Want It</SectionLabel>
               <h2 className="mt-4 font-heading text-4xl leading-none tracking-[-0.05em] text-slate-950">
                 Add bikes, tours, or laundry without overcomplicating your stay.
               </h2>

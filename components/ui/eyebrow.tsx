@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 type EyebrowProps = {
   children: ReactNode;
   className?: string;
-  variant?: "default" | "sun";
+  variant?: "default" | "sun" | "footer";
 };
 
 export function Eyebrow({
@@ -17,8 +17,10 @@ export function Eyebrow({
       className={cn(
         "group relative inline-flex items-center gap-3 overflow-hidden rounded-full border px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] shadow-sm backdrop-blur-md transition-all duration-500",
         variant === "default"
-          ? "border-slate-200/50 bg-white/60 text-slate-800 hover:border-emerald-500/30 hover:bg-white hover:text-emerald-950 hover:shadow-lg hover:shadow-emerald-500/10"
-          : "border-amber-200/30 bg-amber-500/10 text-amber-900 hover:border-amber-400/50 hover:bg-amber-500/20 hover:text-amber-950 hover:shadow-lg hover:shadow-amber-500/20",
+          ? "border-sky-200/50 bg-white/60 text-sky-900 hover:border-sky-500/30 hover:bg-white hover:text-sky-950 hover:shadow-lg hover:shadow-sky-500/10"
+          : variant === "sun"
+            ? "border-amber-200/30 bg-amber-500/10 text-amber-900 hover:border-amber-400/50 hover:bg-amber-500/20 hover:text-amber-950 hover:shadow-lg hover:shadow-amber-500/20"
+            : "border-amber-500/40 bg-amber-500/20 text-[var(--color-amber-500)] hover:border-amber-400 hover:bg-amber-500/30 hover:text-white hover:shadow-lg hover:shadow-amber-500/20",
         className
       )}
     >
@@ -26,14 +28,14 @@ export function Eyebrow({
         <span
           className={cn(
             "absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 duration-1000",
-            variant === "default" ? "bg-emerald-400" : "bg-amber-400"
+            variant === "default" ? "bg-sky-400" : "bg-amber-400"
           )}
         ></span>
         <span
           className={cn(
-            "relative inline-flex h-1.5 w-1.5 rounded-full shadow-[0_0_8px_rgba(16,185,129,0.8)]",
+            "relative inline-flex h-1.5 w-1.5 rounded-full shadow-[0_0_8px_rgba(14,165,233,0.8)]",
             variant === "default"
-              ? "bg-emerald-500 shadow-emerald-500/80"
+              ? "bg-sky-500 shadow-sky-500/80"
               : "bg-amber-500 shadow-amber-500/80"
           )}
         ></span>
@@ -44,7 +46,7 @@ export function Eyebrow({
       <div
         className={cn(
           "absolute inset-0 -translate-x-[150%] bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-[150%]",
-          variant === "default" ? "via-emerald-100/40" : "via-amber-100/40"
+          variant === "default" ? "via-sky-100/40" : "via-amber-100/40"
         )}
       />
     </div>

@@ -16,6 +16,7 @@ import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { SectionLabel } from "@/components/ui/section-label";
 import { StructuredData } from "@/components/structured-data";
 import { buttonVariants } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
@@ -54,7 +55,7 @@ export default function ContactPage() {
       >
         <div className="grid gap-4">
           <Panel className="p-6 sm:p-7">
-            <Eyebrow className="mb-4">Best Booking Route</Eyebrow>
+            <SectionLabel variant="emerald" className="mb-4">Best Booking Route</SectionLabel>
             <h2 className="mt-4 font-heading text-4xl leading-none tracking-[-0.05em] text-slate-950">
               Message Scodrinon on WhatsApp first.
             </h2>
@@ -95,7 +96,7 @@ export default function ContactPage() {
           <div className="flex flex-col gap-6 h-full">
             <Reveal>
               <Panel className="p-6 sm:p-8">
-                <Eyebrow variant="sun" className="mb-4">Contact Details</Eyebrow>
+                <SectionLabel variant="sun" className="mb-4">Contact Details</SectionLabel>
                 <div className="mt-6 space-y-4 text-base leading-8 text-slate-700">
                   <p className="flex items-start gap-3">
                     <MessageCircleMore
@@ -141,6 +142,7 @@ export default function ContactPage() {
           <Reveal delay={120}>
             <Panel className="p-6 sm:p-8 h-full">
               <SectionHeading
+                variant="simple"
                 eyebrow="FAQs"
                 title="Common questions."
                 description="Here are a few things people usually ask before they arrive."

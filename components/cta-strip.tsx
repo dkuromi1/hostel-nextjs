@@ -26,7 +26,7 @@ export function CtaStrip({
     <Panel className="overflow-hidden bg-slate-950 text-white">
       <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="space-y-6 px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
-          <Eyebrow variant="sun">{eyebrow}</Eyebrow>
+          <Eyebrow variant="footer">{eyebrow}</Eyebrow>
           <div className="space-y-3">
             <h2 className="font-heading text-4xl leading-none tracking-[-0.06em] text-white md:text-5xl">
               {title}
