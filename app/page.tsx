@@ -16,8 +16,10 @@ import {
   Snowflake,
   Lock,
   LampDesk,
-  BatteryCharging,
-  Moon, Sparkles, MapPin, Compass,
+  Coffee,
+  ShowerHead,
+  WashingMachine,
+  Castle,
 } from "lucide-react";
 
 import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
@@ -57,6 +59,7 @@ import {
   roomTypes,
   siteConfig,
   testimonials,
+  freeServices,
 } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
@@ -296,6 +299,22 @@ export default function Home() {
       { icon: BatteryCharging, label: "Socket" },
       { icon: Wifi, label: "High-speed WiFi" }
     ];
+  };
+
+  const getServiceIcon = (iconName: string) => {
+    const icons: Record<string, any> = {
+      Coffee,
+      Mountain,
+      Award,
+      Luggage,
+      ShowerHead,
+      Wifi,
+      Sparkles,
+      Bus: Bike, // Fallback to bike for now if Bus isn't imported, but wait I should import Bus
+      WashingMachine,
+      Bike,
+    };
+    return icons[iconName] || Check;
   };
 
   return (
@@ -604,6 +623,54 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Included Services Section */}
+      <section className="py-8 sm:py-16 bg-slate-50/50">
+        <div className="shell-container space-y-12">
+          <Reveal>
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+              <SectionHeading
+                eyebrow="Included In Your Stay"
+                title="Everything you need for a comfortable stay."
+                description="No padded feature list, just the things that make the stay smoother."
+              />
+              <Link
+                href="/rooms"
+                className="group flex items-center gap-2 text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors"
+              >
+                <span>View Full Amenities</span>
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </Reveal>
+
+          <Reveal delay={100}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {(freeServices as any[]).map((service, idx) => {
+                const Icon = getServiceIcon(service.icon);
+                return (
+                  <div
+                    key={idx}
+                    className="group flex gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
+                  >
+                    <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-slate-50 text-slate-600 shadow-sm ring-1 ring-slate-900/5 transition-all duration-300 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:ring-emerald-500/20">
+                      <Icon className="size-5" strokeWidth={1.5} />
+                    </div>
+                    <div className="space-y-1.5 pt-0.5">
+                      <h4 className="text-[15px] font-bold tracking-tight text-slate-950">
+                        {service.title}
+                      </h4>
+                      <p className="text-xs leading-relaxed text-slate-500 line-clamp-2 transition-colors group-hover:text-slate-600">
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </Reveal>
         </div>
       </section>
 

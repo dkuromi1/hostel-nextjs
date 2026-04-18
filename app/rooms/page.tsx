@@ -10,6 +10,14 @@ import {
   Blinds,
   Bed,
   Coffee,
+  Mountain,
+  Award,
+  Luggage,
+  Sparkles,
+  Bus,
+  WashingMachine,
+  Bike,
+  Castle,
 } from "lucide-react";
 
 import { CtaStrip } from "@/components/cta-strip";
@@ -63,6 +71,22 @@ export default function RoomsPage() {
       { icon: BatteryCharging, label: "Socket" },
       { icon: Wifi, label: "High-speed WiFi" }
     ];
+  };
+
+  const getServiceIcon = (iconName: string) => {
+    const icons: Record<string, any> = {
+      Coffee,
+      Mountain,
+      Castle,
+      Luggage,
+      ShowerHead,
+      Wifi,
+      Sparkles,
+      Bus,
+      WashingMachine,
+      Bike,
+    };
+    return icons[iconName] || Check;
   };
 
   const formatServiceText = (text: string) => {
@@ -242,15 +266,25 @@ export default function RoomsPage() {
                 title="Everything you need for a comfortable stay."
                 description="The site stays honest about what you get. No padded feature list, just the things that make the stay smoother."
               />
-              <div className="mt-8 grid gap-3">
-                {freeServices.map((service, idx) => {
-                  const serviceText = Array.isArray(service) ? service.join("\n\t") : service;
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                {(freeServices as any[]).map((service, idx) => {
+                  const Icon = getServiceIcon(service.icon);
                   return (
                     <div
                       key={idx}
-                      className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-slate-50/80 px-4 py-3 text-sm leading-7 text-slate-700 transition-all duration-300 hover:bg-white hover:border-emerald-500/20 hover:shadow-md whitespace-pre-wrap"
+                      className="group flex gap-4 rounded-2xl border border-slate-100 bg-slate-50/50 p-4 transition-all duration-300 hover:border-emerald-500/20 hover:bg-white hover:shadow-md"
                     >
-                      <span className="relative z-10">{formatServiceText(serviceText)}</span>
+                      <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-slate-200/50 transition-all duration-300 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:ring-emerald-500/20">
+                        <Icon className="size-5" strokeWidth={1.5} />
+                      </div>
+                      <div className="space-y-1">
+                        <h4 className="text-sm font-bold tracking-tight text-slate-950">
+                          {service.title}
+                        </h4>
+                        <p className="text-[13px] leading-relaxed text-slate-600">
+                          {service.description}
+                        </p>
+                      </div>
                     </div>
                   );
                 })}
@@ -260,19 +294,29 @@ export default function RoomsPage() {
 
           <Reveal delay={120}>
             <Panel className="p-6 sm:p-8">
-              <SectionLabel variant="sun" className="mb-4">Extra Help When You Want It</SectionLabel>
+              <Eyebrow variant="footer" className="mb-6">Extra Help When You Want It</Eyebrow>
               <h2 className="mt-4 font-heading text-4xl leading-none tracking-[-0.05em] text-slate-950">
                 Add bikes, tours, or laundry without overcomplicating your stay.
               </h2>
-              <div className="mt-8 grid gap-3">
-                {paidServices.map((service, idx) => {
-                  const serviceText = Array.isArray(service) ? service.join("\n\t") : service;
+              <div className="mt-8 grid gap-4">
+                {(paidServices as any[]).map((service, idx) => {
+                  const Icon = getServiceIcon(service.icon);
                   return (
                     <div
                       key={idx}
-                      className="group relative overflow-hidden rounded-2xl border border-amber-100/30 bg-amber-50/50 px-4 py-3 text-sm leading-7 text-slate-700 transition-all duration-300 hover:bg-white hover:border-amber-500/20 hover:shadow-md whitespace-pre-wrap"
+                      className="group flex gap-4 rounded-2xl border border-amber-100/30 bg-amber-50/40 p-4 transition-all duration-300 hover:border-amber-500/20 hover:bg-white hover:shadow-md"
                     >
-                      <span className="relative z-10">{formatServiceText(serviceText)}</span>
+                      <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-amber-500/10 transition-all duration-300 group-hover:bg-amber-50 group-hover:text-amber-600 group-hover:ring-amber-500/20">
+                        <Icon className="size-5" strokeWidth={1.5} />
+                      </div>
+                      <div className="space-y-1">
+                        <h4 className="text-sm font-bold tracking-tight text-slate-950">
+                          {service.title}
+                        </h4>
+                        <p className="text-[13px] leading-relaxed text-slate-600">
+                          {service.description}
+                        </p>
+                      </div>
                     </div>
                   );
                 })}

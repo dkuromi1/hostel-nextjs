@@ -21,24 +21,58 @@
     "24h access"
   ],
   "freeServices": [
-    "**Social Breakfast:** Fresh locally sourced breakfast every morning from 8:00 to 9:30am (excl. off season)",
-    "**For Hikers:** Early take-away breakfast for hikers & morning travelers",
-    "**Rozafa Castle:** Admission to Rozafa Castle included in price",
-    "**Storage:** Luggage storage before and during your stay",
-    "**Modern Facilities:** Clean, modern bathrooms and showers",
-    "**High-Speed WiFi:** High-speed WiFi in all rooms and social spaces",
-    "**Community:** Rooftop social events and helpful WhatsApp community"
+    {
+      "title": "Social Breakfast",
+      "description": "Fresh locally sourced breakfast every morning from 8:00 to 9:30am (excl. off season)",
+      "icon": "Coffee"
+    },
+    {
+      "title": "For Hikers",
+      "description": "Early take-away breakfast for hikers & morning travelers",
+      "icon": "Mountain"
+    },
+    {
+      "title": "Rozafa Castle",
+      "description": "Admission to Rozafa Castle included in your booking",
+      "icon": "Castle"
+    },
+    {
+      "title": "Storage",
+      "description": "Luggage storage before and during your stay",
+      "icon": "Luggage"
+    },
+    {
+      "title": "Modern Facilities",
+      "description": "Clean, modern bathrooms and high pressure showers",
+      "icon": "ShowerHead"
+    },
+    {
+      "title": "High-Speed WiFi",
+      "description": "Fast and reliable WiFi in all rooms and social spaces",
+      "icon": "Wifi"
+    },
+    {
+      "title": "Community",
+      "description": "Rooftop social events and a helpful WhatsApp community",
+      "icon": "Sparkles"
+    }
   ],
   "paidServices": [
-    [
-      "**Tours & Transport:**",
-      "Transport to or from Theth: €12",
-      "Transport to or from Valbona: €26",
-      "Shala River boat trips: €35 (discounted from €40)",
-      "Komani Lake boat tour: €36"
-    ],
-    "**Guest Laundry:** Full laundry service available - €5 to wash and €2 to dry (towels €2)",
-    "**Bike Rentals:** City bikes available for €5 across the street"
+    {
+      "title": "Tours & Transport",
+      "description": "Hassle-free shuttle booking to Theth (€12), Valbona (€26), and Shala River (€35 - includes €5 discount).",
+      "icon": "Bus"
+    },
+    {
+      "title": "Guest Laundry",
+      "description": "Full wash (€5) and dry (€2) service available. Drop it off and we'll handle the rest.",
+      "icon": "WashingMachine"
+    },
+    {
+      "title": "Bike Rentals",
+      "description": "Explore Shkoder on two wheels for just €5/day. Rentals located right across the street.",
+      "icon": "Bike"
+    }
   ],
   "extendReasons": [
     {
