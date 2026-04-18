@@ -40,6 +40,7 @@ export const metadata = buildMetadata({
 
 const icons = [Waves, Bike, UtensilsCrossed];
 const THETH_VALBONA_MAP_QUERY = "theth-valbona-midpoint";
+const SHALA_RIVER_MAP_QUERY = "shala-river-midpoint";
 const THETH_SIDE_TRAILHEAD_GOOGLE_MAPS = "https://www.google.com/maps/dir/?api=1&destination=42.397171,19.772164";
 
 export default function ExperiencesPage() {
@@ -202,6 +203,8 @@ export default function ExperiencesPage() {
                           href={`?poi=${encodeURIComponent(
                             item.title === "Theth & Valbona Treks"
                               ? THETH_VALBONA_MAP_QUERY
+                              : item.title === "Shala River Day Trip"
+                              ? SHALA_RIVER_MAP_QUERY
                               : item.title
                           )}#map`}
                           className="group flex w-fit items-center gap-1.5 rounded-full border border-sky-100 bg-sky-50 px-2.5 py-1 text-sky-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-200 hover:bg-sky-100 hover:shadow-sm"

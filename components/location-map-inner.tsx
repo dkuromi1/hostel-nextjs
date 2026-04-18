@@ -18,7 +18,15 @@ const THETH_VALBONA_MIDPOINT_COORDS: [number, number] = [
     (THETH_DROPOFF_COORDS[0] + VALBONA_VILLAGE_COORDS[0]) / 2,
     (THETH_DROPOFF_COORDS[1] + VALBONA_VILLAGE_COORDS[1]) / 2,
 ];
+const KOMANI_FERRY_COORDS: [number, number] = [19.826066248202096, 42.10881657873157];
+const BLINI_PARK_COORDS: [number, number] = [19.80642220690339, 42.19953460048828];
+const SHALA_RIVER_MIDPOINT_COORDS: [number, number] = [
+    (KOMANI_FERRY_COORDS[0] + BLINI_PARK_COORDS[0]) / 2,
+    (KOMANI_FERRY_COORDS[1] + BLINI_PARK_COORDS[1]) / 2,
+];
+
 const THETH_VALBONA_MAP_QUERY = 'theth-valbona-midpoint';
+const SHALA_RIVER_MAP_QUERY = 'shala-river-midpoint';
 const PEDONALE_COORDS: [number, number][] = [
     [19.513800410509983, 42.067007048478274],
     [19.514691128164753, 42.06795226804246],
@@ -261,6 +269,9 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                 initialZoom = 16.5;
             } else if (q === THETH_VALBONA_MAP_QUERY || (q.includes('theth') && q.includes('valbona'))) {
                 initialCenter = THETH_VALBONA_MIDPOINT_COORDS;
+                initialZoom = 10.5;
+            } else if (q === SHALA_RIVER_MAP_QUERY || (q.includes('shala') && q.includes('river'))) {
+                initialCenter = SHALA_RIVER_MIDPOINT_COORDS;
                 initialZoom = 10.5;
             } else if (q.includes("pedestrian") || q.includes("idromeno")) {
                 initialCenter = PEDONALE_COORDS[1] as [number, number];
@@ -568,6 +579,9 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             if (el) el.classList.add('poi-highlight');
         } else if (q === THETH_VALBONA_MAP_QUERY || (q.includes('theth') && q.includes('valbona'))) {
             targetCenter = THETH_VALBONA_MIDPOINT_COORDS;
+            targetZoom = 10.5;
+        } else if (q === SHALA_RIVER_MAP_QUERY || (q.includes('shala') && q.includes('river'))) {
+            targetCenter = SHALA_RIVER_MIDPOINT_COORDS;
             targetZoom = 10.5;
         } else if (q.includes("pedestrian") || q.includes("idromeno")) {
             targetCenter = PEDONALE_COORDS[1] as [number, number];
