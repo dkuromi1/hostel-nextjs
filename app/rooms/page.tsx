@@ -243,14 +243,17 @@ export default function RoomsPage() {
                 description="The site stays honest about what you get. No padded feature list, just the things that make the stay smoother."
               />
               <div className="mt-8 grid gap-3">
-                {freeServices.map((service) => (
-                  <div
-                    key={service}
-                    className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-slate-50/80 px-4 py-3 text-sm leading-7 text-slate-700 transition-all duration-300 hover:bg-white hover:border-emerald-500/20 hover:shadow-md"
-                  >
-                    <span className="relative z-10">{formatServiceText(service)}</span>
-                  </div>
-                ))}
+                {freeServices.map((service, idx) => {
+                  const serviceText = Array.isArray(service) ? service.join("\n\t") : service;
+                  return (
+                    <div
+                      key={idx}
+                      className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-slate-50/80 px-4 py-3 text-sm leading-7 text-slate-700 transition-all duration-300 hover:bg-white hover:border-emerald-500/20 hover:shadow-md whitespace-pre-wrap"
+                    >
+                      <span className="relative z-10">{formatServiceText(serviceText)}</span>
+                    </div>
+                  );
+                })}
               </div>
             </Panel>
           </Reveal>
@@ -262,14 +265,17 @@ export default function RoomsPage() {
                 Add bikes, tours, or laundry without overcomplicating your stay.
               </h2>
               <div className="mt-8 grid gap-3">
-                {paidServices.map((service) => (
-                  <div
-                    key={service}
-                    className="group relative overflow-hidden rounded-2xl border border-amber-100/30 bg-amber-50/50 px-4 py-3 text-sm leading-7 text-slate-700 transition-all duration-300 hover:bg-white hover:border-amber-500/20 hover:shadow-md"
-                  >
-                    <span className="relative z-10">{formatServiceText(service)}</span>
-                  </div>
-                ))}
+                {paidServices.map((service, idx) => {
+                  const serviceText = Array.isArray(service) ? service.join("\n\t") : service;
+                  return (
+                    <div
+                      key={idx}
+                      className="group relative overflow-hidden rounded-2xl border border-amber-100/30 bg-amber-50/50 px-4 py-3 text-sm leading-7 text-slate-700 transition-all duration-300 hover:bg-white hover:border-amber-500/20 hover:shadow-md whitespace-pre-wrap"
+                    >
+                      <span className="relative z-10">{formatServiceText(serviceText)}</span>
+                    </div>
+                  );
+                })}
               </div>
               <div className="mt-8 media-frame relative w-full aspect-[4/3] sm:aspect-[16/9]">
                 <Image

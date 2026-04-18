@@ -30,8 +30,14 @@
     "**Community:** Rooftop social events and helpful WhatsApp community"
   ],
   "paidServices": [
-    "**Tours & Transport:** Shala River boat trips for €35 (discounted from €40), transport to or from Theth: €12",
-    "**Guest Laundry:** Full laundry service available for €5 (wash) and €2 (dry)",
+    [
+      "**Tours & Transport:**",
+      "Transport to or from Theth: €12",
+      "Transport to or from Valbona: €26",
+      "Shala River boat trips: €35 (discounted from €40)",
+      "Komani Lake boat tour: €36"
+    ],
+    "**Guest Laundry:** Full laundry service available - €5 to wash and €2 to dry (towels €2)",
     "**Bike Rentals:** City bikes available for €5 across the street"
   ],
   "extendReasons": [
