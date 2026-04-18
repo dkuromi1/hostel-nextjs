@@ -17,7 +17,7 @@ export function SiteFooter() {
             Stay central, sleep properly, and book fast.
           </h2>
           <p className="max-w-[62ch] text-base leading-8 text-slate-300">
-            Scodrinon Hostel sits on Kole Idromeno Street, right in the middle
+            Scodrinon Hostel sits on Kolë Idromeno Street, right in the middle
             of Shkoder&apos;s cafe life, rich local culture, and gateway to adventure. Message on
             WhatsApp for the quickest direct booking response.
           </p>

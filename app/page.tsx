@@ -20,6 +20,12 @@ import {
   ShowerHead,
   WashingMachine,
   Castle,
+  BatteryCharging,
+  Moon,
+  Sparkles,
+  MapPin,
+  Compass,
+  Bus,
 } from "lucide-react";
 
 import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
@@ -310,7 +316,7 @@ export default function Home() {
       ShowerHead,
       Wifi,
       Sparkles,
-      Bus: Bike, // Fallback to bike for now if Bus isn't imported, but wait I should import Bus
+      Bus,
       WashingMachine,
       Bike,
     };

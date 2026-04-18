@@ -72,7 +72,7 @@ export default function ContactPage() {
             <div className="media-frame relative min-h-[16rem]">
               <Image
                 src="/images/ambiance_2.jpg"
-                alt="Street outside Scodrinon Hostel on Kole Idromeno"
+                alt="Street outside Scodrinon Hostel on Kolë Idromeno"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 25vw"
@@ -113,7 +113,7 @@ export default function ContactPage() {
                     <a
                       href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
                         siteConfig.name + " " + siteConfig.location
-                       )}`}
+                      )}`}
                       target="_blank"
                       rel="noreferrer"
                       className="underline decoration-slate-300 underline-offset-4 hover:text-emerald-700 transition-colors"

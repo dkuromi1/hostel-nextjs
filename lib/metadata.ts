@@ -131,7 +131,7 @@ export function buildHostelSchema() {
     priceRange: "€8 - €10",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Kole Idromeno Street",
+      streetAddress: "Kolë Idromeno Street",
       addressLocality: "Shkoder",
       addressCountry: "AL",
     },
