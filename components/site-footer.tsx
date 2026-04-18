@@ -9,7 +9,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-white/70 bg-slate-950 py-14 text-slate-200 pb-24 lg:pb-14">
       <div className="shell-container flex flex-col justify-between gap-10 lg:flex-row">
-        <div className="space-y-5 lg:max-w-xl">
+        <div className="space-y-5 lg:flex-1">
           <p className="text-xs uppercase tracking-[0.28em] text-emerald-300/90">
             {siteConfig.tagline}
           </p>
@@ -58,9 +58,9 @@ export function SiteFooter() {
             </a>
           </div>
         </div>
-
-        <div className="grid gap-8 sm:grid-cols-2 lg:gap-16 lg:w-auto">
-          <div>
+        <div className="grid gap-8 sm:grid-cols-[20%_auto_1fr] lg:gap-10 lg:max-w-[750px] shrink min-w-0">
+          {/* Explore */}
+          <div className="min-w-0">
             <p className="text-xs uppercase tracking-[0.24em] text-slate-400">
               Explore
             </p>
@@ -76,7 +76,39 @@ export function SiteFooter() {
               ))}
             </div>
           </div>
-          <div>
+
+          {/* WhatsApp Community Section */}
+          <div className="flex flex-col items-start gap-4 min-w-0">
+            <p className="text-xs uppercase tracking-[0.24em] text-slate-400">
+              Community
+            </p>
+            {/* Desktop QR Code */}
+            <div className="hidden sm:flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-4 border border-white/10 w-full max-w-[160px]">
+              <div className="relative size-full aspect-square overflow-hidden rounded-xl bg-white p-2">
+                <img
+                  src="/images/whatsapp_community_qr.png"
+                  alt="WhatsApp Community QR Code"
+                  className="h-full w-full object-contain"
+                />
+              </div>
+              <span className="text-xs font-semibold text-slate-300 text-center">
+                Scan to join the guest group chat
+              </span>
+            </div>
+            {/* Mobile Link Button */}
+            <a
+              href={siteConfig.whatsappCommunityUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="sm:hidden flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-3 font-semibold text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-emerald-700 w-full justify-center shadow-[0_0_20px_rgba(5,150,105,0.3)] shadow-emerald-600/20"
+            >
+              <MessageCircleMore className="size-5 shrink-0" />
+              Join the Chat
+            </a>
+          </div>
+
+          {/* Details */}
+          <div className="min-w-0">
             <p className="text-xs uppercase tracking-[0.24em] text-slate-400">
               Details
             </p>
