@@ -7,7 +7,15 @@ import { StickyBookingBar } from "@/components/sticky-booking-bar";
 import { TitoTheCat } from "@/components/tito-the-cat";
 import { getSiteUrl, metadataBase } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site-data";
+import { cn } from "@/lib/utils";
+import { Nunito } from "next/font/google";
 import "./globals.css";
+
+const nunito = Nunito({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-nunito",
+});
 
 export const metadata: Metadata = {
   metadataBase,
@@ -66,7 +74,7 @@ export default function RootLayout({
   modal: ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full scroll-smooth" data-scroll-behavior="smooth">
+    <html lang="en" className={cn("h-full scroll-smooth", nunito.variable)} data-scroll-behavior="smooth">
       <head>
         <link rel="preconnect" href="https://wa.me" />
         <link rel="preconnect" href="https://www.booking.com" />
