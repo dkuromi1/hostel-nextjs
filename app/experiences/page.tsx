@@ -165,6 +165,12 @@ export default function ExperiencesPage() {
             />
           </Reveal>
 
+          <Reveal className="w-full pt-4 sm:pt-8 w-full max-w-[1400px] mx-auto">
+            <div id="map" className="media-frame relative h-[500px] w-full overflow-hidden rounded-[2rem] shadow-xl shadow-slate-200/50 ring-1 ring-slate-200">
+              <LocationMap />
+            </div>
+          </Reveal>
+
           <Reveal delay={100}>
             <SwipableRow itemCount={thingsToDo.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {thingsToDo.map((item, index) => (
@@ -224,12 +230,6 @@ export default function ExperiencesPage() {
               {/* Trailing Spacer for mobile snapping */}
               <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
             </SwipableRow>
-          </Reveal>
-
-          <Reveal className="w-full pt-4 sm:pt-8 w-full max-w-[1400px] mx-auto">
-            <div id="map" className="media-frame relative h-[500px] w-full overflow-hidden rounded-[2rem] shadow-xl shadow-slate-200/50 ring-1 ring-slate-200">
-              <LocationMap />
-            </div>
           </Reveal>
         </div>
       </section>
