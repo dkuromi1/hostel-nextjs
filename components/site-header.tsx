@@ -33,7 +33,7 @@ export function SiteHeader() {
         "transition-all duration-300",
         isTransparent
           ? "bg-transparent border-transparent"
-          : "border-b border-white/70 bg-white/80 backdrop-blur-xl"
+          : "border-b border-white/70 bg-white/80 backdrop-blur-md"
       )}>
         <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-3 transition-transform duration-300 hover:scale-[1.02] active:scale-95">

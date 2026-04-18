@@ -28,7 +28,7 @@ export function SectionHeading({
         <h2 className="font-heading text-4xl leading-none tracking-[-0.06em] text-foreground md:text-6xl">
           {title}
         </h2>
-        <p className="max-w-[62ch] text-base leading-8 text-muted-foreground md:text-lg">
+        <p className="max-w-[62ch] text-base leading-8 text-slate-700 md:text-lg">
           {description}
         </p>
       </div>

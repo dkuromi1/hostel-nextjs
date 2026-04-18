@@ -103,7 +103,7 @@ export default function ExperiencesPage() {
                     <h4 className="font-heading text-xl tracking-tight text-slate-900">
                       {item.title}
                     </h4>
-                    <p className="mt-1.5 text-sm leading-relaxed text-slate-600">
+                    <p className="mt-1.5 text-sm leading-relaxed text-slate-700">
                       {item.description}
                     </p>
                   </div>
