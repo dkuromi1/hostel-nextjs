@@ -45,7 +45,7 @@
     {
       "id": "lounge-seating",
       "type": "image",
-      "src": "/images/indoor_common_2.jpg",
+      "src": "/images/indoor_common_2.webp",
       "alt": "Hostel lounge and seating at Scodrinon in Shkoder",
       "aspect": "576/768"
     },
@@ -199,7 +199,7 @@
     {
       "id": "indoor-common-area",
       "type": "image",
-      "src": "/images/indoor_common_1.jpg",
+      "src": "/images/indoor_common_1.webp",
       "alt": "Bright indoor common area at Scodrinon Hostel",
       "aspect": "512/768"
     },

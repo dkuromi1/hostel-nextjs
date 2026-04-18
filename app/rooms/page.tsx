@@ -299,7 +299,7 @@ export default function RoomsPage() {
               <div className="grid grid-cols-2 gap-4 lg:grid-cols-1">
                 <div className="media-frame relative min-h-[12rem] lg:min-h-[15rem]">
                   <Image
-                    src="/images/indoor_common_1.jpg"
+                    src="/images/indoor_common_1.webp"
                     alt="Social common area at Scodrinon Hostel"
                     fill
                     className="object-cover"
