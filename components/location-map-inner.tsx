@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import { Home } from 'lucide-react';
 import poisData from '@/content/pois.json';
 import { useSearchParams } from 'next/navigation';
 
@@ -605,18 +606,42 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         );
     };
 
+    const recenterOnHostel = () => {
+        if (!mapRef.current) return;
+        mapRef.current.flyTo({
+            center: HOSTEL_COORDS,
+            zoom: 15.5,
+            pitch: 45,
+            bearing: -17.6,
+            speed: 1.2,
+            curve: 1,
+            essential: true
+        });
+    };
+
     return (
         <div className="absolute inset-0 h-full w-full overflow-hidden">
             <div ref={mapContainerRef} className="h-full w-full" />
 
-            {/* Custom Boutique Toggle */}
-            <button
-                onClick={toggleStyle}
-                className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white transition-all hover:bg-black/60 active:scale-95"
-            >
-                <div className="size-2 rounded-full bg-sky-400 shadow-[0_0_8px_#38bdf8]" />
-                {isSatellite ? 'View Streets' : 'View Aerial'}
-            </button>
+            {/* Custom Map Controls */}
+            <div className="absolute left-4 top-4 z-10 flex items-center gap-2">
+                <button
+                    onClick={recenterOnHostel}
+                    title="Recenter on Hostel"
+                    className="flex items-center gap-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white transition-all hover:bg-black/60 active:scale-95"
+                >
+                    <Home className="size-3 text-sky-400" strokeWidth={2.5} />
+                    <span>Home</span>
+                </button>
+                
+                <button
+                    onClick={toggleStyle}
+                    className="flex items-center gap-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white transition-all hover:bg-black/60 active:scale-95"
+                >
+                    <div className="size-2 rounded-full bg-sky-400 shadow-[0_0_8px_#38bdf8]" />
+                    {isSatellite ? 'View Streets' : 'View Aerial'}
+                </button>
+            </div>
 
             {/* Map Legend - Hidden at regional zoom levels (< 11) using DOM manipulation */}
             <div id="map-legend" className="absolute bottom-4 left-4 z-10 flex flex-col gap-2 rounded-xl border border-slate-200 bg-white/40 backdrop-blur-md p-2.5 text-[9px] font-bold uppercase tracking-widest text-slate-900 shadow-lg transition-opacity duration-500 opacity-100">
