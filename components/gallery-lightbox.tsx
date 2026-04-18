@@ -71,6 +71,7 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
 
     const [activeIndex, setActiveIndex] = React.useState(targetIndexRef.current);
     const [direction, setDirection] = React.useState(0);
+    const [showControls, setShowControls] = React.useState(true);
 
     // Sync BROWSER navigation (Back/Forward) without colliding with local state updates
     React.useEffect(() => {
@@ -233,21 +234,29 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
                         }}
                         className="absolute inset-0 flex justify-center items-center touch-none"
                     >
-                        {item.type === "video" ? (
-                            <GalleryVideo 
-                                src={item.src} 
-                                poster={item.poster} 
-                                alt={item.alt}
-                                layoutId={isInitialMount ? `gallery-media-${item.id}` : undefined}
-                            />
-                        ) : (
-                            <motion.img
-                                layoutId={isInitialMount ? `gallery-media-${item.id}` : undefined}
-                                src={item.src}
-                                alt={item.alt}
-                                className="block max-h-[85dvh] max-w-[95vw] w-auto h-auto object-contain rounded-3xl border border-white/10 bg-slate-950/80 backdrop-blur-xl shadow-2xl [transform:translateZ(0)]"
-                            />
-                        )}
+                        <div className="relative flex justify-center items-center h-full w-full pointer-events-none">
+                            {item.type === "video" ? (
+                                <div className="pointer-events-auto" onClick={(e) => { e.stopPropagation(); setShowControls(v => !v); }}>
+                                    <GalleryVideo 
+                                        src={item.src} 
+                                        poster={item.poster} 
+                                        alt={item.alt}
+                                        layoutId={isInitialMount ? `gallery-media-${item.id}` : undefined}
+                                    />
+                                </div>
+                            ) : (
+                                <motion.img
+                                    layoutId={isInitialMount ? `gallery-media-${item.id}` : undefined}
+                                    src={item.src}
+                                    alt={item.alt}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setShowControls(v => !v);
+                                    }}
+                                    className="block max-h-[85dvh] max-w-[95vw] w-auto h-auto object-contain rounded-3xl border border-white/10 bg-slate-950/80 backdrop-blur-xl shadow-2xl [transform:translateZ(0)] pointer-events-auto"
+                                />
+                            )}
+                        </div>
                     </motion.div>
                 </AnimatePresence>
 
@@ -258,10 +267,13 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
                         <div 
                             onPointerDown={(e) => e.stopPropagation()}
                             onClick={(e) => { e.stopPropagation(); goToPrev(); }}
-                            className="absolute left-2 top-1/2 z-20 h-[80px] w-[80px] -translate-y-1/2 cursor-pointer flex items-center justify-center group/btn"
+                            className={cn(
+                                "absolute left-2 top-1/2 z-20 h-[80px] w-[80px] -translate-y-1/2 cursor-pointer flex items-center justify-center group/btn transition-opacity duration-300",
+                                showControls ? "opacity-100" : "opacity-0 pointer-events-none sm:group-hover:opacity-100 sm:group-hover:pointer-events-auto"
+                            )}
                         >
                             <button
-                                className="flex size-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md group-hover/btn:bg-white/20 transition-all opacity-0 group-hover:opacity-100 sm:opacity-0 touch-none:opacity-100"
+                                className="flex size-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/20 active:scale-95"
                                 aria-label="Previous image"
                             >
                                 <ChevronLeft className="size-8" />
@@ -272,23 +284,32 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
                         <div 
                             onPointerDown={(e) => e.stopPropagation()}
                             onClick={(e) => { e.stopPropagation(); goToNext(); }}
-                            className="absolute right-2 top-1/2 z-20 h-[80px] w-[80px] -translate-y-1/2 cursor-pointer flex items-center justify-center group/btn"
+                            className={cn(
+                                "absolute right-2 top-1/2 z-20 h-[80px] w-[80px] -translate-y-1/2 cursor-pointer flex items-center justify-center group/btn transition-opacity duration-300",
+                                showControls ? "opacity-100" : "opacity-0 pointer-events-none sm:group-hover:opacity-100 sm:group-hover:pointer-events-auto"
+                            )}
                         >
                             <button
-                                className="flex size-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md group-hover/btn:bg-white/20 transition-all opacity-0 group-hover:opacity-100 sm:opacity-0 touch-none:opacity-100"
+                                className="flex size-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/20 active:scale-95"
                                 aria-label="Next image"
                             >
                                 <ChevronRight className="size-8" />
                             </button>
                         </div>
 
-                        <div className="absolute top-4 left-4 z-20 rounded-full bg-black/50 px-3 py-1.5 text-[10px] font-bold tracking-widest text-white/90 backdrop-blur-md">
+                        <div className={cn(
+                            "absolute top-4 left-4 z-20 rounded-full bg-black/50 px-3 py-1.5 text-[10px] font-bold tracking-widest text-white/90 backdrop-blur-md transition-opacity duration-300",
+                            showControls ? "opacity-100" : "opacity-0 pointer-events-none sm:group-hover:opacity-100"
+                        )}>
                             {activeIndex + 1} / {galleryItems.length}
                         </div>
 
                         <div 
                             onPointerDown={(e) => e.stopPropagation()}
-                            className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 gap-2 rounded-full bg-black/30 px-3 py-2 backdrop-blur-md"
+                            className={cn(
+                                "absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 gap-2 rounded-full bg-black/30 px-3 py-2 backdrop-blur-md transition-opacity duration-300",
+                                showControls ? "opacity-100" : "opacity-0 pointer-events-none sm:group-hover:opacity-100"
+                            )}
                         >
                             {Array.from({ length: 5 }).map((_, i) => {
                                 const totalItems = galleryItems.length;
@@ -322,7 +343,10 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
                 <button
                     onPointerDown={(e) => e.stopPropagation()}
                     onClick={handleClose}
-                    className="absolute top-4 right-4 z-20 flex size-10 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md hover:bg-black/70 transition-colors"
+                    className={cn(
+                        "absolute top-4 right-4 z-20 flex size-10 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md hover:bg-black/70 transition-all duration-300",
+                        showControls ? "opacity-100" : "opacity-0 pointer-events-none sm:group-hover:opacity-100"
+                    )}
                 >
                     <X className="size-5" />
                 </button>
