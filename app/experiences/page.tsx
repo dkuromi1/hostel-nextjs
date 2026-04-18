@@ -67,7 +67,9 @@ export default function ExperiencesPage() {
               description="We've built Scodrinon to be the ultimate reset point for your Albanian Alps trek. Don't waste a day figuring out schedules—we handle the friction so you can focus on the trail."
             />
 
-            <ThethWeather />
+            <div className="lg:hidden">
+              <ThethWeather />
+            </div>
 
             {/* High-End Feature Rows */}
             <div className="space-y-8">
@@ -110,7 +112,11 @@ export default function ExperiencesPage() {
           </Reveal>
 
           {/* Right Side: Premium Asymmetrical Image Grid */}
-          <div className="grid grid-cols-2 gap-4 lg:col-span-7">
+          <div className="relative lg:col-span-7">
+            <div className="hidden lg:block absolute -top-24 right-0 z-20">
+              <ThethWeather />
+            </div>
+            <div className="grid grid-cols-2 gap-4 h-full">
 
             {/* Left Column: Tall Featured Image */}
             <Reveal className="row-span-2 h-full" delay={100}>
@@ -155,7 +161,8 @@ export default function ExperiencesPage() {
 
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* Things To Do Section */}
       <section className="py-8 sm:py-16 bg-slate-50/50">
