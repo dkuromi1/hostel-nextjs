@@ -10,7 +10,7 @@ interface LocationMapInnerProps {
     accessToken: string;
 }
 
-const HOSTEL_COORDS: number[] = [19.51698538503564, 42.069258]; // [lng, lat]
+const HOSTEL_COORDS: [number, number] = [19.51698538503564, 42.069258]; // [lng, lat]
 const BUS_STATION_COORDS: [number, number] = [19.512929288055442, 42.06755637830981];
 const THETH_DROPOFF_COORDS: [number, number] = [19.772315376603874, 42.39677313338882];
 const VALBONA_VILLAGE_COORDS: [number, number] = [19.88570882131251, 42.444877303358666];
@@ -29,7 +29,7 @@ const PEDONALE_COORDS: [number, number][] = [
 interface MapPOI {
     name: string;
     category: string;
-    coords: number[];
+    coords: [number, number];
     minZoom?: number;
 }
 
@@ -288,7 +288,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
 
         // --- 1. HOSTEL MARKER (Premium Floating Pin) ---
-        const elevation = HOSTEL_COORDS[2] || 0;
+        const elevation = 0;
 
         const el = document.createElement('div');
         el.className = 'hostel-marker-container';
