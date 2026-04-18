@@ -77,14 +77,21 @@
 
   body {
     background-color: var(--background);
+    @apply text-foreground;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
     background-image:
       radial-gradient(circle at top left, rgba(5, 150, 105, 0.12), transparent 45%),
       radial-gradient(circle at 85% 10%, rgba(245, 182, 77, 0.12), transparent 35%),
       linear-gradient(rgba(15, 23, 42, 0.02) 1px, transparent 1px),
       linear-gradient(90deg, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
     background-size: 100% 100%, 100% 100%, 100px 100px, 100px 100px;
-    background-attachment: fixed;
-    @apply text-foreground;
+    pointer-events: none;
   }
 
   h1,
