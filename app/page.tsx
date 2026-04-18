@@ -747,7 +747,7 @@ export default function Home() {
           </div>
 
           <Reveal delay={120}>
-            <SwipableRow itemCount={eventCards.length} className="-mx-8 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-2">
+            <SwipableRow itemCount={eventCards.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-2">
               {eventCards.map((event, index) => (
                 <div key={event.title} className="min-w-[82vw] snap-center sm:min-w-0">
                   <Panel className="overflow-hidden">
@@ -773,6 +773,8 @@ export default function Home() {
                   </Panel>
                 </div>
               ))}
+              {/* Trailing Spacer for mobile snapping */}
+              <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
             </SwipableRow>
           </Reveal>
         </div>
@@ -799,7 +801,7 @@ export default function Home() {
             <Reveal delay={300}>
               <SwipableRow
                 itemCount={extendReasons.length}
-                className="-mx-8 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-4"
+                className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-4"
               >
                 {extendReasons.map((reason, index) => {
                   const Icon = reasonIcons[index] || ArrowRight;
@@ -821,6 +823,8 @@ export default function Home() {
                     </div>
                   );
                 })}
+                {/* Trailing Spacer for mobile snapping */}
+                <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
               </SwipableRow>
             </Reveal>
           </div>
