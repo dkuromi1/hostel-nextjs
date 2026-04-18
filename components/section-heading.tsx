@@ -1,5 +1,5 @@
-import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { Eyebrow } from "@/components/ui/eyebrow";
 
 type SectionHeadingProps = {
   eyebrow: string;
@@ -16,7 +16,7 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div className={cn("flex max-w-2xl flex-col items-start gap-5", className)}>
-      <Badge>{eyebrow}</Badge>
+      <Eyebrow>{eyebrow}</Eyebrow>
       <div className="flex flex-col gap-3">
         <h2 className="font-heading text-4xl leading-none tracking-[-0.06em] text-foreground md:text-6xl">
           {title}

@@ -3,7 +3,7 @@ import { Check } from "lucide-react";
 
 import { BookingActions } from "@/components/booking-actions";
 import { Reveal } from "@/components/reveal";
-import { Badge } from "@/components/ui/badge";
+import { Eyebrow } from "@/components/ui/eyebrow";
 
 type HighlightItem = {
   text: string;
@@ -31,7 +31,7 @@ export function PageHero({
     <section className="relative overflow-hidden pb-14 pt-8 sm:pt-16">
       <div className="shell-container grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
         <Reveal className="relative z-10 flex flex-col items-start gap-8">
-          <Badge>{eyebrow}</Badge>
+          <Eyebrow>{eyebrow}</Eyebrow>
           <div className="flex flex-col gap-5">
             <h1 className="font-heading text-5xl leading-none tracking-[-0.075em] text-foreground md:text-7xl">
               {title}

@@ -15,6 +15,7 @@ import { LocationMap } from "@/components/location-map";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
+import { Eyebrow } from "@/components/ui/eyebrow";
 import { StructuredData } from "@/components/structured-data";
 import { buttonVariants } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
@@ -53,9 +54,7 @@ export default function ContactPage() {
       >
         <div className="grid gap-4">
           <Panel className="p-6 sm:p-7">
-            <p className="text-xs uppercase tracking-[0.24em] text-emerald-700">
-              Best Booking Route
-            </p>
+            <Eyebrow className="mb-4">Best Booking Route</Eyebrow>
             <h2 className="mt-4 font-heading text-4xl leading-none tracking-[-0.05em] text-slate-950">
               Message Scodrinon on WhatsApp first.
             </h2>
@@ -96,9 +95,7 @@ export default function ContactPage() {
           <div className="flex flex-col gap-6 h-full">
             <Reveal>
               <Panel className="p-6 sm:p-8">
-                <p className="text-xs uppercase tracking-[0.24em] text-amber-700">
-                  Contact Details
-                </p>
+                <Eyebrow variant="sun" className="mb-4">Contact Details</Eyebrow>
                 <div className="mt-6 space-y-4 text-base leading-8 text-slate-700">
                   <p className="flex items-start gap-3">
                     <MessageCircleMore
