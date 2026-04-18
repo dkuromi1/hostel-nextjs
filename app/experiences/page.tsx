@@ -81,7 +81,7 @@ export default function ExperiencesPage() {
                 },
                 {
                   title: "The Post-Hike Reset",
-                  description: "Return from the mountains to a guaranteed hot shower, A/C, crisp linens, and a cold drink on the rooftop.",
+                  description: "Return from the mountains to a hot shower, A/C, crisp linens, and a cold drink on the rooftop.",
                   icon: Mountain,
                 }
               ].map((item, i) => (

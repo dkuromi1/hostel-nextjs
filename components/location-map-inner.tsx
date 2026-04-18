@@ -601,7 +601,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                 className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white transition-all hover:bg-black/60 active:scale-95"
             >
                 <div className="size-2 rounded-full bg-sky-400 shadow-[0_0_8px_#38bdf8]" />
-                {isSatellite ? 'View Streets' : 'View Satellite'}
+                {isSatellite ? 'View Streets' : 'View Aerial'}
             </button>
 
             {/* Map Legend - Hidden at regional zoom levels (< 11) using DOM manipulation */}
@@ -614,9 +614,9 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                     <div className="h-1.5 w-6 rounded-full bg-sky-400/40" />
                     <span>The Pedestrian Street</span>
                 </div>
-                
+
                 <div className="my-1 h-px w-full bg-slate-900/10" />
-                
+
                 <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
                     <div className="flex items-center gap-2">
                         <div className="size-2 rounded-full bg-[#10b981]" />
