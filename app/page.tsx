@@ -835,6 +835,7 @@ export default function Home() {
         </div>
       </section>
 
+
       {/* why people stay longer & testimonials */}
       <section className="py-8 sm:py-16">
         <div className="shell-container flex flex-col gap-10 lg:flex-row lg:items-start relative">
