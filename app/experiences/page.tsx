@@ -21,6 +21,7 @@ import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { StructuredData } from "@/components/structured-data";
 import { SwipableRow } from "@/components/swipable-row";
+import { ThethWeather } from "@/components/theth-weather";
 import { Panel } from "@/components/ui/panel";
 import {
   buildBreadcrumbSchema,
@@ -65,6 +66,8 @@ export default function ExperiencesPage() {
               title="Leave the heavy bags behind and head for the mountains."
               description="We've built Scodrinon to be the ultimate reset point for your Albanian Alps trek. Don't waste a day figuring out schedules—we handle the friction so you can focus on the trail."
             />
+
+            <ThethWeather />
 
             {/* High-End Feature Rows */}
             <div className="space-y-8">

@@ -23,6 +23,7 @@ import {
 import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
 import { BookingActions } from "@/components/booking-actions";
 import { CtaStrip } from "@/components/cta-strip";
+import { ThethWeather } from "@/components/theth-weather";
 import { FaqList } from "@/components/faq-list";
 import { ImageCarousel } from "@/components/image-carousel";
 import { Reveal } from "@/components/reveal";
@@ -673,6 +674,9 @@ export default function Home() {
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 42vw, 588px"
                   />
+                  <div className="absolute right-4 top-4 z-20">
+                    <ThethWeather variant="small" />
+                  </div>
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent p-6 pt-32 text-white">
                     <p className="text-sm uppercase tracking-[0.28em] text-sky-100/90">
                       {experiencePillars[0].title}
