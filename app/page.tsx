@@ -547,16 +547,20 @@ export default function Home() {
             <Link
               href="/rooms"
               className={cn(
-                "group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full px-7 py-3.5",
-                "bg-slate-900 text-white shadow-lg shadow-slate-900/20",
-                "text-sm font-semibold tracking-tight",
-                "transition-all duration-300 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/30 hover:-translate-y-0.5",
-                "active:scale-95 active:translate-y-0.5"
+                "group relative inline-flex items-center justify-center gap-4 overflow-hidden rounded-full px-8 py-4",
+                "bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white",
+                "text-sm font-bold tracking-tight antialiased",
+                "shadow-[0_20px_50px_-12px_rgba(2,6,23,0.5)] ring-1 ring-white/15",
+                "transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_-12px_rgba(5,150,105,0.25)] hover:ring-white/25",
+                "active:scale-95 active:translate-y-0"
               )}
             >
-              <span>Explore Rooms</span>
-              <div className="relative flex size-6 items-center justify-center rounded-full bg-white/20 text-white transition-all duration-300 group-hover:bg-emerald-500 group-hover:scale-110">
-                <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
+              {/* Animated Sheen Effect */}
+              <div className="absolute inset-0 z-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 group-hover:translate-x-[100%]" />
+              
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-emerald-50">Explore Rooms</span>
+              <div className="relative z-10 flex size-7 items-center justify-center rounded-full bg-white/15 text-white transition-all duration-300 group-hover:bg-emerald-500 group-hover:scale-110">
+                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
               </div>
             </Link>
           </div>
@@ -725,16 +729,20 @@ export default function Home() {
             <Link
               href="/experiences"
               className={cn(
-                "group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full px-7 py-3.5",
-                "bg-slate-900 text-white shadow-lg shadow-slate-900/20",
-                "text-sm font-semibold tracking-tight",
-                "transition-all duration-300 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/30 hover:-translate-y-0.5",
-                "active:scale-95 active:translate-y-0.5"
+                "group relative inline-flex items-center justify-center gap-4 overflow-hidden rounded-full px-8 py-4",
+                "bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white",
+                "text-sm font-bold tracking-tight antialiased",
+                "shadow-[0_20px_50px_-12px_rgba(2,6,23,0.5)] ring-1 ring-white/15",
+                "transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_-12px_rgba(5,150,105,0.25)] hover:ring-white/25",
+                "active:scale-95 active:translate-y-0"
               )}
             >
-              <span>See Experiences</span>
-              <div className="relative flex size-6 items-center justify-center rounded-full bg-white/20 text-white transition-all duration-300 group-hover:bg-emerald-500 group-hover:scale-110">
-                <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
+              {/* Animated Sheen Effect */}
+              <div className="absolute inset-0 z-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 group-hover:translate-x-[100%]" />
+
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-emerald-50">See Experiences</span>
+              <div className="relative z-10 flex size-7 items-center justify-center rounded-full bg-white/15 text-white transition-all duration-300 group-hover:bg-emerald-500 group-hover:scale-110">
+                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
               </div>
             </Link>
           </div>
