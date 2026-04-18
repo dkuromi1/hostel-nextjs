@@ -32,10 +32,11 @@ export const eventCards = homepage.eventCards;
 
 export interface GalleryItem {
   id: string;
-  type: string;
+  type: "image" | "video";
   aspect: string;
   src: string;
-  alt?: string;
+  alt: string;
+  poster?: string;
   [key: string]: unknown;
 }
 

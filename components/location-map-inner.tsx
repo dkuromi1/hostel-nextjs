@@ -65,6 +65,7 @@ const createGeoJSONCircle = (center: [number, number], radiusInKm: number, point
         type: 'FeatureCollection' as const,
         features: [{
             type: 'Feature' as const,
+            properties: {},
             geometry: {
                 type: 'Polygon' as const,
                 coordinates: [ret]

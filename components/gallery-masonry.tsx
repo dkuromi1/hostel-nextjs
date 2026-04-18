@@ -5,15 +5,9 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { type GalleryItem } from "@/lib/site-data";
 
-type GalleryItem = {
-    id: string;
-    type: "image" | "video";
-    src: string;
-    alt: string;
-    aspect?: string;
-    poster?: string;
-};
+
 
 type GalleryMasonryProps = {
     items: GalleryItem[];
