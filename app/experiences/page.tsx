@@ -160,7 +160,7 @@ export default function ExperiencesPage() {
           <Reveal className="max-w-3xl">
             <SectionHeading
               eyebrow="Beyond the Hostel"
-              title="Things to do in Shkodër"
+              title="Things to do in and around Shkodër"
               description="Whether you have an afternoon to kill before your hike or a few days to wander, here’s what makes the city worth sticking around for."
             />
           </Reveal>
