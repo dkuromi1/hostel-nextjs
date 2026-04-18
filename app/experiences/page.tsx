@@ -252,13 +252,16 @@ export default function ExperiencesPage() {
           <Reveal className="max-w-3xl">
             <SectionHeading
               eyebrow="Local Texture"
-              title="Connection & Discovery"
-              description="Skip the forced hostel itinerary. We offer a grounded atmosphere where meeting people and discovering the city’s character happens at your own pace."
+              title="A Social Connection"
+              description="Skip the forced hostel itinerary. We offer a grounded atmosphere where meeting people happens at your own pace."
             />
           </Reveal>
 
-          {/* Premium 3-Column Image Grid */}
-          <div className="grid gap-6 md:grid-cols-3">
+          <Reveal delay={100}>
+            <SwipableRow 
+              itemCount={3}
+              className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
             {[
               {
                 title: "The Drin River Escape",
@@ -282,7 +285,7 @@ export default function ExperiencesPage() {
                 focus: "50% 40%",
               },
             ].map((item, index) => (
-              <Reveal key={item.title} delay={index * 100} className="h-full">
+              <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full">
                 <Panel
                   className="group relative flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
                 >
@@ -313,9 +316,12 @@ export default function ExperiencesPage() {
                     </p>
                   </div>
                 </Panel>
-              </Reveal>
-            ))}
-          </div>
+              </div>
+          ))}
+            {/* Trailing Spacer for mobile snapping */}
+            <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
+          </SwipableRow>
+        </Reveal>
         </div>
       </section>
 
