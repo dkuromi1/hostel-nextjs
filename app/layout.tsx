@@ -48,8 +48,20 @@ export const metadata: Metadata = {
     images: [getSiteUrl("/images/promo_2.jpg")],
   },
   icons: {
-    icon: "/favicon.ico",
-    apple: "/logo.png",
+    icon: [
+      // References /public/logo.webp
+      { url: "/logo.webp", type: "image/webp", sizes: "648x648" },
+
+      // References /public/logo.png
+      { url: "/logo.png", type: "image/png", sizes: "648x648" },
+
+      // References /app/favicon.ico (Next.js serves this at the root)
+      { url: "/favicon.ico", type: "image/x-icon", sizes: "any" },
+    ],
+    apple: [
+      // Best to use the PNG version for Apple devices
+      { url: "/logo.png", sizes: "648x648", type: "image/png" },
+    ],
   },
   appleWebApp: {
     capable: true,

@@ -121,7 +121,7 @@ export function buildHostelSchema() {
       getSiteUrl("/images/hiking_1.jpg"),
       getSiteUrl("/images/shkoder_pedestrian_street_3.webp"),
     ],
-    logo: getSiteUrl("/logo.png"),
+    logo: getSiteUrl("/logo.webp"),
     telephone: siteConfig.phoneDisplay,
     sameAs: [
       siteConfig.instagramUrl,

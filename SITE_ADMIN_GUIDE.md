@@ -93,7 +93,7 @@ When editing a Room or a Gallery item in the dashboard, you will see an **"Uploa
 If uploading manually via GitHub or FTP:
 1. **Images:** Put files in `public/images/`.
 2. **Videos:** Put files in `public/videos/`.
-3. **Logo:** `public/logo.png`.
+3. **Logo:** `public/logo.webp`.
 4. **PWA App Icons:** Update `public/icon.png`, `public/icon512_maskable.png`, `public/icon512_rounded.png`, `public/apple-icon.png`, and `public/favicon.ico` to change the app icons.
 5. **App Details (PWA Manifest):** The `public/site.webmanifest` file controls the app's installed name, background colors, and display mode.
 

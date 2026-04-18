@@ -64,7 +64,7 @@ export const metadata = buildMetadata({
   description:
     "Book Scodrinon Hostel direct on WhatsApp for privacy pods, rooftop sunsets, breakfast, and a safe social vibe in the center of Shkoder.",
   path: "/",
-  image: "/logo.png",
+  image: "/logo.webp",
 });
 
 const roomIcons = [Snowflake, Lock, LampDesk, BatteryCharging];
@@ -401,7 +401,7 @@ export default function Home() {
             <Reveal delay={200} className="hidden lg:flex lg:row-start-2">
               <div className="h-full flex items-center justify-between glass-panel rounded-[28px] p-6 gap-6 w-full">
                 <div>
-                    <Eyebrow className="mb-2">Direct Booking</Eyebrow>
+                  <Eyebrow className="mb-2">Direct Booking</Eyebrow>
                   <p className="mt-2 font-heading text-2xl leading-tight tracking-tight text-slate-950">
                     Message the hostel and book direct
                   </p>
@@ -553,7 +553,7 @@ export default function Home() {
 
                   <div className="space-y-6 p-6 sm:p-8">
                     <div>
-                        <Eyebrow className="mb-3">{room.label}</Eyebrow>
+                      <Eyebrow className="mb-3">{room.label}</Eyebrow>
                       <h3 className="mt-3 font-heading text-4xl leading-none tracking-[-0.05em] text-slate-950">
                         {room.name}
                       </h3>
@@ -579,7 +579,7 @@ export default function Home() {
                     </div>
 
                     <div className="space-y-3">
-                        <Eyebrow className="mb-4 text-[10px]" variant="default">Room Details</Eyebrow>
+                      <Eyebrow className="mb-4 text-[10px]" variant="default">Room Details</Eyebrow>
                       <ul className="grid gap-3">
                         {room.bullets.map((bullet) => (
                           <li
