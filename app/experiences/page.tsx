@@ -166,7 +166,7 @@ export default function ExperiencesPage() {
     </section>
 
       {/* Things To Do Section */}
-      <section className="py-8 sm:py-16 bg-slate-50/50">
+      <section className="py-8 sm:py-16">
         <div className="shell-container space-y-12">
           <Reveal className="max-w-3xl">
             <SectionHeading

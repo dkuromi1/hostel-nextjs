@@ -633,7 +633,7 @@ export default function Home() {
       </section>
 
       {/* Included Services Section */}
-      <section className="py-8 sm:py-16 bg-slate-50/50">
+      <section className="py-8 sm:py-16">
         <div className="shell-container space-y-12">
           <Reveal>
             <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
