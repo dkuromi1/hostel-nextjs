@@ -53,7 +53,7 @@ function GalleryVideo({ src, poster, alt, layoutId }: { src: string; poster?: st
             preload="metadata"
             poster={poster}
             aria-label={alt}
-            className="block max-h-[85vh] max-w-[95vw] w-auto h-auto object-contain rounded-3xl border border-white/10 bg-slate-950/80 backdrop-blur-xl shadow-2xl [transform:translateZ(0)]"
+            className="block max-h-[85dvh] max-w-[95vw] w-auto h-auto object-contain rounded-3xl border border-white/10 bg-slate-950/80 backdrop-blur-xl shadow-2xl [transform:translateZ(0)]"
         />
     );
 }
@@ -191,7 +191,7 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
             />
 
             <motion.div 
-                className="relative w-full h-[90vh] max-w-[1400px] flex items-center justify-center group"
+                className="relative w-full h-[90dvh] max-w-[1400px] flex items-center justify-center group"
                 drag="y"
                 dragConstraints={{ top: 0, bottom: 0 }}
                 dragElastic={0.8}
@@ -245,7 +245,7 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
                                 layoutId={isInitialMount ? `gallery-media-${item.id}` : undefined}
                                 src={item.src}
                                 alt={item.alt}
-                                className="block max-h-[85vh] max-w-[95vw] w-auto h-auto object-contain rounded-3xl border border-white/10 bg-slate-950/80 backdrop-blur-xl shadow-2xl [transform:translateZ(0)]"
+                                className="block max-h-[85dvh] max-w-[95vw] w-auto h-auto object-contain rounded-3xl border border-white/10 bg-slate-950/80 backdrop-blur-xl shadow-2xl [transform:translateZ(0)]"
                             />
                         )}
                     </motion.div>

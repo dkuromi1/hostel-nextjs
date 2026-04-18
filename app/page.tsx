@@ -300,7 +300,7 @@ export default function Home() {
       <StructuredData data={[buildHostelSchema(), buildFaqSchema()]} />
 
       {/* Immersive Hero Banner */}
-      <section className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden pb-12 pt-24 sm:pb-20 sm:pt-32">
+      <section className="relative min-h-[90dvh] flex flex-col justify-center overflow-hidden pb-12 pt-24 sm:pb-20 sm:pt-32">
         {/* Background Image with Overlays */}
         <div className="absolute inset-0 z-0">
           <Image
