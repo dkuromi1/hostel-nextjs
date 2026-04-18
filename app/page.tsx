@@ -740,13 +740,12 @@ export default function Home() {
           </div>
 
           {/* --- DISCOVER SUBSECTION --- */}
-          <div className="relative pt-12 sm:pt-14">
-            <div className="absolute left-0 top-0 z-10 flex items-center">
-              <span className="flex items-center gap-2 rounded-full border border-sky-200/60 bg-sky-50/80 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.25em] text-sky-800 shadow-sm backdrop-blur-md">
-                <Compass className="size-3.5" />
-                Discover
+          <div className="relative pt-12 sm:pt-16">
+            {/* Ghost Background Label */}
+            <div className="absolute left-0 top-0 z-0 select-none opacity-[0.07] sm:-left-1">
+              <span className="font-heading text-[56px] leading-none tracking-tighter text-slate-950 sm:text-[100px]">
+                DISCOVER
               </span>
-              <div className="ml-4 h-px w-12 bg-sky-200/50 sm:w-32" />
             </div>
 
             <div className="lg:hidden">
@@ -867,13 +866,12 @@ export default function Home() {
           </div>
 
           {/* --- CONNECT SUBSECTION --- */}
-          <div className="relative pt-12 sm:pt-14 mt-6">
-            <div className="absolute left-0 top-0 z-10 flex items-center">
-              <span className="flex items-center gap-2 rounded-full border border-emerald-200/60 bg-emerald-50/80 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.25em] text-emerald-800 shadow-sm backdrop-blur-md">
-                <Sparkles className="size-3.5" />
-                Connect
+          <div className="relative pt-12 sm:pt-16 mt-8 sm:mt-12">
+            {/* Ghost Background Label */}
+            <div className="absolute left-0 top-0 z-0 select-none opacity-[0.07] sm:-left-1">
+              <span className="font-heading text-[56px] leading-none tracking-tighter text-slate-950 sm:text-[100px]">
+                CONNECT
               </span>
-              <div className="ml-4 h-px w-12 bg-emerald-200/50 sm:w-32" />
             </div>
 
             <Reveal delay={120}>
