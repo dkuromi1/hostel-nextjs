@@ -1,8 +1,27 @@
 {
   "thingsToDo": [
     {
+      "title": "Shala River Day Trip",
+      "description": "Known as the 'Thailand of Albania', the Shala River features crystal clear water tucked between steep mountain peaks. The day trip includes the scenic boat ride from Komani and we'll help you organize the departure right from the hostel.",
+      "price": "€35",
+      "regularPrice": "€40",
+      "priceNote": "Exclusive Guest Rate",
+      "image": "/images/drin_swimming_trip3.webp",
+      "alt": "Crystal clear water at the Shala River in Northern Albania"
+    },
+    {
+      "title": "Theth & Valbona Treks",
+      "description": "Explore the heart of the Albanian Alps on the famous Theth-to-Valbona hike. We'll help organize your transport and securely store your main luggage for free while you trek through the majestic northern peaks.",
+      "price": "€12",
+      "priceNote": "Transport & Storage",
+      "image": "/images/komani_lake.jpg",
+      "alt": "Hiking in the Albanian Alps near Theth and Valbona"
+    },
+    {
       "title": "Rozafa Castle",
-      "description": "The city's top attraction. Perched on a rocky hill with beautiful views across Lake Shkodër and three rivers. Best visited an hour before sunset for the golden lighting across the valleys. Admission is included in the hostel price!",
+      "description": "The city's top attraction. Perched on a rocky hill with beautiful views across Lake Shkodër and three rivers. Best visited an hour before sunset for the golden lighting across the valleys.",
+      "price": "Free",
+      "priceNote": "Included in price",
       "image": "/images/rosafa_castle.webp",
       "alt": "View from Rozafa Castle in Shkoder"
     },
@@ -14,7 +33,7 @@
     },
     {
       "title": "Lake Shkodër & Shiroka Village",
-      "description": "The largest lake in the Balkans is a breathtaking natural wonder where dramatic karst mountains meet fields of floating water lilies. It's also a world-renowned sanctuary for over 280 bird species and the rare Dalmatian Pelican.",
+      "description": "The largest lake in the Balkans is a breathtaking natural wonder where dramatic karst mountains meet fields of floating water lilies. It's also a world-renowned sanctuary for over 280 bird species.",
       "image": "/images/lake_shkoder_shiroka_2.webp",
       "alt": "Biking along Lake Shkoder towards Shiroka"
     },
@@ -29,18 +48,6 @@
       "description": "A quiet, modern exhibition featuring over 150 years of Albanian history through the incredibly detailed lenses of the Marubi family. Just a few doors down from the hostel!",
       "image": "/images/marubi_museum.jpg",
       "alt": "Inside the Marubi National Photography Museum"
-    },
-    {
-      "title": "Theth & Valbona Treks",
-      "description": "Explore the heart of the Albanian Alps for the famous Theth to Valbona hike. We'll help organize your transport and securely store your main luggage for free while you trek through the majestic Albanian Alps. Prices: €12 to Theth or €26 to Valbona (includes the iconic Komani Lake ferry)",
-      "image": "/images/komani_lake.jpg",
-      "alt": "Hiking in the Albanian Alps near Theth and Valbona"
-    },
-    {
-      "title": "Shala River Day Trip",
-      "description": "Known as the 'Thailand of Albania', the Shala River is crystal clear water tucked between steep mountain peaks. Includes the boat ride from Komani. We'll help you organize the departure right from the hostel. Price: €35",
-      "image": "/images/drin_swimming_trip3.webp",
-      "alt": "Crystal clear water at the Shala River in Northern Albania"
     }
   ]
 }

@@ -184,7 +184,7 @@ export default function ExperiencesPage() {
 
           <Reveal delay={100}>
             <SwipableRow itemCount={thingsToDo.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {thingsToDo.map((item, index) => (
+              {(thingsToDo as any[]).map((item, index) => (
                 <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full">
                   <Panel className="group relative flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-300 hover:border-sky-500/20 hover:shadow-md">
                     <div className="relative h-48 w-full overflow-hidden bg-slate-100">
@@ -195,6 +195,27 @@ export default function ExperiencesPage() {
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
+
+                      {/* Floating Price Badge */}
+                      {item.price && (
+                        <div className="absolute top-4 right-4 z-10 flex flex-col items-end gap-1.5">
+                          <div className="flex items-center gap-2 rounded-full bg-slate-950/80 px-3 py-1.5 shadow-lg backdrop-blur-md ring-1 ring-white/20">
+                            {item.regularPrice && (
+                              <span className="text-[10px] font-medium text-white/40 line-through decoration-white/40">
+                                {item.regularPrice}
+                              </span>
+                            )}
+                            <span className="text-xs font-bold tracking-tight text-white">
+                              {item.price}
+                            </span>
+                          </div>
+                          {item.priceNote && (
+                            <div className="rounded-full bg-emerald-500/90 px-2 py-0.5 text-[8px] font-extrabold uppercase tracking-[0.12em] text-white shadow-sm ring-1 ring-black/5">
+                              {item.priceNote}
+                            </div>
+                          )}
+                        </div>
+                      )}
                     </div>
 
                     <div className="flex flex-1 flex-col p-6">
