@@ -12,7 +12,6 @@ interface LocationMapInnerProps {
 }
 
 const HOSTEL_COORDS: [number, number] = [19.51698538503564, 42.069258]; // [lng, lat]
-const BUS_STATION_COORDS: [number, number] = [19.512929288055442, 42.06755637830981];
 const THETH_DROPOFF_COORDS: [number, number] = [19.772315376603874, 42.39677313338882];
 const VALBONA_VILLAGE_COORDS: [number, number] = [19.88570882131251, 42.444877303358666];
 const THETH_VALBONA_MIDPOINT_COORDS: [number, number] = [
@@ -412,51 +411,8 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
 
         new mapboxgl.Marker({ element: el, anchor: 'bottom' }).setLngLat(HOSTEL_COORDS).addTo(map);
 
-        // --- 2. BUS STATION MARKER ---
-        const busEl = document.createElement('div');
-        busEl.style.display = 'flex';
-        busEl.style.flexDirection = 'column';
-        busEl.style.alignItems = 'center';
-        busEl.style.cursor = 'pointer';
-        busEl.style.zIndex = '10';
-        busEl.classList.add('zoom-sensitive');
-        busEl.setAttribute('data-min-zoom', '13');
-        busEl.style.transition = 'opacity 0.3s ease-in-out';
 
-        // Set initial visibility
-        if (map.getZoom() < 13) {
-            busEl.classList.add('zoom-hidden');
-        }
-
-        const busCircle = document.createElement('div');
-        busCircle.innerHTML = MAP_PIN_SVG;
-        busCircle.style.width = '24px';
-        busCircle.style.height = '24px';
-        busCircle.style.color = '#64748b'; // slate-500
-        busCircle.style.filter = 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))';
-
-        const busLabel = document.createElement('a');
-        busLabel.href = `https://www.google.com/maps/search/?api=1&query=${BUS_STATION_COORDS[1]},${BUS_STATION_COORDS[0]}`;
-        busLabel.target = '_blank';
-        busLabel.rel = 'noreferrer';
-        busLabel.innerText = 'Central Bus Stop';
-        applyLabelStyle(busLabel, mobile, {
-            marginBottom: '4px',
-            padding: '4px 10px',
-            fontSize: '10px',
-            borderRadius: '6px',
-            border: '0.5px solid white',
-        });
-        busLabel.classList.add('poi-label-el');
-        busLabel.setAttribute('data-poi-label', 'central bus stop');
-
-        busEl.appendChild(busLabel);
-        busEl.appendChild(busCircle);
-        sensitiveMarkersRef.current.push(busEl);
-        new mapboxgl.Marker({ element: busEl, anchor: 'bottom' }).setLngLat(BUS_STATION_COORDS).addTo(map);
-
-
-        // --- 3. RECOMMENDED POIS ---
+        // --- 2. RECOMMENDED POIS ---
         RECOMMENDED_POIS.forEach(poi => {
             const poiEl = document.createElement('div');
             poiEl.className = 'poi-marker-group';
@@ -581,9 +537,17 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         } else if (q === THETH_VALBONA_MAP_QUERY || (q.includes('theth') && q.includes('valbona'))) {
             targetCenter = THETH_VALBONA_MIDPOINT_COORDS;
             targetZoom = 10.5;
+            const theth = document.querySelector('[data-poi-label="theth drop off/pick up"]');
+            const valbona = document.querySelector('[data-poi-label="valbona village"]');
+            if (theth) theth.classList.add('poi-highlight');
+            if (valbona) valbona.classList.add('poi-highlight');
         } else if (q === SHALA_RIVER_MAP_QUERY || (q.includes('shala') && q.includes('river'))) {
             targetCenter = SHALA_RIVER_MIDPOINT_COORDS;
             targetZoom = 10.5;
+            const ferry = document.querySelector('[data-poi-label="komani lake ferry (shala & valbona)"]');
+            const blini = document.querySelector('[data-poi-label="blini park (shala river trip stop)"]');
+            if (ferry) ferry.classList.add('poi-highlight');
+            if (blini) blini.classList.add('poi-highlight');
         } else if (q.includes("pedestrian") || q.includes("idromeno")) {
             targetCenter = PEDONALE_COORDS[1] as [number, number];
             targetZoom = 16.5;
