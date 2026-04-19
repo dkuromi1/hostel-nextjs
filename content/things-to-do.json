@@ -2,7 +2,7 @@
   "thingsToDo": [
     {
       "title": "Shala River Day Trip",
-      "description": "Known as the 'Thailand of Albania', the Shala River features crystal clear water tucked between steep mountain peaks. The day trip includes the scenic boat ride from Komani and we'll help you organize the departure right from the hostel.",
+      "description": "Known as the 'Thailand of Albania', the Shala River features crystal clear water tucked between steep mountain peaks. The day trip includes the scenic boat ride from Komani and we'll help you organize the departure right from the hostel. Bus departs 6:30am in front of hostel.",
       "price": "€35",
       "regularPrice": "€40",
       "priceNote": "Exclusive Guest Rate",
@@ -11,12 +11,20 @@
       "showDirections": false
     },
     {
-      "title": "Theth & Valbona Treks",
-      "description": "Explore the heart of the Albanian Alps on the famous Theth-to-Valbona hike. We'll help organize your transport and securely store your main luggage for free while you trek through the majestic northern peaks.",
-      "price": "€12",
+      "title": "Theth to Valbona Trek",
+      "description": "Explore the heart of the Albanian Alps on the famous Theth-to-Valbona hike. We'll help organize your transport and securely store your main luggage for free while you trek through the majestic northern peaks. To Theth: Bus departs 7:00am in front of Rozafa Hotel. From Theth: Bus departs 11:00am and 5:00pm at Jezerca Market.",
+      "price": "€12 each way",
       "priceNote": "Transport & Storage",
-      "image": "/images/komani_lake.jpg",
+      "image": "/images/theth_village.webp",
       "alt": "Hiking in the Albanian Alps near Theth and Valbona",
+      "showDirections": false
+    },
+    {
+      "title": "Komani Lake Boat Tour",
+      "description": "Experience one of the world's most beautiful boat journeys. This spectacular route winds through narrow mountain passages and vertical cliffs on turquoise waters. The full tour includes the scenic ferry ride and return transport. Bus departs 6:30am in front of hostel.",
+      "price": "€36",
+      "image": "/images/komani_lake.jpg",
+      "alt": "Scenic boat tour on Komani Lake, Albania",
       "showDirections": false
     },
     {
