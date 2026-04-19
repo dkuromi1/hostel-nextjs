@@ -166,7 +166,7 @@ export default function ExperiencesPage() {
     </section>
 
       {/* Things To Do Section */}
-      <section className="py-8 sm:py-16">
+      <section id="things-to-do" className="py-8 sm:py-16">
         <div className="shell-container space-y-12">
           <Reveal className="max-w-3xl">
             <SectionHeading
@@ -269,7 +269,7 @@ export default function ExperiencesPage() {
       </section>
 
       {/* Local Texture Section */}
-      <section className="py-8 sm:py-16">
+      <section id="social-connection" className="py-8 sm:py-16">
         <div className="shell-container space-y-12">
 
           {/* Section Header */}

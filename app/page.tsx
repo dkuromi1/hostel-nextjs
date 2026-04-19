@@ -319,8 +319,46 @@ export default function Home() {
       Bus,
       WashingMachine,
       Bike,
+      Castle,
     };
     return icons[iconName] || Check;
+  };
+
+  const formatText = (text: string) => {
+    return text.split(/(\[.*?\]\(.*?\))/g).map((part, i) => {
+      const match = part.match(/\[(.*?)\]\((.*?)\)/);
+      if (match) {
+        return (
+          <Link
+            key={i}
+            href={match[2]}
+            className="font-semibold text-emerald-600 underline decoration-emerald-600/30 underline-offset-4 transition-colors hover:text-emerald-700 hover:decoration-emerald-700"
+          >
+            {match[1]}
+          </Link>
+        );
+      }
+      return part;
+    });
+  };
+
+  const PillarCta = ({ cta, variant = "light" }: { cta?: any; variant?: "light" | "dark" }) => {
+    if (!cta) return null;
+    return (
+      <Link
+        href={cta.url}
+        className={cn(
+          buttonVariants({ variant: "outline", size: "sm" }),
+          "mt-4 w-fit gap-2 rounded-full transition-all duration-300",
+          variant === "light" 
+            ? "border-emerald-500/20 bg-emerald-50/50 text-emerald-700 hover:border-emerald-500 hover:bg-emerald-600 hover:text-white"
+            : "border-white/20 bg-white/10 text-white backdrop-blur-sm hover:bg-white hover:text-emerald-900 shadow-lg"
+        )}
+      >
+        {cta.text}
+        <ArrowRight className="size-3.5" strokeWidth={2.5} />
+      </Link>
+    );
   };
 
   return (
@@ -783,8 +821,9 @@ export default function Home() {
                             </p>
                           </div>
                         </div>
-                        <div className="p-6 text-sm leading-relaxed text-slate-600 bg-white flex-1">
-                          {pillar.description}
+                        <div className="p-6 text-sm leading-relaxed text-slate-600 bg-white flex-1 flex flex-col">
+                          <p className="flex-1">{formatText(pillar.description)}</p>
+                          <PillarCta cta={(pillar as any).cta} />
                         </div>
                       </Panel>
                     </div>
@@ -795,7 +834,7 @@ export default function Home() {
             </div>
 
             <div className="hidden lg:grid gap-6 lg:grid-cols-12">
-              <Reveal delay={0} className="lg:col-span-5 h-full">
+              <Reveal delay={0} className="lg:col-span-7 h-full">
                 <Panel className="overflow-hidden h-full">
                   <div className="relative h-full min-h-[30rem]">
                     <Image
@@ -803,7 +842,7 @@ export default function Home() {
                       alt={experiencePillars[0].alt}
                       fill
                       className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 42vw, 588px"
+                      sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 58vw, 812px"
                     />
                     <div className="absolute right-4 top-4 z-20">
                       <ThethWeather variant="small" />
@@ -813,14 +852,15 @@ export default function Home() {
                         {experiencePillars[0].title}
                       </p>
                       <p className="mt-3 max-w-lg text-base leading-8 text-slate-100">
-                        {experiencePillars[0].description}
+                        {formatText(experiencePillars[0].description)}
                       </p>
+                      <PillarCta cta={(experiencePillars[0] as any).cta} variant="dark" />
                     </div>
                   </div>
                 </Panel>
               </Reveal>
 
-              <div className="lg:col-span-7 grid gap-6">
+              <div className="lg:col-span-5 grid gap-6">
                 {experiencePillars.slice(1).map((pillar, index) => {
                   const isSecondElement = index === 0;
                   const Icon = reasonIcons[index + 1] || ArrowRight;
@@ -835,15 +875,16 @@ export default function Home() {
                               alt={pillar.alt}
                               fill
                               className="object-cover"
-                              sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 58vw, 812px"
+                              sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 42vw, 588px"
                             />
                             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent p-6 pt-32 text-white">
                               <p className="text-sm uppercase tracking-[0.28em] text-sky-100/90">
                                 {pillar.title}
                               </p>
                               <p className="mt-3 text-base leading-8 text-slate-100">
-                                {pillar.description}
+                                {formatText(pillar.description)}
                               </p>
+                              <PillarCta cta={(pillar as any).cta} variant="dark" />
                             </div>
                           </div>
                         ) : (
@@ -854,7 +895,7 @@ export default function Home() {
                                 alt={pillar.alt}
                                 fill
                                 className="object-cover"
-                                sizes="(max-width: 768px) 100vw, (max-width: 1400px) 26vw, 364px"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1400px) 18vw, 250px"
                               />
                             </div>
                             <div className="space-y-3 p-6">
@@ -862,8 +903,9 @@ export default function Home() {
                                 {pillar.title}
                               </h3>
                               <p className="text-base leading-8 text-slate-600">
-                                {pillar.description}
+                                {formatText(pillar.description)}
                               </p>
+                              <PillarCta cta={(pillar as any).cta} />
                             </div>
                           </div>
                         )}
