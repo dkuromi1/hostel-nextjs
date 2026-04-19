@@ -61,6 +61,7 @@ import {
   fourBedDormImages,
   galleryItems,
   podDormImages,
+  hero,
   quickFacts,
   roomTypes,
   siteConfig,
@@ -393,22 +394,20 @@ export default function Home() {
                 </p>
                 <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl tracking-[-0.05em] leading-[0.95] text-white">
                   <AnimatedText
-                    text="Rooftop sunsets, privacy pods,"
+                    text={hero.title1}
                     wordClassName="text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]"
                     delayOffset={0}
                   />
                   {" "}
                   <AnimatedText
-                    text="and the part of Shkodër you actually want to wake up in."
+                    text={hero.title2}
                     className="text-sky-300"
                     wordClassName="text-sky-300 [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]"
                     delayOffset={200}
                   />
                 </h1>
                 <p className="max-w-[50ch] text-lg leading-relaxed text-slate-300 antialiased [text-shadow:0_1px_4px_rgba(0,0,0,0.4)] sm:text-xl lg:text-2xl">
-                  Ideally placed on Shkodër’s vibrant pedestrian street. A social
-                  gateway to legendary rooftop sunsets, the Theth-Valbona trek, and
-                  the raw beauty of Europe&apos;s &apos;last frontier&apos;.
+                  {hero.description}
                 </p>
               </div>
 

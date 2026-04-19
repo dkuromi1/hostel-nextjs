@@ -11,6 +11,8 @@ export const siteConfig = {
   ...settings,
 } as const;
 
+export const hero = homepage.hero;
+
 export const navLinks = navigation.navLinks;
 
 export const heroHighlights = homepage.heroHighlights;
