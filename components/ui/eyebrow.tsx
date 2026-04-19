@@ -15,12 +15,12 @@ export function Eyebrow({
   return (
     <div
       className={cn(
-        "group relative inline-flex items-center gap-3 overflow-hidden rounded-full border px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] shadow-sm backdrop-blur-md transition-all duration-500",
+        "group relative inline-flex items-center gap-3 overflow-hidden rounded-full border px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-500 backdrop-blur-xl shadow-[0_8px_16px_-6px_rgba(0,0,0,0.05)]",
         variant === "default"
-          ? "border-sky-200 bg-white text-sky-950 hover:border-sky-500/30 hover:bg-white hover:text-black hover:shadow-lg hover:shadow-sky-500/10"
+          ? "border-sky-500/10 bg-white/40 text-sky-950 hover:border-sky-500/30 hover:bg-white/60 hover:shadow-lg hover:shadow-sky-500/10"
           : variant === "sun"
-            ? "border-amber-200 bg-amber-50 text-amber-950 hover:border-amber-400 hover:bg-amber-100 hover:text-black hover:shadow-lg hover:shadow-amber-500/20"
-            : "border-amber-500/40 bg-white text-amber-700 hover:border-amber-400 hover:bg-amber-500/10 hover:text-amber-950 hover:shadow-lg hover:shadow-amber-500/20",
+            ? "border-amber-500/10 bg-amber-50/40 text-amber-950 hover:border-amber-500/30 hover:bg-amber-100/60 hover:shadow-lg hover:shadow-amber-500/15"
+            : "border-amber-500/40 bg-white/10 text-amber-400 hover:border-amber-400 hover:bg-white/20 hover:text-amber-300 hover:shadow-lg hover:shadow-amber-500/20",
         className
       )}
     >
