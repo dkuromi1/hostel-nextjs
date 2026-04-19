@@ -8,7 +8,7 @@
   "quickFacts": [
     "Spacious privacy pods in our mixed dorm create a personal bedroom feel within a social space",
     "Boutique 4-bed female or male dorms, offering a bright, high-end sanctuary for peaceful stays",
-    "Included: breakfast (excl. off season), WiFi, luggage storage, 24h access, and admission to Rozafa Castle"
+    "Included: breakfast (excl. off-season), WiFi, luggage storage, 24h access, and admission to Rozafa Castle"
   ],
   "sharedAmenities": [
     "Air-con in all rooms",
@@ -17,13 +17,13 @@
     "Power sockets",
     "High-speed WiFi",
     "Clean modern bathrooms",
-    "Free breakfast (excl. off season)",
+    "Free breakfast (excl. off-season)",
     "24h access"
   ],
   "freeServices": [
     {
       "title": "Social Breakfast",
-      "description": "Fresh locally sourced breakfast from 8 to 9:30am (excl. off season). Complimentary morning espresso year round",
+      "description": "Fresh locally sourced breakfast from 8 to 9:30am (excl. off-season). Complimentary morning espresso year round",
       "icon": "Coffee"
     },
     {
@@ -53,7 +53,7 @@
     },
     {
       "title": "Community",
-      "description": "Rooftop social events and a helpful WhatsApp community",
+      "description": "Regular social events and a helpful WhatsApp community",
       "icon": "Sparkles"
     }
   ],

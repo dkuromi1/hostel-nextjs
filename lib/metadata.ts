@@ -137,7 +137,7 @@ export function buildHostelSchema() {
     },
     amenityFeature: [
       "Privacy pods",
-      "Free breakfast (excl. off season)",
+      "Free breakfast (excl. off-season)",
       "Free WiFi",
       "Rooftop terrace",
       "Luggage storage",

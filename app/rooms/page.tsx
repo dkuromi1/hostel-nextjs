@@ -130,7 +130,7 @@ export default function RoomsPage() {
           { text: "Curtained privacy pods in the mixed dorm", icon: Blinds },
           { text: "Four-bed dorms with male and female options", icon: Bed },
           { text: "A/C and heat, secure lockers, power sockets, and WiFi", icon: Snowflake },
-          { text: "All rooms include breakfast every morning", icon: Coffee },
+          { text: "All rooms include breakfast every morning (excl. off-season)", icon: Coffee },
         ]}
       >
         <div className="grid gap-4 md:grid-cols-2">

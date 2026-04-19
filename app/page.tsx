@@ -557,7 +557,7 @@ export default function Home() {
             >
               {/* Animated Sheen Effect */}
               <div className="absolute inset-0 z-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 group-hover:translate-x-[100%]" />
-              
+
               <span className="relative z-10 transition-colors duration-300 group-hover:text-emerald-50">Explore Rooms</span>
               <div className="relative z-10 flex size-7 items-center justify-center rounded-full bg-white/15 text-white transition-all duration-300 group-hover:bg-emerald-500 group-hover:scale-110">
                 <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
@@ -646,40 +646,42 @@ export default function Home() {
                 title="Everything you need for a comfortable stay."
                 description="No padded feature list, just the things that make the stay smoother."
               />
-              <Link
-                href="/rooms"
-                className="group flex items-center gap-2 text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors"
-              >
-                <span>View Full Amenities</span>
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-              </Link>
             </div>
           </Reveal>
 
           <Reveal delay={100}>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <SwipableRow 
+              itemCount={freeServices.length}
+              className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+            >
               {(freeServices as any[]).map((service, idx) => {
                 const Icon = getServiceIcon(service.icon);
                 return (
                   <div
                     key={idx}
-                    className="group flex gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
+                    className="min-w-[85%] snap-center sm:min-w-0 h-full"
                   >
-                    <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-slate-50 text-slate-600 shadow-sm ring-1 ring-slate-900/5 transition-all duration-300 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:ring-emerald-500/20">
-                      <Icon className="size-5" strokeWidth={1.5} />
-                    </div>
-                    <div className="space-y-1.5 pt-0.5">
-                      <h4 className="text-[15px] font-bold tracking-tight text-slate-950">
-                        {service.title}
-                      </h4>
-                      <p className="text-xs leading-relaxed text-slate-500 line-clamp-2 transition-colors group-hover:text-slate-600">
-                        {service.description}
-                      </p>
+                    <div
+                      className="group flex h-full gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
+                    >
+                      <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-slate-50 text-slate-600 shadow-sm ring-1 ring-slate-900/5 transition-all duration-300 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:ring-emerald-500/20">
+                        <Icon className="size-5" strokeWidth={1.5} />
+                      </div>
+                      <div className="space-y-1.5 pt-0.5">
+                        <h4 className="text-[15px] font-bold tracking-tight text-slate-950">
+                          {service.title}
+                        </h4>
+                        <p className="text-xs leading-relaxed text-slate-500 line-clamp-2 transition-colors group-hover:text-slate-600">
+                          {service.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 );
               })}
-            </div>
+              {/* Trailing Spacer for mobile snapping */}
+              <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
+            </SwipableRow>
           </Reveal>
         </div>
       </section>
@@ -750,8 +752,8 @@ export default function Home() {
           {/* --- DISCOVER SUBSECTION --- */}
           <div className="relative pt-12 sm:pt-16">
             {/* Ghost Background Label */}
-            <div className="absolute left-0 top-0 z-0 select-none opacity-[0.07] sm:-left-1">
-              <span className="font-heading text-[56px] leading-none tracking-tighter text-slate-950 sm:text-[100px]">
+            <div className="absolute left-0 top-3 z-0 select-none opacity-[0.07] sm:top-4">
+              <span className="font-heading text-[44px] leading-none tracking-tighter text-slate-950 sm:text-[64px]">
                 DISCOVER
               </span>
             </div>
@@ -876,8 +878,8 @@ export default function Home() {
           {/* --- CONNECT SUBSECTION --- */}
           <div className="relative pt-12 sm:pt-16 mt-8 sm:mt-12">
             {/* Ghost Background Label */}
-            <div className="absolute left-0 top-0 z-0 select-none opacity-[0.07] sm:-left-1">
-              <span className="font-heading text-[56px] leading-none tracking-tighter text-slate-950 sm:text-[100px]">
+            <div className="absolute left-0 top-3 z-0 select-none opacity-[0.07] sm:top-4">
+              <span className="font-heading text-[44px] leading-none tracking-tighter text-slate-950 sm:text-[64px]">
                 CONNECT
               </span>
             </div>
