@@ -79,6 +79,13 @@ If the CMS is unavailable, the site's data is stored in **JSON files** within th
 | **`things-to-do.json`** | Top local attractions showcased on the site. |
 
 **Important:** If you change the **WhatsApp number**, update **`phoneDisplay`**, **`phoneRaw`**, and **`whatsappUrl`** together. The booking buttons use `whatsappUrl` from this file.
+
+### 📝 Special Case: Testimonials (Split-Page Logic)
+The site's testimonials are currently split between the **Homepage** and the **Rooms Page** to ensure variety:
+- **Homepage:** Displays the **first 5** items from `testimonials.json`.
+- **Rooms Page:** Displays the **next 5** items (positions 6 through 10).
+
+When you receive new five-star reviews, it is best to add them to the **top** of the list so they appear immediately on the homepage.
 ---
 
 ## 📸 Managing Photos and Videos

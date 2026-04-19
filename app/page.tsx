@@ -925,7 +925,7 @@ export default function Home() {
         <div className="shell-container flex flex-col gap-10 lg:flex-row lg:items-start relative">
           {/* Left Column: Testimonials */}
           <Reveal delay={0} className="lg:w-[40%] flex flex-col lg:sticky lg:top-32">
-            <TestimonialCarousel testimonials={testimonials} className="w-full" />
+            <TestimonialCarousel testimonials={testimonials.slice(0, 5)} className="w-full" />
           </Reveal>
 
           {/* Right Column: Vibe Content */}
