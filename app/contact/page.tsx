@@ -56,10 +56,10 @@ export default function ContactPage() {
         <div className="grid gap-4">
           <Panel className="p-6 sm:p-7">
             <SectionLabel variant="emerald" className="mb-4">Best Booking Route</SectionLabel>
-            <h2 className="mt-4 font-heading text-4xl leading-none tracking-[-0.05em] text-slate-950">
+            <h2 className="mt-4 heading-card text-[var(--text-heading)]">
               Message Scodrinon on WhatsApp first.
             </h2>
-            <p className="mt-4 max-w-[44ch] text-base leading-8 text-slate-600">
+            <p className="mt-4 max-w-[44ch] text-section-desc text-[var(--text-body-subtle)]">
               Send your dates, room preference, and arrival time. You can also
               ask about hikes, bikes, lake plans, or the easiest way to move on
               from Shkoder after your stay.
@@ -97,7 +97,7 @@ export default function ContactPage() {
             <Reveal>
               <Panel className="p-6 sm:p-8">
                 <SectionLabel variant="sun" className="mb-4">Contact Details</SectionLabel>
-                <div className="mt-6 space-y-4 text-base leading-8 text-slate-700">
+                <div className="mt-6 space-y-4 text-base leading-8 text-[var(--text-body-subtle)]">
                   <p className="flex items-start gap-3">
                     <MessageCircleMore
                       className="mt-1 size-5 shrink-0 text-emerald-700"

@@ -43,10 +43,10 @@ export function GalleryView() {
                 </div>
                 <div className="p-6 flex flex-col justify-center">
                   <SectionLabel variant="sun" className="mb-4">Highly Rated</SectionLabel>
-                  <h2 className="mt-4 font-heading text-3xl leading-none tracking-[-0.05em] text-slate-950">
+                  <h2 className="mt-4 heading-card text-[var(--text-heading)]">
                     What you see is exactly what you get.
                   </h2>
-                  <p className="mt-4 text-base leading-8 text-slate-600">
+                  <p className="mt-4 text-section-desc text-[var(--text-body-subtle)]">
                     We’re proud of our 9.5 rating, but our real pride is our space. No heavy filters or staged tricks. Just real, comfortable environments ready for your next adventure.
                   </p>
                 </div>

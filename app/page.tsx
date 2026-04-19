@@ -263,7 +263,7 @@ export default function Home() {
         className={cn(
           buttonVariants({ variant: "outline", size: "sm" }),
           "mt-4 w-fit gap-2 rounded-full transition-all duration-300",
-          variant === "light" 
+          variant === "light"
             ? "border-emerald-500/20 bg-emerald-50/50 text-emerald-700 hover:border-emerald-500 hover:bg-emerald-600 hover:text-white"
             : "border-white/20 bg-white/10 text-white backdrop-blur-sm hover:bg-white hover:text-emerald-900 shadow-lg"
         )}
@@ -304,7 +304,7 @@ export default function Home() {
                 <p className="text-xs font-medium uppercase tracking-[0.28em] text-white/90 antialiased">
                   {siteConfig.tagline}
                 </p>
-                <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl tracking-[-0.05em] leading-[0.95] text-white">
+                <h1 className="heading-hero text-white">
                   <AnimatedText
                     text={hero.title1}
                     wordClassName="text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]"
@@ -318,7 +318,7 @@ export default function Home() {
                     delayOffset={200}
                   />
                 </h1>
-                <p className="max-w-[50ch] text-lg leading-relaxed text-slate-300 antialiased [text-shadow:0_1px_4px_rgba(0,0,0,0.4)] sm:text-xl lg:text-2xl">
+                <p className="max-w-[50ch] text-hero-sub text-slate-300 antialiased [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]">
                   {hero.description}
                 </p>
               </div>
@@ -378,10 +378,10 @@ export default function Home() {
               <div className="h-full flex items-center justify-between glass-panel rounded-[28px] p-6 gap-6 w-full">
                 <div>
                   <SectionLabel variant="emerald" className="mb-4">Direct Booking</SectionLabel>
-                  <p className="mt-2 font-heading text-2xl leading-tight tracking-tight text-slate-950">
+                  <p className="mt-2 font-heading text-2xl leading-tight tracking-tight text-[var(--text-heading)]">
                     Message the hostel and book direct
                   </p>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  <p className="mt-2 text-card-body">
                     WhatsApp is the most direct way to confirm dates, room type, arrival time, and any trip planning.
                   </p>
                 </div>
@@ -441,11 +441,11 @@ export default function Home() {
                   {/* Mobile-only booking card */}
                   <div className="glass-panel rounded-[28px] p-5 lg:hidden">
                     <SectionLabel variant="emerald" className="mb-4">Direct Booking</SectionLabel>
-                    <p className="mt-2 font-heading text-lg leading-tight tracking-tight text-slate-950">
+                    <p className="mt-2 font-heading text-lg leading-tight tracking-tight text-[var(--text-heading)]">
                       <span className="sm:hidden">Message us to book direct</span>
                       <span className="hidden sm:inline">Message the hostel and book direct</span>
                     </p>
-                    <p className="mt-2 text-xs leading-relaxed text-slate-600">
+                    <p className="mt-2 text-xs leading-relaxed text-[var(--text-body-subtle)]">
                       <span className="sm:hidden">Just send us the dates, room type, arrival time.</span>
                       <span className="hidden sm:inline">WhatsApp is the most direct way to confirm dates, room type, arrival time, and any trip planning.</span>
                     </p>
@@ -536,10 +536,10 @@ export default function Home() {
                       <SectionLabel variant="emerald" className="mb-3">
                         {room.label}
                       </SectionLabel>
-                      <h3 className="mt-3 font-heading text-4xl leading-none tracking-[-0.05em] text-slate-950">
+                      <h3 className="mt-3 heading-card text-[var(--text-heading)]">
                         {room.name}
                       </h3>
-                      <p className="mt-4 text-base leading-8 text-slate-600">
+                      <p className="mt-4 text-section-desc">
                         {room.description}
                       </p>
                     </div>
@@ -567,7 +567,7 @@ export default function Home() {
                         {room.bullets.map((bullet) => (
                           <li
                             key={bullet}
-                            className="flex items-start gap-2.5 text-sm leading-6 text-slate-700"
+                            className="flex items-start gap-2.5 text-sm leading-6 text-[var(--text-body)]"
                           >
                             <Check
                               className="mt-1 size-4 shrink-0 text-emerald-600"
@@ -600,7 +600,7 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={100}>
-            <SwipableRow 
+            <SwipableRow
               itemCount={freeServices.length}
               className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
             >
@@ -618,7 +618,7 @@ export default function Home() {
                         <Icon className="size-5" strokeWidth={1.5} />
                       </div>
                       <div className="space-y-1.5 pt-0.5">
-                        <h4 className="text-[15px] font-bold tracking-tight text-slate-950">
+                        <h4 className="text-[15px] font-bold tracking-tight text-[var(--text-heading)]">
                           {service.title}
                         </h4>
                         <p className="text-xs leading-relaxed text-slate-500 line-clamp-2 transition-colors group-hover:text-slate-600">
@@ -643,7 +643,7 @@ export default function Home() {
             <SectionHeading
               eyebrow="Gallery"
               title="A real feel for the place before you arrive."
-              description="Every photo and video is from the hostel itself—so what you see here is exactly what you’ll walk into: bright, relaxed, and honest."
+              description="Every photo and video is from the hostel itself, so what you see here is exactly what you’ll walk into: bright, relaxed, and honest."
             />
             <Link
               href="/gallery"
@@ -733,7 +733,7 @@ export default function Home() {
                             </p>
                           </div>
                         </div>
-                        <div className="p-6 text-sm leading-relaxed text-slate-600 bg-white flex-1 flex flex-col">
+                        <div className="p-6 text-sm leading-relaxed text-[var(--text-body-subtle)] bg-white flex-1 flex flex-col">
                           <p className="flex-1">{formatText(pillar.description)}</p>
                           <PillarCta cta={(pillar as any).cta} />
                         </div>
@@ -811,10 +811,10 @@ export default function Home() {
                               />
                             </div>
                             <div className="space-y-3 p-6">
-                              <h3 className="font-heading text-3xl leading-none tracking-[-0.05em] text-slate-950">
+                              <h3 className="font-heading text-3xl leading-none tracking-[-0.05em] text-[var(--text-heading)]">
                                 {pillar.title}
                               </h3>
-                              <p className="text-base leading-8 text-slate-600">
+                              <p className="text-section-desc">
                                 {formatText(pillar.description)}
                               </p>
                               <PillarCta cta={(pillar as any).cta} />
@@ -854,10 +854,10 @@ export default function Home() {
                           />
                         </div>
                         <div className="p-5">
-                          <h3 className="font-heading text-2xl leading-none tracking-[-0.04em] text-slate-950">
+                          <h3 className="font-heading text-2xl leading-none tracking-[-0.04em] text-[var(--text-heading)]">
                             {event.title}
                           </h3>
-                          <p className="mt-3 text-sm leading-7 text-slate-600">
+                          <p className="mt-3 text-card-body">
                             {event.description}
                           </p>
                         </div>
@@ -906,10 +906,10 @@ export default function Home() {
                           <div className="float-left mb-3 mr-4 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
                             <Icon className="size-5" strokeWidth={1.8} />
                           </div>
-                          <h3 className="mb-2 font-heading text-xl leading-tight tracking-tight text-slate-900 pt-1">
+                          <h3 className="mb-2 heading-item text-[var(--text-heading)] pt-1">
                             {reason.title}
                           </h3>
-                          <p className="text-sm leading-relaxed text-slate-600">
+                          <p className="text-card-body">
                             {reason.description}
                           </p>
                         </div>

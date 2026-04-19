@@ -19,11 +19,11 @@ export function SectionLabel({
       className={cn(
         "uppercase tracking-[0.24em] antialiased",
         weight === "light" ? "text-xs font-normal" : "text-[10px] font-bold",
-        variant === "default" 
-          ? "text-slate-600" 
-          : variant === "sun" 
-            ? "text-amber-700" 
-            : "text-emerald-700",
+        variant === "default"
+          ? "text-[var(--text-muted)]"
+          : variant === "sun"
+            ? "text-amber-700"
+            : "text-[var(--brand-primary-dark)]",
         className
       )}
     >

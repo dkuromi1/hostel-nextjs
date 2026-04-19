@@ -57,6 +57,33 @@
   --font-sans: "Avenir Next", var(--font-nunito), "Segoe UI", sans-serif;
   --font-heading: "Avenir Next", var(--font-nunito), "Segoe UI", sans-serif;
   --font-mono: "SFMono-Regular", "SF Mono", "Menlo", monospace;
+
+  /* ─── Brand Colors ─────────────────────────────────────────────────────────
+     Change these to rebrand the entire site. All components reference these
+     variables rather than hardcoded Tailwind color names.
+  ─────────────────────────────────────────────────────────────────────────── */
+  --brand-primary: #059669;
+  /* emerald-600 */
+  --brand-primary-light: #d1fae5;
+  /* emerald-100 */
+  --brand-primary-dark: #047857;
+  /* emerald-700 */
+  --brand-accent: #f59e0b;
+  /* amber-500  */
+
+  /* ─── Semantic Text Colors ──────────────────────────────────────────────────
+     Use these instead of raw slate-* classes so a palette swap is one edit.
+  ─────────────────────────────────────────────────────────────────────────── */
+  --text-heading: #020617;
+  /* slate-950 — primary headings   */
+  --text-body: #334155;
+  /* slate-700 — stand-alone paragraphs (desktop) */
+  --text-body-subtle: #475569;
+  /* slate-600 — paragraph copy inside white cards */
+  --text-muted: #64748b;
+  /* slate-500 — secondary/captions */
+  --text-on-dark: #f1f5f9;
+  /* slate-100 — text on dark bgs   */
 }
 
 @utility bg-texture {
@@ -183,4 +210,49 @@
 
 @utility min-h-screen-safe {
   min-height: calc(100dvh - env(safe-area-inset-bottom, 0px));
+}
+
+/* ─── Typography Utilities ────────────────────────────────────────────────────
+   Named type scales — use these instead of repeating the same Tailwind
+   combination on every heading/paragraph across the codebase.
+─────────────────────────────────────────────────────────────────────────── */
+
+/** Full-screen immersive hero h1 (homepage) */
+@utility heading-hero {
+  @apply font-heading text-4xl sm:text-6xl lg:text-7xl tracking-[-0.05em] leading-[0.95];
+}
+
+/** Inner-page hero h1 (Rooms, Experiences, Contact) */
+@utility heading-page {
+  @apply font-heading text-5xl leading-none tracking-[-0.075em] md:text-7xl;
+}
+
+/** Section-level title h2 (SectionHeading, CtaStrip) */
+@utility heading-section {
+  @apply font-heading text-4xl leading-none tracking-[-0.06em] md:text-6xl;
+}
+
+/** Card / panel headline h2 or h3 */
+@utility heading-card {
+  @apply font-heading text-4xl leading-none tracking-[-0.05em];
+}
+
+/** Feature / event item headline */
+@utility heading-item {
+  @apply font-heading text-xl leading-tight tracking-tight;
+}
+
+/** Large section description paragraph */
+@utility text-section-desc {
+  @apply text-base leading-8 md:text-lg text-[var(--text-body-subtle)];
+}
+
+/** Standard card / component body paragraph */
+@utility text-card-body {
+  @apply text-sm leading-relaxed text-[var(--text-body-subtle)];
+}
+
+/** Large hero sub-headline paragraph */
+@utility text-hero-sub {
+  @apply text-lg leading-relaxed sm:text-xl lg:text-2xl text-[var(--text-body)];
 }

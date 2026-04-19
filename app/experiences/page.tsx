@@ -100,10 +100,10 @@ export default function ExperiencesPage() {
                     <item.icon className="size-5" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h4 className="font-heading text-xl tracking-tight text-slate-900">
+                    <h4 className="heading-item text-[var(--text-heading)]">
                       {item.title}
                     </h4>
-                    <p className="mt-1.5 text-sm leading-relaxed text-slate-700">
+                    <p className="mt-2 text-card-body text-[var(--text-body)]">
                       {item.description}
                     </p>
                   </div>
@@ -119,51 +119,51 @@ export default function ExperiencesPage() {
             </div>
             <div className="grid grid-cols-2 gap-4 h-full">
 
-            {/* Left Column: Tall Featured Image */}
-            <Reveal className="row-span-2 h-full" delay={100}>
-              <div className="media-frame relative h-full min-h-[20rem] md:min-h-[36rem] overflow-hidden rounded-[2rem] shadow-xl shadow-slate-200/50">
-                <Image
-                  src="/images/hiking_3.jpg"
-                  alt="Hiking the Albanian Alps from Shkoder"
-                  fill
-                  priority
-                  fetchPriority="high"
-                  className="object-cover object-[30%_center] transition-transform duration-1000 hover:scale-105"
-                  sizes="(max-width: 1024px) 50vw, 30vw"
-                />
-              </div>
-            </Reveal>
+              {/* Left Column: Tall Featured Image */}
+              <Reveal className="row-span-2 h-full" delay={100}>
+                <div className="media-frame relative h-full min-h-[20rem] md:min-h-[36rem] overflow-hidden rounded-[2rem] shadow-xl shadow-slate-200/50">
+                  <Image
+                    src="/images/hiking_3.jpg"
+                    alt="Hiking the Albanian Alps from Shkoder"
+                    fill
+                    priority
+                    fetchPriority="high"
+                    className="object-cover object-[30%_center] transition-transform duration-1000 hover:scale-105"
+                    sizes="(max-width: 1024px) 50vw, 30vw"
+                  />
+                </div>
+              </Reveal>
 
-            {/* Right Column: Top Square Image */}
-            <Reveal delay={200}>
-              <div className="media-frame relative min-h-[10rem] md:min-h-[17.5rem] overflow-hidden rounded-[2rem] shadow-md">
-                <Image
-                  src="/images/hiking_4.webp"
-                  alt="Mountain views in Northern Albania"
-                  fill
-                  className="object-cover transition-transform duration-1000 hover:scale-105"
-                  sizes="(max-width: 1024px) 50vw, 20vw"
-                />
-              </div>
-            </Reveal>
+              {/* Right Column: Top Square Image */}
+              <Reveal delay={200}>
+                <div className="media-frame relative min-h-[10rem] md:min-h-[17.5rem] overflow-hidden rounded-[2rem] shadow-md">
+                  <Image
+                    src="/images/hiking_4.webp"
+                    alt="Mountain views in Northern Albania"
+                    fill
+                    className="object-cover transition-transform duration-1000 hover:scale-105"
+                    sizes="(max-width: 1024px) 50vw, 20vw"
+                  />
+                </div>
+              </Reveal>
 
-            {/* Right Column: Bottom Square Image */}
-            <Reveal delay={300}>
-              <div className="media-frame relative min-h-[10rem] md:min-h-[17.5rem] overflow-hidden rounded-[2rem] shadow-md">
-                <Image
-                  src="/images/hiking_1.jpg"
-                  alt="Exploring Lake Shkoder and the rivers"
-                  fill
-                  className="object-cover transition-transform duration-1000 hover:scale-105"
-                  sizes="(max-width: 1024px) 50vw, 20vw"
-                />
-              </div>
-            </Reveal>
+              {/* Right Column: Bottom Square Image */}
+              <Reveal delay={300}>
+                <div className="media-frame relative min-h-[10rem] md:min-h-[17.5rem] overflow-hidden rounded-[2rem] shadow-md">
+                  <Image
+                    src="/images/hiking_1.jpg"
+                    alt="Exploring Lake Shkoder and the rivers"
+                    fill
+                    className="object-cover transition-transform duration-1000 hover:scale-105"
+                    sizes="(max-width: 1024px) 50vw, 20vw"
+                  />
+                </div>
+              </Reveal>
 
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
       {/* Things To Do Section */}
       <section id="things-to-do" className="py-8 sm:py-16">
@@ -225,8 +225,8 @@ export default function ExperiencesPage() {
                             item.title === "Theth & Valbona Treks"
                               ? THETH_VALBONA_MAP_QUERY
                               : item.title === "Shala River Day Trip"
-                              ? SHALA_RIVER_MAP_QUERY
-                              : item.title
+                                ? SHALA_RIVER_MAP_QUERY
+                                : item.title
                           )}#map`}
                           className="group flex w-fit items-center gap-1.5 rounded-full border border-sky-200 bg-white px-3 py-1.5 text-sky-700 shadow-sm ring-1 ring-sky-500/5 transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-500/20 hover:bg-sky-600 hover:text-white hover:shadow-md"
                         >
@@ -251,10 +251,10 @@ export default function ExperiencesPage() {
                           </a>
                         )}
                       </div>
-                      <h3 className="mb-2 font-heading text-xl leading-tight tracking-tight text-slate-900">
+                      <h3 className="mb-2 heading-item text-[var(--text-heading)]">
                         {item.title}
                       </h3>
-                      <p className="text-sm leading-relaxed text-slate-600">
+                      <p className="text-card-body text-[var(--text-body-subtle)]">
                         {item.description}
                       </p>
                     </div>
@@ -282,70 +282,70 @@ export default function ExperiencesPage() {
           </Reveal>
 
           <Reveal delay={100}>
-            <SwipableRow 
+            <SwipableRow
               itemCount={3}
               className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-            {[
-              {
-                title: "The Drin River Escape",
-                description: "Just outside the city, the Drin river offers a cool, scenic contrast to the Alps. We organize regular group swimming trips to our favorite spots along the water for a perfect, sun-drenched afternoon.",
-                icon: Waves,
-                image: "/images/drin_swimming_trip2.jpeg",
-                focus: "50% 40%",
-              },
-              {
-                title: "Spontaneous Socials",
-                description: "Whether it’s rooftop raki or an informal food crawl, we prioritize warm, unscripted moments that make it easy for solo travelers to join. It’s social, but never forced.",
-                icon: Sparkles,
-                image: "/images/rooftop_social_7.webp",
-                focus: "50% 40%",
-              },
-              {
-                title: "Bicycle Capital Access",
-                description: "Shkodër is best explored on two wheels. Grab a rental from across the street and navigate the flat streets, historic center, and scenic lake paths exactly how the locals do.",
-                icon: Bike,
-                image: "/images/biking_in_shkodra.jpeg",
-                focus: "50% 40%",
-              },
-            ].map((item, index) => (
-              <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full">
-                <Panel
-                  className="group relative flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
-                >
-                  {/* Card Image Header */}
-                  <div className="relative h-56 w-full overflow-hidden bg-slate-100">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      style={{ objectPosition: item.focus || "center" }}
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  </div>
-
-                  {/* Card Content Area */}
-                  <div className="flex flex-1 flex-col px-8 pb-8">
-                    {/* Floating Icon Box (Overlaps the image and white background) */}
-                    <div className="relative -mt-6 mb-6 flex size-12 items-center justify-center rounded-2xl bg-white text-slate-600 shadow-lg shadow-slate-200/50 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-50 group-hover:text-emerald-600">
-                      <item.icon className="size-5" strokeWidth={1.5} />
+              {[
+                {
+                  title: "The Drin River Escape",
+                  description: "Just outside the city, the Drin river offers a cool, scenic contrast to the Alps. We organize regular group swimming trips to our favorite spots along the water for a perfect, sun-drenched afternoon.",
+                  icon: Waves,
+                  image: "/images/drin_swimming_trip2.jpeg",
+                  focus: "50% 40%",
+                },
+                {
+                  title: "Spontaneous Socials",
+                  description: "Whether it’s rooftop raki or an informal food crawl, we prioritize warm, unscripted moments that make it easy for solo travelers to join. It’s social, but never forced.",
+                  icon: Sparkles,
+                  image: "/images/rooftop_social_7.webp",
+                  focus: "50% 40%",
+                },
+                {
+                  title: "Bicycle Capital Access",
+                  description: "Shkodër is best explored on two wheels. Grab a rental from across the street and navigate the flat streets, historic center, and scenic lake paths exactly how the locals do.",
+                  icon: Bike,
+                  image: "/images/biking_in_shkodra.jpeg",
+                  focus: "50% 40%",
+                },
+              ].map((item, index) => (
+                <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full">
+                  <Panel
+                    className="group relative flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
+                  >
+                    {/* Card Image Header */}
+                    <div className="relative h-56 w-full overflow-hidden bg-slate-100">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        style={{ objectPosition: item.focus || "center" }}
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
                     </div>
 
-                    <h3 className="mb-3 font-heading text-xl leading-tight tracking-tight text-slate-900">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-slate-600">
-                      {item.description}
-                    </p>
-                  </div>
-                </Panel>
-              </div>
-          ))}
-            {/* Trailing Spacer for mobile snapping */}
-            <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
-          </SwipableRow>
-        </Reveal>
+                    {/* Card Content Area */}
+                    <div className="flex flex-1 flex-col px-8 pb-8">
+                      {/* Floating Icon Box (Overlaps the image and white background) */}
+                      <div className="relative -mt-6 mb-6 flex size-12 items-center justify-center rounded-2xl bg-white text-slate-600 shadow-lg shadow-slate-200/50 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-50 group-hover:text-emerald-600">
+                        <item.icon className="size-5" strokeWidth={1.5} />
+                      </div>
+
+                      <h3 className="mb-3 heading-item text-[var(--text-heading)]">
+                        {item.title}
+                      </h3>
+                      <p className="text-card-body text-[var(--text-body-subtle)]">
+                        {item.description}
+                      </p>
+                    </div>
+                  </Panel>
+                </div>
+              ))}
+              {/* Trailing Spacer for mobile snapping */}
+              <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
+            </SwipableRow>
+          </Reveal>
         </div>
       </section>
 

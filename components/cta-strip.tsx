@@ -28,10 +28,10 @@ export function CtaStrip({
         <div className="space-y-6 px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
           <Eyebrow variant="footer">{eyebrow}</Eyebrow>
           <div className="space-y-3">
-            <h2 className="font-heading text-4xl leading-none tracking-[-0.06em] text-white md:text-5xl">
+            <h2 className="heading-section text-white">
               {title}
             </h2>
-            <p className="max-w-[58ch] text-base leading-8 text-slate-300 md:text-lg">
+            <p className="max-w-[58ch] text-section-desc text-[var(--text-on-dark)]/90">
               {description}
             </p>
           </div>

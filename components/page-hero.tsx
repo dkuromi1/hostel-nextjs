@@ -33,10 +33,10 @@ export function PageHero({
         <Reveal className="relative z-10 flex flex-col items-start gap-8">
           <Eyebrow>{eyebrow}</Eyebrow>
           <div className="flex flex-col gap-5">
-            <h1 className="font-heading text-5xl leading-none tracking-[-0.075em] text-foreground md:text-7xl">
+            <h1 className="heading-page text-foreground">
               {title}
             </h1>
-            <p className="max-w-[64ch] text-lg leading-8 text-slate-700">
+            <p className="max-w-[64ch] text-section-desc">
               {description}
             </p>
           </div>

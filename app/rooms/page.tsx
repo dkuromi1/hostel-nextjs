@@ -114,7 +114,7 @@ export default function RoomsPage() {
           </div>
           <div className="glass-panel rounded-[28px] p-5">
             <SectionLabel variant="emerald" className="mb-4">Beds From <strong>{roomTypes[0].price} / Night</strong></SectionLabel>
-            <p className="mt-3 font-heading text-2xl leading-none tracking-[-0.04em] text-slate-950">
+            <p className="mt-3 font-heading text-2xl leading-none tracking-[-0.04em] text-[var(--text-heading)]">
               Hotel privacy at a hostel price. It's why so many guests book two nights and end up extending.
             </p>
           </div>
@@ -163,10 +163,10 @@ export default function RoomsPage() {
                           <SectionLabel variant="emerald" className="mb-3">
                             {room.label}
                           </SectionLabel>
-                          <h2 className="mt-3 font-heading text-4xl leading-none tracking-[-0.05em] text-slate-950">
+                          <h2 className="mt-3 heading-card text-[var(--text-heading)]">
                             {room.name}
                           </h2>
-                          <p className="mt-4 text-lg leading-8 text-slate-600">
+                          <p className="mt-4 text-section-desc text-[var(--text-body-subtle)]">
                             {room.description}
                           </p>
                         </div>
@@ -179,7 +179,7 @@ export default function RoomsPage() {
                                 key={idx}
                                 className="flex w-fit items-center gap-2 rounded-xl border border-slate-100 bg-slate-50/50 px-3 py-2 text-slate-600 transition-all duration-300 hover:border-emerald-500/10 hover:shadow-sm hover:bg-white"
                               >
-                                <AmenityIcon className="size-3.5 shrink-0 text-[--brand-primary]" />
+                                <AmenityIcon className="size-3.5 shrink-0 text-[var(--brand-primary)]" />
                                 <span className="whitespace-nowrap text-[11px] font-medium tracking-tight">
                                   {amenity.label}
                                 </span>
@@ -194,7 +194,7 @@ export default function RoomsPage() {
                             {room.bullets.map((bullet) => (
                               <li
                                 key={bullet}
-                                className="flex items-start gap-2.5 text-sm leading-6 text-slate-600"
+                                className="flex items-start gap-2.5 text-sm leading-6 text-[var(--text-body-subtle)]"
                               >
                                 <Check
                                   className="mt-1 size-4 shrink-0 text-emerald-600"
@@ -237,10 +237,10 @@ export default function RoomsPage() {
                         <Icon className="size-5" strokeWidth={1.5} />
                       </div>
                       <div className="space-y-1">
-                        <h4 className="text-sm font-bold tracking-tight text-slate-950">
+                        <h4 className="text-sm font-bold tracking-tight text-[var(--text-heading)]">
                           {service.title}
                         </h4>
-                        <p className="text-[13px] leading-relaxed text-slate-600">
+                        <p className="text-[13px] leading-relaxed text-[var(--text-body-subtle)]">
                           {service.description}
                         </p>
                       </div>
@@ -254,7 +254,7 @@ export default function RoomsPage() {
           <Reveal delay={120}>
             <Panel className="p-6 sm:p-8">
               <SectionLabel className="mb-6">Extra Help When You Want It</SectionLabel>
-              <h2 className="mt-4 font-heading text-4xl leading-none tracking-[-0.05em] text-slate-950">
+              <h2 className="mt-4 heading-card text-[var(--text-heading)]">
                 Add bikes, tours, or laundry without overcomplicating your stay.
               </h2>
               <div className="mt-8 grid gap-4">
@@ -269,10 +269,10 @@ export default function RoomsPage() {
                         <Icon className="size-5" strokeWidth={1.5} />
                       </div>
                       <div className="space-y-1">
-                        <h4 className="text-sm font-bold tracking-tight text-slate-950">
+                        <h4 className="text-sm font-bold tracking-tight text-[var(--text-heading)]">
                           {service.title}
                         </h4>
-                        <p className="text-[13px] leading-relaxed text-slate-600">
+                        <p className="text-[13px] leading-relaxed text-[var(--text-body-subtle)]">
                           {service.description}
                         </p>
                       </div>
