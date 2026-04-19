@@ -11,23 +11,14 @@ import {
   MapPinned,
   Mountain,
   ShieldCheck,
-  Star,
-  Wifi,
-  Snowflake,
-  Lock,
-  LampDesk,
-  Coffee,
-  ShowerHead,
-  WashingMachine,
-  Castle,
-  BatteryCharging,
   Moon,
   Sparkles,
   MapPin,
   Compass,
-  Bus,
+  Star,
 } from "lucide-react";
 
+import { resolveIcon } from "@/lib/icon-registry";
 import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
 import { BookingActions } from "@/components/booking-actions";
 import { CtaStrip } from "@/components/cta-strip";
@@ -49,7 +40,6 @@ import { HeroBookingBar } from "@/components/hero-booking-bar";
 import { GalleryMasonry } from "@/components/gallery-masonry";
 import {
   buildFaqSchema,
-
   buildHostelSchema,
   buildMetadata,
 } from "@/lib/metadata";
@@ -79,57 +69,9 @@ export const metadata = buildMetadata({
   image: "/logo.webp",
 });
 
-const roomIcons = [Snowflake, Lock, LampDesk, BatteryCharging];
 const reasonIcons = [Moon, Sparkles, MapPin, Compass];
 
-function getQuickFactIcon(fact: string) {
-  const normalizedFact = fact.toLowerCase();
 
-  if (
-    normalizedFact.includes("privacy pod") ||
-    normalizedFact.includes("mixed dorm") ||
-    normalizedFact.includes("bedroom feel")
-  ) {
-    return BedDouble;
-  }
-
-  if (
-    normalizedFact.includes("4-bed") ||
-    normalizedFact.includes("male or female dorm")
-  ) {
-    return Luggage;
-  }
-
-  if (
-    normalizedFact.includes("safe") ||
-    normalizedFact.includes("sanctuary") ||
-    normalizedFact.includes("peaceful")
-  ) {
-    return ShieldCheck;
-  }
-
-  if (
-    normalizedFact.includes("breakfast") ||
-    normalizedFact.includes("wi-fi") ||
-    normalizedFact.includes("wifi") ||
-    normalizedFact.includes("luggage storage") ||
-    normalizedFact.includes("24h access")
-  ) {
-    return Croissant;
-  }
-
-  if (
-    normalizedFact.includes("adventure") ||
-    normalizedFact.includes("transportation") ||
-    normalizedFact.includes("tour") ||
-    normalizedFact.includes("laundry") ||
-    normalizedFact.includes("bike")
-  ) {
-    return Bike;
-  }
-
-  return Check;
-}
 
 function CompactGuestRatingsStrip() {
   return (
@@ -290,40 +232,10 @@ function GuestRatingsSection() {
 }
 
 export default function Home() {
-  const getRoomFeatures = (roomName: string) => {
-    if (roomName.includes("18-Bed")) {
-      return [
-        { icon: Snowflake, label: "A/C & Heat" },
-        { icon: Lock, label: "Secure Lockers" },
-        { icon: BatteryCharging, label: "2 Power Sockets" },
-        { icon: Wifi, label: "High-speed WiFi" },
-        { icon: LampDesk, label: "Reading Light" }
-      ];
-    }
-    return [
-      { icon: Snowflake, label: "A/C & Heat" },
-      { icon: Lock, label: "Secure Lockers" },
-      { icon: BatteryCharging, label: "Socket" },
-      { icon: Wifi, label: "High-speed WiFi" }
-    ];
-  };
 
-  const getServiceIcon = (iconName: string) => {
-    const icons: Record<string, any> = {
-      Coffee,
-      Mountain,
-      Award,
-      Luggage,
-      ShowerHead,
-      Wifi,
-      Sparkles,
-      Bus,
-      WashingMachine,
-      Bike,
-      Castle,
-    };
-    return icons[iconName] || Check;
-  };
+  const getServiceIcon = resolveIcon;
+
+
 
   const formatText = (text: string) => {
     return text.split(/(\[.*?\]\(.*?\))/g).map((part, i) => {
@@ -421,11 +333,11 @@ export default function Home() {
                 itemCount={quickFacts.length}
                 className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
               >
-                {quickFacts.map((fact, index) => {
-                  const Icon = getQuickFactIcon(fact);
+                {(quickFacts as any[]).map((fact, index) => {
+                  const Icon = resolveIcon(fact.icon);
                   return (
                     <div
-                      key={fact}
+                      key={index}
                       className="min-w-[85%] snap-center sm:min-w-0"
                     >
                       <div className="group relative overflow-hidden rounded-[24px] border border-white/18 bg-slate-950/42 p-5 backdrop-blur-[3px] transition-all duration-300 hover:border-white/24 hover:bg-slate-950/52">
@@ -433,7 +345,7 @@ export default function Home() {
                           <div className="float-left mb-1 mr-4 flex size-10 items-center justify-center rounded-xl bg-emerald-500/24 text-emerald-300">
                             <Icon className="size-5" strokeWidth={2} />
                           </div>
-                          {fact}
+                          {fact.text}
                         </div>
                       </div>
                     </div>
@@ -633,19 +545,20 @@ export default function Home() {
                     </div>
 
                     <div className="flex flex-wrap gap-2">
-                      {getRoomFeatures(room.name).map((feature, idx) => (
-                        <div
-                          key={idx}
-                          /* Added w-fit and adjusted padding/gap to make them tighter "pills" */
-                          className="flex w-fit items-center gap-2 rounded-xl border border-slate-100 bg-slate-50/50 px-3 py-2 text-slate-600"
-                        >
-                          <feature.icon className="size-3.5 shrink-0 text-emerald-600" />
-                          {/* Added whitespace-nowrap to prevent labels like "High-speed WiFi" from breaking internally */}
-                          <span className="whitespace-nowrap text-[11px] font-medium tracking-tight">
-                            {feature.label}
-                          </span>
-                        </div>
-                      ))}
+                      {(room.amenities as any[]).map((amenity, idx) => {
+                        const AmenityIcon = resolveIcon(amenity.icon);
+                        return (
+                          <div
+                            key={idx}
+                            className="flex w-fit items-center gap-2 rounded-xl border border-slate-100 bg-slate-50/50 px-3 py-2 text-slate-600"
+                          >
+                            <AmenityIcon className="size-3.5 shrink-0 text-emerald-600" />
+                            <span className="whitespace-nowrap text-[11px] font-medium tracking-tight">
+                              {amenity.label}
+                            </span>
+                          </div>
+                        );
+                      })}
                     </div>
 
                     <div className="space-y-3">

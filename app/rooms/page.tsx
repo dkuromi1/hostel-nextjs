@@ -1,24 +1,13 @@
 import Image from "next/image";
 import {
-  Snowflake,
-  BatteryCharging,
-  LampDesk,
-  Lock,
-  Wifi,
-  ShowerHead,
-  Check,
   Blinds,
   Bed,
+  Check,
+  Snowflake,
   Coffee,
-  Mountain,
-  Award,
-  Luggage,
-  Sparkles,
-  Bus,
-  WashingMachine,
-  Bike,
-  Castle,
 } from "lucide-react";
+
+import { resolveIcon } from "@/lib/icon-registry";
 
 import { CtaStrip } from "@/components/cta-strip";
 import { PageHero } from "@/components/page-hero";
@@ -55,39 +44,6 @@ export const metadata = buildMetadata({
 });
 
 export default function RoomsPage() {
-  const getRoomFeatures = (roomName: string) => {
-    if (roomName.includes("18-Bed")) {
-      return [
-        { icon: Snowflake, label: "A/C & Heat" },
-        { icon: Lock, label: "Secure Lockers" },
-        { icon: BatteryCharging, label: "2 Power Sockets" },
-        { icon: Wifi, label: "High-speed WiFi" },
-        { icon: LampDesk, label: "Reading Light" }
-      ];
-    }
-    return [
-      { icon: Snowflake, label: "A/C & Heat" },
-      { icon: Lock, label: "Secure Lockers" },
-      { icon: BatteryCharging, label: "Socket" },
-      { icon: Wifi, label: "High-speed WiFi" }
-    ];
-  };
-
-  const getServiceIcon = (iconName: string) => {
-    const icons: Record<string, any> = {
-      Coffee,
-      Mountain,
-      Castle,
-      Luggage,
-      ShowerHead,
-      Wifi,
-      Sparkles,
-      Bus,
-      WashingMachine,
-      Bike,
-    };
-    return icons[iconName] || Check;
-  };
 
   const formatServiceText = (text: string) => {
     return text.split(/(\*\*.*?\*\*|~~.*?~~)/g).map((part, i) => {
@@ -215,19 +171,21 @@ export default function RoomsPage() {
                           </p>
                         </div>
 
-                        <div className="flex flex-wrap gap-2">
-                          {getRoomFeatures(room.name).map((feature, idx) => (
-                            <div
-                              key={idx}
-                              className="group flex w-fit items-center gap-2 rounded-xl border border-slate-100 bg-slate-50/50 px-3 py-2 text-slate-600 transition-all duration-300 hover:border-emerald-500/10 hover:shadow-sm hover:bg-white"
-                            >
-                              <feature.icon className="size-3.5 shrink-0 text-emerald-600 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110" />
-                              {/* Added whitespace-nowrap to prevent labels like "High-speed WiFi" from breaking internally */}
-                              <span className="whitespace-nowrap text-[11px] font-medium tracking-tight">
-                                {feature.label}
-                              </span>
-                            </div>
-                          ))}
+                        <div className="flex flex-wrap gap-2 mt-4">
+                          {(room.amenities as any[]).map((amenity, idx) => {
+                            const AmenityIcon = resolveIcon(amenity.icon);
+                            return (
+                              <div
+                                key={idx}
+                                className="flex w-fit items-center gap-2 rounded-xl border border-slate-100 bg-slate-50/50 px-3 py-2 text-slate-600 transition-all duration-300 hover:border-emerald-500/10 hover:shadow-sm hover:bg-white"
+                              >
+                                <AmenityIcon className="size-3.5 shrink-0 text-[--brand-primary]" />
+                                <span className="whitespace-nowrap text-[11px] font-medium tracking-tight">
+                                  {amenity.label}
+                                </span>
+                              </div>
+                            );
+                          })}
                         </div>
 
                         <div className="space-y-3">
@@ -269,7 +227,7 @@ export default function RoomsPage() {
               />
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 {(freeServices as any[]).map((service, idx) => {
-                  const Icon = getServiceIcon(service.icon);
+                  const Icon = resolveIcon(service.icon);
                   return (
                     <div
                       key={idx}
@@ -301,7 +259,7 @@ export default function RoomsPage() {
               </h2>
               <div className="mt-8 grid gap-4">
                 {(paidServices as any[]).map((service, idx) => {
-                  const Icon = getServiceIcon(service.icon);
+                  const Icon = resolveIcon(service.icon);
                   return (
                     <div
                       key={idx}

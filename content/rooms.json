@@ -25,6 +25,13 @@
           "src": "/images/secure_dorm_lockers.webp",
           "alt": "Secure lockers in the dorm"
         }
+      ],
+      "amenities": [
+        { "icon": "Snowflake",      "label": "A/C & Heat" },
+        { "icon": "Lock",           "label": "Secure Lockers" },
+        { "icon": "BatteryCharging","label": "2 Power Sockets" },
+        { "icon": "Wifi",           "label": "High-speed WiFi" },
+        { "icon": "LampDesk",       "label": "Reading Light" }
       ]
     },
     {
@@ -60,6 +67,12 @@
           "src": "/images/rooms_5.webp",
           "alt": "Alternative angle of the 4-bed dorm"
         }
+      ],
+      "amenities": [
+        { "icon": "Snowflake",      "label": "A/C & Heat" },
+        { "icon": "Lock",           "label": "Secure Lockers" },
+        { "icon": "BatteryCharging","label": "Socket" },
+        { "icon": "Wifi",           "label": "High-speed WiFi" }
       ]
     }
   ]
