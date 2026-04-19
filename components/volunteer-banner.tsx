@@ -4,13 +4,13 @@ export function VolunteerBanner() {
   if (!siteConfig.volunteersNeeded) return null;
 
   return (
-    <div className="bg-indigo-600 px-4 py-1 text-center text-[10px] sm:text-xs font-bold uppercase tracking-wider text-white">
+    <div className="bg-[#1e1b4b] border-b border-indigo-400/10 px-4 py-1.5 text-center text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em] text-indigo-50/90 shadow-sm">
       🙌 We&apos;re looking for volunteers!{" "}
       <a
         href={`https://wa.me/${siteConfig.phoneRaw}`}
         target="_blank"
         rel="noreferrer"
-        className="text-white underline underline-offset-4 hover:text-indigo-100 transition-colors"
+        className="text-white underline decoration-indigo-400/30 underline-offset-4 hover:text-indigo-200 hover:decoration-indigo-400 transition-all duration-300"
       >
         WhatsApp us to apply →
       </a>

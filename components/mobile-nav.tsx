@@ -140,7 +140,7 @@ export function MobileNav() {
                     onClick={() => setOpen(false)}
                     className={cn(
                       buttonVariants({ variant: "outline", size: "lg" }),
-                      "rounded-2xl border-slate-200 bg-transparent text-blue-900 transition-colors hover:bg-slate-50"
+                      "rounded-2xl border-slate-200 bg-transparent text-slate-900 transition-colors hover:bg-slate-50"
                     )}
                   >
                     Booking.com
@@ -152,7 +152,7 @@ export function MobileNav() {
                     onClick={() => setOpen(false)}
                     className={cn(
                       buttonVariants({ variant: "outline", size: "lg" }),
-                      "rounded-2xl border-slate-200 bg-transparent text-orange-900 transition-colors hover:bg-slate-50"
+                      "rounded-2xl border-slate-200 bg-transparent text-slate-900 transition-colors hover:bg-slate-50"
                     )}
                   >
                     Hostelworld
