@@ -263,6 +263,7 @@ export default function RoomsPage() {
             <Panel className="p-6 sm:p-8">
               <SectionHeading
                 eyebrow="Included In Your Stay"
+                variant="simple"
                 title="Everything you need for a comfortable stay."
                 description="The site stays honest about what you get. No padded feature list, just the things that make the stay smoother."
               />
@@ -294,7 +295,7 @@ export default function RoomsPage() {
 
           <Reveal delay={120}>
             <Panel className="p-6 sm:p-8">
-              <Eyebrow variant="footer" className="mb-6">Extra Help When You Want It</Eyebrow>
+              <SectionLabel className="mb-6">Extra Help When You Want It</SectionLabel>
               <h2 className="mt-4 font-heading text-4xl leading-none tracking-[-0.05em] text-slate-950">
                 Add bikes, tours, or laundry without overcomplicating your stay.
               </h2>

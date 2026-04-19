@@ -7,7 +7,8 @@
       "regularPrice": "€40",
       "priceNote": "Exclusive Guest Rate",
       "image": "/images/drin_swimming_trip3.webp",
-      "alt": "Crystal clear water at the Shala River in Northern Albania"
+      "alt": "Crystal clear water at the Shala River in Northern Albania",
+      "showDirections": false
     },
     {
       "title": "Theth & Valbona Treks",
@@ -15,7 +16,8 @@
       "price": "€12",
       "priceNote": "Transport & Storage",
       "image": "/images/komani_lake.jpg",
-      "alt": "Hiking in the Albanian Alps near Theth and Valbona"
+      "alt": "Hiking in the Albanian Alps near Theth and Valbona",
+      "showDirections": false
     },
     {
       "title": "Rozafa Castle",
@@ -23,31 +25,36 @@
       "price": "Free",
       "priceNote": "Included in price",
       "image": "/images/rosafa_castle.webp",
-      "alt": "View from Rozafa Castle in Shkoder"
+      "alt": "View from Rozafa Castle in Shkoder",
+      "showDirections": true
     },
     {
       "title": "The Pedestrian Street (Kolë Idromeno)",
       "description": "The lively Venetian-style pedestrian street starting right outside the hostel! Lined with independent cafes, shops, and restaurants, it's perfect for evening promenades.",
       "image": "/images/shkoder_pedestrian_street_3.webp",
-      "alt": "Walking down the Pedonale in Shkoder"
+      "alt": "Walking down the Pedonale in Shkoder",
+      "showDirections": true
     },
     {
       "title": "Lake Shkodër & Shiroka Village",
       "description": "The largest lake in the Balkans is a breathtaking natural wonder where dramatic karst mountains meet fields of floating water lilies. It's also a world-renowned sanctuary for over 280 bird species.",
       "image": "/images/lake_shkoder_shiroka_2.webp",
-      "alt": "Biking along Lake Shkoder towards Shiroka"
+      "alt": "Biking along Lake Shkoder towards Shiroka",
+      "showDirections": true
     },
     {
       "title": "Mesi Bridge (The Old Bridge)",
       "description": "A stunning, curved Ottoman bridge resting over the shallow, opal waters of the Kir River, built in 1768 to connect the city with the northern highlands. Also a great spot for a swim!",
       "image": "/images/mesi_bridge.jpg",
-      "alt": "The historic Ottoman Mesi Bridge in Shkoder"
+      "alt": "The historic Ottoman Mesi Bridge in Shkoder",
+      "showDirections": true
     },
     {
       "title": "Marubi National Photography Museum",
       "description": "A quiet, modern exhibition featuring over 150 years of Albanian history through the incredibly detailed lenses of the Marubi family. Just a few doors down from the hostel!",
       "image": "/images/marubi_museum.jpg",
-      "alt": "Inside the Marubi National Photography Museum"
+      "alt": "Inside the Marubi National Photography Museum",
+      "showDirections": true
     }
   ]
 }

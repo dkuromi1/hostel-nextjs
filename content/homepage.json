@@ -23,7 +23,7 @@
   "freeServices": [
     {
       "title": "Social Breakfast",
-      "description": "Fresh locally sourced breakfast from 8:00 to 9:30am (excl. off season)",
+      "description": "Fresh locally sourced breakfast from 8 to 9:30am (excl. off season). Complimentary morning espresso year round",
       "icon": "Coffee"
     },
     {
@@ -43,12 +43,12 @@
     },
     {
       "title": "Modern Facilities",
-      "description": "Clean, modern bathrooms and high pressure showers",
+      "description": "Clean, modern bathrooms and hot, high pressure showers",
       "icon": "ShowerHead"
     },
     {
       "title": "High-Speed WiFi",
-      "description": "Fast and reliable WiFi in all rooms and social spaces",
+      "description": "High speed WiFi in all rooms and social spaces",
       "icon": "Wifi"
     },
     {

@@ -228,28 +228,28 @@ export default function ExperiencesPage() {
                               ? SHALA_RIVER_MAP_QUERY
                               : item.title
                           )}#map`}
-                          className="group flex w-fit items-center gap-1.5 rounded-full border border-sky-100 bg-sky-50 px-2.5 py-1 text-sky-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-200 hover:bg-sky-100 hover:shadow-sm"
+                          className="group flex w-fit items-center gap-1.5 rounded-full border border-sky-200 bg-white px-3 py-1.5 text-sky-700 shadow-sm ring-1 ring-sky-500/5 transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-500/20 hover:bg-sky-600 hover:text-white hover:shadow-md"
                         >
                           <MapPin className="size-3.5 transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110" strokeWidth={2} />
-                          <span className="text-[9px] font-bold uppercase tracking-widest whitespace-nowrap">
+                          <span className="text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">
                             View on Our Local Map
                           </span>
                         </Link>
-                        <a
-                          href={
-                            item.title === "Theth & Valbona Treks"
-                              ? THETH_SIDE_TRAILHEAD_GOOGLE_MAPS
-                              : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(item.title + ' Shkoder')}`
-                          }
-                          target="_blank"
-                          rel="noreferrer"
-                          className="group flex w-fit items-center gap-1.5 rounded-full border border-slate-200 bg-white px-2.5 py-1 text-slate-600 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50 hover:shadow-sm"
-                        >
-                          <Navigation className="size-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2.5} />
-                          <span className="text-[9px] font-bold uppercase tracking-widest whitespace-nowrap">
-                            Directions
-                          </span>
-                        </a>
+                        {item.showDirections !== false && (
+                          <a
+                            href={
+                              item.title === "Theth & Valbona Treks"
+                                ? THETH_SIDE_TRAILHEAD_GOOGLE_MAPS
+                                : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(item.title + ' Shkoder')}`
+                            }
+                            target="_blank"
+                            rel="noreferrer"
+                            className="group ml-auto flex size-8 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-400 transition-all duration-300 hover:border-sky-500/30 hover:bg-sky-50 hover:text-sky-600 hover:shadow-sm"
+                            title="Open in Google Maps"
+                          >
+                            <Navigation className="size-4" strokeWidth={2.5} />
+                          </a>
+                        )}
                       </div>
                       <h3 className="mb-2 font-heading text-xl leading-tight tracking-tight text-slate-900">
                         {item.title}
