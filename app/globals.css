@@ -91,8 +91,8 @@
 
     /* Multi-layered premium background: Noise -> Fade -> Glows -> Grid */
     background-image:
-      /* Subtle noise for texture and banding prevention */
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.35'/%3E%3C/svg%3E"),
+      /* Subtle noise: Simplified for mobile GPU precision (1 octave, 1:1 scale) */
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.25'/%3E%3C/svg%3E"),
       /* PERFORMANCE: Fade Overlay moved up to allow GPU to skip rendering glows/grid in the footer area */
       linear-gradient(to bottom, transparent 60%, var(--background) 100%),
       /* Green Glow (Top Left) */
@@ -105,7 +105,7 @@
       url("data:image/svg+xml,%3Csvg width='140' height='140' viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 140 0 L 0 0 0 140' fill='none' stroke='rgba(148, 163, 184, 0.08)' stroke-width='1'/%3E%3C/svg%3E");
     background-size: 140px 140px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 140px 140px;
     background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat;
-    background-blend-mode: soft-light, normal, normal, normal, normal, normal;
+    background-blend-mode: overlay, normal, normal, normal, normal, normal;
     opacity: 0.95;
     pointer-events: none;
   }
