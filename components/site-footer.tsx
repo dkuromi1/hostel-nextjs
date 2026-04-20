@@ -13,10 +13,10 @@ export function SiteFooter() {
           <p className="text-xs uppercase tracking-[0.28em] text-emerald-300/90">
             {siteConfig.tagline}
           </p>
-          <h2 className="font-heading text-4xl leading-none tracking-[-0.06em] text-white md:text-5xl">
+          <h2 className="heading-section text-white md:text-5xl">
             Stay central, sleep properly, and book fast.
           </h2>
-          <p className="max-w-[62ch] text-base leading-8 text-slate-300">
+          <p className="max-w-[62ch] text-body-lg text-slate-300">
             Scodrinon Hostel sits on Kolë Idromeno Street, right in the middle
             of Shkoder&apos;s cafe life, rich local culture, and gateway to adventure. Message on
             WhatsApp for the quickest direct booking response.

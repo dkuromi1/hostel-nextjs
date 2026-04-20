@@ -65,7 +65,7 @@ export async function ThethWeather({ variant = "default" }: { variant?: "default
         </p>
         <p className="mt-0.5 font-heading text-2xl leading-none tracking-tight text-slate-800">
           {Math.round(temperature_2m)}°C 
-          <span className="ml-2 text-sm font-medium text-slate-500" style={{ fontFamily: "var(--font-nunito), sans-serif"}}>
+          <span className="ml-2 font-sans text-sm font-medium text-slate-500">
             {details.label}
           </span>
         </p>

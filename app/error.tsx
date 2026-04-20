@@ -24,10 +24,10 @@ export default function Error({
         <p className="text-xs uppercase tracking-[0.28em] text-emerald-700">
           Something Interrupted The Page
         </p>
-        <h1 className="mt-4 font-heading text-4xl leading-none tracking-[-0.06em] text-slate-950">
+        <h1 className="mt-4 heading-state text-[var(--text-heading)]">
           The site hit an error before it finished loading.
         </h1>
-        <p className="mt-4 max-w-[58ch] text-base leading-8 text-slate-600">
+        <p className="mt-4 max-w-[58ch] text-body-lg">
           Try the page again. If it keeps happening, message Scodrinon directly
           on WhatsApp so you can still book without waiting on the website.
         </p>

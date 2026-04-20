@@ -811,7 +811,7 @@ export default function Home() {
                               />
                             </div>
                             <div className="space-y-3 p-6">
-                              <h3 className="font-heading text-3xl leading-none tracking-[-0.05em] text-[var(--text-heading)]">
+                              <h3 className="heading-feature text-[var(--text-heading)]">
                                 {pillar.title}
                               </h3>
                               <p className="text-section-desc">

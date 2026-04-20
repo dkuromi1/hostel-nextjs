@@ -10,10 +10,10 @@ export default function NotFound() {
         <p className="text-xs uppercase tracking-[0.28em] text-emerald-700">
           Page Not Found
         </p>
-        <h1 className="mt-4 font-heading text-4xl leading-none tracking-[-0.06em] text-slate-950">
+        <h1 className="mt-4 heading-state text-[var(--text-heading)]">
           That page is not part of the hostel map.
         </h1>
-        <p className="mt-4 max-w-[58ch] text-base leading-8 text-slate-600">
+        <p className="mt-4 max-w-[58ch] text-body-lg">
           Head back to the main site and keep planning your stay in Shkoder.
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
