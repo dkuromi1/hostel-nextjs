@@ -9,6 +9,7 @@ import { getSiteUrl, metadataBase } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { Nunito } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const nunito = Nunito({
@@ -114,6 +115,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.instagram.com" />
       </head>
       <body className="min-h-full bg-background font-sans text-foreground antialiased">
+        <Script defer src="https://cloud.umami.is/script.js" data-website-id="0cbdc9d4-3d9a-44bc-b0e7-c7da205c758b" strategy="afterInteractive" />
         <div className="relative flex min-h-screen flex-col overflow-x-clip">
           <SiteHeader />
           <main className="flex-1 pb-[calc(6rem+env(safe-area-inset-bottom,0px))] lg:pb-0">{children}</main>
