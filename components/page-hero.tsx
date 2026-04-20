@@ -49,9 +49,9 @@ export function PageHero({
                 return (
                   <li
                     key={text}
-                    className="flex items-center gap-3 rounded-2xl border border-primary/20 bg-card/70 px-4 py-3 text-sm text-foreground shadow-[0_16px_40px_-28px_rgba(11,32,29,0.45)] dark:shadow-none transition-colors hover:border-primary/30 hover:bg-primary/5"
+                    className="flex items-center gap-3 rounded-2xl border border-primary/20 bg-card/70 px-4 py-3 text-sm text-foreground shadow-[0_16px_40px_-28px_var(--shadow-interactive-soft)] dark:shadow-none transition-colors hover:border-primary/30 hover:bg-primary/5"
                   >
-                    <Icon className="size-4 shrink-0 text-emerald-600" />
+                    <Icon className="size-4 shrink-0 text-[var(--brand-primary)]" />
                     <span>{text}</span>
                   </li>
                 );

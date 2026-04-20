@@ -245,7 +245,7 @@ export default function Home() {
           <Link
             key={i}
             href={match[2]}
-            className="font-semibold text-emerald-600 underline decoration-emerald-600/30 underline-offset-4 transition-colors hover:text-emerald-700 hover:decoration-emerald-700"
+            className="brand-link"
           >
             {match[1]}
           </Link>
