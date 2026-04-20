@@ -18,7 +18,7 @@ This project is engineered beyond typical static hospitality sites, using advanc
 *   **Shadow-Routing & URL Syncing**: The gallery implementation uses custom `window.history` synchronization to enable deep-linking and browser history support without triggering expensive Server Component re-renders.
 *   **Predictive Asset Prefetching**: Custom pre-fetching logic that anticipates user navigation in media-heavy views, resulting in an "instant-load" experience.
 *   **Automated Structured Data (SEO)**: Built-in dynamic JSON-LD injection (`lib/metadata.ts`) representing business details and FAQ schemas to Google search crawlers for better rich snippet visibility.
-*   **Centralized Content Management**: No complex CMS administration. All site data (room pricing, faqs, images, booking links) lives directly in a single configuration file (`lib/site-data.ts`).
+*   **Centralized Content Management**: Business content lives in structured JSON files under `content/`, while `lib/site-data.ts` validates and exports that data for the app.
 
 ---
 
@@ -51,7 +51,9 @@ If you want to run the project on your local machine for development:
 
 ## Site Management & Content Editing
 
-This site does **not** use a traditional admin dashboard (like WordPress). Instead, all essential business details and content are managed through secure text configurations.
+This site can be managed in two ways:
+*   Through the Decap CMS admin panel at `/admin`
+*   Directly through the JSON content files in `content/`
 
 **For managers or non-technical admins looking to update the website:**
 Please refer to the comprehensive **[`SITE_ADMIN_GUIDE.md`](./SITE_ADMIN_GUIDE.md)** included in this repository.
@@ -63,8 +65,9 @@ The guide will walk you through, step-by-step, exactly how to edit:
 *   Frequently asked questions (FAQs) and events
 
 ### Quick Dev Note for Content
-All text configurations are located in `lib/site-data.ts`. 
-To add photos and videos to the gallery, place them in `public/images/` and `public/videos/` and update the `galleryItems` array in `lib/site-data.ts`. Note that the home page gallery uses the first 12 items defined in this list.
+The source content lives in `content/*.json`. `lib/site-data.ts` is the typed adapter layer that validates and exports that content to the UI.
+
+To add photos and videos to the gallery, place them in `public/images/` and `public/videos/` and update `content/gallery.json`. The home page gallery uses the first 12 items defined in that list.
 
 **Gallery Item Format:**
 ```ts
@@ -76,6 +79,12 @@ To add photos and videos to the gallery, place them in `public/images/` and `pub
   aspect: "aspect-[4/5]",
 },
 ```
+
+### Developer Notes
+*   **Theme tokens** live in `app/globals.css`. Brand colors, semantic text colors, atmosphere/background tokens, selection styling, and shared utilities should be updated there instead of hand-editing repeated classes across components.
+*   **Typography utilities** in `app/globals.css` are the source of truth for repeated type patterns. Prefer utilities like `heading-section`, `heading-card`, `heading-state`, `heading-feature`, `text-section-desc`, `text-card-body`, and `text-body-lg`.
+*   **Icon names are strict**. JSON-backed icon fields are validated against `lib/icon-registry.ts` through `lib/site-data.ts`. Unknown icon keys now fail the build instead of silently falling back, so add the icon to `ICON_REGISTRY` or fix the content key.
+*   **Gallery, room, service, and quick-fact content should be edited in `content/*.json`**, not by patching the typed exports in `lib/site-data.ts`, unless you are intentionally changing the data model or adding app-level derived config.
 
 ---
 
@@ -90,4 +99,3 @@ To deploy the application:
 3. **Set the Production URL**: Essential for SEO and social sharing. In your platform's **Environment Variables** settings, add:
    - `NEXT_PUBLIC_SITE_URL`: Your live domain (e.g., `https://www.scodrinon.com`).
 4. **Deploy**: Every push to the `main` branch will automatically trigger a rebuild and deployment.
-

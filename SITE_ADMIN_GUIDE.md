@@ -1,6 +1,8 @@
 # Scodrinon Website — Admin Guide
 
-This site is built with **Next.js** and integrated with **Decap CMS**. You can update almost all content (text, prices, photos) through a user-friendly visual dashboard without touching any code.
+This site is built with **Next.js** and supports two editing paths:
+*   **Decap CMS** at `/admin` for dashboard-style editing
+*   **Manual JSON editing** in the `content/` folder for technical updates or backup workflows
 
 ---
 
@@ -64,7 +66,7 @@ The easiest way to update the site is through the **Admin Panel**.
 
 ## 🛠 Manual Data Files (Backup/Technical Method)
 
-If the CMS is unavailable, the site's data is stored in **JSON files** within the `content/` folder. 
+If the CMS is unavailable, the site's data is stored in **JSON files** within the `content/` folder. The app reads those files through `lib/site-data.ts`, which validates and exports them for the UI.
 
 ### Key Data Files:
 | File Name | What it controls |
@@ -79,6 +81,11 @@ If the CMS is unavailable, the site's data is stored in **JSON files** within th
 | **`things-to-do.json`** | Top local attractions showcased on the site. |
 
 **Important:** If you change the **WhatsApp number**, update **`phoneDisplay`**, **`phoneRaw`**, and **`whatsappUrl`** together. The booking buttons use `whatsappUrl` from this file.
+
+### Important for Manual JSON Edits
+*   If a content item has an `icon` field, the value must exactly match a key in `lib/icon-registry.ts` such as `Coffee`, `Bike`, `Castle`, or `Snowflake`.
+*   Invalid icon names now fail the build on purpose. They no longer silently fall back to a generic icon.
+*   Do not edit `lib/site-data.ts` just to change routine business content. Edit the matching JSON file in `content/` unless you are intentionally changing the site’s data model.
 
 ### 📝 Special Case: Testimonials (Split-Page Logic)
 The site's testimonials are currently split between the **Homepage** and the **Rooms Page** to ensure variety:
@@ -101,7 +108,7 @@ If uploading manually via GitHub or FTP:
 1. **Images:** Put files in `public/images/`.
 2. **Videos:** Put files in `public/videos/`.
 3. **Logo:** `public/logo.webp`.
-4. **PWA App Icons:** Update `public/icon.png`, `public/icon512_maskable.png`, `public/icon512_rounded.png`, `public/apple-icon.png`, and `public/favicon.ico` to change the app icons.
+4. **PWA App Icons:** Update `app/icon.png`, `app/icon-192.png`, `app/apple-icon.png`, `public/icon.png`, `public/icon-192.png`, `public/apple-icon.png`, and `app/favicon.ico` to change the app icons.
 5. **App Details (PWA Manifest):** The `public/site.webmanifest` file controls the app's installed name, background colors, and display mode.
 
 ---
@@ -111,14 +118,21 @@ If uploading manually via GitHub or FTP:
 You can update page titles and descriptions directly in the CMS for most sections. For specific page-level SEO defaults (like the "Home" or "Contact" page specific snippets), these are located in:
 - `app/page.tsx` (Home)
 - `app/rooms/page.tsx` (Rooms)
-- `app/experience/page.tsx` (Experiences)
+- `app/experiences/page.tsx` (Experiences)
 
 ---
 
 ## 🚫 What to Avoid Editing
 - **`package.json`**, **`next.config.ts`**, **`netlify.toml`**.
-- Anything inside the **`components/`**, **`lib/`**, or **`node_modules/`** folders.
+- Anything inside the **`components/`** or **`node_modules/`** folders unless you are making a deliberate code change.
+- Avoid editing **`lib/`** for routine content updates. That folder now contains typed adapter and validation code, not day-to-day business copy.
 - Technical configuration files like **`config.yml`** (this defines how the CMS itself works).
+
+### Developer-Only Design Notes
+If you are making code changes rather than content edits:
+*   Theme variables and shared typography utilities live in `app/globals.css`.
+*   Repeated heading/body styles should use those utilities instead of hand-rolled Tailwind class stacks.
+*   Registry-backed icons should be added to `lib/icon-registry.ts` and then referenced by name from content or typed config.
 
 ---
 
