@@ -1,13 +1,13 @@
-import type { ReactNode, ElementType } from "react";
-import { Check } from "lucide-react";
+import type { ReactNode } from "react";
 
 import { BookingActions } from "@/components/booking-actions";
 import { Reveal } from "@/components/reveal";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { resolveIcon, type IconName } from "@/lib/icon-registry";
 
 type HighlightItem = {
   text: string;
-  icon?: ElementType;
+  icon?: IconName;
 };
 
 type PageHeroProps = {
@@ -45,7 +45,7 @@ export function PageHero({
             <ul className="grid gap-3 sm:grid-cols-2">
               {highlights.map((item) => {
                 const text = typeof item === "string" ? item : item.text;
-                const Icon = typeof item === "object" && item.icon ? item.icon : Check;
+                const Icon = typeof item === "object" && item.icon ? resolveIcon(item.icon) : resolveIcon("Check");
                 return (
                   <li
                     key={text}

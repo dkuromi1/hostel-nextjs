@@ -1,15 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Waves,
-  ShieldCheck,
-  Sunset,
-  UtensilsCrossed,
-  Bike,
-  Backpack,
-  Bus,
-  Mountain,
-  Sparkles,
   MapPin,
   Navigation,
 } from "lucide-react";
@@ -28,7 +19,12 @@ import {
   buildMetadata,
   buildHostelSchema,
 } from "@/lib/metadata";
-import { thingsToDo } from "@/lib/site-data";
+import {
+  experienceLogisticsFeatures,
+  socialConnectionFeatures,
+  thingsToDo,
+} from "@/lib/site-data";
+import { resolveIcon } from "@/lib/icon-registry";
 
 export const metadata = buildMetadata({
   title: "Rooftop Events And Adventure Base In Shkoder",
@@ -38,7 +34,6 @@ export const metadata = buildMetadata({
   image: "/images/rooftop_social_2.jpg",
 });
 
-const icons = [Waves, Bike, UtensilsCrossed];
 const THETH_VALBONA_MAP_QUERY = "theth-valbona-midpoint";
 const SHALA_RIVER_MAP_QUERY = "shala-river-midpoint";
 const THETH_SIDE_TRAILHEAD_GOOGLE_MAPS = "https://www.google.com/maps/dir/?api=1&destination=42.397171,19.772164";
@@ -74,30 +69,16 @@ export default function ExperiencesPage() {
 
             {/* High-End Feature Rows */}
             <div className="space-y-8">
-              {[
-                {
-                  title: "Free Luggage Storage",
-                  description: "Drop your main backpack in our secure storage. Hike the Valbona to Theth trail carrying only what you actually need.",
-                  icon: Backpack,
-                },
-                {
-                  title: "Transport & Logistics",
-                  description: "We provide honest, up-to-date info on furgon (minibus) schedules, Komani Lake ferries, and Shala River boat trips.",
-                  icon: Bus,
-                },
-                {
-                  title: "The Post-Hike Reset",
-                  description: "Return from the mountains to a hot shower, A/C, crisp linens, and a cold drink on the rooftop.",
-                  icon: Mountain,
-                }
-              ].map((item, i) => (
+              {experienceLogisticsFeatures.map((item, i) => {
+                const Icon = resolveIcon(item.icon);
+                return (
                 <div
                   key={i}
                   className="group flex items-start gap-5 transition-all duration-300 hover:translate-x-2"
                 >
                   {/* Interactive Icon Box */}
                   <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 transition-all duration-300 group-hover:bg-emerald-700 group-hover:text-white group-hover:shadow-lg group-hover:shadow-emerald-600/20">
-                    <item.icon className="size-5" strokeWidth={1.5} />
+                    <Icon className="size-5" strokeWidth={1.5} />
                   </div>
                   <div>
                     <h4 className="heading-item text-[var(--text-heading)]">
@@ -108,7 +89,7 @@ export default function ExperiencesPage() {
                     </p>
                   </div>
                 </div>
-              ))}
+              )})}
             </div>
           </Reveal>
 
@@ -184,7 +165,7 @@ export default function ExperiencesPage() {
 
           <Reveal delay={100}>
             <SwipableRow itemCount={thingsToDo.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {(thingsToDo as any[]).map((item, index) => (
+              {thingsToDo.map((item) => (
                 <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full">
                   <Panel className="group relative flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-300 hover:border-sky-500/20 hover:shadow-md">
                     <div className="relative h-48 w-full overflow-hidden bg-slate-100">
@@ -286,29 +267,9 @@ export default function ExperiencesPage() {
               itemCount={3}
               className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              {[
-                {
-                  title: "The Drin River Escape",
-                  description: "Just outside the city, the Drin river offers a cool, scenic contrast to the Alps. We organize regular group swimming trips to our favorite spots along the water for a perfect, sun-drenched afternoon.",
-                  icon: Waves,
-                  image: "/images/drin_swimming_trip2.jpeg",
-                  focus: "50% 40%",
-                },
-                {
-                  title: "Spontaneous Socials",
-                  description: "Whether it’s rooftop raki or an informal food crawl, we prioritize warm, unscripted moments that make it easy for solo travelers to join. It’s social, but never forced.",
-                  icon: Sparkles,
-                  image: "/images/rooftop_social_7.webp",
-                  focus: "50% 40%",
-                },
-                {
-                  title: "Bicycle Capital Access",
-                  description: "Shkodër is best explored on two wheels. Grab a rental from across the street and navigate the flat streets, historic center, and scenic lake paths exactly how the locals do.",
-                  icon: Bike,
-                  image: "/images/biking_in_shkodra.jpeg",
-                  focus: "50% 40%",
-                },
-              ].map((item, index) => (
+              {socialConnectionFeatures.map((item) => {
+                const Icon = resolveIcon(item.icon);
+                return (
                 <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full">
                   <Panel
                     className="group relative flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
@@ -329,7 +290,7 @@ export default function ExperiencesPage() {
                     <div className="flex flex-1 flex-col px-8 pb-8">
                       {/* Floating Icon Box (Overlaps the image and white background) */}
                       <div className="relative -mt-6 mb-6 flex size-12 items-center justify-center rounded-2xl bg-white text-slate-600 shadow-lg shadow-slate-200/50 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-50 group-hover:text-emerald-600">
-                        <item.icon className="size-5" strokeWidth={1.5} />
+                        <Icon className="size-5" strokeWidth={1.5} />
                       </div>
 
                       <h3 className="mb-3 heading-item text-[var(--text-heading)]">
@@ -341,7 +302,7 @@ export default function ExperiencesPage() {
                     </div>
                   </Panel>
                 </div>
-              ))}
+              )})}
               {/* Trailing Spacer for mobile snapping */}
               <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
             </SwipableRow>

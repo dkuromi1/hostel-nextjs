@@ -44,6 +44,7 @@ import {
   buildMetadata,
 } from "@/lib/metadata";
 import {
+  type CtaLink,
   eventCards,
   experiencePillars,
   extendReasons,
@@ -255,7 +256,7 @@ export default function Home() {
     });
   };
 
-  const PillarCta = ({ cta, variant = "light" }: { cta?: any; variant?: "light" | "dark" }) => {
+  const PillarCta = ({ cta, variant = "light" }: { cta?: CtaLink; variant?: "light" | "dark" }) => {
     if (!cta) return null;
     return (
       <Link
@@ -333,7 +334,7 @@ export default function Home() {
                 itemCount={quickFacts.length}
                 className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
               >
-                {(quickFacts as any[]).map((fact, index) => {
+                {quickFacts.map((fact, index) => {
                   const Icon = resolveIcon(fact.icon);
                   return (
                     <div
@@ -545,7 +546,7 @@ export default function Home() {
                     </div>
 
                     <div className="flex flex-wrap gap-2">
-                      {(room.amenities as any[]).map((amenity, idx) => {
+                      {room.amenities.map((amenity, idx) => {
                         const AmenityIcon = resolveIcon(amenity.icon);
                         return (
                           <div
@@ -604,7 +605,7 @@ export default function Home() {
               itemCount={freeServices.length}
               className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
             >
-              {(freeServices as any[]).map((service, idx) => {
+              {freeServices.map((service, idx) => {
                 const Icon = getServiceIcon(service.icon);
                 return (
                   <div
@@ -735,7 +736,7 @@ export default function Home() {
                         </div>
                         <div className="p-6 text-sm leading-relaxed text-[var(--text-body-subtle)] bg-white flex-1 flex flex-col">
                           <p className="flex-1">{formatText(pillar.description)}</p>
-                          <PillarCta cta={(pillar as any).cta} />
+                          <PillarCta cta={pillar.cta} />
                         </div>
                       </Panel>
                     </div>
@@ -766,7 +767,7 @@ export default function Home() {
                       <p className="mt-3 max-w-lg text-base leading-8 text-slate-100">
                         {formatText(experiencePillars[0].description)}
                       </p>
-                      <PillarCta cta={(experiencePillars[0] as any).cta} variant="dark" />
+                      <PillarCta cta={experiencePillars[0].cta} variant="dark" />
                     </div>
                   </div>
                 </Panel>
@@ -796,7 +797,7 @@ export default function Home() {
                               <p className="mt-3 text-base leading-8 text-slate-100">
                                 {formatText(pillar.description)}
                               </p>
-                              <PillarCta cta={(pillar as any).cta} variant="dark" />
+                              <PillarCta cta={pillar.cta} variant="dark" />
                             </div>
                           </div>
                         ) : (
@@ -817,7 +818,7 @@ export default function Home() {
                               <p className="text-section-desc">
                                 {formatText(pillar.description)}
                               </p>
-                              <PillarCta cta={(pillar as any).cta} />
+                              <PillarCta cta={pillar.cta} />
                             </div>
                           </div>
                         )}

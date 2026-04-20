@@ -1,3 +1,5 @@
+import { isIconName, type IconName } from "./icon-registry";
+
 import settings from "../content/settings.json";
 import navigation from "../content/navigation.json";
 import roomsData from "../content/rooms.json";
@@ -7,30 +9,232 @@ import testimonialsData from "../content/testimonials.json";
 import gallery from "../content/gallery.json";
 import thingsToDoData from "../content/things-to-do.json";
 
+export interface CtaLink {
+  text: string;
+  url: string;
+}
+
+export interface HeroContent {
+  title1: string;
+  title2: string;
+  description: string;
+}
+
+export interface IconTextItem {
+  text: string;
+  icon: IconName;
+}
+
+export interface ServiceItem {
+  title: string;
+  description: string;
+  icon: IconName;
+}
+
+export interface RoomImage {
+  src: string;
+  alt: string;
+}
+
+export interface RoomAmenity {
+  icon: IconName;
+  label: string;
+}
+
+export interface RoomType {
+  name: string;
+  price: string;
+  label: string;
+  description: string;
+  image: string;
+  alt: string;
+  bullets: string[];
+  images: RoomImage[];
+  amenities: RoomAmenity[];
+}
+
+export interface ExtendReason {
+  title: string;
+  description: string;
+}
+
+export interface ExperiencePillar {
+  title: string;
+  description: string;
+  image: string;
+  alt: string;
+  cta?: CtaLink;
+}
+
+export interface EventCard {
+  title: string;
+  description: string;
+  image: string;
+  alt: string;
+}
+
+export interface IconFeature {
+  title: string;
+  description: string;
+  icon: IconName;
+}
+
+export interface VisualIconFeature extends IconFeature {
+  image: string;
+  focus?: string;
+}
+
+export interface ThingToDoItem {
+  title: string;
+  description: string;
+  image: string;
+  alt: string;
+  price?: string;
+  regularPrice?: string;
+  priceNote?: string;
+  showDirections?: boolean;
+}
+
+interface HomepageContent {
+  hero: HeroContent;
+  heroHighlights: string[];
+  quickFacts: IconTextItem[];
+  sharedAmenities: string[];
+  freeServices: ServiceItem[];
+  paidServices: ServiceItem[];
+  extendReasons: ExtendReason[];
+  experiencePillars: ExperiencePillar[];
+  eventCards: EventCard[];
+  contactChecklist: string[];
+  bookingAwardImage: string;
+}
+
+interface RoomsContent {
+  roomTypes: RoomType[];
+}
+
+interface ThingsToDoContent {
+  thingsToDo: ThingToDoItem[];
+}
+
+function parseIconName(icon: string, context: string): IconName {
+  if (isIconName(icon)) {
+    return icon;
+  }
+
+  throw new Error(`[site-data] Unknown icon "${icon}" in ${context}. Add it to ICON_REGISTRY or fix the content key.`);
+}
+
+function parseIconTextItems(items: { text: string; icon: string }[], context: string): IconTextItem[] {
+  return items.map((item, index) => ({
+    ...item,
+    icon: parseIconName(item.icon, `${context}[${index}].icon`),
+  }));
+}
+
+function parseServices(items: { title: string; description: string; icon: string }[], context: string): ServiceItem[] {
+  return items.map((item, index) => ({
+    ...item,
+    icon: parseIconName(item.icon, `${context}[${index}].icon`),
+  }));
+}
+
+function parseRoomTypes(items: typeof roomsData.roomTypes): RoomType[] {
+  return items.map((room, roomIndex) => ({
+    ...room,
+    amenities: room.amenities.map((amenity, amenityIndex) => ({
+      ...amenity,
+      icon: parseIconName(amenity.icon, `rooms.roomTypes[${roomIndex}].amenities[${amenityIndex}].icon`),
+    })),
+  }));
+}
+
+const homepageContent: HomepageContent = {
+  ...homepage,
+  quickFacts: parseIconTextItems(homepage.quickFacts, "homepage.quickFacts"),
+  freeServices: parseServices(homepage.freeServices, "homepage.freeServices"),
+  paidServices: parseServices(homepage.paidServices, "homepage.paidServices"),
+};
+
+const roomsContent: RoomsContent = {
+  roomTypes: parseRoomTypes(roomsData.roomTypes),
+};
+
+const thingsToDoContent: ThingsToDoContent = thingsToDoData;
+
 export const siteConfig = {
   ...settings,
 } as const;
 
-export const hero = homepage.hero;
+export const hero = homepageContent.hero;
 
 export const navLinks = navigation.navLinks;
 
-export const heroHighlights = homepage.heroHighlights;
-export const quickFacts = homepage.quickFacts;
+export const heroHighlights = homepageContent.heroHighlights;
+export const quickFacts = homepageContent.quickFacts;
 
-export const roomTypes = roomsData.roomTypes;
+export const roomTypes = roomsContent.roomTypes;
 
 // Individual room images lists (legacy exports for specific components)
-export const podDormImages = roomsData.roomTypes[0].images;
-export const fourBedDormImages = roomsData.roomTypes[1].images;
+export const podDormImages = roomsContent.roomTypes[0].images;
+export const fourBedDormImages = roomsContent.roomTypes[1].images;
 
-export const sharedAmenities = homepage.sharedAmenities;
-export const freeServices = homepage.freeServices;
-export const paidServices = homepage.paidServices;
+export const sharedAmenities = homepageContent.sharedAmenities;
+export const freeServices = homepageContent.freeServices;
+export const paidServices = homepageContent.paidServices;
 
-export const extendReasons = homepage.extendReasons;
-export const experiencePillars = homepage.experiencePillars;
-export const eventCards = homepage.eventCards;
+export const extendReasons = homepageContent.extendReasons;
+export const experiencePillars = homepageContent.experiencePillars;
+export const eventCards = homepageContent.eventCards;
+
+export const roomHeroHighlights = [
+  { text: "Curtained privacy pods in the mixed dorm", icon: "Blinds" },
+  { text: "Four-bed dorms with male and female options", icon: "Bed" },
+  { text: "A/C and heat, secure lockers, power sockets, and WiFi", icon: "Snowflake" },
+  { text: "All rooms include breakfast every morning (excl. off-season)", icon: "Coffee" },
+] as const satisfies readonly IconTextItem[];
+
+export const experienceLogisticsFeatures = [
+  {
+    title: "Free Luggage Storage",
+    description: "Drop your main backpack in our secure storage. Hike the Valbona to Theth trail carrying only what you actually need.",
+    icon: "Backpack",
+  },
+  {
+    title: "Transport & Logistics",
+    description: "We provide honest, up-to-date info on furgon (minibus) schedules, Komani Lake ferries, and Shala River boat trips.",
+    icon: "Bus",
+  },
+  {
+    title: "The Post-Hike Reset",
+    description: "Return from the mountains to a hot shower, A/C, crisp linens, and a cold drink on the rooftop.",
+    icon: "Mountain",
+  },
+] as const satisfies readonly IconFeature[];
+
+export const socialConnectionFeatures = [
+  {
+    title: "The Drin River Escape",
+    description: "Just outside the city, the Drin river offers a cool, scenic contrast to the Alps. We organize regular group swimming trips to our favorite spots along the water for a perfect, sun-drenched afternoon.",
+    icon: "Waves",
+    image: "/images/drin_swimming_trip2.jpeg",
+    focus: "50% 40%",
+  },
+  {
+    title: "Spontaneous Socials",
+    description: "Whether it’s rooftop raki or an informal food crawl, we prioritize warm, unscripted moments that make it easy for solo travelers to join. It’s social, but never forced.",
+    icon: "Sparkles",
+    image: "/images/rooftop_social_7.webp",
+    focus: "50% 40%",
+  },
+  {
+    title: "Bicycle Capital Access",
+    description: "Shkodër is best explored on two wheels. Grab a rental from across the street and navigate the flat streets, historic center, and scenic lake paths exactly how the locals do.",
+    icon: "Bike",
+    image: "/images/biking_in_shkodra.jpeg",
+    focus: "50% 40%",
+  },
+] as const satisfies readonly VisualIconFeature[];
 
 export interface GalleryItem {
   id: string;
@@ -46,9 +250,9 @@ export const galleryItems = gallery.galleryItems as GalleryItem[]; // Cast to by
 
 export const faqItems = faq.faqItems;
 
-export const contactChecklist = homepage.contactChecklist;
+export const contactChecklist = homepageContent.contactChecklist;
 
 export const testimonials = testimonialsData.testimonials;
-export const bookingAwardImage = homepage.bookingAwardImage;
+export const bookingAwardImage = homepageContent.bookingAwardImage;
 
-export const thingsToDo = thingsToDoData.thingsToDo;
+export const thingsToDo = thingsToDoContent.thingsToDo;

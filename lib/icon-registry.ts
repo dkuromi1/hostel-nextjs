@@ -22,6 +22,7 @@
  * ---------------------------------------------------------------------------
  */
 
+import type { LucideIcon } from "lucide-react";
 import {
   // ── Food & Beverage ────────────────────────────────────────────────────────
   Coffee,
@@ -35,6 +36,7 @@ import {
   Bed,
   BedDouble,
   BedSingle,
+  Blinds,
   Hotel,
   // ── Amenities & Facilities ─────────────────────────────────────────────────
   Wifi,
@@ -99,7 +101,7 @@ import {
  * Full icon registry. Keys are the strings used in JSON content files.
  * Add new entries here as needed; no other files need to change.
  */
-export const ICON_REGISTRY: Record<string, React.ElementType> = {
+export const ICON_REGISTRY = {
   // Food & Beverage
   Coffee,
   Croissant,
@@ -112,6 +114,7 @@ export const ICON_REGISTRY: Record<string, React.ElementType> = {
   Bed,
   BedDouble,
   BedSingle,
+  Blinds,
   Hotel,
   // Amenities
   Wifi,
@@ -170,14 +173,24 @@ export const ICON_REGISTRY: Record<string, React.ElementType> = {
   Leaf,
   // Fallback (also usable directly in JSON as "Check")
   Check,
-};
+} as const satisfies Record<string, LucideIcon>;
+
+export type IconName = keyof typeof ICON_REGISTRY;
+
+export function isIconName(name: string): name is IconName {
+  return Object.prototype.hasOwnProperty.call(ICON_REGISTRY, name);
+}
 
 /**
  * Resolves a JSON icon-name string to its Lucide component.
- * Falls back to the `Check` icon if the name is unknown.
+ * Throws if the name is unknown so content typos fail loudly.
  *
  * @param name - The icon key from a JSON content file, e.g. "Coffee"
  */
-export function resolveIcon(name: string): React.ElementType {
-  return ICON_REGISTRY[name] ?? Check;
+export function resolveIcon(name: string): LucideIcon {
+  if (isIconName(name)) {
+    return ICON_REGISTRY[name];
+  }
+
+  throw new Error(`[icon-registry] Unknown icon "${name}". Add it to ICON_REGISTRY or fix the icon key in content.`);
 }

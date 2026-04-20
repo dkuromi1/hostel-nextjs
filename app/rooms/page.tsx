@@ -1,12 +1,7 @@
 import Image from "next/image";
 import {
-  Blinds,
-  Bed,
   Check,
-  Snowflake,
-  Coffee,
 } from "lucide-react";
-
 import { resolveIcon } from "@/lib/icon-registry";
 
 import { CtaStrip } from "@/components/cta-strip";
@@ -29,7 +24,7 @@ import {
   freeServices,
   paidServices,
   roomTypes,
-  siteConfig,
+  roomHeroHighlights,
   podDormImages,
   fourBedDormImages,
 } from "@/lib/site-data";
@@ -82,12 +77,7 @@ export default function RoomsPage() {
         title="Sleep like you booked a thoughtful hostel, not a compromise."
         description="Scodrinon keeps the comfort side of the stay strong: privacy pods, smaller dorm options, clean shared bathrooms, breakfast, and the essentials that matter when you are traveling for real."
         hideActions={true}
-        highlights={[
-          { text: "Curtained privacy pods in the mixed dorm", icon: Blinds },
-          { text: "Four-bed dorms with male and female options", icon: Bed },
-          { text: "A/C and heat, secure lockers, power sockets, and WiFi", icon: Snowflake },
-          { text: "All rooms include breakfast every morning (excl. off-season)", icon: Coffee },
-        ]}
+        highlights={roomHeroHighlights}
       >
         <div className="grid gap-4 md:grid-cols-2">
           <div className="media-frame relative min-h-[22rem] md:row-span-2">
@@ -172,7 +162,7 @@ export default function RoomsPage() {
                         </div>
 
                         <div className="flex flex-wrap gap-2 mt-4">
-                          {(room.amenities as any[]).map((amenity, idx) => {
+                          {room.amenities.map((amenity, idx) => {
                             const AmenityIcon = resolveIcon(amenity.icon);
                             return (
                               <div
@@ -226,7 +216,7 @@ export default function RoomsPage() {
                 description="The site stays honest about what you get. No padded feature list, just the things that make the stay smoother."
               />
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                {(freeServices as any[]).map((service, idx) => {
+                {freeServices.map((service, idx) => {
                   const Icon = resolveIcon(service.icon);
                   return (
                     <div
@@ -258,7 +248,7 @@ export default function RoomsPage() {
                 Add bikes, tours, or laundry without overcomplicating your stay.
               </h2>
               <div className="mt-8 grid gap-4">
-                {(paidServices as any[]).map((service, idx) => {
+                {paidServices.map((service, idx) => {
                   const Icon = resolveIcon(service.icon);
                   return (
                     <div
