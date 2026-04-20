@@ -82,9 +82,10 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
             // ONLY update if the URL changed externally from BROWSER navigation, 
             // bypassing the race condition of async React renders.
             if (index !== -1 && index !== targetIndexRef.current) {
-                setIsInitialMount(false); 
                 targetIndexRef.current = index;
                 setActiveIndex(index);
+                // If the user navigates via browser buttons, we've definitely finished our 'initial' masonry entry
+                setIsInitialMount(false); 
             }
         }
     }, [pathname]);
@@ -206,16 +207,16 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
                 }}
                 animate={controls}
             >
-                <AnimatePresence initial={false} custom={direction}>
+                <AnimatePresence custom={direction}>
                     <motion.div
                         key={activeIndex}
                         custom={direction}
                         variants={variants}
-                        initial="enter"
+                        initial={isInitialMount ? "center" : "enter"}
                         animate="center"
                         exit="exit"
                         transition={{
-                            x: { type: "spring", stiffness: 300, damping: 30 },
+                            x: { type: "tween", ease: "easeInOut", duration: 0.2 },
                             opacity: { duration: 0.2 }
                         }}
                         drag="x"
@@ -232,7 +233,7 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
                             // If user clicks the transparent empty space around the image, close the lightbox
                             if (e.target === e.currentTarget) handleClose();
                         }}
-                        className="absolute inset-0 flex justify-center items-center touch-none"
+                        className="absolute inset-0 flex justify-center items-center"
                     >
                         <div className="relative flex justify-center items-center h-full w-full pointer-events-none">
                             {item.type === "video" ? (
