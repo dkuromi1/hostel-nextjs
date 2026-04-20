@@ -33,7 +33,7 @@ export function SiteHeader() {
         "transition-all duration-300",
         isTransparent
           ? "bg-transparent border-transparent"
-          : "border-b border-white/70 bg-white/80 backdrop-blur-md"
+          : "border-b border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md shadow-sm"
       )}>
         <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-3 transition-transform duration-300 hover:scale-[1.02] active:scale-95">
@@ -50,13 +50,13 @@ export function SiteHeader() {
             <div>
               <p className={cn(
                 "font-heading text-lg leading-none tracking-[-0.05em] transition-colors",
-                isTransparent ? "text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]" : "text-slate-950"
+                isTransparent ? "text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]" : "text-[var(--text-heading)]"
               )}>
                 {siteConfig.name}
               </p>
               <p className={cn(
                 "mt-1 text-xs uppercase tracking-[0.24em] transition-colors",
-                isTransparent ? "text-sky-200/90 [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]" : "text-slate-500"
+                isTransparent ? "text-sky-200/90 [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]" : "text-[var(--text-muted)]"
               )}>
                 Shkodër, Albania
               </p>
@@ -74,7 +74,7 @@ export function SiteHeader() {
                     "relative inline-block rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 hover:scale-[1.02] active:scale-95",
                     isTransparent
                       ? "text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.5)] hover:bg-white/10 hover:text-white"
-                      : "text-slate-600 hover:bg-white hover:text-slate-950",
+                      : "text-[var(--text-body)] hover:bg-[var(--muted)] hover:text-[var(--text-heading)]",
                     isActive && "after:absolute after:bottom-1.5 after:left-4 after:right-4 after:h-[1px] after:rounded-full after:bg-current after:transition-all after:duration-300"
                   )}
                 >
@@ -107,7 +107,7 @@ export function SiteHeader() {
                   "size-9 rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-95",
                   isTransparent
                     ? "border-white/10 bg-slate-950/20 text-white hover:bg-slate-950/40"
-                    : "border-blue-200/80 bg-blue-50/95 text-blue-950 hover:bg-blue-100/95"
+                    : "border-border bg-muted/95 text-foreground hover:bg-muted"
                 )}
               >
                 <BookingComLogo iconOnly />

@@ -109,7 +109,7 @@ const getPoiColor = (category: string) => {
  */
 const applyLabelStyle = (el: HTMLElement, isMobile: boolean, overrides?: Partial<CSSStyleDeclaration>) => {
     el.style.padding = '3px 8px';
-    el.style.color = '#0f172a';
+    el.style.color = 'var(--text-heading)';
     el.style.fontSize = '9px';
     el.style.fontWeight = '600';
     el.style.borderRadius = '4px';
@@ -120,11 +120,11 @@ const applyLabelStyle = (el: HTMLElement, isMobile: boolean, overrides?: Partial
     el.style.alignItems = 'center';
     el.style.gap = '1px';
 
-    // Premium glassmorphism for all devices
-    el.style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
+    // Premium glassmorphism using CSS variables
+    el.style.backgroundColor = 'var(--glass-bg)';
     el.style.backdropFilter = 'blur(4px)';
-    el.style.border = '1px solid rgba(226, 232, 240, 0.5)';
-    el.style.boxShadow = '0 4px 6px -1px rgb(0 0 0 / 0.05)';
+    el.style.border = '1px solid var(--glass-border)';
+    el.style.boxShadow = '0 4px 6px -1px var(--glass-shadow)';
 
     // Apply any overrides
     if (overrides) {
@@ -140,6 +140,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
     const mapRef = useRef<mapboxgl.Map | null>(null);
     const sensitiveMarkersRef = useRef<HTMLElement[]>([]);
     const [isSatellite, setIsSatellite] = React.useState(false);
+    const isSatelliteRef = useRef(false);
 
     // Reusable function to apply our "Boutique" customizations
     const applyCustomizations = (map: mapboxgl.Map, mobile: boolean) => {
@@ -281,9 +282,13 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
 
         mapboxgl.accessToken = accessToken;
 
+        const getBaseStyle = () => document.documentElement.classList.contains('dark') 
+            ? 'mapbox://styles/mapbox/dark-v11' 
+            : 'mapbox://styles/mapbox/streets-v12';
+
         const map = new mapboxgl.Map({
             container: mapContainerRef.current,
-            style: 'mapbox://styles/mapbox/streets-v12',
+            style: getBaseStyle(),
             center: HOSTEL_COORDS,
             zoom: 13,
             pitch: 45,
@@ -297,6 +302,17 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
 
         map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'bottom-right');
         map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
+
+        const themeObserver = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class') {
+                    if (!isSatelliteRef.current) {
+                        map.setStyle(getBaseStyle());
+                    }
+                }
+            });
+        });
+        themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 
         // --- 1. HOSTEL MARKER (Premium Floating Pin) ---
         const elevation = 0;
@@ -346,7 +362,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         subText.innerText = 'click for directions';
         subText.style.fontSize = '9px';
         subText.style.textTransform = 'uppercase';
-        subText.style.color = '#64748b';
+        subText.style.color = 'var(--text-muted)';
         subText.style.lineHeight = '1.1';
 
         label.appendChild(mainText);
@@ -510,6 +526,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         return () => {
             if (moveThrottleId !== null) cancelAnimationFrame(moveThrottleId);
             sensitiveMarkersRef.current = [];
+            themeObserver.disconnect();
             map.remove();
             if (document.head.contains(style)) {
                 document.head.removeChild(style);
@@ -563,10 +580,13 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         if (!mapRef.current) return;
         const nextIsSatellite = !isSatellite;
         setIsSatellite(nextIsSatellite);
+        isSatelliteRef.current = nextIsSatellite;
         mapRef.current.setStyle(
             nextIsSatellite
                 ? 'mapbox://styles/mapbox/satellite-streets-v12'
-                : 'mapbox://styles/mapbox/streets-v12'
+                : document.documentElement.classList.contains('dark') 
+                    ? 'mapbox://styles/mapbox/dark-v11' 
+                    : 'mapbox://styles/mapbox/streets-v12'
         );
     };
 
@@ -608,17 +628,17 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             </div>
 
             {/* Map Legend - Hidden at regional zoom levels (< 11) using DOM manipulation */}
-            <div id="map-legend" className="absolute bottom-4 left-4 z-10 flex flex-col gap-2 rounded-xl border border-slate-200 bg-white/40 backdrop-blur-md p-2.5 text-[9px] font-bold uppercase tracking-widest text-slate-900 shadow-lg transition-opacity duration-500 opacity-100">
+            <div id="map-legend" className="absolute bottom-4 left-4 z-10 flex flex-col gap-2 rounded-xl border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md p-2.5 text-[9px] font-bold uppercase tracking-widest text-[var(--text-heading)] shadow-lg transition-opacity duration-500 opacity-100">
                 <div className="flex items-center gap-3">
-                    <div className="h-0.5 w-6 border-t border-dashed border-sky-600 opacity-90" />
+                    <div className="h-0.5 w-6 border-t border-dashed border-[var(--brand-primary)] opacity-90" />
                     <span>5 Minute Walk Area</span>
                 </div>
                 <div className="flex items-center gap-3">
-                    <div className="h-1.5 w-6 rounded-full bg-sky-400/40" />
+                    <div className="h-1.5 w-6 rounded-full bg-[var(--brand-primary)]/40" />
                     <span>The Pedestrian Street</span>
                 </div>
 
-                <div className="my-1 h-px w-full bg-slate-900/10" />
+                <div className="my-1 h-px w-full bg-[var(--border)]" />
 
                 <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
                     <div className="flex items-center gap-2">

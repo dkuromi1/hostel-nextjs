@@ -24,7 +24,7 @@ export function StickyBookingBar() {
       "fixed inset-x-0 bottom-0 z-40 px-4 pt-[6px] pb-[calc(6px+env(safe-area-inset-bottom,0px))] transition-all duration-300 lg:hidden [transform:translateZ(0)]",
       isTransparent
         ? "border-t border-white/5 bg-slate-950/50 backdrop-blur-md"
-        : "border-t border-white/80 bg-white/92 shadow-[0_-20px_40px_-30px_rgba(15,23,42,0.45)] backdrop-blur"
+        : "border-t border-[var(--glass-border)] bg-[var(--glass-bg)] shadow-[0_-20px_40px_-30px_var(--glass-shadow)] backdrop-blur"
     )}>
       <div className="mx-auto flex max-w-[1400px] items-center gap-2">
         <a
@@ -51,7 +51,7 @@ export function StickyBookingBar() {
               "size-9 rounded-full transition-all",
               isTransparent
                 ? "border-white/20 bg-slate-950/20 text-white backdrop-blur-sm hover:bg-slate-950/40"
-                : "border-blue-200/80 bg-blue-50/95 text-blue-950 hover:bg-blue-100/95"
+                : "border-[var(--border)] bg-[var(--muted)] text-[var(--foreground)] hover:bg-[var(--muted)]/80"
             )}
           >
             <BookingComLogo iconOnly />
@@ -66,7 +66,7 @@ export function StickyBookingBar() {
               "size-9 rounded-full transition-all",
               isTransparent
                 ? "border-white/20 bg-slate-950/20 text-white backdrop-blur-sm hover:bg-slate-950/40"
-                : "border-orange-200/80 bg-orange-50/90 text-orange-900 hover:bg-orange-100/90"
+                : "border-[var(--border)] bg-[var(--muted)] text-[var(--foreground)] hover:bg-[var(--muted)]/80"
             )}
           >
             <HostelworldLogo iconOnly />

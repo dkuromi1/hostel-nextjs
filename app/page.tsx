@@ -140,7 +140,7 @@ function GuestRatingsSection() {
       <div className="shell-container">
         <Reveal>
           <div className="glass-panel rounded-[28px] p-4 sm:p-5">
-            <div className="flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-slate-500">
+            <div className="flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--text-muted)]">
               <span className="faded-line h-px flex-1" />
               Guest Ratings
               <span className="faded-line h-px flex-1" />
@@ -150,11 +150,11 @@ function GuestRatingsSection() {
                 href={siteConfig.bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 px-4 py-5 shadow-[0_20px_55px_-40px_rgba(15,23,42,0.35)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_rgba(15,23,42,0.4)]"
+                className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-[var(--glass-border)] bg-[var(--glass-bg)] px-4 py-5 shadow-[0_20px_55px_-40px_var(--glass-shadow)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_var(--glass-shadow)]"
               >
                 <div className="flex min-h-[3rem] flex-wrap items-center justify-between gap-x-2 gap-y-2">
                   <BookingComLogo className="min-w-0 shrink-0" />
-                  <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600">
+                  <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600 dark:text-yellow-500">
                     <Star className="size-3" fill="currentColor" />
                     <span className="text-[10px] font-bold uppercase tracking-wider">
                       Top Rated
@@ -164,10 +164,10 @@ function GuestRatingsSection() {
                 <div className="flex flex-1 flex-col justify-center py-1">
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex min-w-0 items-center gap-2">
-                      <div className="shrink-0 rounded-full bg-blue-500/12 p-1.5 text-blue-700">
+                      <div className="shrink-0 rounded-full bg-blue-500/12 p-1.5 text-blue-700 dark:text-blue-400">
                         <Award className="size-5" strokeWidth={1.8} />
                       </div>
-                      <p className="text-sm font-medium leading-6 text-slate-800 transition-colors group-hover:text-blue-700">
+                      <p className="text-sm font-medium leading-6 text-[var(--text-heading)] transition-colors group-hover:text-blue-700 dark:group-hover:text-blue-400">
                         2025 Traveller Review Award
                       </p>
                     </div>
@@ -181,7 +181,7 @@ function GuestRatingsSection() {
                     </div>
                   </div>
                 </div>
-                <p className="mt-auto pt-2 text-sm leading-6 text-slate-500">
+                <p className="mt-auto pt-2 text-sm leading-6 text-[var(--text-body-subtle)]">
                   Awarded for consistent excellence in guest hospitality.
                 </p>
               </a>
@@ -190,11 +190,11 @@ function GuestRatingsSection() {
                 href={siteConfig.hostelworldUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 px-4 py-5 shadow-[0_20px_55px_-40px_rgba(15,23,42,0.35)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_rgba(15,23,42,0.4)]"
+                className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-[var(--glass-border)] bg-[var(--glass-bg)] px-4 py-5 shadow-[0_20px_55px_-40px_var(--glass-shadow)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_var(--glass-shadow)]"
               >
                 <div className="flex min-h-[3rem] flex-wrap items-center justify-between gap-x-2 gap-y-2">
                   <HostelworldLogo className="h-7 w-auto shrink-0" />
-                  <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600">
+                  <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600 dark:text-yellow-500">
                     <Star className="size-3" fill="currentColor" />
                     <span className="text-[10px] font-bold uppercase tracking-wider">
                       Top Rated
@@ -204,10 +204,10 @@ function GuestRatingsSection() {
                 <div className="flex flex-1 flex-col justify-center py-1">
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex min-w-0 items-center gap-2">
-                      <div className="shrink-0 rounded-full bg-amber-500/12 p-1.5 text-amber-700">
+                      <div className="shrink-0 rounded-full bg-amber-500/12 p-1.5 text-amber-700 dark:text-amber-500">
                         <Star className="size-5" strokeWidth={1.8} />
                       </div>
-                      <p className="text-sm font-medium leading-6 text-slate-800 transition-colors group-hover:text-amber-700">
+                      <p className="text-sm font-medium leading-6 text-[var(--text-heading)] transition-colors group-hover:text-amber-700 dark:group-hover:text-amber-500">
                         &apos;Superb&apos; Guest Rating
                       </p>
                     </div>
@@ -222,7 +222,7 @@ function GuestRatingsSection() {
                     </div>
                   </div>
                 </div>
-                <p className="mt-auto pt-2 text-sm leading-6 text-slate-500 transition-colors group-hover:text-amber-700" />
+                <p className="mt-auto pt-2 text-sm leading-6 text-[var(--text-body-subtle)]" />
               </a>
             </div>
           </div>
@@ -551,7 +551,7 @@ export default function Home() {
                         return (
                           <div
                             key={idx}
-                            className="flex w-fit items-center gap-2 rounded-xl border border-slate-100 bg-slate-50/50 px-3 py-2 text-slate-600"
+                            className="flex w-fit items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--muted)]/50 px-3 py-2 text-[var(--text-body)]"
                           >
                             <AmenityIcon className="size-3.5 shrink-0 text-emerald-600" />
                             <span className="whitespace-nowrap text-[11px] font-medium tracking-tight">
@@ -613,16 +613,16 @@ export default function Home() {
                     className="min-w-[85%] snap-center sm:min-w-0 h-full"
                   >
                     <div
-                      className="group flex h-full gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
+                      className="group flex h-full gap-4 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass-bg)] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
                     >
-                      <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-slate-50 text-slate-600 shadow-sm ring-1 ring-slate-900/5 transition-all duration-300 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:ring-emerald-500/20">
+                      <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-[var(--muted)] text-[var(--text-body)] shadow-sm ring-1 ring-slate-900/5 transition-all duration-300 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:ring-emerald-500/20">
                         <Icon className="size-5" strokeWidth={1.5} />
                       </div>
                       <div className="space-y-1.5 pt-0.5">
                         <h4 className="text-[15px] font-bold tracking-tight text-[var(--text-heading)]">
                           {service.title}
                         </h4>
-                        <p className="text-xs leading-relaxed text-slate-500 line-clamp-2 transition-colors group-hover:text-slate-600">
+                        <p className="text-xs leading-relaxed text-[var(--text-body-subtle)] line-clamp-2 transition-colors group-hover:text-[var(--text-body)]">
                           {service.description}
                         </p>
                       </div>
@@ -734,7 +734,7 @@ export default function Home() {
                             </p>
                           </div>
                         </div>
-                        <div className="p-6 text-sm leading-relaxed text-[var(--text-body-subtle)] bg-white flex-1 flex flex-col">
+                        <div className="p-6 text-sm leading-relaxed text-[var(--text-body-subtle)] bg-[var(--glass-bg)] flex-1 flex flex-col">
                           <p className="flex-1">{formatText(pillar.description)}</p>
                           <PillarCta cta={pillar.cta} />
                         </div>
@@ -902,9 +902,9 @@ export default function Home() {
                   const Icon = reasonIcons[index] || ArrowRight;
                   return (
                     <div key={reason.title} className="min-w-[82vw] snap-center sm:min-w-0">
-                      <div className="group relative flex h-full flex-col justify-between overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
+                      <div className="group relative flex h-full flex-col justify-between overflow-hidden border border-[var(--glass-border)] bg-[var(--glass-bg)] p-8 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md rounded-[28px]">
                         <div>
-                          <div className="float-left mb-3 mr-4 flex size-12 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-700 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-700/20">
+                          <div className="float-left mb-3 mr-4 flex size-12 items-center justify-center rounded-2xl bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-[var(--brand-primary)]/20">
                             <Icon className="size-5" strokeWidth={1.8} />
                           </div>
                           <h3 className="mb-2 heading-item text-[var(--text-heading)] pt-1">

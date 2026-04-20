@@ -55,17 +55,17 @@ export async function ThethWeather({ variant = "default" }: { variant?: "default
   }
 
   return (
-    <div className="flex w-fit items-center gap-4 rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-50 to-white px-5 py-4 shadow-sm">
-      <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm border border-sky-50">
+    <div className="flex w-fit items-center gap-4 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass-bg)] px-5 py-4 shadow-sm shadow-[var(--glass-shadow)]/10">
+      <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-[var(--muted)] shadow-sm border border-[var(--border)]">
         <Icon className={`size-6 ${details.colorClass}`} strokeWidth={1.5} />
       </div>
       <div>
-        <p className="text-[10px] font-bold uppercase tracking-widest text-sky-600/80">
+        <p className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-primary)] opacity-80">
           Theth National Park Currently
         </p>
-        <p className="mt-0.5 font-heading text-2xl leading-none tracking-tight text-slate-800">
+        <p className="mt-0.5 font-heading text-2xl leading-none tracking-tight text-[var(--text-heading)]">
           {Math.round(temperature_2m)}°C 
-          <span className="ml-2 font-sans text-sm font-medium text-slate-500">
+          <span className="ml-2 font-sans text-sm font-medium text-[var(--text-muted)]">
             {details.label}
           </span>
         </p>

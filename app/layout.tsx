@@ -88,6 +88,24 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("h-full scroll-smooth", nunito.variable)} data-scroll-behavior="smooth">
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const savedTheme = localStorage.getItem('theme');
+                  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                  const theme = savedTheme || systemTheme;
+                  if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {}
+              })()
+            `,
+          }}
+        />
         <link rel="preconnect" href="https://wa.me" />
         <link rel="preconnect" href="https://www.booking.com" />
         <link rel="preconnect" href="https://www.hostelworld.com" />

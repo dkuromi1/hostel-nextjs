@@ -44,7 +44,7 @@ export default function RoomsPage() {
     return text.split(/(\*\*.*?\*\*|~~.*?~~)/g).map((part, i) => {
       if (part.startsWith("**") && part.endsWith("**")) {
         return (
-          <strong key={i} className="font-bold text-slate-950">
+          <strong key={i} className="font-bold text-[var(--text-heading)]">
             {part.slice(2, -2)}
           </strong>
         );
@@ -167,7 +167,7 @@ export default function RoomsPage() {
                             return (
                               <div
                                 key={idx}
-                                className="flex w-fit items-center gap-2 rounded-xl border border-slate-100 bg-slate-50/50 px-3 py-2 text-slate-600 transition-all duration-300 hover:border-emerald-500/10 hover:shadow-sm hover:bg-white"
+                                className="flex w-fit items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--muted)]/50 px-3 py-2 text-[var(--text-body)] transition-all duration-300 hover:border-emerald-500/10 hover:shadow-sm hover:bg-[var(--glass-bg)]"
                               >
                                 <AmenityIcon className="size-3.5 shrink-0 text-[var(--brand-primary)]" />
                                 <span className="whitespace-nowrap text-[11px] font-medium tracking-tight">
@@ -221,9 +221,9 @@ export default function RoomsPage() {
                   return (
                     <div
                       key={idx}
-                      className="group flex gap-4 rounded-2xl border border-slate-100 bg-slate-50/50 p-4 transition-all duration-300 hover:border-emerald-500/20 hover:bg-white hover:shadow-md"
+                      className="group flex gap-4 rounded-2xl border border-[var(--border)] bg-[var(--muted)]/30 p-4 transition-all duration-300 hover:border-emerald-500/20 hover:bg-[var(--glass-bg)] hover:shadow-md"
                     >
-                      <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-slate-200/50 transition-all duration-300 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:ring-emerald-500/20">
+                      <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--glass-bg)] shadow-sm ring-1 ring-slate-200/50 transition-all duration-300 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:ring-emerald-500/20">
                         <Icon className="size-5" strokeWidth={1.5} />
                       </div>
                       <div className="space-y-1">
@@ -253,9 +253,9 @@ export default function RoomsPage() {
                   return (
                     <div
                       key={idx}
-                      className="group flex gap-4 rounded-2xl border border-amber-100/30 bg-amber-50/40 p-4 transition-all duration-300 hover:border-amber-500/20 hover:bg-white hover:shadow-md"
+                      className="group flex gap-4 rounded-2xl border border-amber-500/10 bg-amber-50/10 p-4 transition-all duration-300 hover:border-amber-500/20 hover:bg-[var(--glass-bg)] hover:shadow-md"
                     >
-                      <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-amber-500/10 transition-all duration-300 group-hover:bg-amber-50 group-hover:text-amber-600 group-hover:ring-amber-500/20">
+                      <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--glass-bg)] shadow-sm ring-1 ring-amber-500/10 transition-all duration-300 group-hover:bg-amber-50 group-hover:text-amber-600 group-hover:ring-amber-500/20">
                         <Icon className="size-5" strokeWidth={1.5} />
                       </div>
                       <div className="space-y-1">
