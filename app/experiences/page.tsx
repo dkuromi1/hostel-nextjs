@@ -222,7 +222,7 @@ export default function ExperiencesPage() {
                       <div className="mb-3 flex flex-wrap items-center gap-2">
                         <Link
                           href={`?poi=${encodeURIComponent(
-                            item.title === "Theth & Valbona Treks"
+                            item.title === "Theth to Valbona Trek"
                               ? THETH_VALBONA_MAP_QUERY
                               : item.title === "Shala River Day Trip"
                                 ? SHALA_RIVER_MAP_QUERY
@@ -238,7 +238,7 @@ export default function ExperiencesPage() {
                         {item.showDirections !== false && (
                           <a
                             href={
-                              item.title === "Theth & Valbona Treks"
+                              item.title === "Theth to Valbona Trek"
                                 ? THETH_SIDE_TRAILHEAD_GOOGLE_MAPS
                                 : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(item.title + ' Shkoder')}`
                             }
