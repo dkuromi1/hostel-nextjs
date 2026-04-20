@@ -43,7 +43,7 @@ export function BookingActions({
             rel="noreferrer"
             className={cn(
               buttonVariants({ variant: "outline", size: compact ? "sm" : "lg" }),
-              "h-auto min-h-12 flex-1 justify-center rounded-full border-white/70 bg-white/80 px-3 py-3 text-sm text-slate-900 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-white"
+              "h-auto min-h-12 flex-1 justify-center rounded-full border-[var(--glass-border)] bg-[var(--glass-bg)] px-3 py-3 text-sm text-[var(--text-heading)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-[var(--glass-bg)]/90"
             )}
           >
             <span className="truncate">Booking.com</span>
@@ -54,7 +54,7 @@ export function BookingActions({
             rel="noreferrer"
             className={cn(
               buttonVariants({ variant: "outline", size: compact ? "sm" : "lg" }),
-              "h-auto min-h-12 flex-1 justify-center rounded-full border-white/70 bg-white/80 px-3 py-3 text-sm text-slate-900 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-white"
+              "h-auto min-h-12 flex-1 justify-center rounded-full border-[var(--glass-border)] bg-[var(--glass-bg)] px-3 py-3 text-sm text-[var(--text-heading)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-[var(--glass-bg)]/90"
             )}
           >
             <span className="truncate">Hostelworld</span>

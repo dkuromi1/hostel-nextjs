@@ -80,7 +80,7 @@ export function TestimonialCarousel({
   return (
     <Panel
       className={cn(
-        "relative flex flex-col justify-between bg-slate-700 p-8 text-white sm:p-10",
+        "relative flex flex-col justify-between bg-[var(--glass-bg)] border-[var(--glass-border)] p-8 text-[var(--text-heading)] sm:p-10 shadow-xl shadow-[var(--glass-shadow)]/10",
         className
       )}
       onMouseEnter={() => setIsHovered(true)}
@@ -102,19 +102,19 @@ export function TestimonialCarousel({
                 <Star key={i} className="size-4 fill-current" />
               ))}
             </div>
-            <blockquote className="mt-6 font-heading text-2xl leading-snug tracking-[-0.02em] text-white sm:text-3xl">
+            <blockquote className="mt-6 font-heading text-2xl leading-snug tracking-[-0.02em] text-[var(--text-heading)] sm:text-3xl">
               &ldquo;{testimonial.quote}&rdquo;
             </blockquote>
-            <p className="mt-6 font-medium text-slate-200">
+            <p className="mt-6 font-medium text-[var(--text-body)]">
               — {testimonial.author}{" "}
-              <span className="opacity-90">({testimonial.source})</span>
+              <span className="opacity-90 font-normal italic text-[var(--text-muted)]">({testimonial.source})</span>
             </p>
           </motion.div>
         </AnimatePresence>
       </div>
 
       {/* Navigation Controls */}
-      <div className="mt-6 flex items-center justify-between border-t border-slate-700/50 pt-4">
+      <div className="mt-6 flex items-center justify-between border-t border-[var(--border)] pt-4">
         <div className="flex gap-2">
           {testimonials.map((_, index) => (
             <div
@@ -126,7 +126,7 @@ export function TestimonialCarousel({
                 "before:absolute before:left-1/2 before:top-1/2 before:h-11 before:w-[calc(100%+8px)] before:-translate-x-1/2 before:-translate-y-1/2 before:content-['']",
                 index === currentIndex
                   ? "w-8 bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.4)]"
-                  : "w-2 bg-white/20 hover:bg-white/30"
+                  : "w-2 bg-[var(--muted)] hover:bg-[var(--text-muted)]"
               )}
             />
           ))}
@@ -135,14 +135,14 @@ export function TestimonialCarousel({
           <button
             onClick={prev}
             aria-label="Previous testimonial"
-            className="flex size-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-110 active:scale-95"
+            className="flex size-10 items-center justify-center rounded-full bg-[var(--muted)] text-[var(--text-heading)] transition-all hover:bg-emerald-500 hover:text-white hover:scale-110 active:scale-95 border border-[var(--border)]"
           >
             <ChevronLeft className="size-5" />
           </button>
           <button
             onClick={next}
             aria-label="Next testimonial"
-            className="flex size-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-110 active:scale-95"
+            className="flex size-10 items-center justify-center rounded-full bg-[var(--muted)] text-[var(--text-heading)] transition-all hover:bg-emerald-500 hover:text-white hover:scale-110 active:scale-95 border border-[var(--border)]"
           >
             <ChevronRight className="size-5" />
           </button>

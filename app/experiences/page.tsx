@@ -77,7 +77,7 @@ export default function ExperiencesPage() {
                   className="group flex items-start gap-5 transition-all duration-300 hover:translate-x-2"
                 >
                   {/* Interactive Icon Box */}
-                  <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 transition-all duration-300 group-hover:bg-emerald-700 group-hover:text-white group-hover:shadow-lg group-hover:shadow-emerald-600/20">
+                  <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-[var(--muted)] text-[var(--brand-primary)] transition-all duration-300 group-hover:bg-emerald-700 group-hover:text-white group-hover:shadow-lg group-hover:shadow-emerald-600/20">
                     <Icon className="size-5" strokeWidth={1.5} />
                   </div>
                   <div>
@@ -102,7 +102,7 @@ export default function ExperiencesPage() {
 
               {/* Left Column: Tall Featured Image */}
               <Reveal className="row-span-2 h-full" delay={100}>
-                <div className="media-frame relative h-full min-h-[20rem] md:min-h-[36rem] overflow-hidden rounded-[2rem] shadow-xl shadow-slate-200/50">
+                <div className="media-frame relative h-full min-h-[20rem] md:min-h-[36rem] overflow-hidden rounded-[2rem] shadow-xl shadow-[var(--glass-shadow)]/10">
                   <Image
                     src="/images/hiking_3.jpg"
                     alt="Hiking the Albanian Alps from Shkoder"
@@ -158,7 +158,7 @@ export default function ExperiencesPage() {
           </Reveal>
 
           <Reveal className="w-full pt-4 sm:pt-8 w-full max-w-[1400px] mx-auto">
-            <div id="map" className="media-frame relative h-[500px] w-full overflow-hidden rounded-[2rem] shadow-xl shadow-slate-200/50 ring-1 ring-slate-200">
+            <div id="map" className="media-frame relative h-[500px] w-full overflow-hidden rounded-[2rem] shadow-xl shadow-[var(--glass-shadow)]/10 ring-1 ring-[var(--glass-border)]">
               <LocationMap />
             </div>
           </Reveal>
@@ -167,8 +167,8 @@ export default function ExperiencesPage() {
             <SwipableRow itemCount={thingsToDo.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {thingsToDo.map((item) => (
                 <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full">
-                  <Panel className="group relative flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-300 hover:border-sky-500/20 hover:shadow-md">
-                    <div className="relative h-48 w-full overflow-hidden bg-slate-100">
+                  <Panel className="group relative flex h-full flex-col overflow-hidden border border-[var(--glass-border)] bg-[var(--glass-bg)] transition-all duration-300 hover:border-sky-500/20 hover:shadow-md">
+                    <div className="relative h-48 w-full overflow-hidden bg-[var(--muted)]">
                       <Image
                         src={item.image}
                         alt={item.alt}
@@ -209,7 +209,7 @@ export default function ExperiencesPage() {
                                 ? SHALA_RIVER_MAP_QUERY
                                 : item.title
                           )}#map`}
-                          className="group flex w-fit items-center gap-1.5 rounded-full border border-sky-200 bg-white px-3 py-1.5 text-sky-700 shadow-sm ring-1 ring-sky-500/5 transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-500/20 hover:bg-sky-600 hover:text-white hover:shadow-md"
+                          className="group flex w-fit items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--muted)]/50 px-3 py-1.5 text-[var(--brand-primary)] shadow-sm ring-1 ring-sky-500/5 transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-500/20 hover:bg-sky-600 hover:text-white hover:shadow-md"
                         >
                           <MapPin className="size-3.5 transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110" strokeWidth={2} />
                           <span className="text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">
@@ -225,7 +225,7 @@ export default function ExperiencesPage() {
                             }
                             target="_blank"
                             rel="noreferrer"
-                            className="group ml-auto flex size-8 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-400 transition-all duration-300 hover:border-sky-500/30 hover:bg-sky-50 hover:text-sky-600 hover:shadow-sm"
+                            className="group ml-auto flex size-8 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--muted)]/50 text-[var(--text-muted)] transition-all duration-300 hover:border-sky-500/30 hover:bg-sky-50 hover:text-sky-600 hover:shadow-sm"
                             title="Open in Google Maps"
                           >
                             <Navigation className="size-4" strokeWidth={2.5} />
@@ -270,12 +270,12 @@ export default function ExperiencesPage() {
               {socialConnectionFeatures.map((item) => {
                 const Icon = resolveIcon(item.icon);
                 return (
-                <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full">
+                <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full" >
                   <Panel
-                    className="group relative flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
+                    className="group relative flex h-full flex-col overflow-hidden border border-[var(--glass-border)] bg-[var(--glass-bg)] transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
                   >
                     {/* Card Image Header */}
-                    <div className="relative h-56 w-full overflow-hidden bg-slate-100">
+                    <div className="relative h-56 w-full overflow-hidden bg-[var(--muted)]">
                       <Image
                         src={item.image}
                         alt={item.title}
@@ -288,8 +288,8 @@ export default function ExperiencesPage() {
 
                     {/* Card Content Area */}
                     <div className="flex flex-1 flex-col px-8 pb-8">
-                      {/* Floating Icon Box (Overlaps the image and white background) */}
-                      <div className="relative -mt-6 mb-6 flex size-12 items-center justify-center rounded-2xl bg-white text-slate-600 shadow-lg shadow-slate-200/50 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-50 group-hover:text-emerald-600">
+                      {/* Floating Icon Box (Overlaps the image and background) */}
+                      <div className="relative -mt-6 mb-6 flex size-12 items-center justify-center rounded-2xl bg-[var(--glass-bg)] text-[var(--text-body)] shadow-lg shadow-[var(--glass-shadow)]/10 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-50 group-hover:text-emerald-600">
                         <Icon className="size-5" strokeWidth={1.5} />
                       </div>
 

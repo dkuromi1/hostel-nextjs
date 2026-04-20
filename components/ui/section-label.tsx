@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 type SectionLabelProps = {
   children: ReactNode;
   className?: string;
-  variant?: "default" | "sun" | "emerald";
+  variant?: "default" | "emerald" | "sky" | "sun" | "rose";
   weight?: "light" | "bold";
 };
 
@@ -20,10 +20,16 @@ export function SectionLabel({
         "uppercase tracking-[0.24em] antialiased",
         weight === "light" ? "text-xs font-normal" : "text-[10px] font-bold",
         variant === "default"
-          ? "text-[var(--text-muted)]"
+          ? "text-[var(--text-muted)] dark:text-[var(--text-body-subtle)]"
+          : variant === "emerald"
+            ? "text-[var(--brand-primary-dark)] dark:text-[var(--brand-primary)]"
+          : variant === "sky"
+            ? "text-sky-700 dark:text-sky-400"
           : variant === "sun"
-            ? "text-amber-700"
-            : "text-[var(--brand-primary-dark)]",
+            ? "text-amber-700 dark:text-[var(--brand-accent)]"
+          : variant === "rose"
+            ? "text-rose-700 dark:text-rose-400"
+          : "text-[var(--text-muted)]",
         className
       )}
     >

@@ -20,9 +20,9 @@ function FaqItem({ question, answer }: FaqItemProps) {
   return (
     <div
       className={cn(
-        "group rounded-2xl border border-transparent bg-slate-50 p-5 transition-all duration-300",
-        "hover:border-emerald-200/50 hover:bg-white hover:shadow-sm",
-        isOpen && "border-emerald-200/50 bg-white shadow-sm"
+        "group rounded-2xl border border-transparent bg-[var(--muted)]/50 p-5 transition-all duration-300",
+        "hover:border-emerald-200/50 hover:bg-[var(--glass-bg)] hover:shadow-sm",
+        isOpen && "border-emerald-200/50 bg-[var(--glass-bg)] shadow-sm"
       )}
     >
       <button
@@ -36,7 +36,7 @@ function FaqItem({ question, answer }: FaqItemProps) {
         <span
           className={cn(
             "font-heading text-base font-medium transition-colors",
-            isOpen ? "text-emerald-950" : "text-slate-900 group-hover:text-emerald-900"
+            isOpen ? "text-[var(--brand-primary)]" : "text-[var(--text-heading)] group-hover:text-[var(--brand-primary)]"
           )}
         >
           {question}
@@ -47,8 +47,8 @@ function FaqItem({ question, answer }: FaqItemProps) {
           className={cn(
             "mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full transition-all duration-0",
             isOpen
-              ? "bg-emerald-100 text-emerald-700"
-              : "bg-slate-200/50 text-slate-500 group-hover:bg-emerald-100 group-hover:text-emerald-600"
+              ? "bg-emerald-100/20 text-emerald-500"
+              : "bg-[var(--muted)] text-[var(--text-muted)] group-hover:bg-emerald-100/20 group-hover:text-emerald-500"
           )}
         >
           <Plus className="size-4" />
@@ -71,7 +71,7 @@ function FaqItem({ question, answer }: FaqItemProps) {
             }}
             className="overflow-hidden"
           >
-            <div className="mt-3 pr-6 text-sm leading-7 text-slate-600">
+            <div className="mt-3 pr-6 text-sm leading-7 text-[var(--text-body-subtle)]">
               {answer}
             </div>
           </motion.div>
