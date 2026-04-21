@@ -135,8 +135,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
     const poiQuery = searchParams?.get('poi') || '';
     const initialPoiQueryRef = useRef(poiQuery);
     const recommendedPoisRef = useRef<MapPOI[]>([]);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const trailGeoJsonRef = useRef<any>(null);
+    const trailGeoJsonRef = useRef<mapboxgl.GeoJSONSourceSpecification["data"] | null>(null);
 
     const mapContainerRef = useRef<HTMLDivElement>(null);
     const mapRef = useRef<mapboxgl.Map | null>(null);
@@ -314,7 +313,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
 
             if (siteConfig.features.showRegionalTrails) {
                 const tracksModule = await import('@/content/theth_valbona_tracks.json');
-                trailGeoJsonRef.current = tracksModule.default as any;
+                trailGeoJsonRef.current = tracksModule.default as mapboxgl.GeoJSONSourceSpecification["data"];
             } else {
                 trailGeoJsonRef.current = null;
             }

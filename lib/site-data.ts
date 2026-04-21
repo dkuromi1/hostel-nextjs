@@ -550,27 +550,29 @@ function parseRoomTypes(items: RoomType[]): RoomType[] {
   }));
 }
 
+const normalizedHomepage = homepage as HomepageContent;
+
 const homepageContent: HomepageContent = {
-  ...homepage,
-  quickFacts: parseIconTextItems(homepage.quickFacts, "homepage.quickFacts"),
+  ...normalizedHomepage,
+  quickFacts: parseIconTextItems(normalizedHomepage.quickFacts, "homepage.quickFacts"),
   includedServices: parseServices(
-    (homepage.includedServices ?? homepage.freeServices ?? []) as { title: string; description: string; icon: string }[],
+    (normalizedHomepage.includedServices ?? normalizedHomepage.freeServices ?? []) as { title: string; description: string; icon: string }[],
     "homepage.includedServices",
   ),
   addOnServices: parseServices(
-    (homepage.addOnServices ?? homepage.paidServices ?? []) as { title: string; description: string; icon: string }[],
+    (normalizedHomepage.addOnServices ?? normalizedHomepage.paidServices ?? []) as { title: string; description: string; icon: string }[],
     "homepage.addOnServices",
   ),
   experienceLogisticsFeatures: parseIconFeatures(
-    (homepage.experienceLogisticsFeatures ?? []) as IconFeature[],
+    (normalizedHomepage.experienceLogisticsFeatures ?? []) as IconFeature[],
     "homepage.experienceLogisticsFeatures"
   ),
   socialConnectionFeatures: parseVisualIconFeatures(
-    (homepage.socialConnectionFeatures ?? []) as VisualIconFeature[],
+    (normalizedHomepage.socialConnectionFeatures ?? []) as VisualIconFeature[],
     "homepage.socialConnectionFeatures"
   ),
   extendReasons: parseExtendReasons(
-    (homepage.extendReasons ?? []) as ExtendReason[],
+    (normalizedHomepage.extendReasons ?? []) as ExtendReason[],
     "homepage.extendReasons"
   ),
 };
