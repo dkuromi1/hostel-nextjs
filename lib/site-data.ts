@@ -62,6 +62,12 @@ interface SettingsContent {
   };
   features: {
     volunteersNeeded: boolean;
+    showVolunteerBanner: boolean;
+    showMascot: boolean;
+    showRegionalWeather: boolean;
+    showLocalExperienceMap: boolean;
+    showLocalPois: boolean;
+    showRegionalTrails: boolean;
   };
   schema: {
     type: string;
@@ -518,6 +524,12 @@ export const siteConfig = {
   breakfastHours: settingsContent.operations.breakfastHours,
   checkInHours: settingsContent.operations.checkInHours,
   volunteersNeeded: settingsContent.features.volunteersNeeded,
+  showVolunteerBanner: settingsContent.features.showVolunteerBanner,
+  showMascot: settingsContent.features.showMascot,
+  showRegionalWeather: settingsContent.features.showRegionalWeather,
+  showLocalExperienceMap: settingsContent.features.showLocalExperienceMap,
+  showLocalPois: settingsContent.features.showLocalPois,
+  showRegionalTrails: settingsContent.features.showRegionalTrails,
   baseKeywords: settingsContent.seo.baseKeywords,
   bookingRating: settingsContent.booking.bookingRating,
   hostelworldRating: settingsContent.booking.hostelworldRating,

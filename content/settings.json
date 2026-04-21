@@ -91,7 +91,13 @@
     "manifestBackgroundColor": "#f6f7f2"
   },
   "features": {
-    "volunteersNeeded": true
+    "volunteersNeeded": true,
+    "showVolunteerBanner": true,
+    "showMascot": true,
+    "showRegionalWeather": true,
+    "showLocalExperienceMap": true,
+    "showLocalPois": true,
+    "showRegionalTrails": true
   },
   "schema": {
     "type": "Hostel",

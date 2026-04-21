@@ -723,7 +723,7 @@ export default function Home() {
                             className="object-cover"
                             sizes="(max-width: 1024px) 85vw, 50vw"
                           />
-                          {index === 0 && (
+                          {index === 0 && siteConfig.features.showRegionalWeather && (
                             <div className="absolute right-4 top-4 z-20">
                               <ThethWeather variant="small" />
                             </div>
@@ -757,9 +757,11 @@ export default function Home() {
                       className="object-cover"
                       sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 58vw, 812px"
                     />
-                    <div className="absolute right-4 top-4 z-20">
-                      <ThethWeather variant="small" />
-                    </div>
+                    {siteConfig.features.showRegionalWeather ? (
+                      <div className="absolute right-4 top-4 z-20">
+                        <ThethWeather variant="small" />
+                      </div>
+                    ) : null}
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent p-6 pt-32 text-white">
                       <p className="text-sm uppercase tracking-[0.28em] text-sky-100/90">
                         {experiencePillars[0].title}

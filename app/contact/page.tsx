@@ -121,11 +121,13 @@ export default function ContactPage() {
               </Panel>
             </Reveal>
 
-            <Reveal className="flex-1" delay={50}>
-              <div id="map" className="media-frame relative min-h-[400px] h-full w-full overflow-hidden rounded-3xl">
-                <LocationMap />
-              </div>
-            </Reveal>
+            {siteConfig.features.showLocalExperienceMap ? (
+              <Reveal className="flex-1" delay={50}>
+                <div id="map" className="media-frame relative min-h-[400px] h-full w-full overflow-hidden rounded-3xl">
+                  <LocationMap />
+                </div>
+              </Reveal>
+            ) : null}
           </div>
 
           <Reveal delay={120}>

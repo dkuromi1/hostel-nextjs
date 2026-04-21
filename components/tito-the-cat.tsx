@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback, useMemo } from "react";
+import { siteConfig } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
 type AnimationState =
@@ -11,6 +12,8 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const WALKING_SPEED = 90;
 
 export function TitoTheCat() {
+  const isEnabled = siteConfig.features.showMascot;
+
   const titoRef = useRef<HTMLDivElement>(null);
   const [state, setState] = useState<AnimationState>("hidden");
   const [jumpY, setJumpY] = useState(0);
@@ -20,11 +23,13 @@ export function TitoTheCat() {
   const [facingRight, setFacingRight] = useState(false);
 
   useEffect(() => {
+    if (!isEnabled) return;
+
     const handleResize = () => setViewportWidth(window.innerWidth);
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [isEnabled]);
 
   const getXPos = useCallback((px: number, vw: number) => {
     const vwInPx = (vw / 100) * viewportWidth;
@@ -69,10 +74,9 @@ export function TitoTheCat() {
   }, []);
 
   useEffect(() => {
+    if (!isEnabled) return;
     if (viewportWidth === 0) return;
     let isMounted = true;
-
-    setState("hidden");
 
     const runSequence = async () => {
       setFacingRight(false);
@@ -118,9 +122,9 @@ export function TitoTheCat() {
 
     runSequence();
     return () => { isMounted = false; };
-  }, [viewportWidth, durations, calculateAndTriggerJump]);
+  }, [isEnabled, viewportWidth, durations, calculateAndTriggerJump]);
 
-  if (state === "hidden" || state === "done") return null;
+  if (!isEnabled || state === "hidden" || state === "done") return null;
 
   const getAnimationConfig = () => {
     switch (state) {
@@ -179,7 +183,7 @@ export function TitoTheCat() {
             "relative mb-3 rounded-2xl rounded-br-sm bg-slate-900 px-4 py-2.5 text-sm font-medium text-white shadow-xl transition-all duration-300",
             state === "paused" ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
           )}>
-            Hi, I'm Tito! 🐾
+            Hi, I&apos;m Tito! 🐾
             <div className="absolute -bottom-1.5 right-4 size-3 rotate-45 bg-slate-900" />
           </div>
 

@@ -4,9 +4,8 @@ import React, { useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Home } from 'lucide-react';
-import poisData from '@/content/pois.json';
-import thethValbonaTracks from '@/content/theth_valbona_tracks.json';
 import { useSearchParams } from 'next/navigation';
+import { siteConfig } from '@/lib/site-data';
 
 interface LocationMapInnerProps {
     accessToken: string;
@@ -41,8 +40,6 @@ interface MapPOI {
     coords: [number, number];
     minZoom?: number;
 }
-
-const RECOMMENDED_POIS = poisData.recommendedPois as MapPOI[];
 
 // Detect mobile/low-power device — runs once at module level
 const isMobileDevice = () => {
@@ -136,6 +133,9 @@ const applyLabelStyle = (el: HTMLElement, isMobile: boolean, overrides?: Partial
 export default function LocationMapInner({ accessToken }: LocationMapInnerProps) {
     const searchParams = useSearchParams();
     const poiQuery = searchParams?.get('poi') || '';
+    const initialPoiQueryRef = useRef(poiQuery);
+    const recommendedPoisRef = useRef<MapPOI[]>([]);
+    const trailGeoJsonRef = useRef<mapboxgl.GeoJSONSourceRaw['data'] | null>(null);
 
     const mapContainerRef = useRef<HTMLDivElement>(null);
     const mapRef = useRef<mapboxgl.Map | null>(null);
@@ -144,7 +144,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
     const isSatelliteRef = useRef(false);
 
     // Reusable function to apply our "Boutique" customizations
-    const applyCustomizations = (map: mapboxgl.Map, mobile: boolean) => {
+    const applyCustomizations = (map: mapboxgl.Map) => {
         const style = map.getStyle();
         if (!style) return;
 
@@ -226,14 +226,14 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         }
 
         // HIKING TRAIL: Theth to Valbona
-        if (!map.getSource('theth-valbona-track')) {
+        if (siteConfig.features.showRegionalTrails && trailGeoJsonRef.current && !map.getSource('theth-valbona-track')) {
             map.addSource('theth-valbona-track', {
                 type: 'geojson',
-                data: thethValbonaTracks as mapboxgl.GeoJSONSourceRaw['data']
+                data: trailGeoJsonRef.current
             });
         }
 
-        if (!map.getLayer('theth-valbona-line')) {
+        if (siteConfig.features.showRegionalTrails && !map.getLayer('theth-valbona-line') && map.getSource('theth-valbona-track')) {
             map.addLayer({
                 'id': 'theth-valbona-line',
                 'type': 'line',
@@ -282,77 +282,99 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
 
     useEffect(() => {
         if (!mapContainerRef.current) return;
+        if (!siteConfig.features.showLocalExperienceMap) return;
 
+        let moveThrottleId: ReturnType<typeof requestAnimationFrame> | null = null;
+        let map: mapboxgl.Map | null = null;
+        let style: HTMLStyleElement | null = null;
         const mobile = isMobileDevice();
-
-        // Resolve initial position synchronously to prevent memory spikes from flying after load
-        const q = poiQuery ? poiQuery.toLowerCase() : '';
-        let initialCenter = HOSTEL_COORDS;
-        let initialZoom = 15.5;
-
-        if (q) {
-            const matchedPoi = RECOMMENDED_POIS.find((p) => q.includes(p.name.toLowerCase()) || p.name.toLowerCase().includes(q));
-            if (matchedPoi) {
-                initialCenter = matchedPoi.coords as [number, number];
-                initialZoom = 16.5;
-            } else if (q === THETH_VALBONA_MAP_QUERY || (q.includes('theth') && q.includes('valbona'))) {
-                initialCenter = THETH_VALBONA_MIDPOINT_COORDS;
-                initialZoom = 10.5;
-            } else if (q === SHALA_RIVER_MAP_QUERY || (q.includes('shala') && q.includes('river'))) {
-                initialCenter = SHALA_RIVER_MIDPOINT_COORDS;
-                initialZoom = 10.5;
-            } else if (q.includes("pedestrian") || q.includes("idromeno")) {
-                initialCenter = PEDONALE_COORDS[1] as [number, number];
-                initialZoom = 16.5;
-            }
-        }
-
-        mapboxgl.accessToken = accessToken;
-
-        const getBaseStyle = () => document.documentElement.classList.contains('dark') 
-            ? 'mapbox://styles/mapbox/dark-v11' 
-            : 'mapbox://styles/mapbox/streets-v12';
-
-        const map = new mapboxgl.Map({
-            container: mapContainerRef.current,
-            style: getBaseStyle(),
-            center: HOSTEL_COORDS,
-            zoom: 13,
-            pitch: 45,
-            bearing: -17.6,
-            antialias: false, // Disabled: antialias=true on high-DPI mobile devices causes WebGL OOM crashes
-            fadeDuration: 300,
-            maxTileCacheSize: mobile ? 20 : undefined, // Cap tile cache on mobile to limit memory footprint
-        });
-
-        mapRef.current = map;
-
-        map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'bottom-right');
-        map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
-
         const themeObserver = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 if (mutation.attributeName === 'class') {
-                    if (!isSatelliteRef.current) {
+                    if (map && !isSatelliteRef.current) {
                         map.setStyle(getBaseStyle());
                     }
                 }
             });
         });
-        themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+        let isCancelled = false;
 
-        // --- 1. HOSTEL MARKER (Premium Floating Pin) ---
-        const elevation = 0;
+        const getBaseStyle = () => document.documentElement.classList.contains('dark') 
+            ? 'mapbox://styles/mapbox/dark-v11' 
+            : 'mapbox://styles/mapbox/streets-v12';
 
-        const el = document.createElement('div');
-        el.className = 'hostel-marker-container';
-        el.setAttribute('data-poi', 'hostel');
-        el.style.display = 'flex';
-        el.style.flexDirection = 'column';
-        el.style.alignItems = 'center';
-        el.style.cursor = 'pointer';
-        el.style.zIndex = '20';
-        el.style.position = 'relative';
+        const initMap = async () => {
+            if (siteConfig.features.showLocalPois) {
+                const poisModule = await import('@/content/pois.json');
+                recommendedPoisRef.current = poisModule.default.recommendedPois as MapPOI[];
+            } else {
+                recommendedPoisRef.current = [];
+            }
+
+            if (siteConfig.features.showRegionalTrails) {
+                const tracksModule = await import('@/content/theth_valbona_tracks.json');
+                trailGeoJsonRef.current = tracksModule.default as mapboxgl.GeoJSONSourceRaw['data'];
+            } else {
+                trailGeoJsonRef.current = null;
+            }
+
+            if (isCancelled || !mapContainerRef.current) {
+                return;
+            }
+
+            const q = initialPoiQueryRef.current ? initialPoiQueryRef.current.toLowerCase() : '';
+            let initialCenter = HOSTEL_COORDS;
+            let initialZoom = 15.5;
+
+            if (q) {
+                const matchedPoi = recommendedPoisRef.current.find((p) => q.includes(p.name.toLowerCase()) || p.name.toLowerCase().includes(q));
+                if (matchedPoi) {
+                    initialCenter = matchedPoi.coords as [number, number];
+                    initialZoom = 16.5;
+                } else if (siteConfig.features.showRegionalTrails && (q === THETH_VALBONA_MAP_QUERY || (q.includes('theth') && q.includes('valbona')))) {
+                    initialCenter = THETH_VALBONA_MIDPOINT_COORDS;
+                    initialZoom = 10.5;
+                } else if (q === SHALA_RIVER_MAP_QUERY || (q.includes('shala') && q.includes('river'))) {
+                    initialCenter = SHALA_RIVER_MIDPOINT_COORDS;
+                    initialZoom = 10.5;
+                } else if (q.includes("pedestrian") || q.includes("idromeno")) {
+                    initialCenter = PEDONALE_COORDS[1] as [number, number];
+                    initialZoom = 16.5;
+                }
+            }
+
+            mapboxgl.accessToken = accessToken;
+
+            map = new mapboxgl.Map({
+                container: mapContainerRef.current,
+                style: getBaseStyle(),
+                center: HOSTEL_COORDS,
+                zoom: 13,
+                pitch: 45,
+                bearing: -17.6,
+                antialias: false,
+                fadeDuration: 300,
+                maxTileCacheSize: mobile ? 20 : undefined,
+            });
+
+            mapRef.current = map;
+
+            map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'bottom-right');
+            map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
+            themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+            // --- 1. HOSTEL MARKER (Premium Floating Pin) ---
+            const elevation = 0;
+
+            const el = document.createElement('div');
+            el.className = 'hostel-marker-container';
+            el.setAttribute('data-poi', 'hostel');
+            el.style.display = 'flex';
+            el.style.flexDirection = 'column';
+            el.style.alignItems = 'center';
+            el.style.cursor = 'pointer';
+            el.style.zIndex = '20';
+            el.style.position = 'relative';
 
         // Floating Head (Label + Icon)
         const floatingHead = document.createElement('div');
@@ -429,8 +451,8 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         el.appendChild(stem);
         el.appendChild(groundDot);
 
-        const style = document.createElement('style');
-        style.innerHTML = `
+            style = document.createElement('style');
+            style.innerHTML = `
             .marker-head { position: relative; }
             .marker-head::after {
                 content: ""; position: absolute; top: -2px; left: -2px; width: 20px; height: 20px;
@@ -450,13 +472,13 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                 z-index: 50 !important; 
             }
         `;
-        document.head.appendChild(style);
+            document.head.appendChild(style);
 
-        new mapboxgl.Marker({ element: el, anchor: 'bottom' }).setLngLat(HOSTEL_COORDS).addTo(map);
+            new mapboxgl.Marker({ element: el, anchor: 'bottom' }).setLngLat(HOSTEL_COORDS).addTo(map);
 
 
-        // --- 2. RECOMMENDED POIS ---
-        RECOMMENDED_POIS.forEach(poi => {
+            // --- 2. RECOMMENDED POIS ---
+            recommendedPoisRef.current.forEach(poi => {
             const poiEl = document.createElement('div');
             poiEl.className = 'poi-marker-group';
             if (poi.minZoom) {
@@ -498,12 +520,11 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             }
 
             new mapboxgl.Marker({ element: poiEl, anchor: 'bottom' }).setLngLat(poi.coords as [number, number]).addTo(map);
-        });
+            });
 
         // Throttled move handler — uses cached marker refs instead of querySelectorAll on every frame.
         // On mobile, the per-frame DOM traversal + class toggling caused layout thrashing.
-        let moveThrottleId: ReturnType<typeof requestAnimationFrame> | null = null;
-        map.on('move', () => {
+            map.on('move', () => {
             if (moveThrottleId !== null) return;
             moveThrottleId = requestAnimationFrame(() => {
                 moveThrottleId = null;
@@ -527,35 +548,40 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                     }
                 }
             });
-        });
+            });
 
-        map.on('load', () => {
+            map.on('load', () => {
             // Smooth fly-in animation from regional overview to hostel
             map.flyTo({ center: initialCenter, zoom: initialZoom, speed: 0.8, curve: 1, essential: true });
-            applyCustomizations(map, mobile);
+            applyCustomizations(map);
 
             // Force a resize calculation after parent layout stabilization
             setTimeout(() => {
                 if (mapRef.current) mapRef.current.resize();
             }, 100);
-        });
+            });
 
-        // Crucial: Re-apply customizations whenever the style is changed
-        map.on('style.load', () => {
-            applyCustomizations(map, mobile);
+            map.on('style.load', () => {
+            applyCustomizations(map);
 
             // Re-calculate size after style swap to prevent 'gray box' issues
             setTimeout(() => {
                 if (mapRef.current) mapRef.current.resize();
             }, 50);
-        });
+            });
+        };
+
+        void initMap();
 
         return () => {
+            isCancelled = true;
             if (moveThrottleId !== null) cancelAnimationFrame(moveThrottleId);
             sensitiveMarkersRef.current = [];
             themeObserver.disconnect();
-            map.remove();
-            if (document.head.contains(style)) {
+            if (map) {
+                map.remove();
+            }
+            if (style && document.head.contains(style)) {
                 document.head.removeChild(style);
             }
         };
@@ -563,7 +589,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
 
     // Handle dynamic POI queries via URL params without remounting the map
     useEffect(() => {
-        if (!mapRef.current || !poiQuery) return;
+        if (!siteConfig.features.showLocalExperienceMap || !mapRef.current || !poiQuery) return;
 
         const q = poiQuery.toLowerCase();
         let targetCenter = HOSTEL_COORDS;
@@ -572,13 +598,13 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         // Clear previous highlights
         document.querySelectorAll('.poi-label-el').forEach(el => el.classList.remove('poi-highlight'));
 
-        const matchedPoi = RECOMMENDED_POIS.find((p) => q.includes(p.name.toLowerCase()) || p.name.toLowerCase().includes(q));
+        const matchedPoi = recommendedPoisRef.current.find((p) => q.includes(p.name.toLowerCase()) || p.name.toLowerCase().includes(q));
         if (matchedPoi) {
             targetCenter = matchedPoi.coords as [number, number];
             targetZoom = 16.5;
             const el = document.querySelector(`[data-poi-label="${matchedPoi.name.toLowerCase()}"]`);
             if (el) el.classList.add('poi-highlight');
-        } else if (q === THETH_VALBONA_MAP_QUERY || (q.includes('theth') && q.includes('valbona'))) {
+        } else if (siteConfig.features.showRegionalTrails && (q === THETH_VALBONA_MAP_QUERY || (q.includes('theth') && q.includes('valbona')))) {
             targetCenter = THETH_VALBONA_MIDPOINT_COORDS;
             targetZoom = 10.5;
             const theth = document.querySelector('[data-poi-label="theth drop off/pick up"]');
@@ -665,31 +691,35 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                     <span>The Pedestrian Street</span>
                 </div>
 
-                <div className="flex items-center gap-3">
-                    <div className="h-0.5 w-6 border-t-[3.5px] border-dotted border-[#10b981] opacity-90" />
-                    <span>Hiking Trail</span>
-                </div>
+                {siteConfig.features.showRegionalTrails ? (
+                    <div className="flex items-center gap-3">
+                        <div className="h-0.5 w-6 border-t-[3.5px] border-dotted border-[#10b981] opacity-90" />
+                        <span>Hiking Trail</span>
+                    </div>
+                ) : null}
 
-                <div className="my-1 h-px w-full bg-[var(--border)]" />
+                {siteConfig.features.showLocalPois ? <div className="my-1 h-px w-full bg-[var(--border)]" /> : null}
 
-                <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
-                    <div className="flex items-center gap-2">
-                        <div className="size-2 rounded-full bg-[#10b981]" />
-                        <span>Eat / Drink</span>
+                {siteConfig.features.showLocalPois ? (
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+                        <div className="flex items-center gap-2">
+                            <div className="size-2 rounded-full bg-[#10b981]" />
+                            <span>Eat / Drink</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <div className="size-2 rounded-full bg-[#0ea5e9]" />
+                            <span>See / Do</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <div className="size-2 rounded-full bg-[#f43f5e]" />
+                            <span>Shop</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <div className="size-2 rounded-full bg-[#64748b]" />
+                            <span>Transit</span>
+                        </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                        <div className="size-2 rounded-full bg-[#0ea5e9]" />
-                        <span>See / Do</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <div className="size-2 rounded-full bg-[#f43f5e]" />
-                        <span>Shop</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <div className="size-2 rounded-full bg-[#64748b]" />
-                        <span>Transit</span>
-                    </div>
-                </div>
+                ) : null}
             </div>
         </div>
     );

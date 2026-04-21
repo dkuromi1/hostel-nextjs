@@ -1,7 +1,7 @@
 import { siteConfig } from "@/lib/site-data";
 
 export function VolunteerBanner() {
-  if (!siteConfig.volunteersNeeded) return null;
+  if (!siteConfig.volunteersNeeded || !siteConfig.features.showVolunteerBanner) return null;
 
   return (
     <div className="bg-[#1e1b4b] border-b border-indigo-400/10 px-4 py-1.5 text-center text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em] text-indigo-50/90 shadow-sm">

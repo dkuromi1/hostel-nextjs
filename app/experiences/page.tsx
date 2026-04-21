@@ -21,6 +21,7 @@ import {
 import {
   experienceLogisticsFeatures,
   socialConnectionFeatures,
+  siteConfig,
   siteCopyContent,
   thingsToDo,
 } from "@/lib/site-data";
@@ -62,9 +63,11 @@ export default function ExperiencesPage() {
               description="We've built Scodrinon to be the ultimate reset point for your Albanian Alps trek. Don't waste a day figuring out schedules—we handle the friction so you can focus on the trail."
             />
 
-            <div className="lg:hidden">
-              <ThethWeather />
-            </div>
+            {siteConfig.features.showRegionalWeather ? (
+              <div className="lg:hidden">
+                <ThethWeather />
+              </div>
+            ) : null}
 
             {/* High-End Feature Rows */}
             <div className="space-y-8">
@@ -94,9 +97,11 @@ export default function ExperiencesPage() {
 
           {/* Right Side: Premium Asymmetrical Image Grid */}
           <div className="relative lg:col-span-7">
-            <div className="hidden lg:block absolute -top-24 right-0 z-20">
-              <ThethWeather />
-            </div>
+            {siteConfig.features.showRegionalWeather ? (
+              <div className="hidden lg:block absolute -top-24 right-0 z-20">
+                <ThethWeather />
+              </div>
+            ) : null}
             <div className="grid grid-cols-2 gap-4 h-full">
 
               {/* Left Column: Tall Featured Image */}
@@ -156,11 +161,13 @@ export default function ExperiencesPage() {
             />
           </Reveal>
 
-          <Reveal className="w-full pt-4 sm:pt-8 w-full max-w-[1400px] mx-auto">
-            <div id="map" className="media-frame relative h-[500px] w-full overflow-hidden rounded-[2rem] shadow-xl shadow-[var(--glass-shadow)]/10 ring-1 ring-[var(--glass-border)]">
-              <LocationMap />
-            </div>
-          </Reveal>
+          {siteConfig.features.showLocalExperienceMap ? (
+            <Reveal className="w-full pt-4 sm:pt-8 w-full max-w-[1400px] mx-auto">
+              <div id="map" className="media-frame relative h-[500px] w-full overflow-hidden rounded-[2rem] shadow-xl shadow-[var(--glass-shadow)]/10 ring-1 ring-[var(--glass-border)]">
+                <LocationMap />
+              </div>
+            </Reveal>
+          ) : null}
 
           <Reveal delay={100}>
             <SwipableRow itemCount={thingsToDo.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -200,21 +207,23 @@ export default function ExperiencesPage() {
 
                     <div className="flex flex-1 flex-col p-6">
                       <div className="mb-3 flex flex-wrap items-center gap-2">
-                        <Link
-                          href={`?poi=${encodeURIComponent(
-                            item.title === "Theth to Valbona Trek"
-                              ? THETH_VALBONA_MAP_QUERY
-                              : item.title === "Shala River Day Trip"
-                                ? SHALA_RIVER_MAP_QUERY
-                                : item.title
-                          )}#map`}
-                          className="group flex w-fit items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--muted)]/50 px-3 py-1.5 text-[var(--brand-primary)] shadow-sm ring-1 ring-sky-500/5 transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-500/20 hover:bg-sky-600 hover:text-white hover:shadow-md"
-                        >
-                          <MapPin className="size-3.5 transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110" strokeWidth={2} />
-                          <span className="text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">
-                            View on Our Local Map
-                          </span>
-                        </Link>
+                        {siteConfig.features.showLocalExperienceMap ? (
+                          <Link
+                            href={`?poi=${encodeURIComponent(
+                              item.title === "Theth to Valbona Trek"
+                                ? THETH_VALBONA_MAP_QUERY
+                                : item.title === "Shala River Day Trip"
+                                  ? SHALA_RIVER_MAP_QUERY
+                                  : item.title
+                            )}#map`}
+                            className="group flex w-fit items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--muted)]/50 px-3 py-1.5 text-[var(--brand-primary)] shadow-sm ring-1 ring-sky-500/5 transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-500/20 hover:bg-sky-600 hover:text-white hover:shadow-md"
+                          >
+                            <MapPin className="size-3.5 transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110" strokeWidth={2} />
+                            <span className="text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">
+                              View on Our Local Map
+                            </span>
+                          </Link>
+                        ) : null}
                         {item.showDirections !== false && (
                           <a
                             href={

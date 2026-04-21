@@ -106,7 +106,7 @@ export default async function RootLayout({
           {modal}
           <SiteFooter />
           <StickyBookingBar />
-          <TitoTheCat />
+          {siteConfig.features.showMascot ? <TitoTheCat /> : null}
         </div>
       </body>
     </html>

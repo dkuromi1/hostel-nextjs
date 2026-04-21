@@ -1,4 +1,5 @@
 import { Cloud, CloudFog, CloudLightning, CloudRain, CloudSnow, Sun, SunMedium } from "lucide-react";
+import { siteConfig } from "@/lib/site-data";
 
 async function getThethWeather() {
   try {
@@ -8,7 +9,7 @@ async function getThethWeather() {
     );
     if (!res.ok) return null;
     return await res.json();
-  } catch (error) {
+  } catch {
     return null;
   }
 }
@@ -26,6 +27,10 @@ function getWeatherDetails(code: number) {
 }
 
 export async function ThethWeather({ variant = "default" }: { variant?: "default" | "small" } = {}) {
+  if (!siteConfig.features.showRegionalWeather) {
+    return null;
+  }
+
   const weather = await getThethWeather();
   
   if (!weather || !weather.current) {
