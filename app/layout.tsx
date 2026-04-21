@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
+import { cookies } from "next/headers";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -79,34 +80,23 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   modal,
 }: Readonly<{
   children: ReactNode;
   modal: ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const savedTheme = cookieStore.get("theme")?.value;
+
   return (
-    <html lang="en" className={cn("h-full scroll-smooth", nunito.variable)} data-scroll-behavior="smooth">
+    <html
+      lang="en"
+      className={cn("h-full scroll-smooth", nunito.variable, savedTheme === "dark" && "dark")}
+      data-scroll-behavior="smooth"
+    >
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  const savedTheme = localStorage.getItem('theme');
-                  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-                  const theme = savedTheme || systemTheme;
-                  if (theme === 'dark') {
-                    document.documentElement.classList.add('dark');
-                  } else {
-                    document.documentElement.classList.remove('dark');
-                  }
-                } catch (e) {}
-              })()
-            `,
-          }}
-        />
         <link rel="preconnect" href="https://wa.me" />
         <link rel="preconnect" href="https://www.booking.com" />
         <link rel="preconnect" href="https://www.hostelworld.com" />

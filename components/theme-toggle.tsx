@@ -4,18 +4,36 @@ import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Theme = "light" | "dark";
+
+function persistTheme(theme: Theme) {
+  document.cookie = `theme=${theme}; path=/; max-age=31536000; samesite=lax`;
+}
+
 export function ThemeToggle({ variant = "footer" }: { variant?: "footer" | "nav" }) {
-  const [theme, setTheme] = React.useState<"light" | "dark">("light");
+  const [theme, setTheme] = React.useState<Theme>("light");
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setTheme("dark");
-    }
+    const root = document.documentElement;
+    const cookieTheme = document.cookie
+      .split("; ")
+      .find((entry) => entry.startsWith("theme="))
+      ?.split("=")[1] as Theme | undefined;
+    const legacyTheme = localStorage.getItem("theme");
+    const nextTheme =
+      cookieTheme === "dark" || cookieTheme === "light"
+        ? cookieTheme
+        : legacyTheme === "dark" || legacyTheme === "light"
+          ? legacyTheme
+          : root.classList.contains("dark")
+            ? "dark"
+            : "light";
+
+    setTheme(nextTheme);
+    root.classList.toggle("dark", nextTheme === "dark");
+    persistTheme(nextTheme);
 
     // Listen for changes from other ThemeToggle instances
     const handleThemeChange = (e: Event) => {
@@ -31,6 +49,7 @@ export function ThemeToggle({ variant = "footer" }: { variant?: "footer" | "nav"
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
+    persistTheme(newTheme);
     localStorage.setItem("theme", newTheme);
     
     if (newTheme === "dark") {
