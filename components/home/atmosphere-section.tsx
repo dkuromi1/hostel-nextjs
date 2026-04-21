@@ -4,6 +4,7 @@ import { SectionLabel } from "@/components/ui/section-label";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { siteConfig, siteCopyContent } from "@/lib/site-data";
+import { DirectBookingCard } from "@/components/direct-booking-card";
 
 export function AtmosphereSection() {
   return (
@@ -13,30 +14,7 @@ export function AtmosphereSection() {
 
           {/* DESKTOP ONLY: Direct Booking card */}
           <Reveal delay={200} className="hidden lg:flex lg:row-start-2">
-            <div className="h-full flex items-center justify-between glass-panel rounded-[28px] p-6 gap-6 w-full">
-              <div>
-                <SectionLabel variant="emerald" className="mb-4">
-                  {siteCopyContent.home.atmosphere.directBookingLabel}
-                </SectionLabel>
-                <p className="mt-2 font-heading text-2xl leading-tight tracking-tight text-[var(--text-heading)]">
-                  {siteCopyContent.home.atmosphere.directBookingTitle}
-                </p>
-                <p className="mt-2 text-card-body">
-                  {siteCopyContent.home.atmosphere.directBookingDescription}
-                </p>
-              </div>
-              <a
-                href={siteConfig.whatsappUrl}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "shrink-0 rounded-full bg-emerald-700 px-7 font-semibold text-white transition-all duration-300 hover:bg-emerald-800 active:scale-95"
-                )}
-              >
-                {siteCopyContent.home.atmosphere.directBookingButton}
-              </a>
-            </div>
+            <DirectBookingCard variant="inline" className="h-full" />
           </Reveal>
 
           {/* Rooftop image */}
@@ -76,30 +54,7 @@ export function AtmosphereSection() {
                 </div>
 
                 {/* Mobile-only booking card */}
-                <div className="glass-panel rounded-[28px] p-5 lg:hidden">
-                  <SectionLabel variant="emerald" className="mb-4">
-                    {siteCopyContent.home.atmosphere.directBookingLabel}
-                  </SectionLabel>
-                  <p className="mt-2 font-heading text-lg leading-tight tracking-tight text-[var(--text-heading)]">
-                    <span className="sm:hidden">{siteCopyContent.home.atmosphere.directBookingTitleMobile}</span>
-                    <span className="hidden sm:inline">{siteCopyContent.home.atmosphere.directBookingTitle}</span>
-                  </p>
-                  <p className="mt-2 text-xs leading-relaxed text-[var(--text-body-subtle)]">
-                    <span className="sm:hidden">{siteCopyContent.home.atmosphere.directBookingDescriptionMobile}</span>
-                    <span className="hidden sm:inline">{siteCopyContent.home.atmosphere.directBookingDescription}</span>
-                  </p>
-                  <a
-                    href={siteConfig.whatsappUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={cn(
-                      buttonVariants({ size: "sm" }),
-                      "mt-4 w-full rounded-full bg-emerald-700 font-semibold text-white transition-all duration-300 hover:bg-emerald-800 active:scale-95"
-                    )}
-                  >
-                    {siteCopyContent.home.atmosphere.directBookingButton}
-                  </a>
-                </div>
+                <DirectBookingCard variant="block" className="lg:hidden" />
               </Reveal>
 
               {/* Video */}
