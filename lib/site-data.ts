@@ -1,14 +1,5 @@
 import { isIconName, type IconName } from "./icon-registry";
-
-import settings from "../content/settings.json";
-import navigation from "../content/navigation.json";
-import roomsData from "../content/rooms.json";
-import homepage from "../content/homepage.json";
-import faq from "../content/faq.json";
-import testimonialsData from "../content/testimonials.json";
-import gallery from "../content/gallery.json";
-import thingsToDoData from "../content/things-to-do.json";
-import siteCopyData from "../content/site-copy.json";
+import { activeInstance } from "../instances/scodrinon";
 
 interface SettingsContent {
   business: {
@@ -549,6 +540,18 @@ function parseRoomTypes(items: RoomType[]): RoomType[] {
     })),
   }));
 }
+
+const {
+  faq,
+  gallery,
+  homepage,
+  navigation,
+  rooms: roomsData,
+  settings,
+  siteCopy: siteCopyData,
+  testimonials: testimonialsData,
+  thingsToDo: thingsToDoData,
+} = activeInstance.content;
 
 const normalizedHomepage = homepage as HomepageContent;
 

@@ -79,9 +79,9 @@ Keep in core and generalize:
 
 Move out of core over time:
 
-- `content/*`
+- `instances/scodrinon/content/*`
 - Scodrinon logos and app icons in `public/`
-- Scodrinon image and video assets in `public/images` and `public/videos`
+- Scodrinon image and video assets in `instances/scodrinon/public/images` and `instances/scodrinon/public/videos`
 - hardcoded Scodrinon copy in `README.md`, `SITE_ADMIN_GUIDE.md`, and CMS labels
 - analytics ID in `app/layout.tsx`
 
@@ -92,9 +92,9 @@ Pull out of the baseline product:
 - `components/location-map.tsx`
 - `components/location-map-inner.tsx`
 - `components/theth-weather.tsx`
-- `content/pois.json`
-- `content/things-to-do.json`
-- `content/theth_valbona_tracks.json`
+- `instances/scodrinon/content/pois.json`
+- `instances/scodrinon/content/things-to-do.json`
+- `instances/scodrinon/content/theth_valbona_tracks.json`
 
 ### Instance-only personality
 

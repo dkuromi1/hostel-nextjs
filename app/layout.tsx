@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { StickyBookingBar } from "@/components/sticky-booking-bar";
 import { TitoTheCat } from "@/components/tito-the-cat";
+import { activeInstance } from "@/instances/scodrinon";
 import { getSiteUrl, metadataBase } from "@/lib/metadata";
 import { externalPreconnectOrigins, propertyConfig } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
@@ -83,7 +84,7 @@ export default async function RootLayout({
 }>) {
   const cookieStore = await cookies();
   const savedTheme = cookieStore.get("theme")?.value;
-  const analyticsWebsiteId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
+  const analyticsWebsiteId = process.env[activeInstance.integrations.analytics.websiteIdEnvVar];
 
   return (
     <html
@@ -103,7 +104,7 @@ export default async function RootLayout({
         {analyticsWebsiteId ? (
           <Script
             defer
-            src="https://cloud.umami.is/script.js"
+            src={activeInstance.integrations.analytics.scriptSrc}
             data-website-id={analyticsWebsiteId}
             strategy="afterInteractive"
           />

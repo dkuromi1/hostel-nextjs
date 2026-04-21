@@ -5,6 +5,7 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Home } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
+import { activeInstance } from '@/instances/scodrinon';
 import { siteConfig } from '@/lib/site-data';
 
 interface LocationMapInnerProps {
@@ -299,21 +300,21 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         });
         let isCancelled = false;
 
-        const getBaseStyle = () => document.documentElement.classList.contains('dark') 
-            ? 'mapbox://styles/mapbox/dark-v11' 
+        const getBaseStyle = () => document.documentElement.classList.contains('dark')
+            ? 'mapbox://styles/mapbox/dark-v11'
             : 'mapbox://styles/mapbox/streets-v12';
 
         const initMap = async () => {
             if (siteConfig.features.showLocalPois) {
-                const poisModule = await import('@/content/pois.json');
-                recommendedPoisRef.current = poisModule.default.recommendedPois as MapPOI[];
+                const poisModule = await activeInstance.loaders.loadPois();
+                recommendedPoisRef.current = poisModule.recommendedPois as MapPOI[];
             } else {
                 recommendedPoisRef.current = [];
             }
 
             if (siteConfig.features.showRegionalTrails) {
-                const tracksModule = await import('@/content/theth_valbona_tracks.json');
-                trailGeoJsonRef.current = tracksModule.default as mapboxgl.GeoJSONSourceSpecification["data"];
+                const tracksModule = await activeInstance.loaders.loadTrailGeoJson();
+                trailGeoJsonRef.current = tracksModule as mapboxgl.GeoJSONSourceSpecification["data"];
             } else {
                 trailGeoJsonRef.current = null;
             }
@@ -377,80 +378,80 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             el.style.zIndex = '20';
             el.style.position = 'relative';
 
-        // Floating Head (Label + Icon)
-        const floatingHead = document.createElement('div');
-        floatingHead.style.display = 'flex';
-        floatingHead.style.flexDirection = 'column';
-        floatingHead.style.alignItems = 'center';
-        floatingHead.style.animation = 'marker-float 3s ease-in-out infinite';
-        floatingHead.style.marginBottom = `${elevation}px`;
+            // Floating Head (Label + Icon)
+            const floatingHead = document.createElement('div');
+            floatingHead.style.display = 'flex';
+            floatingHead.style.flexDirection = 'column';
+            floatingHead.style.alignItems = 'center';
+            floatingHead.style.animation = 'marker-float 3s ease-in-out infinite';
+            floatingHead.style.marginBottom = `${elevation}px`;
 
-        const label = document.createElement('a');
-        label.href = 'https://www.google.com/maps/dir/?api=1&destination=Scodrinon+Hostel+Shkoder';
-        label.target = '_blank';
-        label.rel = 'noreferrer';
-        applyLabelStyle(label, mobile, {
-            marginBottom: '6px',
-            padding: '6px 14px',
-            borderRadius: '8px',
-            fontSize: '12px',
-            border: '0.5px solid #0ea5e9',
-        });
-        label.classList.add('poi-label-el');
-        label.setAttribute('data-poi-label', 'hostel');
-        if (!mobile) {
-            label.style.boxShadow = '0 10px 15px -3px rgb(0 0 0 / 0.1)';
-        }
+            const label = document.createElement('a');
+            label.href = 'https://www.google.com/maps/dir/?api=1&destination=Scodrinon+Hostel+Shkoder';
+            label.target = '_blank';
+            label.rel = 'noreferrer';
+            applyLabelStyle(label, mobile, {
+                marginBottom: '6px',
+                padding: '6px 14px',
+                borderRadius: '8px',
+                fontSize: '12px',
+                border: '0.5px solid #0ea5e9',
+            });
+            label.classList.add('poi-label-el');
+            label.setAttribute('data-poi-label', 'hostel');
+            if (!mobile) {
+                label.style.boxShadow = '0 10px 15px -3px rgb(0 0 0 / 0.1)';
+            }
 
-        const mainText = document.createElement('div');
-        mainText.innerText = 'Scodrinon Hostel';
-        mainText.style.fontSize = '12px';
-        mainText.style.fontWeight = '700';
-        mainText.style.lineHeight = '1.2';
+            const mainText = document.createElement('div');
+            mainText.innerText = 'Scodrinon Hostel';
+            mainText.style.fontSize = '12px';
+            mainText.style.fontWeight = '700';
+            mainText.style.lineHeight = '1.2';
 
-        const subText = document.createElement('div');
-        subText.innerText = 'click for directions';
-        subText.style.fontSize = '9px';
-        subText.style.textTransform = 'uppercase';
-        subText.style.color = 'var(--text-muted)';
-        subText.style.lineHeight = '1.1';
+            const subText = document.createElement('div');
+            subText.innerText = 'click for directions';
+            subText.style.fontSize = '9px';
+            subText.style.textTransform = 'uppercase';
+            subText.style.color = 'var(--text-muted)';
+            subText.style.lineHeight = '1.1';
 
-        label.appendChild(mainText);
-        label.appendChild(subText);
-        floatingHead.appendChild(label);
+            label.appendChild(mainText);
+            label.appendChild(subText);
+            floatingHead.appendChild(label);
 
-        const circle = document.createElement('div');
-        circle.className = 'marker-head';
-        circle.style.width = '20px';
-        circle.style.height = '20px';
-        circle.style.backgroundColor = '#0ea5e9';
-        circle.style.borderRadius = '50%';
-        circle.style.border = '2px solid white';
-        circle.style.boxShadow = '0 4px 6px -1px rgb(0 0 0 / 0.1)';
-        floatingHead.appendChild(circle);
+            const circle = document.createElement('div');
+            circle.className = 'marker-head';
+            circle.style.width = '20px';
+            circle.style.height = '20px';
+            circle.style.backgroundColor = '#0ea5e9';
+            circle.style.borderRadius = '50%';
+            circle.style.border = '2px solid white';
+            circle.style.boxShadow = '0 4px 6px -1px rgb(0 0 0 / 0.1)';
+            floatingHead.appendChild(circle);
 
-        // Vertical Stem
-        const stem = document.createElement('div');
-        stem.style.position = 'absolute';
-        stem.style.bottom = '4px';
-        stem.style.width = '2px';
-        stem.style.height = `${elevation}px`;
-        stem.style.background = 'linear-gradient(to top, rgba(14, 165, 233, 0.8), rgba(14, 165, 233, 0.2))';
-        stem.style.zIndex = '-1';
+            // Vertical Stem
+            const stem = document.createElement('div');
+            stem.style.position = 'absolute';
+            stem.style.bottom = '4px';
+            stem.style.width = '2px';
+            stem.style.height = `${elevation}px`;
+            stem.style.background = 'linear-gradient(to top, rgba(14, 165, 233, 0.8), rgba(14, 165, 233, 0.2))';
+            stem.style.zIndex = '-1';
 
-        // Ground Reference (Shadow/Dot)
-        const groundDot = document.createElement('div');
-        groundDot.style.width = '8px';
-        groundDot.style.height = '4px';
-        groundDot.style.backgroundColor = 'rgba(15, 23, 42, 0.4)';
-        groundDot.style.borderRadius = '50%';
-        groundDot.style.filter = 'blur(1px)';
-        groundDot.style.position = 'absolute';
-        groundDot.style.bottom = '0';
+            // Ground Reference (Shadow/Dot)
+            const groundDot = document.createElement('div');
+            groundDot.style.width = '8px';
+            groundDot.style.height = '4px';
+            groundDot.style.backgroundColor = 'rgba(15, 23, 42, 0.4)';
+            groundDot.style.borderRadius = '50%';
+            groundDot.style.filter = 'blur(1px)';
+            groundDot.style.position = 'absolute';
+            groundDot.style.bottom = '0';
 
-        el.appendChild(floatingHead);
-        el.appendChild(stem);
-        el.appendChild(groundDot);
+            el.appendChild(floatingHead);
+            el.appendChild(stem);
+            el.appendChild(groundDot);
 
             style = document.createElement('style');
             style.innerHTML = `
@@ -480,95 +481,95 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
 
             // --- 2. RECOMMENDED POIS ---
             recommendedPoisRef.current.forEach(poi => {
-            const poiEl = document.createElement('div');
-            poiEl.className = 'poi-marker-group';
-            if (poi.minZoom) {
-                poiEl.classList.add('zoom-sensitive');
-                poiEl.setAttribute('data-min-zoom', poi.minZoom.toString());
-            }
-            poiEl.style.display = 'flex';
-            poiEl.style.flexDirection = 'column';
-            poiEl.style.alignItems = 'center';
-            poiEl.style.cursor = 'pointer';
-
-            const poiCircle = document.createElement('div');
-            poiCircle.innerHTML = MAP_PIN_SVG;
-            poiCircle.style.width = '20px';
-            poiCircle.style.height = '20px';
-            poiCircle.style.color = getPoiColor(poi.category);
-            poiCircle.style.filter = 'drop-shadow(0 2px 4px rgba(0,0,0,0.15))';
-
-            const poiLabel = document.createElement('a');
-            poiLabel.href = `https://www.google.com/maps/search/?api=1&query=${poi.coords[1]},${poi.coords[0]}`;
-            poiLabel.target = '_blank';
-            poiLabel.rel = 'noreferrer';
-            poiLabel.innerText = poi.name;
-            applyLabelStyle(poiLabel, mobile);
-            poiLabel.classList.add('poi-label-el');
-            poiLabel.setAttribute('data-poi-label', poi.name.toLowerCase());
-
-            poiEl.appendChild(poiLabel);
-            poiEl.appendChild(poiCircle);
-
-            // Set initial visibility
-            const currentZoom = m.getZoom();
-            if (poi.minZoom && currentZoom < poi.minZoom) {
-                poiEl.classList.add('zoom-hidden');
-            }
-
-            if (poi.minZoom) {
-                sensitiveMarkersRef.current.push(poiEl);
-            }
-
-            new mapboxgl.Marker({ element: poiEl, anchor: 'bottom' }).setLngLat(poi.coords as [number, number]).addTo(m);
-            });
-
-        // Throttled move handler — uses cached marker refs instead of querySelectorAll on every frame.
-        // On mobile, the per-frame DOM traversal + class toggling caused layout thrashing.
-            m.on('move', () => {
-            if (moveThrottleId !== null) return;
-            moveThrottleId = requestAnimationFrame(() => {
-                moveThrottleId = null;
-                const zoom = m.getZoom();
-
-                // Toggle sensitive markers using cached refs
-                sensitiveMarkersRef.current.forEach(el => {
-                    const minZoom = parseFloat(el.getAttribute('data-min-zoom') || '0');
-                    el.classList.toggle('zoom-hidden', zoom < minZoom);
-                });
-
-                // Toggle Legend without causing React re-renders
-                const legend = document.getElementById('map-legend');
-                if (legend) {
-                    if (zoom <= 11) {
-                        legend.classList.add('opacity-0', 'pointer-events-none');
-                        legend.classList.remove('opacity-100');
-                    } else {
-                        legend.classList.remove('opacity-0', 'pointer-events-none');
-                        legend.classList.add('opacity-100');
-                    }
+                const poiEl = document.createElement('div');
+                poiEl.className = 'poi-marker-group';
+                if (poi.minZoom) {
+                    poiEl.classList.add('zoom-sensitive');
+                    poiEl.setAttribute('data-min-zoom', poi.minZoom.toString());
                 }
+                poiEl.style.display = 'flex';
+                poiEl.style.flexDirection = 'column';
+                poiEl.style.alignItems = 'center';
+                poiEl.style.cursor = 'pointer';
+
+                const poiCircle = document.createElement('div');
+                poiCircle.innerHTML = MAP_PIN_SVG;
+                poiCircle.style.width = '20px';
+                poiCircle.style.height = '20px';
+                poiCircle.style.color = getPoiColor(poi.category);
+                poiCircle.style.filter = 'drop-shadow(0 2px 4px rgba(0,0,0,0.15))';
+
+                const poiLabel = document.createElement('a');
+                poiLabel.href = `https://www.google.com/maps/search/?api=1&query=${poi.coords[1]},${poi.coords[0]}`;
+                poiLabel.target = '_blank';
+                poiLabel.rel = 'noreferrer';
+                poiLabel.innerText = poi.name;
+                applyLabelStyle(poiLabel, mobile);
+                poiLabel.classList.add('poi-label-el');
+                poiLabel.setAttribute('data-poi-label', poi.name.toLowerCase());
+
+                poiEl.appendChild(poiLabel);
+                poiEl.appendChild(poiCircle);
+
+                // Set initial visibility
+                const currentZoom = m.getZoom();
+                if (poi.minZoom && currentZoom < poi.minZoom) {
+                    poiEl.classList.add('zoom-hidden');
+                }
+
+                if (poi.minZoom) {
+                    sensitiveMarkersRef.current.push(poiEl);
+                }
+
+                new mapboxgl.Marker({ element: poiEl, anchor: 'bottom' }).setLngLat(poi.coords as [number, number]).addTo(m);
             });
+
+            // Throttled move handler — uses cached marker refs instead of querySelectorAll on every frame.
+            // On mobile, the per-frame DOM traversal + class toggling caused layout thrashing.
+            m.on('move', () => {
+                if (moveThrottleId !== null) return;
+                moveThrottleId = requestAnimationFrame(() => {
+                    moveThrottleId = null;
+                    const zoom = m.getZoom();
+
+                    // Toggle sensitive markers using cached refs
+                    sensitiveMarkersRef.current.forEach(el => {
+                        const minZoom = parseFloat(el.getAttribute('data-min-zoom') || '0');
+                        el.classList.toggle('zoom-hidden', zoom < minZoom);
+                    });
+
+                    // Toggle Legend without causing React re-renders
+                    const legend = document.getElementById('map-legend');
+                    if (legend) {
+                        if (zoom <= 11) {
+                            legend.classList.add('opacity-0', 'pointer-events-none');
+                            legend.classList.remove('opacity-100');
+                        } else {
+                            legend.classList.remove('opacity-0', 'pointer-events-none');
+                            legend.classList.add('opacity-100');
+                        }
+                    }
+                });
             });
 
             m.on('load', () => {
-            // Smooth fly-in animation from regional overview to hostel
-            m.flyTo({ center: initialCenter, zoom: initialZoom, speed: 0.8, curve: 1, essential: true });
-            applyCustomizations(m);
+                // Smooth fly-in animation from regional overview to hostel
+                m.flyTo({ center: initialCenter, zoom: initialZoom, speed: 0.8, curve: 1, essential: true });
+                applyCustomizations(m);
 
-            // Force a resize calculation after parent layout stabilization
-            setTimeout(() => {
-                if (mapRef.current) mapRef.current.resize();
-            }, 100);
+                // Force a resize calculation after parent layout stabilization
+                setTimeout(() => {
+                    if (mapRef.current) mapRef.current.resize();
+                }, 100);
             });
 
             m.on('style.load', () => {
-            applyCustomizations(m);
+                applyCustomizations(m);
 
-            // Re-calculate size after style swap to prevent 'gray box' issues
-            setTimeout(() => {
-                if (mapRef.current) mapRef.current.resize();
-            }, 50);
+                // Re-calculate size after style swap to prevent 'gray box' issues
+                setTimeout(() => {
+                    if (mapRef.current) mapRef.current.resize();
+                }, 50);
             });
         };
 
@@ -638,8 +639,8 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         mapRef.current.setStyle(
             nextIsSatellite
                 ? 'mapbox://styles/mapbox/satellite-streets-v12'
-                : document.documentElement.classList.contains('dark') 
-                    ? 'mapbox://styles/mapbox/dark-v11' 
+                : document.documentElement.classList.contains('dark')
+                    ? 'mapbox://styles/mapbox/dark-v11'
                     : 'mapbox://styles/mapbox/streets-v12'
         );
     };
@@ -671,7 +672,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                     <Home className="size-3 text-sky-400" strokeWidth={2.5} />
                     <span>Home</span>
                 </button>
-                
+
                 <button
                     onClick={toggleStyle}
                     className="flex items-center gap-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white transition-all hover:bg-black/60 active:scale-95"

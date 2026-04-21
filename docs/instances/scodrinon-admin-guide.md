@@ -7,7 +7,7 @@ This guide is specific to the Scodrinon deployment of the hospitality site syste
 This site supports two editing paths:
 
 - `Decap CMS` at `/admin` for dashboard-style editing
-- Manual JSON editing in the `content/` folder for technical updates or backup workflows
+- Manual JSON editing in `instances/scodrinon/content/` for technical updates or backup workflows
 
 ## Scodrinon-Specific Notes
 
@@ -26,7 +26,7 @@ This site supports two editing paths:
 
 ## Scodrinon Data Files
 
-The site’s business data is stored in the `content/` folder and parsed through `lib/site-data.ts`.
+The site’s business data is stored in `instances/scodrinon/content/` and parsed through `lib/site-data.ts`.
 
 | File Name | What it controls |
 |-----------|------------------|
@@ -55,8 +55,8 @@ NEXT_PUBLIC_MAPBOX_TOKEN=your_token_here
 
 - `HOSTEL_COORDS`: primary property marker
 - `PEDONALE_COORDS`: promenade highlight path
-- `content/pois.json`: local recommendations
-- `content/theth_valbona_tracks.json`: regional trek overlay
+- `instances/scodrinon/content/pois.json`: local recommendations
+- `instances/scodrinon/content/theth_valbona_tracks.json`: regional trek overlay
 
 Mapbox uses `[Longitude, Latitude]` order.
 
@@ -79,10 +79,10 @@ Add stronger new reviews to the top if they should appear on the homepage first.
 
 ### Manual uploads
 
-1. Images go in `public/images/`
-2. Videos go in `public/videos/`
-3. Logo file is `public/logo.webp`
-4. App icons live in `app/` and `public/`
+1. Images go in `instances/scodrinon/public/images/`
+2. Videos go in `instances/scodrinon/public/videos/`
+3. Branding source files live in `instances/scodrinon/public/branding/`
+4. App and public icon entrypoints are symlinked to the instance branding files
 5. PWA settings live in `public/site.webmanifest`
 
 ## SEO Notes

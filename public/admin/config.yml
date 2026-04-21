@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "public/images"
+media_folder: "instances/scodrinon/public/images"
 public_folder: "/images"
 
 collections:
@@ -14,7 +14,7 @@ collections:
     files:
       - name: "site_config"
         label: "Property Configuration"
-        file: "content/settings.json"
+        file: "instances/scodrinon/content/settings.json"
         fields:
           - label: "Business"
             name: "business"
@@ -134,7 +134,7 @@ collections:
       
       - name: "navigation"
         label: "Navigation Links"
-        file: "content/navigation.json"
+        file: "instances/scodrinon/content/navigation.json"
         fields:
           - label: "Links"
             name: "navLinks"
@@ -151,7 +151,7 @@ collections:
     files:
       - name: "room_types"
         label: "Offerings"
-        file: "content/rooms.json"
+        file: "instances/scodrinon/content/rooms.json"
         fields:
           - { label: "Module Type", name: "moduleType", widget: "string", required: false }
           - label: "Offerings"
@@ -183,7 +183,7 @@ collections:
     files:
       - name: "homepage"
         label: "Homepage Sections"
-        file: "content/homepage.json"
+        file: "instances/scodrinon/content/homepage.json"
         fields:
           - { label: "Hero Highlights", name: "heroHighlights", widget: "list" }
           - { label: "Quick Facts", name: "quickFacts", widget: "list" }
@@ -218,7 +218,7 @@ collections:
 
       - name: "site_copy"
         label: "Page & Footer Copy"
-        file: "content/site-copy.json"
+        file: "instances/scodrinon/content/site-copy.json"
         fields:
           - label: "Footer"
             name: "footer"
@@ -368,7 +368,7 @@ collections:
 
       - name: "local_highlights"
         label: "Local Highlights"
-        file: "content/things-to-do.json"
+        file: "instances/scodrinon/content/things-to-do.json"
         fields:
           - { label: "Module Type", name: "moduleType", widget: "string", required: false }
           - label: "Local Highlights"
@@ -558,7 +558,7 @@ collections:
     files:
       - name: "faq_content"
         label: "FAQ Content"
-        file: "content/faq.json"
+        file: "instances/scodrinon/content/faq.json"
         fields:
           - label: "FAQ Items"
             name: "faqItems"
@@ -574,7 +574,7 @@ collections:
     files:
       - name: "testimonials_content"
         label: "Reviews Content"
-        file: "content/testimonials.json"
+        file: "instances/scodrinon/content/testimonials.json"
         fields:
           - label: "Reviews"
             name: "reviews"
@@ -595,7 +595,7 @@ collections:
     files:
       - name: "gallery_content"
         label: "Gallery Content"
-        file: "content/gallery.json"
+        file: "instances/scodrinon/content/gallery.json"
         fields:
           - label: "Media Items"
             name: "mediaItems"
