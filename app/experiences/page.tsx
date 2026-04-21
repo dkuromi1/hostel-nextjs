@@ -7,7 +7,6 @@ import {
 
 import { CtaStrip } from "@/components/cta-strip";
 import { LocationMap } from "@/components/location-map";
-import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { StructuredData } from "@/components/structured-data";
@@ -16,22 +15,22 @@ import { ThethWeather } from "@/components/theth-weather";
 import { Panel } from "@/components/ui/panel";
 import {
   buildBreadcrumbSchema,
+  buildBusinessSchema,
   buildMetadata,
-  buildHostelSchema,
 } from "@/lib/metadata";
 import {
   experienceLogisticsFeatures,
   socialConnectionFeatures,
+  siteCopyContent,
   thingsToDo,
 } from "@/lib/site-data";
 import { resolveIcon } from "@/lib/icon-registry";
 
 export const metadata = buildMetadata({
-  title: "Rooftop Events And Adventure Base In Shkoder",
-  description:
-    "See how Scodrinon Hostel works as a social rooftop hangout and a launch point for Theth, Valbona, Lake Shkoder, river trips, and city culture.",
+  title: siteCopyContent.experiences.metadata.title,
+  description: siteCopyContent.experiences.metadata.description,
   path: "/experiences",
-  image: "/images/rooftop_social_2.jpg",
+  image: siteCopyContent.experiences.metadata.image,
 });
 
 const THETH_VALBONA_MAP_QUERY = "theth-valbona-midpoint";
@@ -43,10 +42,10 @@ export default function ExperiencesPage() {
     <>
       <StructuredData
         data={[
-          buildHostelSchema(),
+          buildBusinessSchema(),
           buildBreadcrumbSchema([
             { name: "Home", path: "/" },
-            { name: "Experiences", path: "/experiences" },
+            { name: siteCopyContent.experiences.pageTitle, path: "/experiences" },
           ]),
         ]}
       />

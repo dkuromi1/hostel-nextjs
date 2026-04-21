@@ -216,5 +216,13 @@
       "image": "/images/ambiance_4.jpg",
       "alt": "evening ambiance at Scodrinon Hostel, Shkoder"
     }
+  },
+  "experiences": {
+    "metadata": {
+      "title": "Rooftop Events And Adventure Base In Shkoder",
+      "description": "See how Scodrinon Hostel works as a social rooftop hangout and a launch point for Theth, Valbona, Lake Shkoder, river trips, and city culture.",
+      "image": "/images/rooftop_social_2.jpg"
+    },
+    "pageTitle": "Experiences"
   }
 }

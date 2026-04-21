@@ -16,8 +16,8 @@ import { TestimonialCarousel } from "@/components/testimonial-carousel";
 import { ImageCarousel } from "@/components/image-carousel";
 import {
   buildBreadcrumbSchema,
+  buildBusinessSchema,
   buildMetadata,
-  buildHostelSchema,
 } from "@/lib/metadata";
 import {
   freeServices,
@@ -42,7 +42,7 @@ export default function RoomsPage() {
     <>
       <StructuredData
         data={[
-          buildHostelSchema(),
+          buildBusinessSchema(),
           buildBreadcrumbSchema([
             { name: "Home", path: "/" },
             { name: siteCopyContent.rooms.pageTitle, path: "/rooms" },

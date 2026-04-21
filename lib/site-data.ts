@@ -64,6 +64,7 @@ interface SettingsContent {
   schema: {
     type: string;
     priceRange: string;
+    sameAs: string[];
     images: string[];
     amenities: string[];
   };
@@ -395,6 +396,14 @@ interface SiteCopyContent {
       image: string;
       alt: string;
     };
+  };
+  experiences: {
+    metadata: {
+      title: string;
+      description: string;
+      image: string;
+    };
+    pageTitle: string;
   };
 }
 

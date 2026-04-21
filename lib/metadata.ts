@@ -117,11 +117,7 @@ export function buildBusinessSchema() {
     image: siteConfig.schema.images.map((image) => getSiteUrl(image)),
     logo: getSiteUrl(siteConfig.branding.logoWebp),
     telephone: siteConfig.phoneDisplay,
-    sameAs: [
-      siteConfig.instagramUrl,
-      siteConfig.bookingUrl,
-      siteConfig.hostelworldUrl,
-    ],
+    sameAs: siteConfig.schema.sameAs,
     priceRange: siteConfig.schema.priceRange,
     address: {
       "@type": "PostalAddress",
@@ -137,8 +133,6 @@ export function buildBusinessSchema() {
     })),
   };
 }
-
-export const buildHostelSchema = buildBusinessSchema;
 
 export function buildFaqSchema() {
   return {

@@ -60,6 +60,11 @@
   "schema": {
     "type": "Hostel",
     "priceRange": "€12 - €15",
+    "sameAs": [
+      "https://www.instagram.com/scodrinon_hostel/",
+      "https://www.booking.com/hotel/al/scodrinon-hostel.html",
+      "https://www.hostelworld.com/hostels/p/325721/scodrinon-hostel/"
+    ],
     "images": [
       "/images/promo_2.jpg",
       "/images/room_18bed2.jpg",

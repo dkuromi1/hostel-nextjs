@@ -40,7 +40,7 @@ import { HeroBookingBar } from "@/components/hero-booking-bar";
 import { GalleryMasonry } from "@/components/gallery-masonry";
 import {
   buildFaqSchema,
-  buildHostelSchema,
+  buildBusinessSchema,
   buildMetadata,
 } from "@/lib/metadata";
 import {
@@ -277,7 +277,7 @@ export default function Home() {
 
   return (
     <>
-      <StructuredData data={[buildHostelSchema(), buildFaqSchema()]} />
+      <StructuredData data={[buildBusinessSchema(), buildFaqSchema()]} />
 
       {/* Immersive Hero Banner */}
       <section className="relative min-h-[90dvh] flex flex-col justify-center overflow-hidden pb-12 pt-24 sm:pb-20 sm:pt-32">

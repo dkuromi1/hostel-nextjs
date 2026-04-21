@@ -88,6 +88,7 @@ collections:
             fields:
               - { label: "Schema Type", name: "type", widget: "string", default: "Hostel" }
               - { label: "Price Range", name: "priceRange", widget: "string", required: false }
+              - { label: "Same As URLs", name: "sameAs", widget: "list", summary: "{{fields.item}}", required: false }
               - { label: "Schema Images", name: "images", widget: "list", summary: "{{fields.item}}" }
               - { label: "Amenities", name: "amenities", widget: "list", summary: "{{fields.item}}" }
       
@@ -469,6 +470,18 @@ collections:
                   - { label: "Description", name: "description", widget: "text" }
                   - { label: "Image", name: "image", widget: "image" }
                   - { label: "Alt", name: "alt", widget: "string" }
+          - label: "Experiences"
+            name: "experiences"
+            widget: "object"
+            fields:
+              - label: "Metadata"
+                name: "metadata"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Image", name: "image", widget: "image" }
+              - { label: "Page Title", name: "pageTitle", widget: "string" }
 
   - name: "faqs"
     label: "FAQs"
