@@ -86,19 +86,23 @@
   "extendReasons": [
     {
       "title": "Sleep well, still meet people",
-      "description": "Privacy pods give you a reset button after a long day in the mountains, so the social side of hostel life stays a choice, not a chore."
+      "description": "Privacy pods give you a reset button after a long day in the mountains, so the social side of hostel life stays a choice, not a chore.",
+      "icon": "Moon"
     },
     {
       "title": "Rooftop nights, zero pressure",
-      "description": "Sunset views, easy conversation, and movie nights make it simple to connect without the space ever feeling chaotic. It’s social, but at your own pace."
+      "description": "Sunset views, easy conversation, and movie nights make it simple to connect without the space ever feeling chaotic. It’s social, but at your own pace.",
+      "icon": "Sparkles"
     },
     {
       "title": "Everything starts right outside",
-      "description": "You’re already on Shkoder's main pedestrian street, surrounded by local eats, museums, and nightlife. Whether you're heading to the Alps or the coast, transport is just a short walk away."
+      "description": "You’re already on Shkoder's main pedestrian street, surrounded by local eats, museums, and nightlife. Whether you're heading to the Alps or the coast, transport is just a short walk away.",
+      "icon": "MapPin"
     },
     {
       "title": "Staff who keep things straightforward",
-      "description": "Honest local tips, breakfast that guests talk about, and help with your hiking route. We handle the logistics so you can focus on the trip."
+      "description": "Honest local tips, breakfast that guests talk about, and help with your hiking route. We handle the logistics so you can focus on the trip.",
+      "icon": "Compass"
     }
   ],
   "experiencePillars": [
@@ -156,5 +160,45 @@
     "Your arrival time into Shkoder",
     "Any hiking, bike, or transport plans you want help with"
   ],
-  "bookingAwardImage": "/images/booking_award.jpg"
+  "bookingAwardImage": "/images/booking_award.jpg",
+  "experienceLogisticsFeatures": [
+    {
+      "title": "Free Luggage Storage",
+      "description": "Drop your main backpack in our secure storage. Hike the Valbona to Theth trail carrying only what you actually need.",
+      "icon": "Backpack"
+    },
+    {
+      "title": "Transport & Logistics",
+      "description": "We provide honest, up-to-date info on furgon (minibus) schedules, Komani Lake ferries, and Shala River boat trips.",
+      "icon": "Bus"
+    },
+    {
+      "title": "The Post-Hike Reset",
+      "description": "Return from the mountains to a hot shower, A/C, crisp linens, and a cold drink on the rooftop.",
+      "icon": "Mountain"
+    }
+  ],
+  "socialConnectionFeatures": [
+    {
+      "title": "The Drin River Escape",
+      "description": "Just outside the city, the Drin river offers a cool, scenic contrast to the Alps. We organize regular group swimming trips to our favorite spots along the water for a perfect, sun-drenched afternoon.",
+      "icon": "Waves",
+      "image": "/images/drin_swimming_trip2.jpeg",
+      "focus": "50% 40%"
+    },
+    {
+      "title": "Spontaneous Socials",
+      "description": "Whether it’s rooftop raki or an informal food crawl, we prioritize warm, unscripted moments that make it easy for solo travelers to join. It’s social, but never forced.",
+      "icon": "Sparkles",
+      "image": "/images/rooftop_social_7.webp",
+      "focus": "50% 40%"
+    },
+    {
+      "title": "Bicycle Capital Access",
+      "description": "Shkodër is best explored on two wheels. Grab a rental from across the street and navigate the flat streets, historic center, and scenic lake paths exactly how the locals do.",
+      "icon": "Bike",
+      "image": "/images/biking_in_shkodra.jpeg",
+      "focus": "50% 40%"
+    }
+  ]
 }

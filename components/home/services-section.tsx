@@ -1,0 +1,57 @@
+import { resolveIcon } from "@/lib/icon-registry";
+import { SectionHeading } from "@/components/section-heading";
+import { Reveal } from "@/components/reveal";
+import { SwipableRow } from "@/components/swipable-row";
+import { freeServices, siteCopyContent } from "@/lib/site-data";
+
+export function IncludedServicesSection() {
+  return (
+    <section className="py-8 sm:py-16">
+      <div className="shell-container space-y-12">
+        <Reveal>
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <SectionHeading
+              eyebrow={siteCopyContent.home.includedStay.eyebrow}
+              title={siteCopyContent.home.includedStay.title}
+              description={siteCopyContent.home.includedStay.description}
+            />
+          </div>
+        </Reveal>
+
+        <Reveal delay={100}>
+          <SwipableRow
+            itemCount={freeServices.length}
+            className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+          >
+            {freeServices.map((service, idx) => {
+              const Icon = resolveIcon(service.icon);
+              return (
+                <div
+                  key={idx}
+                  className="min-w-[85%] snap-center sm:min-w-0 h-full"
+                >
+                  <div
+                    className="group flex h-full gap-4 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass-bg)] p-5 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
+                  >
+                    <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-[var(--muted)] text-[var(--text-body)] shadow-sm ring-1 ring-slate-900/5 transition-all duration-300 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:ring-emerald-500/20">
+                      <Icon className="size-5" strokeWidth={1.5} />
+                    </div>
+                    <div className="space-y-1.5 pt-0.5">
+                      <h4 className="text-[15px] font-bold tracking-tight text-[var(--text-heading)]">
+                        {service.title}
+                      </h4>
+                      <p className="text-xs leading-relaxed text-[var(--text-body-subtle)] line-clamp-2 transition-colors group-hover:text-[var(--text-body)]">
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+            <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
+          </SwipableRow>
+        </Reveal>
+      </div>
+    </section>
+  );
+}

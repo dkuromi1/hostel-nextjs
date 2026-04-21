@@ -154,6 +154,7 @@ export interface RoomType {
 export interface ExtendReason {
   title: string;
   description: string;
+  icon: IconName;
 }
 
 export interface ExperiencePillar {
@@ -215,12 +216,15 @@ interface HomepageContent {
   eventCards?: EventCard[];
   contactChecklist: string[];
   bookingAwardImage: string;
+  experienceLogisticsFeatures?: IconFeature[];
+  socialConnectionFeatures?: VisualIconFeature[];
 }
 
 interface RoomsContent {
   moduleType?: string;
   offerings?: RoomType[];
   roomTypes?: RoomType[];
+  roomHeroHighlights?: IconTextItem[];
 }
 
 interface ThingsToDoContent {
@@ -500,6 +504,27 @@ function parseServices(items: { title: string; description: string; icon: string
   }));
 }
 
+function parseIconFeatures(items: IconFeature[], context: string): IconFeature[] {
+  return items.map((item, index) => ({
+    ...item,
+    icon: parseIconName(item.icon, `${context}[${index}].icon`),
+  }));
+}
+
+function parseVisualIconFeatures(items: VisualIconFeature[], context: string): VisualIconFeature[] {
+  return items.map((item, index) => ({
+    ...item,
+    icon: parseIconName(item.icon, `${context}[${index}].icon`),
+  }));
+}
+
+function parseExtendReasons(items: ExtendReason[], context: string): ExtendReason[] {
+  return items.map((item, index) => ({
+    ...item,
+    icon: parseIconName(item.icon, `${context}[${index}].icon`),
+  }));
+}
+
 function parseChannels(items: SettingsChannel[]): BusinessChannel[] {
   return items.map((item) => ({
     id: item.id,
@@ -536,12 +561,28 @@ const homepageContent: HomepageContent = {
     (homepage.addOnServices ?? homepage.paidServices ?? []) as { title: string; description: string; icon: string }[],
     "homepage.addOnServices",
   ),
+  experienceLogisticsFeatures: parseIconFeatures(
+    (homepage.experienceLogisticsFeatures ?? []) as IconFeature[],
+    "homepage.experienceLogisticsFeatures"
+  ),
+  socialConnectionFeatures: parseVisualIconFeatures(
+    (homepage.socialConnectionFeatures ?? []) as VisualIconFeature[],
+    "homepage.socialConnectionFeatures"
+  ),
+  extendReasons: parseExtendReasons(
+    (homepage.extendReasons ?? []) as ExtendReason[],
+    "homepage.extendReasons"
+  ),
 };
 
 const normalizedRoomsData = roomsData as RoomsContent;
 const roomsContent: RoomsContent = {
   ...normalizedRoomsData,
   offerings: parseRoomTypes(normalizedRoomsData.offerings ?? normalizedRoomsData.roomTypes ?? []),
+  roomHeroHighlights: parseIconTextItems(
+    (normalizedRoomsData.roomHeroHighlights ?? []) as IconTextItem[],
+    "rooms.roomHeroHighlights"
+  ),
 };
 
 const thingsToDoContent = thingsToDoData as ThingsToDoContent;
@@ -607,54 +648,9 @@ export const extendReasons = homepageContent.extendReasons;
 export const experiencePillars = homepageContent.experiencePillars;
 export const eventCards = homepageContent.featuredMoments ?? homepageContent.eventCards ?? [];
 
-export const roomHeroHighlights = [
-  { text: "Curtained privacy pods in the mixed dorm", icon: "Blinds" },
-  { text: "Four-bed dorms with male and female options", icon: "Bed" },
-  { text: "A/C and heat, secure lockers, power sockets, and WiFi", icon: "Snowflake" },
-  { text: "All rooms include breakfast every morning (excl. off-season)", icon: "Coffee" },
-] as const satisfies readonly IconTextItem[];
-
-export const experienceLogisticsFeatures = [
-  {
-    title: "Free Luggage Storage",
-    description: "Drop your main backpack in our secure storage. Hike the Valbona to Theth trail carrying only what you actually need.",
-    icon: "Backpack",
-  },
-  {
-    title: "Transport & Logistics",
-    description: "We provide honest, up-to-date info on furgon (minibus) schedules, Komani Lake ferries, and Shala River boat trips.",
-    icon: "Bus",
-  },
-  {
-    title: "The Post-Hike Reset",
-    description: "Return from the mountains to a hot shower, A/C, crisp linens, and a cold drink on the rooftop.",
-    icon: "Mountain",
-  },
-] as const satisfies readonly IconFeature[];
-
-export const socialConnectionFeatures = [
-  {
-    title: "The Drin River Escape",
-    description: "Just outside the city, the Drin river offers a cool, scenic contrast to the Alps. We organize regular group swimming trips to our favorite spots along the water for a perfect, sun-drenched afternoon.",
-    icon: "Waves",
-    image: "/images/drin_swimming_trip2.jpeg",
-    focus: "50% 40%",
-  },
-  {
-    title: "Spontaneous Socials",
-    description: "Whether it’s rooftop raki or an informal food crawl, we prioritize warm, unscripted moments that make it easy for solo travelers to join. It’s social, but never forced.",
-    icon: "Sparkles",
-    image: "/images/rooftop_social_7.webp",
-    focus: "50% 40%",
-  },
-  {
-    title: "Bicycle Capital Access",
-    description: "Shkodër is best explored on two wheels. Grab a rental from across the street and navigate the flat streets, historic center, and scenic lake paths exactly how the locals do.",
-    icon: "Bike",
-    image: "/images/biking_in_shkodra.jpeg",
-    focus: "50% 40%",
-  },
-] as const satisfies readonly VisualIconFeature[];
+export const roomHeroHighlights = roomsContent.roomHeroHighlights ?? [];
+export const experienceLogisticsFeatures = homepageContent.experienceLogisticsFeatures ?? [];
+export const socialConnectionFeatures = homepageContent.socialConnectionFeatures ?? [];
 
 export interface GalleryItem {
   id: string;
