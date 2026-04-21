@@ -596,7 +596,7 @@ const siteCopy = siteCopyData as SiteCopyContent;
 const parsedContactChannels = parseChannels(settingsContent.contact.channels);
 const parsedBookingChannels = parseChannels(settingsContent.booking.channels);
 
-export const siteConfig = {
+export const propertyConfig = {
   ...settingsContent,
   name: settingsContent.business.name,
   shortName: settingsContent.business.shortName,
@@ -626,8 +626,28 @@ export const siteConfig = {
   hostelworldReviews: settingsContent.booking.hostelworldReviews,
 } as const;
 
+// Compatibility alias while the repo transitions from a single-site deployment
+// to a reusable product structure.
+export const siteConfig = propertyConfig;
+
 export const contactChannels = parsedContactChannels.filter((channel) => channel.enabled);
 export const bookingChannels = parsedBookingChannels.filter((channel) => channel.enabled);
+
+const toOrigin = (value: string) => {
+  try {
+    return new URL(value).origin;
+  } catch {
+    return null;
+  }
+};
+
+export const externalPreconnectOrigins = Array.from(
+  new Set(
+    [...contactChannels, ...bookingChannels]
+      .map((channel) => toOrigin(channel.url))
+      .filter((origin): origin is string => Boolean(origin))
+  )
+);
 
 export const hero = homepageContent.hero;
 
