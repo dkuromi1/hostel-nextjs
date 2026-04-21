@@ -23,8 +23,7 @@ export function PwaInstallButton() {
     // Detect if already installed as standalone
     const mediaQuery = window.matchMedia("(display-mode: standalone)");
     if (mediaQuery.matches) {
-      setIsInstalled(true);
-      return;
+      setTimeout(() => setIsInstalled(true), 0);
     }
 
     window.addEventListener("beforeinstallprompt", handler);

@@ -3,7 +3,7 @@
 import { useSyncExternalStore } from "react";
 
 let scrollY = 0;
-let listeners: Set<() => void> = new Set();
+const listeners: Set<() => void> = new Set();
 let initialized = false;
 
 function handleScroll() {

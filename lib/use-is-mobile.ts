@@ -9,7 +9,7 @@ import { useSyncExternalStore } from "react";
  */
 
 let mobileValue = false;
-let listeners: Set<() => void> = new Set();
+const listeners: Set<() => void> = new Set();
 let initialized = false;
 
 function checkMobile() {

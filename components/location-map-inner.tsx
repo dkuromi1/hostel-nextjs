@@ -135,7 +135,8 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
     const poiQuery = searchParams?.get('poi') || '';
     const initialPoiQueryRef = useRef(poiQuery);
     const recommendedPoisRef = useRef<MapPOI[]>([]);
-    const trailGeoJsonRef = useRef<mapboxgl.GeoJSONSourceRaw['data'] | null>(null);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const trailGeoJsonRef = useRef<any>(null);
 
     const mapContainerRef = useRef<HTMLDivElement>(null);
     const mapRef = useRef<mapboxgl.Map | null>(null);
