@@ -169,6 +169,224 @@ collections:
               - { label: "Alt Text", name: "alt", widget: "string" }
           - { label: "Booking Award Image", name: "bookingAwardImage", widget: "image" }
 
+      - name: "site_copy"
+        label: "Page & Footer Copy"
+        file: "content/site-copy.json"
+        fields:
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Social Labels"
+                name: "socialLabels"
+                widget: "object"
+                fields:
+                  - { label: "Instagram", name: "instagram", widget: "string" }
+                  - { label: "Booking", name: "booking", widget: "string" }
+                  - { label: "Hostelworld", name: "hostelworld", widget: "string" }
+              - { label: "Explore Label", name: "exploreLabel", widget: "string" }
+              - { label: "Community Label", name: "communityLabel", widget: "string" }
+              - { label: "Community Caption", name: "communityCaption", widget: "string" }
+              - { label: "Community Button", name: "communityButton", widget: "string" }
+              - { label: "Details Label", name: "detailsLabel", widget: "string" }
+              - { label: "Breakfast Prefix", name: "breakfastPrefix", widget: "string" }
+              - { label: "Details Summary", name: "detailsSummary", widget: "text" }
+              - { label: "Credit", name: "credit", widget: "string" }
+          - label: "Error Page"
+            name: "errorPage"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Reload Label", name: "reloadLabel", widget: "string" }
+              - { label: "Contact Label", name: "contactLabel", widget: "string" }
+          - label: "Not Found Page"
+            name: "notFoundPage"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Home Button", name: "homeLabel", widget: "string" }
+              - { label: "Contact Button", name: "contactLabel", widget: "string" }
+          - label: "Home"
+            name: "home"
+            widget: "object"
+            fields:
+              - label: "Metadata"
+                name: "metadata"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Image", name: "image", widget: "image" }
+          - label: "Gallery"
+            name: "gallery"
+            widget: "object"
+            fields:
+              - label: "Metadata"
+                name: "metadata"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Image", name: "image", widget: "image" }
+              - { label: "Page Title", name: "pageTitle", widget: "string" }
+              - label: "Visual Tour"
+                name: "visualTour"
+                widget: "object"
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+              - label: "Award Panel"
+                name: "awardPanel"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Image Alt", name: "imageAlt", widget: "string" }
+              - label: "Vibe Panel"
+                name: "vibePanel"
+                widget: "object"
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+              - label: "CTA"
+                name: "cta"
+                widget: "object"
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Alt", name: "alt", widget: "string" }
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - label: "Metadata"
+                name: "metadata"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Image", name: "image", widget: "image" }
+              - label: "Hero"
+                name: "hero"
+                widget: "object"
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+              - label: "Best Booking Route"
+                name: "bestBookingRoute"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+              - label: "Hero Images"
+                name: "heroImages"
+                widget: "object"
+                fields:
+                  - { label: "Street Alt", name: "streetAlt", widget: "string" }
+                  - { label: "Social Alt", name: "socialAlt", widget: "string" }
+              - label: "Contact Details"
+                name: "contactDetails"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Reception Text", name: "reception", widget: "string" }
+              - label: "FAQ"
+                name: "faq"
+                widget: "object"
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+              - label: "CTA"
+                name: "cta"
+                widget: "object"
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Alt", name: "alt", widget: "string" }
+          - label: "Rooms"
+            name: "rooms"
+            widget: "object"
+            fields:
+              - label: "Metadata"
+                name: "metadata"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Image", name: "image", widget: "image" }
+              - { label: "Page Title", name: "pageTitle", widget: "string" }
+              - label: "Hero"
+                name: "hero"
+                widget: "object"
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+              - label: "Hero Images"
+                name: "heroImages"
+                widget: "object"
+                fields:
+                  - { label: "Four Bed Alt", name: "fourBedAlt", widget: "string" }
+                  - { label: "Pod Alt", name: "podAlt", widget: "string" }
+              - label: "Hero Price Blurb"
+                name: "heroPriceBlurb"
+                widget: "object"
+                fields:
+                  - { label: "Label Prefix", name: "labelPrefix", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+              - label: "Choose Setup"
+                name: "chooseSetup"
+                widget: "object"
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+              - label: "Included Stay"
+                name: "includedStay"
+                widget: "object"
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+              - label: "Extra Help"
+                name: "extraHelp"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Image Alt", name: "imageAlt", widget: "string" }
+              - label: "Testimonials Images"
+                name: "testimonialsImages"
+                widget: "object"
+                fields:
+                  - { label: "Social Alt", name: "socialAlt", widget: "string" }
+                  - { label: "Breakfast Alt", name: "breakfastAlt", widget: "string" }
+              - label: "CTA"
+                name: "cta"
+                widget: "object"
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Alt", name: "alt", widget: "string" }
+
   - name: "faqs"
     label: "FAQs"
     editor:

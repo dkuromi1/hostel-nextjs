@@ -4,9 +4,11 @@ import { MessageCircleMore, MapPinned } from "lucide-react";
 import { InstagramGlyph } from "@/components/instagram-glyph";
 import { PwaInstallButton } from "@/components/pwa-install-button";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { navLinks, siteConfig } from "@/lib/site-data";
+import { navLinks, siteConfig, siteCopyContent } from "@/lib/site-data";
 
 export function SiteFooter() {
+  const detailsSummary = siteCopyContent.footer.detailsSummary.replace("{checkInHours}", siteConfig.checkInHours);
+
   return (
     <footer className="border-t border-white/70 bg-slate-950 py-14 text-slate-200 pb-24 lg:pb-14">
       <div className="shell-container flex flex-col justify-between gap-10 xl:flex-row">
@@ -15,12 +17,10 @@ export function SiteFooter() {
             {siteConfig.tagline}
           </p>
           <h2 className="heading-section text-white md:text-5xl">
-            Stay central, sleep properly, and book fast.
+            {siteCopyContent.footer.heading}
           </h2>
           <p className="max-w-[62ch] text-body-lg text-slate-300">
-            Scodrinon Hostel sits on Kolë Idromeno Street, right in the middle
-            of Shkoder&apos;s cafe life, rich local culture, and gateway to adventure. Message on
-            WhatsApp for the quickest direct booking response.
+            {siteCopyContent.footer.description}
           </p>
           <div className="flex flex-wrap gap-3 text-sm">
             <a
@@ -39,7 +39,7 @@ export function SiteFooter() {
               className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-3 font-semibold text-slate-100 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:border-white/35"
             >
               <InstagramGlyph className="size-4" strokeWidth={1.8} />
-              Instagram
+              {siteCopyContent.footer.socialLabels.instagram}
             </a>
             <a
               href={siteConfig.bookingUrl}
@@ -47,7 +47,7 @@ export function SiteFooter() {
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-3 font-semibold text-slate-100 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:border-white/35"
             >
-              Booking.com
+              {siteCopyContent.footer.socialLabels.booking}
             </a>
             <a
               href={siteConfig.hostelworldUrl}
@@ -55,7 +55,7 @@ export function SiteFooter() {
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-3 font-semibold text-slate-100 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:border-white/35"
             >
-              Hostelworld
+              {siteCopyContent.footer.socialLabels.hostelworld}
             </a>
           </div>
         </div>
@@ -63,7 +63,7 @@ export function SiteFooter() {
           {/* Explore */}
           <div className="min-w-0">
             <p className="text-xs uppercase tracking-[0.24em] text-slate-200">
-              Explore
+              {siteCopyContent.footer.exploreLabel}
             </p>
             <div className="mt-4 grid gap-3">
               {navLinks.map((item) => (
@@ -81,7 +81,7 @@ export function SiteFooter() {
           {/* WhatsApp Community Section */}
           <div className="flex flex-col items-start gap-4 min-w-0">
             <p className="text-xs uppercase tracking-[0.24em] text-slate-200">
-              Community
+              {siteCopyContent.footer.communityLabel}
             </p>
             {/* Desktop QR Code */}
             <div className="hidden sm:flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-4 border border-white/10 w-full max-w-[160px]">
@@ -93,7 +93,7 @@ export function SiteFooter() {
                 />
               </div>
               <span className="text-xs font-semibold text-slate-300 text-center">
-                Scan to join the guest group chat
+                {siteCopyContent.footer.communityCaption}
               </span>
             </div>
             {/* Mobile Link Button */}
@@ -104,14 +104,14 @@ export function SiteFooter() {
               className="sm:hidden flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-3 font-semibold text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-emerald-700 w-full justify-center shadow-[0_0_20px_rgba(5,150,105,0.3)] shadow-emerald-600/20"
             >
               <MessageCircleMore className="size-5 shrink-0" />
-              Join the Chat
+              {siteCopyContent.footer.communityButton}
             </a>
           </div>
 
           {/* Details */}
           <div className="min-w-0">
             <p className="text-xs uppercase tracking-[0.24em] text-slate-200">
-              Details
+              {siteCopyContent.footer.detailsLabel}
             </p>
             <div className="mt-4 space-y-3 text-base text-slate-300">
               <p>
@@ -128,8 +128,8 @@ export function SiteFooter() {
                   </span>
                 </a>
               </p>
-              <p>Free breakfast: {siteConfig.breakfastHours}</p>
-              <p>Check-in: {siteConfig.checkInHours}, 24h access (message ahead if arriving after 10pm), luggage storage, rooftop social nights</p>
+              <p>{siteCopyContent.footer.breakfastPrefix} {siteConfig.breakfastHours}</p>
+              <p>{detailsSummary}</p>
             </div>
           </div>
         </div>
@@ -142,7 +142,7 @@ export function SiteFooter() {
           <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400/80">
             <ThemeToggle />
             <PwaInstallButton />
-            <span>Built in Next.js 16 & Tailwind 4 by hostel volunteer Darryl 🇨🇦</span>
+            <span>{siteCopyContent.footer.credit}</span>
           </div>
         </div>
       </div>

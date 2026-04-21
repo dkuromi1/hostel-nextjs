@@ -56,6 +56,7 @@ import {
   quickFacts,
   roomTypes,
   siteConfig,
+  siteCopyContent,
   testimonials,
   freeServices,
 } from "@/lib/site-data";
@@ -63,11 +64,10 @@ import { cn } from "@/lib/utils";
 
 
 export const metadata = buildMetadata({
-  title: "Hostel In Shkoder With Privacy Pods And Rooftop Views",
-  description:
-    "Book Scodrinon Hostel direct on WhatsApp for privacy pods, rooftop sunsets, breakfast, and a safe social vibe in the center of Shkoder.",
+  title: siteCopyContent.home.metadata.title,
+  description: siteCopyContent.home.metadata.description,
   path: "/",
-  image: "/logo.webp",
+  image: siteCopyContent.home.metadata.image,
 });
 
 const reasonIcons = [Moon, Sparkles, MapPin, Compass];

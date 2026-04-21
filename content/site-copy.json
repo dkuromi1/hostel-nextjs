@@ -1,0 +1,155 @@
+{
+  "footer": {
+    "heading": "Stay central, sleep properly, and book fast.",
+    "description": "Scodrinon Hostel sits on Kolë Idromeno Street, right in the middle of Shkoder's cafe life, rich local culture, and gateway to adventure. Message on WhatsApp for the quickest direct booking response.",
+    "socialLabels": {
+      "instagram": "Instagram",
+      "booking": "Booking.com",
+      "hostelworld": "Hostelworld"
+    },
+    "exploreLabel": "Explore",
+    "communityLabel": "Community",
+    "communityCaption": "Scan to join the guest group chat",
+    "communityButton": "Join the Chat",
+    "detailsLabel": "Details",
+    "breakfastPrefix": "Free breakfast:",
+    "detailsSummary": "Check-in: {checkInHours}, 24h access (message ahead if arriving after 10pm), luggage storage, rooftop social nights",
+    "credit": "Built in Next.js 16 & Tailwind 4 by hostel volunteer Darryl"
+  },
+  "errorPage": {
+    "eyebrow": "Something Interrupted The Page",
+    "title": "The site hit an error before it finished loading.",
+    "description": "Try the page again. If it keeps happening, message us directly on WhatsApp so you can still book without waiting on the website.",
+    "reloadLabel": "Reload The Page",
+    "contactLabel": "WhatsApp Booking"
+  },
+  "notFoundPage": {
+    "eyebrow": "Page Not Found",
+    "title": "That page is not part of the site map.",
+    "description": "Head back to the main site and continue planning your stay.",
+    "homeLabel": "Go Home",
+    "contactLabel": "Contact Us"
+  },
+  "home": {
+    "metadata": {
+      "title": "Hostel In Shkoder With Privacy Pods And Rooftop Views",
+      "description": "Book Scodrinon Hostel direct on WhatsApp for privacy pods, rooftop sunsets, breakfast, and a safe social vibe in the center of Shkoder.",
+      "image": "/logo.webp"
+    }
+  },
+  "gallery": {
+    "metadata": {
+      "title": "Photo And Video Gallery",
+      "description": "Browse real photos and short videos from Scodrinon Hostel, including the rooftop, rooms, breakfast, events, and the atmosphere around the stay.",
+      "image": "/images/rooftop_panorama.jpg"
+    },
+    "pageTitle": "Gallery",
+    "visualTour": {
+      "eyebrow": "Visual Tour",
+      "title": "Scroll through the stay before you step into it.",
+      "description": "Get a feel for the hostel in a few swipes: the rooftop, the pods, the breakfast, and the overall vibe of the place."
+    },
+    "awardPanel": {
+      "label": "Highly Rated",
+      "title": "What you see is exactly what you get.",
+      "description": "We’re proud of our 9.5 rating, but our real pride is our space. No heavy filters or staged tricks. Just real, comfortable environments ready for your next adventure.",
+      "imageAlt": "Booking award displayed at Scodrinon Hostel"
+    },
+    "vibePanel": {
+      "eyebrow": "Our Vibe",
+      "title": "Bright, clean, social, and easy to settle into.",
+      "description": "Take a look around. Our spaces blend modern design with welcoming warmth. And that rooftop you keep seeing? That’s where the true hostel magic happens and travelers come together."
+    },
+    "cta": {
+      "eyebrow": "Ready To Stay",
+      "title": "If the gallery feels like your kind of hostel, message now.",
+      "description": "The fastest move is still the direct one: WhatsApp first, then Booking.com and Hostelworld right behind it.",
+      "image": "/images/rooftop_view.jpg",
+      "alt": "Rooftop view from Scodrinon Hostel at sunset"
+    }
+  },
+  "contact": {
+    "metadata": {
+      "title": "Contact And Book Direct",
+      "description": "Book Scodrinon Hostel directly on WhatsApp or use Booking.com and Hostelworld. Find the hostel links, booking checklist, and arrival details here.",
+      "image": "/images/shkoder_pedestrian_street.jpg"
+    },
+    "hero": {
+      "eyebrow": "Contact & Book",
+      "title": "Skip the fees. Book directly with a simple message.",
+      "description": "We prefer WhatsApp because it's the fastest way to answer your questions and secure your bed. (But if you prefer the booking apps, you'll find those links here too)."
+    },
+    "bestBookingRoute": {
+      "label": "Best Booking Route",
+      "title": "Message Scodrinon on WhatsApp first.",
+      "description": "Send your dates, room preference, and arrival time. You can also ask about hikes, bikes, lake plans, or the easiest way to move on from Shkoder after your stay."
+    },
+    "heroImages": {
+      "streetAlt": "Street outside Scodrinon Hostel on Kolë Idromeno",
+      "socialAlt": "Social atmosphere at Scodrinon Hostel"
+    },
+    "contactDetails": {
+      "label": "Contact Details",
+      "reception": "Reception: 24 hour access | Check-in: {checkInHours}"
+    },
+    "faq": {
+      "eyebrow": "FAQs",
+      "title": "Common questions.",
+      "description": "Here are a few things people usually ask before they arrive."
+    },
+    "cta": {
+      "eyebrow": "Ready to visit?",
+      "title": "Got your dates? Let's get you booked.",
+      "description": "Drop us a message on WhatsApp and we'll confirm your bed right away. We can't wait to welcome you to Shkoder.",
+      "image": "/images/promo_2.jpg",
+      "alt": "Promotional image for Scodrinon Hostel"
+    }
+  },
+  "rooms": {
+    "metadata": {
+      "title": "Rooms And Privacy Pods In Shkoder",
+      "description": "See the privacy pod dorm and four-bed dorm options at Scodrinon Hostel, plus breakfast, WiFi, lockers, air-con, and other included amenities.",
+      "image": "/images/room_18bed2.jpg"
+    },
+    "pageTitle": "Rooms",
+    "hero": {
+      "eyebrow": "Rooms",
+      "title": "Sleep like you booked a thoughtful hostel, not a compromise.",
+      "description": "Scodrinon keeps the comfort side of the stay strong: privacy pods, smaller dorm options, clean shared bathrooms, breakfast, and the essentials that matter when you are traveling for real."
+    },
+    "heroImages": {
+      "fourBedAlt": "Four-bed dorm room at Scodrinon Hostel, Shkoder",
+      "podAlt": "18-bed privacy pod dorm at Scodrinon Hostel, Shkoder"
+    },
+    "heroPriceBlurb": {
+      "labelPrefix": "Beds From",
+      "title": "Hotel privacy at a hostel price. It's why so many guests book two nights and end up extending."
+    },
+    "chooseSetup": {
+      "eyebrow": "Choose Your Setup",
+      "title": "Two room styles, both built around a better night's sleep.",
+      "description": "You can stay social without giving up your own space. The pod dorm leans into privacy; the four-bed rooms lean into calm."
+    },
+    "includedStay": {
+      "eyebrow": "Included In Your Stay",
+      "title": "Everything you need for a comfortable stay.",
+      "description": "The site stays honest about what you get. No padded feature list, just the things that make the stay smoother."
+    },
+    "extraHelp": {
+      "label": "Extra Help When You Want It",
+      "title": "Add bikes, tours, or laundry without overcomplicating your stay.",
+      "imageAlt": "Breakfast included at Scodrinon Hostel, Shkoder"
+    },
+    "testimonialsImages": {
+      "socialAlt": "Social common area at Scodrinon Hostel",
+      "breakfastAlt": "Fresh breakfast served at Scodrinon Hostel"
+    },
+    "cta": {
+      "eyebrow": "Book Your Bed",
+      "title": "Tell the team what kind of room you want and lock it in directly.",
+      "description": "If you already know your dates, message on WhatsApp and ask for the pod dorm or a four-bed option. Booking.com and Hostelworld stay there if you prefer those platforms.",
+      "image": "/images/ambiance_4.jpg",
+      "alt": "evening ambiance at Scodrinon Hostel, Shkoder"
+    }
+  }
+}

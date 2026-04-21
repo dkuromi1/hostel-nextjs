@@ -8,6 +8,7 @@ import faq from "../content/faq.json";
 import testimonialsData from "../content/testimonials.json";
 import gallery from "../content/gallery.json";
 import thingsToDoData from "../content/things-to-do.json";
+import siteCopyData from "../content/site-copy.json";
 
 interface SettingsContent {
   business: {
@@ -176,6 +177,162 @@ interface ThingsToDoContent {
   thingsToDo: ThingToDoItem[];
 }
 
+interface SiteCopyContent {
+  footer: {
+    heading: string;
+    description: string;
+    socialLabels: {
+      instagram: string;
+      booking: string;
+      hostelworld: string;
+    };
+    exploreLabel: string;
+    communityLabel: string;
+    communityCaption: string;
+    communityButton: string;
+    detailsLabel: string;
+    breakfastPrefix: string;
+    detailsSummary: string;
+    credit: string;
+  };
+  errorPage: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    reloadLabel: string;
+    contactLabel: string;
+  };
+  notFoundPage: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    homeLabel: string;
+    contactLabel: string;
+  };
+  home: {
+    metadata: {
+      title: string;
+      description: string;
+      image: string;
+    };
+  };
+  gallery: {
+    metadata: {
+      title: string;
+      description: string;
+      image: string;
+    };
+    pageTitle: string;
+    visualTour: {
+      eyebrow: string;
+      title: string;
+      description: string;
+    };
+    awardPanel: {
+      label: string;
+      title: string;
+      description: string;
+      imageAlt: string;
+    };
+    vibePanel: {
+      eyebrow: string;
+      title: string;
+      description: string;
+    };
+    cta: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      image: string;
+      alt: string;
+    };
+  };
+  contact: {
+    metadata: {
+      title: string;
+      description: string;
+      image: string;
+    };
+    hero: {
+      eyebrow: string;
+      title: string;
+      description: string;
+    };
+    bestBookingRoute: {
+      label: string;
+      title: string;
+      description: string;
+    };
+    heroImages: {
+      streetAlt: string;
+      socialAlt: string;
+    };
+    contactDetails: {
+      label: string;
+      reception: string;
+    };
+    faq: {
+      eyebrow: string;
+      title: string;
+      description: string;
+    };
+    cta: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      image: string;
+      alt: string;
+    };
+  };
+  rooms: {
+    metadata: {
+      title: string;
+      description: string;
+      image: string;
+    };
+    pageTitle: string;
+    hero: {
+      eyebrow: string;
+      title: string;
+      description: string;
+    };
+    heroImages: {
+      fourBedAlt: string;
+      podAlt: string;
+    };
+    heroPriceBlurb: {
+      labelPrefix: string;
+      title: string;
+    };
+    chooseSetup: {
+      eyebrow: string;
+      title: string;
+      description: string;
+    };
+    includedStay: {
+      eyebrow: string;
+      title: string;
+      description: string;
+    };
+    extraHelp: {
+      label: string;
+      title: string;
+      imageAlt: string;
+    };
+    testimonialsImages: {
+      socialAlt: string;
+      breakfastAlt: string;
+    };
+    cta: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      image: string;
+      alt: string;
+    };
+  };
+}
+
 function parseIconName(icon: string, context: string): IconName {
   if (isIconName(icon)) {
     return icon;
@@ -222,6 +379,7 @@ const roomsContent: RoomsContent = {
 const thingsToDoContent: ThingsToDoContent = thingsToDoData;
 
 const settingsContent = settings as SettingsContent;
+const siteCopy = siteCopyData as SiteCopyContent;
 
 export const siteConfig = {
   ...settingsContent,
@@ -337,3 +495,5 @@ export const testimonials = testimonialsData.testimonials;
 export const bookingAwardImage = homepageContent.bookingAwardImage;
 
 export const thingsToDo = thingsToDoContent.thingsToDo;
+
+export const siteCopyContent = siteCopy;

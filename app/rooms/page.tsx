@@ -9,7 +9,6 @@ import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { StructuredData } from "@/components/structured-data";
-import { Eyebrow } from "@/components/ui/eyebrow";
 import { SectionLabel } from "@/components/ui/section-label";
 import { Badge } from "@/components/ui/badge";
 import { Panel } from "@/components/ui/panel";
@@ -27,39 +26,18 @@ import {
   roomHeroHighlights,
   podDormImages,
   fourBedDormImages,
+  siteCopyContent,
 } from "@/lib/site-data";
 import { testimonials } from "@/lib/site-data";
 
 export const metadata = buildMetadata({
-  title: "Rooms And Privacy Pods In Shkoder",
-  description:
-    "See the privacy pod dorm and four-bed dorm options at Scodrinon Hostel, plus breakfast, WiFi, lockers, air-con, and other included amenities.",
+  title: siteCopyContent.rooms.metadata.title,
+  description: siteCopyContent.rooms.metadata.description,
   path: "/rooms",
-  image: "/images/room_18bed2.jpg",
+  image: siteCopyContent.rooms.metadata.image,
 });
 
 export default function RoomsPage() {
-
-  const formatServiceText = (text: string) => {
-    return text.split(/(\*\*.*?\*\*|~~.*?~~)/g).map((part, i) => {
-      if (part.startsWith("**") && part.endsWith("**")) {
-        return (
-          <strong key={i} className="font-bold text-[var(--text-heading)]">
-            {part.slice(2, -2)}
-          </strong>
-        );
-      }
-      if (part.startsWith("~~") && part.endsWith("~~")) {
-        return (
-          <span key={i} className="text-red-600 line-through decoration-red-600/50">
-            {part.slice(2, -2)}
-          </span>
-        );
-      }
-      return part;
-    });
-  };
-
   return (
     <>
       <StructuredData
@@ -67,15 +45,15 @@ export default function RoomsPage() {
           buildHostelSchema(),
           buildBreadcrumbSchema([
             { name: "Home", path: "/" },
-            { name: "Rooms", path: "/rooms" },
+            { name: siteCopyContent.rooms.pageTitle, path: "/rooms" },
           ]),
         ]}
       />
 
       <PageHero
-        eyebrow="Rooms"
-        title="Sleep like you booked a thoughtful hostel, not a compromise."
-        description="Scodrinon keeps the comfort side of the stay strong: privacy pods, smaller dorm options, clean shared bathrooms, breakfast, and the essentials that matter when you are traveling for real."
+        eyebrow={siteCopyContent.rooms.hero.eyebrow}
+        title={siteCopyContent.rooms.hero.title}
+        description={siteCopyContent.rooms.hero.description}
         hideActions={true}
         highlights={roomHeroHighlights}
       >
@@ -83,7 +61,7 @@ export default function RoomsPage() {
           <div className="media-frame relative min-h-[22rem] md:row-span-2">
             <Image
               src="/images/rooms_2.jpg"
-              alt="Four-bed dorm room at Scodrinon Hostel, Shkoder"
+              alt={siteCopyContent.rooms.heroImages.fourBedAlt}
               fill
               className="object-cover"
               priority
@@ -94,7 +72,7 @@ export default function RoomsPage() {
           <div className="media-frame relative min-h-[14rem]">
             <Image
               src="/images/room_18bed2.jpg"
-              alt="18-bed privacy pod dorm at Scodrinon Hostel, Shkoder"
+              alt={siteCopyContent.rooms.heroImages.podAlt}
               fill
               className="object-cover"
               priority
@@ -103,9 +81,9 @@ export default function RoomsPage() {
             />
           </div>
           <div className="glass-panel rounded-[28px] p-5">
-            <SectionLabel variant="emerald" className="mb-4">Beds From <strong>{roomTypes[0].price} / Night</strong></SectionLabel>
+            <SectionLabel variant="emerald" className="mb-4">{siteCopyContent.rooms.heroPriceBlurb.labelPrefix} <strong>{roomTypes[0].price} / Night</strong></SectionLabel>
             <p className="mt-3 font-heading text-2xl leading-none tracking-[-0.04em] text-[var(--text-heading)]">
-              Hotel privacy at a hostel price. It's why so many guests book two nights and end up extending.
+              {siteCopyContent.rooms.heroPriceBlurb.title}
             </p>
           </div>
         </div>
@@ -114,9 +92,9 @@ export default function RoomsPage() {
       <section className="py-8 sm:py-16">
         <div className="shell-container space-y-10">
           <SectionHeading
-            eyebrow="Choose Your Setup"
-            title="Two room styles, both built around a better night's sleep."
-            description="You can stay social without giving up your own space. The pod dorm leans into privacy; the four-bed rooms lean into calm."
+            eyebrow={siteCopyContent.rooms.chooseSetup.eyebrow}
+            title={siteCopyContent.rooms.chooseSetup.title}
+            description={siteCopyContent.rooms.chooseSetup.description}
           />
           <div className="grid gap-8 lg:grid-cols-2">
             {roomTypes.map((room, index) => {
@@ -210,10 +188,10 @@ export default function RoomsPage() {
           <Reveal>
             <Panel className="p-6 sm:p-8">
               <SectionHeading
-                eyebrow="Included In Your Stay"
+                eyebrow={siteCopyContent.rooms.includedStay.eyebrow}
                 variant="simple"
-                title="Everything you need for a comfortable stay."
-                description="The site stays honest about what you get. No padded feature list, just the things that make the stay smoother."
+                title={siteCopyContent.rooms.includedStay.title}
+                description={siteCopyContent.rooms.includedStay.description}
               />
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 {freeServices.map((service, idx) => {
@@ -243,9 +221,9 @@ export default function RoomsPage() {
 
           <Reveal delay={120}>
             <Panel className="p-6 sm:p-8">
-              <SectionLabel className="mb-6">Extra Help When You Want It</SectionLabel>
+              <SectionLabel className="mb-6">{siteCopyContent.rooms.extraHelp.label}</SectionLabel>
               <h2 className="mt-4 heading-card text-[var(--text-heading)]">
-                Add bikes, tours, or laundry without overcomplicating your stay.
+                {siteCopyContent.rooms.extraHelp.title}
               </h2>
               <div className="mt-8 grid gap-4">
                 {paidServices.map((service, idx) => {
@@ -273,7 +251,7 @@ export default function RoomsPage() {
               <div className="mt-8 media-frame relative w-full aspect-[4/3] sm:aspect-[16/9]">
                 <Image
                   src="/images/rooftop_social_2.jpg"
-                  alt="Breakfast included at Scodrinon Hostel, Shkoder"
+                  alt={siteCopyContent.rooms.extraHelp.imageAlt}
                   fill
                   className="object-cover object-[50%_30%]"
                   sizes="(max-width: 1024px) 100vw, 38vw"
@@ -295,7 +273,7 @@ export default function RoomsPage() {
                 <div className="media-frame relative min-h-[12rem] lg:min-h-[15rem]">
                   <Image
                     src="/images/indoor_common_1.webp"
-                    alt="Social common area at Scodrinon Hostel"
+                    alt={siteCopyContent.rooms.testimonialsImages.socialAlt}
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 50vw, 45vw"
@@ -304,7 +282,7 @@ export default function RoomsPage() {
                 <div className="media-frame relative min-h-[12rem] lg:min-h-[15rem]">
                   <Image
                     src="/images/ambiance_3.jpg"
-                    alt="Fresh breakfast served at Scodrinon Hostel"
+                    alt={siteCopyContent.rooms.testimonialsImages.breakfastAlt}
                     fill
                     className="object-cover object-[50%_40%]"
                     sizes="(max-width: 1024px) 50vw, 45vw"
@@ -319,11 +297,11 @@ export default function RoomsPage() {
       <section className="py-8 sm:py-16">
         <div className="shell-container">
           <CtaStrip
-            eyebrow="Book Your Bed"
-            title="Tell the team what kind of room you want and lock it in directly."
-            description="If you already know your dates, message on WhatsApp and ask for the pod dorm or a four-bed option. Booking.com and Hostelworld stay there if you prefer those platforms."
-            image="/images/ambiance_4.jpg"
-            alt="evening ambiance at Scodrinon Hostel, Shkoder"
+            eyebrow={siteCopyContent.rooms.cta.eyebrow}
+            title={siteCopyContent.rooms.cta.title}
+            description={siteCopyContent.rooms.cta.description}
+            image={siteCopyContent.rooms.cta.image}
+            alt={siteCopyContent.rooms.cta.alt}
             imageClassName="object-[50%_80%]"
           />
         </div>
