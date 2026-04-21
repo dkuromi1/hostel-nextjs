@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -8,6 +7,7 @@ import { useScrollPosition } from "@/lib/use-scroll-position";
 
 import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
 import { MobileNav } from "@/components/mobile-nav";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { VolunteerBanner } from "@/components/volunteer-banner";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -127,6 +127,7 @@ export function SiteHeader() {
               >
                 <HostelworldLogo iconOnly />
               </a>
+              <ThemeToggle variant="header" />
             </div>
           </div>
 
@@ -136,4 +137,3 @@ export function SiteHeader() {
     </div>
   );
 }
-

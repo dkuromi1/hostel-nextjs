@@ -5,12 +5,13 @@ import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Theme = "light" | "dark";
+type ThemeToggleVariant = "footer" | "nav" | "header";
 
 function persistTheme(theme: Theme) {
   document.cookie = `theme=${theme}; path=/; max-age=31536000; samesite=lax`;
 }
 
-export function ThemeToggle({ variant = "footer" }: { variant?: "footer" | "nav" }) {
+export function ThemeToggle({ variant = "footer" }: { variant?: ThemeToggleVariant }) {
   const [theme, setTheme] = React.useState<Theme>("light");
   const [mounted, setMounted] = React.useState(false);
 
@@ -68,9 +69,11 @@ export function ThemeToggle({ variant = "footer" }: { variant?: "footer" | "nav"
       <div 
         className={cn(
           "rounded-full border",
-          variant === "footer" 
-            ? "size-8 border-white/10 bg-white/5" 
-            : "h-[34px] w-[115px] border-[var(--border)] bg-transparent"
+          variant === "footer"
+            ? "size-8 border-white/10 bg-white/5"
+            : variant === "header"
+              ? "size-9 border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md"
+              : "h-[34px] w-[115px] border-[var(--border)] bg-transparent"
         )} 
       />
     );
@@ -83,11 +86,19 @@ export function ThemeToggle({ variant = "footer" }: { variant?: "footer" | "nav"
         "group flex items-center justify-center gap-2 rounded-full border px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] transition-all active:scale-95",
         variant === "footer"
           ? "border-white/10 bg-white/5 text-slate-400 hover:border-white/20 hover:bg-white/10 hover:text-white"
-          : "border-[var(--border)] bg-transparent text-[var(--text-heading)] hover:bg-[var(--muted)]"
+          : variant === "header"
+            ? "size-9 border-[var(--glass-border)] bg-[var(--glass-bg)] px-0 text-[var(--text-heading)] shadow-sm backdrop-blur-md hover:bg-[var(--muted)]"
+            : "border-[var(--border)] bg-transparent text-[var(--text-heading)] hover:bg-[var(--muted)]"
       )}
-      aria-label="Toggle dark mode"
+      aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
     >
-      {theme === "light" ? (
+      {variant === "header" ? (
+        theme === "light" ? (
+          <Moon className="size-4 transition-transform group-hover:-rotate-12" />
+        ) : (
+          <Sun className="size-4 transition-transform group-hover:rotate-45" />
+        )
+      ) : theme === "light" ? (
         <>
           <Moon className="size-3 transition-transform group-hover:-rotate-12" />
           <span>Dark Mode</span>
