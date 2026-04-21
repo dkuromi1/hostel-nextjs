@@ -4,17 +4,10 @@ import * as React from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { getGalleryItemIndex } from "@/lib/gallery";
+import { warmGalleryItemMedia } from "@/lib/gallery-media";
 import { galleryItems } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence, useAnimation, usePresence } from "framer-motion";
-
-type GalleryItem = (typeof galleryItems)[number];
-
-function preloadImage(item?: GalleryItem) {
-    if (typeof window === "undefined" || !item || item.type !== "image") return;
-    const img = new window.Image();
-    img.src = item.src;
-}
 
 interface GalleryLightboxProps {
     currentId: string;
@@ -38,8 +31,10 @@ function GalleryVideo({ src, poster, alt, layoutId }: { src: string; poster?: st
     }, [isPresent, src]);
 
     React.useEffect(() => {
+        const video = videoRef.current;
+
         return () => {
-            if (videoRef.current) videoRef.current.pause();
+            video?.pause();
         };
     }, []);
 
@@ -114,8 +109,8 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
 
         const after = (newIndex + 1) % galleryItems.length;
         const before = newIndex === 0 ? galleryItems.length - 1 : newIndex - 1;
-        preloadImage(galleryItems[after]);
-        preloadImage(galleryItems[before]);
+        warmGalleryItemMedia(galleryItems[after]);
+        warmGalleryItemMedia(galleryItems[before]);
     }, [activeIndex]);
 
     const goToNext = React.useCallback(() => {
@@ -130,12 +125,12 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
 
     React.useEffect(() => {
         if (activeIndex === -1) return;
+        warmGalleryItemMedia(galleryItems[activeIndex], "high");
         const next = (activeIndex + 1) % galleryItems.length;
         const prev = activeIndex === 0 ? galleryItems.length - 1 : activeIndex - 1;
-        preloadImage(galleryItems[next]);
-        preloadImage(galleryItems[prev]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []); 
+        warmGalleryItemMedia(galleryItems[next]);
+        warmGalleryItemMedia(galleryItems[prev]);
+    }, [activeIndex]); 
 
     React.useEffect(() => {
         const onKeyDown = (e: KeyboardEvent) => {
@@ -233,7 +228,7 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
                             // If user clicks the transparent empty space around the image, close the lightbox
                             if (e.target === e.currentTarget) handleClose();
                         }}
-                        className="absolute inset-0 flex justify-center items-center"
+                        className="absolute inset-0 flex justify-center items-center touch-none"
                     >
                         <div className="relative flex justify-center items-center h-full w-full pointer-events-none">
                             {item.type === "video" ? (
@@ -250,6 +245,9 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
                                     layoutId={isInitialMount ? `gallery-media-${item.id}` : undefined}
                                     src={item.src}
                                     alt={item.alt}
+                                    loading="eager"
+                                    fetchPriority="high"
+                                    decoding="sync"
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         setShowControls(v => !v);

@@ -1,8 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { warmGalleryItemMedia } from "@/lib/gallery-media";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { type GalleryItem } from "@/lib/site-data";
@@ -75,6 +74,15 @@ export function GalleryMasonry({ items, columns = { mobile: 2, tablet: 3, deskto
             key={item.id}
             href={`/gallery/${item.id}`}
             scroll={false}
+            onPointerEnter={() => {
+                void warmGalleryItemMedia(item, "high");
+            }}
+            onPointerDown={() => {
+                void warmGalleryItemMedia(item, "high");
+            }}
+            onFocus={() => {
+                void warmGalleryItemMedia(item, "high");
+            }}
             className="group block w-full cursor-zoom-in"
         >
             <div className="media-frame relative overflow-hidden bg-slate-100/50 dark:border-transparent">
