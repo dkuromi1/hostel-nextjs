@@ -5,6 +5,7 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Home } from 'lucide-react';
 import poisData from '@/content/pois.json';
+import thethValbonaTracks from '@/content/theth_valbona_tracks.json';
 import { useSearchParams } from 'next/navigation';
 
 interface LocationMapInnerProps {
@@ -220,6 +221,32 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                     'line-width': 3.5,
                     'line-dasharray': [2, 2],
                     'line-opacity': 0.95
+                }
+            }, labelLayerId);
+        }
+
+        // HIKING TRAIL: Theth to Valbona
+        if (!map.getSource('theth-valbona-track')) {
+            map.addSource('theth-valbona-track', {
+                type: 'geojson',
+                data: thethValbonaTracks as mapboxgl.GeoJSONSourceRaw['data']
+            });
+        }
+
+        if (!map.getLayer('theth-valbona-line')) {
+            map.addLayer({
+                'id': 'theth-valbona-line',
+                'type': 'line',
+                'source': 'theth-valbona-track',
+                'layout': {
+                    'line-cap': 'round',
+                    'line-join': 'round'
+                },
+                'paint': {
+                    'line-color': '#10b981', // emerald-500
+                    'line-width': 3.5,
+                    'line-dasharray': [2, 1],
+                    'line-opacity': 0.8
                 }
             }, labelLayerId);
         }
@@ -636,6 +663,11 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                 <div className="flex items-center gap-3">
                     <div className="h-1.5 w-6 rounded-full bg-[var(--brand-primary)]/40" />
                     <span>The Pedestrian Street</span>
+                </div>
+
+                <div className="flex items-center gap-3">
+                    <div className="h-0.5 w-6 border-t-[3.5px] border-dotted border-[#10b981] opacity-90" />
+                    <span>Hiking Trail</span>
                 </div>
 
                 <div className="my-1 h-px w-full bg-[var(--border)]" />

@@ -21,6 +21,8 @@
     { "name": "Mesi Bridge", "coords": [19.57507048757086, 42.114467845122725, 0], "category": "see", "minZoom": 9 },
     { "name": "Shiroka Village", "coords": [19.4574742901822, 42.05937487786602, 0], "category": "see", "minZoom": 9 },
     { "name": "Hermes Airport Shuttle", "coords": [19.518613662164896, 42.065060836150614, 0], "category": "transit", "minZoom": 11 },
+    { "name": "Trailhead", "coords": [19.870570709799853, 42.42571084825586, 0], "category": "see", "minZoom": 6 },
+    { "name": "Valbona Pass", "coords": [19.81528, 42.40583, 0], "category": "see", "minZoom": 6 },
     { "name": "Valbona Village", "coords": [19.88570882131251, 42.444877303358666, 0], "category": "transit", "minZoom": 6 },
     { "name": "Theth drop off/pick up", "coords": [19.772315376603874, 42.39677313338882, 0], "category": "transit", "minZoom": 6 },
     { "name": "Ferry (Valbona) drop off/pick up", "coords": [20.009769719020607, 42.26435854079236, 0], "category": "transit", "minZoom": 6 },
