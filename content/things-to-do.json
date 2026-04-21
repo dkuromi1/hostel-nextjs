@@ -1,6 +1,9 @@
 {
-  "thingsToDo": [
+  "moduleType": "local-experiences",
+  "localHighlights": [
     {
+      "category": "dayTrip",
+      "featured": true,
       "title": "Shala River Day Trip",
       "description": "Known as the 'Thailand of Albania', the Shala River features crystal clear water tucked between steep mountain peaks. The day trip includes the scenic boat ride from Komani and we'll help you organize the departure right from the hostel. Bus departs 6:30am in front of hostel.",
       "price": "€35",
@@ -11,6 +14,8 @@
       "showDirections": false
     },
     {
+      "category": "adventure",
+      "featured": true,
       "title": "Theth to Valbona Trek",
       "description": "Trek the famous Theth-to-Valbona trail in the Albanian Alps. We organize all your transport and securely store your luggage for free. Schedule — To Theth: 7:00am (from in front of Rozafa Hotel), Return: 11:00am & 5:00pm (from Jezerca Market). To Valbona: 6:30am (from the hostel), Return: 10:00am (from your guesthouse).",
       "price": "Theth €12 / Valbona €26 (one way)",
@@ -20,6 +25,7 @@
       "showDirections": false
     },
     {
+      "category": "dayTrip",
       "title": "Komani Lake Boat Tour",
       "description": "Experience one of the world's most beautiful boat journeys. This spectacular route winds through narrow mountain passages and vertical cliffs on turquoise waters. The full tour includes the scenic ferry ride and return transport. Bus departs 6:30am in front of hostel.",
       "price": "€36",
@@ -28,6 +34,7 @@
       "showDirections": false
     },
     {
+      "category": "landmark",
       "title": "Rozafa Castle",
       "description": "The city's top attraction. Perched on a rocky hill with beautiful views across Lake Shkodër and three rivers. Best visited an hour before sunset for the golden lighting across the valleys.",
       "price": "",
@@ -37,6 +44,7 @@
       "showDirections": true
     },
     {
+      "category": "neighborhood",
       "title": "The Pedestrian Street (Kolë Idromeno)",
       "description": "The lively Venetian-style pedestrian street starting right outside the hostel! Lined with independent cafes, shops, and restaurants, it's perfect for evening promenades.",
       "image": "/images/shkoder_pedestrian_street_3.webp",
@@ -44,6 +52,7 @@
       "showDirections": true
     },
     {
+      "category": "nature",
       "title": "Lake Shkodër & Shiroka Village",
       "description": "The largest lake in the Balkans is a breathtaking natural wonder where dramatic karst mountains meet fields of floating water lilies. It's also a world-renowned sanctuary for over 280 bird species.",
       "image": "/images/lake_shkoder_shiroka_2.webp",
@@ -51,6 +60,7 @@
       "showDirections": true
     },
     {
+      "category": "landmark",
       "title": "Mesi Bridge (The Old Bridge)",
       "description": "A stunning, curved Ottoman bridge resting over the shallow, opal waters of the Kir River, built in 1768 to connect the city with the northern highlands. Also a great spot for a swim!",
       "image": "/images/mesi_bridge.jpg",
@@ -58,6 +68,7 @@
       "showDirections": true
     },
     {
+      "category": "museum",
       "title": "Marubi National Photography Museum",
       "description": "A quiet, modern exhibition featuring over 150 years of Albanian history through the incredibly detailed lenses of the Marubi family. Just a few doors down from the hostel!",
       "image": "/images/marubi_museum.jpg",

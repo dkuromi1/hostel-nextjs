@@ -24,7 +24,7 @@
       "icon": "ShieldCheck"
     }
   ],
-  "sharedAmenities": [
+  "includedFeatures": [
     "Air-con in all rooms",
     "Secure lockers",
     "Reading lights",
@@ -34,7 +34,7 @@
     "Free breakfast (excl. off-season)",
     "24h access"
   ],
-  "freeServices": [
+  "includedServices": [
     {
       "title": "Social Breakfast",
       "description": "Fresh locally sourced breakfast from 8 to 9:30am (excl. off-season). Complimentary morning espresso year round",
@@ -66,7 +66,7 @@
       "icon": "Sparkles"
     }
   ],
-  "paidServices": [
+  "addOnServices": [
     {
       "title": "Tours & Transport",
       "description": "Hassle-free shuttle booking to Theth (€12), Valbona (€26), and Shala River (€35 - includes €5 discount).",
@@ -123,7 +123,7 @@
       }
     }
   ],
-  "eventCards": [
+  "featuredMoments": [
     {
       "title": "River Days at the Drin",
       "description": "We head out to the river regularly for swimming and sun. These trips are a hostel favorite — a chance to see a different side of Shkoder and spend the afternoon with a great crew.",

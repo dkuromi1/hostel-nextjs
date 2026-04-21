@@ -1,6 +1,10 @@
 {
-  "roomTypes": [
+  "moduleType": "hospitality",
+  "offerings": [
     {
+      "offeringType": "room",
+      "capacityLabel": "18 beds",
+      "featured": true,
       "name": "18-Bed Pod Dorm",
       "price": "€12",
       "label": "Best for solo travelers who want privacy without losing the hostel vibe",
@@ -35,6 +39,8 @@
       ]
     },
     {
+      "offeringType": "room",
+      "capacityLabel": "4 beds",
       "name": "4-Bed Dorms",
       "price": "€15",
       "label": "Best for lighter sleepers, small groups, and guests wanting a calmer setup",

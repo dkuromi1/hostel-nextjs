@@ -1,11 +1,13 @@
 {
-  "galleryItems": [
+  "mediaItems": [
     {
       "id": "breakfast-served",
       "type": "image",
       "src": "/images/breakfast.jpg",
       "alt": "Breakfast served at Scodrinon Hostel",
-      "aspect": "766/1020"
+      "aspect": "766/1020",
+      "featured": true,
+      "tags": ["breakfast", "hospitality"]
     },
     {
       "id": "four-bed-room",

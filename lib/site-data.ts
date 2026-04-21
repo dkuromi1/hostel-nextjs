@@ -146,6 +146,9 @@ export interface RoomType {
   bullets: string[];
   images: RoomImage[];
   amenities: RoomAmenity[];
+  offeringType?: string;
+  capacityLabel?: string;
+  featured?: boolean;
 }
 
 export interface ExtendReason {
@@ -166,6 +169,8 @@ export interface EventCard {
   description: string;
   image: string;
   alt: string;
+  category?: string;
+  featured?: boolean;
 }
 
 export interface IconFeature {
@@ -188,28 +193,60 @@ export interface ThingToDoItem {
   regularPrice?: string;
   priceNote?: string;
   showDirections?: boolean;
+  category?: string;
+  featured?: boolean;
+  ctaLabel?: string;
+  region?: string;
 }
 
 interface HomepageContent {
   hero: HeroContent;
   heroHighlights: string[];
   quickFacts: IconTextItem[];
-  sharedAmenities: string[];
-  freeServices: ServiceItem[];
-  paidServices: ServiceItem[];
+  includedFeatures?: string[];
+  sharedAmenities?: string[];
+  includedServices?: ServiceItem[];
+  freeServices?: ServiceItem[];
+  addOnServices?: ServiceItem[];
+  paidServices?: ServiceItem[];
   extendReasons: ExtendReason[];
   experiencePillars: ExperiencePillar[];
-  eventCards: EventCard[];
+  featuredMoments?: EventCard[];
+  eventCards?: EventCard[];
   contactChecklist: string[];
   bookingAwardImage: string;
 }
 
 interface RoomsContent {
-  roomTypes: RoomType[];
+  moduleType?: string;
+  offerings?: RoomType[];
+  roomTypes?: RoomType[];
 }
 
 interface ThingsToDoContent {
-  thingsToDo: ThingToDoItem[];
+  moduleType?: string;
+  localHighlights?: ThingToDoItem[];
+  thingsToDo?: ThingToDoItem[];
+}
+
+interface Testimonial {
+  quote: string;
+  author: string;
+  source: string;
+  rating: number;
+  role?: string;
+  avatar?: string;
+  highlight?: string;
+}
+
+interface TestimonialsContent {
+  reviews?: Testimonial[];
+  testimonials?: Testimonial[];
+}
+
+interface GalleryContent {
+  mediaItems?: GalleryItem[];
+  galleryItems?: GalleryItem[];
 }
 
 interface SiteCopyContent {
@@ -478,7 +515,7 @@ function findChannelUrl(channels: BusinessChannel[], id: string, fallback: strin
   return channels.find((channel) => channel.id === id)?.url ?? fallback;
 }
 
-function parseRoomTypes(items: typeof roomsData.roomTypes): RoomType[] {
+function parseRoomTypes(items: RoomType[]): RoomType[] {
   return items.map((room, roomIndex) => ({
     ...room,
     amenities: room.amenities.map((amenity, amenityIndex) => ({
@@ -491,15 +528,25 @@ function parseRoomTypes(items: typeof roomsData.roomTypes): RoomType[] {
 const homepageContent: HomepageContent = {
   ...homepage,
   quickFacts: parseIconTextItems(homepage.quickFacts, "homepage.quickFacts"),
-  freeServices: parseServices(homepage.freeServices, "homepage.freeServices"),
-  paidServices: parseServices(homepage.paidServices, "homepage.paidServices"),
+  includedServices: parseServices(
+    (homepage.includedServices ?? homepage.freeServices ?? []) as { title: string; description: string; icon: string }[],
+    "homepage.includedServices",
+  ),
+  addOnServices: parseServices(
+    (homepage.addOnServices ?? homepage.paidServices ?? []) as { title: string; description: string; icon: string }[],
+    "homepage.addOnServices",
+  ),
 };
 
+const normalizedRoomsData = roomsData as RoomsContent;
 const roomsContent: RoomsContent = {
-  roomTypes: parseRoomTypes(roomsData.roomTypes),
+  ...normalizedRoomsData,
+  offerings: parseRoomTypes(normalizedRoomsData.offerings ?? normalizedRoomsData.roomTypes ?? []),
 };
 
-const thingsToDoContent: ThingsToDoContent = thingsToDoData;
+const thingsToDoContent = thingsToDoData as ThingsToDoContent;
+const testimonialsContent = testimonialsData as TestimonialsContent;
+const galleryContent = gallery as GalleryContent;
 
 const settingsContent = settings as SettingsContent;
 const siteCopy = siteCopyData as SiteCopyContent;
@@ -546,19 +593,19 @@ export const navLinks = navigation.navLinks;
 export const heroHighlights = homepageContent.heroHighlights;
 export const quickFacts = homepageContent.quickFacts;
 
-export const roomTypes = roomsContent.roomTypes;
+export const roomTypes = roomsContent.offerings ?? roomsContent.roomTypes ?? [];
 
 // Individual room images lists (legacy exports for specific components)
-export const podDormImages = roomsContent.roomTypes[0].images;
-export const fourBedDormImages = roomsContent.roomTypes[1].images;
+export const podDormImages = roomsContent.offerings?.[0]?.images ?? [];
+export const fourBedDormImages = roomsContent.offerings?.[1]?.images ?? [];
 
-export const sharedAmenities = homepageContent.sharedAmenities;
-export const freeServices = homepageContent.freeServices;
-export const paidServices = homepageContent.paidServices;
+export const sharedAmenities = homepageContent.includedFeatures ?? homepageContent.sharedAmenities ?? [];
+export const freeServices = homepageContent.includedServices ?? [];
+export const paidServices = homepageContent.addOnServices ?? [];
 
 export const extendReasons = homepageContent.extendReasons;
 export const experiencePillars = homepageContent.experiencePillars;
-export const eventCards = homepageContent.eventCards;
+export const eventCards = homepageContent.featuredMoments ?? homepageContent.eventCards ?? [];
 
 export const roomHeroHighlights = [
   { text: "Curtained privacy pods in the mixed dorm", icon: "Blinds" },
@@ -619,15 +666,15 @@ export interface GalleryItem {
   [key: string]: unknown;
 }
 
-export const galleryItems = gallery.galleryItems as GalleryItem[]; // Cast to bypass strict literal checks for id/type/aspect
+export const galleryItems = (galleryContent.mediaItems ?? galleryContent.galleryItems ?? []) as GalleryItem[];
 
 export const faqItems = faq.faqItems;
 
 export const contactChecklist = homepageContent.contactChecklist;
 
-export const testimonials = testimonialsData.testimonials;
+export const testimonials = testimonialsContent.reviews ?? testimonialsContent.testimonials ?? [];
 export const bookingAwardImage = homepageContent.bookingAwardImage;
 
-export const thingsToDo = thingsToDoContent.thingsToDo;
+export const thingsToDo = thingsToDoContent.localHighlights ?? thingsToDoContent.thingsToDo ?? [];
 
 export const siteCopyContent = siteCopy;

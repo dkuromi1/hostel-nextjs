@@ -144,19 +144,23 @@ collections:
               - { label: "URL", name: "href", widget: "string" }
 
   - name: "rooms"
-    label: "Rooms"
+    label: "Offerings"
     delete: false
     editor:
       preview: false
     files:
       - name: "room_types"
-        label: "Room Types"
+        label: "Offerings"
         file: "content/rooms.json"
         fields:
-          - label: "Rooms"
-            name: "roomTypes"
+          - { label: "Module Type", name: "moduleType", widget: "string", required: false }
+          - label: "Offerings"
+            name: "offerings"
             widget: "list"
             fields:
+              - { label: "Offering Type", name: "offeringType", widget: "string", required: false }
+              - { label: "Capacity Label", name: "capacityLabel", widget: "string", required: false }
+              - { label: "Featured", name: "featured", widget: "boolean", required: false, default: false }
               - { label: "Name", name: "name", widget: "string" }
               - { label: "Price", name: "price", widget: "string" }
               - { label: "Label", name: "label", widget: "string" }
@@ -183,9 +187,9 @@ collections:
         fields:
           - { label: "Hero Highlights", name: "heroHighlights", widget: "list" }
           - { label: "Quick Facts", name: "quickFacts", widget: "list" }
-          - { label: "Shared Amenities", name: "sharedAmenities", widget: "list" }
-          - { label: "Free Services", name: "freeServices", widget: "list" }
-          - { label: "Paid Services", name: "paidServices", widget: "list" }
+          - { label: "Included Features", name: "includedFeatures", widget: "list" }
+          - { label: "Included Services", name: "includedServices", widget: "list" }
+          - { label: "Add-On Services", name: "addOnServices", widget: "list" }
           - label: "Reasons to Extend"
             name: "extendReasons"
             widget: "list"
@@ -200,14 +204,16 @@ collections:
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Image", name: "image", widget: "image" }
               - { label: "Alt Text", name: "alt", widget: "string" }
-          - label: "Event Cards"
-            name: "eventCards"
+          - label: "Featured Moments"
+            name: "featuredMoments"
             widget: "list"
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Image", name: "image", widget: "image" }
               - { label: "Alt Text", name: "alt", widget: "string" }
+              - { label: "Category", name: "category", widget: "string", required: false }
+              - { label: "Featured", name: "featured", widget: "boolean", required: false, default: false }
           - { label: "Booking Award Image", name: "bookingAwardImage", widget: "image" }
 
       - name: "site_copy"
@@ -359,6 +365,28 @@ collections:
                   - { label: "Description", name: "description", widget: "text" }
                   - { label: "Image", name: "image", widget: "image" }
               - { label: "Page Title", name: "pageTitle", widget: "string" }
+
+      - name: "local_highlights"
+        label: "Local Highlights"
+        file: "content/things-to-do.json"
+        fields:
+          - { label: "Module Type", name: "moduleType", widget: "string", required: false }
+          - label: "Local Highlights"
+            name: "localHighlights"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+              - { label: "Category", name: "category", widget: "string", required: false }
+              - { label: "Region", name: "region", widget: "string", required: false }
+              - { label: "Price", name: "price", widget: "string", required: false }
+              - { label: "Regular Price", name: "regularPrice", widget: "string", required: false }
+              - { label: "Price Note", name: "priceNote", widget: "string", required: false }
+              - { label: "CTA Label", name: "ctaLabel", widget: "string", required: false }
+              - { label: "Featured", name: "featured", widget: "boolean", required: false, default: false }
+              - { label: "Show Directions", name: "showDirections", widget: "boolean", required: false, default: true }
               - label: "Visual Tour"
                 name: "visualTour"
                 widget: "object"
@@ -540,22 +568,25 @@ collections:
               - { label: "Answer", name: "answer", widget: "text" }
 
   - name: "testimonials"
-    label: "Testimonials"
+    label: "Reviews"
     editor:
       preview: false
     files:
       - name: "testimonials_content"
-        label: "Testimonials Content"
+        label: "Reviews Content"
         file: "content/testimonials.json"
         fields:
           - label: "Reviews"
-            name: "testimonials"
+            name: "reviews"
             widget: "list"
             fields:
               - { label: "Quote", name: "quote", widget: "text" }
               - { label: "Author", name: "author", widget: "string" }
               - { label: "Source", name: "source", widget: "string" }
               - { label: "Rating", name: "rating", widget: "number", min: 1, max: 5 }
+              - { label: "Role", name: "role", widget: "string", required: false }
+              - { label: "Avatar", name: "avatar", widget: "image", required: false }
+              - { label: "Highlight", name: "highlight", widget: "string", required: false }
 
   - name: "gallery"
     label: "Gallery"
@@ -566,8 +597,8 @@ collections:
         label: "Gallery Content"
         file: "content/gallery.json"
         fields:
-          - label: "Gallery Items"
-            name: "galleryItems"
+          - label: "Media Items"
+            name: "mediaItems"
             widget: "list"
             fields:
               - { label: "ID", name: "id", widget: "string" }
@@ -575,3 +606,7 @@ collections:
               - { label: "Source", name: "src", widget: "file" }
               - { label: "Alt Text", name: "alt", widget: "string" }
               - { label: "Aspect Ratio", name: "aspect", widget: "string", hint: "e.g. aspect-[4/5]" }
+              - { label: "Poster", name: "poster", widget: "image", required: false }
+              - { label: "Caption", name: "caption", widget: "string", required: false }
+              - { label: "Featured", name: "featured", widget: "boolean", required: false, default: false }
+              - { label: "Tags", name: "tags", widget: "list", required: false }
