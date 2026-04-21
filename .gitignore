@@ -46,3 +46,5 @@ AGENTS.md
 # Serwist
 public/sw*
 public/swe-worker*
+build_output.txt
+lint_output.txt

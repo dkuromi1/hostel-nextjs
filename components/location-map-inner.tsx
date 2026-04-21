@@ -314,7 +314,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
 
             if (siteConfig.features.showRegionalTrails) {
                 const tracksModule = await import('@/content/theth_valbona_tracks.json');
-                trailGeoJsonRef.current = tracksModule.default as mapboxgl.GeoJSONSourceRaw['data'];
+                trailGeoJsonRef.current = tracksModule.default as any;
             } else {
                 trailGeoJsonRef.current = null;
             }
@@ -346,7 +346,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
 
             mapboxgl.accessToken = accessToken;
 
-            map = new mapboxgl.Map({
+            const m = new mapboxgl.Map({
                 container: mapContainerRef.current,
                 style: getBaseStyle(),
                 center: HOSTEL_COORDS,
@@ -358,10 +358,11 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                 maxTileCacheSize: mobile ? 20 : undefined,
             });
 
-            mapRef.current = map;
+            map = m;
+            mapRef.current = m;
 
-            map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'bottom-right');
-            map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
+            m.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'bottom-right');
+            m.addControl(new mapboxgl.FullscreenControl(), 'top-right');
             themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 
             // --- 1. HOSTEL MARKER (Premium Floating Pin) ---
@@ -475,7 +476,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         `;
             document.head.appendChild(style);
 
-            new mapboxgl.Marker({ element: el, anchor: 'bottom' }).setLngLat(HOSTEL_COORDS).addTo(map);
+            new mapboxgl.Marker({ element: el, anchor: 'bottom' }).setLngLat(HOSTEL_COORDS).addTo(m);
 
 
             // --- 2. RECOMMENDED POIS ---
@@ -511,7 +512,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             poiEl.appendChild(poiCircle);
 
             // Set initial visibility
-            const currentZoom = map.getZoom();
+            const currentZoom = m.getZoom();
             if (poi.minZoom && currentZoom < poi.minZoom) {
                 poiEl.classList.add('zoom-hidden');
             }
@@ -520,16 +521,16 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                 sensitiveMarkersRef.current.push(poiEl);
             }
 
-            new mapboxgl.Marker({ element: poiEl, anchor: 'bottom' }).setLngLat(poi.coords as [number, number]).addTo(map);
+            new mapboxgl.Marker({ element: poiEl, anchor: 'bottom' }).setLngLat(poi.coords as [number, number]).addTo(m);
             });
 
         // Throttled move handler — uses cached marker refs instead of querySelectorAll on every frame.
         // On mobile, the per-frame DOM traversal + class toggling caused layout thrashing.
-            map.on('move', () => {
+            m.on('move', () => {
             if (moveThrottleId !== null) return;
             moveThrottleId = requestAnimationFrame(() => {
                 moveThrottleId = null;
-                const zoom = map.getZoom();
+                const zoom = m.getZoom();
 
                 // Toggle sensitive markers using cached refs
                 sensitiveMarkersRef.current.forEach(el => {
@@ -551,10 +552,10 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             });
             });
 
-            map.on('load', () => {
+            m.on('load', () => {
             // Smooth fly-in animation from regional overview to hostel
-            map.flyTo({ center: initialCenter, zoom: initialZoom, speed: 0.8, curve: 1, essential: true });
-            applyCustomizations(map);
+            m.flyTo({ center: initialCenter, zoom: initialZoom, speed: 0.8, curve: 1, essential: true });
+            applyCustomizations(m);
 
             // Force a resize calculation after parent layout stabilization
             setTimeout(() => {
@@ -562,8 +563,8 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             }, 100);
             });
 
-            map.on('style.load', () => {
-            applyCustomizations(map);
+            m.on('style.load', () => {
+            applyCustomizations(m);
 
             // Re-calculate size after style swap to prevent 'gray box' issues
             setTimeout(() => {
