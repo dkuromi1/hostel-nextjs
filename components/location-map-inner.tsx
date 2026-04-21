@@ -28,6 +28,8 @@ const SHALA_RIVER_MIDPOINT_COORDS: [number, number] = [
 
 const THETH_VALBONA_MAP_QUERY = 'theth-valbona-midpoint';
 const SHALA_RIVER_MAP_QUERY = 'shala-river-midpoint';
+const STANDARD_STYLE = 'mapbox://styles/mapbox/standard';
+const SATELLITE_STYLE = 'mapbox://styles/mapbox/satellite-streets-v12';
 const PEDONALE_COORDS: [number, number][] = [
     [19.513800410509983, 42.067007048478274],
     [19.514691128164753, 42.06795226804246],
@@ -143,6 +145,17 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
     const sensitiveMarkersRef = useRef<HTMLElement[]>([]);
     const [isSatellite, setIsSatellite] = React.useState(false);
     const isSatelliteRef = useRef(false);
+
+    const getLightPreset = () =>
+        document.documentElement.classList.contains('dark') ? 'night' : 'day';
+
+    const applyBasePreset = (map: mapboxgl.Map) => {
+        try {
+            map.setConfigProperty('basemap', 'lightPreset', getLightPreset());
+        } catch {
+            // Ignore when the active style does not support Mapbox Standard config properties.
+        }
+    };
 
     // Reusable function to apply our "Boutique" customizations
     const applyCustomizations = (map: mapboxgl.Map) => {
@@ -293,16 +306,12 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             mutations.forEach((mutation) => {
                 if (mutation.attributeName === 'class') {
                     if (map && !isSatelliteRef.current) {
-                        map.setStyle(getBaseStyle());
+                        applyBasePreset(map);
                     }
                 }
             });
         });
         let isCancelled = false;
-
-        const getBaseStyle = () => document.documentElement.classList.contains('dark')
-            ? 'mapbox://styles/mapbox/dark-v11'
-            : 'mapbox://styles/mapbox/streets-v12';
 
         const initMap = async () => {
             if (siteConfig.features.showLocalPois) {
@@ -348,7 +357,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
 
             const m = new mapboxgl.Map({
                 container: mapContainerRef.current,
-                style: getBaseStyle(),
+                style: STANDARD_STYLE,
                 center: HOSTEL_COORDS,
                 zoom: 13,
                 pitch: 45,
@@ -555,6 +564,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             m.on('load', () => {
                 // Smooth fly-in animation from regional overview to hostel
                 m.flyTo({ center: initialCenter, zoom: initialZoom, speed: 0.8, curve: 1, essential: true });
+                applyBasePreset(m);
                 applyCustomizations(m);
 
                 // Force a resize calculation after parent layout stabilization
@@ -564,6 +574,9 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             });
 
             m.on('style.load', () => {
+                if (!isSatelliteRef.current) {
+                    applyBasePreset(m);
+                }
                 applyCustomizations(m);
 
                 // Re-calculate size after style swap to prevent 'gray box' issues
@@ -638,10 +651,8 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         isSatelliteRef.current = nextIsSatellite;
         mapRef.current.setStyle(
             nextIsSatellite
-                ? 'mapbox://styles/mapbox/satellite-streets-v12'
-                : document.documentElement.classList.contains('dark')
-                    ? 'mapbox://styles/mapbox/dark-v11'
-                    : 'mapbox://styles/mapbox/streets-v12'
+                ? SATELLITE_STYLE
+                : STANDARD_STYLE
         );
     };
 
