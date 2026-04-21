@@ -35,6 +35,68 @@
       "title": "Hostel In Shkoder With Privacy Pods And Rooftop Views",
       "description": "Book Scodrinon Hostel direct on WhatsApp for privacy pods, rooftop sunsets, breakfast, and a safe social vibe in the center of Shkoder.",
       "image": "/logo.webp"
+    },
+    "guestRatings": {
+      "label": "Guest Ratings",
+      "topRatedLabel": "Top Rated",
+      "bookingAwardTitle": "2025 Traveller Review Award",
+      "bookingScoreSuffix": "out of 10",
+      "bookingDescription": "Awarded for consistent excellence in guest hospitality.",
+      "hostelworldTitle": "'Superb' Guest Rating",
+      "hostelworldImageAlt": "10 score on Hostelworld"
+    },
+    "hero": {
+      "backgroundAlt": "Hiking in the Accursed Mountains near Shkoder"
+    },
+    "atmosphere": {
+      "directBookingLabel": "Direct Booking",
+      "directBookingTitle": "Message the hostel and book direct",
+      "directBookingTitleMobile": "Message us to book direct",
+      "directBookingDescription": "WhatsApp is the most direct way to confirm dates, room type, arrival time, and any trip planning.",
+      "directBookingDescriptionMobile": "Just send us the dates, room type, arrival time.",
+      "directBookingButton": "Book on WhatsApp",
+      "rooftopEyebrow": "Rooftop Socials",
+      "rooftopTitle": "The social center of the hostel, without the party-hostel chaos.",
+      "rooftopImageAlt": "Guests enjoying the rooftop at Scodrinon Hostel",
+      "roomImageAlt": "Privacy pod dorm room at Scodrinon Hostel"
+    },
+    "roomsSection": {
+      "titleEyebrowPrefix": "Rooms from",
+      "title": "Sleep properly, then head back out.",
+      "description": "Every room keeps the basics right: heat and A/C, secure lockers, reading lights, sockets, and fast WiFi. The difference is how much privacy and calm you want around you.",
+      "buttonLabel": "Explore Rooms",
+      "detailsLabel": "Room Details"
+    },
+    "includedStay": {
+      "eyebrow": "Included In Your Stay",
+      "title": "Everything you need for a comfortable stay.",
+      "description": "No padded feature list, just the things that make the stay smoother."
+    },
+    "gallerySection": {
+      "eyebrow": "Gallery",
+      "title": "A real feel for the place before you arrive.",
+      "description": "Every photo and video is from the hostel itself, so what you see here is exactly what you’ll walk into: bright, relaxed, and honest.",
+      "buttonLabel": "Open Gallery"
+    },
+    "experiencesSection": {
+      "eyebrow": "Discover & Connect at Scodrinon Hostel",
+      "title": "Built for slow rooftop nights and fast adventure planning.",
+      "description": "The social side here just happens. Join a walking tour, map out your hiking route with someone who’s just finished it, or simply stay up on the terrace until the city lights switch on.",
+      "buttonLabel": "See Experiences",
+      "discoverLabel": "DISCOVER",
+      "connectLabel": "CONNECT"
+    },
+    "whyStayLonger": {
+      "eyebrow": "Why People Stay Longer",
+      "title": "The kind of hostel that makes short plans drift into a week.",
+      "description": "The draw is not one dramatic feature. It's the way the privacy, rooftop, location, and staff all work together so the stay feels easy from the start."
+    },
+    "cta": {
+      "eyebrow": "Direct Booking First",
+      "title": "If the dates work for you, send the message now.",
+      "description": "Direct WhatsApp booking stays the fastest route. Then keep Booking.com and Hostelworld as easy backup options if you want to compare.",
+      "image": "/images/rooftop_view_day.jpg",
+      "alt": "Daytime rooftop view from Scodrinon Hostel"
     }
   },
   "gallery": {

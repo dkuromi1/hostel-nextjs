@@ -215,6 +215,68 @@ interface SiteCopyContent {
       description: string;
       image: string;
     };
+    guestRatings: {
+      label: string;
+      topRatedLabel: string;
+      bookingAwardTitle: string;
+      bookingScoreSuffix: string;
+      bookingDescription: string;
+      hostelworldTitle: string;
+      hostelworldImageAlt: string;
+    };
+    hero: {
+      backgroundAlt: string;
+    };
+    atmosphere: {
+      directBookingLabel: string;
+      directBookingTitle: string;
+      directBookingTitleMobile: string;
+      directBookingDescription: string;
+      directBookingDescriptionMobile: string;
+      directBookingButton: string;
+      rooftopEyebrow: string;
+      rooftopTitle: string;
+      rooftopImageAlt: string;
+      roomImageAlt: string;
+    };
+    roomsSection: {
+      titleEyebrowPrefix: string;
+      title: string;
+      description: string;
+      buttonLabel: string;
+      detailsLabel: string;
+    };
+    includedStay: {
+      eyebrow: string;
+      title: string;
+      description: string;
+    };
+    gallerySection: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      buttonLabel: string;
+    };
+    experiencesSection: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      buttonLabel: string;
+      discoverLabel: string;
+      connectLabel: string;
+    };
+    whyStayLonger: {
+      eyebrow: string;
+      title: string;
+      description: string;
+    };
+    cta: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      image: string;
+      alt: string;
+    };
   };
   gallery: {
     metadata: {

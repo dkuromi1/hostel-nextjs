@@ -142,7 +142,7 @@ function GuestRatingsSection() {
           <div className="glass-panel rounded-[28px] p-4 sm:p-5">
             <div className="flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--text-muted)]">
               <span className="faded-line h-px flex-1" />
-              Guest Ratings
+              {siteCopyContent.home.guestRatings.label}
               <span className="faded-line h-px flex-1" />
             </div>
             <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:items-stretch">
@@ -157,7 +157,7 @@ function GuestRatingsSection() {
                   <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600 dark:text-yellow-500">
                     <Star className="size-3" fill="currentColor" />
                     <span className="text-[10px] font-bold uppercase tracking-wider">
-                      Top Rated
+                      {siteCopyContent.home.guestRatings.topRatedLabel}
                     </span>
                   </div>
                 </div>
@@ -168,7 +168,7 @@ function GuestRatingsSection() {
                         <Award className="size-5" strokeWidth={1.8} />
                       </div>
                       <p className="text-sm font-medium leading-6 text-[var(--text-heading)] transition-colors group-hover:text-blue-700 dark:group-hover:text-blue-400">
-                        2025 Traveller Review Award
+                        {siteCopyContent.home.guestRatings.bookingAwardTitle}
                       </p>
                     </div>
                     <div className="shrink-0 rounded-tr-sm rounded-tl-sm rounded-br-sm rounded-bl-none bg-blue-700 px-3 py-1 text-center font-semibold text-white shadow-sm">
@@ -176,13 +176,13 @@ function GuestRatingsSection() {
                         {siteConfig.bookingRating}
                       </p>
                       <p className="text-[8px] uppercase tracking-wider text-blue-50">
-                        out of 10
+                        {siteCopyContent.home.guestRatings.bookingScoreSuffix}
                       </p>
                     </div>
                   </div>
                 </div>
                 <p className="mt-auto pt-2 text-sm leading-6 text-[var(--text-body-subtle)]">
-                  Awarded for consistent excellence in guest hospitality.
+                  {siteCopyContent.home.guestRatings.bookingDescription}
                 </p>
               </a>
 
@@ -197,7 +197,7 @@ function GuestRatingsSection() {
                   <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600 dark:text-yellow-500">
                     <Star className="size-3" fill="currentColor" />
                     <span className="text-[10px] font-bold uppercase tracking-wider">
-                      Top Rated
+                      {siteCopyContent.home.guestRatings.topRatedLabel}
                     </span>
                   </div>
                 </div>
@@ -208,13 +208,13 @@ function GuestRatingsSection() {
                         <Star className="size-5" strokeWidth={1.8} />
                       </div>
                       <p className="text-sm font-medium leading-6 text-[var(--text-heading)] transition-colors group-hover:text-amber-700 dark:group-hover:text-amber-500">
-                        &apos;Superb&apos; Guest Rating
+                        {siteCopyContent.home.guestRatings.hostelworldTitle}
                       </p>
                     </div>
                     <div className="relative h-15 w-25 shrink-0 overflow-hidden rounded-md shadow-sm">
                       <Image
                         src="/images/hostelworld_reviews.png"
-                        alt="10 score on Hostelworld"
+                        alt={siteCopyContent.home.guestRatings.hostelworldImageAlt}
                         fill
                         className="object-contain"
                         sizes="100px"
@@ -285,7 +285,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/hiking_2.jpg"
-            alt="Hiking in the Accursed Mountains near Shkoder"
+            alt={siteCopyContent.home.hero.backgroundAlt}
             fill
             priority
             fetchPriority="high"
@@ -378,12 +378,12 @@ export default function Home() {
             <Reveal delay={200} className="hidden lg:flex lg:row-start-2">
               <div className="h-full flex items-center justify-between glass-panel rounded-[28px] p-6 gap-6 w-full">
                 <div>
-                  <SectionLabel variant="emerald" className="mb-4">Direct Booking</SectionLabel>
+                  <SectionLabel variant="emerald" className="mb-4">{siteCopyContent.home.atmosphere.directBookingLabel}</SectionLabel>
                   <p className="mt-2 font-heading text-2xl leading-tight tracking-tight text-[var(--text-heading)]">
-                    Message the hostel and book direct
+                    {siteCopyContent.home.atmosphere.directBookingTitle}
                   </p>
                   <p className="mt-2 text-card-body">
-                    WhatsApp is the most direct way to confirm dates, room type, arrival time, and any trip planning.
+                    {siteCopyContent.home.atmosphere.directBookingDescription}
                   </p>
                 </div>
                 <a
@@ -395,7 +395,7 @@ export default function Home() {
                     "shrink-0 rounded-full bg-emerald-700 px-7 font-semibold text-white transition-all duration-300 hover:bg-emerald-800 active:scale-95"
                   )}
                 >
-                  Book on WhatsApp
+                  {siteCopyContent.home.atmosphere.directBookingButton}
                 </a>
               </div>
             </Reveal>
@@ -405,17 +405,17 @@ export default function Home() {
               <div className="media-frame relative aspect-[16/10] sm:aspect-[21/9] lg:aspect-auto lg:min-h-[22rem] h-full overflow-hidden">
                 <Image
                   src="/images/rooftop_social.webp"
-                  alt="Guests enjoying the rooftop at Scodrinon Hostel"
+                  alt={siteCopyContent.home.atmosphere.rooftopImageAlt}
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 66vw, 924px"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent p-6 pt-32 text-white">
                   <p className="text-xs uppercase tracking-[0.28em] text-sky-200/90">
-                    Rooftop Socials
+                    {siteCopyContent.home.atmosphere.rooftopEyebrow}
                   </p>
                   <p className="mt-2 max-w-sm font-heading text-2xl leading-tight tracking-tight">
-                    The social center of the hostel, without the party-hostel chaos.
+                    {siteCopyContent.home.atmosphere.rooftopTitle}
                   </p>
                 </div>
               </div>
@@ -432,7 +432,7 @@ export default function Home() {
                   <div className="media-frame relative aspect-[4/3] h-full lg:h-auto">
                     <Image
                       src="/images/rooms_1.jpg"
-                      alt="Privacy pod dorm room at Scodrinon Hostel"
+                      alt={siteCopyContent.home.atmosphere.roomImageAlt}
                       fill
                       className="object-cover"
                       sizes="(max-width: 1024px) 60vw, (max-width: 1400px) 33vw, 466px"
@@ -441,14 +441,14 @@ export default function Home() {
 
                   {/* Mobile-only booking card */}
                   <div className="glass-panel rounded-[28px] p-5 lg:hidden">
-                    <SectionLabel variant="emerald" className="mb-4">Direct Booking</SectionLabel>
+                    <SectionLabel variant="emerald" className="mb-4">{siteCopyContent.home.atmosphere.directBookingLabel}</SectionLabel>
                     <p className="mt-2 font-heading text-lg leading-tight tracking-tight text-[var(--text-heading)]">
-                      <span className="sm:hidden">Message us to book direct</span>
-                      <span className="hidden sm:inline">Message the hostel and book direct</span>
+                      <span className="sm:hidden">{siteCopyContent.home.atmosphere.directBookingTitleMobile}</span>
+                      <span className="hidden sm:inline">{siteCopyContent.home.atmosphere.directBookingTitle}</span>
                     </p>
                     <p className="mt-2 text-xs leading-relaxed text-[var(--text-body-subtle)]">
-                      <span className="sm:hidden">Just send us the dates, room type, arrival time.</span>
-                      <span className="hidden sm:inline">WhatsApp is the most direct way to confirm dates, room type, arrival time, and any trip planning.</span>
+                      <span className="sm:hidden">{siteCopyContent.home.atmosphere.directBookingDescriptionMobile}</span>
+                      <span className="hidden sm:inline">{siteCopyContent.home.atmosphere.directBookingDescription}</span>
                     </p>
                     <a
                       href={siteConfig.whatsappUrl}
@@ -459,7 +459,7 @@ export default function Home() {
                         "mt-4 w-full rounded-full bg-emerald-700 font-semibold text-white transition-all duration-300 hover:bg-emerald-800 active:scale-95"
                       )}
                     >
-                      Book on WhatsApp
+                      {siteCopyContent.home.atmosphere.directBookingButton}
                     </a>
                   </div>
                 </Reveal>
@@ -490,9 +490,9 @@ export default function Home() {
         <div className="shell-container space-y-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
-              eyebrow={`Rooms from ${roomTypes[0].price}`}
-              title="Sleep properly, then head back out."
-              description="Every room keeps the basics right: heat and A/C, secure lockers, reading lights, sockets, and fast WiFi. The difference is how much privacy and calm you want around you."
+              eyebrow={`${siteCopyContent.home.roomsSection.titleEyebrowPrefix} ${roomTypes[0].price}`}
+              title={siteCopyContent.home.roomsSection.title}
+              description={siteCopyContent.home.roomsSection.description}
             />
             <Link
               href="/rooms"
@@ -508,7 +508,7 @@ export default function Home() {
               {/* Animated Sheen Effect */}
               <div className="absolute inset-0 z-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 group-hover:translate-x-[100%]" />
 
-              <span className="relative z-10 transition-colors duration-300 group-hover:text-emerald-50">Explore Rooms</span>
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-emerald-50">{siteCopyContent.home.roomsSection.buttonLabel}</span>
               <div className="relative z-10 flex size-7 items-center justify-center rounded-full bg-white/15 text-white transition-all duration-300 group-hover:bg-emerald-500 group-hover:scale-110">
                 <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
               </div>
@@ -563,7 +563,7 @@ export default function Home() {
                     </div>
 
                     <div className="space-y-3">
-                      <SectionLabel weight="bold" className="mb-4">Room Details</SectionLabel>
+                      <SectionLabel weight="bold" className="mb-4">{siteCopyContent.home.roomsSection.detailsLabel}</SectionLabel>
                       <ul className="grid gap-3">
                         {room.bullets.map((bullet) => (
                           <li
@@ -593,9 +593,9 @@ export default function Home() {
           <Reveal>
             <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
               <SectionHeading
-                eyebrow="Included In Your Stay"
-                title="Everything you need for a comfortable stay."
-                description="No padded feature list, just the things that make the stay smoother."
+                eyebrow={siteCopyContent.home.includedStay.eyebrow}
+                title={siteCopyContent.home.includedStay.title}
+                description={siteCopyContent.home.includedStay.description}
               />
             </div>
           </Reveal>
@@ -642,9 +642,9 @@ export default function Home() {
         <div className="shell-container space-y-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
-              eyebrow="Gallery"
-              title="A real feel for the place before you arrive."
-              description="Every photo and video is from the hostel itself, so what you see here is exactly what you’ll walk into: bright, relaxed, and honest."
+              eyebrow={siteCopyContent.home.gallerySection.eyebrow}
+              title={siteCopyContent.home.gallerySection.title}
+              description={siteCopyContent.home.gallerySection.description}
             />
             <Link
               href="/gallery"
@@ -656,7 +656,7 @@ export default function Home() {
                 "active:scale-95 active:translate-y-0.5"
               )}
             >
-              <span>Open Gallery</span>
+              <span>{siteCopyContent.home.gallerySection.buttonLabel}</span>
               <div className="relative flex size-6 items-center justify-center rounded-full bg-white/20 text-white transition-all duration-300 group-hover:bg-emerald-500 group-hover:scale-110">
                 <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
               </div>
@@ -675,9 +675,9 @@ export default function Home() {
         <div className="shell-container space-y-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
-              eyebrow="Discover & Connect at Scodrinon Hostel"
-              title="Built for slow rooftop nights and fast adventure planning."
-              description="The social side here just happens. Join a walking tour, map out your hiking route with someone who’s just finished it, or simply stay up on the terrace until the city lights switch on."
+              eyebrow={siteCopyContent.home.experiencesSection.eyebrow}
+              title={siteCopyContent.home.experiencesSection.title}
+              description={siteCopyContent.home.experiencesSection.description}
             />
             <Link
               href="/experiences"
@@ -693,7 +693,7 @@ export default function Home() {
               {/* Animated Sheen Effect */}
               <div className="absolute inset-0 z-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 group-hover:translate-x-[100%]" />
 
-              <span className="relative z-10 transition-colors duration-300 group-hover:text-emerald-50">See Experiences</span>
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-emerald-50">{siteCopyContent.home.experiencesSection.buttonLabel}</span>
               <div className="relative z-10 flex size-7 items-center justify-center rounded-full bg-white/15 text-white transition-all duration-300 group-hover:bg-emerald-500 group-hover:scale-110">
                 <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
               </div>
@@ -705,7 +705,7 @@ export default function Home() {
             {/* Ghost Background Label */}
             <div className="absolute left-0 top-3 z-0 select-none opacity-[0.07] sm:top-4">
               <span className="font-heading text-[44px] leading-none tracking-tighter text-slate-950 sm:text-[64px]">
-                DISCOVER
+                {siteCopyContent.home.experiencesSection.discoverLabel}
               </span>
             </div>
 
@@ -835,7 +835,7 @@ export default function Home() {
             {/* Ghost Background Label */}
             <div className="absolute left-0 top-3 z-0 select-none opacity-[0.07] sm:top-4">
               <span className="font-heading text-[44px] leading-none tracking-tighter text-slate-950 sm:text-[64px]">
-                CONNECT
+                {siteCopyContent.home.experiencesSection.connectLabel}
               </span>
             </div>
 
@@ -887,9 +887,9 @@ export default function Home() {
           <div className="flex-1 space-y-8 lg:max-w-[60%]">
             <Reveal delay={100}>
               <SectionHeading
-                eyebrow="Why People Stay Longer"
-                title="The kind of hostel that makes short plans drift into a week."
-                description="The draw is not one dramatic feature. It's the way the privacy, rooftop, location, and staff all work together so the stay feels easy from the start."
+                eyebrow={siteCopyContent.home.whyStayLonger.eyebrow}
+                title={siteCopyContent.home.whyStayLonger.title}
+                description={siteCopyContent.home.whyStayLonger.description}
               />
             </Reveal>
 
@@ -934,11 +934,11 @@ export default function Home() {
       <section className="py-8 sm:py-16">
         <div className="shell-container">
           <CtaStrip
-            eyebrow="Direct Booking First"
-            title="If the dates work for you, send the message now."
-            description="Direct WhatsApp booking stays the fastest route. Then keep Booking.com and Hostelworld as easy backup options if you want to compare."
-            image="/images/rooftop_view_day.jpg"
-            alt="Daytime rooftop view from Scodrinon Hostel"
+            eyebrow={siteCopyContent.home.cta.eyebrow}
+            title={siteCopyContent.home.cta.title}
+            description={siteCopyContent.home.cta.description}
+            image={siteCopyContent.home.cta.image}
+            alt={siteCopyContent.home.cta.alt}
           />
         </div>
       </section>
