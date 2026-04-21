@@ -1,29 +1,81 @@
 {
-  "name": "Scodrinon Hostel",
-  "shortName": "Scodrinon",
-  "tagline": "The hostel you won't want to leave",
-  "description": "A chill, social, and safe hostel on Kolë Idromeno street in Shkoder with privacy pods, rooftop sunsets, breakfast, and direct WhatsApp booking.",
-  "location": "Rruga Kolë Idromeno, Shkodër, 4001, Albania",
-  "phoneDisplay": "+355 68 531 0744",
-  "phoneRaw": "355685310744",
-  "whatsappUrl": "https://wa.me/355685310744?text=Hi%20Scodrinon%20Hostel%2C%20I%E2%80%99d%20like%20to%20book%20a%20bed.",
-  "bookingUrl": "https://www.booking.com/hotel/al/scodrinon-hostel.html",
-  "hostelworldUrl": "https://www.hostelworld.com/hostels/p/325721/scodrinon-hostel/",
-  "instagramUrl": "https://www.instagram.com/scodrinon_hostel/",
-  "whatsappCommunityUrl": "https://chat.whatsapp.com/L9ruuWA5G8S0l4CSmwCewa",
-  "breakfastHours": "8:00 to 9:30am (excl. off-season)",
-  "checkInHours": "2pm - 10pm",
-  "volunteersNeeded": true,
-  "baseKeywords": [
-    "Scodrinon Hostel",
-    "hostel in Shkoder",
-    "hostel in Shkodra",
-    "hostel in Shkoder Albania",
-    "privacy pod hostel Albania",
-    "Shkoder backpacker hostel",
-    "Theth Valbona hostel base"
-  ],
-  "bookingRating": "9.3",
-  "hostelworldRating": "10",
-  "hostelworldReviews": "115"
+  "business": {
+    "name": "Scodrinon Hostel",
+    "shortName": "Scodrinon",
+    "tagline": "The hostel you won't want to leave",
+    "description": "A chill, social, and safe hostel on Kolë Idromeno street in Shkoder with privacy pods, rooftop sunsets, breakfast, and direct WhatsApp booking.",
+    "category": "travel"
+  },
+  "address": {
+    "label": "Rruga Kolë Idromeno, Shkodër, 4001, Albania",
+    "summary": "Shkoder, Albania",
+    "streetAddress": "Kolë Idromeno Street",
+    "addressLocality": "Shkoder",
+    "postalCode": "4001",
+    "addressCountry": "AL"
+  },
+  "contact": {
+    "phoneDisplay": "+355 68 531 0744",
+    "phoneRaw": "355685310744",
+    "instagramUrl": "https://www.instagram.com/scodrinon_hostel/",
+    "whatsappCommunityUrl": "https://chat.whatsapp.com/L9ruuWA5G8S0l4CSmwCewa"
+  },
+  "booking": {
+    "whatsappUrl": "https://wa.me/355685310744?text=Hi%20Scodrinon%20Hostel%2C%20I%E2%80%99d%20like%20to%20book%20a%20bed.",
+    "bookingUrl": "https://www.booking.com/hotel/al/scodrinon-hostel.html",
+    "hostelworldUrl": "https://www.hostelworld.com/hostels/p/325721/scodrinon-hostel/",
+    "bookingRating": "9.3",
+    "hostelworldRating": "10",
+    "hostelworldReviews": "115"
+  },
+  "operations": {
+    "breakfastHours": "8:00 to 9:30am (excl. off-season)",
+    "checkInHours": "2pm - 10pm"
+  },
+  "seo": {
+    "baseKeywords": [
+      "Scodrinon Hostel",
+      "hostel in Shkoder",
+      "hostel in Shkodra",
+      "hostel in Shkoder Albania",
+      "privacy pod hostel Albania",
+      "Shkoder backpacker hostel",
+      "Theth Valbona hostel base"
+    ],
+    "titleSuffix": "Shkoder, Albania",
+    "locale": "en_US",
+    "ogImage": "/images/promo_2.jpg"
+  },
+  "branding": {
+    "logoWebp": "/logo.webp",
+    "logoPng": "/logo.png",
+    "favicon": "/favicon.ico",
+    "appleTouchIcon": "/logo.png",
+    "manifestThemeColor": "#020617",
+    "manifestBackgroundColor": "#f6f7f2"
+  },
+  "features": {
+    "volunteersNeeded": true
+  },
+  "schema": {
+    "type": "Hostel",
+    "priceRange": "€12 - €15",
+    "images": [
+      "/images/promo_2.jpg",
+      "/images/room_18bed2.jpg",
+      "/images/rooftop_social.webp",
+      "/images/hiking_1.jpg",
+      "/images/shkoder_pedestrian_street_3.webp"
+    ],
+    "amenities": [
+      "Privacy pods",
+      "Free breakfast (excl. off-season)",
+      "Free WiFi",
+      "Rooftop terrace",
+      "Luggage storage",
+      "24h access",
+      "Bike rentals (across the street)",
+      "Walking tours"
+    ]
+  }
 }

@@ -16,21 +16,80 @@ collections:
         label: "Site Configuration"
         file: "content/settings.json"
         fields:
-          - { label: "Volunteers Needed", name: "volunteersNeeded", widget: "boolean", default: false }
-          - { label: "Hostel Name", name: "name", widget: "string" }
-          - { label: "Short Name", name: "shortName", widget: "string" }
-          - { label: "Tagline", name: "tagline", widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
-          - { label: "Location", name: "location", widget: "string" }
-          - { label: "Phone (Display)", name: "phoneDisplay", widget: "string" }
-          - { label: "Phone (Raw Number)", name: "phoneRaw", widget: "string", hint: "Format: 355685310744" }
-          - { label: "WhatsApp URL", name: "whatsappUrl", widget: "string" }
-          - { label: "Booking.com URL", name: "bookingUrl", widget: "string" }
-          - { label: "Hostelworld URL", name: "hostelworldUrl", widget: "string" }
-          - { label: "Instagram URL", name: "instagramUrl", widget: "string" }
-          - { label: "Breakfast Hours", name: "breakfastHours", widget: "string" }
-          - { label: "Check-in Hours", name: "checkInHours", widget: "string" }
-          - { label: "Keywords", name: "baseKeywords", widget: "list", summary: "{{fields.item}}" }
+          - label: "Business"
+            name: "business"
+            widget: "object"
+            fields:
+              - { label: "Business Name", name: "name", widget: "string" }
+              - { label: "Short Name", name: "shortName", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Category", name: "category", widget: "string", default: "travel" }
+          - label: "Address"
+            name: "address"
+            widget: "object"
+            fields:
+              - { label: "Full Address Label", name: "label", widget: "string" }
+              - { label: "Title Suffix Summary", name: "summary", widget: "string", hint: "Used in titles like 'Business | Summary'" }
+              - { label: "Street Address", name: "streetAddress", widget: "string" }
+              - { label: "City / Locality", name: "addressLocality", widget: "string" }
+              - { label: "Postal Code", name: "postalCode", widget: "string", required: false }
+              - { label: "Country Code", name: "addressCountry", widget: "string", hint: "ISO country code, e.g. AL" }
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Phone (Display)", name: "phoneDisplay", widget: "string" }
+              - { label: "Phone (Raw Number)", name: "phoneRaw", widget: "string", hint: "Format: 355685310744" }
+              - { label: "Instagram URL", name: "instagramUrl", widget: "string", required: false }
+              - { label: "WhatsApp Community URL", name: "whatsappCommunityUrl", widget: "string", required: false }
+          - label: "Booking & Messaging"
+            name: "booking"
+            widget: "object"
+            fields:
+              - { label: "WhatsApp URL", name: "whatsappUrl", widget: "string" }
+              - { label: "Booking.com URL", name: "bookingUrl", widget: "string", required: false }
+              - { label: "Hostelworld URL", name: "hostelworldUrl", widget: "string", required: false }
+              - { label: "Booking.com Rating", name: "bookingRating", widget: "string", required: false }
+              - { label: "Hostelworld Rating", name: "hostelworldRating", widget: "string", required: false }
+              - { label: "Hostelworld Reviews", name: "hostelworldReviews", widget: "string", required: false }
+          - label: "Operations"
+            name: "operations"
+            widget: "object"
+            fields:
+              - { label: "Breakfast Hours", name: "breakfastHours", widget: "string", required: false }
+              - { label: "Check-in Hours", name: "checkInHours", widget: "string", required: false }
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Keywords", name: "baseKeywords", widget: "list", summary: "{{fields.item}}" }
+              - { label: "Title Suffix", name: "titleSuffix", widget: "string" }
+              - { label: "Locale", name: "locale", widget: "string", default: "en_US" }
+              - { label: "Default OG Image", name: "ogImage", widget: "image" }
+          - label: "Branding"
+            name: "branding"
+            widget: "object"
+            fields:
+              - { label: "Primary Logo (WebP)", name: "logoWebp", widget: "string" }
+              - { label: "Primary Logo (PNG)", name: "logoPng", widget: "string" }
+              - { label: "Favicon", name: "favicon", widget: "string" }
+              - { label: "Apple Touch Icon", name: "appleTouchIcon", widget: "string" }
+              - { label: "Manifest Theme Color", name: "manifestThemeColor", widget: "string", default: "#020617" }
+              - { label: "Manifest Background Color", name: "manifestBackgroundColor", widget: "string", default: "#f6f7f2" }
+          - label: "Features"
+            name: "features"
+            widget: "object"
+            fields:
+              - { label: "Volunteers Needed", name: "volunteersNeeded", widget: "boolean", default: false }
+          - label: "Structured Data"
+            name: "schema"
+            widget: "object"
+            fields:
+              - { label: "Schema Type", name: "type", widget: "string", default: "Hostel" }
+              - { label: "Price Range", name: "priceRange", widget: "string", required: false }
+              - { label: "Schema Images", name: "images", widget: "list", summary: "{{fields.item}}" }
+              - { label: "Amenities", name: "amenities", widget: "list", summary: "{{fields.item}}" }
       
       - name: "navigation"
         label: "Navigation Links"

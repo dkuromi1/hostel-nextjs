@@ -22,47 +22,41 @@ const nunito = Nunito({
 export const metadata: Metadata = {
   metadataBase,
   title: {
-    default: `${siteConfig.name} | Shkoder, Albania`,
+    default: `${siteConfig.name} | ${siteConfig.seo.titleSuffix}`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: [...siteConfig.baseKeywords],
   applicationName: siteConfig.name,
-  category: "travel",
+  category: siteConfig.category,
   openGraph: {
-    title: `${siteConfig.name} | Shkoder, Albania`,
+    title: `${siteConfig.name} | ${siteConfig.seo.titleSuffix}`,
     description: siteConfig.description,
     url: getSiteUrl("/"),
     siteName: siteConfig.name,
-    locale: "en_US",
+    locale: siteConfig.seo.locale,
     type: "website",
     images: [
       {
-        url: getSiteUrl("/images/promo_2.jpg"),
+        url: getSiteUrl(siteConfig.seo.ogImage),
         alt: siteConfig.name,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | Shkoder, Albania`,
+    title: `${siteConfig.name} | ${siteConfig.seo.titleSuffix}`,
     description: siteConfig.description,
-    images: [getSiteUrl("/images/promo_2.jpg")],
+    images: [getSiteUrl(siteConfig.seo.ogImage)],
   },
   icons: {
     icon: [
-      // References /public/logo.webp
-      { url: "/logo.webp", type: "image/webp", sizes: "648x648" },
-
-      // References /public/logo.png
-      { url: "/logo.png", type: "image/png", sizes: "648x648" },
-
-      // References /app/favicon.ico (Next.js serves this at the root)
-      { url: "/favicon.ico", type: "image/x-icon", sizes: "any" },
+      { url: siteConfig.branding.logoWebp, type: "image/webp", sizes: "648x648" },
+      { url: siteConfig.branding.logoPng, type: "image/png", sizes: "648x648" },
+      { url: siteConfig.branding.favicon, type: "image/x-icon", sizes: "any" },
     ],
     apple: [
-      // Best to use the PNG version for Apple devices
-      { url: "/logo.png", sizes: "648x648", type: "image/png" },
+      { url: siteConfig.branding.appleTouchIcon, sizes: "648x648", type: "image/png" },
     ],
   },
   appleWebApp: {
@@ -70,7 +64,7 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
     title: siteConfig.name,
   },
-  manifest: "/site.webmanifest",
+  manifest: "/manifest.webmanifest",
 };
 
 export const viewport: Viewport = {

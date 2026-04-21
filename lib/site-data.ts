@@ -9,6 +9,65 @@ import testimonialsData from "../content/testimonials.json";
 import gallery from "../content/gallery.json";
 import thingsToDoData from "../content/things-to-do.json";
 
+interface SettingsContent {
+  business: {
+    name: string;
+    shortName: string;
+    tagline: string;
+    description: string;
+    category: string;
+  };
+  address: {
+    label: string;
+    summary: string;
+    streetAddress: string;
+    addressLocality: string;
+    postalCode: string;
+    addressCountry: string;
+  };
+  contact: {
+    phoneDisplay: string;
+    phoneRaw: string;
+    instagramUrl: string;
+    whatsappCommunityUrl: string;
+  };
+  booking: {
+    whatsappUrl: string;
+    bookingUrl: string;
+    hostelworldUrl: string;
+    bookingRating: string;
+    hostelworldRating: string;
+    hostelworldReviews: string;
+  };
+  operations: {
+    breakfastHours: string;
+    checkInHours: string;
+  };
+  seo: {
+    baseKeywords: string[];
+    titleSuffix: string;
+    locale: string;
+    ogImage: string;
+  };
+  branding: {
+    logoWebp: string;
+    logoPng: string;
+    favicon: string;
+    appleTouchIcon: string;
+    manifestThemeColor: string;
+    manifestBackgroundColor: string;
+  };
+  features: {
+    volunteersNeeded: boolean;
+  };
+  schema: {
+    type: string;
+    priceRange: string;
+    images: string[];
+    amenities: string[];
+  };
+}
+
 export interface CtaLink {
   text: string;
   url: string;
@@ -162,8 +221,30 @@ const roomsContent: RoomsContent = {
 
 const thingsToDoContent: ThingsToDoContent = thingsToDoData;
 
+const settingsContent = settings as SettingsContent;
+
 export const siteConfig = {
-  ...settings,
+  ...settingsContent,
+  name: settingsContent.business.name,
+  shortName: settingsContent.business.shortName,
+  tagline: settingsContent.business.tagline,
+  description: settingsContent.business.description,
+  category: settingsContent.business.category,
+  location: settingsContent.address.label,
+  phoneDisplay: settingsContent.contact.phoneDisplay,
+  phoneRaw: settingsContent.contact.phoneRaw,
+  whatsappUrl: settingsContent.booking.whatsappUrl,
+  bookingUrl: settingsContent.booking.bookingUrl,
+  hostelworldUrl: settingsContent.booking.hostelworldUrl,
+  instagramUrl: settingsContent.contact.instagramUrl,
+  whatsappCommunityUrl: settingsContent.contact.whatsappCommunityUrl,
+  breakfastHours: settingsContent.operations.breakfastHours,
+  checkInHours: settingsContent.operations.checkInHours,
+  volunteersNeeded: settingsContent.features.volunteersNeeded,
+  baseKeywords: settingsContent.seo.baseKeywords,
+  bookingRating: settingsContent.booking.bookingRating,
+  hostelworldRating: settingsContent.booking.hostelworldRating,
+  hostelworldReviews: settingsContent.booking.hostelworldReviews,
 } as const;
 
 export const hero = homepageContent.hero;

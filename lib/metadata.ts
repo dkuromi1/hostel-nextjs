@@ -74,7 +74,7 @@ export function buildMetadata({
   title,
   description,
   path = "/",
-  image = "/images/promo_2.jpg",
+  image = siteConfig.seo.ogImage,
   keywords = siteConfig.baseKeywords,
 }: MetadataInput): Metadata {
   return {
@@ -89,7 +89,7 @@ export function buildMetadata({
       description,
       url: getSiteUrl(path),
       siteName: siteConfig.name,
-      locale: "en_US",
+      locale: siteConfig.seo.locale,
       type: "website",
       images: [
         {
@@ -107,50 +107,38 @@ export function buildMetadata({
   };
 }
 
-export function buildHostelSchema() {
+export function buildBusinessSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "Hostel",
+    "@type": siteConfig.schema.type,
     name: siteConfig.name,
     description: siteConfig.description,
     url: getSiteUrl("/"),
-    image: [
-      getSiteUrl("/images/promo_2.jpg"),
-      getSiteUrl("/images/room_18bed2.jpg"),
-      getSiteUrl("/images/rooftop_social.webp"),
-      getSiteUrl("/images/hiking_1.jpg"),
-      getSiteUrl("/images/shkoder_pedestrian_street_3.webp"),
-    ],
-    logo: getSiteUrl("/logo.webp"),
+    image: siteConfig.schema.images.map((image) => getSiteUrl(image)),
+    logo: getSiteUrl(siteConfig.branding.logoWebp),
     telephone: siteConfig.phoneDisplay,
     sameAs: [
       siteConfig.instagramUrl,
       siteConfig.bookingUrl,
       siteConfig.hostelworldUrl,
     ],
-    priceRange: "€8 - €10",
+    priceRange: siteConfig.schema.priceRange,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Kolë Idromeno Street",
-      addressLocality: "Shkoder",
-      addressCountry: "AL",
+      streetAddress: siteConfig.address.streetAddress,
+      addressLocality: siteConfig.address.addressLocality,
+      postalCode: siteConfig.address.postalCode,
+      addressCountry: siteConfig.address.addressCountry,
     },
-    amenityFeature: [
-      "Privacy pods",
-      "Free breakfast (excl. off-season)",
-      "Free WiFi",
-      "Rooftop terrace",
-      "Luggage storage",
-      "24h access",
-      "Bike rentals (across the street)",
-      "Walking tours",
-    ].map((name) => ({
+    amenityFeature: siteConfig.schema.amenities.map((name) => ({
       "@type": "LocationFeatureSpecification",
       name,
       value: true,
     })),
   };
 }
+
+export const buildHostelSchema = buildBusinessSchema;
 
 export function buildFaqSchema() {
   return {
