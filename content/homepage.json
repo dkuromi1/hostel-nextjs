@@ -20,7 +20,7 @@
       "icon": "Luggage"
     },
     {
-      "text": "Included: breakfast (excl. off-season), WiFi, luggage storage, 24h access, and admission to Rozafa Castle",
+      "text": "Included: breakfast (excl. off-season), WiFi, luggage storage, and 24h access",
       "icon": "ShieldCheck"
     }
   ],
@@ -44,11 +44,6 @@
       "title": "For Hikers",
       "description": "Early take-away breakfast for hikers & morning travelers",
       "icon": "Mountain"
-    },
-    {
-      "title": "Rozafa Castle",
-      "description": "Admission to Rozafa Castle included in your booking",
-      "icon": "Castle"
     },
     {
       "title": "Storage",

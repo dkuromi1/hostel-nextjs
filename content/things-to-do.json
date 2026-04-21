@@ -5,15 +5,15 @@
       "description": "Known as the 'Thailand of Albania', the Shala River features crystal clear water tucked between steep mountain peaks. The day trip includes the scenic boat ride from Komani and we'll help you organize the departure right from the hostel. Bus departs 6:30am in front of hostel.",
       "price": "€35",
       "regularPrice": "€40",
-      "priceNote": "Exclusive Guest Rate",
+      "priceNote": "Guest Rate",
       "image": "/images/shala_river.jpg",
       "alt": "Crystal clear water at the Shala River in Northern Albania",
       "showDirections": false
     },
     {
       "title": "Theth to Valbona Trek",
-      "description": "Trek the famous Theth-to-Valbona trail in the Albanian Alps. We organize all your transport and securely store your luggage for free. Schedule — To Theth: 7:00am (Rozafa Hotel), Return: 11:00am & 5:00pm (Jezerca Market). To Valbona: 6:30am (Hostel), Return: 10:00am (Guesthouse).",
-      "price": "€12 each way",
+      "description": "Trek the famous Theth-to-Valbona trail in the Albanian Alps. We organize all your transport and securely store your luggage for free. Schedule — To Theth: 7:00am (from in front of Rozafa Hotel), Return: 11:00am & 5:00pm (from Jezerca Market). To Valbona: 6:30am (from the hostel), Return: 10:00am (from your guesthouse).",
+      "price": "Theth €12 / Valbona €26 (one way)",
       "priceNote": "Transport & Storage",
       "image": "/images/theth_village.webp",
       "alt": "Hiking in the Albanian Alps near Theth and Valbona",
@@ -30,8 +30,8 @@
     {
       "title": "Rozafa Castle",
       "description": "The city's top attraction. Perched on a rocky hill with beautiful views across Lake Shkodër and three rivers. Best visited an hour before sunset for the golden lighting across the valleys.",
-      "price": "Free",
-      "priceNote": "Included in price",
+      "price": "",
+      "priceNote": "",
       "image": "/images/rosafa_castle.webp",
       "alt": "View from Rozafa Castle in Shkoder",
       "showDirections": true

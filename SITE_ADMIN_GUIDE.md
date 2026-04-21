@@ -92,7 +92,7 @@ The site's testimonials are currently split between the **Homepage** and the **R
 - **Homepage:** Displays the **first 5** items from `testimonials.json`.
 - **Rooms Page:** Displays the **next 5** items (positions 6 through 10).
 
-When you receive new five-star reviews, it is best to add them to the **top** of the list so they appear immediately on the homepage.
+When you receive new reviews you like, it is best to add them to the **top** of the list so they appear immediately on the homepage.
 ---
 
 ## 📸 Managing Photos and Videos
