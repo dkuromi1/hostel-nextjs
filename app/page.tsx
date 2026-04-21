@@ -87,10 +87,10 @@ function CompactGuestRatingsStrip() {
           <BookingComLogo iconOnly className="size-9" />
           <div className="min-w-0">
             <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/65">
-              Booking.com
+              {siteCopyContent.home.guestRatings.bookingSourceLabel}
             </p>
             <p className="truncate text-sm font-medium text-white/92">
-              2025 Traveller Review Award
+              {siteCopyContent.home.guestRatings.bookingAwardTitle}
             </p>
           </div>
         </div>
@@ -99,7 +99,7 @@ function CompactGuestRatingsStrip() {
             {siteConfig.bookingRating}
           </p>
           <p className="mt-1 text-[8px] uppercase tracking-[0.2em] text-white/100">
-            out of 10
+            {siteCopyContent.home.guestRatings.bookingScoreSuffix}
           </p>
         </div>
       </a>
@@ -114,10 +114,10 @@ function CompactGuestRatingsStrip() {
           <HostelworldLogo iconOnly className="size-9" />
           <div className="min-w-0">
             <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/65">
-              Hostelworld
+              {siteCopyContent.home.guestRatings.hostelworldSourceLabel}
             </p>
             <p className="truncate text-sm font-medium text-white/92">
-              Superb guest rating
+              {siteCopyContent.home.guestRatings.hostelworldTitle}
             </p>
           </div>
         </div>
@@ -126,7 +126,7 @@ function CompactGuestRatingsStrip() {
             {siteConfig.hostelworldRating}
           </p>
           <p className="mt-1 text-[8px] uppercase tracking-[0.2em] text-white/100">
-            ({siteConfig.hostelworldReviews} Reviews)
+            ({siteConfig.hostelworldReviews} {siteCopyContent.home.guestRatings.hostelworldReviewsSuffix})
           </p>
         </div>
       </a>

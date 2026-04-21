@@ -223,6 +223,89 @@ collections:
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Description", name: "description", widget: "text" }
                   - { label: "Image", name: "image", widget: "image" }
+              - label: "Guest Ratings"
+                name: "guestRatings"
+                widget: "object"
+                fields:
+                  - { label: "Section Label", name: "label", widget: "string" }
+                  - { label: "Top Rated Label", name: "topRatedLabel", widget: "string" }
+                  - { label: "Booking Source Label", name: "bookingSourceLabel", widget: "string" }
+                  - { label: "Booking Award Title", name: "bookingAwardTitle", widget: "string" }
+                  - { label: "Booking Score Suffix", name: "bookingScoreSuffix", widget: "string" }
+                  - { label: "Booking Description", name: "bookingDescription", widget: "text" }
+                  - { label: "Hostelworld Source Label", name: "hostelworldSourceLabel", widget: "string" }
+                  - { label: "Hostelworld Title", name: "hostelworldTitle", widget: "string" }
+                  - { label: "Hostelworld Reviews Suffix", name: "hostelworldReviewsSuffix", widget: "string" }
+                  - { label: "Hostelworld Image Alt", name: "hostelworldImageAlt", widget: "string" }
+              - label: "Hero"
+                name: "hero"
+                widget: "object"
+                fields:
+                  - { label: "Background Alt", name: "backgroundAlt", widget: "string" }
+              - label: "Atmosphere"
+                name: "atmosphere"
+                widget: "object"
+                fields:
+                  - { label: "Direct Booking Label", name: "directBookingLabel", widget: "string" }
+                  - { label: "Direct Booking Title", name: "directBookingTitle", widget: "string" }
+                  - { label: "Direct Booking Title Mobile", name: "directBookingTitleMobile", widget: "string" }
+                  - { label: "Direct Booking Description", name: "directBookingDescription", widget: "text" }
+                  - { label: "Direct Booking Description Mobile", name: "directBookingDescriptionMobile", widget: "text" }
+                  - { label: "Direct Booking Button", name: "directBookingButton", widget: "string" }
+                  - { label: "Rooftop Eyebrow", name: "rooftopEyebrow", widget: "string" }
+                  - { label: "Rooftop Title", name: "rooftopTitle", widget: "string" }
+                  - { label: "Rooftop Image Alt", name: "rooftopImageAlt", widget: "string" }
+                  - { label: "Room Image Alt", name: "roomImageAlt", widget: "string" }
+              - label: "Rooms Section"
+                name: "roomsSection"
+                widget: "object"
+                fields:
+                  - { label: "Eyebrow Prefix", name: "titleEyebrowPrefix", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Button Label", name: "buttonLabel", widget: "string" }
+                  - { label: "Details Label", name: "detailsLabel", widget: "string" }
+              - label: "Included Stay"
+                name: "includedStay"
+                widget: "object"
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+              - label: "Gallery Section"
+                name: "gallerySection"
+                widget: "object"
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Button Label", name: "buttonLabel", widget: "string" }
+              - label: "Experiences Section"
+                name: "experiencesSection"
+                widget: "object"
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Button Label", name: "buttonLabel", widget: "string" }
+                  - { label: "Discover Label", name: "discoverLabel", widget: "string" }
+                  - { label: "Connect Label", name: "connectLabel", widget: "string" }
+              - label: "Why People Stay Longer"
+                name: "whyStayLonger"
+                widget: "object"
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+              - label: "CTA"
+                name: "cta"
+                widget: "object"
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Alt", name: "alt", widget: "string" }
           - label: "Gallery"
             name: "gallery"
             widget: "object"

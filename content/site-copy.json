@@ -39,10 +39,13 @@
     "guestRatings": {
       "label": "Guest Ratings",
       "topRatedLabel": "Top Rated",
+      "bookingSourceLabel": "Booking.com",
       "bookingAwardTitle": "2025 Traveller Review Award",
       "bookingScoreSuffix": "out of 10",
       "bookingDescription": "Awarded for consistent excellence in guest hospitality.",
+      "hostelworldSourceLabel": "Hostelworld",
       "hostelworldTitle": "'Superb' Guest Rating",
+      "hostelworldReviewsSuffix": "Reviews",
       "hostelworldImageAlt": "10 score on Hostelworld"
     },
     "hero": {

@@ -218,10 +218,13 @@ interface SiteCopyContent {
     guestRatings: {
       label: string;
       topRatedLabel: string;
+      bookingSourceLabel: string;
       bookingAwardTitle: string;
       bookingScoreSuffix: string;
       bookingDescription: string;
+      hostelworldSourceLabel: string;
       hostelworldTitle: string;
+      hostelworldReviewsSuffix: string;
       hostelworldImageAlt: string;
     };
     hero: {
