@@ -13,7 +13,7 @@ collections:
       preview: false
     files:
       - name: "site_config"
-        label: "Site Configuration"
+        label: "Property Configuration"
         file: "content/settings.json"
         fields:
           - label: "Business"
@@ -60,7 +60,7 @@ collections:
                     widget: "select"
                     options: ["primary", "secondary", "tertiary"]
                   - { label: "Enabled", name: "enabled", widget: "boolean", default: true }
-          - label: "Booking & Messaging"
+          - label: "Reservation & Messaging"
             name: "booking"
             widget: "object"
             fields:
@@ -214,7 +214,7 @@ collections:
               - { label: "Alt Text", name: "alt", widget: "string" }
               - { label: "Category", name: "category", widget: "string", required: false }
               - { label: "Featured", name: "featured", widget: "boolean", required: false, default: false }
-          - { label: "Booking Award Image", name: "bookingAwardImage", widget: "image" }
+          - { label: "Review Badge Image", name: "bookingAwardImage", widget: "image" }
 
       - name: "site_copy"
         label: "Page & Footer Copy"
@@ -231,8 +231,8 @@ collections:
                 widget: "object"
                 fields:
                   - { label: "Instagram", name: "instagram", widget: "string" }
-                  - { label: "Booking", name: "booking", widget: "string" }
-                  - { label: "Hostelworld", name: "hostelworld", widget: "string" }
+                  - { label: "Primary Booking Platform", name: "booking", widget: "string" }
+                  - { label: "Secondary Booking Platform", name: "hostelworld", widget: "string" }
               - { label: "Explore Label", name: "exploreLabel", widget: "string" }
               - { label: "Community Label", name: "communityLabel", widget: "string" }
               - { label: "Community Caption", name: "communityCaption", widget: "string" }
@@ -303,7 +303,7 @@ collections:
                   - { label: "Rooftop Title", name: "rooftopTitle", widget: "string" }
                   - { label: "Rooftop Image Alt", name: "rooftopImageAlt", widget: "string" }
                   - { label: "Room Image Alt", name: "roomImageAlt", widget: "string" }
-              - label: "Rooms Section"
+              - label: "Offerings Section"
                 name: "roomsSection"
                 widget: "object"
                 fields:
@@ -471,7 +471,7 @@ collections:
                   - { label: "Description", name: "description", widget: "text" }
                   - { label: "Image", name: "image", widget: "image" }
                   - { label: "Alt", name: "alt", widget: "string" }
-          - label: "Rooms"
+          - label: "Offerings"
             name: "rooms"
             widget: "object"
             fields:
