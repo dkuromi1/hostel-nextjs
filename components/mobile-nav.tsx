@@ -9,7 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { buttonVariants } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
-import { navLinks, siteConfig } from "@/lib/site-data";
+import { bookingChannels, contactChannels, navLinks } from "@/lib/site-data";
 
 const menuVariants = {
   hidden: { opacity: 0, scale: 0.95, y: -8 },
@@ -47,6 +47,8 @@ export function MobileNav() {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+  const primaryContactChannel =
+    contactChannels.find((channel) => channel.stylePriority === "primary") ?? contactChannels[0];
 
   useEffect(() => {
     if (!open) return;
@@ -121,44 +123,39 @@ export function MobileNav() {
                 variants={itemVariants}
                 className="mt-3 grid gap-3 border-t border-[var(--border)] pt-4"
               >
-                <a
-                  href={siteConfig.whatsappUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={() => setOpen(false)}
-                  className={cn(
-                    buttonVariants({ size: "lg" }),
-                    "h-10 rounded-full bg-emerald-700 text-white hover:bg-emerald-800"
-                  )}
-                >
-                  Book On WhatsApp
-                </a>
-                <div className="grid grid-cols-2 gap-3">
+                {primaryContactChannel ? (
                   <a
-                    href={siteConfig.bookingUrl}
+                    href={primaryContactChannel.url}
                     target="_blank"
                     rel="noreferrer"
                     onClick={() => setOpen(false)}
                     className={cn(
-                      buttonVariants({ variant: "outline", size: "lg" }),
-                      "rounded-2xl border-[var(--border)] bg-transparent text-[var(--text-heading)] transition-colors hover:bg-[var(--muted)]"
+                      buttonVariants({ size: "lg" }),
+                      "h-10 rounded-full bg-emerald-700 text-white hover:bg-emerald-800"
                     )}
                   >
-                    Booking.com
+                    {primaryContactChannel.label}
                   </a>
-                  <a
-                    href={siteConfig.hostelworldUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    onClick={() => setOpen(false)}
-                    className={cn(
-                      buttonVariants({ variant: "outline", size: "lg" }),
-                      "rounded-2xl border-[var(--border)] bg-transparent text-[var(--text-heading)] transition-colors hover:bg-[var(--muted)]"
-                    )}
-                  >
-                    Hostelworld
-                  </a>
-                </div>
+                ) : null}
+                {bookingChannels.length > 0 ? (
+                  <div className={cn("grid gap-3", bookingChannels.length === 1 ? "grid-cols-1" : "grid-cols-2")}>
+                    {bookingChannels.map((channel) => (
+                      <a
+                        key={channel.id}
+                        href={channel.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={() => setOpen(false)}
+                        className={cn(
+                          buttonVariants({ variant: "outline", size: "lg" }),
+                          "rounded-2xl border-[var(--border)] bg-transparent text-[var(--text-heading)] transition-colors hover:bg-[var(--muted)]"
+                        )}
+                      >
+                        {channel.label}
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
                 <div className="mt-1 flex justify-center">
                   <ThemeToggle variant="nav" />
                 </div>

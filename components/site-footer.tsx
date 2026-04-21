@@ -1,13 +1,14 @@
 import Link from "next/link";
-import { MessageCircleMore, MapPinned } from "lucide-react";
+import { MapPinned, MessageCircleMore } from "lucide-react";
 
-import { InstagramGlyph } from "@/components/instagram-glyph";
+import { ChannelIcon } from "@/components/channel-icon";
 import { PwaInstallButton } from "@/components/pwa-install-button";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { navLinks, siteConfig, siteCopyContent } from "@/lib/site-data";
+import { bookingChannels, contactChannels, navLinks, siteConfig, siteCopyContent } from "@/lib/site-data";
 
 export function SiteFooter() {
   const detailsSummary = siteCopyContent.footer.detailsSummary.replace("{checkInHours}", siteConfig.checkInHours);
+  const footerChannels = [...contactChannels, ...bookingChannels];
 
   return (
     <footer className="border-t border-white/70 bg-slate-950 py-14 text-slate-200 pb-24 lg:pb-14">
@@ -23,40 +24,25 @@ export function SiteFooter() {
             {siteCopyContent.footer.description}
           </p>
           <div className="flex flex-wrap gap-3 text-sm">
-            <a
-              href={siteConfig.whatsappUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-emerald-700 px-4 py-3 font-semibold text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-emerald-800"
-            >
-              <MessageCircleMore className="size-4" strokeWidth={1.8} />
-              {siteConfig.phoneDisplay}
-            </a>
-            <a
-              href={siteConfig.instagramUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-3 font-semibold text-slate-100 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:border-white/35"
-            >
-              <InstagramGlyph className="size-4" strokeWidth={1.8} />
-              {siteCopyContent.footer.socialLabels.instagram}
-            </a>
-            <a
-              href={siteConfig.bookingUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-3 font-semibold text-slate-100 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:border-white/35"
-            >
-              {siteCopyContent.footer.socialLabels.booking}
-            </a>
-            <a
-              href={siteConfig.hostelworldUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-3 font-semibold text-slate-100 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:border-white/35"
-            >
-              {siteCopyContent.footer.socialLabels.hostelworld}
-            </a>
+            {footerChannels.map((channel) => (
+              <a
+                key={channel.id}
+                href={channel.url}
+                target="_blank"
+                rel="noreferrer"
+                className={
+                  channel.stylePriority === "primary"
+                    ? "inline-flex items-center gap-2 rounded-full bg-emerald-700 px-4 py-3 font-semibold text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-emerald-800"
+                    : "inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-3 font-semibold text-slate-100 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:border-white/35"
+                }
+              >
+                <ChannelIcon
+                  iconKey={channel.icon}
+                  iconOnly
+                />
+                {channel.id === "whatsapp" ? siteConfig.phoneDisplay : channel.label}
+              </a>
+            ))}
           </div>
         </div>
         <div className="grid gap-8 sm:grid-cols-[20%_auto_1fr] xl:gap-10 xl:max-w-[750px] shrink min-w-0">

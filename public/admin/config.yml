@@ -43,6 +43,23 @@ collections:
               - { label: "Phone (Raw Number)", name: "phoneRaw", widget: "string", hint: "Format: 355685310744" }
               - { label: "Instagram URL", name: "instagramUrl", widget: "string", required: false }
               - { label: "WhatsApp Community URL", name: "whatsappCommunityUrl", widget: "string", required: false }
+              - label: "Contact Channels"
+                name: "channels"
+                widget: "list"
+                summary: "{{fields.label}}"
+                fields:
+                  - { label: "Channel ID", name: "id", widget: "string" }
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+                  - label: "Icon"
+                    name: "icon"
+                    widget: "select"
+                    options: ["whatsapp", "instagram", "bookingCom", "hostelworld"]
+                  - label: "Style Priority"
+                    name: "stylePriority"
+                    widget: "select"
+                    options: ["primary", "secondary", "tertiary"]
+                  - { label: "Enabled", name: "enabled", widget: "boolean", default: true }
           - label: "Booking & Messaging"
             name: "booking"
             widget: "object"
@@ -53,6 +70,23 @@ collections:
               - { label: "Booking.com Rating", name: "bookingRating", widget: "string", required: false }
               - { label: "Hostelworld Rating", name: "hostelworldRating", widget: "string", required: false }
               - { label: "Hostelworld Reviews", name: "hostelworldReviews", widget: "string", required: false }
+              - label: "Booking Channels"
+                name: "channels"
+                widget: "list"
+                summary: "{{fields.label}}"
+                fields:
+                  - { label: "Channel ID", name: "id", widget: "string" }
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+                  - label: "Icon"
+                    name: "icon"
+                    widget: "select"
+                    options: ["whatsapp", "instagram", "bookingCom", "hostelworld"]
+                  - label: "Style Priority"
+                    name: "stylePriority"
+                    widget: "select"
+                    options: ["primary", "secondary", "tertiary"]
+                  - { label: "Enabled", name: "enabled", widget: "boolean", default: true }
           - label: "Operations"
             name: "operations"
             widget: "object"

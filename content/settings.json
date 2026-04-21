@@ -18,7 +18,25 @@
     "phoneDisplay": "+355 68 531 0744",
     "phoneRaw": "355685310744",
     "instagramUrl": "https://www.instagram.com/scodrinon_hostel/",
-    "whatsappCommunityUrl": "https://chat.whatsapp.com/L9ruuWA5G8S0l4CSmwCewa"
+    "whatsappCommunityUrl": "https://chat.whatsapp.com/L9ruuWA5G8S0l4CSmwCewa",
+    "channels": [
+      {
+        "id": "whatsapp",
+        "label": "WhatsApp Booking",
+        "url": "https://wa.me/355685310744?text=Hi%20Scodrinon%20Hostel%2C%20I%E2%80%99d%20like%20to%20book%20a%20bed.",
+        "icon": "whatsapp",
+        "stylePriority": "primary",
+        "enabled": true
+      },
+      {
+        "id": "instagram",
+        "label": "Instagram",
+        "url": "https://www.instagram.com/scodrinon_hostel/",
+        "icon": "instagram",
+        "stylePriority": "secondary",
+        "enabled": true
+      }
+    ]
   },
   "booking": {
     "whatsappUrl": "https://wa.me/355685310744?text=Hi%20Scodrinon%20Hostel%2C%20I%E2%80%99d%20like%20to%20book%20a%20bed.",
@@ -26,7 +44,25 @@
     "hostelworldUrl": "https://www.hostelworld.com/hostels/p/325721/scodrinon-hostel/",
     "bookingRating": "9.3",
     "hostelworldRating": "10",
-    "hostelworldReviews": "115"
+    "hostelworldReviews": "115",
+    "channels": [
+      {
+        "id": "booking-com",
+        "label": "Booking.com",
+        "url": "https://www.booking.com/hotel/al/scodrinon-hostel.html",
+        "icon": "bookingCom",
+        "stylePriority": "secondary",
+        "enabled": true
+      },
+      {
+        "id": "hostelworld",
+        "label": "Hostelworld",
+        "url": "https://www.hostelworld.com/hostels/p/325721/scodrinon-hostel/",
+        "icon": "hostelworld",
+        "stylePriority": "secondary",
+        "enabled": true
+      }
+    ]
   },
   "operations": {
     "breakfastHours": "8:00 to 9:30am (excl. off-season)",

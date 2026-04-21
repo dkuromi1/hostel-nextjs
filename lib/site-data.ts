@@ -31,6 +31,7 @@ interface SettingsContent {
     phoneRaw: string;
     instagramUrl: string;
     whatsappCommunityUrl: string;
+    channels: SettingsChannel[];
   };
   booking: {
     whatsappUrl: string;
@@ -39,6 +40,7 @@ interface SettingsContent {
     bookingRating: string;
     hostelworldRating: string;
     hostelworldReviews: string;
+    channels: SettingsChannel[];
   };
   operations: {
     breakfastHours: string;
@@ -68,6 +70,32 @@ interface SettingsContent {
     images: string[];
     amenities: string[];
   };
+}
+
+interface SettingsChannel {
+  id: string;
+  label: string;
+  url: string;
+  icon: BusinessChannelIconKey;
+  stylePriority: BusinessChannelStylePriority;
+  enabled: boolean;
+}
+
+export type BusinessChannelIconKey =
+  | "whatsapp"
+  | "instagram"
+  | "bookingCom"
+  | "hostelworld";
+
+export type BusinessChannelStylePriority = "primary" | "secondary" | "tertiary";
+
+export interface BusinessChannel {
+  id: string;
+  label: string;
+  url: string;
+  icon: BusinessChannelIconKey;
+  stylePriority: BusinessChannelStylePriority;
+  enabled: boolean;
 }
 
 export interface CtaLink {
@@ -429,6 +457,21 @@ function parseServices(items: { title: string; description: string; icon: string
   }));
 }
 
+function parseChannels(items: SettingsChannel[]): BusinessChannel[] {
+  return items.map((item) => ({
+    id: item.id,
+    label: item.label,
+    url: item.url,
+    icon: item.icon,
+    stylePriority: item.stylePriority,
+    enabled: item.enabled,
+  }));
+}
+
+function findChannelUrl(channels: BusinessChannel[], id: string, fallback: string) {
+  return channels.find((channel) => channel.id === id)?.url ?? fallback;
+}
+
 function parseRoomTypes(items: typeof roomsData.roomTypes): RoomType[] {
   return items.map((room, roomIndex) => ({
     ...room,
@@ -454,6 +497,8 @@ const thingsToDoContent: ThingsToDoContent = thingsToDoData;
 
 const settingsContent = settings as SettingsContent;
 const siteCopy = siteCopyData as SiteCopyContent;
+const parsedContactChannels = parseChannels(settingsContent.contact.channels);
+const parsedBookingChannels = parseChannels(settingsContent.booking.channels);
 
 export const siteConfig = {
   ...settingsContent,
@@ -465,10 +510,10 @@ export const siteConfig = {
   location: settingsContent.address.label,
   phoneDisplay: settingsContent.contact.phoneDisplay,
   phoneRaw: settingsContent.contact.phoneRaw,
-  whatsappUrl: settingsContent.booking.whatsappUrl,
-  bookingUrl: settingsContent.booking.bookingUrl,
-  hostelworldUrl: settingsContent.booking.hostelworldUrl,
-  instagramUrl: settingsContent.contact.instagramUrl,
+  whatsappUrl: findChannelUrl(parsedContactChannels, "whatsapp", settingsContent.booking.whatsappUrl),
+  bookingUrl: findChannelUrl(parsedBookingChannels, "booking-com", settingsContent.booking.bookingUrl),
+  hostelworldUrl: findChannelUrl(parsedBookingChannels, "hostelworld", settingsContent.booking.hostelworldUrl),
+  instagramUrl: findChannelUrl(parsedContactChannels, "instagram", settingsContent.contact.instagramUrl),
   whatsappCommunityUrl: settingsContent.contact.whatsappCommunityUrl,
   breakfastHours: settingsContent.operations.breakfastHours,
   checkInHours: settingsContent.operations.checkInHours,
@@ -478,6 +523,9 @@ export const siteConfig = {
   hostelworldRating: settingsContent.booking.hostelworldRating,
   hostelworldReviews: settingsContent.booking.hostelworldReviews,
 } as const;
+
+export const contactChannels = parsedContactChannels.filter((channel) => channel.enabled);
+export const bookingChannels = parsedBookingChannels.filter((channel) => channel.enabled);
 
 export const hero = homepageContent.hero;
 

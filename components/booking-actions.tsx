@@ -1,8 +1,7 @@
-import { MessageCircleMore } from "lucide-react";
-
+import { ChannelIcon } from "@/components/channel-icon";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { siteConfig } from "@/lib/site-data";
+import { bookingChannels, contactChannels } from "@/lib/site-data";
 
 type BookingActionsProps = {
   className?: string;
@@ -15,6 +14,9 @@ export function BookingActions({
   compact = false,
   whatsappOnly = false,
 }: BookingActionsProps) {
+  const primaryContactChannel =
+    contactChannels.find((channel) => channel.stylePriority === "primary") ?? contactChannels[0];
+
   return (
     <div
       className={cn(
@@ -23,42 +25,36 @@ export function BookingActions({
         className
       )}
     >
-      <a
-        href={siteConfig.whatsappUrl}
-        target="_blank"
-        rel="noreferrer"
-        className={cn(
-          buttonVariants({ size: compact ? "sm" : "lg" }),
-          "h-auto min-h-12 rounded-full bg-emerald-700 px-5 py-3 text-sm text-white shadow-[0_18px_40px_-24px_rgba(5,150,105,0.8)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-emerald-800"
-        )}
-      >
-        <MessageCircleMore className="size-4" strokeWidth={1.8} />
-        <span>Message Us On WhatsApp</span>
-      </a>
-      {!whatsappOnly && (
+      {primaryContactChannel ? (
+        <a
+          href={primaryContactChannel.url}
+          target="_blank"
+          rel="noreferrer"
+          className={cn(
+            buttonVariants({ size: compact ? "sm" : "lg" }),
+            "h-auto min-h-12 rounded-full bg-emerald-700 px-5 py-3 text-sm text-white shadow-[0_18px_40px_-24px_rgba(5,150,105,0.8)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-emerald-800"
+          )}
+        >
+          <ChannelIcon iconKey={primaryContactChannel.icon} iconOnly />
+          <span>{primaryContactChannel.label}</span>
+        </a>
+      ) : null}
+      {!whatsappOnly && bookingChannels.length > 0 && (
         <div className="flex w-full min-w-0 flex-row gap-2 sm:w-auto sm:shrink-0 sm:flex-nowrap sm:gap-3">
-          <a
-            href={siteConfig.bookingUrl}
-            target="_blank"
-            rel="noreferrer"
-            className={cn(
-              buttonVariants({ variant: "outline", size: compact ? "sm" : "lg" }),
-              "h-auto min-h-12 flex-1 justify-center rounded-full border-[var(--glass-border)] bg-[var(--glass-bg)] px-3 py-3 text-sm text-[var(--text-heading)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-[var(--glass-bg)]/90"
-            )}
-          >
-            <span className="truncate">Booking.com</span>
-          </a>
-          <a
-            href={siteConfig.hostelworldUrl}
-            target="_blank"
-            rel="noreferrer"
-            className={cn(
-              buttonVariants({ variant: "outline", size: compact ? "sm" : "lg" }),
-              "h-auto min-h-12 flex-1 justify-center rounded-full border-[var(--glass-border)] bg-[var(--glass-bg)] px-3 py-3 text-sm text-[var(--text-heading)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-[var(--glass-bg)]/90"
-            )}
-          >
-            <span className="truncate">Hostelworld</span>
-          </a>
+          {bookingChannels.map((channel) => (
+            <a
+              key={channel.id}
+              href={channel.url}
+              target="_blank"
+              rel="noreferrer"
+              className={cn(
+                buttonVariants({ variant: "outline", size: compact ? "sm" : "lg" }),
+                "h-auto min-h-12 flex-1 justify-center rounded-full border-[var(--glass-border)] bg-[var(--glass-bg)] px-3 py-3 text-sm text-[var(--text-heading)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-[var(--glass-bg)]/90"
+              )}
+            >
+              <span className="truncate">{channel.label}</span>
+            </a>
+          ))}
         </div>
       )}
     </div>

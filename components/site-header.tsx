@@ -5,13 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useScrollPosition } from "@/lib/use-scroll-position";
 
-import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
+import { ChannelIcon } from "@/components/channel-icon";
 import { MobileNav } from "@/components/mobile-nav";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { VolunteerBanner } from "@/components/volunteer-banner";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { navLinks, siteConfig } from "@/lib/site-data";
+import { bookingChannels, contactChannels, navLinks, siteConfig } from "@/lib/site-data";
 
 export function SiteHeader() {
   const scrollY = useScrollPosition();
@@ -19,6 +19,8 @@ export function SiteHeader() {
 
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const primaryContactChannel =
+    contactChannels.find((channel) => channel.stylePriority === "primary") ?? contactChannels[0];
 
   // On the homepage, if not scrolled, we want it transparent with white text
   const isTransparent = isHome && !isScrolled;
@@ -58,7 +60,7 @@ export function SiteHeader() {
                 "mt-1 text-xs uppercase tracking-[0.24em] transition-colors",
                 isTransparent ? "text-sky-200/90 [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]" : "text-[var(--text-muted)]"
               )}>
-                Shkodër, Albania
+                {siteConfig.address.summary}
               </p>
             </div>
           </Link>
@@ -85,48 +87,40 @@ export function SiteHeader() {
           </nav>
 
           <div className="hidden items-center gap-3 lg:flex">
-            <a
-              href={siteConfig.whatsappUrl}
-              target="_blank"
-              rel="noreferrer"
-              className={cn(
-                buttonVariants({ size: "sm" }),
-                "h-9 rounded-full bg-emerald-700 px-4 text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-emerald-800"
-              )}
-            >
-              WhatsApp Booking
-            </a>
+            {primaryContactChannel ? (
+              <a
+                href={primaryContactChannel.url}
+                target="_blank"
+                rel="noreferrer"
+                className={cn(
+                  buttonVariants({ size: "sm" }),
+                  "h-9 rounded-full bg-emerald-700 px-4 text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-emerald-800"
+                )}
+              >
+                {primaryContactChannel.label}
+              </a>
+            ) : null}
             <div className="flex shrink-0 items-center gap-1.5">
-              <a
-                href={siteConfig.bookingUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Book on Booking.com"
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "icon" }),
-                  "size-9 rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-95",
-                  isTransparent
-                    ? "border-white/10 bg-slate-950/20 text-white hover:bg-slate-950/40"
-                    : "border-border bg-muted/95 text-foreground hover:bg-muted"
-                )}
-              >
-                <BookingComLogo iconOnly />
-              </a>
-              <a
-                href={siteConfig.hostelworldUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Book on Hostelworld"
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "icon" }),
-                  "size-9 rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-95",
-                  isTransparent
-                    ? "border-white/10 bg-slate-950/20 text-white hover:bg-slate-950/40"
-                    : "border-orange-200/80 bg-orange-50/90 text-orange-900 hover:bg-orange-100/90"
-                )}
-              >
-                <HostelworldLogo iconOnly />
-              </a>
+              {bookingChannels.map((channel) => (
+                <a
+                  key={channel.id}
+                  href={channel.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={channel.label}
+                  className={cn(
+                    buttonVariants({ variant: "outline", size: "icon" }),
+                    "size-9 rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-95",
+                    isTransparent
+                      ? "border-white/10 bg-slate-950/20 text-white hover:bg-slate-950/40"
+                      : channel.icon === "hostelworld"
+                        ? "border-orange-200/80 bg-orange-50/90 text-orange-900 hover:bg-orange-100/90"
+                        : "border-border bg-muted/95 text-foreground hover:bg-muted"
+                  )}
+                >
+                  <ChannelIcon iconKey={channel.icon} iconOnly />
+                </a>
+              ))}
               <ThemeToggle variant="header" />
             </div>
           </div>
