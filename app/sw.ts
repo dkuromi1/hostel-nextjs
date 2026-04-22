@@ -24,7 +24,8 @@ const OFFLINE_PAGE_URL = "/offline.html";
 const MEDIA_CACHE_MAX_AGE_SECONDS = 30 * 24 * 60 * 60;
 const DOCUMENT_CACHE_MAX_AGE_SECONDS = 7 * 24 * 60 * 60;
 const APP_SHELL_CACHE_MAX_AGE_SECONDS = 30 * 24 * 60 * 60;
-const MAPBOX_CACHE_MAX_AGE_SECONDS = 7 * 24 * 60 * 60;
+const MAPBOX_ASSET_CACHE_MAX_AGE_SECONDS = 30 * 24 * 60 * 60;
+const MAPBOX_TILE_CACHE_MAX_AGE_SECONDS = 30 * 24 * 60 * 60;
 
 const IMAGE_PATH_PATTERN = /^\/images\/.+\.(?:avif|gif|jpe?g|png|svg|webp)$/i;
 const VIDEO_PATH_PATTERN = /^\/videos\/.+\.(?:mp4|webm)$/i;
@@ -33,7 +34,8 @@ const ICON_PATH_PATTERN = /^\/(?:favicon\.ico|apple-icon(?:-\d+x\d+)?\.png|icon(
 const NEXT_STATIC_PATH_PATTERN = /^\/_next\/static\/.+/i;
 const NEXT_IMAGE_PATH_PATTERN = /^\/_next\/image$/i;
 const MAPBOX_HOST_PATTERN = /(?:^|\.)mapbox\.com$/i;
-const MAPBOX_PATH_PATTERN = /^\/(?:styles|fonts|sprites|v4|raster\/v1|tiles\/v1|map-sessions\/v1)\//i;
+const MAPBOX_ASSET_PATH_PATTERN = /^\/(?:styles|fonts|sprites)\//i;
+const MAPBOX_TILE_PATH_PATTERN = /^\/(?:v4|raster\/v1|tiles\/v1)\//i;
 
 function isAdminPath(pathname: string) {
   return pathname === ADMIN_PATH_PREFIX || pathname.startsWith(`${ADMIN_PATH_PREFIX}/`);
@@ -57,8 +59,12 @@ function isDocumentRequest(request: Request) {
   return request.mode === "navigate" || request.destination === "document";
 }
 
-function isMapboxRequest(url: URL) {
-  return MAPBOX_HOST_PATTERN.test(url.hostname) && MAPBOX_PATH_PATTERN.test(url.pathname);
+function isMapboxAssetRequest(url: URL) {
+  return MAPBOX_HOST_PATTERN.test(url.hostname) && MAPBOX_ASSET_PATH_PATTERN.test(url.pathname);
+}
+
+function isMapboxTileRequest(url: URL) {
+  return MAPBOX_HOST_PATTERN.test(url.hostname) && MAPBOX_TILE_PATH_PATTERN.test(url.pathname);
 }
 
 const runtimeCaching = [
@@ -148,13 +154,26 @@ const runtimeCaching = [
     }),
   },
   {
-    matcher: ({ url }: { url: URL }) => isMapboxRequest(url),
-    handler: new StaleWhileRevalidate({
-      cacheName: "mapbox-runtime",
+    matcher: ({ url }: { url: URL }) => isMapboxAssetRequest(url),
+    handler: new CacheFirst({
+      cacheName: "mapbox-assets",
       plugins: [
         new ExpirationPlugin({
-          maxEntries: 96,
-          maxAgeSeconds: MAPBOX_CACHE_MAX_AGE_SECONDS,
+          maxEntries: 128,
+          maxAgeSeconds: MAPBOX_ASSET_CACHE_MAX_AGE_SECONDS,
+          maxAgeFrom: "last-used",
+        }),
+      ],
+    }),
+  },
+  {
+    matcher: ({ url }: { url: URL }) => isMapboxTileRequest(url),
+    handler: new CacheFirst({
+      cacheName: "mapbox-tiles",
+      plugins: [
+        new ExpirationPlugin({
+          maxEntries: 256,
+          maxAgeSeconds: MAPBOX_TILE_CACHE_MAX_AGE_SECONDS,
           maxAgeFrom: "last-used",
         }),
       ],
