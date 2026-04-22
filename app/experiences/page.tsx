@@ -34,8 +34,6 @@ export const metadata = buildMetadata({
   image: siteCopyContent.experiences.metadata.image,
 });
 
-const THETH_VALBONA_MAP_QUERY = "theth-valbona-midpoint";
-const SHALA_RIVER_MAP_QUERY = "shala-river-midpoint";
 const THETH_SIDE_TRAILHEAD_GOOGLE_MAPS = "https://www.google.com/maps/dir/?api=1&destination=42.397171,19.772164";
 
 export default function ExperiencesPage() {
@@ -209,13 +207,7 @@ export default function ExperiencesPage() {
                       <div className="mb-3 flex flex-wrap items-center gap-2">
                         {siteConfig.features.showLocalExperienceMap ? (
                           <Link
-                            href={`?poi=${encodeURIComponent(
-                              item.title === "Theth to Valbona Trek"
-                                ? THETH_VALBONA_MAP_QUERY
-                                : item.title === "Shala River Day Trip"
-                                  ? SHALA_RIVER_MAP_QUERY
-                                  : item.title
-                            )}#map`}
+                            href={`?poi=${encodeURIComponent(item.mapQuery ?? item.title)}#map`}
                             className="group flex w-fit items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--muted)]/50 px-3 py-1.5 text-[var(--brand-primary)] shadow-sm ring-1 ring-sky-500/5 transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-500/20 hover:bg-sky-600 hover:text-white hover:shadow-md"
                           >
                             <MapPin className="size-3.5 transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110" strokeWidth={2} />

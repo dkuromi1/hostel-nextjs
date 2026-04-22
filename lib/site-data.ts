@@ -181,6 +181,7 @@ export interface ThingToDoItem {
   description: string;
   image: string;
   alt: string;
+  mapQuery?: string;
   price?: string;
   regularPrice?: string;
   priceNote?: string;

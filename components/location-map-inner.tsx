@@ -12,29 +12,31 @@ interface LocationMapInnerProps {
     accessToken: string;
 }
 
-const HOSTEL_COORDS: [number, number] = [19.51698538503564, 42.069258]; // [lng, lat]
-const THETH_DROPOFF_COORDS: [number, number] = [19.772315376603874, 42.39677313338882];
-const VALBONA_VILLAGE_COORDS: [number, number] = [19.88570882131251, 42.444877303358666];
+// Centralize instance constants for map behavior
+const {
+    hostelCoords: HOSTEL_COORDS,
+    thethDropoffCoords: THETH_DROPOFF_COORDS,
+    valbonaVillageCoords: VALBONA_VILLAGE_COORDS,
+    komaniFerryCoords: KOMANI_FERRY_COORDS,
+    bliniParkCoords: BLINI_PARK_COORDS,
+    pedonaleCoords: PEDONALE_COORDS,
+    queries,
+    styles
+} = activeInstance.mapConfig;
+
+const THETH_VALBONA_MAP_QUERY = queries.thethValbona;
+const SHALA_RIVER_MAP_QUERY = queries.shalaRiver;
+const KOMANI_FERRY_MAP_QUERY = queries.komaniFerry;
+const STANDARD_STYLE = styles.standard;
+const SATELLITE_STYLE = styles.satellite;
+
 const THETH_VALBONA_MIDPOINT_COORDS: [number, number] = [
     (THETH_DROPOFF_COORDS[0] + VALBONA_VILLAGE_COORDS[0]) / 2,
     (THETH_DROPOFF_COORDS[1] + VALBONA_VILLAGE_COORDS[1]) / 2,
 ];
-const KOMANI_FERRY_COORDS: [number, number] = [19.826066248202096, 42.10881657873157];
-const BLINI_PARK_COORDS: [number, number] = [19.80642220690339, 42.19953460048828];
 const SHALA_RIVER_MIDPOINT_COORDS: [number, number] = [
     (KOMANI_FERRY_COORDS[0] + BLINI_PARK_COORDS[0]) / 2,
     (KOMANI_FERRY_COORDS[1] + BLINI_PARK_COORDS[1]) / 2,
-];
-
-const THETH_VALBONA_MAP_QUERY = 'theth-valbona-midpoint';
-const SHALA_RIVER_MAP_QUERY = 'shala-river-midpoint';
-const STANDARD_STYLE = 'mapbox://styles/mapbox/standard';
-const SATELLITE_STYLE = 'mapbox://styles/mapbox/satellite-streets-v12';
-const PEDONALE_COORDS: [number, number][] = [
-    [19.513800410509983, 42.067007048478274],
-    [19.514691128164753, 42.06795226804246],
-    [19.51697176304084, 42.06913341207323],
-    [19.5171140522808, 42.069314649661514]
 ];
 
 interface MapPOI {
@@ -341,13 +343,16 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                 if (matchedPoi) {
                     initialCenter = matchedPoi.coords as [number, number];
                     initialZoom = 16.5;
-                } else if (siteConfig.features.showRegionalTrails && (q === THETH_VALBONA_MAP_QUERY || (q.includes('theth') && q.includes('valbona')))) {
+                } else if (siteConfig.features.showRegionalTrails && (q === THETH_VALBONA_MAP_QUERY || (activeInstance.mapConfig.keywords.theth.every(k => q.includes(k))))) {
                     initialCenter = THETH_VALBONA_MIDPOINT_COORDS;
                     initialZoom = 10.5;
-                } else if (q === SHALA_RIVER_MAP_QUERY || (q.includes('shala') && q.includes('river'))) {
+                } else if (q === SHALA_RIVER_MAP_QUERY || (activeInstance.mapConfig.keywords.shala.every(k => q.includes(k)))) {
                     initialCenter = SHALA_RIVER_MIDPOINT_COORDS;
                     initialZoom = 10.5;
-                } else if (q.includes("pedestrian") || q.includes("idromeno")) {
+                } else if (q === KOMANI_FERRY_MAP_QUERY || (activeInstance.mapConfig.keywords.komani.every(k => q.includes(k)))) {
+                    initialCenter = KOMANI_FERRY_COORDS;
+                    initialZoom = 13.5;
+                } else if (activeInstance.mapConfig.keywords.pedestrian.some(k => q.includes(k))) {
                     initialCenter = PEDONALE_COORDS[1] as [number, number];
                     initialZoom = 16.5;
                 }
@@ -396,7 +401,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             floatingHead.style.marginBottom = `${elevation}px`;
 
             const label = document.createElement('a');
-            label.href = 'https://www.google.com/maps/dir/?api=1&destination=Scodrinon+Hostel+Shkoder';
+            label.href = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(siteConfig.name + ' ' + siteConfig.address.addressLocality)}`;
             label.target = '_blank';
             label.rel = 'noreferrer';
             applyLabelStyle(label, mobile, {
@@ -413,7 +418,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             }
 
             const mainText = document.createElement('div');
-            mainText.innerText = 'Scodrinon Hostel';
+            mainText.innerText = siteConfig.name;
             mainText.style.fontSize = '12px';
             mainText.style.fontWeight = '700';
             mainText.style.lineHeight = '1.2';
@@ -619,24 +624,29 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             targetZoom = 16.5;
             const el = document.querySelector(`[data-poi-label="${matchedPoi.name.toLowerCase()}"]`);
             if (el) el.classList.add('poi-highlight');
-        } else if (siteConfig.features.showRegionalTrails && (q === THETH_VALBONA_MAP_QUERY || (q.includes('theth') && q.includes('valbona')))) {
+        } else if (siteConfig.features.showRegionalTrails && (q === THETH_VALBONA_MAP_QUERY || (activeInstance.mapConfig.keywords.theth.every(k => q.includes(k))))) {
             targetCenter = THETH_VALBONA_MIDPOINT_COORDS;
             targetZoom = 10.5;
             const theth = document.querySelector('[data-poi-label="theth drop off/pick up"]');
             const valbona = document.querySelector('[data-poi-label="valbona village"]');
             if (theth) theth.classList.add('poi-highlight');
             if (valbona) valbona.classList.add('poi-highlight');
-        } else if (q === SHALA_RIVER_MAP_QUERY || (q.includes('shala') && q.includes('river'))) {
+        } else if (q === SHALA_RIVER_MAP_QUERY || (activeInstance.mapConfig.keywords.shala.every(k => q.includes(k)))) {
             targetCenter = SHALA_RIVER_MIDPOINT_COORDS;
             targetZoom = 10.5;
             const ferry = document.querySelector('[data-poi-label="komani lake ferry (shala & valbona)"]');
             const blini = document.querySelector('[data-poi-label="blini park (shala river trip stop)"]');
             if (ferry) ferry.classList.add('poi-highlight');
             if (blini) blini.classList.add('poi-highlight');
-        } else if (q.includes("pedestrian") || q.includes("idromeno")) {
+        } else if (q === KOMANI_FERRY_MAP_QUERY || (activeInstance.mapConfig.keywords.komani.every(k => q.includes(k)))) {
+            targetCenter = KOMANI_FERRY_COORDS;
+            targetZoom = 13.5;
+            const ferry = document.querySelector('[data-poi-label="komani lake ferry (shala & valbona)"]');
+            if (ferry) ferry.classList.add('poi-highlight');
+        } else if (activeInstance.mapConfig.keywords.pedestrian.some(k => q.includes(k))) {
             targetCenter = PEDONALE_COORDS[1] as [number, number];
             targetZoom = 16.5;
-        } else if (q.includes('hostel') || q === 'scodrinon') {
+        } else if (activeInstance.mapConfig.keywords.property.some(k => q.includes(k)) || q === siteConfig.shortName.toLowerCase()) {
             const el = document.querySelector(`[data-poi-label="hostel"]`);
             if (el) el.classList.add('poi-highlight');
         }
@@ -677,7 +687,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             <div className="absolute left-4 top-4 z-10 flex items-center gap-2">
                 <button
                     onClick={recenterOnHostel}
-                    title="Recenter on Hostel"
+                    title={`Recenter on ${siteConfig.shortName}`}
                     className="flex items-center gap-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white transition-all hover:bg-black/60 active:scale-95"
                 >
                     <Home className="size-3 text-sky-400" strokeWidth={2.5} />
