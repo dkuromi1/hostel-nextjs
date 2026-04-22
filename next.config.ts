@@ -24,9 +24,17 @@ const withSerwist = withSerwistInit({
   disable: isDev,
 });
 
+const isNetlify = process.env.NETLIFY === "true";
+
 const nextConfig: NextConfig = {
   turbopack: {},
   allowedDevOrigins: isDev ? getAllowedDevOrigins() : undefined,
+  images: isNetlify
+    ? {
+        loader: "custom",
+        loaderFile: "./lib/netlify-image-loader.ts",
+      }
+    : undefined,
 };
 
 export default withSerwist(nextConfig);
