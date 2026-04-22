@@ -1,28 +1,18 @@
 # Scodrinon Admin Guide
 
-This guide is specific to the Scodrinon deployment of the hospitality site system.
+This guide is specific to the **Scodrinon Hostel** deployment in Shkodër, Albania.
 
 ## Editing Paths
 
 This site supports two editing paths:
 
-- `Decap CMS` at `/admin` for dashboard-style editing
-- Manual JSON editing in `instances/scodrinon/content/` for technical updates or backup workflows
+- **Decap CMS**: Dashboard-style editing at `https://www.scodrinon.com/admin`.
+- **Manual JSON Editing**: Technical updates directly in `instances/scodrinon/content/`.
 
-## Scodrinon-Specific Notes
-
-### Access
+## Access
 
 1. Go to `https://www.scodrinon.com/admin`.
 2. Log in with your authorized account.
-
-### What Makes This Deployment Unique
-
-- Boutique glassmorphism styling and a slate-midnight palette
-- Direct-booking emphasis through WhatsApp and OTA links
-- PWA install support
-- Local experience map with Scodrinon-specific overlays
-- Theth / Valbona regional hiking content
 
 ## Scodrinon Data Files
 
@@ -39,20 +29,28 @@ The site’s business data is stored in `instances/scodrinon/content/` and parse
 | `pois.json` | Scodrinon map markers and local recommendations |
 | `things-to-do.json` | Scodrinon local attractions and experiences |
 
-Important: if you change the WhatsApp number, update `phoneDisplay`, `phoneRaw`, and `whatsappUrl` together.
+## Advanced Platform Features
+
+This site includes several high-end engineering features for performance and stability:
+
+- **PWA (Progressive Web App)**: The site can be "installed" on mobile devices, providing offline reliability and a native-app feel.
+- **Mapbox GPU Safety**: The interactive map automatically detects low-power mobile devices and optimizes its rendering to prevent browser crashes.
+- **Predictive Warming**: The site pre-fetches and pre-decodes gallery images before they are clicked, ensuring an instant, lag-free media experience.
+- **Automated Schema**: Every page automatically generates structured data (JSON-LD) for better Google Search visibility.
+
+
+**Important**: if you change the WhatsApp number, update `phoneDisplay`, `phoneRaw`, and `whatsappUrl` together in `settings.json`.
 
 ## Map Management
 
 The interactive map is powered by Mapbox and managed in `components/location-map-inner.tsx`.
 
-### Required env var
-
+### Required Environment Variable
 ```bash
 NEXT_PUBLIC_MAPBOX_TOKEN=your_token_here
 ```
 
-### Scodrinon map data
-
+### Scodrinon Map Data
 - `HOSTEL_COORDS`: primary property marker
 - `PEDONALE_COORDS`: promenade highlight path
 - `instances/scodrinon/content/pois.json`: local recommendations
@@ -63,44 +61,26 @@ Mapbox uses `[Longitude, Latitude]` order.
 ## Testimonials Logic
 
 Testimonials are currently split across pages:
-
-- Homepage: first 5 items from `testimonials.json`
-- Rooms page: next 5 items
+- **Homepage**: first 5 items from `testimonials.json`
+- **Rooms page**: next 5 items
 
 Add stronger new reviews to the top if they should appear on the homepage first.
 
 ## Media Uploads
 
-### CMS uploads
-
-- Use simple filenames such as `rooftop_sunset.jpg`
-- Prefer JPEG or WebP for photos
-- Use PNG or WebP for graphics with transparency
-
-### Manual uploads
-
+### Manual Uploads
 1. Images go in `instances/scodrinon/public/images/`
 2. Videos go in `instances/scodrinon/public/videos/`
 3. Branding source files live in `instances/scodrinon/public/branding/`
-4. App and public icon entrypoints are copied from the instance branding files for build compatibility
-5. To sync instance assets to public after manual updates, run: `cp -R instances/scodrinon/public/* public/`
-6. PWA settings live in `public/site.webmanifest`
+4. **Syncing**: After manual updates, run: `cp -R instances/scodrinon/public/* public/`
 
-## SEO Notes
+## SEO & Icon Management
 
-For page-level SEO defaults, check:
-
-- `app/page.tsx`
-- `app/rooms/page.tsx`
-- `app/experiences/page.tsx`
+- **SEO**: Page-level defaults live in `app/page.tsx`, `app/rooms/page.tsx`, and `app/experiences/page.tsx`.
+- **Icons**: The site uses a strict registry. Ensure new icons are defined in `lib/icon-registry.ts`.
 
 ## Avoid Editing
-
-- `package.json`
-- `next.config.ts`
-- `netlify.toml`
-- `components/` unless making a deliberate code change
-- `lib/` for routine content edits
+- Core framework files in `app/`, `components/`, or `lib/` unless making a deliberate code change.
 
 ## Dashboard Quick Reference
 
@@ -113,4 +93,4 @@ For page-level SEO defaults, check:
 | Add a gallery photo | `Gallery` -> add new |
 | Update FAQ | `FAQs` -> edit FAQ content |
 
-If changes do not appear after a few minutes, check the hosting build status.
+

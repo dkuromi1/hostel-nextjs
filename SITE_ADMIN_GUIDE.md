@@ -1,16 +1,28 @@
-# Admin Guide Index
+# Admin & Management Guide
 
-This repository now separates product-level documentation from deployment-specific operating notes.
+This site is built as a reusable hospitality product. Content and configuration are separated into **Product** (reusable logic) and **Instance** (property-specific data).
 
-## Product Docs
+## Management Workflow
 
-- General admin handoff template: [docs/product/admin-guide-template.md](/Users/darrylkuromi/Desktop/scodrinon-nextjs/docs/product/admin-guide-template.md:1)
-- Product refactor plan: [docs/product-refactor-map.md](/Users/darrylkuromi/Desktop/scodrinon-nextjs/docs/product-refactor-map.md:1)
+1.  **Dashboard Editing**: Most content can be edited via the Decap CMS at `/admin`.
+2.  **Asset Syncing**: After adding images or videos manually to an instance folder, they must be synced to the root `public/` directory for the site to display them.
+3.  **Build & Deploy**: Changes made in the CMS or via Git will automatically trigger a new build on your hosting platform (Vercel/Netlify).
 
-## Instance Docs
+---
 
-- Scodrinon deployment guide: [docs/instances/scodrinon-admin-guide.md](/Users/darrylkuromi/Desktop/scodrinon-nextjs/docs/instances/scodrinon-admin-guide.md:1)
+## Detailed Guides
 
-## Note
+### 1. Product Documentation
+General guides for the underlying site system, schema definitions, and reusable components.
+- [**Admin Guide Template**](./docs/product/admin-guide-template.md): A base guide for any new property deployment.
+- [**Product Refactor Map**](./docs/product-refactor-map.md): Technical roadmap for the modular architecture.
 
-Keep root-level docs focused on the reusable product. Put business-specific operating details in `docs/instances/`.
+### 2. Property Instance Documentation
+Specific operating details for the current active deployment.
+- [**Scodrinon Admin Guide**](./docs/instances/scodrinon-admin-guide.md): The primary manual for managing the Shkodër property.
+
+---
+
+> [!NOTE]
+> Keep root-level documentation focused on the reusable product features. Business-specific operating details (like specific contact names or regional hiking tips) should always live in `docs/instances/`.
+
