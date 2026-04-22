@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { MapPinned, MessageCircleMore } from "lucide-react";
 
 import { ChannelIcon } from "@/components/channel-icon";
@@ -72,10 +73,12 @@ export function SiteFooter() {
             {/* Desktop QR Code */}
             <div className="hidden sm:flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-4 border border-white/10 w-full max-w-[160px]">
               <div className="relative size-full aspect-square overflow-hidden rounded-xl bg-white p-2">
-                <img
+                <Image
                   src="/images/whatsapp_community_qr.png"
                   alt="WhatsApp Community QR Code"
-                  className="h-full w-full object-contain"
+                  fill
+                  className="object-contain"
+                  sizes="160px"
                 />
               </div>
               <span className="text-xs font-semibold text-slate-300 text-center">
