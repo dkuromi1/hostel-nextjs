@@ -42,7 +42,7 @@ export function SiteHeader() {
             <div className="relative size-11 overflow-hidden rounded-2xl">
               <Image
                 src="/logo.webp"
-                alt="Scodrinon Hostel logo"
+                alt={`${siteConfig.name} logo`}
                 fill
                 className="object-cover"
                 sizes="44px"

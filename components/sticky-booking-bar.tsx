@@ -1,14 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useScrollPosition } from "@/lib/use-scroll-position";
-import { MessageCircleMore } from "lucide-react";
 
-import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
+import { ChannelIcon } from "@/components/channel-icon";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { siteConfig } from "@/lib/site-data";
+import { bookingChannels, contactChannels } from "@/lib/site-data";
 
 export function StickyBookingBar() {
   const scrollY = useScrollPosition();
@@ -16,6 +14,9 @@ export function StickyBookingBar() {
 
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const primaryContactChannel =
+    contactChannels.find((channel) => channel.stylePriority === "primary") ?? contactChannels[0];
+  const quickBookingChannels = bookingChannels.slice(0, 2);
 
   const isTransparent = isHome && !isScrolled;
 
@@ -27,50 +28,40 @@ export function StickyBookingBar() {
         : "border-t border-[var(--glass-border)] bg-[var(--glass-bg)] shadow-[0_-20px_40px_-30px_var(--glass-shadow)] backdrop-blur"
     )}>
       <div className="mx-auto flex max-w-[1400px] items-center gap-2">
-        <a
-          href={siteConfig.whatsappUrl}
-          target="_blank"
-          rel="noreferrer"
-          className={cn(
-            buttonVariants({ size: "sm" }),
-            "flex h-9 min-w-0 flex-1 items-center justify-center gap-2 rounded-full border border-white/10 bg-emerald-700 px-3 font-semibold text-white shadow-lg transition hover:bg-emerald-800",
-            isTransparent && "bg-emerald-700/90 backdrop-blur-sm"
-          )}
-        >
-          <MessageCircleMore className="size-4 shrink-0" strokeWidth={1.8} />
-          Book on WhatsApp
-        </a>
+        {primaryContactChannel ? (
+          <a
+            href={primaryContactChannel.url}
+            target="_blank"
+            rel="noreferrer"
+            className={cn(
+              buttonVariants({ size: "sm" }),
+              "flex h-9 min-w-0 flex-1 items-center justify-center gap-2 rounded-full border border-white/10 bg-emerald-700 px-3 font-semibold text-white shadow-lg transition hover:bg-emerald-800",
+              isTransparent && "bg-emerald-700/90 backdrop-blur-sm"
+            )}
+          >
+            <ChannelIcon iconKey={primaryContactChannel.icon} className="size-4 shrink-0" strokeWidth={1.8} />
+            {primaryContactChannel.label}
+          </a>
+        ) : null}
         <div className="flex shrink-0 items-center gap-1.5">
-          <a
-            href={siteConfig.bookingUrl}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Book on Booking.com"
-            className={cn(
-              buttonVariants({ variant: "outline", size: "icon" }),
-              "size-9 rounded-full transition-all",
-              isTransparent
-                ? "border-white/20 bg-slate-950/20 text-white backdrop-blur-sm hover:bg-slate-950/40"
-                : "border-[var(--border)] bg-[var(--muted)] text-[var(--foreground)] hover:bg-[var(--muted)]/80"
-            )}
-          >
-            <BookingComLogo iconOnly />
-          </a>
-          <a
-            href={siteConfig.hostelworldUrl}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Book on Hostelworld"
-            className={cn(
-              buttonVariants({ variant: "outline", size: "icon" }),
-              "size-9 rounded-full transition-all",
-              isTransparent
-                ? "border-white/20 bg-slate-950/20 text-white backdrop-blur-sm hover:bg-slate-950/40"
-                : "border-[var(--border)] bg-[var(--muted)] text-[var(--foreground)] hover:bg-[var(--muted)]/80"
-            )}
-          >
-            <HostelworldLogo iconOnly />
-          </a>
+          {quickBookingChannels.map((channel) => (
+            <a
+              key={channel.id}
+              href={channel.url}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={channel.label}
+              className={cn(
+                buttonVariants({ variant: "outline", size: "icon" }),
+                "size-9 rounded-full transition-all",
+                isTransparent
+                  ? "border-white/20 bg-slate-950/20 text-white backdrop-blur-sm hover:bg-slate-950/40"
+                  : "border-[var(--border)] bg-[var(--muted)] text-[var(--foreground)] hover:bg-[var(--muted)]/80"
+              )}
+            >
+              <ChannelIcon iconKey={channel.icon} iconOnly />
+            </a>
+          ))}
         </div>
       </div>
     </div>
