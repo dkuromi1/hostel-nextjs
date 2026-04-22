@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { StickyBookingBar } from "@/components/sticky-booking-bar";
+import { SwUpdatePrompt } from "@/components/sw-update-prompt";
 import { TitoTheCat } from "@/components/tito-the-cat";
 import { activeInstance } from "@/instances";
 import { getSiteUrl, metadataBase } from "@/lib/metadata";
@@ -115,6 +116,7 @@ export default async function RootLayout({
           {modal}
           <SiteFooter />
           <StickyBookingBar />
+          <SwUpdatePrompt />
           {propertyConfig.features.showMascot ? <TitoTheCat /> : null}
         </div>
       </body>
