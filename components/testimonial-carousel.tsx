@@ -120,9 +120,19 @@ export function TestimonialCarousel({
             <div
               key={index}
               onClick={() => goTo(index)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  goTo(index);
+                }
+              }}
+              role="button"
+              tabIndex={0}
               aria-label={`Go to testimonial ${index + 1}`}
+              aria-current={index === currentIndex ? "true" : undefined}
               className={cn(
                 "relative h-2 cursor-pointer rounded-full transition-all duration-300",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-700 dark:focus-visible:ring-offset-[var(--glass-bg)]",
                 "before:absolute before:left-1/2 before:top-1/2 before:h-11 before:w-[calc(100%+8px)] before:-translate-x-1/2 before:-translate-y-1/2 before:content-['']",
                 index === currentIndex
                   ? "w-8 bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.4)]"
