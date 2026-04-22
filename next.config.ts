@@ -27,13 +27,14 @@ const withSerwist = withSerwistInit({
 const isNetlify = process.env.NETLIFY === "true";
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   turbopack: {},
   allowedDevOrigins: isDev ? getAllowedDevOrigins() : undefined,
   images: isNetlify
     ? {
-        loader: "custom",
-        loaderFile: "./lib/netlify-image-loader.ts",
-      }
+      loader: "custom",
+      loaderFile: "./lib/netlify-image-loader.ts",
+    }
     : undefined,
 };
 

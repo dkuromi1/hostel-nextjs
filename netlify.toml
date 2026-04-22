@@ -3,5 +3,4 @@
   publish = ".next"
 
 [build.environment]
-  NEXT_CACHE_DIR = ".next/cache"
-
+  NODE_VERSION = "20"
