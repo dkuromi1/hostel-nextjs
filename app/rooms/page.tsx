@@ -24,8 +24,6 @@ import {
   paidServices,
   roomTypes,
   roomHeroHighlights,
-  podDormImages,
-  fourBedDormImages,
   siteCopyContent,
 } from "@/lib/site-data";
 import { testimonials } from "@/lib/site-data";
@@ -38,6 +36,8 @@ export const metadata = buildMetadata({
 });
 
 export default function RoomsPage() {
+  const primaryPricedRoom = roomTypes.find((room) => room.featured) ?? roomTypes[0];
+
   return (
     <>
       <StructuredData
@@ -81,7 +81,10 @@ export default function RoomsPage() {
             />
           </div>
           <div className="glass-panel rounded-[28px] p-5">
-            <SectionLabel variant="emerald" className="mb-4">{siteCopyContent.rooms.heroPriceBlurb.labelPrefix} <strong>{roomTypes[0].price} / Night</strong></SectionLabel>
+            <SectionLabel variant="emerald" className="mb-4">
+              {siteCopyContent.rooms.heroPriceBlurb.labelPrefix}{" "}
+              <strong>{primaryPricedRoom?.price ? `${primaryPricedRoom.price} / Night` : "Contact us for rates"}</strong>
+            </SectionLabel>
             <p className="mt-3 font-heading text-2xl leading-none tracking-[-0.04em] text-[var(--text-heading)]">
               {siteCopyContent.rooms.heroPriceBlurb.title}
             </p>
@@ -98,9 +101,7 @@ export default function RoomsPage() {
           />
           <div className="grid gap-8 lg:grid-cols-2">
             {roomTypes.map((room, index) => {
-              // Determine which image array to use based on the room name
-              const isPodDorm = room.name.includes("18-Bed");
-              const carouselImages = isPodDorm ? podDormImages : fourBedDormImages;
+              const carouselImages = room.images ?? [];
 
               return (
                 <Reveal key={room.name} delay={index * 100}>
