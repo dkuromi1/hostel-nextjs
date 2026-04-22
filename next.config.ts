@@ -24,18 +24,9 @@ const withSerwist = withSerwistInit({
   disable: isDev,
 });
 
-const isNetlify = process.env.NETLIFY === "true";
-
 const nextConfig: NextConfig = {
-  output: "standalone",
   turbopack: {},
   allowedDevOrigins: isDev ? getAllowedDevOrigins() : undefined,
-  images: isNetlify
-    ? {
-      loader: "custom",
-      loaderFile: "./lib/netlify-image-loader.ts",
-    }
-    : undefined,
   compiler: {
     removeConsole: !isDev,
   },
