@@ -14,7 +14,7 @@ export function VolunteerBanner() {
         rel="noreferrer"
         className="text-white underline decoration-indigo-400/30 underline-offset-4 hover:text-indigo-200 hover:decoration-indigo-400 transition-all duration-300"
       >
-        Contact us to apply →
+        Contact us<span className="hidden sm:inline"> to apply</span> →
       </a>
     </div>
   );

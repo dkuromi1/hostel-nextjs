@@ -5,7 +5,7 @@ import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Theme = "light" | "dark";
-type ThemeToggleVariant = "footer" | "nav" | "header";
+type ThemeToggleVariant = "footer" | "nav" | "header" | "switch";
 
 function persistTheme(theme: Theme) {
   document.cookie = `theme=${theme}; path=/; max-age=31536000; samesite=lax`;
@@ -73,9 +73,37 @@ export function ThemeToggle({ variant = "footer" }: { variant?: ThemeToggleVaria
             ? "size-8 border-white/10 bg-white/5"
             : variant === "header"
               ? "size-9 border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md"
-              : "h-[34px] w-[115px] border-[var(--border)] bg-transparent"
+              : variant === "switch"
+                ? "h-8 w-14 border-[var(--border)] bg-[var(--muted)]"
+                : "h-[34px] w-[115px] border-[var(--border)] bg-transparent"
         )} 
       />
+    );
+  }
+
+  if (variant === "switch") {
+    return (
+      <button
+        onClick={toggleTheme}
+        className={cn(
+          "relative h-8 w-14 cursor-pointer rounded-full border border-[var(--border)] bg-[var(--muted)] p-1 transition-all duration-300 active:scale-95",
+          theme === "dark" ? "bg-slate-800" : "bg-emerald-50"
+        )}
+        aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
+      >
+        <div
+          className={cn(
+            "flex size-6 items-center justify-center rounded-full bg-white shadow-sm transition-all duration-300",
+            theme === "dark" ? "translate-x-6 bg-slate-700" : "translate-x-0"
+          )}
+        >
+          {theme === "light" ? (
+            <Sun className="size-3.5 text-amber-500" />
+          ) : (
+            <Moon className="size-3.5 text-indigo-400" />
+          )}
+        </div>
+      </button>
     );
   }
 

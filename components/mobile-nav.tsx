@@ -156,8 +156,8 @@ export function MobileNav() {
                     ))}
                   </div>
                 ) : null}
-                <div className="mt-1 flex justify-center">
-                  <ThemeToggle variant="nav" />
+                <div className="mt-1 flex justify-end">
+                  <ThemeToggle variant="switch" />
                 </div>
               </motion.div>
             </nav>
