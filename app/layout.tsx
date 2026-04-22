@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { cookies } from "next/headers";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -20,6 +19,27 @@ const nunito = Nunito({
   display: "swap",
   variable: "--font-nunito",
 });
+
+const themeBootstrapScript = `
+(() => {
+  try {
+    const root = document.documentElement;
+    const cookieTheme = document.cookie
+      .split("; ")
+      .find((entry) => entry.startsWith("theme="))
+      ?.split("=")[1];
+    const legacyTheme = localStorage.getItem("theme");
+    const nextTheme =
+      cookieTheme === "dark" || cookieTheme === "light"
+        ? cookieTheme
+        : legacyTheme === "dark" || legacyTheme === "light"
+          ? legacyTheme
+          : "light";
+
+    root.classList.toggle("dark", nextTheme === "dark");
+  } catch {}
+})();
+`;
 
 export const metadata: Metadata = {
   metadataBase,
@@ -76,24 +96,26 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
   modal,
 }: Readonly<{
   children: ReactNode;
   modal: ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const savedTheme = cookieStore.get("theme")?.value;
   const analyticsWebsiteId = process.env[activeInstance.integrations.analytics.websiteIdEnvVar];
 
   return (
     <html
       lang="en"
-      className={cn("h-full scroll-smooth", nunito.variable, savedTheme === "dark" && "dark")}
+      suppressHydrationWarning
+      className={cn("h-full scroll-smooth", nunito.variable)}
       data-scroll-behavior="smooth"
     >
       <head>
+        <Script id="theme-bootstrap" strategy="beforeInteractive">
+          {themeBootstrapScript}
+        </Script>
         {externalPreconnectOrigins.map((origin) => (
           <link key={`preconnect-${origin}`} rel="preconnect" href={origin} />
         ))}
