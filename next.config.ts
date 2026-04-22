@@ -36,6 +36,14 @@ const nextConfig: NextConfig = {
       loaderFile: "./lib/netlify-image-loader.ts",
     }
     : undefined,
+  compiler: {
+    removeConsole: !isDev,
+  },
+  experimental: {
+    optimizePackageImports: ['framer-motion', 'lucide-react'],
+  },
+  poweredByHeader: false,
+  compress: true,
 };
 
 export default withSerwist(nextConfig);
