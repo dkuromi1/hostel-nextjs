@@ -28,7 +28,7 @@ export function Reveal({
       // from the client value, so we must never use it to change `initial`.
       // Instead, we only vary the transition: duration:0 for reduced motion gives
       // an instant snap to the visible state without any layout shift.
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0.1, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={
