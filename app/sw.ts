@@ -164,7 +164,10 @@ const runtimeCaching = [
 
 const precacheEntries = [
   ...(self.__SW_MANIFEST?.filter(
-    (entry) => !isAdminPrecacheEntry(entry) && !isLargeMediaPrecacheEntry(entry),
+    (entry) =>
+      !isAdminPrecacheEntry(entry) &&
+      !isLargeMediaPrecacheEntry(entry) &&
+      getEntryPathname(entry) !== OFFLINE_PAGE_URL,
   ) ?? []),
   { url: OFFLINE_PAGE_URL, revision: "1" },
 ];
