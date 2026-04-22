@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { Home } from 'lucide-react';
+import { Home, AlertCircle } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import { activeInstance } from '@/instances';
 import { siteConfig } from '@/lib/site-data';
@@ -146,6 +146,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
     const mapRef = useRef<mapboxgl.Map | null>(null);
     const sensitiveMarkersRef = useRef<HTMLElement[]>([]);
     const [isSatellite, setIsSatellite] = React.useState(false);
+    const [mapError, setMapError] = useState<string | null>(null);
     const isSatelliteRef = useRef(false);
 
     const getLightPreset = () =>
@@ -316,61 +317,109 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         let isCancelled = false;
 
         const initMap = async () => {
-            if (siteConfig.features.showLocalPois) {
-                const poisModule = await activeInstance.loaders.loadPois();
-                recommendedPoisRef.current = poisModule.recommendedPois as MapPOI[];
-            } else {
-                recommendedPoisRef.current = [];
-            }
-
-            if (siteConfig.features.showRegionalTrails) {
-                const tracksModule = await activeInstance.loaders.loadTrailGeoJson();
-                trailGeoJsonRef.current = tracksModule as mapboxgl.GeoJSONSourceSpecification["data"];
-            } else {
-                trailGeoJsonRef.current = null;
-            }
-
-            if (isCancelled || !mapContainerRef.current) {
-                return;
-            }
-
-            const q = initialPoiQueryRef.current ? initialPoiQueryRef.current.toLowerCase() : '';
-            let initialCenter = HOSTEL_COORDS;
-            let initialZoom = 15.5;
-
-            if (q) {
-                const matchedPoi = recommendedPoisRef.current.find((p) => q.includes(p.name.toLowerCase()) || p.name.toLowerCase().includes(q));
-                if (matchedPoi) {
-                    initialCenter = matchedPoi.coords as [number, number];
-                    initialZoom = 16.5;
-                } else if (siteConfig.features.showRegionalTrails && (q === THETH_VALBONA_MAP_QUERY || (activeInstance.mapConfig.keywords.theth.every(k => q.includes(k))))) {
-                    initialCenter = THETH_VALBONA_MIDPOINT_COORDS;
-                    initialZoom = 10.5;
-                } else if (q === SHALA_RIVER_MAP_QUERY || (activeInstance.mapConfig.keywords.shala.every(k => q.includes(k)))) {
-                    initialCenter = SHALA_RIVER_MIDPOINT_COORDS;
-                    initialZoom = 10.5;
-                } else if (q === KOMANI_FERRY_MAP_QUERY || (activeInstance.mapConfig.keywords.komani.every(k => q.includes(k)))) {
-                    initialCenter = KOMANI_FERRY_COORDS;
-                    initialZoom = 13.5;
-                } else if (activeInstance.mapConfig.keywords.pedestrian.some(k => q.includes(k))) {
-                    initialCenter = PEDONALE_COORDS[1] as [number, number];
-                    initialZoom = 16.5;
+            try {
+                // WebGL capability detection
+                const checkWebGLSupport = () => {
+                    const canvas = document.createElement('canvas');
+                    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl') as WebGLRenderingContext | null;
+                    
+                    if (!gl) {
+                        return {
+                            supported: false,
+                            reason: 'WebGL not supported by browser'
+                        };
+                    }
+                    
+                    // Check for specific WebGL extensions that Mapbox requires
+                    const requiredExtensions = ['OES_element_index_uint', 'OES_texture_float', 'WEBGL_depth_texture'];
+                    const missingExtensions = requiredExtensions.filter(ext => !gl.getExtension(ext));
+                    
+                    if (missingExtensions.length > 0) {
+                        return {
+                            supported: false,
+                            reason: `Missing required WebGL extensions: ${missingExtensions.join(', ')}`
+                        };
+                    }
+                    
+                    // Check renderer info for potential issues
+                    const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+                    if (debugInfo) {
+                        const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+                        const vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+                        console.log('WebGL Renderer Info:', { vendor, renderer });
+                        
+                        // Check for known problematic renderers
+                        if (renderer.includes('Software') || renderer.includes('Microsoft Basic Render')) {
+                            return {
+                                supported: false,
+                                reason: 'Software rendering detected - hardware acceleration may be disabled'
+                            };
+                        }
+                    }
+                    
+                    return { supported: true };
+                };
+                
+                const webglCheck = checkWebGLSupport();
+                if (!webglCheck.supported) {
+                    throw new Error(`WebGL initialization failed: ${webglCheck.reason}`);
                 }
-            }
 
-            mapboxgl.accessToken = accessToken;
+                if (siteConfig.features.showLocalPois) {
+                    const poisModule = await activeInstance.loaders.loadPois();
+                    recommendedPoisRef.current = poisModule.recommendedPois as MapPOI[];
+                } else {
+                    recommendedPoisRef.current = [];
+                }
 
-            const m = new mapboxgl.Map({
-                container: mapContainerRef.current,
-                style: STANDARD_STYLE,
-                center: HOSTEL_COORDS,
-                zoom: 13,
-                pitch: 45,
-                bearing: -17.6,
-                antialias: false,
-                fadeDuration: 300,
-                maxTileCacheSize: mobile ? 20 : undefined,
-            });
+                if (siteConfig.features.showRegionalTrails) {
+                    const tracksModule = await activeInstance.loaders.loadTrailGeoJson();
+                    trailGeoJsonRef.current = tracksModule as mapboxgl.GeoJSONSourceSpecification["data"];
+                } else {
+                    trailGeoJsonRef.current = null;
+                }
+
+                if (isCancelled || !mapContainerRef.current) {
+                    return;
+                }
+
+                const q = initialPoiQueryRef.current ? initialPoiQueryRef.current.toLowerCase() : '';
+                let initialCenter = HOSTEL_COORDS;
+                let initialZoom = 15.5;
+
+                if (q) {
+                    const matchedPoi = recommendedPoisRef.current.find((p) => q.includes(p.name.toLowerCase()) || p.name.toLowerCase().includes(q));
+                    if (matchedPoi) {
+                        initialCenter = matchedPoi.coords as [number, number];
+                        initialZoom = 16.5;
+                    } else if (siteConfig.features.showRegionalTrails && (q === THETH_VALBONA_MAP_QUERY || (activeInstance.mapConfig.keywords.theth.every(k => q.includes(k))))) {
+                        initialCenter = THETH_VALBONA_MIDPOINT_COORDS;
+                        initialZoom = 10.5;
+                    } else if (q === SHALA_RIVER_MAP_QUERY || (activeInstance.mapConfig.keywords.shala.every(k => q.includes(k)))) {
+                        initialCenter = SHALA_RIVER_MIDPOINT_COORDS;
+                        initialZoom = 10.5;
+                    } else if (q === KOMANI_FERRY_MAP_QUERY || (activeInstance.mapConfig.keywords.komani.every(k => q.includes(k)))) {
+                        initialCenter = KOMANI_FERRY_COORDS;
+                        initialZoom = 13.5;
+                    } else if (activeInstance.mapConfig.keywords.pedestrian.some(k => q.includes(k))) {
+                        initialCenter = PEDONALE_COORDS[1] as [number, number];
+                        initialZoom = 16.5;
+                    }
+                }
+
+                mapboxgl.accessToken = accessToken;
+
+                const m = new mapboxgl.Map({
+                    container: mapContainerRef.current,
+                    style: STANDARD_STYLE,
+                    center: HOSTEL_COORDS,
+                    zoom: 13,
+                    pitch: 45,
+                    bearing: -17.6,
+                    antialias: false,
+                    fadeDuration: 300,
+                    maxTileCacheSize: mobile ? 20 : undefined,
+                });
 
             map = m;
             mapRef.current = m;
@@ -589,6 +638,42 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                     if (mapRef.current) mapRef.current.resize();
                 }, 50);
             });
+            } catch (error) {
+                console.error('Failed to initialize map:', error);
+                
+                // If the initial map setup failed, try with a minimal configuration
+                if (!mapError && error instanceof Error && error.message.includes('WebGL')) {
+                    try {
+                        console.log('Attempting fallback map configuration...');
+                        const fallbackMap = new mapboxgl.Map({
+                            container: mapContainerRef.current!,
+                            style: 'mapbox://styles/mapbox/streets-v12',
+                            center: HOSTEL_COORDS,
+                            zoom: 13,
+                            pitch: 0,
+                            bearing: 0,
+                            antialias: false,
+                            fadeDuration: 0,
+                            maxTileCacheSize: 5,
+                            failIfMajorPerformanceCaveat: false,
+                            preserveDrawingBuffer: false,
+                            attributionControl: false,
+                        });
+                        
+                        map = fallbackMap;
+                        mapRef.current = fallbackMap;
+                        
+                        // Add minimal controls
+                        fallbackMap.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'bottom-right');
+                        
+                        return; // Success with fallback
+                    } catch (fallbackError) {
+                        console.error('Fallback map also failed:', fallbackError);
+                    }
+                }
+                
+                setMapError(error instanceof Error ? error.message : 'Failed to initialize map. WebGL may not be supported in your browser.');
+            }
         };
 
         void initMap();
@@ -681,10 +766,28 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
 
     return (
         <div className="absolute inset-0 h-full w-full overflow-hidden">
-            <div ref={mapContainerRef} className="h-full w-full" />
+            {mapError ? (
+                <div className="flex h-full w-full flex-col items-center justify-center bg-gray-100 p-8 text-center dark:bg-gray-900">
+                    <AlertCircle className="mb-4 size-12 text-red-500" />
+                    <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
+                        Map Unavailable
+                    </h3>
+                    <p className="mb-4 max-w-md text-sm text-gray-600 dark:text-gray-400">
+                        {mapError}
+                    </p>
+                    <div className="rounded-lg bg-gray-200 p-4 dark:bg-gray-800">
+                        <p className="text-xs text-gray-500 dark:text-gray-400">
+                            This may be due to WebGL not being supported in your browser or hardware acceleration being disabled.
+                        </p>
+                    </div>
+                </div>
+            ) : (
+                <div ref={mapContainerRef} className="h-full w-full" />
+            )}
 
             {/* Custom Map Controls */}
-            <div className="absolute left-4 top-4 z-10 flex items-center gap-2">
+            {!mapError && (
+                <div className="absolute left-4 top-4 z-10 flex items-center gap-2">
                 <button
                     onClick={recenterOnHostel}
                     title={`Recenter on ${siteConfig.shortName}`}
@@ -701,10 +804,12 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                     <div className="size-2 rounded-full bg-sky-400 shadow-[0_0_8px_#38bdf8]" />
                     {isSatellite ? 'View Streets' : 'View Aerial'}
                 </button>
-            </div>
+                </div>
+            )}
 
             {/* Map Legend - Hidden at regional zoom levels (< 11) using DOM manipulation */}
-            <div id="map-legend" className="absolute bottom-4 left-4 z-10 flex flex-col gap-2 rounded-xl border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md p-2.5 text-[9px] font-bold uppercase tracking-widest text-[var(--text-heading)] shadow-lg transition-opacity duration-500 opacity-100">
+            {!mapError && (
+                <div id="map-legend" className="absolute bottom-4 left-4 z-10 flex flex-col gap-2 rounded-xl border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md p-2.5 text-[9px] font-bold uppercase tracking-widest text-[var(--text-heading)] shadow-lg transition-opacity duration-500 opacity-100">
                 <div className="flex items-center gap-3">
                     <div className="h-0.5 w-6 border-t border-dashed border-[var(--brand-primary)] opacity-90" />
                     <span>5 Minute Walk Area</span>
@@ -743,7 +848,8 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                         </div>
                     </div>
                 ) : null}
-            </div>
+                </div>
+            )}
         </div>
     );
 }
