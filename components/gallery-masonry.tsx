@@ -16,9 +16,10 @@ type GalleryMasonryProps = {
         desktop?: number;
     };
     category?: string;
+    priorityImageCount?: number;
 };
 
-const PRIORITY_IMAGE_COUNT = 2;
+const DEFAULT_PRIORITY_IMAGE_COUNT = 2;
 
 function distributeItems(items: GalleryItem[], numColumns: number) {
     const columnData = Array.from({ length: numColumns }, () => ({
@@ -49,7 +50,11 @@ function distributeItems(items: GalleryItem[], numColumns: number) {
     return columnData.map(col => col.items);
 }
 
-export function GalleryMasonry({ items, columns = { mobile: 2, tablet: 3, desktop: 4 } }: GalleryMasonryProps) {
+export function GalleryMasonry({
+    items,
+    columns = { mobile: 2, tablet: 3, desktop: 4 },
+    priorityImageCount = DEFAULT_PRIORITY_IMAGE_COUNT,
+}: GalleryMasonryProps) {
     const [columnCount, setColumnCount] = useState(4); // Default to desktop
 
     useEffect(() => {
@@ -135,7 +140,7 @@ export function GalleryMasonry({ items, columns = { mobile: 2, tablet: 3, deskto
                     <div key={colIdx} className="flex flex-col gap-4 flex-1">
                         {colItems.map(({ item, originalIndex }) => (
                             <div key={item.id} className="w-full">
-                                {renderItem(item, originalIndex < PRIORITY_IMAGE_COUNT)}
+                                {renderItem(item, originalIndex < priorityImageCount)}
                             </div>
                         ))}
                     </div>
