@@ -1,4 +1,5 @@
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import {
   Check,
 } from "lucide-react";
@@ -7,13 +8,14 @@ import { resolveIcon } from "@/lib/icon-registry";
 import { CtaStrip } from "@/components/cta-strip";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
-import { SectionHeading } from "@/components/section-heading";
 import { StructuredData } from "@/components/structured-data";
 import { SectionLabel } from "@/components/ui/section-label";
 import { Badge } from "@/components/ui/badge";
-import { Panel } from "@/components/ui/panel";
 import { TestimonialCarousel } from "@/components/testimonial-carousel";
-import { ImageCarousel } from "@/components/image-carousel";
+
+const SectionHeading = dynamic(() => import("@/components/section-heading").then(mod => mod.SectionHeading), { ssr: true });
+const Panel = dynamic(() => import("@/components/ui/panel").then(mod => mod.Panel), { ssr: true });
+const ImageCarousel = dynamic(() => import("@/components/image-carousel").then(mod => mod.ImageCarousel), { ssr: true });
 import {
   buildBreadcrumbSchema,
   buildBusinessSchema,

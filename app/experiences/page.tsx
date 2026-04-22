@@ -5,14 +5,15 @@ import {
   Navigation,
 } from "lucide-react";
 
-import { CtaStrip } from "@/components/cta-strip";
-import { LocationMap } from "@/components/location-map";
+import dynamic from "next/dynamic";
+const LocationMap = dynamic(() => import("@/components/location-map").then(mod => mod.LocationMap), { ssr: true });
+const SwipableRow = dynamic(() => import("@/components/swipable-row").then(mod => mod.SwipableRow), { ssr: true });
+const Panel = dynamic(() => import("@/components/ui/panel").then(mod => mod.Panel), { ssr: true });
+const CtaStrip = dynamic(() => import("@/components/cta-strip").then(mod => mod.CtaStrip), { ssr: true });
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { StructuredData } from "@/components/structured-data";
-import { SwipableRow } from "@/components/swipable-row";
 import { ThethWeather } from "@/components/theth-weather";
-import { Panel } from "@/components/ui/panel";
 import {
   buildBreadcrumbSchema,
   buildBusinessSchema,

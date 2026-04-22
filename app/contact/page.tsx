@@ -5,16 +5,18 @@ import {
   MessageCircleMore,
 } from "lucide-react";
 
+import dynamic from "next/dynamic";
 import { BookingActions } from "@/components/booking-actions";
-import { CtaStrip } from "@/components/cta-strip";
-import { FaqList } from "@/components/faq-list";
-import { LocationMap } from "@/components/location-map";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { SectionLabel } from "@/components/ui/section-label";
 import { StructuredData } from "@/components/structured-data";
-import { Panel } from "@/components/ui/panel";
+
+const LocationMap = dynamic(() => import("@/components/location-map").then(mod => mod.LocationMap), { ssr: true });
+const FaqList = dynamic(() => import("@/components/faq-list").then(mod => mod.FaqList), { ssr: true });
+const CtaStrip = dynamic(() => import("@/components/cta-strip").then(mod => mod.CtaStrip), { ssr: true });
+const Panel = dynamic(() => import("@/components/ui/panel").then(mod => mod.Panel), { ssr: true });
 import { buildBreadcrumbSchema, buildMetadata } from "@/lib/metadata";
 import {
   faqItems,

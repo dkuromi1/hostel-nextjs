@@ -1,7 +1,9 @@
-import { GalleryView } from "@/components/gallery-view";
+import dynamic from "next/dynamic";
 import { StructuredData } from "@/components/structured-data";
 import { buildBreadcrumbSchema, buildMetadata } from "@/lib/metadata";
 import { siteCopyContent } from "@/lib/site-data";
+
+const GalleryView = dynamic(() => import("@/components/gallery-view").then(mod => mod.GalleryView), { ssr: true });
 
 export const metadata = buildMetadata({
   title: siteCopyContent.gallery.metadata.title,

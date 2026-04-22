@@ -8,14 +8,16 @@ import {
 import { siteCopyContent } from "@/lib/site-data";
 
 // Extracted Home Components
+import dynamic from "next/dynamic";
 import { HeroSection } from "@/components/home/hero-section";
 import { AtmosphereSection } from "@/components/home/atmosphere-section";
-import { RoomsSection } from "@/components/home/rooms-section";
-import { IncludedServicesSection } from "@/components/home/services-section";
-import { HomeGallerySection } from "@/components/home/gallery-section";
-import { ExperiencesSection } from "@/components/home/experiences-section";
-import { TestimonialsVibeSection } from "@/components/home/testimonials-vibe-section";
-import { GuestRatingsSection } from "@/components/home/guest-ratings";
+
+const RoomsSection = dynamic(() => import("@/components/home/rooms-section").then(mod => mod.RoomsSection), { ssr: true });
+const IncludedServicesSection = dynamic(() => import("@/components/home/services-section").then(mod => mod.IncludedServicesSection), { ssr: true });
+const HomeGallerySection = dynamic(() => import("@/components/home/gallery-section").then(mod => mod.HomeGallerySection), { ssr: true });
+const ExperiencesSection = dynamic(() => import("@/components/home/experiences-section").then(mod => mod.ExperiencesSection), { ssr: true });
+const TestimonialsVibeSection = dynamic(() => import("@/components/home/testimonials-vibe-section").then(mod => mod.TestimonialsVibeSection), { ssr: true });
+const GuestRatingsSection = dynamic(() => import("@/components/home/guest-ratings").then(mod => mod.GuestRatingsSection), { ssr: true });
 
 export const metadata = buildMetadata({
   title: siteCopyContent.home.metadata.title,
