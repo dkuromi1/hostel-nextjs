@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { Star, Award } from "lucide-react";
 import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";

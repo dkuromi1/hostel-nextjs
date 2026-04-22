@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 
+import { DeferredClient } from "@/components/deferred-client";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { StickyBookingBar } from "@/components/sticky-booking-bar";
@@ -138,8 +139,10 @@ export default function RootLayout({
           {modal}
           <SiteFooter />
           <StickyBookingBar />
-          <SwUpdatePrompt />
-          {propertyConfig.features.showMascot ? <TitoTheCat /> : null}
+          <DeferredClient>
+            <SwUpdatePrompt />
+            {propertyConfig.features.showMascot ? <TitoTheCat /> : null}
+          </DeferredClient>
         </div>
       </body>
     </html>
