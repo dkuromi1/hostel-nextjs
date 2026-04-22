@@ -19,6 +19,22 @@ type ImageCarouselProps = {
 };
 
 const SWIPE_THRESHOLD = 50; // px — minimum drag distance to trigger a slide change
+const PRELOAD_RADIUS = 1;
+
+function shouldRenderSlide(
+    slideIndex: number,
+    currentIndex: number,
+    totalSlides: number,
+) {
+    if (totalSlides <= (PRELOAD_RADIUS * 2) + 1) {
+        return true;
+    }
+
+    const distance = Math.abs(slideIndex - currentIndex);
+    const wrappedDistance = totalSlides - distance;
+
+    return Math.min(distance, wrappedDistance) <= PRELOAD_RADIUS;
+}
 
 export function ImageCarousel({
     images,
@@ -77,14 +93,21 @@ export function ImageCarousel({
             >
                 {images.map((img, index) => (
                     <div key={index} className="relative h-full w-full shrink-0" style={{ minWidth: "100%" }}>
-                        <Image
-                            src={img.src}
-                            alt={img.alt}
-                            fill
-                            draggable={false} // prevent browser native image drag interfering with FM
-                            className="pointer-events-none object-cover"
-                            sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 50vw, 700px"
-                        />
+                        {shouldRenderSlide(index, currentIndex, images.length) ? (
+                            <Image
+                                src={img.src}
+                                alt={img.alt}
+                                fill
+                                draggable={false} // prevent browser native image drag interfering with FM
+                                className="pointer-events-none object-cover"
+                                sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 50vw, 700px"
+                            />
+                        ) : (
+                            <div
+                                aria-hidden="true"
+                                className="h-full w-full bg-slate-100/50"
+                            />
+                        )}
                     </div>
                 ))}
             </motion.div>
