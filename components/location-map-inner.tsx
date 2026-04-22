@@ -5,7 +5,7 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Home } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
-import { activeInstance } from '@/instances/scodrinon';
+import { activeInstance } from '@/instances';
 import { siteConfig } from '@/lib/site-data';
 
 interface LocationMapInnerProps {

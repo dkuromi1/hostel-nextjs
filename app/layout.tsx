@@ -6,7 +6,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { StickyBookingBar } from "@/components/sticky-booking-bar";
 import { TitoTheCat } from "@/components/tito-the-cat";
-import { activeInstance } from "@/instances/scodrinon";
+import { activeInstance } from "@/instances";
 import { getSiteUrl, metadataBase } from "@/lib/metadata";
 import { externalPreconnectOrigins, propertyConfig } from "@/lib/site-data";
 import { cn } from "@/lib/utils";

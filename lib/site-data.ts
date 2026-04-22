@@ -1,5 +1,5 @@
 import { isIconName, type IconName } from "./icon-registry";
-import { activeInstance } from "../instances/scodrinon";
+import { activeInstance } from "../instances";
 
 interface SettingsContent {
   business: {
