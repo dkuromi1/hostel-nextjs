@@ -187,4 +187,12 @@ serwist.setCatchHandler(async ({ request }) => {
   return Response.error();
 });
 
+// Add error handling for precaching failures
+self.addEventListener('unhandledrejection', (event) => {
+  if (event.reason && event.reason.message && event.reason.message.includes('bad-precaching-response')) {
+    console.warn('Precaching error handled:', event.reason);
+    event.preventDefault();
+  }
+});
+
 serwist.addEventListeners();
