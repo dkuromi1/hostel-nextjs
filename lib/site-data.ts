@@ -78,11 +78,9 @@ interface SettingsChannel {
   enabled: boolean;
 }
 
-export type BusinessChannelIconKey =
-  | "whatsapp"
-  | "instagram"
-  | "bookingCom"
-  | "hostelworld";
+// Open icon key space so new properties can add channels
+// (Airbnb, Expedia, email, phone, etc.) without code-level type updates.
+export type BusinessChannelIconKey = string;
 
 export type BusinessChannelStylePriority = "primary" | "secondary" | "tertiary";
 

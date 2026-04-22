@@ -53,8 +53,8 @@ collections:
                   - { label: "URL", name: "url", widget: "string" }
                   - label: "Icon"
                     name: "icon"
-                    widget: "select"
-                    options: ["whatsapp", "instagram", "bookingCom", "hostelworld"]
+                    widget: "string"
+                    hint: "Examples: whatsapp, instagram, bookingCom, hostelworld, email, phone, website, facebook, airbnb, expedia"
                   - label: "Style Priority"
                     name: "stylePriority"
                     widget: "select"
@@ -80,8 +80,8 @@ collections:
                   - { label: "URL", name: "url", widget: "string" }
                   - label: "Icon"
                     name: "icon"
-                    widget: "select"
-                    options: ["whatsapp", "instagram", "bookingCom", "hostelworld"]
+                    widget: "string"
+                    hint: "Examples: whatsapp, instagram, bookingCom, hostelworld, email, phone, website, facebook, airbnb, expedia"
                   - label: "Style Priority"
                     name: "stylePriority"
                     widget: "select"
