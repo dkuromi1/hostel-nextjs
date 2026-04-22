@@ -82,8 +82,9 @@ Add stronger new reviews to the top if they should appear on the homepage first.
 1. Images go in `instances/scodrinon/public/images/`
 2. Videos go in `instances/scodrinon/public/videos/`
 3. Branding source files live in `instances/scodrinon/public/branding/`
-4. App and public icon entrypoints are symlinked to the instance branding files
-5. PWA settings live in `public/site.webmanifest`
+4. App and public icon entrypoints are copied from the instance branding files for build compatibility
+5. To sync instance assets to public after manual updates, run: `cp -R instances/scodrinon/public/* public/`
+6. PWA settings live in `public/site.webmanifest`
 
 ## SEO Notes
 
