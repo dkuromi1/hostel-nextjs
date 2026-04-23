@@ -69,10 +69,10 @@ Add stronger new reviews to the top if they should appear on the homepage first.
 ## Media Uploads
 
 ### Manual Uploads
-1. Images go in `instances/scodrinon/public/images/`
+1. Images go in `public/images/`
 2. Videos go in `instances/scodrinon/public/videos/`
 3. Branding source files live in `instances/scodrinon/public/branding/`
-4. **Syncing**: After manual updates, run: `cp -R instances/scodrinon/public/* public/`
+4. CMS image uploads already land in `public/images/`; no extra sync step is needed for those.
 
 ## SEO & Icon Management
 
@@ -92,5 +92,4 @@ Add stronger new reviews to the top if they should appear on the homepage first.
 | Add a guest review | `Testimonials` -> add new |
 | Add a gallery photo | `Gallery` -> add new |
 | Update FAQ | `FAQs` -> edit FAQ content |
-
 
