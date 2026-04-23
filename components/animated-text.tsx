@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, type Variant, type Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 type AnimatedTextProps = {
@@ -22,23 +22,23 @@ export function AnimatedText({
   // `hidden` state is always the same on server and client so there is no
   // hydration mismatch. `useReducedMotion` is only used to control the
   // transition (duration vs spring), which doesn't affect initially-painted HTML.
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: {},
-    visible: {
-      transition: shouldReduceMotion
-        ? { duration: 0 }
-        : {
+    visible: (shouldReduceMotion
+      ? {}
+      : {
+        transition: {
           delayChildren: delayOffset / 1000,
           staggerChildren: 0.04,
         },
-    },
+      }) as Variant,
   };
 
-  const wordVariants = {
+  const wordVariants: Variants = {
     // We use opacity 0.01 instead of 0 to ensure Lighthouse's LCP scanner
     // considers the element "painted" immediately (threshold is opacity > 0).
     hidden: { opacity: 0.01, y: 24 },
-    visible: {
+    visible: ({
       opacity: 1,
       y: 0,
       transition: shouldReduceMotion
@@ -49,7 +49,7 @@ export function AnimatedText({
           stiffness: 180,
           mass: 0.8,
         },
-    },
+    }) as Variant,
   };
 
   return (

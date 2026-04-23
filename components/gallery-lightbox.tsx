@@ -19,7 +19,7 @@ function GalleryVideo({ src, poster, alt, layoutId }: { src: string; poster?: st
     const [isPresent] = usePresence();
 
     React.useEffect(() => {
-        const video = videoRef.current;
+        const video = videoRef.current as HTMLMediaElement | null;
         if (video) {
             if (isPresent) {
                 video.currentTime = 0;
@@ -31,7 +31,7 @@ function GalleryVideo({ src, poster, alt, layoutId }: { src: string; poster?: st
     }, [isPresent, src]);
 
     React.useEffect(() => {
-        const video = videoRef.current;
+        const video = videoRef.current as HTMLMediaElement | null;
 
         return () => {
             video?.pause();
