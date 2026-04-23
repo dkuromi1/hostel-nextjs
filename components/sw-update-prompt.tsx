@@ -3,12 +3,30 @@
 import { useEffect, useRef, useState } from "react";
 import { RefreshCw, X } from "lucide-react";
 
+const SERVICE_WORKER_PATH = "/sw.js";
+
 function isServiceWorkerSupported() {
   return typeof window !== "undefined" && "serviceWorker" in navigator;
 }
 
 function isAdminRoute(pathname: string) {
   return pathname === "/admin" || pathname.startsWith("/admin/");
+}
+
+async function isServiceWorkerAvailable() {
+  try {
+    const response = await fetch(SERVICE_WORKER_PATH, {
+      method: "HEAD",
+      cache: "no-store",
+    });
+
+    if (!response.ok) return false;
+
+    const contentType = response.headers.get("content-type");
+    return contentType ? !contentType.includes("text/html") : true;
+  } catch {
+    return false;
+  }
 }
 
 export function SwUpdatePrompt() {
@@ -43,8 +61,11 @@ export function SwUpdatePrompt() {
     };
 
     const setupRegistration = async () => {
+      const serviceWorkerAvailable = await isServiceWorkerAvailable();
+      if (!serviceWorkerAvailable) return;
+
       try {
-        const registration = await navigator.serviceWorker.register("/sw.js");
+        const registration = await navigator.serviceWorker.register(SERVICE_WORKER_PATH);
         showUpdate(registration);
 
         registration.addEventListener("updatefound", () => {
