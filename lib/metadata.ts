@@ -67,6 +67,7 @@ type MetadataInput = {
   description: string;
   path?: string;
   image?: string;
+  imageAlt?: string;
   keywords?: readonly string[];
 };
 
@@ -75,6 +76,7 @@ export function buildMetadata({
   description,
   path = "/",
   image = siteConfig.seo.ogImage,
+  imageAlt = title,
   keywords = siteConfig.baseKeywords,
 }: MetadataInput): Metadata {
   return {
@@ -94,7 +96,7 @@ export function buildMetadata({
       images: [
         {
           url: getSiteUrl(image),
-          alt: title,
+          alt: imageAlt,
         },
       ],
     },

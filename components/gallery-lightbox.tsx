@@ -144,11 +144,25 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
     }, [goToPrev, goToNext]); 
 
     const handleClose = React.useCallback(() => {
-        if (typeof window !== "undefined" && window.history.length <= 2) {
-            router.push("/gallery");
-        } else {
-            router.back();
+        if (typeof window === "undefined") {
+            router.replace("/gallery");
+            return;
         }
+
+        const currentPath = window.location.pathname;
+
+        if (window.history.length <= 2) {
+            router.replace("/gallery");
+            return;
+        }
+
+        router.back();
+
+        window.setTimeout(() => {
+            if (window.location.pathname === currentPath) {
+                router.replace("/gallery");
+            }
+        }, 150);
     }, [router]);
 
     const item = galleryItems[activeIndex];
