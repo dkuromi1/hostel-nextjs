@@ -119,40 +119,45 @@ export function TestimonialCarousel({
           {testimonials.map((_, index) => (
             <div
               key={index}
-              onClick={() => goTo(index)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  goTo(index);
-                }
-              }}
-              role="button"
-              tabIndex={0}
-              aria-label={`Go to testimonial ${index + 1}`}
-              aria-current={index === currentIndex ? "true" : undefined}
               className={cn(
-                "relative h-2 cursor-pointer rounded-full transition-all duration-300",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-700 dark:focus-visible:ring-offset-[var(--glass-bg)]",
-                "before:absolute before:left-1/2 before:top-1/2 before:h-11 before:w-[calc(100%+8px)] before:-translate-x-1/2 before:-translate-y-1/2 before:content-['']",
-                index === currentIndex
-                  ? "w-8 bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.4)]"
-                  : "w-2 bg-white/20 hover:bg-white/30 dark:bg-[var(--muted)] dark:hover:bg-[var(--text-muted)]"
+                "relative h-2 shrink-0",
+                index === currentIndex ? "w-8" : "w-2"
               )}
-            />
+            >
+              <button
+                type="button"
+                onClick={() => goTo(index)}
+                aria-label={`Go to testimonial ${index + 1}`}
+                aria-current={index === currentIndex ? "true" : undefined}
+                className={cn(
+                  "absolute left-1/2 top-1/2 z-10 flex size-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full transition-all duration-300",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-700 dark:focus-visible:ring-offset-[var(--glass-bg)]"
+                )}
+              >
+              <span
+                className={cn(
+                  "block h-2 rounded-full transition-all duration-300",
+                  index === currentIndex
+                    ? "w-8 bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.4)]"
+                    : "w-2 bg-white/20 hover:bg-white/30 dark:bg-[var(--muted)] dark:hover:bg-[var(--text-muted)]"
+                )}
+              />
+              </button>
+            </div>
           ))}
         </div>
         <div className="flex gap-2">
           <button
             onClick={prev}
             aria-label="Previous testimonial"
-            className="flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-110 active:scale-95 dark:border-[var(--border)] dark:bg-[var(--muted)] dark:text-[var(--text-heading)] dark:hover:bg-emerald-500 dark:hover:text-white"
+            className="flex size-8 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-110 active:scale-95 dark:border-[var(--border)] dark:bg-[var(--muted)] dark:text-[var(--text-heading)] dark:hover:bg-emerald-500 dark:hover:text-white"
           >
             <ChevronLeft className="size-5" />
           </button>
           <button
             onClick={next}
             aria-label="Next testimonial"
-            className="flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-110 active:scale-95 dark:border-[var(--border)] dark:bg-[var(--muted)] dark:text-[var(--text-heading)] dark:hover:bg-emerald-500 dark:hover:text-white"
+            className="flex size-8 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-110 active:scale-95 dark:border-[var(--border)] dark:bg-[var(--muted)] dark:text-[var(--text-heading)] dark:hover:bg-emerald-500 dark:hover:text-white"
           >
             <ChevronRight className="size-5" />
           </button>
