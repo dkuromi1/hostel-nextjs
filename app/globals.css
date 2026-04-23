@@ -74,8 +74,8 @@
   /* ─── Semantic Text Colors ──────────────────────────────────────────────────
      Use these instead of raw slate-* classes so a palette swap is one edit.
   ─────────────────────────────────────────────────────────────────────────── */
-  --text-heading: #020617;
-  /* slate-950 — primary headings   */
+  --text-heading: #1e293b;
+  /* slate-800 — primary headings   */
   --text-body: #334155;
   /* slate-700 — stand-alone paragraphs (desktop) */
   --text-body-subtle: #475569;
@@ -124,10 +124,14 @@
   --text-muted: #64748b;
   --text-on-dark: #f1f5f9;
 
-  --brand-primary: #34d399; /* emerald-400 for better contrast on dark bg */
-  --brand-primary-light: #064e3b; /* emerald-900 */
-  --brand-primary-dark: #6ee7b7; /* emerald-300 */
-  --brand-accent: #fbbf24; /* amber-400 */
+  --brand-primary: #34d399;
+  /* emerald-400 for better contrast on dark bg */
+  --brand-primary-light: #064e3b;
+  /* emerald-900 */
+  --brand-primary-dark: #6ee7b7;
+  /* emerald-300 */
+  --brand-accent: #fbbf24;
+  /* amber-400 */
 
   --atmosphere-glow-primary: rgba(16, 185, 129, 0.15);
   --atmosphere-glow-accent: rgba(245, 158, 11, 0.1);
@@ -308,7 +312,7 @@
 
 /** Large section description paragraph */
 @utility text-section-desc {
-  @apply text-base leading-8 md:text-lg text-[var(--text-body-subtle)];
+  @apply text-base leading-8 md:text-lg text-[var(--text-body)];
 }
 
 /** Standard card / component body paragraph */
@@ -318,7 +322,7 @@
 
 /** Supporting paragraph for page states and large editorial blocks */
 @utility text-body-lg {
-  @apply text-base leading-8 text-[var(--text-body-subtle)];
+  @apply text-base leading-8 text-[var(--text-body)];
 }
 
 /** Large hero sub-headline paragraph */
@@ -336,4 +340,3 @@
     text-decoration-color: var(--link-color-hover);
   }
 }
-

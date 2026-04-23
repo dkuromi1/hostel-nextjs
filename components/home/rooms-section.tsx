@@ -101,7 +101,7 @@ export function RoomsSection() {
                       {room.bullets.map((bullet) => (
                         <li
                           key={bullet}
-                          className="flex items-start gap-2.5 text-sm leading-6 text-[var(--text-body)]"
+                          className="flex items-start gap-2.5 text-sm leading-6 text-[var(--text-body-subtle)]"
                         >
                           <Check
                             className="mt-1 size-4 shrink-0 text-emerald-600"

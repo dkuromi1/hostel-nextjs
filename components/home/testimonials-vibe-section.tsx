@@ -11,7 +11,7 @@ import {
 
 export function TestimonialsVibeSection() {
   return (
-    <section className="py-8 sm:py-16 bg-[#f0f7ff]/60 dark:bg-transparent">
+    <section className="py-8 sm:py-16">
       <div className="shell-container flex flex-col gap-10 lg:flex-row lg:items-start relative">
         {/* Left Column: Testimonials */}
         <Reveal delay={0} className="lg:w-[40%] flex flex-col lg:sticky lg:top-32">
