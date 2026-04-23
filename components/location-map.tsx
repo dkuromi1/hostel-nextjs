@@ -1,11 +1,11 @@
 "use client";
 
 import dynamic from 'next/dynamic';
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { Panel } from './ui/panel';
 import { MapPin } from 'lucide-react';
-import { useSearchParams } from 'next/navigation';
 import { siteConfig } from '@/lib/site-data';
+import { LocationMapContent } from './location-map-content';
 
 // Lazy load the map with a skeleton loader to ensure 0 initial bundle size and no layout shift
 const LocationMapInner = dynamic(() => import('./location-map-inner'), {
@@ -16,14 +16,11 @@ const LocationMapInner = dynamic(() => import('./location-map-inner'), {
 export function LocationMap() {
   const isEnabled = siteConfig.features.showLocalExperienceMap;
   const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
-  const searchParams = useSearchParams();
-  const poiQuery = searchParams?.get('poi') ?? '';
   const containerRef = useRef<HTMLDivElement>(null);
   const [shouldLoad, setShouldLoad] = useState(false);
-  const shouldRenderMap = shouldLoad || Boolean(poiQuery);
 
   useEffect(() => {
-    if (!isEnabled || poiQuery) return;
+    if (!isEnabled) return;
 
     const node = containerRef.current;
     if (!node) return;
@@ -43,7 +40,7 @@ export function LocationMap() {
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, [isEnabled, poiQuery]);
+  }, [isEnabled]);
 
   if (!isEnabled) {
     return null;
@@ -63,7 +60,9 @@ export function LocationMap() {
 
   return (
     <div ref={containerRef} className="relative h-full w-full">
-      {shouldRenderMap ? <LocationMapInner accessToken={token} /> : <MapSkeleton />}
+      <Suspense fallback={<MapSkeleton />}>
+        <LocationMapContent accessToken={token} shouldLoad={shouldLoad} />
+      </Suspense>
     </div>
   );
 }
