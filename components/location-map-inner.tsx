@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from 'react';
-import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Home, AlertCircle } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
@@ -11,6 +10,11 @@ import { siteConfig } from '@/lib/site-data';
 interface LocationMapInnerProps {
     accessToken: string;
 }
+
+type MapboxModule = typeof import('mapbox-gl');
+type MapboxMap = import('mapbox-gl').Map;
+type MapboxGeoJSONData = import('mapbox-gl').GeoJSONSourceSpecification["data"];
+type MapboxAnySourceData = import('mapbox-gl').AnySourceData;
 
 // Centralize instance constants for map behavior
 const {
@@ -135,174 +139,169 @@ const applyLabelStyle = (el: HTMLElement, isMobile: boolean, overrides?: Partial
     }
 };
 
+const getLightPreset = () =>
+    document.documentElement.classList.contains('dark') ? 'night' : 'day';
+
+const applyBasePreset = (map: MapboxMap) => {
+    try {
+        map.setConfigProperty('basemap', 'lightPreset', getLightPreset());
+    } catch {
+        // Ignore when the active style does not support Mapbox Standard config properties.
+    }
+};
+
+const applyCustomizations = (
+    map: MapboxMap,
+    trailGeoJson: MapboxGeoJSONData | null,
+    showRegionalTrails: boolean,
+) => {
+    const style = map.getStyle();
+    if (!style) return;
+
+    const layers = style.layers;
+    const labelLayerId = layers?.find(
+        (layer) => layer.type === 'symbol' && layer.layout?.['text-field']
+    )?.id;
+
+    layers?.forEach((layer) => {
+        if (layer.id.includes('poi-label')) {
+            const currentFilter = map.getFilter(layer.id) || ['all'];
+            map.setFilter(layer.id, [
+                'all',
+                currentFilter,
+                ['!=', ['get', 'category_en'], 'Lodging'],
+                ['!=', ['get', 'maki'], 'lodging'],
+                ['!=', ['get', 'maki'], 'hotel'],
+                ['!=', ['get', 'maki'], 'hostel']
+            ]);
+        }
+    });
+
+    if (!map.getSource('pedonale-street')) {
+        map.addSource('pedonale-street', {
+            type: 'geojson',
+            data: {
+                type: 'Feature',
+                properties: {},
+                geometry: {
+                    type: 'LineString',
+                    coordinates: PEDONALE_COORDS
+                }
+            }
+        } as MapboxAnySourceData);
+    }
+
+    if (!map.getLayer('pedonale-line')) {
+        map.addLayer({
+            'id': 'pedonale-line',
+            'type': 'line',
+            'source': 'pedonale-street',
+            'layout': {
+                'line-cap': 'round',
+                'line-join': 'round'
+            },
+            'paint': {
+                'line-color': '#0ea5e9',
+                'line-width': 10,
+                'line-opacity': 0.5
+            }
+        }, labelLayerId);
+    }
+
+    if (!map.getSource('walk-radius')) {
+        map.addSource('walk-radius', {
+            'type': 'geojson',
+            'data': createGeoJSONCircle(HOSTEL_COORDS, 0.45)
+        });
+    }
+
+    if (!map.getLayer('walk-radius-outline')) {
+        map.addLayer({
+            'id': 'walk-radius-outline',
+            'type': 'line',
+            'source': 'walk-radius',
+            'layout': {},
+            'paint': {
+                'line-color': '#0284c7',
+                'line-width': 3.5,
+                'line-dasharray': [2, 2],
+                'line-opacity': 0.95
+            }
+        }, labelLayerId);
+    }
+
+    if (showRegionalTrails && trailGeoJson && !map.getSource('theth-valbona-track')) {
+        map.addSource('theth-valbona-track', {
+            type: 'geojson',
+            data: trailGeoJson
+        });
+    }
+
+    if (showRegionalTrails && !map.getLayer('theth-valbona-line') && map.getSource('theth-valbona-track')) {
+        map.addLayer({
+            'id': 'theth-valbona-line',
+            'type': 'line',
+            'source': 'theth-valbona-track',
+            'layout': {
+                'line-cap': 'round',
+                'line-join': 'round'
+            },
+            'paint': {
+                'line-color': '#10b981',
+                'line-width': 3.5,
+                'line-dasharray': [2, 1],
+                'line-opacity': 0.8
+            }
+        }, labelLayerId);
+    }
+
+    const isSatelliteStyle = style.sprite?.includes('satellite') || style.name?.toLowerCase().includes('satellite');
+
+    if (map.getLayer('add-3d-buildings')) map.removeLayer('add-3d-buildings');
+
+    if (map.getSource('composite') && !isSatelliteStyle) {
+        map.addLayer(
+            {
+                'id': 'add-3d-buildings',
+                'source': 'composite',
+                'source-layer': 'building',
+                'filter': ['==', 'extrude', 'true'],
+                'type': 'fill-extrusion',
+                'minzoom': 15,
+                'paint': {
+                    'fill-extrusion-color': '#aaa',
+                    'fill-extrusion-height': ['interpolate', ['linear'], ['zoom'], 15, 0, 15.05, ['get', 'height']],
+                    'fill-extrusion-base': ['interpolate', ['linear'], ['zoom'], 15, 0, 15.05, ['get', 'min_height']],
+                    'fill-extrusion-opacity': 0.6
+                }
+            },
+            labelLayerId
+        );
+    }
+};
+
 export default function LocationMapInner({ accessToken }: LocationMapInnerProps) {
     const searchParams = useSearchParams();
     const poiQuery = searchParams?.get('poi') || '';
     const initialPoiQueryRef = useRef(poiQuery);
     const recommendedPoisRef = useRef<MapPOI[]>([]);
-    const trailGeoJsonRef = useRef<mapboxgl.GeoJSONSourceSpecification["data"] | null>(null);
+    const trailGeoJsonRef = useRef<MapboxGeoJSONData | null>(null);
 
     const mapContainerRef = useRef<HTMLDivElement>(null);
-    const mapRef = useRef<mapboxgl.Map | null>(null);
+    const mapRef = useRef<MapboxMap | null>(null);
     const sensitiveMarkersRef = useRef<HTMLElement[]>([]);
     const [isSatellite, setIsSatellite] = React.useState(false);
     const [mapError, setMapError] = useState<string | null>(null);
+    const hasMapErrorRef = useRef(false);
     const isSatelliteRef = useRef(false);
-
-    const getLightPreset = () =>
-        document.documentElement.classList.contains('dark') ? 'night' : 'day';
-
-    const applyBasePreset = (map: mapboxgl.Map) => {
-        try {
-            map.setConfigProperty('basemap', 'lightPreset', getLightPreset());
-        } catch {
-            // Ignore when the active style does not support Mapbox Standard config properties.
-        }
-    };
-
-    // Reusable function to apply our "Boutique" customizations
-    const applyCustomizations = (map: mapboxgl.Map) => {
-        const style = map.getStyle();
-        if (!style) return;
-
-        const layers = style.layers;
-        const labelLayerId = layers?.find(
-            (layer) => layer.type === 'symbol' && layer.layout?.['text-field']
-        )?.id;
-
-        // 1. FILTER COMPETITION: Hide other hotels/hostels
-        layers?.forEach((layer) => {
-            if (layer.id.includes('poi-label')) {
-                const currentFilter = map.getFilter(layer.id) || ['all'];
-                map.setFilter(layer.id, [
-                    'all',
-                    currentFilter,
-                    ['!=', ['get', 'category_en'], 'Lodging'],
-                    ['!=', ['get', 'maki'], 'lodging'],
-                    ['!=', ['get', 'maki'], 'hotel'],
-                    ['!=', ['get', 'maki'], 'hostel']
-                ]);
-            }
-        });
-
-        // 2. PEDONALE STREET HIGHLIGHT
-        if (!map.getSource('pedonale-street')) {
-            map.addSource('pedonale-street', {
-                type: 'geojson',
-                data: {
-                    type: 'Feature',
-                    properties: {},
-                    geometry: {
-                        type: 'LineString',
-                        coordinates: PEDONALE_COORDS
-                    }
-                }
-            } as mapboxgl.AnySourceData);
-        }
-
-        if (!map.getLayer('pedonale-line')) {
-            map.addLayer({
-                'id': 'pedonale-line',
-                'type': 'line',
-                'source': 'pedonale-street',
-                'layout': {
-                    'line-cap': 'round',
-                    'line-join': 'round'
-                },
-                'paint': {
-                    'line-color': '#0ea5e9',
-                    'line-width': 10,
-                    'line-opacity': 0.5
-                }
-            }, labelLayerId);
-        }
-
-        // 3. WALKING RADIUS (5-min / 400m)
-        if (!map.getSource('walk-radius')) {
-            map.addSource('walk-radius', {
-                'type': 'geojson',
-                'data': createGeoJSONCircle(HOSTEL_COORDS, 0.45) // 400 meters
-            });
-        }
-
-        // REMOVED: walk-radius-fill (per user request)
-
-        if (!map.getLayer('walk-radius-outline')) {
-            map.addLayer({
-                'id': 'walk-radius-outline',
-                'type': 'line',
-                'source': 'walk-radius',
-                'layout': {},
-                'paint': {
-                    'line-color': '#0284c7', // Darker Scodrinon Sky
-                    'line-width': 3.5,
-                    'line-dasharray': [2, 2],
-                    'line-opacity': 0.95
-                }
-            }, labelLayerId);
-        }
-
-        // HIKING TRAIL: Theth to Valbona
-        if (siteConfig.features.showRegionalTrails && trailGeoJsonRef.current && !map.getSource('theth-valbona-track')) {
-            map.addSource('theth-valbona-track', {
-                type: 'geojson',
-                data: trailGeoJsonRef.current
-            });
-        }
-
-        if (siteConfig.features.showRegionalTrails && !map.getLayer('theth-valbona-line') && map.getSource('theth-valbona-track')) {
-            map.addLayer({
-                'id': 'theth-valbona-line',
-                'type': 'line',
-                'source': 'theth-valbona-track',
-                'layout': {
-                    'line-cap': 'round',
-                    'line-join': 'round'
-                },
-                'paint': {
-                    'line-color': '#10b981', // emerald-500
-                    'line-width': 3.5,
-                    'line-dasharray': [2, 1],
-                    'line-opacity': 0.8
-                }
-            }, labelLayerId);
-        }
-
-        // 4. 3D BUILDINGS: Add extrusions (STREETS ONLY, DESKTOP ONLY)
-        // On mobile GPUs (especially Mali-G710 on Pixel 7), fill-extrusion layers
-        // with interpolated height expressions cause WebGL OOM → Aw Snap crashes.
-        const isSatelliteStyle = style.sprite?.includes('satellite') || style.name?.toLowerCase().includes('satellite');
-
-        // Remove existing if it exists
-        if (map.getLayer('add-3d-buildings')) map.removeLayer('add-3d-buildings');
-
-        if (map.getSource('composite') && !isSatelliteStyle) {
-            map.addLayer(
-                {
-                    'id': 'add-3d-buildings',
-                    'source': 'composite',
-                    'source-layer': 'building',
-                    'filter': ['==', 'extrude', 'true'],
-                    'type': 'fill-extrusion',
-                    'minzoom': 15,
-                    'paint': {
-                        'fill-extrusion-color': '#aaa',
-                        'fill-extrusion-height': ['interpolate', ['linear'], ['zoom'], 15, 0, 15.05, ['get', 'height']],
-                        'fill-extrusion-base': ['interpolate', ['linear'], ['zoom'], 15, 0, 15.05, ['get', 'min_height']],
-                        'fill-extrusion-opacity': 0.6
-                    }
-                },
-                labelLayerId
-            );
-        }
-    };
 
     useEffect(() => {
         if (!mapContainerRef.current) return;
         if (!siteConfig.features.showLocalExperienceMap) return;
 
         let moveThrottleId: ReturnType<typeof requestAnimationFrame> | null = null;
-        let map: mapboxgl.Map | null = null;
+        let map: MapboxMap | null = null;
+        let mapboxgl: MapboxModule["default"] | null = null;
         let style: HTMLStyleElement | null = null;
         const mobile = isMobileDevice();
         const themeObserver = new MutationObserver((mutations) => {
@@ -365,6 +364,11 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                     throw new Error(`WebGL initialization failed: ${webglCheck.reason}`);
                 }
 
+                const mapboxModule = await import('mapbox-gl');
+                const mapbox = mapboxModule.default;
+                mapboxgl = mapbox;
+                mapbox.prewarm();
+
                 if (siteConfig.features.showLocalPois) {
                     const poisModule = await activeInstance.loaders.loadPois();
                     recommendedPoisRef.current = poisModule.recommendedPois as MapPOI[];
@@ -374,7 +378,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
 
                 if (siteConfig.features.showRegionalTrails) {
                     const tracksModule = await activeInstance.loaders.loadTrailGeoJson();
-                    trailGeoJsonRef.current = tracksModule as mapboxgl.GeoJSONSourceSpecification["data"];
+                    trailGeoJsonRef.current = tracksModule as MapboxGeoJSONData;
                 } else {
                     trailGeoJsonRef.current = null;
                 }
@@ -407,9 +411,9 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                     }
                 }
 
-                mapboxgl.accessToken = accessToken;
+                mapbox.accessToken = accessToken;
 
-                const m = new mapboxgl.Map({
+                const m = new mapbox.Map({
                     container: mapContainerRef.current,
                     style: STANDARD_STYLE,
                     center: HOSTEL_COORDS,
@@ -424,8 +428,8 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             map = m;
             mapRef.current = m;
 
-            m.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'bottom-right');
-            m.addControl(new mapboxgl.FullscreenControl(), 'top-right');
+            m.addControl(new mapbox.NavigationControl({ showCompass: false }), 'bottom-right');
+            m.addControl(new mapbox.FullscreenControl(), 'top-right');
             themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 
             // --- 1. HOSTEL MARKER (Premium Floating Pin) ---
@@ -539,7 +543,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         `;
             document.head.appendChild(style);
 
-            new mapboxgl.Marker({ element: el, anchor: 'bottom' }).setLngLat(HOSTEL_COORDS).addTo(m);
+            new mapbox.Marker({ element: el, anchor: 'bottom' }).setLngLat(HOSTEL_COORDS).addTo(m);
 
 
             // --- 2. RECOMMENDED POIS ---
@@ -584,7 +588,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                     sensitiveMarkersRef.current.push(poiEl);
                 }
 
-                new mapboxgl.Marker({ element: poiEl, anchor: 'bottom' }).setLngLat(poi.coords as [number, number]).addTo(m);
+                new mapbox.Marker({ element: poiEl, anchor: 'bottom' }).setLngLat(poi.coords as [number, number]).addTo(m);
             });
 
             // Throttled move handler — uses cached marker refs instead of querySelectorAll on every frame.
@@ -619,7 +623,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                 // Smooth fly-in animation from regional overview to hostel
                 m.flyTo({ center: initialCenter, zoom: initialZoom, speed: 0.8, curve: 1, essential: true });
                 applyBasePreset(m);
-                applyCustomizations(m);
+                applyCustomizations(m, trailGeoJsonRef.current, siteConfig.features.showRegionalTrails);
 
                 // Force a resize calculation after parent layout stabilization
                 setTimeout(() => {
@@ -631,7 +635,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                 if (!isSatelliteRef.current) {
                     applyBasePreset(m);
                 }
-                applyCustomizations(m);
+                applyCustomizations(m, trailGeoJsonRef.current, siteConfig.features.showRegionalTrails);
 
                 // Re-calculate size after style swap to prevent 'gray box' issues
                 setTimeout(() => {
@@ -642,7 +646,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                 console.error('Failed to initialize map:', error);
                 
                 // If the initial map setup failed, try with a minimal configuration
-                if (!mapError && error instanceof Error && error.message.includes('WebGL')) {
+                if (!hasMapErrorRef.current && mapboxgl && error instanceof Error && error.message.includes('WebGL')) {
                     try {
                         console.log('Attempting fallback map configuration...');
                         const fallbackMap = new mapboxgl.Map({
@@ -671,7 +675,8 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                         console.error('Fallback map also failed:', fallbackError);
                     }
                 }
-                
+
+                hasMapErrorRef.current = true;
                 setMapError(error instanceof Error ? error.message : 'Failed to initialize map. WebGL may not be supported in your browser.');
             }
         };
