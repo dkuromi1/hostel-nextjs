@@ -55,7 +55,7 @@ export const scodrinonInstance = {
       tokenEnvVar: "NEXT_PUBLIC_MAPBOX_TOKEN",
     },
     cms: {
-      mediaFolder: "instances/scodrinon/public/images",
+      mediaFolder: "public/images",
       publicFolder: "/images",
     },
   },
