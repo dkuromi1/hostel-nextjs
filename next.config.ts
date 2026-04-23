@@ -20,6 +20,20 @@ function getAllowedDevOrigins() {
 const nextConfig: NextConfig = {
   turbopack: {},
   allowedDevOrigins: isDev ? getAllowedDevOrigins() : undefined,
+  async redirects() {
+    return [
+      {
+        source: "/\\(\\.\\)gallery/:id",
+        destination: "/gallery/:id",
+        permanent: false,
+      },
+      {
+        source: "/gallery/\\(\\.\\):id",
+        destination: "/gallery/:id",
+        permanent: false,
+      },
+    ];
+  },
   compiler: {
     removeConsole: !isDev,
   },
