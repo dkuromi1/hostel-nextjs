@@ -2,104 +2,63 @@
 
 import { useEffect, useRef, useState } from "react";
 import { RefreshCw, X } from "lucide-react";
-
-const SERVICE_WORKER_PATH = "/sw.js";
-
-function isServiceWorkerSupported() {
-  return typeof window !== "undefined" && "serviceWorker" in navigator;
-}
+import { useSerwist } from "@serwist/next/react";
 
 function isAdminRoute(pathname: string) {
   return pathname === "/admin" || pathname.startsWith("/admin/");
 }
 
-async function isServiceWorkerAvailable() {
-  try {
-    const response = await fetch(SERVICE_WORKER_PATH, {
-      method: "HEAD",
-      cache: "no-store",
-    });
-
-    if (!response.ok) return false;
-
-    const contentType = response.headers.get("content-type");
-    return contentType ? !contentType.includes("text/html") : true;
-  } catch {
-    return false;
-  }
-}
-
 export function SwUpdatePrompt() {
+  const { serwist } = useSerwist();
   const [isVisible, setIsVisible] = useState(false);
-  const waitingWorkerRef = useRef<ServiceWorker | null>(null);
   const shouldReloadOnControllerChangeRef = useRef(false);
 
   useEffect(() => {
-    if (!isServiceWorkerSupported()) return;
+    if (!serwist) return;
     if (isAdminRoute(window.location.pathname)) return;
 
     let isMounted = true;
 
-    const showUpdate = (registration: ServiceWorkerRegistration) => {
-      if (!isMounted || !registration.waiting) return;
-      waitingWorkerRef.current = registration.waiting;
+    const showUpdate = () => {
+      if (!isMounted) return;
       setIsVisible(true);
     };
 
-    const onControllerChange = () => {
+    const onControlling = () => {
       if (!shouldReloadOnControllerChangeRef.current) return;
       window.location.reload();
     };
 
     const onVisibilityChange = () => {
       if (document.visibilityState !== "visible") return;
-      navigator.serviceWorker.ready
-        .then((registration) => registration.update())
+      serwist
+        .update()
         .catch(() => {
           // Ignore transient update checks failure.
         });
     };
 
-    const setupRegistration = async () => {
-      const serviceWorkerAvailable = await isServiceWorkerAvailable();
-      if (!serviceWorkerAvailable) return;
-
-      try {
-        const registration = await navigator.serviceWorker.register(SERVICE_WORKER_PATH);
-        showUpdate(registration);
-
-        registration.addEventListener("updatefound", () => {
-          const installing = registration.installing;
-          if (!installing) return;
-
-          installing.addEventListener("statechange", () => {
-            if (installing.state !== "installed") return;
-            if (!navigator.serviceWorker.controller) return;
-            showUpdate(registration);
-          });
-        });
-      } catch {
-        // Ignore registration errors to avoid breaking the app shell.
-      }
-    };
-
-    setupRegistration();
-    navigator.serviceWorker.addEventListener("controllerchange", onControllerChange);
+    serwist.addEventListener("waiting", showUpdate);
+    serwist.addEventListener("controlling", onControlling);
     document.addEventListener("visibilitychange", onVisibilityChange);
+    void serwist.register().catch(() => {
+      // Ignore registration errors to avoid breaking the app shell.
+    });
 
     return () => {
       isMounted = false;
-      navigator.serviceWorker.removeEventListener("controllerchange", onControllerChange);
+      serwist.removeEventListener("waiting", showUpdate);
+      serwist.removeEventListener("controlling", onControlling);
       document.removeEventListener("visibilitychange", onVisibilityChange);
     };
-  }, []);
+  }, [serwist]);
 
   const refreshToUpdate = () => {
-    const waitingWorker = waitingWorkerRef.current;
-    if (!waitingWorker) return;
+    if (!serwist) return;
 
     shouldReloadOnControllerChangeRef.current = true;
-    waitingWorker.postMessage({ type: "SKIP_WAITING" });
+    setIsVisible(false);
+    serwist.messageSkipWaiting();
   };
 
   if (!isVisible) return null;
