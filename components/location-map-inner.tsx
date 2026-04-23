@@ -330,7 +330,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                     }
                     
                     // Check for specific WebGL extensions that Mapbox requires
-                    const requiredExtensions = ['OES_element_index_uint', 'OES_texture_float', 'WEBGL_depth_texture'];
+                    const requiredExtensions = ['OES_element_index_uint', 'WEBGL_depth_texture'];
                     const missingExtensions = requiredExtensions.filter(ext => !gl.getExtension(ext));
                     
                     if (missingExtensions.length > 0) {
