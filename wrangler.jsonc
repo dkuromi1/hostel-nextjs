@@ -2,10 +2,12 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "scodrinon-hostel-nextjs",
   "compatibility_date": "2026-04-23",
-  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
   "main": ".open-next/worker.js",
-  "workers_dev": false,
-  "preview_urls": false,
+  "workers_dev": true,
+  "preview_urls": true,
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
