@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "scodrinon-nextjs",
+  "name": "scodrinon-hostel-nextjs",
   "compatibility_date": "2026-04-23",
   "compatibility_flags": ["nodejs_compat"],
   "main": ".open-next/worker.js",
