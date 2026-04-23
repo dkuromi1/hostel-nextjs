@@ -127,21 +127,21 @@ export function TestimonialCarousel({
               <button
                 type="button"
                 onClick={() => goTo(index)}
-                aria-label={`Go to testimonial ${index + 1}`}
-                aria-current={index === currentIndex ? "true" : undefined}
+                tabIndex={-1}
+                aria-hidden="true"
                 className={cn(
                   "absolute left-1/2 top-1/2 z-10 flex size-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full transition-all duration-300",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-700 dark:focus-visible:ring-offset-[var(--glass-bg)]"
                 )}
               >
-              <span
-                className={cn(
-                  "block h-2 rounded-full transition-all duration-300",
-                  index === currentIndex
-                    ? "w-8 bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.4)]"
-                    : "w-2 bg-white/20 hover:bg-white/30 dark:bg-[var(--muted)] dark:hover:bg-[var(--text-muted)]"
-                )}
-              />
+                <span
+                  className={cn(
+                    "block h-2 rounded-full transition-all duration-300",
+                    index === currentIndex
+                      ? "w-8 bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.4)]"
+                      : "w-2 bg-white/20 hover:bg-white/30 dark:bg-[var(--muted)] dark:hover:bg-[var(--text-muted)]"
+                  )}
+                />
               </button>
             </div>
           ))}
