@@ -13,7 +13,7 @@ import {
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[90dvh] flex flex-col justify-center overflow-hidden pb-12 pt-24 sm:pb-20 sm:pt-32">
+    <section className="relative min-h-[90dvh] flex flex-col justify-center overflow-hidden pb-12 pt-[calc(env(safe-area-inset-top,0px)+7rem)] sm:pb-20 sm:pt-[calc(env(safe-area-inset-top,0px)+9rem)]">
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/hiking_2.jpg"
