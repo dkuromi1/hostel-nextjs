@@ -94,7 +94,8 @@ export function SiteHeader() {
                 rel="noreferrer"
                 className={cn(
                   buttonVariants({ size: "sm" }),
-                  "h-9 rounded-full bg-emerald-700 px-4 text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-emerald-800"
+                  "h-9 rounded-full bg-emerald-700 px-4 text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-emerald-800",
+                  isTransparent ? "shadow-[0_8px_25px_-8px_rgba(6,78,59,0.5)]" : "shadow-sm"
                 )}
               >
                 {primaryContactChannel.label}
@@ -112,7 +113,7 @@ export function SiteHeader() {
                     buttonVariants({ variant: "outline", size: "icon" }),
                     "size-9 rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-95",
                     isTransparent
-                      ? "border-white/10 bg-slate-950/20 text-white hover:bg-slate-950/40"
+                      ? "border-white/10 bg-slate-950/20 text-white hover:bg-slate-950/40 shadow-[0_8px_20px_-8px_rgba(0,0,0,0.4)]"
                       : channel.icon === "hostelworld"
                         ? "border-orange-200/80 bg-orange-50/90 text-orange-900 hover:bg-orange-100/90"
                         : "border-border bg-muted/95 text-foreground hover:bg-muted"

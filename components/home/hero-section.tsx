@@ -25,14 +25,14 @@ export function HeroSection() {
           style={{ objectPosition: "60% center" }}
           sizes="100vw"
         />
-        <div className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(to_bottom,rgba(2,6,23,0.6)_0%,rgba(2,6,23,0.3)_50%,rgba(2,6,23,0.75)_100%)]" />
+        <div className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(to_bottom,rgba(2,6,23,0.45)_0%,rgba(2,6,23,0.45)_45%,rgba(2,6,23,0.85)_100%)]" />
       </div>
 
       <div className="shell-container relative z-10 w-full">
         <div className="max-w-4xl space-y-8 sm:space-y-10">
           <div className="flex flex-col items-start gap-6">
             <div className="flex flex-col gap-5">
-              <p className="text-xs font-medium uppercase tracking-[0.28em] text-white/90 antialiased">
+              <p className="text-xs font-medium uppercase tracking-[0.28em] text-white/90 antialiased [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]">
                 {siteConfig.tagline}
               </p>
               <h1 className="heading-hero text-white">
