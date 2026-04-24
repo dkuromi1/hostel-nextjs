@@ -138,7 +138,7 @@ export function TestimonialCarousel({
                   className={cn(
                     "block h-2 rounded-full transition-all duration-300",
                     index === currentIndex
-                      ? "w-8 bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.4)]"
+                      ? "w-8 bg-amber-500"
                       : "w-2 bg-white/20 hover:bg-white/30 dark:bg-[var(--muted)] dark:hover:bg-[var(--text-muted)]"
                   )}
                 />
