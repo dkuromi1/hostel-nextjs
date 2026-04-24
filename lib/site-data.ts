@@ -53,7 +53,6 @@ interface SettingsContent {
   };
   features: {
     volunteersNeeded: boolean;
-    showVolunteerBanner: boolean;
     showMascot: boolean;
     showRegionalWeather: boolean;
     showLocalExperienceMap: boolean;
@@ -616,7 +615,6 @@ export const propertyConfig = {
   breakfastHours: settingsContent.operations.breakfastHours,
   checkInHours: settingsContent.operations.checkInHours,
   volunteersNeeded: settingsContent.features.volunteersNeeded,
-  showVolunteerBanner: settingsContent.features.showVolunteerBanner,
   showMascot: settingsContent.features.showMascot,
   showRegionalWeather: settingsContent.features.showRegionalWeather,
   showLocalExperienceMap: settingsContent.features.showLocalExperienceMap,

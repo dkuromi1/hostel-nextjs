@@ -1,7 +1,7 @@
 import { siteConfig } from "@/lib/site-data";
 
 export function VolunteerBanner() {
-  if (!siteConfig.volunteersNeeded || !siteConfig.features.showVolunteerBanner) return null;
+  if (!siteConfig.volunteersNeeded) return null;
 
   const primaryContactHref = siteConfig.whatsappUrl || `https://wa.me/${siteConfig.phoneRaw}`;
 

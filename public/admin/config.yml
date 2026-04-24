@@ -116,7 +116,6 @@ collections:
             widget: "object"
             fields:
               - { label: "Volunteers Needed", name: "volunteersNeeded", widget: "boolean", default: false }
-              - { label: "Show Volunteer Banner", name: "showVolunteerBanner", widget: "boolean", default: false }
               - { label: "Show Mascot", name: "showMascot", widget: "boolean", default: false }
               - { label: "Show Regional Weather", name: "showRegionalWeather", widget: "boolean", default: false }
               - { label: "Show Local Experience Map", name: "showLocalExperienceMap", widget: "boolean", default: false }
