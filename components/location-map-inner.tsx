@@ -115,7 +115,7 @@ const getPoiColor = (category: string) => {
  * We use a higher-opacity solid background on mobile instead.
  */
 const applyLabelStyle = (el: HTMLElement, isMobile: boolean, overrides?: Partial<CSSStyleDeclaration>) => {
-    el.style.padding = '3px 8px';
+    el.style.padding = '1.5px 8px'; // Reduced top/bottom from 3px to 1.5px
     el.style.color = 'var(--text-heading)';
     el.style.fontSize = '9px';
     el.style.fontWeight = '600';
@@ -164,15 +164,20 @@ const applyCustomizations = (
     )?.id;
 
     layers?.forEach((layer) => {
-        if (layer.id.includes('poi-label')) {
+        if (layer.id.includes('poi-label') || layer.id.includes('poi-icon') || layer.id.includes('poi')) {
             const currentFilter = map.getFilter(layer.id) || ['all'];
             map.setFilter(layer.id, [
                 'all',
                 currentFilter,
                 ['!=', ['get', 'category_en'], 'Lodging'],
+                ['!=', ['get', 'category_en'], 'Hotel'],
+                ['!=', ['get', 'category_en'], 'Hostel'],
                 ['!=', ['get', 'maki'], 'lodging'],
                 ['!=', ['get', 'maki'], 'hotel'],
-                ['!=', ['get', 'maki'], 'hostel']
+                ['!=', ['get', 'maki'], 'hostel'],
+                ['!=', ['get', 'type'], 'lodging'],
+                ['!=', ['get', 'type'], 'hotel'],
+                ['!=', ['get', 'type'], 'hostel']
             ]);
         }
     });
