@@ -90,7 +90,7 @@ export function GalleryMasonry({
             }}
             className="group block w-full cursor-zoom-in"
         >
-            <div className="media-frame relative overflow-hidden bg-slate-100/50 dark:border-transparent">
+            <div className="media-frame relative overflow-hidden">
                 {item.type === "image" ? (
                     <motion.img
                         layoutId={`gallery-media-${item.id}`}
