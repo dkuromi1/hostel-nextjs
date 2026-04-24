@@ -88,7 +88,7 @@ export function ExperiencesSection() {
 
         {/* --- DISCOVER SUBSECTION --- */}
         <div className="relative pt-12 sm:pt-16">
-          <div className="absolute left-0 top-3 z-0 select-none opacity-[0.07] sm:top-4">
+          <div className="absolute left-0 top-4 z-0 select-none opacity-[0.07] sm:top-4">
             <span className="font-heading text-[44px] leading-none tracking-tighter text-slate-950 sm:text-[64px]" role="presentation" aria-hidden="true">
               {siteCopyContent.home.experiencesSection.discoverLabel}
             </span>
@@ -217,7 +217,7 @@ export function ExperiencesSection() {
 
         {/* --- CONNECT SUBSECTION --- */}
         <div className="relative pt-12 sm:pt-16 mt-8 sm:mt-12">
-          <div className="absolute left-0 top-3 z-0 select-none opacity-[0.07] sm:top-4">
+          <div className="absolute left-0 top-4 z-0 select-none opacity-[0.07] sm:top-4">
             <span className="font-heading text-[44px] leading-none tracking-tighter text-slate-950 sm:text-[64px]" role="presentation" aria-hidden="true">
               {siteCopyContent.home.experiencesSection.connectLabel}
             </span>
