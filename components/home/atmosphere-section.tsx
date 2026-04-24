@@ -5,6 +5,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { siteConfig, siteCopyContent } from "@/lib/site-data";
 import { DirectBookingCard } from "@/components/direct-booking-card";
+import { LazyVideo } from "@/components/lazy-video";
 
 export function AtmosphereSection() {
   return (
@@ -58,18 +59,17 @@ export function AtmosphereSection() {
               </Reveal>
 
               {/* Video */}
-              <Reveal delay={300} className="media-frame relative flex items-start lg:items-center self-start lg:self-auto">
-                <video
-                  className="w-full h-auto"
+              <Reveal delay={300} className="media-frame relative flex items-start lg:items-center self-start lg:self-auto overflow-hidden">
+                <LazyVideo
+                  src="/videos/videoplayback.mp4"
+                  poster="/images/video-poster.webp"
+                  className="w-full"
                   autoPlay
                   muted
                   loop
                   playsInline
                   preload="none"
-                  poster="/images/video-poster.webp"
-                >
-                  <source src="/videos/videoplayback.mp4" type="video/mp4" />
-                </video>
+                />
               </Reveal>
             </div>
           </div>
