@@ -20,6 +20,7 @@ export function Reveal({
   duration: _duration,
   ...props
 }: RevealProps) {
+  void _duration;
   const prefersReduced = useReducedMotion();
   const shouldReduce = prefersReduced || shouldReduceMotion();
 
