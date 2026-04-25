@@ -43,6 +43,30 @@ const themeBootstrapScript = `
 })();
 `;
 
+const performanceBootstrapScript = `
+(() => {
+  try {
+    const nav = navigator;
+    const deviceMemory = nav.deviceMemory ?? 8;
+    const hardwareConcurrency = nav.hardwareConcurrency ?? 4;
+    const conn = nav.connection;
+    const effectiveType = conn ? conn.effectiveType : null;
+    const userAgent = nav.userAgent;
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+    const isLowMemory = deviceMemory <= 2;
+    const isLowCores = hardwareConcurrency <= 2;
+    const isSlowConnection = effectiveType ? ["slow-2g", "2g", "3g"].includes(effectiveType) : false;
+    const match = userAgent.match(/Chrome\/(\d+)/);
+    const chromeVersion = match ? parseInt(match[1], 10) : null;
+    const isOldChrome = chromeVersion !== null && chromeVersion > 0 && chromeVersion < 90;
+    const score = (isMobile ? 1 : 0) + (isLowMemory ? 2 : 0) + (isLowCores ? 2 : 0) + (isSlowConnection ? 1 : 0) + (isOldChrome ? 1 : 0);
+    if (score >= 3) {
+      document.documentElement.classList.add("low-end-device");
+    }
+  } catch {}
+})();
+`;
+
 export const metadata: Metadata = {
   metadataBase,
   title: {
@@ -118,6 +142,9 @@ export default function RootLayout({
       <head>
         <Script id="theme-bootstrap" strategy="beforeInteractive">
           {themeBootstrapScript}
+        </Script>
+        <Script id="performance-bootstrap" strategy="beforeInteractive">
+          {performanceBootstrapScript}
         </Script>
         {externalPreconnectOrigins.map((origin) => (
           <link key={`preconnect-${origin}`} rel="preconnect" href={origin} />
