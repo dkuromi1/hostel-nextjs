@@ -30,7 +30,7 @@
   "devDependencies": {
     "@serwist/cli": "^9.5.7",
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^22",
+    "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@opennextjs/cloudflare": "^1.8.0",
@@ -49,6 +49,6 @@
     "not ie 11"
   ],
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   }
 }
