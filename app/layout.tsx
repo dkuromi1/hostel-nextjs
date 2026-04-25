@@ -56,7 +56,7 @@ const performanceBootstrapScript = `
     const isLowMemory = deviceMemory <= 2;
     const isLowCores = hardwareConcurrency <= 2;
     const isSlowConnection = effectiveType ? ["slow-2g", "2g", "3g"].includes(effectiveType) : false;
-    const match = userAgent.match(/Chrome\/(\d+)/);
+    const match = userAgent.match(/Chrome\\/(\\d+)/);
     const chromeVersion = match ? parseInt(match[1], 10) : null;
     const isOldChrome = chromeVersion !== null && chromeVersion > 0 && chromeVersion < 90;
     const score = (isMobile ? 1 : 0) + (isLowMemory ? 2 : 0) + (isLowCores ? 2 : 0) + (isSlowConnection ? 1 : 0) + (isOldChrome ? 1 : 0);

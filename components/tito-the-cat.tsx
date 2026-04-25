@@ -183,7 +183,7 @@ export function TitoTheCat() {
             "relative mb-3 rounded-2xl rounded-br-sm bg-slate-900 px-4 py-2.5 text-sm font-medium text-white shadow-xl transition-all duration-300",
             state === "paused" ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
           )}>
-            Hi, I&apos;m Tito! 🐾
+            Hi, I&apos;m Tito the hostel&apos;s friendly adopted cat! 🐾
             <div className="absolute -bottom-1.5 right-4 size-3 rotate-45 bg-slate-900" />
           </div>
 
