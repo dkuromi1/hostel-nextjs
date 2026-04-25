@@ -47,21 +47,33 @@ const performanceBootstrapScript = `
 (() => {
   try {
     const nav = navigator;
-    const deviceMemory = nav.deviceMemory ?? 8;
-    const hardwareConcurrency = nav.hardwareConcurrency ?? 4;
-    const conn = nav.connection;
-    const effectiveType = conn ? conn.effectiveType : null;
-    const userAgent = nav.userAgent;
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-    const isLowMemory = deviceMemory <= 2;
-    const isLowCores = hardwareConcurrency <= 2;
-    const isSlowConnection = effectiveType ? ["slow-2g", "2g", "3g"].includes(effectiveType) : false;
-    const match = userAgent.match(/Chrome\\/(\\d+)/);
-    const chromeVersion = match ? parseInt(match[1], 10) : null;
-    const isOldChrome = chromeVersion !== null && chromeVersion > 0 && chromeVersion < 90;
-    const score = (isMobile ? 1 : 0) + (isLowMemory ? 2 : 0) + (isLowCores ? 2 : 0) + (isSlowConnection ? 1 : 0) + (isOldChrome ? 1 : 0);
-    if (score >= 3) {
+    const ua = nav.userAgent;
+    
+    // 1. GPU Dealbreaker (Mapbox GL v3 requires WebGL2)
+    if (!window.WebGL2RenderingContext) {
       document.documentElement.classList.add("low-end-device");
+      return;
+    }
+
+    // 2. Android Spec Sniffing (Memory & CPU)
+    if (/Android/i.test(ua)) {
+      const isLowMemory = nav.deviceMemory && nav.deviceMemory <= 4;
+      const isWeakCPU = nav.hardwareConcurrency && nav.hardwareConcurrency <= 4;
+      if (isLowMemory || isWeakCPU) {
+        document.documentElement.classList.add("low-end-device");
+        return;
+      }
+    }
+
+    // 3. iOS / Mobile Safari (OS Version Proxy)
+    const isSafariFamily = /Safari/i.test(ua) && !/Chrome/i.test(ua);
+    const isMobileIOS = /iPhone|iPad|iPod/i.test(ua);
+    if (isSafariFamily || isMobileIOS) {
+      // Flag iOS < 15
+      if (/OS [0-9]_|OS 1[0-4]_/.test(ua)) {
+        document.documentElement.classList.add("low-end-device");
+        return;
+      }
     }
   } catch {}
 })();
