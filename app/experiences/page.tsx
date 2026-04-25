@@ -73,24 +73,25 @@ export default function ExperiencesPage() {
               {experienceLogisticsFeatures.map((item, i) => {
                 const Icon = resolveIcon(item.icon);
                 return (
-                <div
-                  key={i}
-                  className="group flex items-start gap-5 transition-all duration-300 hover:translate-x-2"
-                >
-                  {/* Interactive Icon Box */}
-                  <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-[var(--muted)] text-[var(--brand-primary)] transition-all duration-300 group-hover:bg-emerald-700 group-hover:text-white group-hover:shadow-lg group-hover:shadow-emerald-600/20">
-                    <Icon className="size-5" strokeWidth={1.5} />
+                  <div
+                    key={i}
+                    className="group flex items-start gap-5 transition-all duration-300 hover:translate-x-2"
+                  >
+                    {/* Interactive Icon Box */}
+                    <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-[var(--muted)] text-[var(--brand-primary)] transition-all duration-300 group-hover:bg-emerald-700 group-hover:text-white group-hover:shadow-lg group-hover:shadow-emerald-600/20">
+                      <Icon className="size-5" strokeWidth={1.5} />
+                    </div>
+                    <div>
+                      <h4 className="heading-item text-[var(--text-heading)]">
+                        {item.title}
+                      </h4>
+                      <p className="mt-2 text-card-body text-[var(--text-body)]">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="heading-item text-[var(--text-heading)]">
-                      {item.title}
-                    </h4>
-                    <p className="mt-2 text-card-body text-[var(--text-body)]">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              )})}
+                )
+              })}
             </div>
           </Reveal>
 
@@ -156,7 +157,7 @@ export default function ExperiencesPage() {
             <SectionHeading
               eyebrow="Beyond the Hostel"
               title="Things to do in and around Shkodër"
-              description="Whether you have an afternoon to kill before your hike or a few days to wander, here’s what makes the city worth sticking around for."
+              description="Whether you have an afternoon to spare before your hike or a few days to wander, here’s what makes the city worth sticking around for."
             />
           </Reveal>
 
@@ -271,39 +272,40 @@ export default function ExperiencesPage() {
               {socialConnectionFeatures.map((item) => {
                 const Icon = resolveIcon(item.icon);
                 return (
-                <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full" >
-                  <Panel
-                    className="group relative flex h-full flex-col overflow-hidden border border-[var(--glass-border)] bg-[var(--glass-bg)] transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
-                  >
-                    {/* Card Image Header */}
-                    <div className="relative h-56 w-full overflow-hidden bg-[var(--muted)]">
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        style={{ objectPosition: item.focus || "center" }}
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                      />
-                    </div>
-
-                    {/* Card Content Area */}
-                    <div className="flex flex-1 flex-col px-8 pb-8">
-                      {/* Floating Icon Box (Overlaps the image and background) */}
-                      <div className="relative -mt-6 mb-6 flex size-12 items-center justify-center rounded-2xl bg-[var(--glass-bg)] text-[var(--text-body)] shadow-lg shadow-[var(--glass-shadow)]/10 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-50 group-hover:text-emerald-600">
-                        <Icon className="size-5" strokeWidth={1.5} />
+                  <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full" >
+                    <Panel
+                      className="group relative flex h-full flex-col overflow-hidden border border-[var(--glass-border)] bg-[var(--glass-bg)] transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
+                    >
+                      {/* Card Image Header */}
+                      <div className="relative h-56 w-full overflow-hidden bg-[var(--muted)]">
+                        <Image
+                          src={item.image}
+                          alt={item.title}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-105"
+                          style={{ objectPosition: item.focus || "center" }}
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                        />
                       </div>
 
-                      <h3 className="mb-3 heading-item text-[var(--text-heading)]">
-                        {item.title}
-                      </h3>
-                      <p className="text-card-body text-[var(--text-body-subtle)]">
-                        {item.description}
-                      </p>
-                    </div>
-                  </Panel>
-                </div>
-              )})}
+                      {/* Card Content Area */}
+                      <div className="flex flex-1 flex-col px-8 pb-8">
+                        {/* Floating Icon Box (Overlaps the image and background) */}
+                        <div className="relative -mt-6 mb-6 flex size-12 items-center justify-center rounded-2xl bg-[var(--glass-bg)] text-[var(--text-body)] shadow-lg shadow-[var(--glass-shadow)]/10 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-50 group-hover:text-emerald-600">
+                          <Icon className="size-5" strokeWidth={1.5} />
+                        </div>
+
+                        <h3 className="mb-3 heading-item text-[var(--text-heading)]">
+                          {item.title}
+                        </h3>
+                        <p className="text-card-body text-[var(--text-body-subtle)]">
+                          {item.description}
+                        </p>
+                      </div>
+                    </Panel>
+                  </div>
+                )
+              })}
               {/* Trailing Spacer for mobile snapping */}
               <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
             </SwipableRow>
