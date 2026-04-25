@@ -48,7 +48,7 @@ function GalleryVideo({ src, poster, alt, layoutId }: { src: string; poster?: st
             preload="metadata"
             poster={poster}
             aria-label={alt}
-            className="block max-h-[85dvh] max-w-[95vw] w-auto h-auto object-contain rounded-3xl border border-[var(--glass-border)] bg-slate-950/80 backdrop-blur-xl shadow-2xl [transform:translateZ(0)]"
+            className="block max-h-[85dvh] max-w-[95vw] w-auto h-auto object-contain rounded-3xl border border-white/10 bg-slate-950/80 backdrop-blur-xl shadow-2xl [transform:translateZ(0)]"
         />
     );
 }
@@ -266,7 +266,7 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
                                         e.stopPropagation();
                                         setShowControls(v => !v);
                                     }}
-                                    className="block max-h-[85dvh] max-w-[95vw] w-auto h-auto object-contain rounded-3xl border border-[var(--glass-border)] bg-slate-950/80 backdrop-blur-xl shadow-2xl [transform:translateZ(0)] pointer-events-auto"
+                                    className="block max-h-[85dvh] max-w-[95vw] w-auto h-auto object-contain rounded-3xl border border-white/10 bg-slate-950/80 backdrop-blur-xl shadow-2xl [transform:translateZ(0)] pointer-events-auto"
                                 />
                             )}
                         </div>
