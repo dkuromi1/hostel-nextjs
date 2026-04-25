@@ -105,6 +105,7 @@ export function ExperiencesSection() {
                           src={pillar.image}
                           alt={pillar.alt}
                           fill
+                          loading="lazy"
                           className="object-cover"
                           sizes="(max-width: 1024px) 85vw, 50vw"
                         />
@@ -139,6 +140,7 @@ export function ExperiencesSection() {
                     src={experiencePillars[0].image}
                     alt={experiencePillars[0].alt}
                     fill
+                    loading="lazy"
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 58vw, 812px"
                   />
@@ -172,6 +174,7 @@ export function ExperiencesSection() {
                             src={pillar.image}
                             alt={pillar.alt}
                             fill
+                            loading="lazy"
                             className="object-cover"
                             sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 42vw, 588px"
                           />
@@ -234,6 +237,7 @@ export function ExperiencesSection() {
                           src={event.image}
                           alt={event.alt}
                           fill
+                          loading="lazy"
                           className="object-cover"
                           sizes="(max-width: 768px) 100vw, (max-width: 1400px) 23vw, 322px"
                         />

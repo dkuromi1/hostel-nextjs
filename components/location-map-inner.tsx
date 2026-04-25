@@ -5,13 +5,13 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { Home, AlertCircle } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import { activeInstance } from '@/instances';
+import { isLowEndDevice } from '@/lib/performance';
 import { siteConfig } from '@/lib/site-data';
 
 interface LocationMapInnerProps {
     accessToken: string;
 }
 
-type MapboxModule = typeof import('mapbox-gl');
 type MapboxMap = import('mapbox-gl').Map;
 type MapboxGeoJSONData = import('mapbox-gl').GeoJSONSourceSpecification["data"];
 type MapboxAnySourceData = import('mapbox-gl').AnySourceData;
@@ -57,6 +57,8 @@ const isMobileDevice = () => {
     const isNarrow = window.innerWidth < 768;
     return hasTouch && isNarrow;
 };
+
+const shouldUseLiteMobileMap = () => isMobileDevice() && isLowEndDevice();
 
 // Helper to generate a Geographical circle for the 5-minute walk radius
 const createGeoJSONCircle = (center: [number, number], radiusInKm: number, points: number = 32) => {
@@ -261,10 +263,11 @@ const applyCustomizations = (
     }
 
     const isSatelliteStyle = style.sprite?.includes('satellite') || style.name?.toLowerCase().includes('satellite');
+    const useLiteMobileMap = shouldUseLiteMobileMap();
 
     if (map.getLayer('add-3d-buildings')) map.removeLayer('add-3d-buildings');
 
-    if (map.getSource('composite') && !isSatelliteStyle) {
+    if (map.getSource('composite') && !isSatelliteStyle && !useLiteMobileMap) {
         map.addLayer(
             {
                 'id': 'add-3d-buildings',
@@ -306,9 +309,9 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
 
         let moveThrottleId: ReturnType<typeof requestAnimationFrame> | null = null;
         let map: MapboxMap | null = null;
-        let mapboxgl: MapboxModule["default"] | null = null;
         let style: HTMLStyleElement | null = null;
         const mobile = isMobileDevice();
+        const useLiteMobileMap = shouldUseLiteMobileMap();
         const themeObserver = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 if (mutation.attributeName === 'class') {
@@ -322,56 +325,8 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
 
         const initMap = async () => {
             try {
-                // WebGL capability detection
-                const checkWebGLSupport = () => {
-                    const canvas = document.createElement('canvas');
-                    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl') as WebGLRenderingContext | null;
-                    
-                    if (!gl) {
-                        return {
-                            supported: false,
-                            reason: 'WebGL not supported by browser'
-                        };
-                    }
-                    
-                    // Check for specific WebGL extensions that Mapbox requires
-                    const requiredExtensions = ['OES_element_index_uint', 'WEBGL_depth_texture'];
-                    const missingExtensions = requiredExtensions.filter(ext => !gl.getExtension(ext));
-                    
-                    if (missingExtensions.length > 0) {
-                        return {
-                            supported: false,
-                            reason: `Missing required WebGL extensions: ${missingExtensions.join(', ')}`
-                        };
-                    }
-                    
-                    // Check renderer info for potential issues
-                    const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
-                    if (debugInfo) {
-                        const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
-                        const vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
-                        console.log('WebGL Renderer Info:', { vendor, renderer });
-                        
-                        // Check for known problematic renderers
-                        if (renderer.includes('Software') || renderer.includes('Microsoft Basic Render')) {
-                            return {
-                                supported: false,
-                                reason: 'Software rendering detected - hardware acceleration may be disabled'
-                            };
-                        }
-                    }
-                    
-                    return { supported: true };
-                };
-                
-                const webglCheck = checkWebGLSupport();
-                if (!webglCheck.supported) {
-                    throw new Error(`WebGL initialization failed: ${webglCheck.reason}`);
-                }
-
                 const mapboxModule = await import('mapbox-gl');
                 const mapbox = mapboxModule.default;
-                mapboxgl = mapbox;
                 mapbox.prewarm();
 
                 if (siteConfig.features.showLocalPois) {
@@ -421,13 +376,15 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                 const m = new mapbox.Map({
                     container: mapContainerRef.current,
                     style: STANDARD_STYLE,
-                    center: HOSTEL_COORDS,
-                    zoom: 13,
-                    pitch: 45,
-                    bearing: -17.6,
+                    center: initialCenter,
+                    zoom: initialZoom,
+                    pitch: useLiteMobileMap ? 0 : 45,
+                    bearing: useLiteMobileMap ? 0 : -17.6,
                     antialias: false,
-                    fadeDuration: 300,
-                    maxTileCacheSize: mobile ? 20 : undefined,
+                    fadeDuration: mobile ? 0 : 300,
+                    maxTileCacheSize: mobile ? 10 : 20,
+                    preserveDrawingBuffer: false,
+                    renderWorldCopies: false,
                 });
 
             map = m;
@@ -649,37 +606,6 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
             });
             } catch (error) {
                 console.error('Failed to initialize map:', error);
-                
-                // If the initial map setup failed, try with a minimal configuration
-                if (!hasMapErrorRef.current && mapboxgl && error instanceof Error && error.message.includes('WebGL')) {
-                    try {
-                        console.log('Attempting fallback map configuration...');
-                        const fallbackMap = new mapboxgl.Map({
-                            container: mapContainerRef.current!,
-                            style: 'mapbox://styles/mapbox/streets-v12',
-                            center: HOSTEL_COORDS,
-                            zoom: 13,
-                            pitch: 0,
-                            bearing: 0,
-                            antialias: false,
-                            fadeDuration: 0,
-                            maxTileCacheSize: 5,
-                            failIfMajorPerformanceCaveat: false,
-                            preserveDrawingBuffer: false,
-                            attributionControl: false,
-                        });
-                        
-                        map = fallbackMap;
-                        mapRef.current = fallbackMap;
-                        
-                        // Add minimal controls
-                        fallbackMap.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'bottom-right');
-                        
-                        return; // Success with fallback
-                    } catch (fallbackError) {
-                        console.error('Fallback map also failed:', fallbackError);
-                    }
-                }
 
                 hasMapErrorRef.current = true;
                 setMapError(error instanceof Error ? error.message : 'Failed to initialize map. WebGL may not be supported in your browser.');

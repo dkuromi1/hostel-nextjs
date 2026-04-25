@@ -4,49 +4,71 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 import { buttonVariants } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import { bookingChannels, contactChannels, navLinks } from "@/lib/site-data";
+import { shouldReduceMotion } from "@/lib/performance";
 
 const menuVariants = {
   hidden: { opacity: 0, scale: 0.95, y: -8 },
-  visible: {
+  visible: (shouldReduce: boolean) => ({
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: {
-      type: "spring" as const,
-      damping: 24,
-      stiffness: 200,
-      staggerChildren: 0.04,
-      delayChildren: 0.05,
-    },
-  },
-  exit: {
+    transition: shouldReduce
+      ? { duration: 0 }
+      : {
+          type: "spring" as const,
+          damping: 24,
+          stiffness: 200,
+          staggerChildren: 0.04,
+          delayChildren: 0.05,
+        },
+  }),
+  exit: (shouldReduce: boolean) => ({
     opacity: 0,
     scale: 0.97,
     y: -6,
-    transition: { duration: 0.18, ease: [0.4, 0, 1, 1] as const },
-  },
+    transition: shouldReduce
+      ? { duration: 0 }
+      : { duration: 0.18, ease: [0.4, 0, 1, 1] as const },
+  }),
 };
 
 const itemVariants = {
   hidden: { opacity: 0, x: -10 },
-  visible: {
+  visible: (shouldReduce: boolean) => ({
     opacity: 1,
     x: 0,
-    transition: { type: "spring" as const, damping: 22, stiffness: 160 },
-  },
-  exit: { opacity: 0, x: -6, transition: { duration: 0.1 } },
+    transition: shouldReduce
+      ? { duration: 0 }
+      : { type: "spring" as const, damping: 22, stiffness: 160 },
+  }),
+  exit: (shouldReduce: boolean) => ({
+    opacity: 0,
+    x: -6,
+    transition: shouldReduce ? { duration: 0 } : { duration: 0.1 },
+  }),
 };
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+  const prefersReduced = useReducedMotion();
+  
+  // Combine Framer's built-in check with our custom low-end device heuristic
+  const [shouldReduce, setShouldReduce] = useState(false);
+  
+  // We compute shouldReduceMotion() on mount to avoid hydration mismatch 
+  // since it uses window.matchMedia and navigator properties.
+  useEffect(() => {
+    setShouldReduce(prefersReduced || shouldReduceMotion());
+  }, [prefersReduced]);
+
   const primaryContactChannel =
     contactChannels.find((channel) => channel.stylePriority === "primary") ?? contactChannels[0];
 
@@ -82,7 +104,12 @@ export function MobileNav() {
         aria-expanded={open}
         aria-label={open ? "Close navigation" : "Open navigation"}
         aria-haspopup="true"
-        className="flex size-11 cursor-pointer items-center justify-center rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] text-[var(--text-heading)] shadow-sm backdrop-blur-md"
+        className={cn(
+          "flex size-11 cursor-pointer items-center justify-center rounded-full border border-[var(--glass-border)] text-[var(--text-heading)] shadow-sm",
+          shouldReduce 
+            ? "bg-white dark:bg-slate-900" 
+            : "bg-[var(--glass-bg)] backdrop-blur-md"
+        )}
       >
         <Menu className="size-5" strokeWidth={1.9} />
       </button>
@@ -90,19 +117,25 @@ export function MobileNav() {
       <AnimatePresence>
         {open && (
           <motion.div
+            custom={shouldReduce}
             key="mobile-menu"
             variants={menuVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="absolute right-0 top-full z-50 mt-3 w-[min(22rem,calc(100vw-2rem))] overflow-hidden rounded-[30px] border border-[var(--glass-border)] bg-white/98 dark:bg-slate-900/95 p-4 shadow-2xl backdrop-blur-xl"
+            className={cn(
+              "absolute right-0 top-full z-50 mt-3 w-[min(22rem,calc(100vw-2rem))] overflow-hidden rounded-[30px] border border-[var(--glass-border)] p-4 shadow-2xl",
+              shouldReduce 
+                ? "bg-white dark:bg-slate-900" 
+                : "bg-white/98 dark:bg-slate-900/95 backdrop-blur-xl"
+            )}
             style={{ originX: 1, originY: 0 }}
           >
             <nav className="flex flex-col gap-2">
               {navLinks.map((item) => {
                 const isActive = pathname === item.href;
                 return (
-                  <motion.div key={item.href} variants={itemVariants}>
+                  <motion.div key={item.href} variants={itemVariants} custom={shouldReduce}>
                     <Link
                       href={item.href}
                       onClick={() => setOpen(false)}
@@ -121,6 +154,7 @@ export function MobileNav() {
 
               <motion.div
                 variants={itemVariants}
+                custom={shouldReduce}
                 className="mt-3 grid gap-3 border-t border-[var(--border)] pt-4"
               >
                 {primaryContactChannel ? (
