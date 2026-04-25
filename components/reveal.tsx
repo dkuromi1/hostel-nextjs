@@ -4,6 +4,7 @@ import type { HTMLAttributes } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
+import { shouldReduceMotion } from "@/lib/performance";
 
 type RevealProps = HTMLAttributes<HTMLDivElement> & {
   delay?: number;
@@ -19,7 +20,8 @@ export function Reveal({
   duration: _duration,
   ...props
 }: RevealProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const prefersReduced = useReducedMotion();
+  const shouldReduce = prefersReduced || shouldReduceMotion();
 
   return (
     <motion.div
@@ -32,7 +34,7 @@ export function Reveal({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={
-        shouldReduceMotion
+        shouldReduce
           ? { duration: 0 }
           : {
               type: "spring",

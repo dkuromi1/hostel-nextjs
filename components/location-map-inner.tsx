@@ -261,10 +261,11 @@ const applyCustomizations = (
     }
 
     const isSatelliteStyle = style.sprite?.includes('satellite') || style.name?.toLowerCase().includes('satellite');
+    const mobile = isMobileDevice();
 
     if (map.getLayer('add-3d-buildings')) map.removeLayer('add-3d-buildings');
 
-    if (map.getSource('composite') && !isSatelliteStyle) {
+    if (map.getSource('composite') && !isSatelliteStyle && !mobile) {
         map.addLayer(
             {
                 'id': 'add-3d-buildings',
@@ -423,11 +424,14 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                     style: STANDARD_STYLE,
                     center: HOSTEL_COORDS,
                     zoom: 13,
-                    pitch: 45,
-                    bearing: -17.6,
+                    pitch: mobile ? 0 : 45,
+                    bearing: mobile ? 0 : -17.6,
                     antialias: false,
-                    fadeDuration: 300,
-                    maxTileCacheSize: mobile ? 20 : undefined,
+                    fadeDuration: mobile ? 0 : 300,
+                    maxTileCacheSize: mobile ? 10 : 20,
+                    failIfMajorPerformanceCaveat: true,
+                    preserveDrawingBuffer: false,
+                    renderWorldCopies: false,
                 });
 
             map = m;
