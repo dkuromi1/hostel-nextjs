@@ -75,12 +75,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: propertyConfig.branding.logoWebp, type: "image/webp", sizes: "648x648" },
-      { url: propertyConfig.branding.logoPng, type: "image/png", sizes: "648x648" },
-      { url: propertyConfig.branding.favicon, type: "image/x-icon", sizes: "any" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
     ],
     apple: [
-      { url: propertyConfig.branding.appleTouchIcon, sizes: "648x648", type: "image/png" },
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
   appleWebApp: {
