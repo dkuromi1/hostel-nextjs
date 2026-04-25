@@ -25,6 +25,9 @@ This project is engineered beyond typical static hospitality sites, using advanc
 *   **Automated SEO & Schema Engineering**: Built-in dynamic JSON-LD injection (`lib/metadata.ts`) generating `LocalBusiness`, `FAQPage`, and `BreadcrumbList` schemas for superior search engine visibility.
 *   **Privacy-First Analytics**: Deeply integrated Umami analytics for cookie-less, GDPR-compliant visitor tracking, fully manageable via environment variables.
 *   **Feature-Flagged Instance Architecture**: Instance business content lives in structured JSON files under `instances/[property-name]/content/`, while `lib/site-data.ts` validates, normalizes, and exposes property-specific capabilities like maps, weather, volunteer banners, and regional trail content.
+*   **Intelligent Performance Engine**: includes a custom device-detection heuristic (`lib/performance.ts`) that audits hardware concurrency, device memory, connection speed, and browser age. On low-end mobile devices, the system automatically adjusts the experience:
+    *   **Removals**: Disables site-wide `backdrop-blur` effects, 3D building extrusions in the map, and complex spring animations.
+    *   **Additions**: Injects high-opacity solid fallbacks for UI elements, enforces standard 2D map views to save VRAM, and utilizes throttled interaction listeners to prevent layout thrashing on older mobile CPUs.
 
 
 
