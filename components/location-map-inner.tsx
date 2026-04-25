@@ -58,7 +58,7 @@ const isMobileDevice = () => {
     return hasTouch && isNarrow;
 };
 
-const shouldUseLiteMobileMap = () => isMobileDevice() && isLowEndDevice();
+const shouldUseLiteMap = () => isLowEndDevice();
 
 // Helper to generate a Geographical circle for the 5-minute walk radius
 const createGeoJSONCircle = (center: [number, number], radiusInKm: number, points: number = 32) => {
@@ -263,11 +263,11 @@ const applyCustomizations = (
     }
 
     const isSatelliteStyle = style.sprite?.includes('satellite') || style.name?.toLowerCase().includes('satellite');
-    const useLiteMobileMap = shouldUseLiteMobileMap();
+    const useLiteMap = shouldUseLiteMap();
 
     if (map.getLayer('add-3d-buildings')) map.removeLayer('add-3d-buildings');
 
-    if (map.getSource('composite') && !isSatelliteStyle && !useLiteMobileMap) {
+    if (map.getSource('composite') && !isSatelliteStyle && !useLiteMap) {
         map.addLayer(
             {
                 'id': 'add-3d-buildings',
@@ -311,7 +311,7 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
         let map: MapboxMap | null = null;
         let style: HTMLStyleElement | null = null;
         const mobile = isMobileDevice();
-        const useLiteMobileMap = shouldUseLiteMobileMap();
+        const useLiteMap = shouldUseLiteMap();
         const themeObserver = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 if (mutation.attributeName === 'class') {
@@ -378,8 +378,8 @@ export default function LocationMapInner({ accessToken }: LocationMapInnerProps)
                     style: STANDARD_STYLE,
                     center: initialCenter,
                     zoom: initialZoom,
-                    pitch: useLiteMobileMap ? 0 : 45,
-                    bearing: useLiteMobileMap ? 0 : -17.6,
+                    pitch: useLiteMap ? 0 : 45,
+                    bearing: useLiteMap ? 0 : -17.6,
                     antialias: false,
                     fadeDuration: mobile ? 0 : 300,
                     maxTileCacheSize: mobile ? 10 : 20,

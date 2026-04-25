@@ -46,9 +46,9 @@ export function isLowEndDevice(): boolean {
 
   // 3. IOS / MOBILE SAFARI (OS Version Proxy)
   // Since Apple hides RAM/CPU, we flag based on the OS version.
-  // Flagging anything below iOS 15 (released late 2021) catches legacy hardware.
-  if (isSafariFamily || isMobileIOS) {
-    const isOldIOS = /OS [0-9]_|OS 1[0-4]_/.test(ua); 
+  if (isMobileIOS) {
+    // Matches "iPhone OS 14_" or "CPU OS 14_" (iPad)
+    const isOldIOS = /(iPhone|CPU)\sOS\s([0-9]_|1[0-4]_)/.test(ua); 
     if (isOldIOS) {
       cachedLowEndDevice = true;
       return true;

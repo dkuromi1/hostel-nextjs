@@ -66,11 +66,9 @@ const performanceBootstrapScript = `
     }
 
     // 3. iOS / Mobile Safari (OS Version Proxy)
-    const isSafariFamily = /Safari/i.test(ua) && !/Chrome/i.test(ua);
     const isMobileIOS = /iPhone|iPad|iPod/i.test(ua);
-    if (isSafariFamily || isMobileIOS) {
-      // Flag iOS < 15
-      if (/OS [0-9]_|OS 1[0-4]_/.test(ua)) {
+    if (isMobileIOS) {
+      if (/(iPhone|CPU)\sOS\s([0-9]_|1[0-4]_)/.test(ua)) {
         document.documentElement.classList.add("low-end-device");
         return;
       }
