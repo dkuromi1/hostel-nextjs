@@ -147,6 +147,7 @@ const getLightPreset = () =>
 const applyBasePreset = (map: MapboxMap) => {
     try {
         map.setConfigProperty('basemap', 'lightPreset', getLightPreset());
+        map.setConfigProperty('basemap', 'show3dObjects', !shouldUseLiteMap());
     } catch {
         // Ignore when the active style does not support Mapbox Standard config properties.
     }
