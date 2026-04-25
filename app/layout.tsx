@@ -104,7 +104,9 @@ export default function RootLayout({
   children: ReactNode;
   modal: ReactNode;
 }>) {
-  const analyticsWebsiteId = process.env[activeInstance.integrations.analytics.websiteIdEnvVar];
+  // Static reference to ensure Next.js replaces the env var at build time
+  const analyticsWebsiteId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
+  const siteDomain = process.env.NEXT_PUBLIC_SITE_URL ? new URL(process.env.NEXT_PUBLIC_SITE_URL).hostname : undefined;
 
   return (
     <html
@@ -130,6 +132,7 @@ export default function RootLayout({
             defer
             src={activeInstance.integrations.analytics.scriptSrc}
             data-website-id={analyticsWebsiteId}
+            data-domains={siteDomain}
             strategy="afterInteractive"
           />
         ) : null}
