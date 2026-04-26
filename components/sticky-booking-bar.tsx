@@ -24,7 +24,7 @@ export function StickyBookingBar() {
     <div className={cn(
       "fixed inset-x-0 bottom-0 z-40 px-4 pt-[6px] pb-[calc(6px+env(safe-area-inset-bottom,0px))] transition-all duration-300 lg:hidden [transform:translateZ(0)]",
       isTransparent
-        ? "border-t border-white/5 bg-slate-950/50 backdrop-blur-md"
+        ? "border-t border-white/5 bg-[var(--surface-dark)]/50 backdrop-blur-md"
         : "border-t border-[var(--glass-border)] bg-[var(--glass-bg)] shadow-[0_-20px_40px_-30px_var(--glass-shadow)] backdrop-blur"
     )}>
       <div className="mx-auto flex max-w-[1400px] items-center gap-2">
@@ -35,8 +35,8 @@ export function StickyBookingBar() {
             rel="noreferrer"
             className={cn(
               buttonVariants({ size: "sm" }),
-              "flex h-9 min-w-0 flex-1 items-center justify-center gap-2 rounded-full border border-white/10 bg-emerald-700 px-3 font-semibold text-white shadow-lg transition hover:bg-emerald-800",
-              isTransparent && "bg-emerald-700/90 backdrop-blur-sm"
+              "flex h-9 min-w-0 flex-1 items-center justify-center gap-2 rounded-full border border-white/10 bg-[var(--brand-primary)] px-3 font-semibold text-[var(--primary-foreground)] shadow-lg transition hover:bg-[var(--brand-primary-dark)]",
+              isTransparent && "bg-[var(--brand-primary)]/90 backdrop-blur-sm"
             )}
           >
             <ChannelIcon iconKey={primaryContactChannel.icon} className="size-4 shrink-0" strokeWidth={1.8} />
@@ -55,7 +55,7 @@ export function StickyBookingBar() {
                 buttonVariants({ variant: "outline", size: "icon" }),
                 "size-9 rounded-full transition-all",
                 isTransparent
-                  ? "border-white/20 bg-slate-950/20 text-white backdrop-blur-sm hover:bg-slate-950/40"
+                  ? "border-white/20 bg-[var(--surface-dark)]/20 text-white backdrop-blur-sm hover:bg-[var(--surface-dark)]/40"
                   : "border-[var(--border)] bg-[var(--muted)] text-[var(--foreground)] hover:bg-[var(--muted)]/80"
               )}
             >

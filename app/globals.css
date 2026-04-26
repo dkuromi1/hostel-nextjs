@@ -35,24 +35,38 @@
 }
 
 :root {
-  --background: #f6f7f2;
+  /* ─── Original Cool Palette ─────────────────────────────────────────────────
+     Classic hostel site aesthetic: clean slate backgrounds, emerald-green
+     primary actions, sky-blue accents, and crisp white glass panels.
+  ─────────────────────────────────────────────────────────────────────────── */
+
+  --background: #f8fafc;
+  /* slate-50 — clean cool white */
   --foreground: #0f172a;
-  --card: rgba(255, 255, 255, 0.92);
+  /* slate-900 */
+  --card: rgba(255, 255, 255, 0.94);
   --card-foreground: #0f172a;
   --popover: #ffffff;
   --popover-foreground: #0f172a;
   --primary: #059669;
+  /* emerald-600 */
   --primary-foreground: #ffffff;
-  --secondary: #dff4ef;
+  --secondary: #f1f5f9;
+  /* slate-100 */
   --secondary-foreground: #0f172a;
-  --muted: #e8efe7;
-  --muted-foreground: #5b6677;
-  --accent: #f6b64d;
-  --accent-foreground: #3c2d08;
-  --destructive: #b91c1c;
-  --border: rgba(15, 23, 42, 0.1);
-  --input: rgba(15, 23, 42, 0.1);
+  --muted: #f1f5f9;
+  /* slate-100 */
+  --muted-foreground: #64748b;
+  /* slate-500 */
+  --accent: #38bdf8;
+  /* sky-400 */
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --border: rgba(148, 163, 184, 0.2);
+  /* slate-400/20 */
+  --input: rgba(148, 163, 184, 0.2);
   --ring: rgba(5, 150, 105, 0.35);
+  /* emerald ring */
   --radius: 1.35rem;
   --font-sans: var(--font-nunito), "Avenir Next", "Segoe UI", sans-serif;
   --font-heading: var(--font-nunito), "Avenir Next", "Segoe UI", sans-serif;
@@ -68,79 +82,141 @@
   /* emerald-100 */
   --brand-primary-dark: #047857;
   /* emerald-700 */
-  --brand-accent: #f59e0b;
-  /* amber-500  */
+  --brand-accent: #38bdf8;
+  /* sky-400 — lighter blue for visibility */
 
   /* ─── Semantic Text Colors ──────────────────────────────────────────────────
      Use these instead of raw slate-* classes so a palette swap is one edit.
   ─────────────────────────────────────────────────────────────────────────── */
-  --text-heading: #1e293b;
-  /* slate-800 — primary headings   */
+  --text-heading: #0f172a;
+  /* slate-900 */
   --text-body: #334155;
-  /* slate-700 — stand-alone paragraphs (desktop) */
+  /* slate-700 */
   --text-body-subtle: #475569;
-  /* slate-600 — paragraph copy inside white cards */
-  --text-muted: #64748b;
-  /* slate-500 — secondary/captions */
-  --text-on-dark: #f1f5f9;
-  /* slate-100 — text on dark bgs   */
-  --selection-background: rgba(5, 150, 105, 0.2);
-  --atmosphere-glow-primary: rgba(5, 150, 105, 0.14);
-  --atmosphere-glow-accent: rgba(245, 182, 77, 0.1);
-  --atmosphere-glow-secondary: rgba(16, 185, 129, 0.06);
-  --atmosphere-grid-line: rgba(148, 163, 184, 0.08);
-  --shadow-interactive-soft: rgba(11, 32, 29, 0.45);
+  /* slate-600 */
+  --text-muted: #94a3b8;
+  /* slate-400 */
+  --text-on-dark: #f8fafc;
+  /* slate-50 — text on dark bgs */
+
+  --selection-background: rgba(5, 150, 105, 0.18);
+  --atmosphere-glow-primary: rgba(5, 150, 105, 0.12);
+  /* emerald glow */
+  --atmosphere-glow-accent: rgba(14, 165, 233, 0.10);
+  /* sky glow */
+  --atmosphere-glow-secondary: rgba(52, 211, 153, 0.06);
+  /* emerald-300 secondary */
+  --atmosphere-grid-line: rgba(15, 23, 42, 0.035);
+  /* slate-900 grid */
+
+  --shadow-interactive-soft: rgba(15, 23, 42, 0.35);
   --link-color: var(--brand-primary);
   --link-color-hover: var(--brand-primary-dark);
   --link-decoration: color-mix(in srgb, var(--brand-primary) 30%, transparent);
 
-  --glass-bg: rgba(255, 255, 255, 0.82);
-  --glass-border: rgba(255, 255, 255, 0.7);
-  --glass-shadow: rgba(15, 23, 42, 0.35);
+  --glass-bg: rgba(255, 255, 255, 0.84);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --glass-shadow: rgba(15, 23, 42, 0.15);
+
+  /* ─── Dark Surface Color (footer, CTA panels, overlay content) ─────────────
+     Classic deep slate-950 dark surface
+  ─────────────────────────────────────────────────────────────────────────── */
+  --surface-dark: #020617;
+  /* slate-950 */
+  --surface-dark-secondary: #0f172a;
+  /* slate-900 */
+  --surface-dark-border: rgba(255, 255, 255, 0.08);
+  --text-on-surface-dark: #f8fafc;
+  /* slate-50 */
+  --text-on-surface-dark-muted: #94a3b8;
+  /* slate-400 */
+
+  /* ─── Brand Tertiary — Blue-slate accent ────────────────────────────────────
+     The classic deep blue-slate. Used for the volunteer banner, CTA strip,
+     and testimonial card backgrounds.
+  ─────────────────────────────────────────────────────────────────────────── */
+  --brand-tertiary: #374151;
+  /* slate-700 */
+  --brand-tertiary-dark: #1e293b;
+  /* slate-800 */
+  --brand-tertiary-light: #e2e8f0;
+  /* slate-200 */
+  --tertiary-foreground: #ffffff;
+  --text-on-tertiary-muted: rgba(226, 232, 240, 0.75);
+  /* ─── Social / Third Party ──────────────────────────────────────────────── */
+  --brand-whatsapp: #059669;
+  --brand-whatsapp-dark: #047857;
 }
 
 .dark {
   --background: #020617;
-  --foreground: #f1f5f9;
-  --card: rgba(15, 23, 42, 0.85);
-  --card-foreground: #f1f5f9;
+  /* slate-950 */
+  --foreground: #f8fafc;
+  /* slate-50 */
+  --card: rgba(15, 23, 42, 0.90);
+  --card-foreground: #f8fafc;
   --popover: #0f172a;
-  --popover-foreground: #f1f5f9;
-  --primary: #10b981;
+  --popover-foreground: #f8fafc;
+  --primary: #34d399;
+  /* emerald-400 — brighter for dark bg */
   --primary-foreground: #020617;
-  --secondary: #064e3b;
-  --secondary-foreground: #f1f5f9;
+  --secondary: #1e293b;
+  /* slate-800 */
+  --secondary-foreground: #f8fafc;
   --muted: #1e293b;
+  /* slate-800 */
   --muted-foreground: #94a3b8;
-  --accent: #f59e0b;
+  /* slate-400 */
+  --accent: #38bdf8;
+  /* sky-400 */
   --accent-foreground: #020617;
   --border: rgba(255, 255, 255, 0.1);
   --input: rgba(255, 255, 255, 0.1);
-  --ring: rgba(16, 185, 129, 0.35);
+  --ring: rgba(52, 211, 153, 0.35);
 
-  --text-heading: #ffffff;
+  --text-heading: #f8fafc;
   --text-body: #94a3b8;
+  /* slate-400 */
   --text-body-subtle: #cbd5e1;
+  /* slate-300 */
   --text-muted: #64748b;
-  --text-on-dark: #f1f5f9;
+  /* slate-500 */
+  --text-on-dark: #f8fafc;
 
   --brand-primary: #34d399;
-  /* emerald-400 for better contrast on dark bg */
-  --brand-primary-light: #064e3b;
-  /* emerald-900 */
+  /* emerald-400 for dark mode */
+  --brand-primary-light: #1e293b;
+  /* slate-800 for dark mode */
   --brand-primary-dark: #6ee7b7;
-  /* emerald-300 */
-  --brand-accent: #fbbf24;
-  /* amber-400 */
+  /* emerald-300 — lighter for hover on dark */
+  --brand-accent: #38bdf8;
+  /* sky-400 */
 
-  --atmosphere-glow-primary: rgba(16, 185, 129, 0.15);
-  --atmosphere-glow-accent: rgba(245, 158, 11, 0.1);
-  --atmosphere-glow-secondary: rgba(5, 150, 105, 0.08);
-  --atmosphere-grid-line: rgba(255, 255, 255, 0.04);
+  --atmosphere-glow-primary: rgba(52, 211, 153, 0.14);
+  --atmosphere-glow-accent: rgba(56, 189, 248, 0.10);
+  --atmosphere-glow-secondary: rgba(5, 150, 105, 0.07);
+  --atmosphere-grid-line: rgba(255, 255, 255, 0.035);
 
-  --glass-bg: rgba(15, 23, 42, 0.82);
-  --glass-border: rgba(255, 255, 255, 0.05);
-  --glass-shadow: rgba(0, 0, 0, 0.5);
+  --glass-bg: rgba(15, 23, 42, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.07);
+  --glass-shadow: rgba(0, 0, 0, 0.55);
+
+  --surface-dark: #020617;
+  /* slate-950 */
+  --surface-dark-secondary: #0f172a;
+  /* slate-900 */
+  --surface-dark-border: rgba(255, 255, 255, 0.06);
+  --text-on-surface-dark: #f8fafc;
+  --text-on-surface-dark-muted: #94a3b8;
+
+  --brand-tertiary: #4b5d74;
+  /* slightly lighter slate-blue for dark mode */
+  --brand-tertiary-dark: #374151;
+  --brand-tertiary-light: #1e293b;
+  --tertiary-foreground: #ffffff;
+  --text-on-tertiary-muted: rgba(226, 232, 240, 0.70);
+  --brand-whatsapp: #059669;
+  --brand-whatsapp-dark: #047857;
 }
 
 @utility bg-texture {
@@ -164,32 +240,8 @@
     @apply text-foreground;
   }
 
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    /* Performance: Force background onto its own GPU layer */
-    will-change: transform;
-    transform: translateZ(0);
-
-    /* Multi-layered premium background: Noise -> Fade -> Glows -> Grid */
-    background-image:
-      /* Subtle noise: Simplified for mobile GPU precision (1 octave, 1:1 scale) */
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.25'/%3E%3C/svg%3E"),
-      /* PERFORMANCE: Fade Overlay moved up to allow GPU to skip rendering glows/grid in the footer area */
-      linear-gradient(to bottom, transparent 60%, var(--background) 100%),
-      radial-gradient(circle at 0% 0%, var(--atmosphere-glow-primary), transparent 50%),
-      radial-gradient(circle at 100% 0%, var(--atmosphere-glow-accent), transparent 40%),
-      radial-gradient(circle at 100% 50%, var(--atmosphere-glow-secondary), transparent 40%),
-      linear-gradient(var(--atmosphere-grid-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--atmosphere-grid-line) 1px, transparent 1px);
-    background-size: 140px 140px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 140px 140px, 140px 140px;
-    background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat, repeat;
-    background-blend-mode: overlay, normal, normal, normal, normal, normal, normal;
-    opacity: 0.95;
-    pointer-events: none;
-  }
+  /* Atmosphere background is now handled by components/atmosphere-background.tsx 
+     to improve render performance and reduce critical CSS size. */
 
   h1,
   h2,
@@ -220,7 +272,7 @@
   @apply backdrop-blur-md;
   -webkit-backdrop-filter: blur(12px);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
     0 24px 70px -40px var(--glass-shadow);
   /* Fix flickering during hardware-accelerated transitions */
   isolation: isolate;
@@ -312,7 +364,7 @@
 
 /** Large section description paragraph */
 @utility text-section-desc {
-  @apply text-base leading-8 md:text-lg text-[var(--text-body)];
+  @apply text-base leading-relaxed md:text-lg text-[var(--text-body)];
 }
 
 /** Standard card / component body paragraph */
@@ -322,7 +374,7 @@
 
 /** Supporting paragraph for page states and large editorial blocks */
 @utility text-body-lg {
-  @apply text-base leading-8 text-[var(--text-body)];
+  @apply text-base leading-relaxed text-[var(--text-body)];
 }
 
 /** Large hero sub-headline paragraph */
@@ -345,6 +397,7 @@
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(100%);
   }
@@ -363,6 +416,7 @@
     scroll-behavior: auto !important;
   }
 }
+
 .low-end-device {
   scroll-behavior: auto !important;
 }

@@ -45,8 +45,8 @@ const PillarCta = ({ cta, variant = "light" }: { cta?: CtaLink; variant?: "light
         buttonVariants({ variant: "outline", size: "sm" }),
         "mt-4 w-fit gap-2 rounded-full transition-all duration-300",
         variant === "light"
-          ? "border-emerald-500/20 bg-emerald-50/50 text-emerald-700 hover:border-emerald-500 hover:bg-emerald-600 hover:text-white"
-          : "border-white/20 bg-white/10 text-white backdrop-blur-sm hover:bg-white hover:text-emerald-900 shadow-lg"
+          ? "border-[var(--brand-primary)]/20 bg-[var(--brand-primary-light)]/50 text-[var(--brand-primary-dark)] hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-[var(--primary-foreground)]"
+          : "border-white/20 bg-white/10 text-white backdrop-blur-sm hover:bg-white hover:text-[var(--brand-primary-dark)] shadow-lg"
       )}
     >
       {cta.text}
@@ -69,18 +69,18 @@ export function ExperiencesSection() {
             href="/experiences"
             className={cn(
               "group relative inline-flex items-center justify-center gap-4 overflow-hidden rounded-full px-8 py-4",
-              "bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white",
-              "text-sm font-bold tracking-tight antialiased",
-              "shadow-[0_20px_50px_-12px_rgba(2,6,23,0.5)] ring-1 ring-white/15",
-              "transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_-12px_rgba(5,150,105,0.25)] hover:ring-white/25",
+              "bg-gradient-to-br from-[var(--surface-dark)] via-[var(--surface-dark-secondary)] to-[var(--surface-dark)]",
+              "text-sm font-semibold tracking-tight text-[var(--text-on-surface-dark)]",
+              "shadow-lg shadow-[var(--surface-dark)]/30 ring-1 ring-white/10",
+              "transition-all duration-300 hover:shadow-xl hover:shadow-[var(--surface-dark)]/40 hover:-translate-y-0.5",
               "active:scale-95 active:translate-y-0"
             )}
           >
             <div className="absolute inset-0 z-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 group-hover:translate-x-[100%]" />
-            <span className="relative z-10 transition-colors duration-300 group-hover:text-emerald-50">
+            <span className="relative z-10">
               {siteCopyContent.home.experiencesSection.buttonLabel}
             </span>
-            <div className="relative z-10 flex size-7 items-center justify-center rounded-full bg-white/15 text-white transition-all duration-300 group-hover:bg-emerald-500 group-hover:scale-110">
+            <div className="relative z-10 flex size-7 items-center justify-center rounded-full bg-white/15 text-white transition-all duration-300 group-hover:bg-[var(--brand-accent)] group-hover:scale-110">
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
             </div>
           </Link>
@@ -89,7 +89,7 @@ export function ExperiencesSection() {
         {/* --- DISCOVER SUBSECTION --- */}
         <div className="relative pt-12 sm:pt-16">
           <div className="absolute left-0 top-4 z-0 select-none opacity-[0.07] sm:top-4">
-            <span className="font-heading text-[44px] leading-none tracking-tighter text-slate-950 sm:text-[64px]" role="presentation" aria-hidden="true">
+            <span className="font-heading text-[44px] leading-none tracking-tighter text-[var(--text-heading)] sm:text-[64px]" role="presentation" aria-hidden="true">
               {siteCopyContent.home.experiencesSection.discoverLabel}
             </span>
           </div>
@@ -114,8 +114,8 @@ export function ExperiencesSection() {
                             <ThethWeather variant="small" />
                           </div>
                         )}
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent p-6 pt-24 text-white">
-                          <p className="text-sm sm:text-sm uppercase tracking-[0.28em] text-sky-100/90 mb-2">
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/90 via-[var(--surface-dark)]/40 to-transparent p-6 pt-24 text-white">
+                          <p className="text-sm sm:text-sm uppercase tracking-[0.28em] text-[var(--brand-accent)]/90 mb-2">
                             {pillar.title}
                           </p>
                         </div>
@@ -149,11 +149,11 @@ export function ExperiencesSection() {
                       <ThethWeather variant="small" />
                     </div>
                   ) : null}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent p-6 pt-32 text-white">
-                    <p className="text-sm uppercase tracking-[0.28em] text-sky-100/90">
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/90 via-[var(--surface-dark)]/40 to-transparent p-6 pt-32 text-white">
+                    <p className="text-sm uppercase tracking-[0.28em] text-[var(--brand-accent)]/90 drop-shadow-md">
                       {experiencePillars[0].title}
                     </p>
-                    <p className="mt-3 max-w-lg text-base leading-8 text-slate-100">
+                    <p className="mt-3 max-w-lg text-base leading-relaxed text-white/90">
                       {formatText(experiencePillars[0].description)}
                     </p>
                     <PillarCta cta={experiencePillars[0].cta} variant="dark" />
@@ -178,11 +178,11 @@ export function ExperiencesSection() {
                             className="object-cover"
                             sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 42vw, 588px"
                           />
-                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent p-6 pt-32 text-white">
-                            <p className="text-sm uppercase tracking-[0.28em] text-sky-100/90">
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/90 via-[var(--surface-dark)]/40 to-transparent p-6 pt-32 text-white">
+                            <p className="text-sm uppercase tracking-[0.28em] text-[var(--brand-accent)]/90 drop-shadow-md">
                               {pillar.title}
                             </p>
-                            <p className="mt-3 text-base leading-8 text-slate-100">
+                            <p className="mt-3 text-base leading-relaxed text-white/90">
                               {formatText(pillar.description)}
                             </p>
                             <PillarCta cta={pillar.cta} variant="dark" />
@@ -221,7 +221,7 @@ export function ExperiencesSection() {
         {/* --- CONNECT SUBSECTION --- */}
         <div className="relative pt-12 sm:pt-16 mt-8 sm:mt-12">
           <div className="absolute left-0 top-4 z-0 select-none opacity-[0.07] sm:top-4">
-            <span className="font-heading text-[44px] leading-none tracking-tighter text-slate-950 sm:text-[64px]" role="presentation" aria-hidden="true">
+            <span className="font-heading text-[44px] leading-none tracking-tighter text-[var(--text-heading)] sm:text-[64px]" role="presentation" aria-hidden="true">
               {siteCopyContent.home.experiencesSection.connectLabel}
             </span>
           </div>

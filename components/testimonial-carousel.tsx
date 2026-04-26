@@ -80,7 +80,7 @@ export function TestimonialCarousel({
   return (
     <Panel
       className={cn(
-        "relative flex flex-col justify-between border-slate-700/50 bg-slate-700 p-8 text-white shadow-xl shadow-slate-900/15 dark:border-[var(--glass-border)] dark:bg-[var(--glass-bg)] dark:text-[var(--text-heading)] dark:shadow-[var(--glass-shadow)]/10 sm:p-10",
+        "relative flex flex-col justify-between bg-[var(--surface-dark)] border-[var(--surface-dark-border)] p-8 text-white shadow-xl shadow-[var(--surface-dark)]/20 dark:border-[var(--glass-border)] dark:bg-[var(--glass-bg)] dark:text-[var(--text-heading)] dark:shadow-[var(--glass-shadow)]/10 sm:p-10",
         className
       )}
       onMouseEnter={() => setIsHovered(true)}
@@ -105,16 +105,16 @@ export function TestimonialCarousel({
             <blockquote className="mt-6 font-heading text-2xl leading-snug tracking-[-0.02em] text-white dark:text-[var(--text-heading)] sm:text-3xl">
               &ldquo;{testimonial.quote}&rdquo;
             </blockquote>
-            <p className="mt-6 font-medium text-slate-200 dark:text-[var(--text-body)]">
+            <p className="mt-6 font-medium text-[var(--text-on-surface-dark)] dark:text-[var(--text-body)]">
               — {testimonial.author}{" "}
-              <span className="opacity-90 font-normal italic text-slate-300 dark:text-[var(--text-muted)]">({testimonial.source})</span>
+              <span className="opacity-90 font-normal italic text-[var(--text-on-surface-dark-muted)] dark:text-[var(--text-muted)]">({testimonial.source})</span>
             </p>
           </motion.div>
         </AnimatePresence>
       </div>
 
       {/* Navigation Controls */}
-      <div className="mt-6 flex items-center justify-between border-t border-slate-600/70 pt-4 dark:border-[var(--border)]">
+      <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4 dark:border-[var(--border)]">
         <div className="flex gap-2">
           {testimonials.map((_, index) => (
             <div
@@ -131,7 +131,7 @@ export function TestimonialCarousel({
                 aria-hidden="true"
                 className={cn(
                   "absolute left-1/2 top-1/2 z-10 flex size-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full transition-all duration-300",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-700 dark:focus-visible:ring-offset-[var(--glass-bg)]"
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--surface-dark)] dark:focus-visible:ring-offset-[var(--glass-bg)]"
                 )}
               >
                 <span
@@ -150,14 +150,14 @@ export function TestimonialCarousel({
           <button
             onClick={prev}
             aria-label="Previous testimonial"
-            className="flex size-8 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-110 active:scale-95 dark:border-[var(--border)] dark:bg-[var(--muted)] dark:text-[var(--text-heading)] dark:hover:bg-emerald-500 dark:hover:text-white"
+            className="flex size-8 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-110 active:scale-95 dark:border-[var(--border)] dark:bg-[var(--muted)] dark:text-[var(--text-heading)] dark:hover:bg-[var(--brand-primary)] dark:hover:text-white"
           >
             <ChevronLeft className="size-5" />
           </button>
           <button
             onClick={next}
             aria-label="Next testimonial"
-            className="flex size-8 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-110 active:scale-95 dark:border-[var(--border)] dark:bg-[var(--muted)] dark:text-[var(--text-heading)] dark:hover:bg-emerald-500 dark:hover:text-white"
+            className="flex size-8 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-110 active:scale-95 dark:border-[var(--border)] dark:bg-[var(--muted)] dark:text-[var(--text-heading)] dark:hover:bg-[var(--brand-primary)] dark:hover:text-white"
           >
             <ChevronRight className="size-5" />
           </button>

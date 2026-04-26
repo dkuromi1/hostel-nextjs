@@ -38,7 +38,7 @@ export function DirectBookingCard({ className, variant = "inline" }: DirectBooki
           rel="noreferrer"
           className={cn(
             buttonVariants({ size: "lg" }),
-            "shrink-0 w-full sm:w-auto rounded-full bg-emerald-700 px-7 font-semibold text-white transition-all duration-300 hover:bg-emerald-800 active:scale-95"
+            "shrink-0 w-full sm:w-auto rounded-full bg-[var(--brand-whatsapp)] px-7 font-semibold text-white transition-all duration-300 hover:bg-[var(--brand-whatsapp-dark)] active:scale-95"
           )}
         >
           {content.directBookingButton}
@@ -67,7 +67,7 @@ export function DirectBookingCard({ className, variant = "inline" }: DirectBooki
         rel="noreferrer"
         className={cn(
           buttonVariants({ size: "sm" }),
-          "mt-4 w-full rounded-full bg-emerald-700 font-semibold text-white transition-all duration-300 hover:bg-emerald-800 active:scale-95"
+          "mt-4 w-full rounded-full bg-[var(--brand-whatsapp)] font-semibold text-white transition-all duration-300 hover:bg-[var(--brand-whatsapp-dark)] active:scale-95"
         )}
       >
         {content.directBookingButton}

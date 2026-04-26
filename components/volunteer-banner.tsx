@@ -7,7 +7,7 @@ export function VolunteerBanner() {
   const primaryContactHref = siteConfig.whatsappUrl || `https://wa.me/${siteConfig.phoneRaw}`;
 
   return (
-    <div className="group relative overflow-hidden bg-gradient-to-r from-indigo-950 via-[#1e1b4b] to-indigo-950 border-b border-indigo-400/15 px-4 py-1.5 text-center text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-indigo-50/90 shadow-lg">
+    <div className="group relative overflow-hidden bg-[var(--surface-dark)] border-b border-[var(--brand-primary)]/20 px-4 py-1.5 text-center text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[var(--text-on-surface-dark)]/90 shadow-lg">
       {/* Animated shimmer effect */}
       <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite]" />

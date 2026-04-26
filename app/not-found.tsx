@@ -8,7 +8,7 @@ export default function NotFound() {
   return (
     <div className="shell-container py-20">
       <div className="mx-auto max-w-3xl rounded-[34px] border border-white/70 bg-white/85 p-8 shadow-[0_24px_80px_-42px_rgba(15,23,42,0.35)]">
-        <p className="text-xs uppercase tracking-[0.28em] text-emerald-700">
+        <p className="text-xs uppercase tracking-[0.28em] text-[var(--brand-primary)]">
           {siteCopyContent.notFoundPage.eyebrow}
         </p>
         <h1 className="mt-4 heading-state text-[var(--text-heading)]">
@@ -22,7 +22,7 @@ export default function NotFound() {
             href="/"
             className={cn(
               buttonVariants({ size: "lg" }),
-              "rounded-full bg-emerald-700 text-white hover:bg-emerald-800"
+              "rounded-full bg-[var(--brand-primary)] text-[var(--primary-foreground)] hover:bg-[var(--brand-primary-dark)]"
             )}
           >
             {siteCopyContent.notFoundPage.homeLabel}

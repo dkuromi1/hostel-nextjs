@@ -11,7 +11,7 @@ export function CompactGuestRatingsStrip() {
         href={siteConfig.bookingUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center justify-between gap-3 rounded-[22px] border border-white/16 bg-slate-950/42 px-4 py-3 text-white shadow-[0_18px_45px_-30px_rgba(2,6,23,0.7)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-slate-950/52"
+        className="group flex items-center justify-between gap-3 rounded-[22px] border border-white/16 bg-[var(--surface-dark)]/42 px-4 py-3 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-[var(--surface-dark)]/52"
       >
         <div className="flex min-w-0 items-center gap-3">
           <BookingComLogo iconOnly className="size-9" />
@@ -38,7 +38,7 @@ export function CompactGuestRatingsStrip() {
         href={siteConfig.hostelworldUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center justify-between gap-3 rounded-[22px] border border-white/16 bg-slate-950/42 px-4 py-3 text-white shadow-[0_18px_45px_-30px_rgba(2,6,23,0.7)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-slate-950/52"
+        className="group flex items-center justify-between gap-3 rounded-[22px] border border-white/16 bg-[var(--surface-dark)]/42 px-4 py-3 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-[var(--surface-dark)]/52"
       >
         <div className="flex min-w-0 items-center gap-3">
           <HostelworldLogo iconOnly className="size-9" />

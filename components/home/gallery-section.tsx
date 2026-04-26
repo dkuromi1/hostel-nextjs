@@ -19,14 +19,15 @@ export function HomeGallerySection() {
             href="/gallery"
             className={cn(
               "group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full px-7 py-3.5",
-              "bg-slate-900 text-white shadow-lg shadow-slate-900/20",
-              "text-sm font-semibold tracking-tight",
-              "transition-all duration-300 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/30 hover:-translate-y-0.5",
+              "bg-gradient-to-br from-[var(--surface-dark)] via-[var(--surface-dark-secondary)] to-[var(--surface-dark)]",
+              "text-sm font-semibold tracking-tight text-[var(--text-on-surface-dark)]",
+              "shadow-lg shadow-[var(--surface-dark)]/30 ring-1 ring-white/10",
+              "transition-all duration-300 hover:shadow-xl hover:shadow-[var(--surface-dark)]/40 hover:-translate-y-0.5",
               "active:scale-95 active:translate-y-0.5"
             )}
           >
             <span>{siteCopyContent.home.gallerySection.buttonLabel}</span>
-            <div className="relative flex size-6 items-center justify-center rounded-full bg-white/20 text-white transition-all duration-300 group-hover:bg-emerald-500 group-hover:scale-110">
+            <div className="relative flex size-6 items-center justify-center rounded-full bg-white/20 text-white transition-all duration-300 group-hover:bg-[var(--brand-accent)] group-hover:scale-110">
               <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
             </div>
           </Link>

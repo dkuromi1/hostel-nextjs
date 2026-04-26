@@ -105,8 +105,8 @@ export function SwipableRow({
                 "before:absolute before:left-1/2 before:top-1/2 before:h-11",
                 "before:w-[calc(100%+8px)] before:-translate-x-1/2 before:-translate-y-1/2 before:content-['']",
                 i === activeIndex
-                  ? "w-6 bg-emerald-700"
-                  : "w-1.5 bg-slate-300 hover:bg-slate-400"
+                  ? "w-6 bg-[var(--brand-primary)]"
+                  : "w-1.5 bg-[var(--muted)] hover:bg-[var(--text-muted)]"
               )}
             />
           ))}

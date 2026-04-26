@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import { DeferredClient } from "@/components/deferred-client";
 import { SerwistRoot } from "@/components/serwist-root";
+import { AtmosphereBackground } from "@/components/atmosphere-background";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { StickyBookingBar } from "@/components/sticky-booking-bar";
@@ -175,6 +176,7 @@ export default function RootLayout({
         ) : null}
         <div className="relative flex min-h-screen flex-col overflow-x-clip">
           <SiteHeader />
+          <AtmosphereBackground />
           <main className="flex-1 pb-[calc(6rem+env(safe-area-inset-bottom,0px))] lg:pb-0">{children}</main>
           {modal}
           <SiteFooter />

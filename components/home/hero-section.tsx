@@ -44,12 +44,12 @@ export function HeroSection() {
                 {" "}
                 <AnimatedText
                   text={hero.title2}
-                  className="text-sky-300"
-                  wordClassName="text-sky-300 [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]"
+                  className="text-[var(--brand-accent)]"
+                  wordClassName="text-[var(--brand-accent)] [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]"
                   delayOffset={200}
                 />
               </h1>
-              <p className="max-w-[50ch] text-hero-sub text-slate-300 antialiased [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]">
+              <p className="max-w-[50ch] text-hero-sub text-white/90 antialiased [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]">
                 {hero.description}
               </p>
             </div>
@@ -71,9 +71,9 @@ export function HeroSection() {
                     key={index}
                     className="min-w-[85%] snap-center sm:min-w-0"
                   >
-                    <div className="group relative overflow-hidden rounded-[24px] border border-white/18 bg-slate-950/42 p-5 backdrop-blur-[3px] transition-all duration-300 hover:border-white/24 hover:bg-slate-950/52">
+                    <div className="group relative overflow-hidden rounded-[24px] border border-white/18 bg-[var(--surface-dark)]/42 p-5 backdrop-blur-[3px] transition-all duration-300 hover:border-white/24 hover:bg-[var(--surface-dark)]/52">
                       <div className="text-sm leading-7 text-white/95">
-                        <div className="float-left mb-1 mr-4 flex size-10 items-center justify-center rounded-xl bg-emerald-500/24 text-emerald-300">
+                        <div className="float-left mb-1 mr-4 flex size-10 items-center justify-center rounded-xl bg-[var(--brand-primary)]/24 text-[var(--brand-accent)]">
                           <Icon className="size-5" strokeWidth={2} />
                         </div>
                         {fact.text}

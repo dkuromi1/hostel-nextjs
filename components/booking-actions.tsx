@@ -32,7 +32,10 @@ export function BookingActions({
           rel="noreferrer"
           className={cn(
             buttonVariants({ size: compact ? "sm" : "lg" }),
-            "h-auto min-h-12 rounded-full bg-emerald-700 px-5 py-3 text-sm text-white shadow-[0_18px_40px_-24px_rgba(5,150,105,0.8)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-emerald-800"
+            "h-auto min-h-12 rounded-full px-5 py-3 text-sm transition-all duration-300 hover:scale-[1.02] active:scale-95",
+            primaryContactChannel.icon === "whatsapp" 
+              ? "bg-[var(--brand-whatsapp)] text-white shadow-[0_18px_40px_-24px_rgba(5,150,105,0.6)] hover:bg-[var(--brand-whatsapp-dark)]"
+              : "bg-[var(--brand-primary)] text-[var(--primary-foreground)] shadow-[0_18px_40px_-24px_rgba(5,150,105,0.6)] hover:bg-[var(--brand-primary-dark)]"
           )}
         >
           <ChannelIcon iconKey={primaryContactChannel.icon} iconOnly />

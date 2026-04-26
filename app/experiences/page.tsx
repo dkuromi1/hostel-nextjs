@@ -78,7 +78,7 @@ export default function ExperiencesPage() {
                     className="group flex items-start gap-5 transition-all duration-300 hover:translate-x-2"
                   >
                     {/* Interactive Icon Box */}
-                    <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-[var(--muted)] text-[var(--brand-primary)] transition-all duration-300 group-hover:bg-emerald-700 group-hover:text-white group-hover:shadow-lg group-hover:shadow-emerald-600/20">
+                    <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-[var(--muted)] text-[var(--brand-primary)] transition-all duration-300 group-hover:bg-[var(--brand-primary)] group-hover:text-[var(--primary-foreground)] group-hover:shadow-lg group-hover:shadow-[var(--brand-primary)]/20">
                       <Icon className="size-5" strokeWidth={1.5} />
                     </div>
                     <div>
@@ -173,7 +173,7 @@ export default function ExperiencesPage() {
             <SwipableRow itemCount={thingsToDo.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {thingsToDo.map((item) => (
                 <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full">
-                  <Panel className="group relative flex h-full flex-col overflow-hidden border border-[var(--glass-border)] bg-[var(--glass-bg)] transition-all duration-300 hover:border-sky-500/20 hover:shadow-md">
+                  <Panel className="group relative flex h-full flex-col overflow-hidden border border-[var(--glass-border)] bg-[var(--glass-bg)] transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
                     <div className="relative h-48 w-full overflow-hidden bg-[var(--muted)]">
                       <Image
                         src={item.image}
@@ -186,7 +186,7 @@ export default function ExperiencesPage() {
                       {/* Floating Price Badge */}
                       {item.price && (
                         <div className="absolute top-4 right-4 z-10 flex flex-col items-end gap-1.5">
-                          <div className="flex items-center gap-2 rounded-full bg-slate-950/80 px-3 py-1.5 shadow-lg backdrop-blur-md ring-1 ring-white/20">
+                          <div className="flex items-center gap-2 rounded-full bg-[var(--surface-dark)]/80 px-3 py-1.5 shadow-lg backdrop-blur-md ring-1 ring-white/20">
                             {item.regularPrice && (
                               <span className="text-[10px] font-medium text-white/40 line-through decoration-white/40">
                                 {item.regularPrice}
@@ -197,7 +197,7 @@ export default function ExperiencesPage() {
                             </span>
                           </div>
                           {item.priceNote && (
-                            <div className="rounded-full bg-emerald-500/90 px-2 py-0.5 text-[8px] font-extrabold uppercase tracking-[0.12em] text-white shadow-sm ring-1 ring-black/5">
+                            <div className="rounded-full bg-[var(--brand-primary)]/90 px-2 py-0.5 text-[8px] font-extrabold uppercase tracking-[0.12em] text-white shadow-sm ring-1 ring-black/5">
                               {item.priceNote}
                             </div>
                           )}
@@ -210,7 +210,7 @@ export default function ExperiencesPage() {
                         {siteConfig.features.showLocalExperienceMap ? (
                           <Link
                             href={`?poi=${encodeURIComponent(item.mapQuery ?? item.title)}#map`}
-                            className="group flex w-fit items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--muted)]/50 px-3 py-1.5 text-[var(--brand-primary)] shadow-sm ring-1 ring-sky-500/5 transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-500/20 hover:bg-sky-600 hover:text-white hover:shadow-md"
+                            className="group flex w-fit items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--muted)]/50 px-3 py-1.5 text-[var(--brand-primary)] shadow-sm ring-1 ring-[var(--brand-primary)]/5 transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--brand-primary)]/20 hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-md"
                           >
                             <MapPin className="size-3.5 transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110" strokeWidth={2} />
                             <span className="text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">
@@ -227,7 +227,7 @@ export default function ExperiencesPage() {
                             }
                             target="_blank"
                             rel="noreferrer"
-                            className="group ml-auto flex size-8 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--muted)]/50 text-[var(--text-muted)] transition-all duration-300 hover:border-sky-500/30 hover:bg-sky-50 hover:text-sky-600 hover:shadow-sm"
+                            className="group ml-auto flex size-8 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--muted)]/50 text-[var(--text-muted)] transition-all duration-300 hover:border-[var(--brand-primary)]/30 hover:bg-[var(--brand-primary-light)] hover:text-[var(--brand-primary)] hover:shadow-sm"
                             title="Open in Google Maps"
                           >
                             <Navigation className="size-4" strokeWidth={2.5} />
@@ -274,7 +274,7 @@ export default function ExperiencesPage() {
                 return (
                   <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full" >
                     <Panel
-                      className="group relative flex h-full flex-col overflow-hidden border border-[var(--glass-border)] bg-[var(--glass-bg)] transition-all duration-300 hover:border-emerald-500/20 hover:shadow-md"
+                      className="group relative flex h-full flex-col overflow-hidden border border-[var(--glass-border)] bg-[var(--glass-bg)] transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md"
                     >
                       {/* Card Image Header */}
                       <div className="relative h-56 w-full overflow-hidden bg-[var(--muted)]">
@@ -291,7 +291,7 @@ export default function ExperiencesPage() {
                       {/* Card Content Area */}
                       <div className="flex flex-1 flex-col px-8 pb-8">
                         {/* Floating Icon Box (Overlaps the image and background) */}
-                        <div className="relative -mt-6 mb-6 flex size-12 items-center justify-center rounded-2xl bg-[var(--glass-bg)] text-[var(--text-body)] shadow-lg shadow-[var(--glass-shadow)]/10 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-emerald-50 group-hover:text-emerald-600">
+                        <div className="relative -mt-6 mb-6 flex size-12 items-center justify-center rounded-2xl bg-[var(--glass-bg)] text-[var(--text-body)] shadow-lg shadow-[var(--glass-shadow)]/10 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-[var(--brand-primary-light)] group-hover:text-[var(--brand-primary)]">
                           <Icon className="size-5" strokeWidth={1.5} />
                         </div>
 

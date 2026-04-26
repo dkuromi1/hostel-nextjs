@@ -107,7 +107,7 @@ export function MobileNav() {
         className={cn(
           "flex size-11 cursor-pointer items-center justify-center rounded-full border border-[var(--glass-border)] text-[var(--text-heading)] shadow-sm",
           shouldReduce 
-            ? "bg-white dark:bg-slate-900" 
+            ? "bg-white dark:bg-[var(--surface-dark-secondary,#1a0f0a)]"
             : "bg-[var(--glass-bg)] backdrop-blur-md"
         )}
       >
@@ -125,9 +125,9 @@ export function MobileNav() {
             exit="exit"
             className={cn(
               "absolute right-0 top-full z-50 mt-3 w-[min(22rem,calc(100vw-2rem))] overflow-hidden rounded-[30px] border border-[var(--glass-border)] p-4 shadow-2xl",
-              shouldReduce 
-                ? "bg-white dark:bg-slate-900" 
-                : "bg-white/98 dark:bg-slate-900/95 backdrop-blur-xl"
+              shouldReduce
+                ? "bg-white dark:bg-[var(--surface-dark-secondary,#1a0f0a)]"
+                : "bg-white/98 dark:bg-[var(--surface-dark-secondary,#1a0f0a)]/95 backdrop-blur-xl"
             )}
             style={{ originX: 1, originY: 0 }}
           >
@@ -165,7 +165,7 @@ export function MobileNav() {
                     onClick={() => setOpen(false)}
                     className={cn(
                       buttonVariants({ size: "lg" }),
-                      "h-10 rounded-full bg-emerald-700 text-white hover:bg-emerald-800"
+                      "h-10 rounded-full bg-[var(--brand-primary)] text-[var(--primary-foreground)] hover:bg-[var(--brand-primary-dark)]"
                     )}
                   >
                     {primaryContactChannel.label}
