@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -15,25 +16,34 @@ import { bookingChannels, contactChannels, navLinks, siteConfig } from "@/lib/si
 
 export function SiteHeader() {
   const scrollY = useScrollPosition();
-  const isScrolled = scrollY > 50;
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const pathname = usePathname();
   const isHome = pathname === "/";
   const primaryContactChannel =
     contactChannels.find((channel) => channel.stylePriority === "primary") ?? contactChannels[0];
 
+  const isScrolled = mounted ? scrollY > 50 : false;
+
   // On the homepage, if not scrolled, we want it transparent with white text
   const isTransparent = isHome && !isScrolled;
 
+  const containerClasses = cn(
+    "z-50 pt-safe transition-all duration-300",
+    !mounted ? "absolute inset-x-0 top-0" :
+    isTransparent ? "absolute inset-x-0 top-0" : (isHome ? "fixed inset-x-0 top-0" : "sticky top-0")
+  );
+
   return (
-    <div className={cn(
-      "z-50 pt-safe transition-all duration-300",
-      isTransparent ? "absolute inset-x-0 top-0" : (isHome ? "fixed inset-x-0 top-0" : "sticky top-0")
-    )}>
+    <div className={containerClasses}>
       <VolunteerBanner />
       <header className={cn(
         "transition-all duration-300",
-        isTransparent
+        (!mounted && isHome) || isTransparent
           ? "bg-transparent border-transparent"
           : "border-b border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md shadow-sm"
       )}>
