@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion, type Variant, type Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { shouldReduceMotion as getShouldReduceMotion } from "@/lib/performance";
 
 type AnimatedTextProps = {
   text: string;
@@ -16,7 +17,8 @@ export function AnimatedText({
   wordClassName,
   delayOffset = 0,
 }: AnimatedTextProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const prefersReduced = useReducedMotion();
+  const shouldReduce = prefersReduced || getShouldReduceMotion();
   const words = text.split(" ");
 
   // `hidden` state is always the same on server and client so there is no
@@ -24,7 +26,7 @@ export function AnimatedText({
   // transition (duration vs spring), which doesn't affect initially-painted HTML.
   const containerVariants: Variants = {
     hidden: {},
-    visible: (shouldReduceMotion
+    visible: (shouldReduce
       ? {}
       : {
         transition: {
@@ -41,7 +43,7 @@ export function AnimatedText({
     visible: ({
       opacity: 1,
       y: 0,
-      transition: shouldReduceMotion
+      transition: shouldReduce
         ? { duration: 0 }
         : {
           type: "spring" as const,
