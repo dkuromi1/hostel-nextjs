@@ -12,16 +12,16 @@ export function SiteFooter() {
   const footerChannels = [...contactChannels, ...bookingChannels];
 
   return (
-    <footer className="border-t border-white/70 bg-slate-950 py-14 text-slate-200 pb-24 lg:pb-14">
+    <footer className="border-t border-[var(--surface-dark-border)] bg-[var(--surface-dark)] py-14 text-[var(--text-on-surface-dark)] pb-24 lg:pb-14">
       <div className="shell-container flex flex-col justify-between gap-10 xl:flex-row">
         <div className="space-y-5 xl:flex-1">
-          <p className="text-xs uppercase tracking-[0.28em] text-emerald-300/90">
+          <p className="text-xs uppercase tracking-[0.28em] text-[var(--brand-accent)]/90">
             {siteConfig.tagline}
           </p>
           <h2 className="heading-section text-white md:text-5xl">
             {siteCopyContent.footer.heading}
           </h2>
-          <p className="max-w-[62ch] text-body-lg text-slate-300">
+          <p className="max-w-[62ch] text-body-lg text-[var(--text-on-surface-dark-muted)]">
             {siteCopyContent.footer.description}
           </p>
           <div className="flex flex-wrap gap-3 text-sm">
@@ -33,8 +33,8 @@ export function SiteFooter() {
                 rel="noreferrer"
                 className={
                   channel.stylePriority === "primary"
-                    ? "inline-flex items-center gap-2 rounded-full bg-emerald-700 px-4 py-3 font-semibold text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-emerald-800"
-                    : "inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-3 font-semibold text-slate-100 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:border-white/35"
+                    ? "inline-flex items-center gap-2 rounded-full bg-[var(--brand-primary)] px-4 py-3 font-semibold text-[var(--primary-foreground)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-[var(--brand-primary-dark)]"
+                    : "inline-flex items-center gap-2 rounded-full border border-[var(--surface-dark-border)] px-4 py-3 font-semibold text-[var(--text-on-surface-dark)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:border-white/30"
                 }
               >
                 <ChannelIcon
@@ -49,7 +49,7 @@ export function SiteFooter() {
         <div className="grid gap-8 sm:grid-cols-[20%_auto_1fr] xl:gap-10 xl:max-w-[750px] shrink min-w-0">
           {/* Explore */}
           <div className="min-w-0">
-            <p className="text-xs uppercase tracking-[0.24em] text-slate-200">
+            <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-on-surface-dark)]">
               {siteCopyContent.footer.exploreLabel}
             </p>
             <div className="mt-4 grid gap-3">
@@ -57,7 +57,7 @@ export function SiteFooter() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="inline-block text-base text-slate-200 transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:text-white"
+                  className="inline-block text-base text-[var(--text-on-surface-dark-muted)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:text-[var(--text-on-surface-dark)]"
                 >
                   {item.label}
                 </Link>
@@ -67,11 +67,11 @@ export function SiteFooter() {
 
           {/* WhatsApp Community Section */}
           <div className="flex flex-col items-start gap-4 min-w-0">
-            <p className="text-xs uppercase tracking-[0.24em] text-slate-200">
+            <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-on-surface-dark)]">
               {siteCopyContent.footer.communityLabel}
             </p>
             {/* Desktop QR Code */}
-            <div className="hidden sm:flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-4 border border-white/10 w-full max-w-[160px]">
+            <div className="hidden sm:flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-4 border border-[var(--surface-dark-border)] w-full max-w-[160px]">
               <div className="relative size-full aspect-square overflow-hidden rounded-xl bg-white p-2">
                 <Image
                   src="/images/whatsapp_community_qr.png"
@@ -81,7 +81,7 @@ export function SiteFooter() {
                   sizes="160px"
                 />
               </div>
-              <span className="text-xs font-semibold text-slate-300 text-center">
+              <span className="text-xs font-semibold text-[var(--text-on-surface-dark-muted)] text-center">
                 {siteCopyContent.footer.communityCaption}
               </span>
             </div>
@@ -90,7 +90,7 @@ export function SiteFooter() {
               href={siteConfig.whatsappCommunityUrl}
               target="_blank"
               rel="noreferrer"
-              className="sm:hidden flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-3 font-semibold text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-emerald-700 w-full justify-center shadow-[0_0_20px_rgba(5,150,105,0.3)] shadow-emerald-600/20"
+              className="sm:hidden flex items-center gap-2 rounded-full bg-[var(--brand-primary)] px-5 py-3 font-semibold text-[var(--primary-foreground)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-[var(--brand-primary-dark)] w-full justify-center shadow-[0_0_20px_rgba(196,92,42,0.3)]"
             >
               <MessageCircleMore className="size-5 shrink-0" />
               {siteCopyContent.footer.communityButton}
@@ -99,20 +99,20 @@ export function SiteFooter() {
 
           {/* Details */}
           <div className="min-w-0">
-            <p className="text-xs uppercase tracking-[0.24em] text-slate-200">
+            <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-on-surface-dark)]">
               {siteCopyContent.footer.detailsLabel}
             </p>
-            <div className="mt-4 space-y-3 text-base text-slate-300">
+            <div className="mt-4 space-y-3 text-base text-[var(--text-on-surface-dark-muted)]">
               <p>
                 {/* STEP 2: Make the address a clickable Google Maps link */}
                 <a
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.name + " " + siteConfig.location)}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="group inline-flex items-start gap-2 transition-colors hover:text-white"
+                  className="group inline-flex items-start gap-2 transition-colors hover:text-[var(--text-on-surface-dark)]"
                 >
-                  <MapPinned className="mt-1 size-4 shrink-0 text-emerald-500 transition-transform group-hover:scale-110" />
-                  <span className="underline decoration-slate-700 underline-offset-4 group-hover:decoration-slate-400">
+                  <MapPinned className="mt-1 size-4 shrink-0 text-[var(--brand-accent)] transition-transform group-hover:scale-110" />
+                  <span className="underline decoration-white/20 underline-offset-4 group-hover:decoration-white/50">
                     {siteConfig.location}
                   </span>
                 </a>
@@ -123,12 +123,12 @@ export function SiteFooter() {
           </div>
         </div>
       </div>
-      <div className="shell-container mt-16 border-t border-white/5 pt-8">
+      <div className="shell-container mt-16 border-t border-[var(--surface-dark-border)] pt-8">
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-slate-400">
+          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--text-on-surface-dark-muted)]/70">
             © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
-          <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400/80">
+          <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--text-on-surface-dark-muted)]/70">
             <ThemeToggle />
             <PwaInstallButton />
             <span>{siteCopyContent.footer.credit}</span>

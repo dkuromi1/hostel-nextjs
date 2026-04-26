@@ -17,7 +17,7 @@ export function Eyebrow({
       className={cn(
         "group relative inline-flex items-center gap-3 overflow-hidden rounded-full border px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-500 backdrop-blur-xl shadow-[0_8px_16px_-6px_rgba(0,0,0,0.05)]",
         variant === "default"
-          ? "border-sky-500/10 bg-white/40 text-sky-950 hover:border-sky-500/30 hover:bg-white/60 hover:shadow-lg hover:shadow-sky-500/10"
+          ? "border-[var(--brand-primary)]/15 bg-[var(--brand-primary-light)]/40 text-[var(--brand-primary-dark)] hover:border-[var(--brand-primary)]/35 hover:bg-[var(--brand-primary-light)]/60 hover:shadow-lg hover:shadow-[var(--brand-primary)]/10"
           : variant === "sun"
             ? "border-amber-500/10 bg-amber-50/40 text-amber-950 hover:border-amber-500/30 hover:bg-amber-100/60 hover:shadow-lg hover:shadow-amber-500/15"
             : "border-amber-500/40 bg-white/10 text-amber-400 hover:border-amber-400 hover:bg-white/20 hover:text-amber-300 hover:shadow-lg hover:shadow-amber-500/20",
@@ -28,14 +28,14 @@ export function Eyebrow({
         <span
           className={cn(
             "absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 duration-1000",
-            variant === "default" ? "bg-sky-400" : "bg-amber-400"
+            variant === "default" ? "bg-[var(--brand-primary)]" : "bg-amber-400"
           )}
         ></span>
         <span
           className={cn(
             "relative inline-flex h-1.5 w-1.5 rounded-full shadow-[0_0_8px_rgba(14,165,233,0.8)]",
             variant === "default"
-              ? "bg-sky-500 shadow-sky-500/80"
+              ? "bg-[var(--brand-primary)] shadow-[var(--brand-primary)]/80"
               : "bg-amber-500 shadow-amber-500/80"
           )}
         ></span>
@@ -46,7 +46,7 @@ export function Eyebrow({
       <div
         className={cn(
           "absolute inset-0 -translate-x-[150%] bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-[150%]",
-          variant === "default" ? "via-sky-100/40" : "via-amber-100/40"
+          variant === "default" ? "via-[var(--brand-primary-light)]/40" : "via-amber-100/40"
         )}
       />
     </div>

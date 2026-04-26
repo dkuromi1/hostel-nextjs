@@ -48,7 +48,7 @@ function GalleryVideo({ src, poster, alt, layoutId }: { src: string; poster?: st
             preload="metadata"
             poster={poster}
             aria-label={alt}
-            className="block max-h-[85dvh] max-w-[95vw] w-auto h-auto object-contain rounded-3xl border border-white/10 bg-slate-950/80 backdrop-blur-xl shadow-2xl [transform:translateZ(0)]"
+            className="block max-h-[85dvh] max-w-[95vw] w-auto h-auto object-contain rounded-3xl border border-white/10 bg-[var(--surface-dark)]/80 backdrop-blur-xl shadow-2xl [transform:translateZ(0)]"
         />
     );
 }
@@ -192,7 +192,7 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
             animate={{ opacity: 1, backdropFilter: "blur(8px)" }}
             exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[110] flex items-center justify-center bg-slate-950/90 p-4"
+            className="fixed inset-0 z-[110] flex items-center justify-center bg-[var(--surface-dark)]/90 p-4"
         >
             {/* Click backdrop to close */}
             <div
@@ -266,7 +266,7 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
                                         e.stopPropagation();
                                         setShowControls(v => !v);
                                     }}
-                                    className="block max-h-[85dvh] max-w-[95vw] w-auto h-auto object-contain rounded-3xl border border-white/10 bg-slate-950/80 backdrop-blur-xl shadow-2xl [transform:translateZ(0)] pointer-events-auto"
+                                    className="block max-h-[85dvh] max-w-[95vw] w-auto h-auto object-contain rounded-3xl border border-white/10 bg-[var(--surface-dark)]/80 backdrop-blur-xl shadow-2xl [transform:translateZ(0)] pointer-events-auto"
                                 />
                             )}
                         </div>

@@ -87,20 +87,20 @@ export function ThemeToggle({ variant = "footer" }: { variant?: ThemeToggleVaria
         onClick={toggleTheme}
         className={cn(
           "relative h-8 w-14 cursor-pointer rounded-full border border-[var(--border)] bg-[var(--muted)] p-1 transition-all duration-300 active:scale-95",
-          theme === "dark" ? "bg-slate-800" : "bg-emerald-50"
+          theme === "dark" ? "bg-[var(--muted)]" : "bg-[var(--brand-primary-light)]"
         )}
         aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
       >
         <div
           className={cn(
             "flex size-6 items-center justify-center rounded-full bg-white shadow-sm transition-all duration-300",
-            theme === "dark" ? "translate-x-6 bg-slate-700" : "translate-x-0"
+            theme === "dark" ? "translate-x-6 bg-[var(--surface-dark-secondary)]" : "translate-x-0"
           )}
         >
           {theme === "light" ? (
             <Sun className="size-3.5 text-amber-500" />
           ) : (
-            <Moon className="size-3.5 text-indigo-400" />
+            <Moon className="size-3.5 text-[var(--brand-accent)]" />
           )}
         </div>
       </button>
@@ -113,7 +113,7 @@ export function ThemeToggle({ variant = "footer" }: { variant?: ThemeToggleVaria
       className={cn(
         "group flex items-center justify-center gap-2 rounded-full border px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] transition-all active:scale-95",
         variant === "footer"
-          ? "border-white/10 bg-white/5 text-slate-400 hover:border-white/20 hover:bg-white/10 hover:text-white"
+          ? "border-white/10 bg-white/5 text-[var(--text-on-surface-dark-muted)] hover:border-white/20 hover:bg-white/10 hover:text-white"
           : variant === "header"
             ? "size-9 border-[var(--glass-border)] bg-[var(--glass-bg)] px-0 text-[var(--text-heading)] shadow-sm backdrop-blur-md hover:bg-[var(--muted)]"
             : "border-[var(--border)] bg-transparent text-[var(--text-heading)] hover:bg-[var(--muted)]"

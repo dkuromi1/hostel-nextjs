@@ -18,11 +18,11 @@ function getWeatherDetails(code: number) {
   // WMO weather codes mapping
   if (code === 0) return { label: "Clear Skies", icon: Sun, colorClass: "text-amber-400" };
   if (code === 1 || code === 2) return { label: "Partly Cloudy", icon: SunMedium, colorClass: "text-amber-400" };
-  if (code === 3) return { label: "Overcast", icon: Cloud, colorClass: "text-slate-400" };
-  if (code === 45 || code === 48) return { label: "Foggy", icon: CloudFog, colorClass: "text-slate-400" };
-  if (code >= 51 && code <= 67) return { label: "Raining", icon: CloudRain, colorClass: "text-sky-400" };
-  if (code >= 71 && code <= 86) return { label: "Snowing", icon: CloudSnow, colorClass: "text-sky-300" };
-  if (code >= 95) return { label: "Thunderstorm", icon: CloudLightning, colorClass: "text-indigo-400" };
+  if (code === 3) return { label: "Overcast", icon: Cloud, colorClass: "text-[var(--text-muted)]" };
+  if (code === 45 || code === 48) return { label: "Foggy", icon: CloudFog, colorClass: "text-[var(--text-muted)]" };
+  if (code >= 51 && code <= 67) return { label: "Raining", icon: CloudRain, colorClass: "text-[var(--brand-accent)]" };
+  if (code >= 71 && code <= 86) return { label: "Snowing", icon: CloudSnow, colorClass: "text-[var(--brand-accent)]/80" };
+  if (code >= 95) return { label: "Thunderstorm", icon: CloudLightning, colorClass: "text-[var(--brand-primary)]" };
   return { label: "Clear", icon: Sun, colorClass: "text-amber-400" };
 }
 
@@ -43,8 +43,8 @@ export async function ThethWeather({ variant = "default" }: { variant?: "default
 
   if (variant === "small") {
     return (
-      <div className="group flex w-fit items-center gap-3 rounded-[22px] border border-white/16 bg-slate-950/42 pl-2.5 pr-4 py-2 text-white shadow-[0_18px_45px_-30px_rgba(2,6,23,0.7)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-slate-950/52">
-        <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-slate-500/20">
+      <div className="group flex w-fit items-center gap-3 rounded-[22px] border border-white/16 bg-[var(--surface-dark)]/42 pl-2.5 pr-4 py-2 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-[var(--surface-dark)]/52">
+        <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-white/10">
           <Icon className={`size-4.5 ${details.colorClass}`} strokeWidth={2} />
         </div>
         <div className="flex flex-col py-0.5">

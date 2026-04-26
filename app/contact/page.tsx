@@ -91,14 +91,14 @@ export default function ContactPage() {
                 <div className="mt-6 space-y-4 text-base leading-8 text-[var(--text-body-subtle)]">
                   <p className="flex items-start gap-3">
                     <MessageCircleMore
-                      className="mt-1 size-5 shrink-0 text-emerald-700"
+                      className="mt-1 size-5 shrink-0 text-[var(--brand-primary)]"
                       strokeWidth={1.8}
                     />
                     <span>{siteConfig.phoneDisplay}</span>
                   </p>
                   <p className="flex items-start gap-3">
                     <MapPinned
-                      className="mt-1 size-5 shrink-0 text-emerald-700"
+                      className="mt-1 size-5 shrink-0 text-[var(--brand-primary)]"
                       strokeWidth={1.8}
                     />
                     <a
@@ -107,14 +107,14 @@ export default function ContactPage() {
                       )}`}
                       target="_blank"
                       rel="noreferrer"
-                      className="underline decoration-slate-300 underline-offset-4 hover:text-emerald-700 transition-colors"
+                      className="underline decoration-[var(--border)] underline-offset-4 hover:text-[var(--brand-primary)] transition-colors"
                     >
                       {siteConfig.location}
                     </a>
                   </p>
                   <p className="flex items-start gap-3">
                     <Clock
-                      className="mt-1 size-5 shrink-0 text-emerald-700"
+                      className="mt-1 size-5 shrink-0 text-[var(--brand-primary)]"
                       strokeWidth={1.8}
                     />
                     <span>{siteCopyContent.contact.contactDetails.reception.replace("{checkInHours}", siteConfig.checkInHours)}</span>

@@ -29,18 +29,18 @@ export function RoomsSection() {
             href="/rooms"
             className={cn(
               "group relative inline-flex items-center justify-center gap-4 overflow-hidden rounded-full px-8 py-4",
-              "bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white",
+              "bg-gradient-to-br from-[var(--brand-primary)] to-[var(--brand-primary-dark)] text-[var(--primary-foreground)]",
               "text-sm font-bold tracking-tight antialiased",
-              "shadow-[0_20px_50px_-12px_rgba(2,6,23,0.5)] ring-1 ring-white/15",
-              "transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_-12px_rgba(5,150,105,0.25)] hover:ring-white/25",
+              "shadow-[0_20px_50px_-12px_rgba(196,92,42,0.35)] ring-1 ring-white/15",
+              "transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_-12px_rgba(196,92,42,0.4)] hover:ring-white/25",
               "active:scale-95 active:translate-y-0"
             )}
           >
             <div className="absolute inset-0 z-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 group-hover:translate-x-[100%]" />
-            <span className="relative z-10 transition-colors duration-300 group-hover:text-emerald-50">
+            <span className="relative z-10 transition-colors duration-300 group-hover:text-[var(--primary-foreground)]/90">
               {siteCopyContent.home.roomsSection.buttonLabel}
             </span>
-            <div className="relative z-10 flex size-7 items-center justify-center rounded-full bg-white/15 text-white transition-all duration-300 group-hover:bg-emerald-500 group-hover:scale-110">
+            <div className="relative z-10 flex size-7 items-center justify-center rounded-full bg-white/15 text-white transition-all duration-300 group-hover:bg-[var(--brand-accent)] group-hover:scale-110">
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
             </div>
           </Link>
@@ -56,7 +56,7 @@ export function RoomsSection() {
                     className="absolute inset-0 h-full rounded-none"
                     autoPlayInterval={0}
                   />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent z-10 flex p-5 sm:px-6 sm:py-4 items-start sm:items-end">
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--surface-dark)]/60 to-transparent z-10 flex p-5 sm:px-6 sm:py-4 items-start sm:items-end">
                     <Badge className="bg-white/20 text-white shadow-sm backdrop-blur-md pointer-events-auto">
                       {room.price}/night
                     </Badge>
@@ -84,7 +84,7 @@ export function RoomsSection() {
                           key={idx}
                           className="flex w-fit items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--muted)]/50 px-3 py-2 text-[var(--text-body)]"
                         >
-                          <AmenityIcon className="size-3.5 shrink-0 text-emerald-600" />
+                          <AmenityIcon className="size-3.5 shrink-0 text-[var(--brand-primary)]" />
                           <span className="whitespace-nowrap text-[11px] font-medium tracking-tight">
                             {amenity.label}
                           </span>
@@ -104,7 +104,7 @@ export function RoomsSection() {
                           className="flex items-start gap-2.5 text-sm leading-6 text-[var(--text-body-subtle)]"
                         >
                           <Check
-                            className="mt-1 size-4 shrink-0 text-emerald-600"
+                            className="mt-1 size-4 shrink-0 text-[var(--brand-primary)]"
                             strokeWidth={2}
                           />
                           <span>{bullet}</span>

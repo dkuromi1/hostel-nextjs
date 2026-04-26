@@ -35,24 +35,35 @@
 }
 
 :root {
-  --background: #f6f7f2;
-  --foreground: #0f172a;
-  --card: rgba(255, 255, 255, 0.92);
-  --card-foreground: #0f172a;
-  --popover: #ffffff;
-  --popover-foreground: #0f172a;
-  --primary: #059669;
-  --primary-foreground: #ffffff;
-  --secondary: #dff4ef;
-  --secondary-foreground: #0f172a;
-  --muted: #e8efe7;
-  --muted-foreground: #5b6677;
-  --accent: #f6b64d;
-  --accent-foreground: #3c2d08;
+  /* ─── Warm Hostel Palette ───────────────────────────────────────────────────
+     Inspired by sun-bleached plaster, terracotta, pine wood, and olive groves.
+     Warm cream background, deep espresso darks, sunrise ambers.
+  ─────────────────────────────────────────────────────────────────────────── */
+
+  --background: #faf7f2;
+  /* warm parchment cream */
+  --foreground: #2c1f14;
+  /* deep espresso brown */
+  --card: rgba(255, 251, 244, 0.94);
+  --card-foreground: #2c1f14;
+  --popover: #fffbf5;
+  --popover-foreground: #2c1f14;
+  --primary: #c45c2a;
+  /* warm terracotta */
+  --primary-foreground: #fffbf5;
+  --secondary: #f5e6d3;
+  /* warm sand */
+  --secondary-foreground: #2c1f14;
+  --muted: #ede8df;
+  /* warm linen */
+  --muted-foreground: #7a6355;
+  --accent: #e8a838;
+  /* golden amber */
+  --accent-foreground: #2c1f14;
   --destructive: #b91c1c;
-  --border: rgba(15, 23, 42, 0.1);
-  --input: rgba(15, 23, 42, 0.1);
-  --ring: rgba(5, 150, 105, 0.35);
+  --border: rgba(44, 31, 20, 0.1);
+  --input: rgba(44, 31, 20, 0.1);
+  --ring: rgba(196, 92, 42, 0.35);
   --radius: 1.35rem;
   --font-sans: var(--font-nunito), "Avenir Next", "Segoe UI", sans-serif;
   --font-heading: var(--font-nunito), "Avenir Next", "Segoe UI", sans-serif;
@@ -62,85 +73,114 @@
      Change these to rebrand the entire site. All components reference these
      variables rather than hardcoded Tailwind color names.
   ─────────────────────────────────────────────────────────────────────────── */
-  --brand-primary: #059669;
-  /* emerald-600 */
-  --brand-primary-light: #d1fae5;
-  /* emerald-100 */
-  --brand-primary-dark: #047857;
-  /* emerald-700 */
-  --brand-accent: #f59e0b;
-  /* amber-500  */
+  --brand-primary: #c45c2a;
+  /* terracotta — warm, earthy, friendly */
+  --brand-primary-light: #fde8d8;
+  /* very pale terracotta */
+  --brand-primary-dark: #9e3f18;
+  /* deep burnt sienna */
+  --brand-accent: #e8a838;
+  /* golden amber */
 
   /* ─── Semantic Text Colors ──────────────────────────────────────────────────
      Use these instead of raw slate-* classes so a palette swap is one edit.
   ─────────────────────────────────────────────────────────────────────────── */
-  --text-heading: #1e293b;
-  /* slate-800 — primary headings   */
-  --text-body: #334155;
-  /* slate-700 — stand-alone paragraphs (desktop) */
-  --text-body-subtle: #475569;
-  /* slate-600 — paragraph copy inside white cards */
-  --text-muted: #64748b;
-  /* slate-500 — secondary/captions */
-  --text-on-dark: #f1f5f9;
-  /* slate-100 — text on dark bgs   */
-  --selection-background: rgba(5, 150, 105, 0.2);
-  --atmosphere-glow-primary: rgba(5, 150, 105, 0.14);
-  --atmosphere-glow-accent: rgba(245, 182, 77, 0.1);
-  --atmosphere-glow-secondary: rgba(16, 185, 129, 0.06);
-  --atmosphere-grid-line: rgba(148, 163, 184, 0.08);
-  --shadow-interactive-soft: rgba(11, 32, 29, 0.45);
+  --text-heading: #2c1f14;
+  /* deep espresso */
+  --text-body: #4a3728;
+  /* warm brown */
+  --text-body-subtle: #6b5040;
+  /* medium warm brown */
+  --text-muted: #9a7b68;
+  /* dusty mocha */
+  --text-on-dark: #faf0e4;
+  /* warm ivory — text on dark bgs */
+
+  --selection-background: rgba(196, 92, 42, 0.18);
+  --atmosphere-glow-primary: rgba(196, 92, 42, 0.12);
+  /* terracotta glow */
+  --atmosphere-glow-accent: rgba(232, 168, 56, 0.10);
+  /* golden glow */
+  --atmosphere-glow-secondary: rgba(220, 140, 80, 0.06);
+  /* peach secondary glow */
+  --atmosphere-grid-line: rgba(44, 31, 20, 0.055);
+  /* warm grid lines */
+
+  --shadow-interactive-soft: rgba(44, 31, 20, 0.35);
   --link-color: var(--brand-primary);
   --link-color-hover: var(--brand-primary-dark);
   --link-decoration: color-mix(in srgb, var(--brand-primary) 30%, transparent);
 
-  --glass-bg: rgba(255, 255, 255, 0.82);
-  --glass-border: rgba(255, 255, 255, 0.7);
-  --glass-shadow: rgba(15, 23, 42, 0.35);
+  --glass-bg: rgba(255, 251, 244, 0.84);
+  --glass-border: rgba(255, 248, 236, 0.8);
+  --glass-shadow: rgba(44, 31, 20, 0.3);
+
+  /* ─── Dark Surface Color (footer, CTA panels, overlay content) ─────────────
+     Warm espresso-brown rather than cold slate-950
+  ─────────────────────────────────────────────────────────────────────────── */
+  --surface-dark: #1e110a;
+  /* deep espresso */
+  --surface-dark-secondary: #2e1a0e;
+  /* slightly lighter espresso */
+  --surface-dark-border: rgba(255, 248, 236, 0.08);
+  /* subtle warm border on dark */
+  --text-on-surface-dark: #f5ede0;
+  /* warm ivory on dark */
+  --text-on-surface-dark-muted: #c4a98a;
+  /* warm tan on dark */
 }
 
 .dark {
-  --background: #020617;
-  --foreground: #f1f5f9;
-  --card: rgba(15, 23, 42, 0.85);
-  --card-foreground: #f1f5f9;
-  --popover: #0f172a;
-  --popover-foreground: #f1f5f9;
-  --primary: #10b981;
-  --primary-foreground: #020617;
-  --secondary: #064e3b;
-  --secondary-foreground: #f1f5f9;
-  --muted: #1e293b;
-  --muted-foreground: #94a3b8;
-  --accent: #f59e0b;
-  --accent-foreground: #020617;
-  --border: rgba(255, 255, 255, 0.1);
-  --input: rgba(255, 255, 255, 0.1);
-  --ring: rgba(16, 185, 129, 0.35);
+  --background: #160e08;
+  /* very deep espresso */
+  --foreground: #f5ede0;
+  /* warm ivory */
+  --card: rgba(30, 17, 10, 0.90);
+  --card-foreground: #f5ede0;
+  --popover: #1e110a;
+  --popover-foreground: #f5ede0;
+  --primary: #e07040;
+  /* brighter terracotta for dark bg */
+  --primary-foreground: #160e08;
+  --secondary: #3d2010;
+  /* deep warm brown */
+  --secondary-foreground: #f5ede0;
+  --muted: #2c1a0e;
+  --muted-foreground: #c4a98a;
+  --accent: #e8a838;
+  --accent-foreground: #160e08;
+  --border: rgba(255, 248, 236, 0.1);
+  --input: rgba(255, 248, 236, 0.1);
+  --ring: rgba(224, 112, 64, 0.35);
 
-  --text-heading: #ffffff;
-  --text-body: #94a3b8;
-  --text-body-subtle: #cbd5e1;
-  --text-muted: #64748b;
-  --text-on-dark: #f1f5f9;
+  --text-heading: #f5ede0;
+  --text-body: #c4a98a;
+  --text-body-subtle: #ddc9b0;
+  --text-muted: #9a7b68;
+  --text-on-dark: #f5ede0;
 
-  --brand-primary: #34d399;
-  /* emerald-400 for better contrast on dark bg */
-  --brand-primary-light: #064e3b;
-  /* emerald-900 */
-  --brand-primary-dark: #6ee7b7;
-  /* emerald-300 */
-  --brand-accent: #fbbf24;
-  /* amber-400 */
+  --brand-primary: #e07040;
+  /* warm terracotta for dark mode */
+  --brand-primary-light: #3d2010;
+  /* deep warm for dark mode */
+  --brand-primary-dark: #f09060;
+  /* lighter coral for hover on dark */
+  --brand-accent: #e8a838;
 
-  --atmosphere-glow-primary: rgba(16, 185, 129, 0.15);
-  --atmosphere-glow-accent: rgba(245, 158, 11, 0.1);
-  --atmosphere-glow-secondary: rgba(5, 150, 105, 0.08);
-  --atmosphere-grid-line: rgba(255, 255, 255, 0.04);
+  --atmosphere-glow-primary: rgba(224, 112, 64, 0.14);
+  --atmosphere-glow-accent: rgba(232, 168, 56, 0.10);
+  --atmosphere-glow-secondary: rgba(196, 92, 42, 0.07);
+  --atmosphere-grid-line: rgba(255, 255, 255, 0.035);
 
-  --glass-bg: rgba(15, 23, 42, 0.82);
-  --glass-border: rgba(255, 255, 255, 0.05);
-  --glass-shadow: rgba(0, 0, 0, 0.5);
+  --glass-bg: rgba(30, 17, 10, 0.85);
+  --glass-border: rgba(255, 248, 236, 0.07);
+  --glass-shadow: rgba(0, 0, 0, 0.55);
+
+  --surface-dark: #160e08;
+  --surface-dark-secondary: #1e110a;
+  --surface-dark-border: rgba(255, 248, 236, 0.06);
+  --text-on-surface-dark: #f5ede0;
+  --text-on-surface-dark-muted: #c4a98a;
 }
 
 @utility bg-texture {
@@ -173,14 +213,17 @@
     will-change: transform;
     transform: translateZ(0);
 
-    /* Multi-layered premium background: Noise -> Fade -> Glows -> Grid */
+    /* Multi-layered warm background: Noise -> Fade -> Warm Glows -> Grid */
     background-image:
-      /* Subtle noise: Simplified for mobile GPU precision (1 octave, 1:1 scale) */
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.25'/%3E%3C/svg%3E"),
-      /* PERFORMANCE: Fade Overlay moved up to allow GPU to skip rendering glows/grid in the footer area */
+      /* Subtle noise */
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.18'/%3E%3C/svg%3E"),
+      /* Fade Overlay */
       linear-gradient(to bottom, transparent 60%, var(--background) 100%),
+      /* Warm terracotta glow top-left */
       radial-gradient(circle at 0% 0%, var(--atmosphere-glow-primary), transparent 50%),
+      /* Golden amber glow top-right */
       radial-gradient(circle at 100% 0%, var(--atmosphere-glow-accent), transparent 40%),
+      /* Peach glow mid-right */
       radial-gradient(circle at 100% 50%, var(--atmosphere-glow-secondary), transparent 40%),
       linear-gradient(var(--atmosphere-grid-line) 1px, transparent 1px),
       linear-gradient(90deg, var(--atmosphere-grid-line) 1px, transparent 1px);
@@ -220,7 +263,7 @@
   @apply backdrop-blur-md;
   -webkit-backdrop-filter: blur(12px);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
     0 24px 70px -40px var(--glass-shadow);
   /* Fix flickering during hardware-accelerated transitions */
   isolation: isolate;

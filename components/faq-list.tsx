@@ -21,8 +21,8 @@ function FaqItem({ question, answer }: FaqItemProps) {
     <div
       className={cn(
         "group rounded-2xl border border-transparent bg-[var(--muted)]/50 p-5 transition-all duration-300",
-        "hover:border-emerald-200/50 hover:bg-[var(--glass-bg)] hover:shadow-sm",
-        isOpen && "border-emerald-200/50 bg-[var(--glass-bg)] shadow-sm"
+        "hover:border-[var(--brand-primary)]/20 hover:bg-[var(--glass-bg)] hover:shadow-sm",
+        isOpen && "border-[var(--brand-primary)]/20 bg-[var(--glass-bg)] shadow-sm"
       )}
     >
       <button
@@ -47,8 +47,8 @@ function FaqItem({ question, answer }: FaqItemProps) {
           className={cn(
             "mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full transition-all duration-0",
             isOpen
-              ? "bg-emerald-100/20 text-emerald-500"
-              : "bg-[var(--muted)] text-[var(--text-muted)] group-hover:bg-emerald-100/20 group-hover:text-emerald-500"
+              ? "bg-[var(--brand-primary)]/15 text-[var(--brand-primary)]"
+              : "bg-[var(--muted)] text-[var(--text-muted)] group-hover:bg-[var(--brand-primary)]/15 group-hover:text-[var(--brand-primary)]"
           )}
         >
           <Plus className="size-4" />
