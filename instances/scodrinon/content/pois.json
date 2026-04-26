@@ -22,7 +22,7 @@
     { "name": "Central Bus Stop", "coords": [19.512929288055442, 42.06755637830981, 0], "category": "transit", "minZoom": 11 },
     { "name": "Rozafa Castle", "coords": [19.493844659339743, 42.04664614803619, 0], "category": "see", "minZoom": 9 },
     { "name": "Mesi Bridge", "coords": [19.57507048757086, 42.114467845122725, 0], "category": "see", "minZoom": 9 },
-    { "name": "Shiroka Village (beach)", "coords": [19.44972160885021, 42.06053385014611, 0], "category": "see", "minZoom": 9 },
+    { "name": "Shiroka Village", "coords": [19.44972160885021, 42.06053385014611, 0], "category": "see", "minZoom": 9 },
     { "name": "Hermes Airport Shuttle", "coords": [19.518613662164896, 42.065060836150614, 0], "category": "transit", "minZoom": 11 },
     { "name": "Trailhead", "coords": [19.870570709799853, 42.42571084825586, 0], "category": "see", "minZoom": 6 },
     { "name": "Valbona Pass", "coords": [19.81528, 42.40583, 0], "category": "see", "minZoom": 6 },
