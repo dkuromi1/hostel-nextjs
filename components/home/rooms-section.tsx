@@ -52,7 +52,7 @@ export function RoomsSection() {
               <Panel className="flex h-full flex-col overflow-hidden">
                 <div className="relative min-h-[18rem]">
                   <ImageCarousel
-                    images={room.name.includes("Privacy Pods") ? podDormImages : fourBedDormImages}
+                    images={room.name.includes("Privacy Pod") ? podDormImages : fourBedDormImages}
                     className="absolute inset-0 h-full rounded-none"
                     autoPlayInterval={0}
                   />
