@@ -54,8 +54,8 @@
   --input: rgba(15, 23, 42, 0.1);
   --ring: rgba(5, 150, 105, 0.35);
   --radius: 1.35rem;
-  --font-sans: "Avenir Next", var(--font-nunito), "Segoe UI", sans-serif;
-  --font-heading: "Avenir Next", var(--font-nunito), "Segoe UI", sans-serif;
+  --font-sans: var(--font-nunito), "Avenir Next", "Segoe UI", sans-serif;
+  --font-heading: var(--font-nunito), "Avenir Next", "Segoe UI", sans-serif;
   --font-mono: "SFMono-Regular", "SF Mono", "Menlo", monospace;
 
   /* ─── Brand Colors ─────────────────────────────────────────────────────────
