@@ -9,6 +9,7 @@ type AnimatedTextProps = {
   className?: string;
   wordClassName?: string;
   delayOffset?: number;
+  immediate?: boolean;
 };
 
 export function AnimatedText({
@@ -16,6 +17,7 @@ export function AnimatedText({
   className,
   wordClassName,
   delayOffset = 0,
+  immediate = false,
 }: AnimatedTextProps) {
   const prefersReduced = useReducedMotion();
   const shouldReduce = prefersReduced || getShouldReduceMotion();
@@ -65,8 +67,7 @@ export function AnimatedText({
         className="inline"
         variants={containerVariants}
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
+        {...(immediate ? { animate: "visible" } : { whileInView: "visible", viewport: { once: true, margin: "-50px" } })}
       >
         {words.map((word, idx) => (
           <motion.span

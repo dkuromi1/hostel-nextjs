@@ -40,13 +40,15 @@ export function HeroSection() {
                   text={hero.title1}
                   wordClassName="text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]"
                   delayOffset={0}
+                  immediate
                 />
                 {" "}
                 <AnimatedText
                   text={hero.title2}
                   className="text-[var(--brand-accent)]"
                   wordClassName="text-[var(--brand-accent)] [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]"
-                  delayOffset={200}
+                  delayOffset={100}
+                  immediate
                 />
               </h1>
               <p className="max-w-[50ch] text-hero-sub text-white/90 antialiased [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]">
@@ -54,12 +56,12 @@ export function HeroSection() {
               </p>
             </div>
 
-            <Reveal delay={280} className="w-full max-w-3xl">
+            <Reveal delay={180} immediate className="w-full max-w-3xl">
               <CompactGuestRatingsStrip />
             </Reveal>
           </div>
 
-          <Reveal delay={500}>
+          <Reveal delay={350} immediate>
             <SwipableRow
               itemCount={quickFacts.length}
               className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4"

@@ -9,6 +9,7 @@ import { shouldReduceMotion } from "@/lib/performance";
 type RevealProps = HTMLAttributes<HTMLDivElement> & {
   delay?: number;
   duration?: number;
+  immediate?: boolean;
 };
 
 export function Reveal({
@@ -18,6 +19,7 @@ export function Reveal({
   // duration is kept in the API for backwards-compatibility but spring physics
   // dictate the actual feel — damping/stiffness are the real controls.
   duration: _duration,
+  immediate = false,
   ...props
 }: RevealProps) {
   void _duration;
@@ -32,8 +34,9 @@ export function Reveal({
       // Instead, we only vary the transition: duration:0 for reduced motion gives
       // an instant snap to the visible state without any layout shift.
       initial={{ opacity: 0.1, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
+      {...(immediate
+        ? { animate: { opacity: 1, y: 0 } }
+        : { whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-50px" } })}
       transition={
         shouldReduce
           ? { duration: 0 }
