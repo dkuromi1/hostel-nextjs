@@ -106,7 +106,7 @@
   /* sky glow */
   --atmosphere-glow-secondary: rgba(52, 211, 153, 0.06);
   /* emerald-300 secondary */
-  --atmosphere-grid-line: rgba(15, 23, 42, 0.035);
+  --atmosphere-grid-line: rgba(15, 23, 42, 0.025);
   /* slate-900 grid */
 
   --shadow-interactive-soft: rgba(15, 23, 42, 0.35);
@@ -195,7 +195,7 @@
   --atmosphere-glow-primary: rgba(52, 211, 153, 0.14);
   --atmosphere-glow-accent: rgba(56, 189, 248, 0.10);
   --atmosphere-glow-secondary: rgba(5, 150, 105, 0.07);
-  --atmosphere-grid-line: rgba(255, 255, 255, 0.035);
+  --atmosphere-grid-line: rgba(255, 255, 255, 0.025);
 
   --glass-bg: rgba(15, 23, 42, 0.85);
   --glass-border: rgba(255, 255, 255, 0.07);

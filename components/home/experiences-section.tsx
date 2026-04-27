@@ -116,7 +116,7 @@ export function ExperiencesSection() {
                         )}
                         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/90 via-[var(--surface-dark)]/40 to-transparent p-6 pt-24 text-white">
                           <p className={cn(
-                            "text-sm sm:text-sm uppercase tracking-[0.28em] text-[var(--brand-accent)]/90 mb-2",
+                            "text-sm sm:text-sm uppercase tracking-[0.28em] text-[var(--brand-accent)] mb-2",
                             index === 1 && "drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
                           )}>
                             {pillar.title}

@@ -35,7 +35,7 @@ export function HomeGallerySection() {
 
         <div className="flow-root">
           <GalleryMasonry
-            items={galleryItems.slice(0, 12)}
+            items={galleryItems.slice(0, 10)}
             priorityImageCount={0}
           />
         </div>
