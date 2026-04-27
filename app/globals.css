@@ -58,8 +58,8 @@
   /* slate-100 */
   --muted-foreground: #64748b;
   /* slate-500 */
-  --accent: #38bdf8;
-  /* sky-400 */
+  --accent: #7dd3fc;
+  /* sky-300 */
   --accent-foreground: #ffffff;
   --destructive: #ef4444;
   --border: rgba(148, 163, 184, 0.2);
@@ -82,8 +82,8 @@
   /* emerald-100 */
   --brand-primary-dark: #047857;
   /* emerald-700 */
-  --brand-accent: #38bdf8;
-  /* sky-400 — lighter blue for visibility */
+  --brand-accent: #7dd3fc;
+  /* sky-300 — lighter blue for visibility */
 
   /* ─── Semantic Text Colors ──────────────────────────────────────────────────
      Use these instead of raw slate-* classes so a palette swap is one edit.
@@ -167,8 +167,8 @@
   /* slate-800 */
   --muted-foreground: #94a3b8;
   /* slate-400 */
-  --accent: #38bdf8;
-  /* sky-400 */
+  --accent: #7dd3fc;
+  /* sky-300 */
   --accent-foreground: #020617;
   --border: rgba(255, 255, 255, 0.1);
   --input: rgba(255, 255, 255, 0.1);
@@ -189,8 +189,8 @@
   /* slate-800 for dark mode */
   --brand-primary-dark: #6ee7b7;
   /* emerald-300 — lighter for hover on dark */
-  --brand-accent: #38bdf8;
-  /* sky-400 */
+  --brand-accent: #7dd3fc;
+  /* sky-300 */
 
   --atmosphere-glow-primary: rgba(52, 211, 153, 0.14);
   --atmosphere-glow-accent: rgba(56, 189, 248, 0.10);
@@ -364,22 +364,22 @@
 
 /** Large section description paragraph */
 @utility text-section-desc {
-  @apply text-base leading-relaxed md:text-lg text-[var(--text-body)];
+  @apply text-base leading-snug md:text-lg text-[var(--text-body)];
 }
 
 /** Standard card / component body paragraph */
 @utility text-card-body {
-  @apply text-sm leading-relaxed text-[var(--text-body-subtle)];
+  @apply text-sm leading-snug text-[var(--text-body-subtle)];
 }
 
 /** Supporting paragraph for page states and large editorial blocks */
 @utility text-body-lg {
-  @apply text-base leading-relaxed text-[var(--text-body)];
+  @apply text-base leading-snug text-[var(--text-body)];
 }
 
 /** Large hero sub-headline paragraph */
 @utility text-hero-sub {
-  @apply text-lg leading-relaxed sm:text-xl lg:text-2xl text-[var(--text-body)];
+  @apply text-lg leading-snug sm:text-xl lg:text-2xl text-[var(--text-body)];
 }
 
 @utility brand-link {

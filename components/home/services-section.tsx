@@ -40,7 +40,7 @@ export function IncludedServicesSection() {
                       <h3 className="text-[15px] font-bold tracking-tight text-[var(--text-heading)]">
                         {service.title}
                       </h3>
-                      <p className="text-xs leading-relaxed text-[var(--text-body-subtle)] line-clamp-2 transition-colors group-hover:text-[var(--text-body)]">
+                      <p className="text-xs leading-snug text-[var(--text-body-subtle)] line-clamp-2 transition-colors group-hover:text-[var(--text-body)]">
                         {service.description}
                       </p>
                     </div>

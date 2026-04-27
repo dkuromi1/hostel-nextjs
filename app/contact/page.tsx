@@ -88,7 +88,7 @@ export default function ContactPage() {
             <Reveal>
               <Panel className="p-6 sm:p-8">
                 <SectionLabel variant="sun" className="mb-4">{siteCopyContent.contact.contactDetails.label}</SectionLabel>
-                <div className="mt-6 space-y-4 text-base leading-8 text-[var(--text-body-subtle)]">
+                <div className="mt-6 space-y-4 text-base leading-snug text-[var(--text-body-subtle)]">
                   <p className="flex items-start gap-3">
                     <MessageCircleMore
                       className="mt-1 size-5 shrink-0 text-[var(--brand-primary)]"

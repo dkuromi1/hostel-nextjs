@@ -72,7 +72,7 @@ export function HeroSection() {
                     className="min-w-[85%] snap-center sm:min-w-0"
                   >
                     <div className="group relative overflow-hidden rounded-[24px] border border-white/18 bg-[var(--surface-dark)]/42 p-5 backdrop-blur-[3px] transition-all duration-300 hover:border-white/24 hover:bg-[var(--surface-dark)]/52">
-                      <div className="text-sm leading-7 text-white/95">
+                      <div className="text-sm leading-snug text-white/95">
                         <div className="float-left mb-1 mr-4 flex size-10 items-center justify-center rounded-xl bg-[var(--brand-primary)]/24 text-[var(--brand-accent)]">
                           <Icon className="size-5" strokeWidth={2} />
                         </div>

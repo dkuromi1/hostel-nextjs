@@ -71,7 +71,7 @@ function FaqItem({ question, answer }: FaqItemProps) {
             }}
             className="overflow-hidden"
           >
-            <div className="mt-3 pr-6 text-sm leading-7 text-[var(--text-body-subtle)]">
+            <div className="mt-3 pr-6 text-sm leading-snug text-[var(--text-body-subtle)]">
               {answer}
             </div>
           </motion.div>

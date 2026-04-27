@@ -211,7 +211,7 @@ export default function RoomsPage() {
                         <h4 className="text-sm font-bold tracking-tight text-[var(--text-heading)]">
                           {service.title}
                         </h4>
-                        <p className="text-[13px] leading-relaxed text-[var(--text-body-subtle)]">
+                        <p className="text-[13px] leading-snug text-[var(--text-body-subtle)]">
                           {service.description}
                         </p>
                       </div>
@@ -243,7 +243,7 @@ export default function RoomsPage() {
                         <h4 className="text-sm font-bold tracking-tight text-[var(--text-heading)]">
                           {service.title}
                         </h4>
-                        <p className="text-[13px] leading-relaxed text-[var(--text-body-subtle)]">
+                        <p className="text-[13px] leading-snug text-[var(--text-body-subtle)]">
                           {service.description}
                         </p>
                       </div>

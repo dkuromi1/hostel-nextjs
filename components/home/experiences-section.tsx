@@ -115,12 +115,15 @@ export function ExperiencesSection() {
                           </div>
                         )}
                         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/90 via-[var(--surface-dark)]/40 to-transparent p-6 pt-24 text-white">
-                          <p className="text-sm sm:text-sm uppercase tracking-[0.28em] text-[var(--brand-accent)]/90 mb-2">
+                          <p className={cn(
+                            "text-sm sm:text-sm uppercase tracking-[0.28em] text-[var(--brand-accent)]/90 mb-2",
+                            index === 1 && "drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+                          )}>
                             {pillar.title}
                           </p>
                         </div>
                       </div>
-                      <div className="p-6 text-sm leading-relaxed text-[var(--text-body-subtle)] bg-[var(--glass-bg)] flex-1 flex flex-col">
+                      <div className="p-6 text-sm leading-snug text-[var(--text-body-subtle)] bg-[var(--glass-bg)] flex-1 flex flex-col">
                         <p className="flex-1">{formatText(pillar.description)}</p>
                         <PillarCta cta={pillar.cta} />
                       </div>
@@ -153,7 +156,7 @@ export function ExperiencesSection() {
                     <p className="text-sm uppercase tracking-[0.28em] text-[var(--brand-accent)]/90 drop-shadow-md">
                       {experiencePillars[0].title}
                     </p>
-                    <p className="mt-3 max-w-lg text-base leading-relaxed text-white/90">
+                    <p className="mt-3 max-w-lg text-base leading-snug text-white/90">
                       {formatText(experiencePillars[0].description)}
                     </p>
                     <PillarCta cta={experiencePillars[0].cta} variant="dark" />
@@ -179,10 +182,10 @@ export function ExperiencesSection() {
                             sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 42vw, 588px"
                           />
                           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/90 via-[var(--surface-dark)]/40 to-transparent p-6 pt-32 text-white">
-                            <p className="text-sm uppercase tracking-[0.28em] text-[var(--brand-accent)]/90 drop-shadow-md">
+                            <p className="text-sm uppercase tracking-[0.28em] text-[var(--brand-accent)]/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                               {pillar.title}
                             </p>
-                            <p className="mt-3 text-base leading-relaxed text-white/90">
+                            <p className="mt-3 text-base leading-snug text-white/90">
                               {formatText(pillar.description)}
                             </p>
                             <PillarCta cta={pillar.cta} variant="dark" />
