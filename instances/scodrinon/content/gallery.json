@@ -7,7 +7,10 @@
       "alt": "Breakfast served at Scodrinon Hostel",
       "aspect": "766/1020",
       "featured": true,
-      "tags": ["breakfast", "hospitality"]
+      "tags": [
+        "breakfast",
+        "hospitality"
+      ]
     },
     {
       "id": "four-bed-room",
@@ -162,13 +165,6 @@
       "src": "/images/breakfast_1.jpg",
       "alt": "Breakfast spread at Scodrinon Hostel, Shkoder",
       "aspect": "1024/576"
-    },
-    {
-      "id": "socializing-rooftop",
-      "type": "image",
-      "src": "/images/rooftop_social.webp",
-      "alt": "Guests socializing on the rooftop terrace at Scodrinon Hostel",
-      "aspect": "1359/1020"
     },
     {
       "id": "hiking-shkoder-base",

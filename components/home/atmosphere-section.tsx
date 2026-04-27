@@ -46,7 +46,7 @@ export function AtmosphereSection() {
               <Reveal delay={100} className="flex min-w-0 flex-col gap-4 h-full">
                 <div className="media-frame relative aspect-[4/3] h-full lg:h-auto">
                   <Image
-                    src="/images/rooms_1.jpg"
+                    src="/images/rooms_1_min.webp"
                     alt={siteCopyContent.home.atmosphere.roomImageAlt}
                     fill
                     className="object-cover"
