@@ -13,12 +13,12 @@ import { activeInstance } from "@/instances";
 import { getSiteUrl, metadataBase } from "@/lib/metadata";
 import { externalPreconnectOrigins, propertyConfig } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
-import localFont from "next/font/local";
+import { Nunito } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-const nunito = localFont({
-  src: "./fonts/Nunito-VariableFont_wght.ttf",
+const nunito = Nunito({
+  subsets: ["latin"],
   display: "swap",
   variable: "--font-nunito",
 });

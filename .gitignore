@@ -52,3 +52,4 @@ lint_output.txt
 
 # Local Netlify folder
 .netlify
+grep_output.txt
