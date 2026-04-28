@@ -76,6 +76,14 @@
       "aspect": "1440/1274"
     },
     {
+      "id": "hostel-video-3",
+      "type": "video",
+      "src": "/videos/videoplayback3.mp4",
+      "poster": "/images/video-poster3.webp",
+      "alt": "Intro video to Scodrinon Hostel",
+      "aspect": "720/1280"
+    },
+    {
       "id": "food-outing",
       "type": "image",
       "src": "/images/rooftop_social_6.jpg",
@@ -302,7 +310,7 @@
       "aspect": "360/640"
     },
     {
-      "id": "events-video-",
+      "id": "hostel-video-2",
       "type": "video",
       "src": "/videos/videoplayback2.mp4",
       "poster": "/images/video-poster2.webp",
