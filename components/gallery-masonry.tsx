@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { warmGalleryItemMedia } from "@/lib/gallery-media";
-import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { type GalleryItem } from "@/lib/site-data";
 
@@ -92,24 +91,17 @@ export function GalleryMasonry({
         >
             <div className="media-frame relative overflow-hidden">
                 {item.type === "image" ? (
-                    <motion.img
-                        layoutId={`gallery-media-${item.id}`}
+                    <img
                         src={item.src}
                         alt={item.alt}
                         loading={isPriority ? "eager" : "lazy"}
-                        // Use whileHover for the zoom effect to avoid CSS transition conflicts
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                        className="w-full h-auto object-cover will-change-transform"
+                        className="w-full h-auto object-cover will-change-transform transition-transform duration-[400ms] [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                         style={item.aspect ? { aspectRatio: item.aspect } : undefined}
                     />
                 ) : (
                     <div className="w-full h-auto bg-slate-100/50" style={item.aspect ? { aspectRatio: item.aspect } : undefined}>
-                        <motion.video
-                            layoutId={`gallery-media-${item.id}`}
-                            whileHover={{ scale: 1.05 }}
-                            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                            className="w-full h-full object-cover will-change-transform"
+                        <video
+                            className="w-full h-full object-cover will-change-transform transition-transform duration-[400ms] [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                             muted
                             playsInline
                             preload="metadata"
@@ -118,7 +110,7 @@ export function GalleryMasonry({
                             style={item.aspect ? { aspectRatio: item.aspect } : undefined}
                         >
                             <source src={item.src} type="video/mp4" />
-                        </motion.video>
+                        </video>
                         <div className="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors group-hover:bg-black/20">
                             <div className="rounded-full bg-white/20 p-3 backdrop-blur-md">
                                 <div className="size-0 border-y-8 border-l-12 border-y-transparent border-l-white ml-1" />

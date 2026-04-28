@@ -1,127 +1,45 @@
 "use client";
 
 import * as React from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { getGalleryItemIndex } from "@/lib/gallery";
 import { warmGalleryItemMedia } from "@/lib/gallery-media";
 import { galleryItems } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence, useAnimation, usePresence } from "framer-motion";
 
 interface GalleryLightboxProps {
     currentId: string;
 }
 
-// Sub-component to isolate video logic and prevent ref-collision during AnimatePresence transitions
-function GalleryVideo({ src, poster, alt, layoutId }: { src: string; poster?: string; alt: string; layoutId?: string }) {
-    const videoRef = React.useRef<HTMLVideoElement>(null);
-    const [isPresent] = usePresence();
-
-    React.useEffect(() => {
-        const video = videoRef.current as HTMLMediaElement | null;
-        if (video) {
-            if (isPresent) {
-                video.currentTime = 0;
-                video.play().catch(() => {});
-            } else {
-                video.pause();
-            }
-        }
-    }, [isPresent, src]);
-
-    React.useEffect(() => {
-        const video = videoRef.current as HTMLMediaElement | null;
-
-        return () => {
-            video?.pause();
-        };
-    }, []);
-
-    return (
-        <motion.video
-            ref={videoRef}
-            layoutId={layoutId}
-            src={src}
-            controls
-            playsInline
-            preload="metadata"
-            poster={poster}
-            aria-label={alt}
-            className="block max-h-[85dvh] max-w-[95vw] w-auto h-auto object-contain rounded-3xl border border-white/10 bg-[var(--surface-dark)]/80 backdrop-blur-xl shadow-2xl [transform:translateZ(0)]"
-        />
-    );
-}
-
 export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
     const router = useRouter();
-    const pathname = usePathname();
-    const controls = useAnimation();
-    const [isInitialMount, setIsInitialMount] = React.useState(true);
-
-    // Clear the initial-mount flag after the first render so the shared-element
-    // zoom animation only fires once (on open). Without this, any state update
-    // that causes a re-render (e.g. clicking the video to toggle controls) while
-    // isInitialMount is still true would re-attach the layoutId and re-trigger
-    // the zoom animation from scratch.
-    React.useEffect(() => {
-        setIsInitialMount(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     const decodedId = decodeURIComponent(currentId);
-    
-    // Store our intended index in a Ref to safely track it outside of the async render cycle
-    const targetIndexRef = React.useRef(getGalleryItemIndex(decodedId));
-
-    const [activeIndex, setActiveIndex] = React.useState(targetIndexRef.current);
-    const [direction, setDirection] = React.useState(0);
+    const [activeIndex, setActiveIndex] = React.useState(() => getGalleryItemIndex(decodedId));
     const [showControls, setShowControls] = React.useState(true);
 
-    // Sync BROWSER navigation (Back/Forward) without colliding with local state updates
-    React.useEffect(() => {
-        const match = pathname.match(/\/gallery\/([^/]+)/);
-        if (match && match[1]) {
-            const urlId = decodeURIComponent(match[1]);
-            const index = getGalleryItemIndex(urlId);
-            // ONLY update if the URL changed externally from BROWSER navigation, 
-            // bypassing the race condition of async React renders.
-            if (index !== -1 && index !== targetIndexRef.current) {
-                targetIndexRef.current = index;
-                setActiveIndex(index);
-                // If the user navigates via browser buttons, we've definitely finished our 'initial' masonry entry
-                setIsInitialMount(false); 
-            }
+    const directionRef = React.useRef(0);
+    const videoRef = React.useRef<HTMLVideoElement>(null);
+    const containerRef = React.useRef<HTMLDivElement>(null);
+    const mediaRef = React.useRef<HTMLDivElement>(null);
+    const pointerRef = React.useRef<{ x: number; y: number; isDragging: boolean } | null>(null);
+
+    const handleClose = React.useCallback(() => {
+        if (window.history.length > 1) {
+            router.back();
+        } else {
+            router.replace("/gallery");
         }
-    }, [pathname]);
+    }, [router]);
 
-    const navigate = React.useCallback((newIndex: number, forcedDirection?: number) => {
-        setIsInitialMount(false); 
-
-        // If forced direction is omitted, calculate intuitively (especially for wrapping)
-        let newDirection = forcedDirection;
-        if (newDirection === undefined) {
-            const diff = newIndex - activeIndex;
-            const total = galleryItems.length;
-            if (Math.abs(diff) > total / 2) {
-                // We wrapped!
-                newDirection = diff > 0 ? -1 : 1;
-            } else {
-                newDirection = diff > 0 ? 1 : -1;
-            }
-        }
-
-        setDirection(newDirection);
-        targetIndexRef.current = newIndex;
+    const navigate = React.useCallback((newIndex: number, dir: number) => {
+        if (mediaRef.current) mediaRef.current.style.transform = "";
+        videoRef.current?.pause();
+        directionRef.current = dir;
         setActiveIndex(newIndex);
-        
         window.history.replaceState(null, "", `/gallery/${galleryItems[newIndex].id}`);
-
-        const after = (newIndex + 1) % galleryItems.length;
-        const before = newIndex === 0 ? galleryItems.length - 1 : newIndex - 1;
-        warmGalleryItemMedia(galleryItems[after]);
-        warmGalleryItemMedia(galleryItems[before]);
-    }, [activeIndex]);
+    }, []);
 
     const goToNext = React.useCallback(() => {
         if (activeIndex === -1) return;
@@ -133,15 +51,7 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
         navigate(activeIndex === 0 ? galleryItems.length - 1 : activeIndex - 1, -1);
     }, [activeIndex, navigate]);
 
-    React.useEffect(() => {
-        if (activeIndex === -1) return;
-        warmGalleryItemMedia(galleryItems[activeIndex], "high");
-        const next = (activeIndex + 1) % galleryItems.length;
-        const prev = activeIndex === 0 ? galleryItems.length - 1 : activeIndex - 1;
-        warmGalleryItemMedia(galleryItems[next]);
-        warmGalleryItemMedia(galleryItems[prev]);
-    }, [activeIndex]); 
-
+    // Keyboard navigation
     React.useEffect(() => {
         const onKeyDown = (e: KeyboardEvent) => {
             if (e.key === "Escape") handleClose();
@@ -150,230 +60,211 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
         };
         document.addEventListener("keydown", onKeyDown);
         return () => document.removeEventListener("keydown", onKeyDown);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [goToPrev, goToNext]); 
+    }, [handleClose, goToPrev, goToNext]);
 
-    const handleClose = React.useCallback(() => {
-        if (typeof window === "undefined") {
-            router.replace("/gallery");
-            return;
+    // Preload adjacent media
+    React.useEffect(() => {
+        if (activeIndex === -1) return;
+        warmGalleryItemMedia(galleryItems[activeIndex], "high");
+        const next = (activeIndex + 1) % galleryItems.length;
+        const prev = activeIndex === 0 ? galleryItems.length - 1 : activeIndex - 1;
+        warmGalleryItemMedia(galleryItems[next]);
+        warmGalleryItemMedia(galleryItems[prev]);
+    }, [activeIndex]);
+
+    // Auto-play video when active item is a video
+    React.useEffect(() => {
+        const video = videoRef.current;
+        if (video) {
+            video.currentTime = 0;
+            video.play().catch(() => {});
         }
+        return () => { video?.pause(); };
+    }, [activeIndex]);
 
-        const currentPath = window.location.pathname;
-
-        if (window.history.length <= 2) {
-            router.replace("/gallery");
-            return;
-        }
-
-        router.back();
-
-        window.setTimeout(() => {
-            if (window.location.pathname === currentPath) {
-                router.replace("/gallery");
-            }
-        }, 150);
-    }, [router]);
-
-    const item = galleryItems[activeIndex];
-
-    if (!item) return null;
-
-    const variants = {
-        enter: (direction: number) => ({
-            x: direction > 0 ? 1000 : -1000,
-            opacity: 0,
-        }),
-        center: {
-            zIndex: 1,
-            x: 0,
-            opacity: 1,
-        },
-        exit: (direction: number) => ({
-            zIndex: 0,
-            x: direction < 0 ? 1000 : -1000,
-            opacity: 0,
-        })
+    // Swipe detection via pointer events
+    const onPointerDown = (e: React.PointerEvent) => {
+        if ((e.target as HTMLElement).closest("button, video")) return;
+        pointerRef.current = { x: e.clientX, y: e.clientY, isDragging: false };
+        if (mediaRef.current) mediaRef.current.style.transition = "none";
+        if (containerRef.current) containerRef.current.style.transition = "none";
     };
 
-    return (
-        <motion.div
-            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            animate={{ opacity: 1, backdropFilter: "blur(8px)" }}
-            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[110] flex items-center justify-center bg-[var(--surface-dark)]/90 p-4"
-        >
-            {/* Click backdrop to close */}
-            <div
-                onClick={handleClose}
-                className="absolute inset-0 cursor-zoom-out"
-                aria-label="Close lightbox"
-            />
+    const onPointerMove = (e: React.PointerEvent) => {
+        if (!pointerRef.current) return;
+        const dx = e.clientX - pointerRef.current.x;
+        const dy = e.clientY - pointerRef.current.y;
 
-            <motion.div 
-                className="relative w-full h-[90dvh] max-w-[1400px] flex items-center justify-center group"
-                drag="y"
-                dragConstraints={{ top: 0, bottom: 0 }}
-                dragElastic={0.8}
-                onDragEnd={(e, { offset }) => {
-                    const dragDistance = offset.y;
-                    if (Math.abs(dragDistance) > 100) {
-                        handleClose();
-                    } else {
-                        controls.start({ y: 0 });
-                    }
-                }}
-                animate={controls}
+        if (!pointerRef.current.isDragging && (Math.abs(dx) > 5 || Math.abs(dy) > 5)) {
+            pointerRef.current.isDragging = true;
+        }
+
+        if (pointerRef.current.isDragging) {
+            if (Math.abs(dx) > Math.abs(dy)) {
+                // Horizontal drag (slide)
+                if (mediaRef.current) mediaRef.current.style.transform = `translateX(${dx}px)`;
+            } else {
+                // Vertical drag (dismiss)
+                const opacity = Math.max(0, 1 - Math.abs(dy) / 400);
+                if (mediaRef.current) mediaRef.current.style.transform = `translateY(${dy}px)`;
+                if (containerRef.current) {
+                    // Using theme's surface-dark RGB (2, 6, 23)
+                    containerRef.current.style.backgroundColor = `rgba(2, 6, 23, ${opacity * 0.9})`;
+                    containerRef.current.style.backdropFilter = `blur(${opacity * 8}px)`;
+                }
+            }
+        }
+    };
+
+    const onPointerUp = (e: React.PointerEvent) => {
+        if (!pointerRef.current) return;
+        const dx = e.clientX - pointerRef.current.x;
+        const dy = e.clientY - pointerRef.current.y;
+        const isDragging = pointerRef.current.isDragging;
+        pointerRef.current = null;
+
+        if (!isDragging) {
+            return;
+        }
+
+        if (mediaRef.current) mediaRef.current.style.transition = "transform 0.3s cubic-bezier(0.2, 0, 0, 1)";
+        if (containerRef.current) containerRef.current.style.transition = "all 0.3s cubic-bezier(0.2, 0, 0, 1)";
+
+        if (Math.abs(dx) > 100 && Math.abs(dx) > Math.abs(dy)) {
+            dx < 0 ? goToNext() : goToPrev();
+        } else if (Math.abs(dy) > 150) {
+            handleClose();
+        } else {
+            // Snap back
+            if (mediaRef.current) mediaRef.current.style.transform = "";
+            if (containerRef.current) {
+                containerRef.current.style.backgroundColor = "";
+                containerRef.current.style.backdropFilter = "";
+            }
+        }
+    };
+
+    const item = galleryItems[activeIndex];
+    if (!item) return null;
+
+    const mediaClass = "block max-h-[85dvh] max-w-[95vw] w-auto h-auto object-contain rounded-3xl border border-white/10 bg-[var(--surface-dark)]/80 shadow-2xl";
+
+    return (
+        <>
+            <style>{`
+                @keyframes lb-fade-in { from { opacity: 0; } to { opacity: 1; } }
+                @keyframes lb-slide-right { from { transform: translateX(60px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+                @keyframes lb-slide-left { from { transform: translateX(-60px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+                @keyframes lb-scale-in { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+                .lb-enter { animation: lb-fade-in 0.25s ease-out both; }
+                .lb-slide-right { animation: lb-slide-right 0.2s ease-out both; }
+                .lb-slide-left { animation: lb-slide-left 0.2s ease-out both; }
+                .lb-scale-in { animation: lb-scale-in 0.25s ease-out both; }
+            `}</style>
+
+            <div
+                ref={containerRef}
+                className="lb-enter fixed inset-0 z-[110] flex items-center justify-center bg-[var(--surface-dark)]/90 backdrop-blur-sm p-4"
+                onPointerDown={onPointerDown}
+                onPointerMove={onPointerMove}
+                onPointerUp={onPointerUp}
             >
-                <AnimatePresence custom={direction}>
-                    <motion.div
+                {/* Backdrop click to close */}
+                <div
+                    onClick={handleClose}
+                    className="absolute inset-0 cursor-zoom-out"
+                    aria-label="Close lightbox"
+                />
+
+                {/* Media + controls container */}
+                <div className="relative w-full h-[90dvh] max-w-[1400px] flex items-center justify-center group">
+                    <div
+                        ref={mediaRef}
                         key={activeIndex}
-                        custom={direction}
-                        variants={variants}
-                        initial={isInitialMount ? "center" : "enter"}
-                        animate="center"
-                        exit="exit"
-                        transition={{
-                            x: { type: "tween", ease: "easeInOut", duration: 0.2 },
-                            opacity: { duration: 0.2 }
-                        }}
-                        drag="x"
-                        dragConstraints={{ left: 0, right: 0 }}
-                        dragElastic={1}
-                        onDragEnd={(e, { offset }) => {
-                            if (offset.x < -60) {
-                                goToNext();
-                            } else if (offset.x > 60) {
-                                goToPrev();
-                            }
-                        }}
+                        className={cn(
+                            "absolute inset-0 flex items-center justify-center touch-none cursor-zoom-out",
+                            directionRef.current > 0 ? "lb-slide-right" :
+                            directionRef.current < 0 ? "lb-slide-left" :
+                            "lb-scale-in"
+                        )}
                         onClick={(e) => {
-                            // If user clicks the transparent empty space around the image, close the lightbox
                             if (e.target === e.currentTarget) handleClose();
                         }}
-                        className="absolute inset-0 flex justify-center items-center touch-none"
                     >
-                        <div className="relative flex justify-center items-center h-full w-full pointer-events-none">
-                            {item.type === "video" ? (
-                                <div className="pointer-events-auto" onClick={(e) => { e.stopPropagation(); setShowControls(v => !v); }}>
-                                    <GalleryVideo 
-                                        src={item.src} 
-                                        poster={item.poster} 
-                                        alt={item.alt}
-                                        layoutId={isInitialMount ? `gallery-media-${item.id}` : undefined}
-                                    />
-                                </div>
-                            ) : (
-                                <motion.img
-                                    layoutId={isInitialMount ? `gallery-media-${item.id}` : undefined}
+                        {item.type === "video" ? (
+                            <div onClick={() => setShowControls(v => !v)}>
+                                <video
+                                    ref={videoRef}
                                     src={item.src}
-                                    alt={item.alt}
-                                    loading="eager"
-                                    fetchPriority="high"
-                                    decoding="sync"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        setShowControls(v => !v);
-                                    }}
-                                    className="block max-h-[85dvh] max-w-[95vw] w-auto h-auto object-contain rounded-3xl border border-white/10 bg-[var(--surface-dark)]/80 backdrop-blur-xl shadow-2xl [transform:translateZ(0)] pointer-events-auto"
+                                    controls
+                                    playsInline
+                                    preload="metadata"
+                                    poster={item.poster}
+                                    aria-label={item.alt}
+                                    className={mediaClass}
                                 />
-                            )}
-                        </div>
-                    </motion.div>
-                </AnimatePresence>
+                            </div>
+                        ) : (
+                            <img
+                                src={item.src}
+                                alt={item.alt}
+                                loading="eager"
+                                fetchPriority="high"
+                                decoding="sync"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setShowControls(v => !v);
+                                }}
+                                className={cn(mediaClass, "pointer-events-auto")}
+                            />
+                        )}
+                    </div>
 
-                {/* Navigation Arrows */}
-                {galleryItems.length > 1 && (
-                    <>
-                        {/* Invisible enlarged hit target for Prev Arrow */}
-                        <div 
-                            onPointerDown={(e) => e.stopPropagation()}
-                            onClick={(e) => { e.stopPropagation(); goToPrev(); }}
-                            className={cn(
-                                "absolute left-2 top-1/2 z-20 h-[80px] w-[80px] -translate-y-1/2 cursor-pointer flex items-center justify-center group/btn transition-opacity duration-300",
-                                showControls ? "opacity-100" : "opacity-0 pointer-events-none sm:group-hover:opacity-100 sm:group-hover:pointer-events-auto"
-                            )}
-                        >
+                    {/* Navigation arrows */}
+                    {galleryItems.length > 1 && (
+                        <>
                             <button
-                                className="flex size-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/20 active:scale-95"
+                                onClick={(e) => { e.stopPropagation(); goToPrev(); }}
+                                className={cn(
+                                    "absolute left-2 top-1/2 z-20 -translate-y-1/2 flex size-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/20 active:scale-95 cursor-pointer",
+                                    showControls ? "opacity-100" : "opacity-0 pointer-events-none sm:group-hover:opacity-100 sm:group-hover:pointer-events-auto"
+                                )}
                                 aria-label="Previous image"
                             >
                                 <ChevronLeft className="size-8" />
                             </button>
-                        </div>
-                        
-                        {/* Invisible enlarged hit target for Next Arrow */}
-                        <div 
-                            onPointerDown={(e) => e.stopPropagation()}
-                            onClick={(e) => { e.stopPropagation(); goToNext(); }}
-                            className={cn(
-                                "absolute right-2 top-1/2 z-20 h-[80px] w-[80px] -translate-y-1/2 cursor-pointer flex items-center justify-center group/btn transition-opacity duration-300",
-                                showControls ? "opacity-100" : "opacity-0 pointer-events-none sm:group-hover:opacity-100 sm:group-hover:pointer-events-auto"
-                            )}
-                        >
+
                             <button
-                                className="flex size-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/20 active:scale-95"
+                                onClick={(e) => { e.stopPropagation(); goToNext(); }}
+                                className={cn(
+                                    "absolute right-2 top-1/2 z-20 -translate-y-1/2 flex size-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/20 active:scale-95 cursor-pointer",
+                                    showControls ? "opacity-100" : "opacity-0 pointer-events-none sm:group-hover:opacity-100 sm:group-hover:pointer-events-auto"
+                                )}
                                 aria-label="Next image"
                             >
                                 <ChevronRight className="size-8" />
                             </button>
-                        </div>
 
-                        <div className={cn(
-                            "absolute top-4 left-4 z-20 rounded-full bg-black/50 px-3 py-1.5 text-[10px] font-bold tracking-widest text-white/90 backdrop-blur-md transition-opacity duration-300",
-                            showControls ? "opacity-100" : "opacity-0 pointer-events-none sm:group-hover:opacity-100"
-                        )}>
-                            {activeIndex + 1} / {galleryItems.length}
-                        </div>
-
-                        <div 
-                            onPointerDown={(e) => e.stopPropagation()}
-                            className={cn(
-                                "absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 gap-2 rounded-full bg-black/30 px-3 py-2 backdrop-blur-md transition-opacity duration-300",
+                            <div className={cn(
+                                "absolute top-4 left-4 z-20 rounded-full bg-black/50 px-3 py-1.5 text-[10px] font-bold tracking-widest text-white/90 backdrop-blur-md transition-opacity duration-300",
                                 showControls ? "opacity-100" : "opacity-0 pointer-events-none sm:group-hover:opacity-100"
-                            )}
-                        >
-                            {Array.from({ length: 5 }).map((_, i) => {
-                                const totalItems = galleryItems.length;
-                                const maxDotIndex = 4;
-                                const activeDot = Math.round((activeIndex / (totalItems - 1)) * maxDotIndex);
-                                const isActive = i === activeDot;
-                                const targetIndex = Math.round((i / maxDotIndex) * (totalItems - 1));
-
-                                return (
-                                    <div
-                                        key={i}
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            navigate(targetIndex);
-                                        }}
-                                        className="relative flex items-center justify-center py-[10px] px-[6px] -mx-[6px] -my-[8px] cursor-pointer"
-                                    >
-                                        <div
-                                            className={cn(
-                                                "h-1 rounded-full transition-all duration-300",
-                                                isActive ? "w-4 bg-white" : "w-1.5 bg-white/40 hover:bg-white/60"
-                                            )}
-                                        />
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </>
-                )}
-
-                <button
-                    onPointerDown={(e) => e.stopPropagation()}
-                    onClick={handleClose}
-                    className={cn(
-                        "absolute top-4 right-4 z-20 flex size-10 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md hover:bg-black/70 transition-all duration-300",
-                        showControls ? "opacity-100" : "opacity-0 pointer-events-none sm:group-hover:opacity-100"
+                            )}>
+                                {activeIndex + 1} / {galleryItems.length}
+                            </div>
+                        </>
                     )}
-                >
-                    <X className="size-5" />
-                </button>
-            </motion.div>
-        </motion.div>
+
+                    <button
+                        onClick={handleClose}
+                        className={cn(
+                            "absolute top-4 right-4 z-20 flex size-10 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md hover:bg-black/70 transition-all duration-300 cursor-pointer",
+                            showControls ? "opacity-100" : "opacity-0 pointer-events-none sm:group-hover:opacity-100"
+                        )}
+                    >
+                        <X className="size-5" />
+                    </button>
+                </div>
+            </div>
+        </>
     );
 }
