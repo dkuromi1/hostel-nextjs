@@ -7,12 +7,19 @@ import { getGalleryItemIndex } from "@/lib/gallery";
 import { warmGalleryItemMedia } from "@/lib/gallery-media";
 import { galleryItems } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
+import {
+    motion,
+    useMotionValue,
+    useTransform,
+    type PanInfo,
+} from "framer-motion";
 
 interface GalleryLightboxProps {
     currentId: string;
+    isModal?: boolean;
 }
 
-export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
+export function GalleryLightbox({ currentId, isModal = false }: GalleryLightboxProps) {
     const router = useRouter();
 
     const decodedId = decodeURIComponent(currentId);
@@ -21,20 +28,23 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
 
     const directionRef = React.useRef(0);
     const videoRef = React.useRef<HTMLVideoElement>(null);
-    const containerRef = React.useRef<HTMLDivElement>(null);
-    const mediaRef = React.useRef<HTMLDivElement>(null);
-    const pointerRef = React.useRef<{ x: number; y: number; isDragging: boolean } | null>(null);
+
+    // Motion value for vertical drag — drives backdrop fade, zero re-renders
+    const dragY = useMotionValue(0);
+    const backdropOpacity = useTransform(dragY, [-300, 0, 300], [0, 0.9, 0]);
+    const backdropBlur = useTransform(dragY, [-300, 0, 300], [0, 8, 0]);
+    const backdropBackground = useTransform(backdropOpacity, (v) => `rgba(2,6,23,${v})`);
+    const backdropBlurStyle = useTransform(backdropBlur, (v) => `blur(${v}px)`);
 
     const handleClose = React.useCallback(() => {
-        if (window.history.length > 1) {
+        if (isModal) {
             router.back();
         } else {
-            router.replace("/gallery");
+            router.push("/gallery", { scroll: false });
         }
-    }, [router]);
+    }, [isModal, router]);
 
     const navigate = React.useCallback((newIndex: number, dir: number) => {
-        if (mediaRef.current) mediaRef.current.style.transform = "";
         videoRef.current?.pause();
         directionRef.current = dir;
         setActiveIndex(newIndex);
@@ -82,64 +92,20 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
         return () => { video?.pause(); };
     }, [activeIndex]);
 
-    // Swipe detection via pointer events
-    const onPointerDown = (e: React.PointerEvent) => {
-        if ((e.target as HTMLElement).closest("button, video")) return;
-        pointerRef.current = { x: e.clientX, y: e.clientY, isDragging: false };
-        if (mediaRef.current) mediaRef.current.style.transition = "none";
-        if (containerRef.current) containerRef.current.style.transition = "none";
-    };
+    const onDragEnd = (_: never, info: PanInfo) => {
+        const { offset, velocity } = info;
+        const absX = Math.abs(offset.x);
+        const absY = Math.abs(offset.y);
 
-    const onPointerMove = (e: React.PointerEvent) => {
-        if (!pointerRef.current) return;
-        const dx = e.clientX - pointerRef.current.x;
-        const dy = e.clientY - pointerRef.current.y;
-
-        if (!pointerRef.current.isDragging && (Math.abs(dx) > 5 || Math.abs(dy) > 5)) {
-            pointerRef.current.isDragging = true;
-        }
-
-        if (pointerRef.current.isDragging) {
-            if (Math.abs(dx) > Math.abs(dy)) {
-                // Horizontal drag (slide)
-                if (mediaRef.current) mediaRef.current.style.transform = `translateX(${dx}px)`;
-            } else {
-                // Vertical drag (dismiss)
-                const opacity = Math.max(0, 1 - Math.abs(dy) / 400);
-                if (mediaRef.current) mediaRef.current.style.transform = `translateY(${dy}px)`;
-                if (containerRef.current) {
-                    // Using theme's surface-dark RGB (2, 6, 23)
-                    containerRef.current.style.backgroundColor = `rgba(2, 6, 23, ${opacity * 0.9})`;
-                    containerRef.current.style.backdropFilter = `blur(${opacity * 8}px)`;
-                }
+        if (absX > absY) {
+            // Horizontal — slide navigation
+            if (absX > 80 || Math.abs(velocity.x) > 400) {
+                offset.x < 0 ? goToNext() : goToPrev();
             }
-        }
-    };
-
-    const onPointerUp = (e: React.PointerEvent) => {
-        if (!pointerRef.current) return;
-        const dx = e.clientX - pointerRef.current.x;
-        const dy = e.clientY - pointerRef.current.y;
-        const isDragging = pointerRef.current.isDragging;
-        pointerRef.current = null;
-
-        if (!isDragging) {
-            return;
-        }
-
-        if (mediaRef.current) mediaRef.current.style.transition = "transform 0.3s cubic-bezier(0.2, 0, 0, 1)";
-        if (containerRef.current) containerRef.current.style.transition = "all 0.3s cubic-bezier(0.2, 0, 0, 1)";
-
-        if (Math.abs(dx) > 100 && Math.abs(dx) > Math.abs(dy)) {
-            dx < 0 ? goToNext() : goToPrev();
-        } else if (Math.abs(dy) > 150) {
-            handleClose();
         } else {
-            // Snap back
-            if (mediaRef.current) mediaRef.current.style.transform = "";
-            if (containerRef.current) {
-                containerRef.current.style.backgroundColor = "";
-                containerRef.current.style.backdropFilter = "";
+            // Vertical — dismiss
+            if (absY > 120 || Math.abs(velocity.y) > 400) {
+                handleClose();
             }
         }
     };
@@ -153,21 +119,16 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
         <>
             <style>{`
                 @keyframes lb-fade-in { from { opacity: 0; } to { opacity: 1; } }
-                @keyframes lb-slide-right { from { transform: translateX(60px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-                @keyframes lb-slide-left { from { transform: translateX(-60px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-                @keyframes lb-scale-in { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
                 .lb-enter { animation: lb-fade-in 0.25s ease-out both; }
-                .lb-slide-right { animation: lb-slide-right 0.2s ease-out both; }
-                .lb-slide-left { animation: lb-slide-left 0.2s ease-out both; }
-                .lb-scale-in { animation: lb-scale-in 0.25s ease-out both; }
             `}</style>
 
-            <div
-                ref={containerRef}
-                className="lb-enter fixed inset-0 z-[110] flex items-center justify-center bg-[var(--surface-dark)]/90 backdrop-blur-sm p-4"
-                onPointerDown={onPointerDown}
-                onPointerMove={onPointerMove}
-                onPointerUp={onPointerUp}
+            {/* Backdrop — opacity driven by dragY motion value, zero re-renders */}
+            <motion.div
+                className="lb-enter fixed inset-0 z-[110] p-4"
+                style={{
+                    backgroundColor: backdropBackground,
+                    backdropFilter: backdropBlurStyle,
+                }}
             >
                 {/* Backdrop click to close */}
                 <div
@@ -177,22 +138,38 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
                 />
 
                 {/* Media + controls container */}
-                <div className="relative w-full h-[90dvh] max-w-[1400px] flex items-center justify-center group">
-                    <div
-                        ref={mediaRef}
+                <div className="relative w-full h-full max-w-[1400px] mx-auto flex items-center justify-center group">
+
+                    {/* Single draggable layer — Framer picks x or y based on dragDirectionLock */}
+                    <motion.div
                         key={activeIndex}
-                        className={cn(
-                            "absolute inset-0 flex items-center justify-center touch-none cursor-zoom-out",
-                            directionRef.current > 0 ? "lb-slide-right" :
-                            directionRef.current < 0 ? "lb-slide-left" :
-                            "lb-scale-in"
-                        )}
+                        drag
+                        dragDirectionLock
+                        dragConstraints={{ top: 0, bottom: 0, left: 0, right: 0 }}
+                        dragElastic={0.6}
+                        style={{ y: dragY }}
+                        onDragEnd={onDragEnd}
+                        initial={
+                            directionRef.current === 0 
+                                ? { scale: 0.95, opacity: 0 } 
+                                : { x: directionRef.current > 0 ? 60 : -60, opacity: 0 }
+                        }
+                        animate={{ x: 0, y: 0, scale: 1, opacity: 1 }}
+                        transition={{ 
+                            duration: 0.25, 
+                            ease: "easeOut",
+                            // Ensure x/y are handled by drag once the initial animation finishes
+                        }}
+                        className="absolute inset-0 flex items-center justify-center touch-none cursor-grab active:cursor-grabbing"
                         onClick={(e) => {
                             if (e.target === e.currentTarget) handleClose();
                         }}
                     >
                         {item.type === "video" ? (
-                            <div onClick={() => setShowControls(v => !v)}>
+                            <div
+                                className="pointer-events-auto"
+                                onClick={(e) => { e.stopPropagation(); setShowControls(v => !v); }}
+                            >
                                 <video
                                     ref={videoRef}
                                     src={item.src}
@@ -218,7 +195,7 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
                                 className={cn(mediaClass, "pointer-events-auto")}
                             />
                         )}
-                    </div>
+                    </motion.div>
 
                     {/* Navigation arrows */}
                     {galleryItems.length > 1 && (
@@ -264,7 +241,7 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
                         <X className="size-5" />
                     </button>
                 </div>
-            </div>
+            </motion.div>
         </>
     );
 }

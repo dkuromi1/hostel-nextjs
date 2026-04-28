@@ -53,7 +53,7 @@ export default async function PhotoPage({
   return (
     <>
       <GalleryView />
-      <GalleryLightbox currentId={decodedId} />
+      <GalleryLightbox currentId={decodedId} isModal={false} />
     </>
   );
 }

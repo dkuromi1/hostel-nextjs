@@ -21,5 +21,5 @@ export default async function PhotoModalPage({
     notFound();
   }
 
-  return <GalleryLightbox currentId={decodedId} />;
+  return <GalleryLightbox currentId={decodedId} isModal={true} />;
 }
