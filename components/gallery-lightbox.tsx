@@ -59,6 +59,16 @@ export function GalleryLightbox({ currentId }: GalleryLightboxProps) {
     const controls = useAnimation();
     const [isInitialMount, setIsInitialMount] = React.useState(true);
 
+    // Clear the initial-mount flag after the first render so the shared-element
+    // zoom animation only fires once (on open). Without this, any state update
+    // that causes a re-render (e.g. clicking the video to toggle controls) while
+    // isInitialMount is still true would re-attach the layoutId and re-trigger
+    // the zoom animation from scratch.
+    React.useEffect(() => {
+        setIsInitialMount(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     const decodedId = decodeURIComponent(currentId);
     
     // Store our intended index in a Ref to safely track it outside of the async render cycle
