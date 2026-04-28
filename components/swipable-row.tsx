@@ -101,7 +101,7 @@ export function SwipableRow({
               key={i}
               onClick={() => goToItem(i)}
               className={cn(
-                "relative cursor-pointer h-1.5 rounded-full transition-all duration-300",
+                "relative cursor-pointer h-1.5 rounded-full transition-all duration-300 ring-1 ring-black/10 shadow-sm",
                 "before:absolute before:left-1/2 before:top-1/2 before:h-11",
                 "before:w-[calc(100%+8px)] before:-translate-x-1/2 before:-translate-y-1/2 before:content-['']",
                 i === activeIndex
