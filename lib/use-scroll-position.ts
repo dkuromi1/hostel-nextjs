@@ -2,32 +2,35 @@
 
 import { useSyncExternalStore } from "react";
 
-let scrollY = 0;
 const listeners: Set<() => void> = new Set();
-let initialized = false;
+let rafId: number | null = null;
 
 function handleScroll() {
-  const next = typeof window !== "undefined" ? window.scrollY : 0;
-  if (next !== scrollY) {
-    scrollY = next;
+  if (rafId !== null) return;
+  rafId = requestAnimationFrame(() => {
+    rafId = null;
     listeners.forEach((cb) => cb());
-  }
+  });
 }
 
 function subscribe(callback: () => void) {
-  if (!initialized && typeof window !== "undefined") {
-    initialized = true;
-    handleScroll();
+  if (listeners.size === 0 && typeof window !== "undefined") {
     window.addEventListener("scroll", handleScroll, { passive: true });
   }
   listeners.add(callback);
   return () => {
     listeners.delete(callback);
+    if (listeners.size === 0 && typeof window !== "undefined") {
+      window.removeEventListener("scroll", handleScroll);
+    }
   };
 }
 
 function getSnapshot() {
-  return scrollY;
+  // Always read directly from the DOM — never from a stale module-level cache.
+  // This ensures navigating to the homepage never picks up scroll state
+  // left over from a previous page.
+  return typeof window !== "undefined" ? window.scrollY : 0;
 }
 
 function getServerSnapshot() {
@@ -37,6 +40,7 @@ function getServerSnapshot() {
 /**
  * Returns current window.scrollY.
  * Uses a single shared scroll listener across all components.
+ * Reads directly from window.scrollY so it is always accurate after navigation.
  */
 export function useScrollPosition() {
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
