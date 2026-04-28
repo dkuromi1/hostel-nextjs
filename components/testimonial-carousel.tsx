@@ -80,7 +80,7 @@ export function TestimonialCarousel({
   return (
     <Panel
       className={cn(
-        "relative flex flex-col justify-between bg-[var(--surface-dark)] border-[var(--surface-dark-border)] p-8 text-white shadow-xl shadow-[var(--surface-dark)]/20 dark:border-[var(--glass-border)] dark:bg-[var(--glass-bg)] dark:text-[var(--text-heading)] dark:shadow-[var(--glass-shadow)]/10 sm:p-10",
+        "relative flex flex-col justify-between border-white/10 bg-[var(--brand-tertiary)] p-8 text-white shadow-xl shadow-slate-900/15 sm:p-10",
         className
       )}
       onMouseEnter={() => setIsHovered(true)}
@@ -114,7 +114,7 @@ export function TestimonialCarousel({
       </div>
 
       {/* Navigation Controls */}
-      <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4 dark:border-[var(--border)]">
+      <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4">
         <div className="flex gap-2">
           {testimonials.map((_, index) => (
             <div
@@ -131,7 +131,7 @@ export function TestimonialCarousel({
                 aria-hidden="true"
                 className={cn(
                   "absolute left-1/2 top-1/2 z-10 flex size-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full transition-all duration-300",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--surface-dark)] dark:focus-visible:ring-offset-[var(--glass-bg)]"
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--brand-tertiary)]"
                 )}
               >
                 <span

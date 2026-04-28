@@ -142,8 +142,8 @@ export function MobileNav() {
                       className={cn(
                         "block rounded-2xl px-4 py-3 text-base font-medium transition-colors",
                         isActive
-                          ? "text-[var(--brand-primary)] font-semibold ring-1 ring-[var(--brand-primary)]/30 bg-[var(--brand-primary)]/5"
-                          : "text-[var(--text-body)] hover:bg-[var(--muted)] hover:text-[var(--text-heading)]"
+                          ? "text-[var(--brand-tertiary)] dark:text-[var(--text-body)] font-semibold ring-1 ring-[var(--brand-tertiary)]/20 dark:ring-0 bg-[var(--brand-tertiary)]/5 dark:bg-transparent"
+                          : "text-[var(--text-body)] dark:text-[#cbd5e1] hover:bg-[var(--muted)] hover:text-[var(--text-heading)]"
                       )}
                     >
                       {item.label}

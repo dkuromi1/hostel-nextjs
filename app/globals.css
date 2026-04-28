@@ -135,8 +135,8 @@
      The classic deep blue-slate. Used for the volunteer banner, CTA strip,
      and testimonial card backgrounds.
   ─────────────────────────────────────────────────────────────────────────── */
-  --brand-tertiary: #374151;
-  /* slate-700 */
+  --brand-tertiary: #314158;
+  /* updated to custom blue-grey */
   --brand-tertiary-dark: #1e293b;
   /* slate-800 */
   --brand-tertiary-light: #e2e8f0;
@@ -183,6 +183,7 @@
   /* slate-500 */
   --text-on-dark: #f8fafc;
 
+  --brand-tertiary: #314158;
   --brand-primary: #34d399;
   /* emerald-400 for dark mode */
   --brand-primary-light: #1e293b;
@@ -209,10 +210,10 @@
   --text-on-surface-dark: #f8fafc;
   --text-on-surface-dark-muted: #94a3b8;
 
-  --brand-tertiary: #4b5d74;
-  /* slightly lighter slate-blue for dark mode */
-  --brand-tertiary-dark: #374151;
-  --brand-tertiary-light: #1e293b;
+  --brand-tertiary: #1e293b;
+  /* deeper blue-grey for dark mode background */
+  --brand-tertiary-dark: #0f172a;
+  --brand-tertiary-light: #334155;
   --tertiary-foreground: #ffffff;
   --text-on-tertiary-muted: rgba(226, 232, 240, 0.70);
   --brand-whatsapp: #059669;

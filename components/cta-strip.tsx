@@ -23,7 +23,7 @@ export function CtaStrip({
   imageClassName,
 }: CtaStripProps) {
   return (
-    <Panel className="overflow-hidden bg-[var(--surface-dark)] text-white">
+    <Panel className="overflow-hidden bg-[var(--brand-tertiary-dark)] text-white">
       <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="space-y-6 px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
           <Eyebrow variant="footer">{eyebrow}</Eyebrow>

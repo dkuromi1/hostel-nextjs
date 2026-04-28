@@ -87,7 +87,7 @@ export function ThemeToggle({ variant = "footer" }: { variant?: ThemeToggleVaria
         onClick={toggleTheme}
         className={cn(
           "relative h-8 w-14 cursor-pointer rounded-full border border-[var(--border)] bg-[var(--muted)] p-1 transition-all duration-300 active:scale-95",
-          theme === "dark" ? "bg-[var(--muted)]" : "bg-[var(--brand-primary-light)]"
+          theme === "dark" ? "bg-[var(--muted)]" : "bg-[var(--brand-tertiary)]/20"
         )}
         aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
       >
