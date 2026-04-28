@@ -36,7 +36,7 @@ export function RoomsSection() {
               "active:scale-95 active:translate-y-0"
             )}
           >
-            <div className="absolute inset-0 z-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 group-hover:translate-x-[100%]" />
+            <div className="absolute inset-0 z-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 group-hover:translate-x-[100%]" />
             <span className="relative z-10">
               {siteCopyContent.home.roomsSection.buttonLabel}
             </span>
@@ -56,8 +56,8 @@ export function RoomsSection() {
                     className="absolute inset-0 h-full rounded-none"
                     autoPlayInterval={0}
                   />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--surface-dark)]/60 to-transparent z-10 flex p-5 sm:px-6 sm:py-4 items-start sm:items-end">
-                    <Badge className="bg-white/20 text-white shadow-sm backdrop-blur-md pointer-events-auto">
+                  <div className="pointer-events-none absolute inset-0 z-10 flex p-5 sm:px-6 sm:py-4 items-start sm:items-end">
+                    <Badge className="bg-black/40 border border-white/10 text-white shadow-md backdrop-blur-md pointer-events-auto">
                       {room.price}/night
                     </Badge>
                   </div>

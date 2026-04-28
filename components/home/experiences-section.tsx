@@ -76,7 +76,7 @@ export function ExperiencesSection() {
               "active:scale-95 active:translate-y-0"
             )}
           >
-            <div className="absolute inset-0 z-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 group-hover:translate-x-[100%]" />
+            <div className="absolute inset-0 z-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 group-hover:translate-x-[100%]" />
             <span className="relative z-10">
               {siteCopyContent.home.experiencesSection.buttonLabel}
             </span>
