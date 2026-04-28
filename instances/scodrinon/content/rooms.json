@@ -19,7 +19,7 @@
       "alt": "18-bed privacy pod dorm with curtained beds and personal space at Scodrinon Hostel, Shkoder",
       "bullets": [
         "Curtained pod layout for real personal space",
-        "Reading light and 2 power sockets at every bed",
+        "Reading light and 2 Power Sockets at every bed",
         "Easy to meet people without feeling exposed all night"
       ],
       "images": [
@@ -69,7 +69,7 @@
         },
         {
           "src": "/images/room_4bed_m.webp",
-          "alt": "Men's 4-bed dorm at Scodrinon Hostel"
+          "alt": "Male 4-bed dorm at Scodrinon Hostel"
         },
         {
           "src": "/images/rooms_4.webp",
@@ -83,7 +83,7 @@
       "amenities": [
         { "icon": "Snowflake",      "label": "A/C & Heat" },
         { "icon": "Lock",           "label": "Secure Lockers" },
-        { "icon": "BatteryCharging","label": "Socket" },
+        { "icon": "BatteryCharging","label": "Power Socket" },
         { "icon": "Wifi",           "label": "High-speed WiFi" }
       ]
     }

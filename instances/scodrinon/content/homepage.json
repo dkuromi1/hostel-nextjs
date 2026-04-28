@@ -37,32 +37,32 @@
   "includedServices": [
     {
       "title": "Social Breakfast",
-      "description": "Fresh locally sourced breakfast from 8 to 9:30am (excl. off-season). Complimentary morning espresso year round",
+      "description": "Fresh locally sourced breakfast from 8 to 9:30am (excl. off-season). Complimentary morning espresso year round.",
       "icon": "Coffee"
     },
     {
       "title": "For Hikers",
-      "description": "Early take-away breakfast for hikers & morning travelers",
+      "description": "Early take-away breakfast for hikers & morning travelers.",
       "icon": "Mountain"
     },
     {
       "title": "Storage",
-      "description": "Luggage storage before and during your stay",
+      "description": "Luggage storage before and during your stay.",
       "icon": "Luggage"
     },
     {
       "title": "Modern Facilities",
-      "description": "Clean, modern bathrooms and hot, high pressure showers, espresso and ice machine",
+      "description": "Clean, modern bathrooms and hot, high pressure showers, espresso and ice machine.",
       "icon": "ShowerHead"
     },
     {
       "title": "High-Speed WiFi",
-      "description": "High speed WiFi in all rooms and social spaces",
+      "description": "High speed WiFi in all rooms and social spaces.",
       "icon": "Wifi"
     },
     {
       "title": "Community",
-      "description": "Regular social events and a helpful WhatsApp community",
+      "description": "Regular social events and a helpful WhatsApp community.",
       "icon": "Sparkles"
     }
   ],
@@ -164,7 +164,7 @@
   "experienceLogisticsFeatures": [
     {
       "title": "Free Luggage Storage",
-      "description": "Drop your main backpack in our secure storage. Hike the Valbona to Theth trail carrying only what you actually need.",
+      "description": "Drop your main backpack in our secure storage. Hike the Theth to Valbona trail carrying only what you actually need.",
       "icon": "Backpack"
     },
     {
@@ -181,7 +181,7 @@
   "socialConnectionFeatures": [
     {
       "title": "The Drin River Escape",
-      "description": "Just outside the city, the Drin river offers a cool, scenic contrast to the Alps. We organize regular group swimming trips to our favorite spots along the water for a perfect, sun-drenched afternoon.",
+      "description": "Just outside the city, the Drin River offers a cool, scenic contrast to the Alps. We organize regular group swimming trips to our favorite spots along the water for a perfect, sun-drenched afternoon.",
       "icon": "Waves",
       "image": "/images/drin_swimming_trip2.jpeg",
       "focus": "50% 40%"

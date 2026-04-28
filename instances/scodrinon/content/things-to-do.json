@@ -6,7 +6,7 @@
       "featured": true,
       "title": "Shala River Day Trip",
       "mapQuery": "shala-river-midpoint",
-      "description": "Known as the 'Thailand of Albania', the Shala River features crystal clear water tucked between steep mountain peaks. The day trip includes the scenic boat ride from Komani and we'll help you organize the departure right from the hostel. Bus departs 6:30am in front of hostel.",
+      "description": "Known as the 'Thailand of Albania', the Shala River features crystal-clear water tucked between steep mountain peaks. The day trip includes the scenic boat ride from Komani and we'll help you organize the departure right from the hostel. Bus departs 6:30am in front of hostel.",
       "price": "€35",
       "regularPrice": "€40",
       "priceNote": "Guest Rate",
@@ -19,7 +19,7 @@
       "featured": true,
       "title": "Theth to Valbona Trek",
       "mapQuery": "theth-valbona-midpoint",
-      "description": "Trek the famous Theth-to-Valbona trail in the Albanian Alps. We organize all your transport and securely store your luggage for free. Schedule — To Theth: 7:00am (from in front of Rozafa Hotel), Return: 11:00am & 5:00pm (from Jezerca Market). To Valbona: 6:30am (from the hostel), Return: 10:00am (from your guesthouse).",
+      "description": "Trek the famous Theth to Valbona trail in the Albanian Alps. We organize all your transport and securely store your luggage for free. Schedule — To Theth: 7:00am (from in front of Rozafa Hotel), Return: 11:00am & 5:00pm (from Jezerca Market). To Valbona: 6:30am (from the hostel), Return: 10:00am (from your guesthouse).",
       "price": "Theth €12 / Valbona €26 (one way)",
       "priceNote": "Transport & Storage",
       "image": "/images/theth_village.webp",
@@ -49,7 +49,7 @@
     {
       "category": "neighborhood",
       "title": "The Pedestrian Street (Kolë Idromeno)",
-      "description": "The lively Venetian-style pedestrian street starting right outside the hostel! Lined with independent cafes, shops, and restaurants, it's perfect for evening promenades.",
+      "description": "The lively Venetian-style pedestrian street starting right outside the hostel! Lined with independent cafés, shops, and restaurants, it's perfect for evening promenades.",
       "image": "/images/shkoder_pedestrian_street_3.webp",
       "alt": "Walking down the Pedonale in Shkoder",
       "showDirections": true
