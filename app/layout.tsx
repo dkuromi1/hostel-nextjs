@@ -9,8 +9,9 @@ import { SiteHeader } from "@/components/site-header";
 import { StickyBookingBar } from "@/components/sticky-booking-bar";
 import { SwUpdatePrompt } from "@/components/sw-update-prompt";
 import { TitoTheCat } from "@/components/tito-the-cat";
+import { StructuredData } from "@/components/structured-data";
 import { activeInstance } from "@/instances";
-import { getSiteUrl, metadataBase } from "@/lib/metadata";
+import { buildBusinessSchema, getSiteUrl, metadataBase } from "@/lib/metadata";
 import { externalPreconnectOrigins, propertyConfig } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { Nunito } from "next/font/google";
@@ -176,6 +177,7 @@ export default function RootLayout({
         ) : null}
         <div className="relative flex min-h-screen flex-col overflow-x-clip">
           <SiteHeader />
+          <StructuredData data={buildBusinessSchema()} />
           <AtmosphereBackground />
           <main className="flex-1 pb-[calc(6rem+env(safe-area-inset-bottom,0px))] lg:pb-0">{children}</main>
           {modal}

@@ -17,7 +17,7 @@ const LocationMap = dynamic(() => import("@/components/location-map").then(mod =
 const FaqList = dynamic(() => import("@/components/faq-list").then(mod => mod.FaqList), { ssr: true });
 const CtaStrip = dynamic(() => import("@/components/cta-strip").then(mod => mod.CtaStrip), { ssr: true });
 const Panel = dynamic(() => import("@/components/ui/panel").then(mod => mod.Panel), { ssr: true });
-import { buildBreadcrumbSchema, buildMetadata } from "@/lib/metadata";
+import { buildBreadcrumbSchema, buildFaqSchema, buildMetadata } from "@/lib/metadata";
 import {
   faqItems,
   siteConfig,
@@ -35,10 +35,13 @@ export default function ContactPage() {
   return (
     <>
       <StructuredData
-        data={buildBreadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "Contact", path: "/contact" },
-        ])}
+        data={[
+          buildBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Contact", path: "/contact" },
+          ]),
+          buildFaqSchema(),
+        ]}
       />
 
       <PageHero
