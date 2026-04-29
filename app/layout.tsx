@@ -22,6 +22,7 @@ const nunito = Nunito({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-nunito",
+  preload: false,
 });
 
 const themeBootstrapScript = `

@@ -20,7 +20,6 @@ export function HeroSection() {
           alt={siteCopyContent.home.hero.backgroundAlt}
           fill
           priority
-          fetchPriority="high"
           className="object-cover"
           style={{ objectPosition: "60% center" }}
           sizes="100vw"

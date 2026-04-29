@@ -50,6 +50,9 @@ export function LazyVideo({ src, poster, className, ...props }: LazyVideoProps) 
             src={poster}
             alt="Video poster"
             className="size-full object-cover"
+            loading="lazy"
+            fetchPriority="low"
+            decoding="async"
           />
         )
       )}

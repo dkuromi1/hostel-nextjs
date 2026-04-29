@@ -49,6 +49,7 @@ export function SiteHeader() {
                 className="object-cover"
                 sizes="44px"
                 priority
+                unoptimized
               />
             </div>
             <div>
