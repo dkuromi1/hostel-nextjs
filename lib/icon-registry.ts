@@ -95,7 +95,10 @@ import {
   Dog,
   Leaf,
   // ── Fallback ──────────────────────────────────────────────────────────────
+  // ── Navigation & Interaction ─────────────────────────────────────────────
   Check,
+  TrendingUp,
+  ArrowRight,
 } from "lucide-react";
 
 /**
@@ -175,6 +178,8 @@ export const ICON_REGISTRY = {
   Leaf,
   // Fallback (also usable directly in JSON as "Check")
   Check,
+  TrendingUp,
+  ArrowRight,
 } as const satisfies Record<string, LucideIcon>;
 
 export type IconName = keyof typeof ICON_REGISTRY;

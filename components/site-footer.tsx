@@ -14,7 +14,7 @@ export function SiteFooter() {
   const footerChannels = [...contactChannels, ...bookingChannels];
 
   return (
-    <footer className="py-14 text-[var(--text-body)] pb-24 lg:pb-14">
+    <footer className="pt-0 text-[var(--text-body)] pb-24 lg:pb-14">
       {/* Top Divider - Not full width */}
       <div className="mx-auto mb-14 w-[92%] border-t border-[var(--text-muted)]/70" />
 

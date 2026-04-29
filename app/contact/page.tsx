@@ -86,7 +86,7 @@ export default function ContactPage() {
       </PageHero>
 
       <section className="py-8 sm:py-16">
-        <div className="shell-container grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+        <div className="shell-container px-8 sm:px-6 lg:px-8 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="flex flex-col gap-6 h-full">
             <Reveal>
               <Panel className="p-6 sm:p-8">

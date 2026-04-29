@@ -1,0 +1,129 @@
+{
+  "metadata": {
+    "title": "Theth to Valbona Hiking Guide | Logistics & Trail Tips",
+    "description": "The complete 2025 guide for the Theth to Valbona hike. Learn about minibus prices, luggage storage at Scodrinon Hostel, and expert trail tips.",
+    "image": "/images/hiking_5.jpg"
+  },
+  "hero": {
+    "eyebrow": "Hiking Guide",
+    "title": "Theth to Valbona: The heart of the Albanian Alps.",
+    "description": "It’s the most famous trail in the country for a reason—a classic high-altitude crossing through the raw beauty of the Accursed Mountains. Here is everything you need to know about the logistics, the costs, and how to use Scodrinon Hostel as your basecamp."
+  },
+  "quickStats": [
+    {
+      "label": "Distance",
+      "value": "17 km",
+      "icon": "Map"
+    },
+    {
+      "label": "Duration",
+      "value": "6-8 Hours",
+      "icon": "Clock"
+    },
+    {
+      "label": "Elevation Gain",
+      "value": "1,050m",
+      "icon": "TrendingUp"
+    },
+    {
+      "label": "Difficulty",
+      "value": "Moderate",
+      "icon": "Mountain"
+    }
+  ],
+  "logistics": {
+    "title": "Getting There & Back",
+    "description": "Most hikers start in Shkoder, head to Theth, hike to Valbona, and return via the Komani Lake ferry. You can also do it in reverse for a shorter uphill section.",
+    "steps": [
+      {
+        "title": "Shkoder to Theth",
+        "price": "€12",
+        "description": "Minibuses depart at 7:00 AM from in front of the Rozafa Hotel. We can book your seat for you. The return from Theth departs at 11:00 AM & 5:00 PM from Jezerca Market."
+      },
+      {
+        "title": "Theth to Valbona",
+        "price": "",
+        "description": "The main event. The trail is well-marked and winds through ancient forests before opening up to high-alpine terrain. No permits are required."
+      },
+      {
+        "title": "Valbona to Shkoder",
+        "price": "€26",
+        "description": "To start from Valbona, transport departs at 6:30 AM from Scodrinon Hostel. For the return journey, minibuses leave Valbona at 10:00 AM from your guesthouse to catch the Komani Lake ferry."
+      }
+    ]
+  },
+  "luggage": {
+    "title": "Leave the heavy bags with us.",
+    "description": "Don't hike with 15kg on your back. Scodrinon Hostel offers free secure luggage storage for all guests. Leave your main pack here and take only a small daypack for the 2-3 day loop.",
+    "icon": "Backpack"
+  },
+  "packingList": {
+    "title": "Essentials",
+    "description": "Keep it light. Remember you'll be carrying this over a mountain pass.",
+    "categories": [
+      {
+        "name": "Safety & Gear",
+        "items": [
+          {
+            "name": "Sturdy Footwear",
+            "description": "Trail runners or lightweight hiking boots. The terrain is very rocky and loose in sections."
+          },
+          {
+            "name": "Offline Maps & Power Bank",
+            "description": "Download Maps.me or Organic Maps. Service is spotty and weather can change quickly at the pass."
+          }
+        ]
+      },
+      {
+        "name": "Protection & Clothing",
+        "items": [
+          {
+            "name": "Layers",
+            "description": "The weather changes quickly in the Alps. Bring a fleece and a rain shell, even in summer."
+          },
+          {
+            "name": "Sun Protection",
+            "description": "The pass is highly exposed. Bring a hat, sunglasses, and high-SPF mineral sunscreen for the climb."
+          }
+        ]
+      },
+      {
+        "name": "Essentials & Supplies",
+        "items": [
+          {
+            "name": "Water and Energy Snacks",
+            "description": "At least 2 liters. Natural springs are available, but a portable filter is recommended. Note that streams can dry up in late summer."
+          },
+          {
+            "name": "Cash (Lek)",
+            "description": "Card payments are extremely rare in the mountains. Bring enough cash for food, drinks, and transport."
+          }
+        ]
+      }
+    ]
+  },
+  "itinerary": {
+    "title": "Suggested 3-Day Loop",
+    "description": "The classic Shkoder-Theth-Valbona-Shkoder route that we recommend to most guests.",
+    "days": [
+      {
+        "day": "Day 1",
+        "title": "Shkoder to Theth",
+        "icon": "Bus",
+        "description": "Leave your heavy bags at Scodrinon. Take the 7 AM minibus to Theth—the mountain-ringed heart of the park. Use the afternoon for a perfect warm-up hike to the crystal-blue waters of the Blue Eye or the hidden Grunas Waterfall."
+      },
+      {
+        "day": "Day 2",
+        "title": "The Hike to Valbona",
+        "icon": "Mountain",
+        "description": "Start early. You'll climb to the spectacular Valbona Pass (1,795m) for uninterrupted views across the jagged peaks of the Accursed Mountains. Descend into the Valbona valley for a celebratory dinner under the stars."
+      },
+      {
+        "day": "Day 3",
+        "title": "Return via Komani Lake",
+        "icon": "Ship",
+        "description": "Take the 10:00 AM minibus to Fierze, then board the famous Komani Lake ferry. This three-hour journey through fjord-like passages and vertical cliffs is often called one of the most beautiful boat rides in the world."
+      }
+    ]
+  }
+}

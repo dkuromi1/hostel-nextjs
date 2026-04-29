@@ -3,7 +3,14 @@ import type { MetadataRoute } from "next";
 import { getSiteUrl } from "@/lib/metadata";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["/", "/rooms", "/experiences", "/gallery", "/contact"];
+  const routes = [
+    "/",
+    "/rooms",
+    "/experiences",
+    "/experiences/theth-valbona-hiking-guide",
+    "/gallery",
+    "/contact",
+  ];
 
   return routes.map((route) => ({
     url: getSiteUrl(route),

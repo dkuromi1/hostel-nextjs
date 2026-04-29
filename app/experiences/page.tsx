@@ -162,9 +162,11 @@ export default function ExperiencesPage() {
           </Reveal>
 
           {siteConfig.features.showLocalExperienceMap ? (
-            <Reveal className="w-full pt-4 sm:pt-8 w-full max-w-[1400px] mx-auto">
-              <div id="map" className="media-frame relative h-[500px] w-full overflow-hidden rounded-[2rem] shadow-xl shadow-[var(--glass-shadow)]/10 ring-1 ring-[var(--glass-border)]">
-                <LocationMap />
+            <Reveal className="pt-4 sm:pt-8">
+              <div className="mx-auto max-w-[1400px] px-8 sm:px-0">
+                <div id="map" className="media-frame relative h-[500px] w-full overflow-hidden rounded-[2rem] shadow-xl shadow-[var(--glass-shadow)]/10 ring-1 ring-[var(--glass-border)]">
+                  <LocationMap />
+                </div>
               </div>
             </Reveal>
           ) : null}
@@ -237,9 +239,21 @@ export default function ExperiencesPage() {
                       <h3 className="mb-2 heading-item text-[var(--text-heading)]">
                         {item.title}
                       </h3>
-                      <p className="text-card-body text-[var(--text-body-subtle)]">
-                        {item.description}
-                      </p>
+                      <p 
+                        className="text-card-body text-[var(--text-body-subtle)]"
+                        dangerouslySetInnerHTML={{ __html: item.description }}
+                      />
+                      {item.ctaUrl && (
+                        <div className="mt-auto pt-6">
+                          <Link
+                            href={item.ctaUrl}
+                            className="group/btn flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--brand-primary)] px-4 py-3 text-[13px] font-bold text-white shadow-lg shadow-[var(--brand-primary)]/20 transition-all duration-300 hover:scale-[1.02] hover:bg-[var(--brand-primary-dark)] active:scale-[0.98]"
+                          >
+                            <span>{item.ctaLabel || "Learn More"}</span>
+                            <Navigation className="size-3.5 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                          </Link>
+                        </div>
+                      )}
                     </div>
                   </Panel>
                 </div>

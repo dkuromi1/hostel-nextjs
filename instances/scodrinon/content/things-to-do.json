@@ -2,6 +2,20 @@
   "moduleType": "local-experiences",
   "localHighlights": [
     {
+      "category": "adventure",
+      "featured": true,
+      "title": "Theth to Valbona Trek",
+      "mapQuery": "theth-valbona-midpoint",
+      "description": "Trek the famous <a href=\"/experiences/theth-valbona-hiking-guide\" class=\"brand-link\">Theth to Valbona trail</a> in the Albanian Alps. We organize all your transport and securely store your luggage for free. To Theth: 7:00am (from front of Rozafa Hotel), Return: 11:00am/5:00pm (Jezerca Market). To Valbona: 6:30am (from hostel), Return: 10:00am (from guesthouse).",
+      "price": "Theth €12 / Valbona €26 (one way)",
+      "priceNote": "Transport & Storage",
+      "image": "/images/theth_village.webp",
+      "alt": "Hiking in the Albanian Alps near Theth and Valbona",
+      "showDirections": false,
+      "ctaLabel": "Read Full Hiking Guide",
+      "ctaUrl": "/experiences/theth-valbona-hiking-guide"
+    },
+    {
       "category": "dayTrip",
       "featured": true,
       "title": "Shala River Day Trip",
@@ -12,18 +26,6 @@
       "priceNote": "Guest Rate",
       "image": "/images/shala_river.jpg",
       "alt": "Crystal clear water at the Shala River in Northern Albania",
-      "showDirections": false
-    },
-    {
-      "category": "adventure",
-      "featured": true,
-      "title": "Theth to Valbona Trek",
-      "mapQuery": "theth-valbona-midpoint",
-      "description": "Trek the famous Theth to Valbona trail in the Albanian Alps. We organize all your transport and securely store your luggage for free. Schedule — To Theth: 7:00am (from in front of Rozafa Hotel), Return: 11:00am & 5:00pm (from Jezerca Market). To Valbona: 6:30am (from the hostel), Return: 10:00am (from your guesthouse).",
-      "price": "Theth €12 / Valbona €26 (one way)",
-      "priceNote": "Transport & Storage",
-      "image": "/images/theth_village.webp",
-      "alt": "Hiking in the Albanian Alps near Theth and Valbona",
       "showDirections": false
     },
     {

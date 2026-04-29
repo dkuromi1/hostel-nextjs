@@ -28,6 +28,8 @@
     { "name": "Valbona Pass", "coords": [19.81528, 42.40583, 0], "category": "see", "minZoom": 6 },
     { "name": "Velipojë Beach", "coords": [19.416597409355276, 41.8618988805818, 0], "category": "see", "minZoom": 6 },
     { "name": "Valbona Village", "coords": [19.88570882131251, 42.444877303358666, 0], "category": "transit", "minZoom": 6 },
+    { "name": "Grunas Waterfall", "coords": [19.795592926753546, 42.377324468019275,  0], "category": "see", "minZoom": 6 },
+    { "name": "Blue Eye", "coords": [19.747282680129018, 42.364520206540234,  0], "category": "see", "minZoom": 6 },
     { "name": "Theth drop off/pick up", "coords": [19.772315376603874, 42.39677313338882, 0], "category": "transit", "minZoom": 6 },
     { "name": "Ferry (Valbona) drop off/pick up", "coords": [20.009769719020607, 42.26435854079236, 0], "category": "transit", "minZoom": 6 },
     { "name": "Blini Park (Shala River Trip Stop)", "coords": [19.80642220690339, 42.19953460048828, 0], "category": "transit", "minZoom": 6 },

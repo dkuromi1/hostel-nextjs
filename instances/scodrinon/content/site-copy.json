@@ -14,7 +14,7 @@
     "detailsLabel": "Details",
     "breakfastPrefix": "Free breakfast:",
     "detailsSummary": "Check-in: {checkInHours}, 24h access (message ahead if arriving after 10pm), luggage storage, rooftop social nights",
-    "credit": "Built in Next.js 16 & Tailwind 4 by hostel volunteer Darryl 🇨🇦"
+    "credit": "Built in Next.js 16 & Tailwind 4"
   },
   "errorPage": {
     "eyebrow": "Something Interrupted The Page",

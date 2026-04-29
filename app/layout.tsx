@@ -179,7 +179,7 @@ export default function RootLayout({
           <SiteHeader />
           <StructuredData data={buildBusinessSchema()} />
           <AtmosphereBackground />
-          <main className="flex-1 pb-[calc(6rem+env(safe-area-inset-bottom,0px))] lg:pb-0">{children}</main>
+          <main className="flex-1">{children}</main>
           {modal}
           <SiteFooter />
           <StickyBookingBar />

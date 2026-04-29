@@ -186,6 +186,7 @@ export interface ThingToDoItem {
   category?: string;
   featured?: boolean;
   ctaLabel?: string;
+  ctaUrl?: string;
   region?: string;
 }
 
@@ -207,6 +208,59 @@ interface HomepageContent {
   bookingAwardImage: string;
   experienceLogisticsFeatures?: IconFeature[];
   socialConnectionFeatures?: VisualIconFeature[];
+}
+
+interface HikingGuideContent {
+  metadata: {
+    title: string;
+    description: string;
+    image: string;
+  };
+  hero: {
+    eyebrow: string;
+    title: string;
+    description: string;
+  };
+  quickStats: {
+    label: string;
+    value: string;
+    icon: IconName;
+  }[];
+  logistics: {
+    title: string;
+    description: string;
+    steps: {
+      title: string;
+      price: string;
+      description: string;
+    }[];
+  };
+  luggage: IconFeature;
+  trailTips: {
+    title: string;
+    description: string;
+  }[];
+  packingList?: {
+    title: string;
+    description: string;
+    categories: {
+      name: string;
+      items: {
+        name: string;
+        description: string;
+      }[];
+    }[];
+  };
+  itinerary?: {
+    title: string;
+    description: string;
+    days: {
+      day: string;
+      title: string;
+      description: string;
+      icon: IconName;
+    }[];
+  };
 }
 
 interface RoomsContent {
@@ -539,6 +593,30 @@ function parseRoomTypes(items: RoomType[]): RoomType[] {
   }));
 }
 
+function parseHikingGuide(data: any): HikingGuideContent {
+  const guide = data as HikingGuideContent;
+  if (!guide) return {} as HikingGuideContent;
+  
+  return {
+    ...guide,
+    quickStats: (guide.quickStats ?? []).map((stat, i) => ({
+      ...stat,
+      icon: parseIconName(stat.icon, `hikingGuide.quickStats[${i}].icon`),
+    })),
+    luggage: {
+      ...guide.luggage,
+      icon: parseIconName(guide.luggage.icon, `hikingGuide.luggage.icon`),
+    },
+    itinerary: guide.itinerary ? {
+      ...guide.itinerary,
+      days: guide.itinerary.days.map((day, i) => ({
+        ...day,
+        icon: parseIconName(day.icon, `hikingGuide.itinerary.days[${i}].icon`),
+      }))
+    } : undefined,
+  };
+}
+
 const {
   faq,
   gallery,
@@ -549,6 +627,7 @@ const {
   siteCopy: siteCopyData,
   testimonials: testimonialsData,
   thingsToDo: thingsToDoData,
+  hikingGuide: hikingGuideData,
 } = activeInstance.content;
 
 const normalizedHomepage = homepage as HomepageContent;
@@ -694,5 +773,7 @@ export const testimonials = testimonialsContent.reviews ?? testimonialsContent.t
 export const bookingAwardImage = homepageContent.bookingAwardImage;
 
 export const thingsToDo = thingsToDoContent.localHighlights ?? thingsToDoContent.thingsToDo ?? [];
+
+export const hikingGuide = parseHikingGuide(hikingGuideData);
 
 export const siteCopyContent = siteCopy;

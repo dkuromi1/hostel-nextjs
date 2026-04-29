@@ -9,6 +9,7 @@ import siteCopy from "./content/site-copy.json";
 import testimonials from "./content/testimonials.json";
 import thingsToDo from "./content/things-to-do.json";
 import thethValbonaTracks from "./content/theth_valbona_tracks.json";
+import hikingGuide from "./content/hiking-guide.json";
 
 export const scodrinonInstance = {
   id: "scodrinon",
@@ -71,6 +72,7 @@ export const scodrinonInstance = {
     siteCopy,
     pois,
     thethValbonaTracks,
+    hikingGuide,
   },
   loaders: {
     loadPois: async () => pois,
