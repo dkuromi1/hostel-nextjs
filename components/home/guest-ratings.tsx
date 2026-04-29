@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Star, Award } from "lucide-react";
 import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
 import { Reveal } from "@/components/reveal";
+import { SectionLabel } from "@/components/ui/section-label";
 import { siteConfig, siteCopyContent } from "@/lib/site-data";
 
 export function CompactGuestRatingsStrip() {
@@ -70,9 +71,9 @@ export function GuestRatingsSection() {
       <div className="shell-container">
         <Reveal>
           <div className="glass-panel rounded-[28px] p-4 sm:p-5">
-            <div className="flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--text-muted)]">
+            <div className="flex items-center gap-3">
               <span className="faded-line h-px flex-1" />
-              {siteCopyContent.home.guestRatings.label}
+              <SectionLabel>{siteCopyContent.home.guestRatings.label}</SectionLabel>
               <span className="faded-line h-px flex-1" />
             </div>
             <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:items-stretch">

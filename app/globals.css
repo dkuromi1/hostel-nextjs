@@ -94,8 +94,8 @@
   /* slate-700 */
   --text-body-subtle: #475569;
   /* slate-600 */
-  --text-muted: #94a3b8;
-  /* slate-400 */
+  --text-muted: #64748b;
+  /* slate-500 — slightly darker for better contrast */
   --text-on-dark: #f8fafc;
   /* slate-50 — text on dark bgs */
 

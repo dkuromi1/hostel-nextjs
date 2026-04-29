@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { ChannelIcon } from "@/components/channel-icon";
 import { PwaInstallButton } from "@/components/pwa-install-button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { SectionLabel } from "@/components/ui/section-label";
 import { bookingChannels, contactChannels, navLinks, siteConfig, siteCopyContent } from "@/lib/site-data";
 
 export function SiteFooter() {
@@ -19,9 +20,9 @@ export function SiteFooter() {
 
       <div className="shell-container flex flex-col justify-between gap-10 xl:flex-row">
         <div className="space-y-5 xl:flex-1">
-          <p className="text-xs uppercase tracking-[0.28em] text-[var(--brand-primary)]/80">
+          <SectionLabel variant="emerald" className="mb-2">
             {siteConfig.tagline}
-          </p>
+          </SectionLabel>
           <h2 className="heading-section text-[var(--text-heading)] md:text-5xl">
             {siteCopyContent.footer.heading}
           </h2>
@@ -56,9 +57,9 @@ export function SiteFooter() {
         <div className="grid gap-8 sm:grid-cols-[20%_auto_1fr] xl:gap-10 xl:max-w-[750px] shrink min-w-0">
           {/* Explore */}
           <div className="min-w-0">
-            <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-heading)] font-semibold">
+            <SectionLabel className="mb-4">
               {siteCopyContent.footer.exploreLabel}
-            </p>
+            </SectionLabel>
             <div className="mt-4 grid gap-3">
               {navLinks.map((item) => (
                 <Link
@@ -74,9 +75,9 @@ export function SiteFooter() {
 
           {/* WhatsApp Community Section */}
           <div className="flex flex-col items-start gap-4 min-w-0">
-            <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-heading)] font-semibold">
+            <SectionLabel className="mb-4">
               {siteCopyContent.footer.communityLabel}
-            </p>
+            </SectionLabel>
             {/* Desktop QR Code */}
             <div className="hidden sm:flex flex-col items-center gap-3 rounded-2xl bg-[var(--muted)]/60 p-4 border border-[var(--border)] w-full max-w-[160px]">
               <div className="relative size-full aspect-square overflow-hidden rounded-xl bg-white p-2">
@@ -106,9 +107,9 @@ export function SiteFooter() {
 
           {/* Details */}
           <div className="min-w-0">
-            <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-heading)] font-semibold">
+            <SectionLabel className="mb-4">
               {siteCopyContent.footer.detailsLabel}
-            </p>
+            </SectionLabel>
             <div className="mt-4 space-y-3 text-base text-[var(--text-body)]">
               <p>
                 {/* STEP 2: Make the address a clickable Google Maps link */}
@@ -135,10 +136,10 @@ export function SiteFooter() {
       <div className="mx-auto mt-16 w-[92%] border-t border-[var(--text-muted)]/70 pt-8">
         <div className="shell-container">
           <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--text-muted)]">
+            <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
               © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
             </p>
-            <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--text-muted)]">
+            <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--text-muted)]">
               <ThemeToggle />
               <PwaInstallButton />
               <span>{siteCopyContent.footer.credit}</span>

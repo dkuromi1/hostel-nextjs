@@ -29,9 +29,9 @@ export function AtmosphereSection() {
                 sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 66vw, 924px"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/90 via-[var(--surface-dark)]/40 to-transparent p-6 pt-32 text-white">
-                <p className="text-xs uppercase tracking-[0.28em] text-[#cbd5e1]">
+                <SectionLabel colorScheme="light">
                   {siteCopyContent.home.atmosphere.rooftopEyebrow}
-                </p>
+                </SectionLabel>
                 <p className="mt-2 max-w-sm font-heading text-2xl leading-tight tracking-tight">
                   {siteCopyContent.home.atmosphere.rooftopTitle}
                 </p>

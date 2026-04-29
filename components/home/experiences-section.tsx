@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Moon, Sparkles, MapPin, Compass } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
+import { SectionLabel } from "@/components/ui/section-label";
 import { Reveal } from "@/components/reveal";
 import { Panel } from "@/components/ui/panel";
 import { SwipableRow } from "@/components/swipable-row";
@@ -115,12 +116,9 @@ export function ExperiencesSection() {
                           </div>
                         )}
                         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/90 via-[var(--surface-dark)]/40 to-transparent p-6 pt-24 text-white">
-                          <p className={cn(
-                            "text-sm sm:text-sm uppercase tracking-[0.28em] text-[#cbd5e1] mb-2",
-                            index === 1 && "drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
-                          )}>
+                          <SectionLabel colorScheme="light" className="mb-2">
                             {pillar.title}
-                          </p>
+                          </SectionLabel>
                         </div>
                       </div>
                       <div className="p-6 text-sm leading-snug text-[var(--text-body-subtle)] bg-[var(--glass-bg)] flex-1 flex flex-col">
@@ -153,9 +151,9 @@ export function ExperiencesSection() {
                     </div>
                   ) : null}
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/90 via-[var(--surface-dark)]/40 to-transparent p-6 pt-32 text-white">
-                    <p className="text-sm uppercase tracking-[0.28em] text-[#cbd5e1] drop-shadow-md">
+                    <SectionLabel colorScheme="light" className="drop-shadow-md">
                       {experiencePillars[0].title}
-                    </p>
+                    </SectionLabel>
                     <p className="mt-3 max-w-lg text-base leading-snug text-white/90">
                       {formatText(experiencePillars[0].description)}
                     </p>
@@ -182,9 +180,9 @@ export function ExperiencesSection() {
                             sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 42vw, 588px"
                           />
                           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/90 via-[var(--surface-dark)]/40 to-transparent p-6 pt-32 text-white">
-                            <p className="text-sm uppercase tracking-[0.28em] text-[#cbd5e1] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+                            <SectionLabel colorScheme="light" className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                               {pillar.title}
-                            </p>
+                            </SectionLabel>
                             <p className="mt-3 text-base leading-snug text-white/90">
                               {formatText(pillar.description)}
                             </p>
