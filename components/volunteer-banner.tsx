@@ -14,7 +14,6 @@ export function VolunteerBanner() {
       </div>
 
       <div className="relative z-10 flex items-center justify-center gap-2 antialiased">
-        <Sparkles className="size-3 text-amber-400 animate-pulse" />
         <span className="hidden xs:inline">We&apos;re looking for volunteers!</span>
         <span className="xs:hidden">Volunteers Needed</span>
         <a
