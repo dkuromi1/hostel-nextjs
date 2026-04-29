@@ -91,11 +91,21 @@ To add photos and videos to the gallery for an instance, place them in `instance
 
 ## Deployment
 
-This project is optimized for **Vercel** or **Netlify**.
+This project is optimized for **Cloudflare Pages**, **Vercel**, or **Netlify**.
 
+### Cloudflare Pages (OpenNext)
+This project uses `@opennextjs/cloudflare` for edge-optimized deployments on Cloudflare.
+1. Configure your `wrangler.jsonc` file.
+2. Build for Cloudflare: `npm run cf:build`
+3. Preview locally: `npm run cf:preview`
+4. Deploy: `npm run cf:deploy`
+
+### Vercel / Netlify
 1. **Auto-Configuration**: Modern platforms will automatically detect the Next.js project and configure the correct build command (`npm run build`) and publish directory (`.next`).
-2. **Environment Variables**:
-   - `NEXT_PUBLIC_SITE_URL`: Your live domain (e.g., `https://www.property.com`).
-   - `NEXT_PUBLIC_MAPBOX_TOKEN`: Required for interactive maps.
-   - `ANALYTICS_ID`: (Optional) For tracking.
+
+### Environment Variables
+Regardless of platform, ensure these are set:
+- `NEXT_PUBLIC_SITE_URL`: Your live domain (e.g., `https://www.property.com`).
+- `NEXT_PUBLIC_MAPBOX_TOKEN`: Required for interactive maps.
+- `ANALYTICS_ID`: (Optional) For tracking.
 

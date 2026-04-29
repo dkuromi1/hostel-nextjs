@@ -1,5 +1,4 @@
 import { siteConfig } from "@/lib/site-data";
-import { Sparkles } from "lucide-react";
 
 export function VolunteerBanner() {
   if (!siteConfig.volunteersNeeded) return null;

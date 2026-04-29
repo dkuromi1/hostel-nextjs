@@ -34,6 +34,7 @@ The site reads business content from structured JSON files in the instance direc
 | File Name | What it controls |
 |-----------|------------------|
 | `settings.json` | Business details, channels, branding, feature flags |
+| `navigation.json` | Header and footer navigation links |
 | `rooms.json` | Offerings, pricing, and room details |
 | `homepage.json` | Homepage highlights, services, and experience blocks |
 | `faq.json` | Frequently asked questions |
@@ -41,6 +42,8 @@ The site reads business content from structured JSON files in the instance direc
 | `gallery.json` | Media library entries |
 | `things-to-do.json` | Local experiences |
 | `pois.json` | Map recommendations |
+| `hiking-guide.json` | Regional hiking logistics and tips |
+| `site-copy.json` | Global site copy and translations |
 
 ## Advanced Platform Features
 

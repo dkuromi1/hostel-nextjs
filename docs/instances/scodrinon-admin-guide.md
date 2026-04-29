@@ -21,6 +21,7 @@ The site’s business data is stored in `instances/scodrinon/content/` and parse
 | File Name | What it controls |
 |-----------|------------------|
 | `settings.json` | Business name, WhatsApp, phone, address, volunteer toggle |
+| `navigation.json` | Header and footer navigation links |
 | `rooms.json` | Dorm prices, descriptions, and feature bullets |
 | `homepage.json` | Quick facts, amenities, and reasons to extend |
 | `faq.json` | Questions and answers |
@@ -28,6 +29,8 @@ The site’s business data is stored in `instances/scodrinon/content/` and parse
 | `gallery.json` | Gallery images and videos |
 | `pois.json` | Scodrinon map markers and local recommendations |
 | `things-to-do.json` | Scodrinon local attractions and experiences |
+| `hiking-guide.json` | Theth to Valbona hiking logistics and tips |
+| `site-copy.json` | Global site copy and translations |
 
 ## Advanced Platform Features
 
