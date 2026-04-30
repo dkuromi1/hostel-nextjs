@@ -39,7 +39,7 @@ export function PackingList({ categories }: PackingListProps) {
                           {item.name}
                         </h3>
                       </div>
-                      <p className="text-xs leading-relaxed text-[var(--text-body-subtle)]">
+                      <p className="text-sm leading-relaxed text-[var(--text-body-subtle)]">
                         {item.description}
                       </p>
                     </div>

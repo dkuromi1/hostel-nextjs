@@ -338,7 +338,7 @@
 
 /** Inner-page hero h1 (Rooms, Experiences, Contact) */
 @utility heading-page {
-  @apply font-heading text-5xl leading-none tracking-[-0.075em] md:text-7xl;
+  @apply font-heading text-4xl leading-none tracking-[-0.075em] md:text-6xl;
 }
 
 /** Section-level title h2 (SectionHeading, CtaStrip) */
