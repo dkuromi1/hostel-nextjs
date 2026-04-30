@@ -9,8 +9,8 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { buttonVariants } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
-import { bookingChannels, contactChannels, navLinks } from "@/lib/site-data";
 import { shouldReduceMotion } from "@/lib/performance";
+import type { BusinessChannel } from "@/lib/site-data";
 
 const menuVariants = {
   hidden: { opacity: 0, scale: 0.95, y: -8 },
@@ -54,7 +54,13 @@ const itemVariants = {
   }),
 };
 
-export function MobileNav() {
+export interface MobileNavProps {
+  navLinks: { href: string; label: string }[];
+  contactChannels: BusinessChannel[];
+  bookingChannels: BusinessChannel[];
+}
+
+export function MobileNav({ navLinks, contactChannels, bookingChannels }: MobileNavProps) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();

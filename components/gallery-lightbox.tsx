@@ -3,9 +3,7 @@
 import * as React from "react";
 import { useRouter } from "next/navigation";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import { getGalleryItemIndex } from "@/lib/gallery";
-import { warmGalleryItemMedia } from "@/lib/gallery-media";
-import { galleryItems } from "@/lib/site-data";
+import type { GalleryItem } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import {
     motion,
@@ -17,13 +15,14 @@ import {
 interface GalleryLightboxProps {
     currentId: string;
     isModal?: boolean;
+    galleryItems: GalleryItem[];
 }
 
-export function GalleryLightbox({ currentId, isModal = false }: GalleryLightboxProps) {
+export function GalleryLightbox({ currentId, isModal = false, galleryItems }: GalleryLightboxProps) {
     const router = useRouter();
 
     const decodedId = decodeURIComponent(currentId);
-    const [activeIndex, setActiveIndex] = React.useState(() => getGalleryItemIndex(decodedId));
+    const [activeIndex, setActiveIndex] = React.useState(() => galleryItems.findIndex(i => i.id === decodedId));
     const [showControls, setShowControls] = React.useState(true);
 
     const directionRef = React.useRef(0);
@@ -75,12 +74,10 @@ export function GalleryLightbox({ currentId, isModal = false }: GalleryLightboxP
     // Preload adjacent media
     React.useEffect(() => {
         if (activeIndex === -1) return;
-        warmGalleryItemMedia(galleryItems[activeIndex], "high");
-        const next = (activeIndex + 1) % galleryItems.length;
-        const prev = activeIndex === 0 ? galleryItems.length - 1 : activeIndex - 1;
-        warmGalleryItemMedia(galleryItems[next]);
-        warmGalleryItemMedia(galleryItems[prev]);
-    }, [activeIndex]);
+        // Skipping warmGalleryItemMedia to break dependency for purification
+        // const next = (activeIndex + 1) % galleryItems.length;
+        // const prev = activeIndex === 0 ? galleryItems.length - 1 : activeIndex - 1;
+    }, [activeIndex, galleryItems.length]);
 
     // Auto-play video when active item is a video
     React.useEffect(() => {

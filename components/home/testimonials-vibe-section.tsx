@@ -2,14 +2,20 @@ import { resolveIcon } from "@/lib/icon-registry";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
 import { SwipableRow } from "@/components/swipable-row";
-import { TestimonialCarousel } from "@/components/testimonial-carousel";
-import {
-  extendReasons,
-  siteCopyContent,
-  testimonials,
-} from "@/lib/site-data";
+import { TestimonialCarousel, type Testimonial } from "@/components/testimonial-carousel";
+import type { ExtendReason } from "@/lib/site-data";
 
-export function TestimonialsVibeSection() {
+export interface TestimonialsVibeSectionProps {
+  testimonials: Testimonial[];
+  extendReasons: ExtendReason[];
+  copy: {
+    eyebrow: string;
+    title: string;
+    description: string;
+  };
+}
+
+export function TestimonialsVibeSection({ testimonials, extendReasons, copy }: TestimonialsVibeSectionProps) {
   return (
     <section className="py-8 sm:py-16">
       <div className="shell-container flex flex-col gap-10 lg:flex-row lg:items-start relative">
@@ -22,9 +28,9 @@ export function TestimonialsVibeSection() {
         <div className="flex-1 space-y-8 lg:max-w-[60%]">
           <Reveal delay={100}>
             <SectionHeading
-              eyebrow={siteCopyContent.home.whyStayLonger.eyebrow}
-              title={siteCopyContent.home.whyStayLonger.title}
-              description={siteCopyContent.home.whyStayLonger.description}
+              eyebrow={copy.eyebrow}
+              title={copy.title}
+              description={copy.description}
             />
           </Reveal>
 

@@ -27,6 +27,8 @@ import {
   roomTypes,
   roomHeroHighlights,
   siteCopyContent,
+  bookingChannels,
+  contactChannels
 } from "@/lib/site-data";
 import { testimonials } from "@/lib/site-data";
 
@@ -306,6 +308,8 @@ export default function RoomsPage() {
             image={siteCopyContent.rooms.cta.image}
             alt={siteCopyContent.rooms.cta.alt}
             imageClassName="object-[50%_80%]"
+            bookingChannels={bookingChannels}
+            contactChannels={contactChannels}
           />
         </div>
       </section>

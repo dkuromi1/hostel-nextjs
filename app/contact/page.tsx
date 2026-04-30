@@ -22,6 +22,8 @@ import {
   faqItems,
   siteConfig,
   siteCopyContent,
+  bookingChannels,
+  contactChannels,
 } from "@/lib/site-data";
 
 export const metadata = buildMetadata({
@@ -48,6 +50,8 @@ export default function ContactPage() {
         eyebrow={siteCopyContent.contact.hero.eyebrow}
         title={siteCopyContent.contact.hero.title}
         description={siteCopyContent.contact.hero.description}
+        bookingChannels={bookingChannels}
+        contactChannels={contactChannels}
       >
         <div className="grid gap-4">
           <Panel className="p-6 sm:p-7">
@@ -59,7 +63,7 @@ export default function ContactPage() {
               {siteCopyContent.contact.bestBookingRoute.description}
             </p>
             <div className="mt-6">
-              <BookingActions className="max-w-4xl" whatsappOnly={true} />
+              <BookingActions className="max-w-4xl" whatsappOnly={true} bookingChannels={bookingChannels} contactChannels={contactChannels} />
             </div>
           </Panel>
           <div className="grid gap-4 md:grid-cols-2">
@@ -160,6 +164,8 @@ export default function ContactPage() {
             image={siteCopyContent.contact.cta.image}
             alt={siteCopyContent.contact.cta.alt}
             imageClassName="object-[50%_20%]"
+            bookingChannels={bookingChannels}
+            contactChannels={contactChannels}
           />
         </div>
       </section>

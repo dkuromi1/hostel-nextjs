@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback, useMemo } from "react";
-import { siteConfig } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
 type AnimationState =
@@ -11,8 +10,11 @@ type AnimationState =
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const WALKING_SPEED = 90;
 
-export function TitoTheCat() {
-  const isEnabled = siteConfig.features.showMascot;
+export interface TitoTheCatProps {
+  isEnabled: boolean;
+}
+
+export function TitoTheCat({ isEnabled }: TitoTheCatProps) {
 
   const titoRef = useRef<HTMLDivElement>(null);
   const [state, setState] = useState<AnimationState>("hidden");

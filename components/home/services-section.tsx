@@ -2,28 +2,37 @@ import { resolveIcon } from "@/lib/icon-registry";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
 import { SwipableRow } from "@/components/swipable-row";
-import { freeServices, siteCopyContent } from "@/lib/site-data";
+import type { ServiceItem } from "@/lib/site-data";
 
-export function IncludedServicesSection() {
+export interface IncludedServicesSectionProps {
+  services: ServiceItem[];
+  copy: {
+    eyebrow: string;
+    title: string;
+    description: string;
+  };
+}
+
+export function IncludedServicesSection({ services, copy }: IncludedServicesSectionProps) {
   return (
     <section className="py-8 sm:py-16">
       <div className="shell-container space-y-12">
         <Reveal>
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
-              eyebrow={siteCopyContent.home.includedStay.eyebrow}
-              title={siteCopyContent.home.includedStay.title}
-              description={siteCopyContent.home.includedStay.description}
+              eyebrow={copy.eyebrow}
+              title={copy.title}
+              description={copy.description}
             />
           </div>
         </Reveal>
 
         <Reveal delay={100}>
           <SwipableRow
-            itemCount={freeServices.length}
+            itemCount={services.length}
             className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
           >
-            {freeServices.map((service, idx) => {
+            {services.map((service, idx) => {
               const Icon = resolveIcon(service.icon);
               return (
                 <div

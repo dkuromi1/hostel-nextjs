@@ -4,6 +4,7 @@ import { BookingActions } from "@/components/booking-actions";
 import { Reveal } from "@/components/reveal";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { resolveIcon, type IconName } from "@/lib/icon-registry";
+import type { BusinessChannel } from "@/lib/site-data";
 
 type HighlightItem = {
   text: string;
@@ -17,6 +18,8 @@ type PageHeroProps = {
   highlights?: readonly (string | HighlightItem)[];
   children: ReactNode;
   hideActions?: boolean;
+  bookingChannels?: BusinessChannel[];
+  contactChannels?: BusinessChannel[];
 };
 
 export function PageHero({
@@ -26,6 +29,8 @@ export function PageHero({
   highlights,
   children,
   hideActions = false,
+  bookingChannels = [],
+  contactChannels = [],
 }: PageHeroProps) {
   return (
     <section className="relative overflow-hidden pb-24 sm:pb-32 pt-8 sm:pt-24">
@@ -40,7 +45,7 @@ export function PageHero({
               {description}
             </p>
           </div>
-          {!hideActions && <BookingActions />}
+          {!hideActions && <BookingActions bookingChannels={bookingChannels} contactChannels={contactChannels} />}
           {highlights ? (
             <ul className="grid gap-3 sm:grid-cols-2">
               {highlights.map((item) => {

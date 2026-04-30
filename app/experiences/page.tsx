@@ -25,6 +25,8 @@ import {
   siteConfig,
   siteCopyContent,
   thingsToDo,
+  bookingChannels,
+  contactChannels
 } from "@/lib/site-data";
 import { resolveIcon } from "@/lib/icon-registry";
 
@@ -336,6 +338,8 @@ export default function ExperiencesPage() {
             image="/images/rooftop_social_3.webp"
             alt="Guests on the Scodrinon Hostel rooftop"
             imageClassName="object-[60%_100%]"
+            bookingChannels={bookingChannels}
+            contactChannels={contactChannels}
           />
         </div>
       </section>

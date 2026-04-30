@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 
 import { GalleryLightbox } from "@/components/gallery-lightbox";
 import { getGalleryRouteParams, isGalleryItemId } from "@/lib/gallery";
+import { galleryItems } from "@/lib/site-data";
 
 export const dynamicParams = false;
 
@@ -21,5 +22,5 @@ export default async function PhotoModalPage({
     notFound();
   }
 
-  return <GalleryLightbox currentId={decodedId} isModal={true} />;
+  return <GalleryLightbox currentId={decodedId} isModal={true} galleryItems={galleryItems} />;
 }

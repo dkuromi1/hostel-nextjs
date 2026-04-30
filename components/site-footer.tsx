@@ -7,10 +7,37 @@ import { ChannelIcon } from "@/components/channel-icon";
 import { PwaInstallButton } from "@/components/pwa-install-button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { SectionLabel } from "@/components/ui/section-label";
-import { bookingChannels, contactChannels, navLinks, siteConfig, siteCopyContent } from "@/lib/site-data";
+import type { BusinessChannel } from "@/lib/site-data";
 
-export function SiteFooter() {
-  const detailsSummary = siteCopyContent.footer.detailsSummary.replace("{checkInHours}", siteConfig.checkInHours);
+export interface SiteFooterProps {
+  contactChannels: BusinessChannel[];
+  bookingChannels: BusinessChannel[];
+  navLinks: { href: string; label: string }[];
+  siteConfig: {
+    checkInHours: string;
+    tagline: string;
+    phoneDisplay: string;
+    whatsappCommunityUrl: string;
+    name: string;
+    location: string;
+    breakfastHours: string;
+  };
+  copy: {
+    heading: string;
+    description: string;
+    exploreLabel: string;
+    communityLabel: string;
+    communityCaption: string;
+    communityButton: string;
+    detailsLabel: string;
+    breakfastPrefix: string;
+    detailsSummary: string;
+    credit: string;
+  };
+}
+
+export function SiteFooter({ contactChannels, bookingChannels, navLinks, siteConfig, copy }: SiteFooterProps) {
+  const detailsSummary = copy.detailsSummary.replace("{checkInHours}", siteConfig.checkInHours);
   const footerChannels = [...contactChannels, ...bookingChannels];
 
   return (
@@ -24,10 +51,10 @@ export function SiteFooter() {
             {siteConfig.tagline}
           </SectionLabel>
           <h2 className="heading-section text-[var(--text-heading)] md:text-5xl">
-            {siteCopyContent.footer.heading}
+            {copy.heading}
           </h2>
           <p className="max-w-[62ch] text-body-lg text-[var(--text-body-subtle)]">
-            {siteCopyContent.footer.description}
+            {copy.description}
           </p>
           <div className="flex flex-wrap gap-3 text-sm">
             {footerChannels.map((channel) => (
@@ -58,7 +85,7 @@ export function SiteFooter() {
           {/* Explore */}
           <div className="min-w-0">
             <SectionLabel className="mb-4">
-              {siteCopyContent.footer.exploreLabel}
+              {copy.exploreLabel}
             </SectionLabel>
             <div className="mt-4 grid gap-3">
               {navLinks.map((item) => (
@@ -76,7 +103,7 @@ export function SiteFooter() {
           {/* WhatsApp Community Section */}
           <div className="flex flex-col items-start gap-4 min-w-0">
             <SectionLabel className="mb-4">
-              {siteCopyContent.footer.communityLabel}
+              {copy.communityLabel}
             </SectionLabel>
             {/* Desktop QR Code */}
             <div className="hidden sm:flex flex-col items-center gap-3 rounded-2xl bg-[var(--muted)]/60 p-4 border border-[var(--border)] w-full max-w-[160px]">
@@ -90,7 +117,7 @@ export function SiteFooter() {
                 />
               </div>
               <span className="text-xs font-semibold text-[var(--text-muted)] text-center">
-                {siteCopyContent.footer.communityCaption}
+                {copy.communityCaption}
               </span>
             </div>
             {/* Mobile Link Button */}
@@ -101,14 +128,14 @@ export function SiteFooter() {
               className="sm:hidden flex items-center gap-2 rounded-full bg-[var(--brand-whatsapp)] px-5 py-3 font-semibold text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-[var(--brand-whatsapp-dark)] w-full justify-center shadow-[0_0_20px_rgba(5,150,105,0.3)]"
             >
               <MessageCircleMore className="size-5 shrink-0" />
-              {siteCopyContent.footer.communityButton}
+              {copy.communityButton}
             </a>
           </div>
 
           {/* Details */}
           <div className="min-w-0">
             <SectionLabel className="mb-4">
-              {siteCopyContent.footer.detailsLabel}
+              {copy.detailsLabel}
             </SectionLabel>
             <div className="mt-4 space-y-3 text-base text-[var(--text-body)]">
               <p>
@@ -125,7 +152,7 @@ export function SiteFooter() {
                   </span>
                 </a>
               </p>
-              <p>{siteCopyContent.footer.breakfastPrefix} {siteConfig.breakfastHours}</p>
+              <p>{copy.breakfastPrefix} {siteConfig.breakfastHours}</p>
               <p>{detailsSummary}</p>
             </div>
           </div>
@@ -142,7 +169,7 @@ export function SiteFooter() {
             <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--text-muted)]">
               <ThemeToggle />
               <PwaInstallButton />
-              <span>{siteCopyContent.footer.credit}</span>
+              <span>{copy.credit}</span>
             </div>
           </div>
         </div>

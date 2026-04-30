@@ -3,17 +3,27 @@ import { ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 import { GalleryMasonry } from "@/components/gallery-masonry";
 import { cn } from "@/lib/utils";
-import { galleryItems, siteCopyContent } from "@/lib/site-data";
+import type { GalleryItem } from "@/lib/site-data";
 
-export function HomeGallerySection() {
+export interface HomeGallerySectionProps {
+  items: GalleryItem[];
+  copy: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    buttonLabel: string;
+  };
+}
+
+export function HomeGallerySection({ items, copy }: HomeGallerySectionProps) {
   return (
     <section className="py-8 sm:py-16">
       <div className="shell-container space-y-10">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
-            eyebrow={siteCopyContent.home.gallerySection.eyebrow}
-            title={siteCopyContent.home.gallerySection.title}
-            description={siteCopyContent.home.gallerySection.description}
+            eyebrow={copy.eyebrow}
+            title={copy.title}
+            description={copy.description}
           />
           <Link
             href="/gallery"
@@ -28,7 +38,7 @@ export function HomeGallerySection() {
           >
             <div className="absolute inset-0 z-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 group-hover:translate-x-[100%]" />
             <span className="relative z-10">
-              {siteCopyContent.home.gallerySection.buttonLabel}
+              {copy.buttonLabel}
             </span>
             <div className="relative z-10 flex size-7 items-center justify-center rounded-full bg-white/15 text-white transition-all duration-300 group-hover:bg-[var(--brand-accent)] group-hover:scale-110">
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
@@ -38,7 +48,7 @@ export function HomeGallerySection() {
 
         <div className="flow-root">
           <GalleryMasonry
-            items={galleryItems.slice(0, 10)}
+            items={items.slice(0, 10)}
             priorityImageCount={0}
           />
         </div>

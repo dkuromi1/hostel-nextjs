@@ -5,7 +5,7 @@ import { GalleryView } from "@/components/gallery-view";
 import { GalleryLightbox } from "@/components/gallery-lightbox";
 import { getGalleryRouteParams, isGalleryItemId } from "@/lib/gallery";
 import { buildMetadata } from "@/lib/metadata";
-import { galleryItems } from "@/lib/site-data";
+import { galleryItems, bookingAwardImage, siteCopyContent, bookingChannels, contactChannels } from "@/lib/site-data";
 
 export const dynamicParams = false;
 
@@ -52,8 +52,14 @@ export default async function PhotoPage({
 
   return (
     <>
-      <GalleryView />
-      <GalleryLightbox currentId={decodedId} isModal={false} />
+      <GalleryView 
+        galleryItems={galleryItems} 
+        bookingAwardImage={bookingAwardImage} 
+        galleryCopy={siteCopyContent.gallery}
+        bookingChannels={bookingChannels}
+        contactChannels={contactChannels}
+      />
+      <GalleryLightbox currentId={decodedId} isModal={false} galleryItems={galleryItems} />
     </>
   );
 }

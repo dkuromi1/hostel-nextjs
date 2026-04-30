@@ -8,22 +8,28 @@ import { SectionLabel } from "@/components/ui/section-label";
 import { ImageCarousel } from "@/components/image-carousel";
 import { resolveIcon } from "@/lib/icon-registry";
 import { cn } from "@/lib/utils";
-import {
-  fourBedDormImages,
-  podDormImages,
-  roomTypes,
-  siteCopyContent,
-} from "@/lib/site-data";
+import type { RoomType } from "@/lib/site-data";
 
-export function RoomsSection() {
+export interface RoomsSectionProps {
+  roomsSection: {
+    titleEyebrowPrefix: string;
+    title: string;
+    description: string;
+    buttonLabel: string;
+    detailsLabel: string;
+  };
+  roomTypes: RoomType[];
+}
+
+export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
   return (
     <section className="py-8 sm:py-16">
       <div className="shell-container space-y-10">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
-            eyebrow={`${siteCopyContent.home.roomsSection.titleEyebrowPrefix} ${roomTypes[0].price}`}
-            title={siteCopyContent.home.roomsSection.title}
-            description={siteCopyContent.home.roomsSection.description}
+            eyebrow={`${roomsSection.titleEyebrowPrefix} ${roomTypes[0]?.price ?? ""}`}
+            title={roomsSection.title}
+            description={roomsSection.description}
           />
           <Link
             href="/rooms"
@@ -38,7 +44,7 @@ export function RoomsSection() {
           >
             <div className="absolute inset-0 z-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 group-hover:translate-x-[100%]" />
             <span className="relative z-10">
-              {siteCopyContent.home.roomsSection.buttonLabel}
+              {roomsSection.buttonLabel}
             </span>
             <div className="relative z-10 flex size-7 items-center justify-center rounded-full bg-white/15 text-white transition-all duration-300 group-hover:bg-[var(--brand-accent)] group-hover:scale-110">
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
@@ -52,7 +58,7 @@ export function RoomsSection() {
               <Panel className="flex h-full flex-col overflow-hidden">
                 <div className="relative min-h-[18rem]">
                   <ImageCarousel
-                    images={room.name.includes("Privacy Pod") ? podDormImages : fourBedDormImages}
+                    images={room.images}
                     className="absolute inset-0 h-full rounded-none"
                     autoPlayInterval={0}
                   />
@@ -95,7 +101,7 @@ export function RoomsSection() {
 
                   <div className="space-y-3">
                     <SectionLabel weight="bold" className="mb-4">
-                      {siteCopyContent.home.roomsSection.detailsLabel}
+                      {roomsSection.detailsLabel}
                     </SectionLabel>
                     <ul className="grid gap-3">
                       {room.bullets.map((bullet) => (

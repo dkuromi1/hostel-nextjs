@@ -4,20 +4,24 @@ import { Reveal } from "@/components/reveal";
 import { AnimatedText } from "@/components/animated-text";
 import { SwipableRow } from "@/components/swipable-row";
 import { CompactGuestRatingsStrip } from "./guest-ratings";
-import {
-  hero,
-  quickFacts,
-  siteConfig,
-  siteCopyContent,
-} from "@/lib/site-data";
+import type { HeroContent, IconTextItem } from "@/lib/site-data";
+import type { GuestRatingsProps } from "./guest-ratings";
 
-export function HeroSection() {
+export interface HeroSectionProps {
+  hero: HeroContent;
+  quickFacts: IconTextItem[];
+  tagline: string;
+  backgroundAlt: string;
+  guestRatingsProps: GuestRatingsProps;
+}
+
+export function HeroSection({ hero, quickFacts, tagline, backgroundAlt, guestRatingsProps }: HeroSectionProps) {
   return (
     <section className="relative min-h-[90dvh] flex flex-col justify-center overflow-hidden pb-12 pt-[calc(env(safe-area-inset-top,0px)+7rem)] sm:pb-20 sm:pt-[calc(env(safe-area-inset-top,0px)+9rem)]">
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/hiking_2.webp"
-          alt={siteCopyContent.home.hero.backgroundAlt}
+          alt={backgroundAlt}
           fill
           priority
           className="object-cover"
@@ -32,7 +36,7 @@ export function HeroSection() {
           <div className="flex flex-col items-start gap-6">
             <div className="flex flex-col gap-5">
               <p className="text-xs font-medium uppercase tracking-[0.28em] text-white/90 antialiased [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]">
-                {siteConfig.tagline}
+                {tagline}
               </p>
               <h1 className="heading-hero text-white">
                 <AnimatedText
@@ -56,7 +60,7 @@ export function HeroSection() {
             </div>
 
             <Reveal delay={180} immediate className="w-full max-w-3xl">
-              <CompactGuestRatingsStrip />
+              <CompactGuestRatingsStrip {...guestRatingsProps} />
             </Reveal>
           </div>
 

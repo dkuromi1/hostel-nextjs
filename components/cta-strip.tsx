@@ -12,6 +12,8 @@ type CtaStripProps = {
   image: string;
   alt: string;
   imageClassName?: string;
+  bookingChannels?: any[];
+  contactChannels?: any[];
 };
 
 export function CtaStrip({
@@ -21,6 +23,8 @@ export function CtaStrip({
   image,
   alt,
   imageClassName,
+  bookingChannels = [],
+  contactChannels = [],
 }: CtaStripProps) {
   return (
     <Panel className="overflow-hidden bg-[var(--brand-tertiary-dark)] text-white">
@@ -35,7 +39,7 @@ export function CtaStrip({
               {description}
             </p>
           </div>
-          <BookingActions className="max-w-3xl" />
+          <BookingActions className="max-w-3xl" bookingChannels={bookingChannels} contactChannels={contactChannels} />
         </div>
         <div className="relative min-h-72">
           <Image

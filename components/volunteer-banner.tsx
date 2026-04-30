@@ -1,9 +1,13 @@
-import { siteConfig } from "@/lib/site-data";
+export interface VolunteerBannerProps {
+  volunteersNeeded: boolean;
+  whatsappUrl?: string;
+  phoneRaw: string;
+}
 
-export function VolunteerBanner() {
-  if (!siteConfig.volunteersNeeded) return null;
+export function VolunteerBanner({ volunteersNeeded, whatsappUrl, phoneRaw }: VolunteerBannerProps) {
+  if (!volunteersNeeded) return null;
 
-  const primaryContactHref = siteConfig.whatsappUrl || `https://wa.me/${siteConfig.phoneRaw}`;
+  const primaryContactHref = whatsappUrl || `https://wa.me/${phoneRaw}`;
 
   return (
     <div className="group relative overflow-hidden bg-[var(--brand-tertiary)] border-b border-white/10 px-4 py-1.5 text-center text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-white/90 shadow-lg">

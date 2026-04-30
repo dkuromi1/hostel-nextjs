@@ -1,18 +1,22 @@
 import { ChannelIcon } from "@/components/channel-icon";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { bookingChannels, contactChannels } from "@/lib/site-data";
+import type { BusinessChannel } from "@/lib/site-data";
 
-type BookingActionsProps = {
+export type BookingActionsProps = {
   className?: string;
   compact?: boolean;
   whatsappOnly?: boolean;
+  bookingChannels: BusinessChannel[];
+  contactChannels: BusinessChannel[];
 };
 
 export function BookingActions({
   className,
   compact = false,
   whatsappOnly = false,
+  bookingChannels,
+  contactChannels,
 }: BookingActionsProps) {
   const primaryContactChannel =
     contactChannels.find((channel) => channel.stylePriority === "primary") ?? contactChannels[0];

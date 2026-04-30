@@ -12,7 +12,14 @@ import { TitoTheCat } from "@/components/tito-the-cat";
 import { StructuredData } from "@/components/structured-data";
 import { activeInstance } from "@/instances";
 import { buildBusinessSchema, getSiteUrl, metadataBase } from "@/lib/metadata";
-import { externalPreconnectOrigins, propertyConfig } from "@/lib/site-data";
+import { 
+  externalPreconnectOrigins, 
+  propertyConfig,
+  navLinks,
+  contactChannels,
+  bookingChannels,
+  siteCopyContent
+} from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { Nunito } from "next/font/google";
 import Script from "next/script";
@@ -177,17 +184,32 @@ export default function RootLayout({
           />
         ) : null}
         <div className="relative flex min-h-screen flex-col overflow-x-clip">
-          <SiteHeader />
+          <SiteHeader 
+            navLinks={navLinks} 
+            contactChannels={contactChannels} 
+            bookingChannels={bookingChannels} 
+            siteName={propertyConfig.name} 
+            siteAddressSummary={propertyConfig.address.summary}
+            volunteersNeeded={propertyConfig.volunteersNeeded}
+            whatsappUrl={propertyConfig.whatsappUrl}
+            phoneRaw={propertyConfig.phoneRaw}
+          />
           <StructuredData data={buildBusinessSchema()} />
           <AtmosphereBackground />
           <main className="flex-1">{children}</main>
           {modal}
-          <SiteFooter />
-          <StickyBookingBar />
+          <SiteFooter 
+            contactChannels={contactChannels} 
+            bookingChannels={bookingChannels} 
+            navLinks={navLinks} 
+            siteConfig={propertyConfig} 
+            copy={siteCopyContent.footer} 
+          />
+          <StickyBookingBar bookingChannels={bookingChannels} contactChannels={contactChannels} />
           <DeferredClient>
             <SerwistRoot>
               <SwUpdatePrompt />
-              {propertyConfig.features.showMascot ? <TitoTheCat /> : null}
+              {propertyConfig.features.showMascot ? <TitoTheCat isEnabled={propertyConfig.features.showMascot} /> : null}
             </SerwistRoot>
           </DeferredClient>
         </div>

@@ -1,19 +1,25 @@
 import { SectionLabel } from "@/components/ui/section-label";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { siteConfig, siteCopyContent } from "@/lib/site-data";
-
 interface DirectBookingCardProps {
   className?: string;
   variant?: "inline" | "block";
+  whatsappUrl?: string;
+  content: {
+    directBookingLabel: string;
+    directBookingTitle: string;
+    directBookingTitleMobile?: string;
+    directBookingDescription: string;
+    directBookingDescriptionMobile?: string;
+    directBookingButton: string;
+  };
 }
 
 /**
  * A unified Direct Booking card for WhatsApp.
  * Handles the responsive text swapping and consistent styling.
  */
-export function DirectBookingCard({ className, variant = "inline" }: DirectBookingCardProps) {
-  const content = siteCopyContent.home.atmosphere;
+export function DirectBookingCard({ className, variant = "inline", whatsappUrl, content }: DirectBookingCardProps) {
 
   if (variant === "inline") {
     return (
@@ -33,7 +39,7 @@ export function DirectBookingCard({ className, variant = "inline" }: DirectBooki
           </p>
         </div>
         <a
-          href={siteConfig.whatsappUrl}
+          href={whatsappUrl}
           target="_blank"
           rel="noreferrer"
           className={cn(
@@ -62,7 +68,7 @@ export function DirectBookingCard({ className, variant = "inline" }: DirectBooki
         <span className="hidden sm:inline">{content.directBookingDescription}</span>
       </p>
       <a
-        href={siteConfig.whatsappUrl}
+        href={whatsappUrl}
         target="_blank"
         rel="noreferrer"
         className={cn(

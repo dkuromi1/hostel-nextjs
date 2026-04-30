@@ -11,10 +11,8 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
   type CtaLink,
-  eventCards,
-  experiencePillars,
-  siteConfig,
-  siteCopyContent,
+  type EventCard,
+  type ExperiencePillar,
 } from "@/lib/site-data";
 
 const reasonIcons = [Moon, Sparkles, MapPin, Compass];
@@ -56,15 +54,29 @@ const PillarCta = ({ cta, variant = "light" }: { cta?: CtaLink; variant?: "light
   );
 };
 
-export function ExperiencesSection() {
+export interface ExperiencesSectionProps {
+  eventCards: EventCard[];
+  experiencePillars: ExperiencePillar[];
+  copy: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    buttonLabel: string;
+    discoverLabel: string;
+    connectLabel: string;
+  };
+  showRegionalWeather: boolean;
+}
+
+export function ExperiencesSection({ eventCards, experiencePillars, copy, showRegionalWeather }: ExperiencesSectionProps) {
   return (
     <section className="py-8 sm:py-16">
       <div className="shell-container space-y-10">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
-            eyebrow={siteCopyContent.home.experiencesSection.eyebrow}
-            title={siteCopyContent.home.experiencesSection.title}
-            description={siteCopyContent.home.experiencesSection.description}
+            eyebrow={copy.eyebrow}
+            title={copy.title}
+            description={copy.description}
           />
           <Link
             href="/experiences"
@@ -79,7 +91,7 @@ export function ExperiencesSection() {
           >
             <div className="absolute inset-0 z-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 group-hover:translate-x-[100%]" />
             <span className="relative z-10">
-              {siteCopyContent.home.experiencesSection.buttonLabel}
+              {copy.buttonLabel}
             </span>
             <div className="relative z-10 flex size-7 items-center justify-center rounded-full bg-white/15 text-white transition-all duration-300 group-hover:bg-[var(--brand-accent)] group-hover:scale-110">
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
@@ -91,7 +103,7 @@ export function ExperiencesSection() {
         <div className="relative pt-12 sm:pt-16">
           <div className="absolute left-0 top-4 z-0 select-none opacity-[0.07] sm:top-4">
             <span className="font-heading text-[44px] leading-none tracking-tighter text-[var(--text-heading)] sm:text-[64px]" role="presentation" aria-hidden="true">
-              {siteCopyContent.home.experiencesSection.discoverLabel}
+              {copy.discoverLabel}
             </span>
           </div>
 
@@ -110,7 +122,7 @@ export function ExperiencesSection() {
                           className="object-cover"
                           sizes="(max-width: 1024px) 85vw, 50vw"
                         />
-                        {index === 0 && siteConfig.features.showRegionalWeather && (
+                        {index === 0 && showRegionalWeather && (
                           <div className="absolute right-4 top-4 z-20">
                             <ThethWeather variant="small" />
                           </div>
@@ -145,7 +157,7 @@ export function ExperiencesSection() {
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 58vw, 812px"
                   />
-                  {siteConfig.features.showRegionalWeather ? (
+                  {showRegionalWeather ? (
                     <div className="absolute right-4 top-4 z-20">
                       <ThethWeather variant="small" />
                     </div>
@@ -223,7 +235,7 @@ export function ExperiencesSection() {
         <div className="relative pt-12 sm:pt-16 mt-8 sm:mt-12">
           <div className="absolute left-0 top-4 z-0 select-none opacity-[0.07] sm:top-4">
             <span className="font-heading text-[44px] leading-none tracking-tighter text-[var(--text-heading)] sm:text-[64px]" role="presentation" aria-hidden="true">
-              {siteCopyContent.home.experiencesSection.connectLabel}
+              {copy.connectLabel}
             </span>
           </div>
 

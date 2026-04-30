@@ -6,9 +6,14 @@ import { useScrollPosition } from "@/lib/use-scroll-position";
 import { ChannelIcon } from "@/components/channel-icon";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { bookingChannels, contactChannels } from "@/lib/site-data";
+import type { BusinessChannel } from "@/lib/site-data";
 
-export function StickyBookingBar() {
+export interface StickyBookingBarProps {
+  bookingChannels: BusinessChannel[];
+  contactChannels: BusinessChannel[];
+}
+
+export function StickyBookingBar({ bookingChannels, contactChannels }: StickyBookingBarProps) {
   const scrollY = useScrollPosition();
   const isScrolled = scrollY > 50;
 

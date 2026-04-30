@@ -1,5 +1,5 @@
 import { Cloud, CloudFog, CloudLightning, CloudRain, CloudSnow, Sun, SunMedium } from "lucide-react";
-import { siteConfig } from "@/lib/site-data";
+// no siteConfig import needed anymore
 
 async function getThethWeather() {
   try {
@@ -27,9 +27,6 @@ function getWeatherDetails(code: number) {
 }
 
 export async function ThethWeather({ variant = "default" }: { variant?: "default" | "small" } = {}) {
-  if (!siteConfig.features.showRegionalWeather) {
-    return null;
-  }
 
   const weather = await getThethWeather();
   

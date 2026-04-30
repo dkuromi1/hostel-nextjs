@@ -3,13 +3,40 @@ import { Star, Award } from "lucide-react";
 import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
 import { Reveal } from "@/components/reveal";
 import { SectionLabel } from "@/components/ui/section-label";
-import { siteConfig, siteCopyContent } from "@/lib/site-data";
+export interface GuestRatingsData {
+  label: string;
+  topRatedLabel: string;
+  bookingSourceLabel: string;
+  bookingAwardTitle: string;
+  bookingScoreSuffix: string;
+  bookingDescription: string;
+  hostelworldSourceLabel: string;
+  hostelworldTitle: string;
+  hostelworldReviewsSuffix: string;
+  hostelworldImageAlt: string;
+}
 
-export function CompactGuestRatingsStrip() {
+export interface GuestRatingsProps {
+  copy: GuestRatingsData;
+  bookingUrl: string;
+  hostelworldUrl: string;
+  bookingRating: string;
+  hostelworldRating: string;
+  hostelworldReviews: string;
+}
+
+export function CompactGuestRatingsStrip({
+  copy,
+  bookingUrl,
+  hostelworldUrl,
+  bookingRating,
+  hostelworldRating,
+  hostelworldReviews,
+}: GuestRatingsProps) {
   return (
     <div className="grid w-full gap-3 sm:grid-cols-2">
       <a
-        href={siteConfig.bookingUrl}
+        href={bookingUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="group flex items-center justify-between gap-3 rounded-[22px] border border-white/16 bg-[var(--surface-dark)]/42 px-4 py-3 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-[var(--surface-dark)]/52"
@@ -18,25 +45,25 @@ export function CompactGuestRatingsStrip() {
           <BookingComLogo iconOnly className="size-9" />
           <div className="min-w-0">
             <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/65">
-              {siteCopyContent.home.guestRatings.bookingSourceLabel}
+              {copy.bookingSourceLabel}
             </p>
             <p className="truncate text-sm font-medium text-white/92">
-              {siteCopyContent.home.guestRatings.bookingAwardTitle}
+              {copy.bookingAwardTitle}
             </p>
           </div>
         </div>
         <div className="shrink-0 rounded-2xl bg-white/8 px-3 py-2 text-right ring-1 ring-white/12 shadow-sm">
           <p className="font-heading text-xl leading-none tracking-tight text-white text-center">
-            {siteConfig.bookingRating}
+            {bookingRating}
           </p>
           <p className="mt-1 text-[8px] uppercase tracking-[0.2em] text-white/100">
-            {siteCopyContent.home.guestRatings.bookingScoreSuffix}
+            {copy.bookingScoreSuffix}
           </p>
         </div>
       </a>
 
       <a
-        href={siteConfig.hostelworldUrl}
+        href={hostelworldUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="group flex items-center justify-between gap-3 rounded-[22px] border border-white/16 bg-[var(--surface-dark)]/42 px-4 py-3 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-[var(--surface-dark)]/52"
@@ -45,19 +72,19 @@ export function CompactGuestRatingsStrip() {
           <HostelworldLogo iconOnly className="size-9" />
           <div className="min-w-0">
             <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/65">
-              {siteCopyContent.home.guestRatings.hostelworldSourceLabel}
+              {copy.hostelworldSourceLabel}
             </p>
             <p className="truncate text-sm font-medium text-white/92">
-              {siteCopyContent.home.guestRatings.hostelworldTitle}
+              {copy.hostelworldTitle}
             </p>
           </div>
         </div>
         <div className="shrink-0 rounded-2xl bg-white/8 px-3 py-2 text-right ring-1 ring-white/12 shadow-sm">
           <p className="font-heading text-xl leading-none tracking-tight text-white text-center">
-            {siteConfig.hostelworldRating}
+            {hostelworldRating}
           </p>
           <p className="mt-1 text-[8px] uppercase tracking-[0.2em] text-white/100">
-            ({siteConfig.hostelworldReviews} {siteCopyContent.home.guestRatings.hostelworldReviewsSuffix})
+            ({hostelworldReviews} {copy.hostelworldReviewsSuffix})
           </p>
         </div>
       </a>
@@ -65,7 +92,14 @@ export function CompactGuestRatingsStrip() {
   );
 }
 
-export function GuestRatingsSection() {
+export function GuestRatingsSection({
+  copy,
+  bookingUrl,
+  hostelworldUrl,
+  bookingRating,
+  hostelworldRating,
+  hostelworldReviews,
+}: GuestRatingsProps) {
   return (
     <section className="pb-8 sm:pb-16">
       <div className="shell-container">
@@ -73,12 +107,12 @@ export function GuestRatingsSection() {
           <div className="glass-panel rounded-[28px] p-4 sm:p-5">
             <div className="flex items-center gap-3">
               <span className="faded-line h-px flex-1" />
-              <SectionLabel>{siteCopyContent.home.guestRatings.label}</SectionLabel>
+              <SectionLabel>{copy.label}</SectionLabel>
               <span className="faded-line h-px flex-1" />
             </div>
             <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:items-stretch">
               <a
-                href={siteConfig.bookingUrl}
+                href={bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-[var(--glass-border)] bg-[var(--glass-bg)] px-4 py-5 shadow-[0_20px_55px_-40px_var(--glass-shadow)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_var(--glass-shadow)]"
@@ -88,7 +122,7 @@ export function GuestRatingsSection() {
                   <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600 dark:text-yellow-500">
                     <Star className="size-3" fill="currentColor" />
                     <span className="text-[10px] font-bold uppercase tracking-wider">
-                      {siteCopyContent.home.guestRatings.topRatedLabel}
+                      {copy.topRatedLabel}
                     </span>
                   </div>
                 </div>
@@ -99,26 +133,26 @@ export function GuestRatingsSection() {
                         <Award className="size-5" strokeWidth={1.8} />
                       </div>
                       <p className="text-sm font-medium leading-6 text-[var(--text-heading)] transition-colors group-hover:text-blue-700 dark:group-hover:text-blue-400">
-                        {siteCopyContent.home.guestRatings.bookingAwardTitle}
+                        {copy.bookingAwardTitle}
                       </p>
                     </div>
                     <div className="shrink-0 rounded-tr-sm rounded-tl-sm rounded-br-sm rounded-bl-none bg-blue-700 px-3 py-1 text-center font-semibold text-white shadow-sm">
                       <p className="font-heading text-xl leading-none tracking-tight">
-                        {siteConfig.bookingRating}
+                        {bookingRating}
                       </p>
                       <p className="text-[8px] uppercase tracking-wider text-blue-50">
-                        {siteCopyContent.home.guestRatings.bookingScoreSuffix}
+                        {copy.bookingScoreSuffix}
                       </p>
                     </div>
                   </div>
                 </div>
                 <p className="mt-auto pt-2 text-sm leading-6 text-[var(--text-body-subtle)]">
-                  {siteCopyContent.home.guestRatings.bookingDescription}
+                  {copy.bookingDescription}
                 </p>
               </a>
 
               <a
-                href={siteConfig.hostelworldUrl}
+                href={hostelworldUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-[var(--glass-border)] bg-[var(--glass-bg)] px-4 py-5 shadow-[0_20px_55px_-40px_var(--glass-shadow)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_var(--glass-shadow)]"
@@ -128,7 +162,7 @@ export function GuestRatingsSection() {
                   <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600 dark:text-yellow-500">
                     <Star className="size-3" fill="currentColor" />
                     <span className="text-[10px] font-bold uppercase tracking-wider">
-                      {siteCopyContent.home.guestRatings.topRatedLabel}
+                      {copy.topRatedLabel}
                     </span>
                   </div>
                 </div>
@@ -139,13 +173,13 @@ export function GuestRatingsSection() {
                         <Star className="size-5" strokeWidth={1.8} />
                       </div>
                       <p className="text-sm font-medium leading-6 text-[var(--text-heading)] transition-colors group-hover:text-amber-700 dark:group-hover:text-amber-500">
-                        {siteCopyContent.home.guestRatings.hostelworldTitle}
+                        {copy.hostelworldTitle}
                       </p>
                     </div>
                     <div className="relative h-15 w-25 shrink-0 overflow-hidden rounded-md shadow-sm">
                       <Image
                         src="/images/hostelworld_reviews.png"
-                        alt={siteCopyContent.home.guestRatings.hostelworldImageAlt}
+                        alt={copy.hostelworldImageAlt}
                         fill
                         className="object-contain"
                         sizes="100px"

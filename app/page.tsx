@@ -5,7 +5,21 @@ import {
   buildBusinessSchema,
   buildMetadata,
 } from "@/lib/metadata";
-import { siteCopyContent } from "@/lib/site-data";
+import { 
+  siteCopyContent, 
+  hero, 
+  quickFacts, 
+  siteConfig,
+  roomTypes,
+  freeServices,
+  galleryItems,
+  experiencePillars,
+  eventCards,
+  extendReasons,
+  testimonials,
+  bookingChannels,
+  contactChannels
+} from "@/lib/site-data";
 
 // Extracted Home Components
 import dynamic from "next/dynamic";
@@ -31,21 +45,49 @@ export default function Home() {
     <>
       <StructuredData data={[buildBusinessSchema(), buildFaqSchema()]} />
 
-      <HeroSection />
+      <HeroSection 
+        hero={hero} 
+        quickFacts={quickFacts} 
+        tagline={siteConfig.tagline} 
+        backgroundAlt={siteCopyContent.home.hero.backgroundAlt} 
+        guestRatingsProps={{
+          copy: siteCopyContent.home.guestRatings,
+          bookingUrl: siteConfig.bookingUrl,
+          hostelworldUrl: siteConfig.hostelworldUrl,
+          bookingRating: siteConfig.bookingRating,
+          hostelworldRating: siteConfig.hostelworldRating,
+          hostelworldReviews: siteConfig.hostelworldReviews,
+        }}
+      />
 
-      <AtmosphereSection />
+      <AtmosphereSection 
+        atmosphere={siteCopyContent.home.atmosphere} 
+        whatsappUrl={siteConfig.whatsappUrl}
+      />
 
-      <RoomsSection />
+      <RoomsSection roomsSection={siteCopyContent.home.roomsSection} roomTypes={roomTypes} />
 
-      <IncludedServicesSection />
+      <IncludedServicesSection services={freeServices} copy={siteCopyContent.home.includedStay} />
 
-      <HomeGallerySection />
+      <HomeGallerySection items={galleryItems} copy={siteCopyContent.home.gallerySection} />
 
-      <ExperiencesSection />
+      <ExperiencesSection 
+        eventCards={eventCards} 
+        experiencePillars={experiencePillars} 
+        copy={siteCopyContent.home.experiencesSection} 
+        showRegionalWeather={siteConfig.features.showRegionalWeather} 
+      />
 
-      <TestimonialsVibeSection />
+      <TestimonialsVibeSection testimonials={testimonials} extendReasons={extendReasons} copy={siteCopyContent.home.whyStayLonger} />
 
-      <GuestRatingsSection />
+      <GuestRatingsSection 
+        copy={siteCopyContent.home.guestRatings}
+        bookingUrl={siteConfig.bookingUrl}
+        hostelworldUrl={siteConfig.hostelworldUrl}
+        bookingRating={siteConfig.bookingRating}
+        hostelworldRating={siteConfig.hostelworldRating}
+        hostelworldReviews={siteConfig.hostelworldReviews}
+      />
 
       <section className="py-8 sm:py-16">
         <div className="shell-container">
@@ -55,6 +97,8 @@ export default function Home() {
             description={siteCopyContent.home.cta.description}
             image={siteCopyContent.home.cta.image}
             alt={siteCopyContent.home.cta.alt}
+            bookingChannels={bookingChannels}
+            contactChannels={contactChannels}
           />
         </div>
       </section>

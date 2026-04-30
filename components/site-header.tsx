@@ -11,9 +11,20 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { VolunteerBanner } from "@/components/volunteer-banner";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { bookingChannels, contactChannels, navLinks, siteConfig } from "@/lib/site-data";
+import type { BusinessChannel } from "@/lib/site-data";
 
-export function SiteHeader() {
+export interface SiteHeaderProps {
+  navLinks: { href: string; label: string }[];
+  contactChannels: BusinessChannel[];
+  bookingChannels: BusinessChannel[];
+  siteName: string;
+  siteAddressSummary: string;
+  volunteersNeeded: boolean;
+  whatsappUrl?: string;
+  phoneRaw: string;
+}
+
+export function SiteHeader({ navLinks, contactChannels, bookingChannels, siteName, siteAddressSummary, volunteersNeeded, whatsappUrl, phoneRaw }: SiteHeaderProps) {
   const scrollY = useScrollPosition();
   const pathname = usePathname();
   const isHome = pathname === "/";
@@ -32,7 +43,7 @@ export function SiteHeader() {
 
   return (
     <div className={containerClasses}>
-      <VolunteerBanner />
+      <VolunteerBanner volunteersNeeded={volunteersNeeded} whatsappUrl={whatsappUrl} phoneRaw={phoneRaw} />
       <header className={cn(
         "transition-all duration-300",
         isTransparent
@@ -44,7 +55,7 @@ export function SiteHeader() {
             <div className="relative size-11 overflow-hidden rounded-2xl">
               <Image
                 src="/logo.webp"
-                alt={`${siteConfig.name} logo`}
+                alt={`${siteName} logo`}
                 fill
                 className="object-cover"
                 sizes="44px"
@@ -57,13 +68,13 @@ export function SiteHeader() {
                 "font-heading text-lg leading-none tracking-[-0.05em] transition-colors",
                 isTransparent ? "text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]" : "text-[var(--text-heading)]"
               )}>
-                {siteConfig.name}
+                {siteName}
               </p>
               <p className={cn(
                 "mt-1 text-xs uppercase tracking-[0.24em] transition-colors",
                 isTransparent ? "text-[var(--brand-accent)]" : "text-[var(--text-muted)]"
               )}>
-                {siteConfig.address.summary}
+                {siteAddressSummary}
               </p>
             </div>
           </Link>
@@ -132,7 +143,7 @@ export function SiteHeader() {
             </div>
           </div>
 
-          <MobileNav />
+          <MobileNav navLinks={navLinks} contactChannels={contactChannels} bookingChannels={bookingChannels} />
         </div>
       </header>
     </div>

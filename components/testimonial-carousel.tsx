@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Panel } from "@/components/ui/panel";
 import { cn } from "@/lib/utils";
 
-type Testimonial = {
+export type Testimonial = {
   quote: string;
   author: string;
   source: string;
