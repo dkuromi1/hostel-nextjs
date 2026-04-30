@@ -57,6 +57,13 @@ const isMobileDevice = () => {
 
 const shouldUseLiteMap = () => isLowEndDevice();
 
+const getPreferredView = () => {
+    if (shouldUseLiteMap()) {
+        return { pitch: 0, bearing: 0 };
+    }
+    return { pitch: 45, bearing: -20 };
+};
+
 const createGeoJSONCircle = (center: [number, number], radiusInKm: number, points: number = 32) => {
     const coords = { latitude: center[1], longitude: center[0] };
     const ret = [];
@@ -286,10 +293,11 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                 }
 
                 mapbox.accessToken = accessToken;
+                const preferredView = getPreferredView();
                 const m = new mapbox.Map({
                     container: mapContainerRef.current, style: STANDARD_STYLE,
                     center: initialCenter, zoom: initialZoom,
-                    pitch: 0, bearing: 0,
+                    pitch: preferredView.pitch, bearing: preferredView.bearing,
                     antialias: false, fadeDuration: mobile ? 0 : 300,
                     maxTileCacheSize: mobile ? 10 : 20, renderWorldCopies: false,
                 });
@@ -395,7 +403,16 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                 });
 
                 m.on('load', () => {
-                    m.flyTo({ center: initialCenter, zoom: initialZoom, speed: 0.8, curve: 1, essential: true });
+                    const preferredView = getPreferredView();
+                    m.flyTo({ 
+                        center: initialCenter, 
+                        zoom: initialZoom, 
+                        pitch: preferredView.pitch,
+                        bearing: preferredView.bearing,
+                        speed: 0.8, 
+                        curve: 1, 
+                        essential: true 
+                    });
                     applyBasePreset(m);
                     applyCustomizations(m, trailGeoJsonRef.current, siteConfig.features.showRegionalTrails);
                     setTimeout(() => mapRef.current?.resize(), 100);
@@ -450,7 +467,16 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
         } else if (activeInstance.mapConfig.keywords.property.some(k => q.includes(k)) || q === siteConfig.shortName.toLowerCase()) {
             document.querySelector('[data-poi-label="hostel"]')?.classList.add('poi-highlight');
         }
-        mapRef.current.flyTo({ center: targetCenter, zoom: targetZoom, speed: 1.2, curve: 1, essential: true });
+        const preferredView = getPreferredView();
+        mapRef.current.flyTo({ 
+            center: targetCenter, 
+            zoom: targetZoom, 
+            pitch: preferredView.pitch,
+            bearing: preferredView.bearing,
+            speed: 1.2, 
+            curve: 1, 
+            essential: true 
+        });
     }, [poiQuery]);
 
     const toggleStyle = () => {
@@ -476,11 +502,12 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                 <button
                     onClick={() => {
                         const isRegional = variant === "regional";
+                        const preferredView = getPreferredView();
                         mapRef.current?.flyTo({
                             center: isRegional ? THETH_VALBONA_MIDPOINT_COORDS : HOSTEL_COORDS,
                             zoom: isRegional ? 11.0 : 15.0,
-                            pitch: 0,
-                            bearing: 0,
+                            pitch: preferredView.pitch,
+                            bearing: preferredView.bearing,
                             speed: 1.2,
                             curve: 1,
                             essential: true
