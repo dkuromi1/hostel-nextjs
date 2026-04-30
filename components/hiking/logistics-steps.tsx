@@ -22,7 +22,7 @@ export function LogisticsSteps({ steps }: LogisticsStepsProps) {
             <div key={step.title} className="group relative flex gap-6 p-6 transition-colors hover:bg-[var(--muted)]/30">
               {/* Vertical connector line */}
               {i < steps.length - 1 && (
-                <div className="absolute left-[3rem] sm:left-[3.5rem] top-20 bottom-0 w-px bg-gradient-to-b from-[var(--brand-primary)]/30 to-transparent z-0" />
+                <div className="absolute left-[3rem] top-20 bottom-0 w-px bg-gradient-to-b from-[var(--brand-primary)]/30 to-transparent z-0" />
               )}
               
               <div className="relative z-10 flex size-12 shrink-0 items-center justify-center rounded-2xl bg-[var(--muted)] font-heading text-xl font-bold text-[var(--brand-primary)] shadow-sm transition-transform group-hover:scale-110">

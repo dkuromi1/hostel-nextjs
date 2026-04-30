@@ -51,6 +51,6 @@ export const externalPreconnectOrigins = Array.from(
   new Set(
     [...contactChannels, ...bookingChannels]
       .map((channel) => toOrigin(channel.url))
-      .filter((origin): origin is string => Boolean(origin))
+      .filter((origin): origin is string => Boolean(origin) && !origin.includes("instagram.com"))
   )
 );

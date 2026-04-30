@@ -90,7 +90,7 @@ export default function ContactPage() {
       </PageHero>
 
       <section className="py-8 sm:py-16">
-        <div className="shell-container px-8 sm:px-6 lg:px-8 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+        <div className="shell-container sm:px-6 lg:px-8 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="flex flex-col gap-6 h-full">
             <Reveal>
               <Panel className="p-6 sm:p-8">
@@ -131,8 +131,8 @@ export default function ContactPage() {
             </Reveal>
 
             {siteConfig.features.showLocalExperienceMap ? (
-              <Reveal className="flex-1" delay={50}>
-                <div id="map" className="media-frame relative min-h-[400px] h-full w-full overflow-hidden rounded-3xl">
+              <Reveal className="flex-1 px-2 sm:px-0" delay={50}>
+                <div id="map" className="media-frame relative min-h-[450px] h-full w-full overflow-hidden rounded-3xl">
                   <LocationMap />
                 </div>
               </Reveal>

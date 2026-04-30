@@ -124,6 +124,10 @@ import {
   CloudRain,
   CloudSnow,
   SunMedium,
+  Footprints,
+  Coins,
+  Droplets,
+  Zap as PowerIcon,
 } from "lucide-react";
 
 /**
@@ -232,6 +236,10 @@ export const ICON_REGISTRY = {
   CloudRain,
   CloudSnow,
   SunMedium,
+  Footprints,
+  Coins,
+  Droplets,
+  Power: Zap,
 } as const satisfies Record<string, LucideIcon>;
 
 // Export individual icons for direct use in components

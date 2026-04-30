@@ -33,7 +33,7 @@ export function PageHero({
   contactChannels = [],
 }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden pb-24 sm:pb-32 pt-8 sm:pt-24">
+    <section className="relative overflow-hidden pb-8 sm:pb-16 pt-8 sm:pt-16">
       <div className="shell-container grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
         <Reveal className="relative z-10 flex flex-col items-start gap-8">
           <Eyebrow>{eyebrow}</Eyebrow>

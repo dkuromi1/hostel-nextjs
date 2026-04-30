@@ -62,7 +62,7 @@ const getPreferredView = () => {
     if (shouldUseLiteMap()) {
         return { pitch: 0, bearing: 0 };
     }
-    return { pitch: 45, bearing: -20 };
+    return { pitch: 45, bearing: 0 };
 };
 
 const createGeoJSONCircle = (center: [number, number], radiusInKm: number, points: number = 32) => {
@@ -280,7 +280,7 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                         initialZoom = 16.5;
                     } else if (siteConfig.features.showRegionalTrails && (q === THETH_VALBONA_MAP_QUERY || activeInstance.mapConfig.keywords.theth.every(k => q.includes(k)))) {
                         initialCenter = THETH_VALBONA_MIDPOINT_COORDS;
-                        initialZoom = 11.0;
+                        initialZoom = 10.0;
                     } else if (q === SHALA_RIVER_MAP_QUERY || activeInstance.mapConfig.keywords.shala.every(k => q.includes(k))) {
                         initialCenter = SHALA_RIVER_MIDPOINT_COORDS;
                         initialZoom = 10.0;
@@ -453,7 +453,7 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
             targetCenter = matchedPoi.coords as [number, number]; targetZoom = 16.5;
             document.querySelector(`[data-poi-label="${matchedPoi.name.toLowerCase()}"]`)?.classList.add('poi-highlight');
         } else if (siteConfig.features.showRegionalTrails && (q === THETH_VALBONA_MAP_QUERY || activeInstance.mapConfig.keywords.theth.every(k => q.includes(k)))) {
-            targetCenter = THETH_VALBONA_MIDPOINT_COORDS; targetZoom = 11.5;
+            targetCenter = THETH_VALBONA_MIDPOINT_COORDS; targetZoom = 10.0;
             document.querySelector('[data-poi-label="theth drop off/pick up"]')?.classList.add('poi-highlight');
             document.querySelector('[data-poi-label="valbona village"]')?.classList.add('poi-highlight');
         } else if (q === SHALA_RIVER_MAP_QUERY || activeInstance.mapConfig.keywords.shala.every(k => q.includes(k))) {
@@ -526,7 +526,7 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                         const preferredView = getPreferredView();
                         mapRef.current?.flyTo({
                             center: isRegional ? THETH_VALBONA_MIDPOINT_COORDS : HOSTEL_COORDS,
-                            zoom: isRegional ? 11.0 : 15.0,
+                            zoom: isRegional ? 10.0 : 15.0,
                             pitch: preferredView.pitch,
                             bearing: preferredView.bearing,
                             speed: 1.2,

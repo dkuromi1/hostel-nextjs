@@ -51,19 +51,19 @@ export default function HikingGuidePage() {
       </PageHero>
 
       {/* Quick Stats Bar */}
-      <section className="relative z-20 -mt-20 sm:-mt-28">
+      <section className="relative z-20 -mt-20 pb-8 sm:-mt-28 sm:pb-16">
         <div className="shell-container">
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
             {hikingGuide.quickStats.map((stat, i) => {
               const Icon = resolveIcon(stat.icon);
               return (
                 <Reveal key={stat.label} delay={i * 100}>
-                  <Panel className="flex flex-col items-center gap-3 p-5 text-center shadow-lg backdrop-blur-xl">
-                    <div className="flex size-10 items-center justify-center rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)]">
+                  <Panel className="flex flex-col items-center gap-3 p-5 text-center shadow-lg backdrop-blur-xl dark:border-white/10">
+                    <div className="flex size-10 items-center justify-center rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] dark:bg-[var(--brand-primary)]/20">
                       <Icon className="size-5" />
                     </div>
                     <div>
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)]">
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-body-subtle)] dark:text-slate-400">
                         {stat.label}
                       </p>
                       <p className="mt-1 font-heading text-xl font-bold text-[var(--text-heading)]">
@@ -116,7 +116,7 @@ export default function HikingGuidePage() {
 
       {/* Map Section */}
       <section className="py-8 sm:py-16 bg-[var(--muted)]/30">
-        <div className="shell-container px-8 sm:px-6 lg:px-8">
+        <div className="shell-container sm:px-6 lg:px-8">
           <Reveal className="mb-12">
             <SectionLabel variant="sky" className="mb-6">INTERACTIVE MAP</SectionLabel>
             <h2 className="heading-section text-[var(--text-heading)]">The Trail</h2>
@@ -124,8 +124,8 @@ export default function HikingGuidePage() {
               A visual overview of the famous Theth to Valbona hike in the Accursed Mountains.
             </p>
           </Reveal>
-          <Reveal>
-            <Panel className="h-[600px] w-full overflow-hidden p-0 rounded-[2rem]">
+          <Reveal className="px-2 sm:px-0">
+            <Panel className="h-[500px] w-full overflow-hidden p-0 rounded-[2rem]">
               <LocationMap defaultPoi="theth-valbona-midpoint" variant="regional" />
             </Panel>
           </Reveal>
@@ -134,7 +134,7 @@ export default function HikingGuidePage() {
 
       {/* Packing List */}
       {hikingGuide.packingList && (
-        <section className="py-8 sm:py-16 bg-[var(--brand-primary)]/5">
+        <section className="py-8 sm:py-16">
           <div className="shell-container">
             <Reveal className="mb-12">
               <SectionLabel variant="sky" className="mb-6">GEAR</SectionLabel>

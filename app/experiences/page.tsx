@@ -167,7 +167,7 @@ export default function ExperiencesPage() {
 
           {siteConfig.features.showLocalExperienceMap ? (
             <Reveal className="pt-4 sm:pt-8">
-              <div className="mx-auto max-w-[1400px] px-8 sm:px-0">
+              <div className="mx-auto max-w-[1400px] px-2 sm:px-0">
                 <div id="map" className="media-frame relative h-[500px] w-full overflow-hidden rounded-[2rem] shadow-xl shadow-[var(--glass-shadow)]/10 ring-1 ring-[var(--glass-border)]">
                   <LocationMap />
                 </div>
