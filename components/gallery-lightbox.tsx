@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useRouter } from "next/navigation";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "@/lib/icon-registry";
 import type { GalleryItem } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import {

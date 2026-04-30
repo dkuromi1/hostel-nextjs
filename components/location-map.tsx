@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Suspense, useEffect, useRef, useState } from 'react';
-import { Home, AlertCircle, MapPin } from 'lucide-react';
+import { Home, AlertCircle, MapPin } from '@/lib/icon-registry';
 import Link from 'next/link';
 import { useSearchParams, usePathname } from 'next/navigation';
 import { Panel } from './ui/panel';

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Moon, Sparkles, MapPin, Compass } from "lucide-react";
+import { ArrowRight, Moon, Zap, MapPin, Compass } from "@/lib/icon-registry";
 import { SectionHeading } from "@/components/section-heading";
 import { SectionLabel } from "@/components/ui/section-label";
 import { Reveal } from "@/components/reveal";
@@ -15,7 +15,7 @@ import {
   type ExperiencePillar,
 } from "@/lib/site-data";
 
-const reasonIcons = [Moon, Sparkles, MapPin, Compass];
+const reasonIcons = [Moon, Zap, MapPin, Compass];
 
 const formatText = (text: string) => {
   return text.split(/(\[.*?\]\(.*?\))/g).map((part, i) => {

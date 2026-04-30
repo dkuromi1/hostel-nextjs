@@ -1,4 +1,4 @@
-import { Calendar, Users } from "lucide-react";
+import { Calendar, Users } from "@/lib/icon-registry";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/site-data";
 

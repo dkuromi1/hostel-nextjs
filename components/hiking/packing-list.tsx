@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "@/lib/icon-registry";
 import { Reveal } from "../reveal";
 import { Panel } from "../ui/panel";
 

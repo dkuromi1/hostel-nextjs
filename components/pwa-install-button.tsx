@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Download } from "lucide-react";
+import { Download } from "@/lib/icon-registry";
 
 /**
  * Intercepts the browser's automatic "Add to Home Screen" banner

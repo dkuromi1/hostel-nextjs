@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "@/lib/icon-registry";
 import { cn } from "@/lib/utils";
 
 type Theme = "light" | "dark";

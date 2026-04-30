@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MapPinned, MessageCircleMore } from "lucide-react";
+import { MapPinned, MessageCircleMore } from "@/lib/icon-registry";
 import { cn } from "@/lib/utils";
 
 import { ChannelIcon } from "@/components/channel-icon";

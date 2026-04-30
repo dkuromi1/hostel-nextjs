@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { RefreshCw, X } from "lucide-react";
+import { RefreshCw, X } from "@/lib/icon-registry";
 import { useSerwist } from "@serwist/next/react";
 
 function isAdminRoute(pathname: string) {

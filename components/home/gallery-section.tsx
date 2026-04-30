@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@/lib/icon-registry";
 import { SectionHeading } from "@/components/section-heading";
 import { GalleryMasonry } from "@/components/gallery-masonry";
 import { cn } from "@/lib/utils";

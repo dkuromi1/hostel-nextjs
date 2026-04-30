@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { RefreshCw } from "lucide-react";
+import { RefreshCw } from "@/lib/icon-registry";
 
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";

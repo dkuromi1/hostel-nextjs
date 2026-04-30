@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Star, Award } from "lucide-react";
+import { Star, Award } from "@/lib/icon-registry";
 import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
 import { Reveal } from "@/components/reveal";
 import { SectionLabel } from "@/components/ui/section-label";

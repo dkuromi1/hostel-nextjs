@@ -1,4 +1,4 @@
-import { Cloud, CloudFog, CloudLightning, CloudRain, CloudSnow, Sun, SunMedium } from "lucide-react";
+import { Cloud, CloudFog, CloudLightning, CloudRain, CloudSnow, Sun, SunMedium } from "@/lib/icon-registry";
 // no siteConfig import needed anymore
 
 async function getThethWeather() {

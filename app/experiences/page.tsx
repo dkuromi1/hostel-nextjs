@@ -3,7 +3,8 @@ import Link from "next/link";
 import {
   MapPin,
   Navigation,
-} from "lucide-react";
+  resolveIcon,
+} from "@/lib/icon-registry";
 
 import dynamic from "next/dynamic";
 const LocationMap = dynamic(() => import("@/components/location-map").then(mod => mod.LocationMap), { ssr: true });
@@ -28,7 +29,7 @@ import {
   bookingChannels,
   contactChannels
 } from "@/lib/site-data";
-import { resolveIcon } from "@/lib/icon-registry";
+// resolveIcon now imported from registry above
 
 export const metadata = buildMetadata({
   title: siteCopyContent.experiences.metadata.title,

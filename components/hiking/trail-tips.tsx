@@ -1,6 +1,6 @@
 "use client";
 
-import { Info } from "lucide-react";
+import { Info } from "@/lib/icon-registry";
 import { Reveal } from "../reveal";
 import { Panel } from "../ui/panel";
 

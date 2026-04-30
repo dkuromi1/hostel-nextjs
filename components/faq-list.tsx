@@ -2,7 +2,7 @@
 
 import { useState, useId } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Plus } from "lucide-react";
+import { Plus } from "@/lib/icon-registry";
 
 import { cn } from "@/lib/utils";
 

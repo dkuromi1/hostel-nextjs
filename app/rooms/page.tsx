@@ -2,8 +2,8 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import {
   Check,
-} from "lucide-react";
-import { resolveIcon } from "@/lib/icon-registry";
+  resolveIcon,
+} from "@/lib/icon-registry";
 
 import { CtaStrip } from "@/components/cta-strip";
 import { PageHero } from "@/components/page-hero";

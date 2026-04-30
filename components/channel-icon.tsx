@@ -1,12 +1,12 @@
 import {
   AtSign,
   Globe,
-  Link as LinkIcon,
+  LinkIcon,
   Mail,
   MessageCircleMore,
   MessageSquare,
   Phone,
-} from "lucide-react";
+} from "@/lib/icon-registry";
 
 import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
 import { InstagramGlyph } from "@/components/instagram-glyph";

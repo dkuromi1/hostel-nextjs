@@ -3,7 +3,7 @@ import {
   Clock,
   MapPinned,
   MessageCircleMore,
-} from "lucide-react";
+} from "@/lib/icon-registry";
 
 import dynamic from "next/dynamic";
 import { BookingActions } from "@/components/booking-actions";

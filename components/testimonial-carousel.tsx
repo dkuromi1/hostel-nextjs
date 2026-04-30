@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback, useRef } from "react";
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star } from "@/lib/icon-registry";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { Panel } from "@/components/ui/panel";
