@@ -100,14 +100,14 @@ export default function HikingGuidePage() {
       {hikingGuide.itinerary && (
         <section className="py-8 sm:py-16 bg-[var(--muted)]/20">
           <div className="shell-container">
-            <Reveal className="mb-12 text-center">
-              <SectionLabel variant="emerald" className="mx-auto mb-6">Route Plan</SectionLabel>
+            <Reveal className="mb-12">
+              <SectionLabel variant="emerald" className="mb-6">ROUTE PLAN</SectionLabel>
               <h2 className="heading-section text-[var(--text-heading)]">{hikingGuide.itinerary.title}</h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-[var(--text-body-subtle)]">
+              <p className="mt-4 max-w-2xl text-lg text-[var(--text-body-subtle)]">
                 {hikingGuide.itinerary.description}
               </p>
             </Reveal>
-            <div className="mx-auto max-w-4xl">
+            <div className="max-w-4xl">
               <ItineraryDays days={hikingGuide.itinerary.days} />
             </div>
           </div>
@@ -117,10 +117,10 @@ export default function HikingGuidePage() {
       {/* Map Section */}
       <section className="py-8 sm:py-16 bg-[var(--muted)]/30">
         <div className="shell-container px-8 sm:px-6 lg:px-8">
-          <Reveal className="mb-12 text-center">
-            <SectionLabel variant="sky" className="mx-auto mb-6">Interactive Map</SectionLabel>
+          <Reveal className="mb-12">
+            <SectionLabel variant="sky" className="mb-6">INTERACTIVE MAP</SectionLabel>
             <h2 className="heading-section text-[var(--text-heading)]">The Trail</h2>
-            <p className="text-section-desc mx-auto mt-4 max-w-2xl">
+            <p className="text-section-desc mt-4 max-w-2xl">
               A visual overview of the famous Theth to Valbona hike in the Accursed Mountains.
             </p>
           </Reveal>
@@ -136,10 +136,10 @@ export default function HikingGuidePage() {
       {hikingGuide.packingList && (
         <section className="py-8 sm:py-16 bg-[var(--brand-primary)]/5">
           <div className="shell-container">
-            <Reveal className="mb-12 text-center">
-              <SectionLabel variant="sky" className="mx-auto mb-6">Gear</SectionLabel>
+            <Reveal className="mb-12">
+              <SectionLabel variant="sky" className="mb-6">GEAR</SectionLabel>
               <h2 className="heading-section text-[var(--text-heading)]">{hikingGuide.packingList.title}</h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-[var(--text-body-subtle)]">
+              <p className="mt-4 max-w-2xl text-lg text-[var(--text-body-subtle)]">
                 {hikingGuide.packingList.description}
               </p>
             </Reveal>
