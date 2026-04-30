@@ -13,6 +13,7 @@ const Panel = dynamic(() => import("@/components/ui/panel").then(mod => mod.Pane
 const CtaStrip = dynamic(() => import("@/components/cta-strip").then(mod => mod.CtaStrip), { ssr: true });
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
+import { cn } from "@/lib/utils";
 import { StructuredData } from "@/components/structured-data";
 import { ThethWeather } from "@/components/theth-weather";
 import {
@@ -250,7 +251,12 @@ export default function ExperiencesPage() {
                         <div className="mt-auto pt-6">
                           <Link
                             href={item.ctaUrl}
-                            className="group/btn flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--brand-primary)] px-4 py-3 text-[13px] font-bold text-white shadow-lg shadow-[var(--brand-primary)]/20 transition-all duration-300 hover:scale-[1.02] hover:bg-[var(--brand-primary-dark)] active:scale-[0.98]"
+                            className={cn(
+                              "group/btn flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-[13px] font-bold text-white shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]",
+                              item.ctaLabel === "Read Full Hiking Guide" 
+                                ? "bg-[#059669] shadow-[#059669]/20 hover:bg-[#047857]" 
+                                : "bg-[var(--brand-primary)] shadow-[var(--brand-primary)]/20 hover:bg-[var(--brand-primary-dark)]"
+                            )}
                           >
                             <span>{item.ctaLabel || "Learn More"}</span>
                             <Navigation className="size-3.5 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />

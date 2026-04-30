@@ -44,7 +44,7 @@ export function CompactGuestRatingsStrip({
         <div className="flex min-w-0 items-center gap-3">
           <BookingComLogo iconOnly className="size-9" />
           <div className="min-w-0">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/65">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/65">
               {copy.bookingSourceLabel}
             </p>
             <p className="truncate text-sm font-medium text-white/92">
@@ -56,7 +56,7 @@ export function CompactGuestRatingsStrip({
           <p className="font-heading text-xl leading-none tracking-tight text-white text-center">
             {bookingRating}
           </p>
-          <p className="mt-1 text-[8px] uppercase tracking-[0.2em] text-white/100">
+          <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/100">
             {copy.bookingScoreSuffix}
           </p>
         </div>
@@ -71,7 +71,7 @@ export function CompactGuestRatingsStrip({
         <div className="flex min-w-0 items-center gap-3">
           <HostelworldLogo iconOnly className="size-9" />
           <div className="min-w-0">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/65">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/65">
               {copy.hostelworldSourceLabel}
             </p>
             <p className="truncate text-sm font-medium text-white/92">
@@ -83,7 +83,7 @@ export function CompactGuestRatingsStrip({
           <p className="font-heading text-xl leading-none tracking-tight text-white text-center">
             {hostelworldRating}
           </p>
-          <p className="mt-1 text-[8px] uppercase tracking-[0.2em] text-white/100">
+          <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/100">
             ({hostelworldReviews} {copy.hostelworldReviewsSuffix})
           </p>
         </div>
@@ -121,7 +121,7 @@ export function GuestRatingsSection({
                   <BookingComLogo className="min-w-0 shrink-0" />
                   <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600 dark:text-yellow-500">
                     <Star className="size-3" fill="currentColor" />
-                    <span className="text-[10px] font-bold uppercase tracking-wider">
+                    <span className="text-xs font-bold uppercase tracking-wider">
                       {copy.topRatedLabel}
                     </span>
                   </div>
@@ -140,7 +140,7 @@ export function GuestRatingsSection({
                       <p className="font-heading text-xl leading-none tracking-tight">
                         {bookingRating}
                       </p>
-                      <p className="text-[8px] uppercase tracking-wider text-blue-50">
+                      <p className="text-[10px] uppercase tracking-wider text-blue-50">
                         {copy.bookingScoreSuffix}
                       </p>
                     </div>
@@ -161,7 +161,7 @@ export function GuestRatingsSection({
                   <HostelworldLogo className="h-7 w-auto shrink-0" />
                   <div className="flex shrink-0 items-center gap-1 rounded-full bg-yellow-400/15 px-2 py-1 text-yellow-600 dark:text-yellow-500">
                     <Star className="size-3" fill="currentColor" />
-                    <span className="text-[10px] font-bold uppercase tracking-wider">
+                    <span className="text-xs font-bold uppercase tracking-wider">
                       {copy.topRatedLabel}
                     </span>
                   </div>

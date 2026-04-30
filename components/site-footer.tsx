@@ -116,7 +116,7 @@ export function SiteFooter({ contactChannels, bookingChannels, navLinks, siteCon
                   sizes="160px"
                 />
               </div>
-              <span className="text-xs font-semibold text-[var(--text-muted)] text-center">
+              <span className="text-sm font-semibold text-[var(--text-muted)] text-center">
                 {copy.communityCaption}
               </span>
             </div>
@@ -163,10 +163,10 @@ export function SiteFooter({ contactChannels, bookingChannels, navLinks, siteCon
       <div className="mx-auto mt-16 w-[92%] border-t border-[var(--text-muted)]/70 pt-8">
         <div className="shell-container">
           <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-            <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
               © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
             </p>
-            <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--text-muted)]">
+            <div className="flex items-center gap-4 text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
               <ThemeToggle />
               <PwaInstallButton />
               <span>{copy.credit}</span>

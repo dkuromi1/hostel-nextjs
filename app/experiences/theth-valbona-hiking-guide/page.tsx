@@ -83,7 +83,7 @@ export default function HikingGuidePage() {
         <div className="shell-container">
           <div className="grid gap-12 lg:grid-cols-[0.45fr_0.55fr] lg:items-start">
             <Reveal className="space-y-6">
-              <SectionLabel variant="sky">{hikingGuide.logistics.title}</SectionLabel>
+              <SectionLabel variant="sky">TRANSPORT</SectionLabel>
               <h2 className="heading-section text-[var(--text-heading)]">
                 {hikingGuide.logistics.title}
               </h2>

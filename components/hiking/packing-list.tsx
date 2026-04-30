@@ -29,8 +29,8 @@ export function PackingList({ categories }: PackingListProps) {
               {/* Items List */}
               <div className="flex flex-col divide-y divide-[var(--border)]/30 h-full">
                 {category.items.map((item) => (
-                  <div key={item.name} className="group p-6 transition-colors hover:bg-[var(--muted)]/30 h-full">
-                    <div className="space-y-4">
+                  <div key={item.name} className="group p-4 transition-colors hover:bg-[var(--muted)]/30 h-full">
+                    <div className="space-y-0">
                       <div className="flex items-center gap-3">
                         <div className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] transition-transform group-hover:scale-110">
                           <CheckCircle2 className="size-4" strokeWidth={2.5} />

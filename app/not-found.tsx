@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 export default function NotFound() {
   return (
     <div className="shell-container py-20">
-      <div className="mx-auto max-w-3xl rounded-[34px] border border-white/70 bg-white/85 p-8 shadow-[0_24px_80px_-42px_rgba(15,23,42,0.35)]">
+      <div className="glass-panel mx-auto max-w-3xl rounded-[34px] p-8 shadow-[0_24px_80px_-42px_rgba(15,23,42,0.35)]">
         <Eyebrow>
           {siteCopyContent.notFoundPage.eyebrow}
         </Eyebrow>
@@ -32,7 +32,7 @@ export default function NotFound() {
             href="/contact"
             className={cn(
               buttonVariants({ variant: "outline", size: "lg" }),
-              "rounded-full bg-white"
+              "rounded-full"
             )}
           >
             {siteCopyContent.notFoundPage.contactLabel}

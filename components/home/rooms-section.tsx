@@ -91,7 +91,7 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
                           className="flex w-fit items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--muted)]/50 px-3 py-2 text-[var(--text-body)]"
                         >
                           <AmenityIcon className="size-3.5 shrink-0 text-[var(--brand-primary)]" />
-                          <span className="whitespace-nowrap text-[11px] font-medium tracking-tight">
+                          <span className="whitespace-nowrap text-xs font-medium tracking-tight">
                             {amenity.label}
                           </span>
                         </div>

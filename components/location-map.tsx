@@ -547,7 +547,8 @@ export function LocationMap({ defaultPoi, variant = "local" }: { defaultPoi?: st
 
     const isLowEnd = isLowEndDevice();
     const isContactPage = pathname === '/contact';
-    const forceManualLoad = isLowEnd || isContactPage;
+    const isExperiencePage = pathname?.startsWith('/experiences');
+    const forceManualLoad = isLowEnd || isContactPage || isExperiencePage;
 
     useEffect(() => {
         if (!isEnabled || forceManualLoad) return;
@@ -620,7 +621,7 @@ function MapPreview({ mapsHref, onLoad }: { mapsHref: string; onLoad: () => void
                     <button
                         type="button"
                         onClick={onLoad}
-                        className="rounded-full bg-[var(--brand-primary)] px-6 py-3 text-sm font-bold text-white shadow-lg transition-transform hover:scale-105 active:scale-95"
+                        className="rounded-full bg-[#059669] px-6 py-3 text-sm font-bold text-white shadow-lg transition-transform hover:scale-105 active:scale-95"
                     >
                         Load Interactive Map
                     </button>

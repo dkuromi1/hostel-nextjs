@@ -63,7 +63,7 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
         <span className="sm:hidden">{content.directBookingTitleMobile}</span>
         <span className="hidden sm:inline">{content.directBookingTitle}</span>
       </p>
-      <p className="mt-2 text-xs leading-snug text-[var(--text-body-subtle)]">
+      <p className="mt-2 text-sm leading-snug text-[var(--text-body-subtle)]">
         <span className="sm:hidden">{content.directBookingDescriptionMobile}</span>
         <span className="hidden sm:inline">{content.directBookingDescription}</span>
       </p>
