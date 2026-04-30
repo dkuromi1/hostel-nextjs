@@ -127,7 +127,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                             <ThethWeather variant="small" />
                           </div>
                         )}
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/90 via-[var(--surface-dark)]/40 to-transparent p-6 pt-24 text-white">
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/90 via-[var(--surface-dark)]/40 to-transparent p-6 pt-24 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
                           <SectionLabel colorScheme="light" className="mb-2">
                             {pillar.title}
                           </SectionLabel>
@@ -162,7 +162,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                       <ThethWeather variant="small" />
                     </div>
                   ) : null}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/90 via-[var(--surface-dark)]/40 to-transparent p-6 pt-32 text-white">
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/95 via-[var(--surface-dark)]/50 to-transparent p-6 pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
                     <SectionLabel colorScheme="light" className="drop-shadow-md">
                       {experiencePillars[0].title}
                     </SectionLabel>
@@ -191,7 +191,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                             className="object-cover"
                             sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 42vw, 588px"
                           />
-                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/90 via-[var(--surface-dark)]/40 to-transparent p-6 pt-32 text-white">
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/95 via-[var(--surface-dark)]/50 to-transparent p-6 pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
                             <SectionLabel colorScheme="light" className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                               {pillar.title}
                             </SectionLabel>

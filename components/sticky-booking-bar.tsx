@@ -40,8 +40,11 @@ export function StickyBookingBar({ bookingChannels, contactChannels }: StickyBoo
             rel="noreferrer"
             className={cn(
               buttonVariants({ size: "sm" }),
-              "flex h-9 min-w-0 flex-1 items-center justify-center gap-2 rounded-full border border-white/10 bg-[var(--brand-primary)] px-3 font-semibold text-[var(--primary-foreground)] shadow-lg transition hover:bg-[var(--brand-primary-dark)]",
-              isTransparent && "bg-[var(--brand-primary)]/90 backdrop-blur-sm"
+              "flex h-9 min-w-0 flex-1 items-center justify-center gap-2 rounded-full border border-white/10 px-3 font-semibold text-white shadow-lg transition-all duration-300",
+              primaryContactChannel.icon === "whatsapp"
+                ? "bg-[var(--brand-whatsapp)] hover:bg-[var(--brand-whatsapp-dark)]"
+                : "bg-[var(--brand-primary)] text-[var(--primary-foreground)] hover:bg-[var(--brand-primary-dark)]",
+              isTransparent && "backdrop-blur-sm"
             )}
           >
             <ChannelIcon iconKey={primaryContactChannel.icon} className="size-4 shrink-0" strokeWidth={1.8} />

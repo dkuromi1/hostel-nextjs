@@ -15,40 +15,19 @@ export function Eyebrow({
   return (
     <div
       className={cn(
-        "group relative inline-flex items-center gap-3 overflow-hidden rounded-full border px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-500 backdrop-blur-xl shadow-[0_8px_16px_-6px_rgba(0,0,0,0.05)]",
+        "group relative inline-flex items-center overflow-hidden rounded-full px-4 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] antialiased transition-all duration-300",
         variant === "default"
-          ? "border-[var(--glass-border)] bg-[var(--glass-bg)] text-[var(--text-heading)] shadow-[var(--glass-shadow)] hover:bg-[var(--muted)]/80 hover:border-white"
+          ? "bg-slate-200/40 dark:bg-white/10 border border-slate-300/30 dark:border-white/10 text-[var(--text-heading)] dark:text-white backdrop-blur-md shadow-sm hover:border-slate-400/40 dark:hover:border-white/30"
           : variant === "sun"
-            ? "border-amber-500/10 bg-amber-50/40 text-amber-950 hover:border-amber-500/30 hover:bg-amber-100/60 hover:shadow-lg hover:shadow-amber-500/15"
-            : "border-[var(--glass-border)] bg-white/10 text-white hover:bg-white/20 hover:shadow-lg hover:shadow-[var(--glass-shadow)]",
+            ? "bg-amber-100/40 border border-amber-200/50 text-amber-950 backdrop-blur-md"
+            : "bg-white/10 border border-white/10 text-white backdrop-blur-md",
         className
       )}
     >
-      <span className="relative flex h-2 w-2 items-center justify-center">
-        <span
-          className={cn(
-            "absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 duration-1000",
-            variant === "default" ? "bg-[var(--brand-primary)]" : "bg-amber-400"
-          )}
-        ></span>
-        <span
-          className={cn(
-            "relative inline-flex h-1.5 w-1.5 rounded-full shadow-[0_0_8px_rgba(14,165,233,0.8)]",
-            variant === "default"
-              ? "bg-[var(--brand-primary)] shadow-[var(--brand-primary)]/80"
-              : "bg-amber-500 shadow-amber-500/80"
-          )}
-        ></span>
-      </span>
-      <span className="relative z-10 pt-[1px]">{children}</span>
-
-      {/* Sweeping shine effect */}
-      <div
-        className={cn(
-          "absolute inset-0 -translate-x-[150%] bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-[150%]",
-          variant === "default" ? "via-[var(--brand-primary-light)]/40" : "via-amber-100/40"
-        )}
-      />
+      <span className="relative z-10">{children}</span>
+      
+      {/* Subtle sweeping shine animation - visible in both modes */}
+      <div className="absolute inset-0 z-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-1000 group-hover:animate-[shimmer_1.5s_infinite]" />
     </div>
   );
 }

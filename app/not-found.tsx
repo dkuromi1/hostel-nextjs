@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { Eyebrow } from "@/components/ui/eyebrow";
 import { buttonVariants } from "@/components/ui/button";
 import { siteCopyContent } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
@@ -8,9 +9,9 @@ export default function NotFound() {
   return (
     <div className="shell-container py-20">
       <div className="mx-auto max-w-3xl rounded-[34px] border border-white/70 bg-white/85 p-8 shadow-[0_24px_80px_-42px_rgba(15,23,42,0.35)]">
-        <p className="text-xs uppercase tracking-[0.28em] text-[var(--brand-primary)]">
+        <Eyebrow>
           {siteCopyContent.notFoundPage.eyebrow}
-        </p>
+        </Eyebrow>
         <h1 className="mt-4 heading-state text-[var(--text-heading)]">
           {siteCopyContent.notFoundPage.title}
         </h1>

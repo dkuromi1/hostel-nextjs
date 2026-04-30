@@ -171,7 +171,10 @@ export function MobileNav({ navLinks, contactChannels, bookingChannels }: Mobile
                     onClick={() => setOpen(false)}
                     className={cn(
                       buttonVariants({ size: "lg" }),
-                      "h-10 rounded-full bg-[var(--brand-primary)] text-[var(--primary-foreground)] hover:bg-[var(--brand-primary-dark)]"
+                      "h-10 rounded-full text-white transition-all duration-300",
+                      primaryContactChannel.icon === "whatsapp"
+                        ? "bg-[var(--brand-whatsapp)] hover:bg-[var(--brand-whatsapp-dark)] shadow-md"
+                        : "bg-[var(--brand-primary)] text-[var(--primary-foreground)] hover:bg-[var(--brand-primary-dark)] shadow-md"
                     )}
                   >
                     {primaryContactChannel.label}
