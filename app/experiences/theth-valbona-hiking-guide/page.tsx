@@ -11,7 +11,7 @@ import { LogisticsSteps } from "@/components/hiking/logistics-steps";
 import { ItineraryDays } from "@/components/hiking/itinerary-days";
 import { PackingList } from "@/components/hiking/packing-list";
 import { buildBreadcrumbSchema, buildMetadata } from "@/lib/metadata";
-import { hikingGuide } from "@/lib/site-data";
+import { hikingGuide, siteConfig } from "@/lib/site-data";
 
 export const metadata = buildMetadata({
   title: hikingGuide.metadata.title,

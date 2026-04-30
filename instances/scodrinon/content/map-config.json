@@ -1,0 +1,57 @@
+{
+  "hostel": {
+    "coords": [19.51698538503564, 42.069258],
+    "label": "hostel"
+  },
+  "pedonale": {
+    "coords": [
+      [19.513800410509983, 42.067007048478274],
+      [19.514691128164753, 42.06795226804246],
+      [19.51697176304084, 42.06913341207323],
+      [19.5171140522808, 42.069314649661514]
+    ]
+  },
+  "namedViews": [
+    {
+      "id": "thethValbona",
+      "query": "theth-valbona-midpoint",
+      "keywords": ["theth", "valbona"],
+      "center": [19.8290120989, 42.4208252183],
+      "zoom": 10.0,
+      "highlightLabels": ["theth drop off/pick up", "valbona village"],
+      "variant": "regional"
+    },
+    {
+      "id": "shalaRiver",
+      "query": "shala-river-midpoint",
+      "keywords": ["shala", "river"],
+      "center": [19.8162442275, 42.1541755895],
+      "zoom": 10.5,
+      "highlightLabels": ["komani lake ferry (shala & valbona)", "blini park (shala river trip stop)"],
+      "variant": "regional"
+    },
+    {
+      "id": "komaniFerry",
+      "query": "komani-ferry",
+      "keywords": ["komani", "lake"],
+      "center": [19.826066248202096, 42.10881657873157],
+      "zoom": 13.5,
+      "highlightLabels": ["komani lake ferry (shala & valbona)"],
+      "variant": "regional"
+    },
+    {
+      "id": "pedonale",
+      "keywords": ["pedestrian", "idromeno"],
+      "center": [19.514691128164753, 42.06795226804246],
+      "zoom": 16.5,
+      "variant": "local"
+    }
+  ],
+  "keywords": {
+    "property": ["hostel", "scodrinon"]
+  },
+  "styles": {
+    "standard": "mapbox://styles/mapbox/standard",
+    "satellite": "mapbox://styles/mapbox/satellite-streets-v12"
+  }
+}

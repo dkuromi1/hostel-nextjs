@@ -8,7 +8,7 @@ import { Panel } from './ui/panel';
 import { activeInstance } from '@/instances';
 import { isLowEndDevice } from '@/lib/performance';
 import { useIsLowEndDevice } from '@/lib/use-performance';
-import { siteConfig } from '@/lib/site-data';
+import { siteConfig, siteCopyContent } from '@/lib/site-data';
 
 // --- Types ---
 type MapboxMap = import('mapbox-gl').Map;
@@ -24,30 +24,16 @@ interface MapPOI {
 
 // --- Constants & Helpers (from location-map-inner) ---
 const {
-    hostelCoords: HOSTEL_COORDS,
-    thethDropoffCoords: THETH_DROPOFF_COORDS,
-    valbonaVillageCoords: VALBONA_VILLAGE_COORDS,
-    komaniFerryCoords: KOMANI_FERRY_COORDS,
-    bliniParkCoords: BLINI_PARK_COORDS,
-    pedonaleCoords: PEDONALE_COORDS,
-    queries,
-    styles
-} = activeInstance.mapConfig;
+    hostel,
+    pedonale,
+    namedViews = [],
+    keywords = { property: [] },
+    styles = { standard: '', satellite: '' }
+} = activeInstance.mapConfig as any;
 
-const THETH_VALBONA_MAP_QUERY = queries.thethValbona;
-const SHALA_RIVER_MAP_QUERY = queries.shalaRiver;
-const KOMANI_FERRY_MAP_QUERY = queries.komaniFerry;
+const HOSTEL_COORDS = hostel.coords;
 const STANDARD_STYLE = styles.standard;
 const SATELLITE_STYLE = styles.satellite;
-
-const THETH_VALBONA_MIDPOINT_COORDS: [number, number] = [
-    (THETH_DROPOFF_COORDS[0] + VALBONA_VILLAGE_COORDS[0]) / 2,
-    (THETH_DROPOFF_COORDS[1] + VALBONA_VILLAGE_COORDS[1]) / 2,
-];
-const SHALA_RIVER_MIDPOINT_COORDS: [number, number] = [
-    (KOMANI_FERRY_COORDS[0] + BLINI_PARK_COORDS[0]) / 2,
-    (KOMANI_FERRY_COORDS[1] + BLINI_PARK_COORDS[1]) / 2,
-];
 
 const isMobileDevice = () => {
     if (typeof window === 'undefined') return false;
@@ -158,10 +144,10 @@ const applyCustomizations = (map: MapboxMap, trailGeoJson: MapboxGeoJSONData | n
         }
     });
 
-    if (!map.getSource('pedonale-street')) {
+    if (pedonale?.coords && !map.getSource('pedonale-street')) {
         map.addSource('pedonale-street', {
             type: 'geojson',
-            data: { type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates: PEDONALE_COORDS } }
+            data: { type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates: pedonale.coords } }
         } as MapboxAnySourceData);
     }
 
@@ -278,18 +264,15 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                     if (matchedPoi) {
                         initialCenter = matchedPoi.coords as [number, number];
                         initialZoom = 16.5;
-                    } else if (siteConfig.features.showRegionalTrails && (q === THETH_VALBONA_MAP_QUERY || activeInstance.mapConfig.keywords.theth.every(k => q.includes(k)))) {
-                        initialCenter = THETH_VALBONA_MIDPOINT_COORDS;
-                        initialZoom = 10.0;
-                    } else if (q === SHALA_RIVER_MAP_QUERY || activeInstance.mapConfig.keywords.shala.every(k => q.includes(k))) {
-                        initialCenter = SHALA_RIVER_MIDPOINT_COORDS;
-                        initialZoom = 10.0;
-                    } else if (q === KOMANI_FERRY_MAP_QUERY || activeInstance.mapConfig.keywords.komani.every(k => q.includes(k))) {
-                        initialCenter = KOMANI_FERRY_COORDS;
-                        initialZoom = 13.0;
-                    } else if (activeInstance.mapConfig.keywords.pedestrian.some(k => q.includes(k))) {
-                        initialCenter = PEDONALE_COORDS[1] as [number, number];
-                        initialZoom = 16.0;
+                    } else {
+                        const matchedView = namedViews.find(v => 
+                            (v.query && q === v.query) || 
+                            (v.keywords && v.keywords.every((k: string) => q.includes(k)))
+                        );
+                        if (matchedView) {
+                            initialCenter = matchedView.center as [number, number];
+                            initialZoom = matchedView.zoom || 15.0;
+                        }
                     }
                 }
 
@@ -452,21 +435,20 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
         if (matchedPoi) {
             targetCenter = matchedPoi.coords as [number, number]; targetZoom = 16.5;
             document.querySelector(`[data-poi-label="${matchedPoi.name.toLowerCase()}"]`)?.classList.add('poi-highlight');
-        } else if (siteConfig.features.showRegionalTrails && (q === THETH_VALBONA_MAP_QUERY || activeInstance.mapConfig.keywords.theth.every(k => q.includes(k)))) {
-            targetCenter = THETH_VALBONA_MIDPOINT_COORDS; targetZoom = 10.0;
-            document.querySelector('[data-poi-label="theth drop off/pick up"]')?.classList.add('poi-highlight');
-            document.querySelector('[data-poi-label="valbona village"]')?.classList.add('poi-highlight');
-        } else if (q === SHALA_RIVER_MAP_QUERY || activeInstance.mapConfig.keywords.shala.every(k => q.includes(k))) {
-            targetCenter = SHALA_RIVER_MIDPOINT_COORDS; targetZoom = 10.5;
-            document.querySelector('[data-poi-label="komani lake ferry (shala & valbona)"]')?.classList.add('poi-highlight');
-            document.querySelector('[data-poi-label="blini park (shala river trip stop)"]')?.classList.add('poi-highlight');
-        } else if (q === KOMANI_FERRY_MAP_QUERY || activeInstance.mapConfig.keywords.komani.every(k => q.includes(k))) {
-            targetCenter = KOMANI_FERRY_COORDS; targetZoom = 13.5;
-            document.querySelector('[data-poi-label="komani lake ferry (shala & valbona)"]')?.classList.add('poi-highlight');
-        } else if (activeInstance.mapConfig.keywords.pedestrian.some(k => q.includes(k))) {
-            targetCenter = PEDONALE_COORDS[1] as [number, number]; targetZoom = 16.5;
-        } else if (activeInstance.mapConfig.keywords.property.some(k => q.includes(k)) || q === siteConfig.shortName.toLowerCase()) {
-            document.querySelector('[data-poi-label="hostel"]')?.classList.add('poi-highlight');
+        } else {
+            const matchedView = namedViews.find(v => 
+                (v.query && q === v.query) || 
+                (v.keywords && v.keywords.every((k: string) => q.includes(k)))
+            );
+            if (matchedView) {
+                targetCenter = matchedView.center as [number, number];
+                targetZoom = matchedView.zoom || 15.5;
+                matchedView.highlightLabels?.forEach((l: string) => {
+                    document.querySelector(`[data-poi-label="${l.toLowerCase()}"]`)?.classList.add('poi-highlight');
+                });
+            } else if (keywords.property.some((k: string) => q.includes(k)) || q === siteConfig.shortName.toLowerCase()) {
+                document.querySelector(`[data-poi-label="${hostel.label}"]`)?.classList.add('poi-highlight');
+            }
         }
         const preferredView = getPreferredView();
         mapRef.current.flyTo({ 
@@ -524,9 +506,21 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                     onClick={() => {
                         const isRegional = variant === "regional";
                         const preferredView = getPreferredView();
+                        
+                        let center = HOSTEL_COORDS;
+                        let zoom = 15.0;
+                        
+                        if (isRegional) {
+                            const regionalView = namedViews.find(v => v.variant === "regional");
+                            if (regionalView) {
+                                center = regionalView.center as [number, number];
+                                zoom = regionalView.zoom || 10.0;
+                            }
+                        }
+
                         mapRef.current?.flyTo({
-                            center: isRegional ? THETH_VALBONA_MIDPOINT_COORDS : HOSTEL_COORDS,
-                            zoom: isRegional ? 10.0 : 15.0,
+                            center,
+                            zoom,
                             pitch: preferredView.pitch,
                             bearing: preferredView.bearing,
                             speed: 1.2,

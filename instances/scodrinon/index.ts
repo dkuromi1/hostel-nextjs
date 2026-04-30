@@ -10,6 +10,7 @@ import testimonials from "./content/testimonials.json";
 import thingsToDo from "./content/things-to-do.json";
 import thethValbonaTracks from "./content/theth_valbona_tracks.json";
 import hikingGuide from "./content/hiking-guide.json";
+import mapConfig from "./content/map-config.json";
 
 export const scodrinonInstance = {
   id: "scodrinon",
@@ -33,6 +34,7 @@ export const scodrinonInstance = {
     pois: "instances/scodrinon/content/pois.json",
     trails: "instances/scodrinon/content/theth_valbona_tracks.json",
     siteCopy: "instances/scodrinon/content/site-copy.json",
+    mapConfig: "instances/scodrinon/content/map-config.json",
   },
   brandingAssets: {
     publicLogoWebp: "/logo.webp",
@@ -73,40 +75,13 @@ export const scodrinonInstance = {
     pois,
     thethValbonaTracks,
     hikingGuide,
+    mapConfig,
   },
   loaders: {
     loadPois: async () => pois,
     loadTrailGeoJson: async () => thethValbonaTracks,
   },
-  mapConfig: {
-    hostelCoords: [19.51698538503564, 42.069258] as [number, number],
-    thethDropoffCoords: [19.772315376603874, 42.39677313338882] as [number, number],
-    valbonaVillageCoords: [19.88570882131251, 42.444877303358666] as [number, number],
-    komaniFerryCoords: [19.826066248202096, 42.10881657873157] as [number, number],
-    bliniParkCoords: [19.80642220690339, 42.19953460048828] as [number, number],
-    pedonaleCoords: [
-      [19.513800410509983, 42.067007048478274],
-      [19.514691128164753, 42.06795226804246],
-      [19.51697176304084, 42.06913341207323],
-      [19.5171140522808, 42.069314649661514]
-    ] as [number, number][],
-    queries: {
-      thethValbona: 'theth-valbona-midpoint',
-      shalaRiver: 'shala-river-midpoint',
-      komaniFerry: 'komani-ferry',
-    },
-    keywords: {
-      property: ['hostel', 'scodrinon'],
-      pedestrian: ['pedestrian', 'idromeno'],
-      theth: ['theth', 'valbona'],
-      shala: ['shala', 'river'],
-      komani: ['komani', 'lake'],
-    },
-    styles: {
-      standard: 'mapbox://styles/mapbox/standard',
-      satellite: 'mapbox://styles/mapbox/satellite-streets-v12',
-    },
-  },
+  mapConfig: mapConfig as any,
 } as const;
 
 export type InstanceDefinition = typeof scodrinonInstance;
