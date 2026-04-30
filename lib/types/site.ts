@@ -181,6 +181,18 @@ export interface HikingGuideContent {
       icon: IconName;
     }[];
   };
+  labels: {
+    transport: string;
+    routePlan: string;
+    interactiveMap: string;
+    trailTitle: string;
+    trailDescription: string;
+    gear: string;
+    logisticsPriority: string;
+    bookWhatsApp: string;
+    allExperiences: string;
+    whatsAppMessage: string;
+  };
 }
 
 export interface SettingsChannel {
@@ -257,6 +269,9 @@ export interface SettingsContent {
     images: string[];
     amenities: string[];
   };
+  "maps"?: {
+    "thethTrailheadUrl"?: string;
+  };
 }
 
 export interface PropertyConfig extends SettingsContent {
@@ -285,5 +300,8 @@ export interface PropertyConfig extends SettingsContent {
   bookingRating: string;
   hostelworldRating: string;
   hostelworldReviews: string;
+  maps?: {
+    thethTrailheadUrl?: string;
+  };
 }
 

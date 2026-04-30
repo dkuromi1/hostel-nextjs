@@ -545,12 +545,12 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
             <div id="map-legend" className="absolute bottom-4 left-4 z-10 flex flex-col gap-2 rounded-xl border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md p-2.5 text-[9px] font-bold uppercase tracking-widest text-[var(--text-heading)] shadow-lg transition-opacity duration-500 opacity-100">
                 {variant === "local" && (
                     <>
-                        <div className="flex items-center gap-3"><div className="h-0.5 w-6 border-t border-dashed border-[var(--brand-primary)] opacity-90" /><span>5 Minute Walk Area</span></div>
-                        <div className="flex items-center gap-3"><div className="h-1.5 w-6 rounded-full bg-[var(--brand-primary)]/40" /><span>The Pedestrian Street</span></div>
+                        <div className="flex items-center gap-3"><div className="h-0.5 w-6 border-t border-dashed border-[var(--brand-primary)] opacity-90" /><span>{siteCopyContent.locationMap.legend.walkArea}</span></div>
+                        <div className="flex items-center gap-3"><div className="h-1.5 w-6 rounded-full bg-[var(--brand-primary)]/40" /><span>{siteCopyContent.locationMap.legend.pedestrianStreet}</span></div>
                     </>
                 )}
                 {variant === "regional" && siteConfig.features.showRegionalTrails && (
-                    <div className="flex items-center gap-3"><div className="h-0.5 w-6 border-t-[3.5px] border-dotted border-[#10b981] opacity-90" /><span>Hiking Trail</span></div>
+                    <div className="flex items-center gap-3"><div className="h-0.5 w-6 border-t-[3.5px] border-dotted border-[#10b981] opacity-90" /><span>{siteCopyContent.locationMap.legend.hikingTrail}</span></div>
                 )}
             </div>
         </div>
@@ -632,10 +632,10 @@ function MapPreview({ mapsHref, onLoad }: { mapsHref: string; onLoad: () => void
                         Interactive Map
                     </p>
                     <h3 className="text-xl font-semibold text-white">
-                        Explore the local area
+                        {siteCopyContent.locationMap.preview.title}
                     </h3>
                     <p className="text-sm text-slate-300">
-                        We load our interactive map on demand to keep your experience fast and smooth.
+                        {siteCopyContent.locationMap.preview.description}
                     </p>
                 </div>
                 <div className="flex flex-col gap-3 sm:flex-row">

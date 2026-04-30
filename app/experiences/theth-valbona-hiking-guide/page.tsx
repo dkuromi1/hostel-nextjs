@@ -40,7 +40,7 @@ export default function HikingGuidePage() {
         <div className="media-frame relative aspect-[3/2] w-full overflow-hidden rounded-[2rem] shadow-xl">
           <Image
             src={hikingGuide.metadata.image}
-            alt="Theth to Valbona trail"
+            alt={hikingGuide.metadata.title}
             fill
             priority
             fetchPriority="high"
@@ -119,9 +119,9 @@ export default function HikingGuidePage() {
         <div className="shell-container sm:px-6 lg:px-8">
           <Reveal className="mb-12">
             <SectionLabel variant="sky" className="mb-6">INTERACTIVE MAP</SectionLabel>
-            <h2 className="heading-section text-[var(--text-heading)]">The Trail</h2>
+            <h2 className="heading-section text-[var(--text-heading)]">{hikingGuide.labels.trailTitle}</h2>
             <p className="text-section-desc mt-4 max-w-2xl">
-              A visual overview of the famous Theth to Valbona hike in the Accursed Mountains.
+              {hikingGuide.labels.trailDescription}
             </p>
           </Reveal>
           <Reveal className="px-2 sm:px-0">
@@ -164,7 +164,7 @@ export default function HikingGuidePage() {
                   </p>
                   <div className="flex flex-col gap-4 sm:flex-row mt-2">
                     <a
-                      href="https://wa.me/355685310744?text=Hi!%20I'm%20planning%20the%20Theth%20to%20Valbona%20hike.%20Can%20you%20help%20me%20with%20booking%20a%20bed%20and%20transport?"
+                      href={`https://wa.me/${siteConfig.phoneRaw}?text=${encodeURIComponent(hikingGuide.labels.whatsAppMessage)}`}
                       target="_blank"
                       rel="noreferrer"
                       className="flex items-center justify-center gap-2 rounded-xl bg-[var(--brand-primary)] px-8 py-4 font-bold text-white shadow-lg transition-transform hover:scale-102"

@@ -125,5 +125,10 @@
         "description": "Take the 10:00 AM minibus to Fierze, then board the famous Komani Lake ferry. This three-hour journey through fjord-like passages and vertical cliffs is often called one of the most beautiful boat rides in the world."
       }
     ]
+  },
+  "labels": {
+    "trailTitle": "The Trail",
+    "trailDescription": "A visual overview of the famous Theth to Valbona hike in the Accursed Mountains.",
+    "whatsAppMessage": "Hi! I'm planning the Theth to Valbona hike. Can you help me with booking a bed and transport?"
   }
 }

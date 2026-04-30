@@ -126,5 +126,8 @@
       "Bike rentals (across the street)",
       "Walking tours"
     ]
+  },
+  "maps": {
+    "thethTrailheadUrl": "https://www.google.com/maps/dir/?api=1&destination=42.397171,19.772164"
   }
 }

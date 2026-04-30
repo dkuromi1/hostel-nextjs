@@ -87,7 +87,7 @@ export default function RoomsPage() {
           <div className="glass-panel rounded-[28px] p-5">
             <SectionLabel variant="emerald" className="mb-4">
               {siteCopyContent.rooms.heroPriceBlurb.labelPrefix}{" "}
-              <strong>{primaryPricedRoom?.price ? `${primaryPricedRoom.price} / Night` : "Contact us for rates"}</strong>
+              <strong>{primaryPricedRoom?.price ? `${primaryPricedRoom.price} / Night` : siteCopyContent.rooms.heroPriceBlurb.contactForRatesLabel}</strong>
             </SectionLabel>
             <p className="mt-3 font-heading text-2xl leading-none tracking-[-0.04em] text-[var(--text-heading)]">
               {siteCopyContent.rooms.heroPriceBlurb.title}

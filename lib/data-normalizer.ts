@@ -199,6 +199,7 @@ export function normalizeInstanceData(rawContent: any): {
     bookingRating: settings.booking.bookingRating,
     hostelworldRating: settings.booking.hostelworldRating,
     hostelworldReviews: settings.booking.hostelworldReviews,
+    maps: settings.maps,
   };
 
   return {

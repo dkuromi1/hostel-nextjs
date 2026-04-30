@@ -61,9 +61,9 @@ export default function ExperiencesPage() {
           {/* Left Side: Editorial Context & Logistics */}
           <Reveal className="space-y-10 lg:col-span-5">
             <SectionHeading
-              eyebrow="The Northbound Launchpad"
-              title="Leave the heavy bags behind and head for the mountains."
-              description="We've built Scodrinon to be the ultimate reset point for your Albanian Alps trek. Don't waste a day figuring out schedules—we handle the friction so you can focus on the trail."
+              eyebrow={siteCopyContent.experiences.launchpad.eyebrow}
+              title={siteCopyContent.experiences.launchpad.title}
+              description={siteCopyContent.experiences.launchpad.description}
             />
 
             {siteConfig.features.showRegionalWeather ? (
@@ -113,7 +113,7 @@ export default function ExperiencesPage() {
                 <div className="media-frame relative h-full min-h-[20rem] md:min-h-[36rem] overflow-hidden rounded-[2rem] shadow-xl shadow-[var(--glass-shadow)]/10">
                   <Image
                     src="/images/hiking_3.jpg"
-                    alt="Hiking the Albanian Alps from Shkoder"
+                    alt={siteCopyContent.experiences.metadata.title}
                     fill
                     priority
                     fetchPriority="high"
@@ -128,7 +128,7 @@ export default function ExperiencesPage() {
                 <div className="media-frame relative min-h-[10rem] md:min-h-[17.5rem] overflow-hidden rounded-[2rem] shadow-md">
                   <Image
                     src="/images/hiking_4.webp"
-                    alt="Mountain views in Northern Albania"
+                    alt={siteCopyContent.experiences.metadata.title}
                     fill
                     className="object-cover transition-transform duration-1000 hover:scale-105"
                     sizes="(max-width: 1024px) 50vw, 20vw"
@@ -141,7 +141,7 @@ export default function ExperiencesPage() {
                 <div className="media-frame relative min-h-[10rem] md:min-h-[17.5rem] overflow-hidden rounded-[2rem] shadow-md">
                   <Image
                     src="/images/hiking_1.jpg"
-                    alt="Exploring Lake Shkoder and the rivers"
+                    alt={siteCopyContent.experiences.metadata.title}
                     fill
                     className="object-cover transition-transform duration-1000 hover:scale-105"
                     sizes="(max-width: 1024px) 50vw, 20vw"
@@ -159,9 +159,9 @@ export default function ExperiencesPage() {
         <div className="shell-container space-y-12">
           <Reveal className="max-w-3xl">
             <SectionHeading
-              eyebrow="Beyond the Hostel"
-              title="Things to do in and around Shkodër"
-              description="Whether you have an afternoon to spare before your hike or a few days to wander, here’s what makes the city worth sticking around for."
+              eyebrow={siteCopyContent.experiences.thingsToDo.eyebrow}
+              title={siteCopyContent.experiences.thingsToDo.title}
+              description={siteCopyContent.experiences.thingsToDo.description}
             />
           </Reveal>
 
@@ -228,7 +228,7 @@ export default function ExperiencesPage() {
                           <a
                             href={
                               item.title === "Theth to Valbona Trek"
-                                ? THETH_SIDE_TRAILHEAD_GOOGLE_MAPS
+                                ? (siteConfig.maps?.thethTrailheadUrl || "")
                                 : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(item.title + ' Shkoder')}`
                             }
                             target="_blank"
@@ -253,7 +253,7 @@ export default function ExperiencesPage() {
                             href={item.ctaUrl}
                             className={cn(
                               "group/btn flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-[13px] font-bold text-white shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]",
-                              item.ctaLabel === "Read Full Hiking Guide" 
+                              item.ctaLabel === siteCopyContent.experiences.hikingGuideCta
                                 ? "bg-[#059669] shadow-[#059669]/20 hover:bg-[#047857]" 
                                 : "bg-[var(--brand-primary)] shadow-[var(--brand-primary)]/20 hover:bg-[var(--brand-primary-dark)]"
                             )}
@@ -281,9 +281,9 @@ export default function ExperiencesPage() {
           {/* Section Header */}
           <Reveal className="max-w-3xl">
             <SectionHeading
-              eyebrow="Local Texture"
-              title="A Social Connection"
-              description="Skip the forced hostel itinerary. We offer a grounded atmosphere where meeting people happens at your own pace."
+              eyebrow={siteCopyContent.experiences.socialConnection.eyebrow}
+              title={siteCopyContent.experiences.socialConnection.title}
+              description={siteCopyContent.experiences.socialConnection.description}
             />
           </Reveal>
 
@@ -339,11 +339,11 @@ export default function ExperiencesPage() {
       <section className="py-8 sm:py-16">
         <div className="shell-container">
           <CtaStrip
-            eyebrow="Plan The Stay"
-            title="Send your dates and let the hostel help shape the rest."
-            description="You can book the bed and ask about hikes, bike rides, river excursions, or the easiest onward route in the same WhatsApp conversation."
+            eyebrow={siteCopyContent.experiences.planStay.eyebrow}
+            title={siteCopyContent.experiences.planStay.title}
+            description={siteCopyContent.experiences.planStay.description}
             image="/images/rooftop_social_3.webp"
-            alt="Guests on the Scodrinon Hostel rooftop"
+            alt={siteConfig.name}
             imageClassName="object-[60%_100%]"
             bookingChannels={bookingChannels}
             contactChannels={contactChannels}

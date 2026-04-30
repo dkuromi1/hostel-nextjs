@@ -179,7 +179,8 @@
     "pageTitle": "Rooms",
     "heroPriceBlurb": {
       "labelPrefix": "Beds From",
-      "title": "Hotel privacy at a hostel price. It's why so many guests book two nights and end up extending."
+      "title": "Hotel privacy at a hostel price. It's why so many guests book two nights and end up extending.",
+      "contactForRatesLabel": "Contact us for rates"
     },
     "testimonialsImages": {
       "socialAlt": "Social common area at Scodrinon Hostel",
@@ -223,6 +224,38 @@
       "description": "See how Scodrinon Hostel works as a social rooftop hangout and a launch point for Theth, Valbona, Lake Shkoder, river trips, and city culture.",
       "image": "/images/rooftop_social_2.jpg"
     },
-    "pageTitle": "Experiences"
+    "pageTitle": "Experiences",
+    "launchpad": {
+      "eyebrow": "The Northbound Launchpad",
+      "title": "Leave the heavy bags behind and head for the mountains.",
+      "description": "We've built Scodrinon to be the ultimate reset point for your Albanian Alps trek. Don't waste a day figuring out schedules—we handle the friction so you can focus on the trail."
+    },
+    "thingsToDo": {
+      "eyebrow": "Beyond the Hostel",
+      "title": "Things to do in and around Shkodër",
+      "description": "Whether you have an afternoon to spare before your hike or a few days to wander, here’s what makes the city worth sticking around for."
+    },
+    "socialConnection": {
+      "eyebrow": "Local Texture",
+      "title": "A Social Connection",
+      "description": "Skip the forced hostel itinerary. We offer a grounded atmosphere where meeting people happens at your own pace."
+    },
+    "planStay": {
+      "eyebrow": "Plan The Stay",
+      "title": "Send your dates and let the hostel help shape the rest.",
+      "description": "You can book the bed and ask about hikes, bike rides, river excursions, or the easiest onward route in the same WhatsApp conversation."
+    },
+    "hikingGuideCta": "Read Full Hiking Guide"
+  },
+  "locationMap": {
+    "legend": {
+      "walkArea": "5 Minute Walk Area",
+      "pedestrianStreet": "The Pedestrian Street",
+      "hikingTrail": "Hiking Trail"
+    },
+    "preview": {
+      "title": "Explore the local area",
+      "description": "We load our interactive map on demand to keep your experience fast and smooth."
+    }
   }
 }
