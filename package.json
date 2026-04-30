@@ -3,8 +3,9 @@
   "version": "1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build && serwist build serwist.config.mjs",
+    "dev": "npm run prebuild && next dev",
+    "prebuild": "node scripts/prebuild.js",
+    "build": "npm run prebuild && next build && serwist build serwist.config.mjs",
     "start": "next start",
     "lint": "eslint",
     "cf:build": "opennextjs-cloudflare build",
