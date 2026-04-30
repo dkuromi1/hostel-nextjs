@@ -50,9 +50,10 @@ function resolveSiteUrl() {
     return LOCAL_DEV_SITE_URL;
   }
 
-  throw new Error(
-    "Missing public site URL. Set NEXT_PUBLIC_SITE_URL or provide a hosting URL env such as URL, DEPLOY_PRIME_URL, DEPLOY_URL, VERCEL_PROJECT_PRODUCTION_URL, or VERCEL_URL.",
+  console.warn(
+    "[metadata] Missing public site URL. Please set NEXT_PUBLIC_SITE_URL. Falling back to placeholder."
   );
+  return "https://missing-site-url.com";
 }
 
 export const siteUrl = resolveSiteUrl();

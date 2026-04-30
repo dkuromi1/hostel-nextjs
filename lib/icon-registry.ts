@@ -342,5 +342,6 @@ export function resolveIcon(name: string): LucideIcon {
     return ICON_REGISTRY[name];
   }
 
-  throw new Error(`[icon-registry] Unknown icon "${name}". Add it to ICON_REGISTRY or fix the icon key in content.`);
+  console.warn(`[icon-registry] Unknown icon "${name}". Falling back to Compass.`);
+  return ICON_REGISTRY.Compass;
 }

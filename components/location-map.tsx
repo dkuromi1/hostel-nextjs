@@ -7,6 +7,7 @@ import { useSearchParams, usePathname } from 'next/navigation';
 import { Panel } from './ui/panel';
 import { activeInstance } from '@/instances';
 import { isLowEndDevice } from '@/lib/performance';
+import { useIsLowEndDevice } from '@/lib/use-performance';
 import { siteConfig } from '@/lib/site-data';
 
 // --- Types ---
@@ -488,10 +489,30 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
     };
 
     if (mapError) return (
-        <div className="flex h-full w-full flex-col items-center justify-center bg-gray-100 p-8 text-center dark:bg-gray-900">
-            <AlertCircle className="mb-4 size-12 text-red-500" />
-            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">Map Unavailable</h3>
-            <p className="mb-4 max-w-md text-sm text-gray-600 dark:text-gray-400">{mapError}</p>
+        <div className="flex h-full w-full flex-col items-center justify-center bg-slate-50 p-8 text-center dark:bg-slate-900">
+            <div className="mb-6 rounded-full bg-red-500/10 p-4 ring-1 ring-red-500/20">
+                <AlertCircle className="size-10 text-red-500" />
+            </div>
+            <h3 className="mb-2 text-xl font-bold text-slate-900 dark:text-white">Map Engine Failure</h3>
+            <p className="mb-6 max-w-xs text-sm text-slate-500 dark:text-slate-400">
+                The interactive map could not be initialized. This can happen due to hardware limitations or connectivity issues.
+            </p>
+            <div className="flex flex-col gap-3 sm:flex-row">
+                <button
+                    onClick={() => window.location.reload()}
+                    className="rounded-full bg-slate-900 px-6 py-2.5 text-sm font-bold text-white transition-transform hover:scale-105 active:scale-95 dark:bg-white dark:text-slate-900"
+                >
+                    Retry Loading
+                </button>
+                <Link
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.name + ' ' + siteConfig.location)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-full border border-slate-200 bg-white px-6 py-2.5 text-sm font-bold text-slate-900 transition-transform hover:scale-105 active:scale-95 dark:border-slate-800 dark:bg-slate-800 dark:text-white"
+                >
+                    Open Google Maps
+                </Link>
+            </div>
         </div>
     );
 
@@ -545,7 +566,7 @@ export function LocationMap({ defaultPoi, variant = "local" }: { defaultPoi?: st
     const pathname = usePathname();
     const poiQuery = searchParams?.get("poi") ?? "";
 
-    const isLowEnd = isLowEndDevice();
+    const isLowEnd = useIsLowEndDevice();
     const isContactPage = pathname === '/contact';
     const isExperiencePage = pathname?.startsWith('/experiences');
     const forceManualLoad = isLowEnd || isContactPage || isExperiencePage;

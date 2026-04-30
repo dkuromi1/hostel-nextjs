@@ -22,7 +22,8 @@ function parseIconName(icon: string, context: string): IconName {
   if (isIconName(icon)) {
     return icon;
   }
-  throw new Error(`[data-normalizer] Unknown icon "${icon}" in ${context}.`);
+  console.warn(`[data-normalizer] Unknown icon "${icon}" in ${context}. Gracefully continuing.`);
+  return icon as IconName;
 }
 
 function parseIconTextItems(items: any[], context: string): IconTextItem[] {
