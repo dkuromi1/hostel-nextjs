@@ -51,7 +51,7 @@ export default function HikingGuidePage() {
       </PageHero>
 
       {/* Quick Stats Bar */}
-      <section className="relative z-20 -mt-20 pb-8 sm:-mt-28 sm:pb-16">
+      <section className="relative z-20 pb-8 sm:pb-16">
         <div className="shell-container">
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
             {hikingGuide.quickStats.map((stat, i) => {

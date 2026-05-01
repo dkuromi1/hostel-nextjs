@@ -152,8 +152,8 @@
 }
 
 .dark {
-  --background: #020617;
-  /* slate-950 */
+  --background: #000000;
+  /* pure black */
   --foreground: #f8fafc;
   /* slate-50 */
   --card: rgba(15, 23, 42, 0.90);
