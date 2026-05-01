@@ -93,15 +93,27 @@ export function ThemeVars() {
 
   if (theme === "forest") {
     finalColors = {
-      primary: "#2d6a4f", // Sage-leaning Forest
-      accent: "#e2b49a", // Lighter Terracotta
-      background: "#fdfaf4", // Warm Ivory
+      primary: "#2d6a4f", // Deep Forest Green
+      accent: "#95d5b2", // Misty Sage
+      background: "#f1f5f2", // Forest Mist (Cooler)
       surfaceDark: "#1b4332", // Deep Night Forest
-      darkBackground: "#020805", // Darkest Forest
+      darkBackground: "#020805", // Black Forest
     };
     finalTypography = {
       headingFont: "serif",
       character: "elegant",
+    };
+  } else if (theme === "warm") {
+    finalColors = {
+      primary: "#ea580c", // Burnt Orange
+      accent: "#f59e0b", // Amber
+      background: "#fffbeb", // Warm Sun (Warmer)
+      surfaceDark: "#292524", // Stone-800
+      darkBackground: "#0c0a09", // Stone-950
+    };
+    finalTypography = {
+      headingFont: "nunito",
+      character: "playful",
     };
   }
 
@@ -162,6 +174,30 @@ export function ThemeVars() {
         --primary: #52b788;
         --brand-primary: #52b788;
         --brand-primary-dark: #74c69d;
+      }
+    ` : ""}
+
+    /* Warm Specific Adjustments */
+    ${theme === "warm" ? `
+      :root {
+        --foreground: #44403c;
+        --text-heading: #7c2d12;
+        --glass-bg: rgba(255, 251, 235, 0.7);
+        --glass-border: rgba(124, 45, 18, 0.1);
+        --atmosphere-glow-primary: rgba(234, 88, 12, 0.08);
+        --atmosphere-glow-accent: rgba(245, 158, 11, 0.06);
+      }
+      
+      .dark {
+        --foreground: #fafaf9;
+        --text-heading: #fafaf9;
+        --glass-bg: rgba(12, 10, 9, 0.85);
+        --glass-border: rgba(255, 255, 255, 0.07);
+        --atmosphere-glow-primary: rgba(234, 88, 12, 0.14);
+        --atmosphere-glow-accent: rgba(245, 158, 11, 0.10);
+        --primary: #fb923c;
+        --brand-primary: #fb923c;
+        --brand-primary-dark: #fdba74;
       }
     ` : ""}
   `;
