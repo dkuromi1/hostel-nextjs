@@ -80,7 +80,7 @@ export function TestimonialCarousel({
   return (
     <Panel
       className={cn(
-        "relative flex flex-col justify-between border-white/10 bg-[var(--brand-tertiary)] p-8 text-white shadow-xl shadow-slate-900/15 sm:p-10",
+        "relative flex flex-col justify-between border-white/10 bg-[var(--brand-tertiary)] dark:bg-[var(--brand-tertiary-dark)] p-8 text-white shadow-xl shadow-slate-900/15 sm:p-10",
         className
       )}
       onMouseEnter={() => setIsHovered(true)}
