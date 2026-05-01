@@ -127,6 +127,8 @@ export function ThemeVars() {
       --accent: ${finalColors.accent};
       --background: ${finalColors.background};
       --surface-dark: ${finalColors.surfaceDark};
+      --brand-tertiary: ${finalColors.primary};
+      --brand-tertiary-dark: ${finalColors.surfaceDark};
       
       --radius: ${rv.base};
       --radius-sm: ${rv.sm};
@@ -151,6 +153,8 @@ export function ThemeVars() {
 
     .dark {
       --background: ${finalColors.darkBackground};
+      --surface-dark: ${finalColors.surfaceDark};
+      --brand-tertiary-dark: ${finalColors.surfaceDark};
     }
 
     /* Forest Specific Adjustments */
@@ -174,6 +178,8 @@ export function ThemeVars() {
         --primary: #52b788;
         --brand-primary: #52b788;
         --brand-primary-dark: #74c69d;
+        --surface-dark: ${finalColors.surfaceDark};
+        --brand-tertiary-dark: ${finalColors.surfaceDark};
       }
     ` : ""}
 
@@ -198,6 +204,8 @@ export function ThemeVars() {
         --primary: #fb923c;
         --brand-primary: #fb923c;
         --brand-primary-dark: #fdba74;
+        --surface-dark: ${finalColors.surfaceDark};
+        --brand-tertiary-dark: ${finalColors.surfaceDark};
       }
     ` : ""}
   `;
