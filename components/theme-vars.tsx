@@ -97,7 +97,7 @@ export function ThemeVars() {
       accent: "#cb997e", // Terracotta
       background: "#fdfaf4", // Warm Ivory
       surfaceDark: "#1b4332", // Deep Night Forest
-      darkBackground: "#081c15", // Darkest Forest
+      darkBackground: "#020805", // Darkest Forest
     };
     finalTypography = {
       headingFont: "serif",
@@ -155,7 +155,7 @@ export function ThemeVars() {
       .dark {
         --foreground: #f8fafc;
         --text-heading: #f8fafc;
-        --glass-bg: rgba(8, 28, 21, 0.85);
+        --glass-bg: rgba(2, 8, 5, 0.85);
         --glass-border: rgba(255, 255, 255, 0.07);
         --atmosphere-glow-primary: rgba(45, 106, 79, 0.14);
         --atmosphere-glow-accent: rgba(203, 153, 126, 0.10);
