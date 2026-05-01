@@ -67,7 +67,7 @@ export function SiteFooter({ contactChannels, bookingChannels, navLinks, siteCon
                   "inline-flex items-center gap-2 rounded-full px-4 py-3 font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-95",
                   channel.stylePriority === "primary"
                     ? channel.icon === "whatsapp"
-                      ? "bg-[var(--brand-whatsapp)] text-white hover:bg-[var(--brand-whatsapp-dark)] shadow-[0_12px_30px_-12px_rgba(5,150,105,0.4)]"
+                      ? "bg-[var(--brand-whatsapp)] text-white hover:bg-[var(--brand-whatsapp-dark)] shadow-whatsapp"
                       : "bg-[var(--brand-primary)] text-[var(--primary-foreground)] hover:bg-[var(--brand-primary-dark)]"
                     : "border border-[var(--border)] text-[var(--text-body)] hover:border-[var(--brand-primary)]/40 hover:text-[var(--text-heading)]"
                 )}
@@ -125,7 +125,7 @@ export function SiteFooter({ contactChannels, bookingChannels, navLinks, siteCon
               href={siteConfig.whatsappCommunityUrl}
               target="_blank"
               rel="noreferrer"
-              className="sm:hidden flex items-center gap-2 rounded-full bg-[var(--brand-whatsapp)] px-5 py-3 font-semibold text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-[var(--brand-whatsapp-dark)] w-full justify-center shadow-[0_0_20px_rgba(5,150,105,0.3)]"
+              className="sm:hidden flex items-center gap-2 rounded-full bg-[var(--brand-whatsapp)] px-5 py-3 font-semibold text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-[var(--brand-whatsapp-dark)] w-full justify-center shadow-whatsapp"
             >
               <MessageCircleMore className="size-5 shrink-0" />
               {copy.communityButton}

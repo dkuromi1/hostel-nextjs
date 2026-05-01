@@ -79,13 +79,13 @@ function parseHikingGuide(guide: any): HikingGuideContent {
       ...stat,
       icon: parseIconName(stat.icon, `hikingGuide.quickStats[${i}].icon`),
     })),
-    luggage: {
+    luggage: guide.luggage ? {
       ...guide.luggage,
       icon: parseIconName(guide.luggage.icon, `hikingGuide.luggage.icon`),
-    },
+    } : undefined,
     itinerary: guide.itinerary ? {
       ...guide.itinerary,
-      days: guide.itinerary.days.map((day: any, i: number) => ({
+      days: (guide.itinerary.days ?? []).map((day: any, i: number) => ({
         ...day,
         icon: parseIconName(day.icon, `hikingGuide.itinerary.days[${i}].icon`),
       }))

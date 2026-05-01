@@ -7,7 +7,9 @@ type SectionHeadingProps = {
   title: string;
   description: string;
   className?: string;
+  titleClassName?: string;
   variant?: "default" | "simple";
+  headingLevel?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 };
 
 export function SectionHeading({
@@ -15,8 +17,12 @@ export function SectionHeading({
   title,
   description,
   className,
+  titleClassName,
   variant = "default",
+  headingLevel = "h2",
 }: SectionHeadingProps) {
+  const HeadingTag = headingLevel;
+
   return (
     <div className={cn("flex max-w-2xl flex-col items-start gap-5", className)}>
       {variant === "default" ? (
@@ -25,9 +31,9 @@ export function SectionHeading({
         <SectionLabel>{eyebrow}</SectionLabel>
       )}
       <div className="flex flex-col gap-3">
-        <h2 className="heading-section text-[var(--text-heading)]">
+        <HeadingTag className={cn(headingLevel === "h1" ? "heading-page" : "heading-section", "text-[var(--text-heading)]", titleClassName)}>
           {title}
-        </h2>
+        </HeadingTag>
         <p className="max-w-[62ch] text-section-desc">
           {description}
         </p>

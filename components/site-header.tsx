@@ -107,12 +107,14 @@ export function SiteHeader({ navLinks, contactChannels, bookingChannels, siteNam
                 target="_blank"
                 rel="noreferrer"
                 className={cn(
-                  buttonVariants({ size: "sm" }),
-                  "h-9 rounded-full px-4 text-white transition-all duration-300 hover:scale-[1.02] active:scale-95",
-                  primaryContactChannel.icon === "whatsapp" 
-                    ? "bg-[var(--brand-whatsapp)] hover:bg-[var(--brand-whatsapp-dark)] shadow-[0_8px_25px_-8px_rgba(5,150,105,0.5)]"
-                    : "bg-[var(--brand-primary)] hover:bg-[var(--brand-primary-dark)] shadow-sm",
-                  isTransparent && (primaryContactChannel.icon === "whatsapp" ? "shadow-[0_8px_25px_-8px_rgba(5,150,105,0.6)]" : "shadow-[0_8px_25px_-8px_rgba(5,150,105,0.5)]")
+                  buttonVariants({
+                    variant: primaryContactChannel.icon === "whatsapp" ? "whatsapp" : "default",
+                    size: "sm",
+                  }),
+                  "h-9 rounded-full px-4 transition-all duration-300 hover:scale-[1.02] active:scale-95",
+                  primaryContactChannel.icon === "whatsapp"
+                    ? "shadow-whatsapp"
+                    : "shadow-sm"
                 )}
               >
                 {primaryContactChannel.label}
@@ -127,12 +129,12 @@ export function SiteHeader({ navLinks, contactChannels, bookingChannels, siteNam
                   rel="noreferrer"
                   aria-label={channel.label}
                   className={cn(
-                    buttonVariants({ variant: "outline", size: "icon" }),
-                    "size-9 rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-95",
+                    buttonVariants({ variant: "ghost", size: "icon" }),
+                    "size-9 rounded-full border border-[var(--border)] bg-transparent text-[var(--text-heading)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-[var(--muted)]",
                     isTransparent
                       ? "border-white/10 bg-[var(--surface-dark)]/20 text-white hover:bg-[var(--surface-dark)]/40 shadow-[0_8px_20px_-8px_rgba(0,0,0,0.4)]"
                       : channel.icon === "hostelworld"
-                        ? "border-orange-200/80 bg-orange-50/90 text-orange-900 hover:bg-orange-100/90"
+                        ? "border-orange-200/80 bg-orange-50/90 text-orange-900 hover:bg-orange-100/90 dark:border-orange-900/30 dark:bg-orange-900/20 dark:text-orange-400 dark:hover:bg-orange-900/40 shadow-[0_0_12px_-3px_rgba(251,146,60,0.4)] dark:shadow-[0_0_12px_-3px_rgba(251,146,60,0.2)]"
                         : "border-border bg-muted/95 text-foreground hover:bg-muted"
                   )}
                 >

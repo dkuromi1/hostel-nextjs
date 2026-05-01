@@ -26,6 +26,7 @@ export function GalleryView({ galleryItems, bookingAwardImage, galleryCopy, book
             eyebrow={galleryCopy.visualTour.eyebrow}
             title={galleryCopy.visualTour.title}
             description={galleryCopy.visualTour.description}
+            headingLevel="h1"
           />
           <GalleryMasonry items={galleryItems} />
         </div>
@@ -65,6 +66,7 @@ export function GalleryView({ galleryItems, bookingAwardImage, galleryCopy, book
                 eyebrow={galleryCopy.vibePanel.eyebrow}
                 title={galleryCopy.vibePanel.title}
                 description={galleryCopy.vibePanel.description}
+                titleClassName="md:text-5xl"
               />
             </Panel>
           </Reveal>

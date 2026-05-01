@@ -80,7 +80,7 @@ export function TestimonialCarousel({
   return (
     <Panel
       className={cn(
-        "relative flex flex-col justify-between border-white/10 bg-[var(--brand-tertiary)] p-8 text-white shadow-xl shadow-slate-900/15 sm:p-10",
+        "relative flex flex-col justify-between border-white/10 bg-[var(--brand-tertiary)] dark:bg-[var(--brand-tertiary-dark)] p-8 text-white shadow-xl shadow-slate-900/15 sm:p-10",
         className
       )}
       onMouseEnter={() => setIsHovered(true)}
@@ -97,15 +97,15 @@ export function TestimonialCarousel({
             animate="center"
             exit="exit"
           >
-            <div className="flex gap-1 text-amber-500">
+            <div className="flex gap-1 text-[var(--accent)]">
               {[...Array(testimonial.rating)].map((_, i) => (
                 <Star key={i} className="size-4 fill-current" />
               ))}
             </div>
-            <blockquote className="mt-6 font-heading text-2xl leading-snug tracking-[-0.02em] text-white dark:text-[var(--text-heading)] sm:text-3xl">
+            <blockquote className="mt-6 font-heading text-3xl italic leading-[1.1] tracking-[-0.01em] text-white dark:text-[var(--text-heading)] sm:text-4xl">
               &ldquo;{testimonial.quote}&rdquo;
             </blockquote>
-            <p className="mt-6 font-medium text-[var(--text-on-surface-dark)] dark:text-[var(--text-body)]">
+            <p className="mt-8 font-medium text-[var(--text-on-surface-dark)] dark:text-[var(--text-body)]">
               — {testimonial.author}{" "}
               <span className="opacity-90 font-normal italic text-[var(--text-on-surface-dark-muted)] dark:text-[var(--text-muted)]">({testimonial.source})</span>
             </p>
@@ -114,7 +114,7 @@ export function TestimonialCarousel({
       </div>
 
       {/* Navigation Controls */}
-      <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4">
+      <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-4">
         <div className="flex gap-2">
           {testimonials.map((_, index) => (
             <div
@@ -131,14 +131,14 @@ export function TestimonialCarousel({
                 aria-hidden="true"
                 className={cn(
                   "absolute left-1/2 top-1/2 z-10 flex size-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full transition-all duration-300",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--brand-tertiary)]"
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--brand-tertiary)]"
                 )}
               >
                 <span
                   className={cn(
                     "block h-2 rounded-full transition-all duration-300",
                     index === currentIndex
-                      ? "w-8 bg-amber-500"
+                      ? "w-8 bg-[var(--accent)]"
                       : "w-2 bg-white/20 hover:bg-white/30"
                   )}
                 />

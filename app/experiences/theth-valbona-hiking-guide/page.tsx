@@ -37,7 +37,7 @@ export default function HikingGuidePage() {
         description={hikingGuide.hero.description}
         hideActions={true}
       >
-        <div className="media-frame relative aspect-[3/2] w-full overflow-hidden rounded-[2rem] shadow-xl">
+        <div className="media-frame relative aspect-[3/2] w-full overflow-hidden rounded-3xl shadow-xl">
           <Image
             src={hikingGuide.metadata.image}
             alt={hikingGuide.metadata.title}
@@ -51,7 +51,7 @@ export default function HikingGuidePage() {
       </PageHero>
 
       {/* Quick Stats Bar */}
-      <section className="relative z-20 -mt-20 pb-8 sm:-mt-28 sm:pb-16">
+      <section className="relative z-20 pb-8 sm:pb-16">
         <div className="shell-container">
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
             {hikingGuide.quickStats.map((stat, i) => {
@@ -125,7 +125,7 @@ export default function HikingGuidePage() {
             </p>
           </Reveal>
           <Reveal className="px-2 sm:px-0">
-            <Panel className="h-[500px] w-full overflow-hidden p-0 rounded-[2rem]">
+            <Panel className="h-[500px] w-full overflow-hidden p-0 rounded-3xl">
               <LocationMap defaultPoi="theth-valbona-midpoint" variant="regional" />
             </Panel>
           </Reveal>
@@ -167,7 +167,7 @@ export default function HikingGuidePage() {
                       href={`https://wa.me/${siteConfig.phoneRaw}?text=${encodeURIComponent(hikingGuide.labels.whatsAppMessage)}`}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex items-center justify-center gap-2 rounded-xl bg-[var(--brand-primary)] px-8 py-4 font-bold text-white shadow-lg transition-transform hover:scale-102"
+                      className="flex items-center justify-center gap-2 rounded-xl bg-[var(--brand-whatsapp)] px-8 py-4 font-bold text-white shadow-whatsapp transition-all duration-300 hover:scale-[1.02] hover:bg-[var(--brand-whatsapp-dark)]"
                     >
                       Book via WhatsApp
                     </a>
@@ -187,7 +187,7 @@ export default function HikingGuidePage() {
                     className="object-cover opacity-80"
                     sizes="(max-width: 768px) 100vw, 40vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[var(--surface-dark)] to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent" />
                 </div>
               </div>
             </Panel>

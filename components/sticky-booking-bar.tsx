@@ -39,11 +39,12 @@ export function StickyBookingBar({ bookingChannels, contactChannels }: StickyBoo
             target="_blank"
             rel="noreferrer"
             className={cn(
-              buttonVariants({ size: "sm" }),
-              "flex h-9 min-w-0 flex-1 items-center justify-center gap-2 rounded-full border border-white/10 px-3 font-semibold text-white shadow-lg transition-all duration-300",
-              primaryContactChannel.icon === "whatsapp"
-                ? "bg-[var(--brand-whatsapp)] hover:bg-[var(--brand-whatsapp-dark)]"
-                : "bg-[var(--brand-primary)] text-[var(--primary-foreground)] hover:bg-[var(--brand-primary-dark)]",
+              buttonVariants({
+                variant: primaryContactChannel.icon === "whatsapp" ? "whatsapp" : "default",
+                size: "sm",
+              }),
+              "flex h-9 min-w-0 flex-1 items-center justify-center gap-2 rounded-full border border-white/10 px-3 font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-95",
+              primaryContactChannel.icon === "whatsapp" && "shadow-whatsapp",
               isTransparent && "backdrop-blur-sm"
             )}
           >
@@ -60,8 +61,8 @@ export function StickyBookingBar({ bookingChannels, contactChannels }: StickyBoo
               rel="noreferrer"
               aria-label={channel.label}
               className={cn(
-                buttonVariants({ variant: "outline", size: "icon" }),
-                "size-9 rounded-full transition-all",
+                buttonVariants({ variant: "ghost", size: "icon" }),
+                "size-9 rounded-full border transition-all duration-300 hover:scale-[1.02] active:scale-95",
                 isTransparent
                   ? "border-white/20 bg-[var(--surface-dark)]/20 text-white backdrop-blur-sm hover:bg-[var(--surface-dark)]/40"
                   : "border-[var(--border)] bg-[var(--muted)] text-[var(--foreground)] hover:bg-[var(--muted)]/80"

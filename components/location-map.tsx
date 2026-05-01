@@ -96,7 +96,7 @@ const applyLabelStyle = (el: HTMLElement, isMobile: boolean, overrides?: Partial
     el.style.color = 'var(--text-heading)';
     el.style.fontSize = '9px';
     el.style.fontWeight = '600';
-    el.style.borderRadius = '4px';
+    el.style.borderRadius = 'var(--radius-sm)';
     el.style.whiteSpace = 'nowrap';
     el.style.textDecoration = 'none';
     el.style.display = 'flex';
@@ -265,7 +265,7 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                         initialCenter = matchedPoi.coords as [number, number];
                         initialZoom = 16.5;
                     } else {
-                        const matchedView = namedViews.find(v => 
+                        const matchedView = namedViews.find((v: any) => 
                             (v.query && q === v.query) || 
                             (v.keywords && v.keywords.every((k: string) => q.includes(k)))
                         );
@@ -305,7 +305,7 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                 const label = document.createElement('a');
                 label.href = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(siteConfig.name + ' ' + siteConfig.address.addressLocality)}`;
                 label.target = '_blank'; label.rel = 'noreferrer';
-                applyLabelStyle(label, mobile, { marginBottom: '6px', padding: '6px 14px', borderRadius: '8px', fontSize: '12px', border: '0.5px solid #0ea5e9' });
+                applyLabelStyle(label, mobile, { marginBottom: '6px', padding: '6px 14px', borderRadius: 'var(--radius-md)', fontSize: '12px', border: '0.5px solid #0ea5e9' });
                 label.classList.add('poi-label-el'); label.setAttribute('data-poi-label', 'hostel');
                 if (!mobile) label.style.boxShadow = '0 10px 15px -3px rgb(0 0 0 / 0.1)';
 
@@ -436,7 +436,7 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
             targetCenter = matchedPoi.coords as [number, number]; targetZoom = 16.5;
             document.querySelector(`[data-poi-label="${matchedPoi.name.toLowerCase()}"]`)?.classList.add('poi-highlight');
         } else {
-            const matchedView = namedViews.find(v => 
+            const matchedView = namedViews.find((v: any) => 
                 (v.query && q === v.query) || 
                 (v.keywords && v.keywords.every((k: string) => q.includes(k)))
             );
@@ -511,7 +511,7 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                         let zoom = 15.0;
                         
                         if (isRegional) {
-                            const regionalView = namedViews.find(v => v.variant === "regional");
+                            const regionalView = namedViews.find((v: any) => v.variant === "regional");
                             if (regionalView) {
                                 center = regionalView.center as [number, number];
                                 zoom = regionalView.zoom || 10.0;

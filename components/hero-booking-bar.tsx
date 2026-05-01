@@ -8,7 +8,7 @@ export function HeroBookingBar({ className }: { className?: string }) {
       "relative z-20 w-full max-w-4xl",
       className
     )}>
-      <div className="flex flex-col gap-4 overflow-hidden rounded-[32px] border border-white/20 bg-[var(--surface-dark)]/40 p-4 shadow-2xl backdrop-blur-3xl md:flex-row md:items-center md:gap-0 lg:p-3">
+      <div className="flex flex-col gap-4 overflow-hidden rounded-3xl border border-white/20 bg-[var(--surface-dark)]/40 p-4 shadow-2xl backdrop-blur-3xl md:flex-row md:items-center md:gap-0 lg:p-3">
         {/* Arrive Date */}
         <div className="group flex flex-1 flex-col px-6 py-2 transition-colors hover:bg-white/5 md:border-r md:border-white/10">
           <label className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-accent)]/80">
@@ -63,7 +63,7 @@ export function HeroBookingBar({ className }: { className?: string }) {
             href={siteConfig.whatsappUrl}
             target="_blank"
             rel="noreferrer"
-            className="flex h-14 items-center justify-center gap-2 rounded-[24px] bg-[var(--brand-whatsapp)] px-8 font-heading text-lg font-bold text-white shadow-[0_10px_25px_-5px_rgba(5,150,105,0.5)] transition-all hover:scale-[1.02] hover:bg-[var(--brand-whatsapp-dark)] active:scale-95 md:h-16"
+            className="flex h-14 items-center justify-center gap-2 rounded-lg bg-[var(--brand-whatsapp)] px-8 font-heading text-lg font-bold text-white shadow-whatsapp transition-all hover:scale-[1.02] hover:bg-[var(--brand-whatsapp-dark)] active:scale-95 md:h-16"
           >
             Check Availability
           </a>

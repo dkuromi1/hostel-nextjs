@@ -35,11 +35,8 @@ export function BookingActions({
           target="_blank"
           rel="noreferrer"
           className={cn(
-            buttonVariants({ size: compact ? "sm" : "lg" }),
-            "h-auto min-h-12 rounded-full px-5 py-3 text-sm transition-all duration-300 hover:scale-[1.02] active:scale-95",
-            primaryContactChannel.icon === "whatsapp" 
-              ? "bg-[var(--brand-whatsapp)] text-white shadow-[0_18px_40px_-24px_rgba(5,150,105,0.6)] hover:bg-[var(--brand-whatsapp-dark)]"
-              : "bg-[var(--brand-primary)] text-[var(--primary-foreground)] shadow-[0_18px_40px_-24px_rgba(5,150,105,0.6)] hover:bg-[var(--brand-primary-dark)]"
+            buttonVariants({ variant: "whatsapp", size: compact ? "sm" : "lg" }),
+            "h-auto min-h-12 rounded-full px-5 py-3 text-sm transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-whatsapp"
           )}
         >
           <ChannelIcon iconKey={primaryContactChannel.icon} iconOnly />
@@ -55,8 +52,8 @@ export function BookingActions({
               target="_blank"
               rel="noreferrer"
               className={cn(
-                buttonVariants({ variant: "outline", size: compact ? "sm" : "lg" }),
-                "h-auto min-h-12 flex-1 justify-center rounded-full border-[var(--glass-border)] bg-[var(--glass-bg)] px-3 py-3 text-sm text-[var(--text-heading)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-[var(--glass-bg)]/90"
+                buttonVariants({ variant: "ghost", size: compact ? "sm" : "lg" }),
+                "h-auto min-h-12 flex-1 justify-center border border-[var(--glass-border)] bg-[var(--glass-bg)] px-3 py-3 text-sm text-[var(--text-heading)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-[var(--glass-bg)]/90"
               )}
             >
               <span className="truncate">{channel.label}</span>

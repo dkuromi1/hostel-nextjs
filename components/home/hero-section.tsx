@@ -76,7 +76,7 @@ export function HeroSection({ hero, quickFacts, tagline, backgroundAlt, guestRat
                     key={index}
                     className="min-w-[85%] snap-center sm:min-w-0"
                   >
-                    <div className="group relative overflow-hidden rounded-[24px] border border-white/18 bg-[var(--surface-dark)]/42 p-5 backdrop-blur-[3px] transition-all duration-300 hover:border-white/24 hover:bg-[var(--surface-dark)]/52">
+                    <div className="group relative overflow-hidden rounded-2xl border border-white/16 bg-black/40 p-5 shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-black/50">
                       <div className="text-sm leading-snug text-white/95">
                         <div className="float-left mb-1 mr-4 flex size-10 items-center justify-center rounded-xl bg-[var(--brand-primary)]/24 text-[var(--brand-accent)]">
                           <Icon className="size-5" strokeWidth={2} />

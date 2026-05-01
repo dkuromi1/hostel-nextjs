@@ -12,9 +12,11 @@ const WALKING_SPEED = 90;
 
 export interface TitoTheCatProps {
   isEnabled: boolean;
+  message?: string;
+  type?: "cat" | "dog" | "none";
 }
 
-export function TitoTheCat({ isEnabled }: TitoTheCatProps) {
+export function TitoTheCat({ isEnabled, message, type = "cat" }: TitoTheCatProps) {
 
   const titoRef = useRef<HTMLDivElement>(null);
   const [state, setState] = useState<AnimationState>("hidden");
@@ -185,7 +187,7 @@ export function TitoTheCat({ isEnabled }: TitoTheCatProps) {
             "relative mb-3 rounded-2xl rounded-br-sm bg-slate-900 px-4 py-2.5 text-sm font-medium text-white shadow-xl transition-all duration-300",
             state === "paused" ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
           )}>
-            Hi, I&apos;m Tito the hostel&apos;s friendly adopted cat! 🐾
+            {message || "Hi, I'm Tito the hostel's friendly adopted cat! 🐾"}
             <div className="absolute -bottom-1.5 right-4 size-3 rotate-45 bg-slate-900" />
           </div>
 
@@ -201,7 +203,9 @@ export function TitoTheCat({ isEnabled }: TitoTheCatProps) {
               transformOrigin: "bottom center"
             }}
           >
-            <div className={cn(isWalking && "animate-cat-walk")}>🐈‍⬛</div>
+            <div className={cn(isWalking && "animate-cat-walk")}>
+              {type === "dog" ? "🐕" : "🐈‍⬛"}
+            </div>
           </div>
         </div>
       </div>

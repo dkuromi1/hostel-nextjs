@@ -43,7 +43,7 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 66vw, 924px"
               />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/90 via-[var(--surface-dark)]/40 to-transparent p-6 pt-32 text-white">
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 pt-32 text-white">
                 <SectionLabel colorScheme="light">
                   {atmosphere.rooftopEyebrow}
                 </SectionLabel>

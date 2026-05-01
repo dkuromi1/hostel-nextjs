@@ -8,7 +8,7 @@ export function Panel({ className, ...props }: PanelProps) {
   return (
     <div
       className={cn(
-        "rounded-[30px] glass-panel",
+        "rounded-2xl glass-panel",
         className
       )}
       {...props}

@@ -26,7 +26,7 @@ export function SectionLabel({
           : variant === "default"
             ? "text-[var(--text-muted)] dark:text-[var(--text-body-subtle)]"
             : variant === "emerald"
-              ? "text-[#008b8b] dark:text-[#40e0d0]"
+              ? "text-[var(--brand-primary)]"
             : variant === "sky"
               ? "text-sky-600 dark:text-[#38bdf8]"
             : variant === "sun"

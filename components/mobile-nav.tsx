@@ -130,7 +130,7 @@ export function MobileNav({ navLinks, contactChannels, bookingChannels }: Mobile
             animate="visible"
             exit="exit"
             className={cn(
-              "absolute right-0 top-full z-50 mt-3 w-[min(22rem,calc(100vw-2rem))] overflow-hidden rounded-[30px] border border-[var(--glass-border)] p-4 shadow-2xl",
+              "absolute right-0 top-full z-50 mt-3 w-[min(22rem,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-[var(--glass-border)] p-4 shadow-2xl",
               shouldReduce
                 ? "bg-white dark:bg-[var(--surface-dark-secondary,#1a0f0a)]"
                 : "bg-white/98 dark:bg-[var(--surface-dark-secondary,#1a0f0a)]/95 backdrop-blur-xl"
@@ -148,7 +148,7 @@ export function MobileNav({ navLinks, contactChannels, bookingChannels }: Mobile
                       className={cn(
                         "block rounded-2xl px-4 py-3 text-base font-medium transition-colors",
                         isActive
-                          ? "text-[var(--brand-tertiary)] dark:text-[var(--text-body)] font-semibold ring-1 ring-[var(--brand-tertiary)]/20 dark:ring-0 bg-[var(--brand-tertiary)]/5 dark:bg-transparent"
+                          ? "text-[var(--brand-tertiary)]/75 dark:text-[var(--text-body)] font-semibold ring-1 ring-[var(--brand-tertiary)]/20 dark:ring-0 bg-[var(--brand-tertiary)]/5 dark:bg-transparent"
                           : "text-[var(--text-body)] dark:text-[#cbd5e1] hover:bg-[var(--muted)] hover:text-[var(--text-heading)]"
                       )}
                     >
@@ -170,11 +170,12 @@ export function MobileNav({ navLinks, contactChannels, bookingChannels }: Mobile
                     rel="noreferrer"
                     onClick={() => setOpen(false)}
                     className={cn(
-                      buttonVariants({ size: "lg" }),
-                      "h-10 rounded-full text-white transition-all duration-300",
-                      primaryContactChannel.icon === "whatsapp"
-                        ? "bg-[var(--brand-whatsapp)] hover:bg-[var(--brand-whatsapp-dark)] shadow-md"
-                        : "bg-[var(--brand-primary)] text-[var(--primary-foreground)] hover:bg-[var(--brand-primary-dark)] shadow-md"
+                      buttonVariants({ 
+                        variant: primaryContactChannel.icon === "whatsapp" ? "whatsapp" : "default",
+                        size: "lg" 
+                      }),
+                      "h-10 rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-95",
+                      primaryContactChannel.icon !== "whatsapp" && "shadow-md"
                     )}
                   >
                     {primaryContactChannel.label}
@@ -190,8 +191,8 @@ export function MobileNav({ navLinks, contactChannels, bookingChannels }: Mobile
                         rel="noreferrer"
                         onClick={() => setOpen(false)}
                         className={cn(
-                          buttonVariants({ variant: "outline", size: "lg" }),
-                          "rounded-2xl border-[var(--border)] bg-transparent text-[var(--text-heading)] transition-colors hover:bg-[var(--muted)]"
+                          buttonVariants({ variant: "ghost", size: "lg" }),
+                          "border border-[var(--border)] bg-transparent text-[var(--text-heading)] transition-colors hover:bg-[var(--muted)]"
                         )}
                       >
                         {channel.label}

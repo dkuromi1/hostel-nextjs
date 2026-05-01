@@ -41,10 +41,10 @@ const PillarCta = ({ cta, variant = "light" }: { cta?: CtaLink; variant?: "light
     <Link
       href={cta.url}
       className={cn(
-        buttonVariants({ variant: "outline", size: "sm" }),
-        "mt-4 w-fit gap-2 rounded-full transition-all duration-300",
+        buttonVariants({ variant: "ghost", size: "sm" }),
+        "mt-4 w-fit gap-2 rounded-full border transition-all duration-300",
         variant === "light"
-          ? "border-[var(--brand-primary)]/20 bg-[var(--brand-primary-light)]/50 text-[var(--brand-primary-dark)] hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-[var(--primary-foreground)]"
+          ? "border-[var(--border)] bg-transparent text-[var(--brand-primary-dark)] hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-[var(--primary-foreground)]"
           : "border-white/20 bg-white/10 text-white backdrop-blur-sm hover:bg-white hover:text-[var(--brand-primary-dark)] shadow-lg"
       )}
     >
@@ -102,7 +102,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
         {/* --- DISCOVER SUBSECTION --- */}
         <div className="relative pt-12 sm:pt-16">
           <div className="absolute left-0 top-4 z-0 select-none opacity-[0.07] sm:top-4">
-            <span className="font-heading text-[44px] leading-none tracking-tighter text-[var(--text-heading)] sm:text-[64px]" role="presentation" aria-hidden="true">
+            <span className="font-sans text-[44px] leading-none tracking-tighter text-[var(--text-heading)] sm:text-[64px]" role="presentation" aria-hidden="true">
               {copy.discoverLabel}
             </span>
           </div>
@@ -112,14 +112,14 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
               <SwipableRow itemCount={experiencePillars.length} className="-mx-4 px-4 sm:-mx-8 sm:px-8">
                 {experiencePillars.map((pillar, index) => (
                   <div key={pillar.title} className="min-w-[85vw] sm:min-w-[45vw] snap-center h-full">
-                    <Panel className="overflow-hidden flex h-full flex-col">
+                    <Panel className="group overflow-hidden flex h-full flex-col transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
                       <div className="relative min-h-[16rem] sm:min-h-[22rem]">
                         <Image
                           src={pillar.image}
                           alt={pillar.alt}
                           fill
                           loading="lazy"
-                          className="object-cover"
+                          className="object-cover transition-transform duration-700 group-hover:scale-105"
                           sizes="(max-width: 1024px) 85vw, 50vw"
                         />
                         {index === 0 && showRegionalWeather && (
@@ -127,7 +127,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                             <ThethWeather variant="small" />
                           </div>
                         )}
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/90 via-[var(--surface-dark)]/40 to-transparent p-6 pt-24 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 pt-24 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
                           <SectionLabel colorScheme="light" className="mb-2">
                             {pillar.title}
                           </SectionLabel>
@@ -147,14 +147,14 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
 
           <div className="hidden lg:grid gap-6 lg:grid-cols-12">
             <Reveal delay={0} className="lg:col-span-7 h-full">
-              <Panel className="overflow-hidden h-full">
+              <Panel className="group overflow-hidden h-full transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
                 <div className="relative h-full min-h-[30rem]">
                   <Image
                     src={experiencePillars[0].image}
                     alt={experiencePillars[0].alt}
                     fill
                     loading="lazy"
-                    className="object-cover"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 58vw, 812px"
                   />
                   {showRegionalWeather ? (
@@ -162,7 +162,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                       <ThethWeather variant="small" />
                     </div>
                   ) : null}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/95 via-[var(--surface-dark)]/50 to-transparent p-6 pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent p-6 pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
                     <SectionLabel colorScheme="light" className="drop-shadow-md">
                       {experiencePillars[0].title}
                     </SectionLabel>
@@ -180,7 +180,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                 const isSecondElement = index === 0;
                 return (
                   <Reveal key={pillar.title} delay={150 + index * 100}>
-                    <Panel className="overflow-hidden h-full">
+                    <Panel className="group overflow-hidden h-full transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
                       {isSecondElement ? (
                         <div className="relative h-full min-h-[22rem]">
                           <Image
@@ -188,10 +188,10 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                             alt={pillar.alt}
                             fill
                             loading="lazy"
-                            className="object-cover"
+                            className="object-cover transition-transform duration-700 group-hover:scale-105"
                             sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 42vw, 588px"
                           />
-                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/95 via-[var(--surface-dark)]/50 to-transparent p-6 pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent p-6 pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
                             <SectionLabel colorScheme="light" className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                               {pillar.title}
                             </SectionLabel>
@@ -208,7 +208,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                               src={pillar.image}
                               alt={pillar.alt}
                               fill
-                              className="object-cover"
+                              className="object-cover transition-transform duration-700 group-hover:scale-105"
                               sizes="(max-width: 768px) 100vw, (max-width: 1400px) 18vw, 250px"
                             />
                           </div>
@@ -234,7 +234,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
         {/* --- CONNECT SUBSECTION --- */}
         <div className="relative pt-12 sm:pt-16 mt-8 sm:mt-12">
           <div className="absolute left-0 top-4 z-0 select-none opacity-[0.07] sm:top-4">
-            <span className="font-heading text-[44px] leading-none tracking-tighter text-[var(--text-heading)] sm:text-[64px]" role="presentation" aria-hidden="true">
+            <span className="font-sans text-[44px] leading-none tracking-tighter text-[var(--text-heading)] sm:text-[64px]" role="presentation" aria-hidden="true">
               {copy.connectLabel}
             </span>
           </div>
@@ -243,7 +243,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
             <SwipableRow itemCount={eventCards.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-2">
               {eventCards.map((event, index) => (
                 <div key={event.title} className="min-w-[82vw] snap-center sm:min-w-0">
-                  <Panel className="overflow-hidden">
+                  <Panel className="group overflow-hidden transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
                     <div className="grid gap-0 md:grid-cols-[0.92fr_1.08fr]">
                       <div className="relative min-h-[14rem]">
                         <Image
@@ -251,7 +251,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                           alt={event.alt}
                           fill
                           loading="lazy"
-                          className="object-cover"
+                          className="object-cover transition-transform duration-700 group-hover:scale-105"
                           sizes="(max-width: 768px) 100vw, (max-width: 1400px) 23vw, 322px"
                         />
                       </div>

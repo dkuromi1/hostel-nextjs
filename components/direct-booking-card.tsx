@@ -24,7 +24,7 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
   if (variant === "inline") {
     return (
       <div className={cn(
-        "flex flex-col sm:flex-row items-center justify-between glass-panel rounded-[28px] p-6 gap-6 w-full",
+        "flex flex-col sm:flex-row items-center justify-between glass-panel rounded-xl p-6 gap-6 w-full",
         className
       )}>
         <div className="text-center sm:text-left">
@@ -43,8 +43,8 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
           target="_blank"
           rel="noreferrer"
           className={cn(
-            buttonVariants({ size: "lg" }),
-            "shrink-0 w-full sm:w-auto rounded-full bg-[var(--brand-whatsapp)] px-7 font-semibold text-white transition-all duration-300 hover:bg-[var(--brand-whatsapp-dark)] active:scale-95"
+            buttonVariants({ variant: "whatsapp", size: "lg" }),
+            "shrink-0 w-full sm:w-auto rounded-full px-7 font-semibold transition-all duration-300 hover:scale-[1.02] shadow-whatsapp"
           )}
         >
           {content.directBookingButton}
@@ -55,7 +55,7 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
 
   // "Block" variant for vertical layouts (mobile column)
   return (
-    <div className={cn("glass-panel rounded-[28px] p-5", className)}>
+    <div className={cn("glass-panel rounded-xl p-5", className)}>
       <SectionLabel variant="emerald" className="mb-4">
         {content.directBookingLabel}
       </SectionLabel>
@@ -72,8 +72,8 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
         target="_blank"
         rel="noreferrer"
         className={cn(
-          buttonVariants({ size: "sm" }),
-          "mt-4 w-full rounded-full bg-[var(--brand-whatsapp)] font-semibold text-white transition-all duration-300 hover:bg-[var(--brand-whatsapp-dark)] active:scale-95"
+          buttonVariants({ variant: "whatsapp", size: "sm" }),
+          "mt-4 w-full rounded-full font-semibold transition-all duration-300 hover:scale-[1.02] shadow-whatsapp"
         )}
       >
         {content.directBookingButton}

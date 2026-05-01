@@ -43,7 +43,7 @@ export function TestimonialsVibeSection({ testimonials, extendReasons, copy }: T
                 const Icon = resolveIcon(reason.icon);
                 return (
                   <div key={reason.title} className="min-w-[82vw] snap-center sm:min-w-0 h-full">
-                    <div className="group relative flex h-full flex-col justify-between overflow-hidden border border-[var(--glass-border)] bg-[var(--glass-bg)] p-8 transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md rounded-[28px]">
+                    <div className="group relative flex h-full flex-col justify-between overflow-hidden border border-[var(--glass-border)] bg-[var(--glass-bg)] p-8 transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md rounded-xl">
                       <div>
                         <div className="float-left mb-3 mr-4 flex size-12 items-center justify-center rounded-2xl bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-[var(--brand-primary)]/20">
                           <Icon className="size-5" strokeWidth={1.8} />
