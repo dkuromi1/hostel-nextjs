@@ -7,6 +7,7 @@ type SectionHeadingProps = {
   title: string;
   description: string;
   className?: string;
+  titleClassName?: string;
   variant?: "default" | "simple";
 };
 
@@ -15,6 +16,7 @@ export function SectionHeading({
   title,
   description,
   className,
+  titleClassName,
   variant = "default",
 }: SectionHeadingProps) {
   return (
@@ -25,7 +27,7 @@ export function SectionHeading({
         <SectionLabel>{eyebrow}</SectionLabel>
       )}
       <div className="flex flex-col gap-3">
-        <h2 className="heading-section text-[var(--text-heading)]">
+        <h2 className={cn("heading-section text-[var(--text-heading)]", titleClassName)}>
           {title}
         </h2>
         <p className="max-w-[62ch] text-section-desc">

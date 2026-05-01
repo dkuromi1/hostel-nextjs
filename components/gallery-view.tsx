@@ -65,6 +65,7 @@ export function GalleryView({ galleryItems, bookingAwardImage, galleryCopy, book
                 eyebrow={galleryCopy.vibePanel.eyebrow}
                 title={galleryCopy.vibePanel.title}
                 description={galleryCopy.vibePanel.description}
+                titleClassName="md:text-5xl"
               />
             </Panel>
           </Reveal>
