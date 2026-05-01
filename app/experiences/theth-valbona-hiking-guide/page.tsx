@@ -167,7 +167,7 @@ export default function HikingGuidePage() {
                       href={`https://wa.me/${siteConfig.phoneRaw}?text=${encodeURIComponent(hikingGuide.labels.whatsAppMessage)}`}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex items-center justify-center gap-2 rounded-xl bg-[var(--brand-primary)] px-8 py-4 font-bold text-white shadow-lg transition-transform hover:scale-102"
+                      className="flex items-center justify-center gap-2 rounded-xl bg-[var(--brand-whatsapp)] px-8 py-4 font-bold text-white shadow-lg transition-all duration-300 hover:scale-102 hover:bg-[var(--brand-whatsapp-dark)]"
                     >
                       Book via WhatsApp
                     </a>
