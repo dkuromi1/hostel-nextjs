@@ -94,7 +94,7 @@ export function ThemeVars() {
   if (theme === "forest") {
     finalColors = {
       primary: "#2d6a4f", // Sage-leaning Forest
-      accent: "#cb997e", // Terracotta
+      accent: "#e2b49a", // Lighter Terracotta
       background: "#fdfaf4", // Warm Ivory
       surfaceDark: "#1b4332", // Deep Night Forest
       darkBackground: "#020805", // Darkest Forest
