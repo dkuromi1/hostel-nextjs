@@ -159,6 +159,9 @@ export function ThemeVars() {
         --glass-border: rgba(255, 255, 255, 0.07);
         --atmosphere-glow-primary: rgba(45, 106, 79, 0.14);
         --atmosphere-glow-accent: rgba(203, 153, 126, 0.10);
+        --primary: #52b788;
+        --brand-primary: #52b788;
+        --brand-primary-dark: #74c69d;
       }
     ` : ""}
   `;
