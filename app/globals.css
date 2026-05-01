@@ -287,7 +287,7 @@
 }
 
 @utility media-frame {
-  @apply overflow-hidden rounded-2xl;
+  @apply overflow-hidden rounded-[var(--radius-3xl)];
   border: 1px solid var(--glass-border);
   background-color: var(--glass-bg);
   box-shadow: 0 24px 70px -42px var(--glass-shadow);
@@ -342,13 +342,13 @@
 /** Inner-page hero h1 (Rooms, Experiences, Contact) */
 @utility heading-page {
   @apply font-heading text-4xl leading-none md:text-6xl;
-  letter-spacing: var(--heading-spacing);
+  letter-spacing: var(--heading-page-spacing);
 }
 
 /** Section-level title h2 (SectionHeading, CtaStrip) */
 @utility heading-section {
   @apply font-heading text-4xl leading-none md:text-6xl;
-  letter-spacing: var(--heading-spacing);
+  letter-spacing: var(--heading-section-spacing);
 }
 
 /** Card / panel headline h2 or h3 */

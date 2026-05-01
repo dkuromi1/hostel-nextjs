@@ -55,7 +55,7 @@ export function ThemeVars() {
           lg: "24px",
           xl: "28px",
           "2xl": "30px",
-          "3xl": "32px",
+          "3xl": "30px",
         };
     }
   };
@@ -146,6 +146,8 @@ export function ThemeVars() {
       --font-heading: ${finalHeadingFont}, sans-serif;
       --heading-weight: ${finalCharStyle.weight};
       --heading-spacing: ${finalCharStyle.spacing};
+      --heading-page-spacing: ${theme === "cool" ? "-0.075em" : finalCharStyle.spacing};
+      --heading-section-spacing: ${theme === "cool" ? "-0.06em" : finalCharStyle.spacing};
 
       /* Dark mode contrast overrides */
       --brand-accent: ${theme === "forest" ? finalColors.accent : "var(--accent)"};
