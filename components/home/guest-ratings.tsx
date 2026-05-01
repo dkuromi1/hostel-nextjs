@@ -39,7 +39,7 @@ export function CompactGuestRatingsStrip({
         href={bookingUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center justify-between gap-3 rounded-[22px] border border-white/16 bg-[var(--surface-dark)]/42 px-4 py-3 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-[var(--surface-dark)]/52"
+        className="group flex items-center justify-between gap-3 rounded-lg border border-white/16 bg-black/40 px-4 py-3 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-black/50"
       >
         <div className="flex min-w-0 items-center gap-3">
           <BookingComLogo iconOnly className="size-9" />
@@ -66,7 +66,7 @@ export function CompactGuestRatingsStrip({
         href={hostelworldUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center justify-between gap-3 rounded-[22px] border border-white/16 bg-[var(--surface-dark)]/42 px-4 py-3 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-[var(--surface-dark)]/52"
+        className="group flex items-center justify-between gap-3 rounded-lg border border-white/16 bg-black/40 px-4 py-3 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-black/50"
       >
         <div className="flex min-w-0 items-center gap-3">
           <HostelworldLogo iconOnly className="size-9" />
@@ -104,7 +104,7 @@ export function GuestRatingsSection({
     <section className="pb-8 sm:pb-16">
       <div className="shell-container">
         <Reveal>
-          <div className="glass-panel rounded-[28px] p-4 sm:p-5">
+          <div className="glass-panel rounded-xl p-4 sm:p-5">
             <div className="flex items-center gap-3">
               <span className="faded-line h-px flex-1" />
               <SectionLabel>{copy.label}</SectionLabel>
@@ -115,7 +115,7 @@ export function GuestRatingsSection({
                 href={bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-[var(--glass-border)] bg-[var(--glass-bg)] px-4 py-5 shadow-[0_20px_55px_-40px_var(--glass-shadow)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_var(--glass-shadow)]"
+                className="group relative flex h-full flex-col overflow-hidden rounded-lg border border-[var(--glass-border)] bg-[var(--glass-bg)] px-4 py-5 shadow-[0_20px_55px_-40px_var(--glass-shadow)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_var(--glass-shadow)]"
               >
                 <div className="flex min-h-[3rem] flex-wrap items-center justify-between gap-x-2 gap-y-2">
                   <BookingComLogo className="min-w-0 shrink-0" />

@@ -82,10 +82,10 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
             href="/experiences"
             className={cn(
               "group relative inline-flex items-center justify-center gap-4 overflow-hidden rounded-full px-8 py-4",
-              "bg-gradient-to-br from-[var(--surface-dark)] via-[var(--surface-dark-secondary)] to-[var(--surface-dark)]",
-              "text-sm font-semibold tracking-tight text-[var(--text-on-surface-dark)]",
-              "shadow-lg shadow-[var(--surface-dark)]/30 ring-1 ring-white/10",
-              "transition-all duration-300 hover:shadow-xl hover:shadow-[var(--surface-dark)]/40 hover:-translate-y-0.5",
+              "bg-gradient-to-br from-black via-zinc-900 to-black",
+              "text-sm font-semibold tracking-tight text-white",
+              "shadow-lg shadow-black/50 ring-1 ring-white/10",
+              "transition-all duration-300 hover:shadow-xl hover:shadow-black/60 hover:-translate-y-0.5",
               "active:scale-95 active:translate-y-0"
             )}
           >
@@ -127,7 +127,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                             <ThethWeather variant="small" />
                           </div>
                         )}
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/90 via-[var(--surface-dark)]/40 to-transparent p-6 pt-24 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 pt-24 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
                           <SectionLabel colorScheme="light" className="mb-2">
                             {pillar.title}
                           </SectionLabel>
@@ -162,7 +162,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                       <ThethWeather variant="small" />
                     </div>
                   ) : null}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/95 via-[var(--surface-dark)]/50 to-transparent p-6 pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent p-6 pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
                     <SectionLabel colorScheme="light" className="drop-shadow-md">
                       {experiencePillars[0].title}
                     </SectionLabel>
@@ -191,7 +191,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                             className="object-cover"
                             sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 42vw, 588px"
                           />
-                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--surface-dark)]/95 via-[var(--surface-dark)]/50 to-transparent p-6 pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent p-6 pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
                             <SectionLabel colorScheme="light" className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                               {pillar.title}
                             </SectionLabel>

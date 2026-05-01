@@ -76,7 +76,7 @@ export function ImageCarousel({
 
     return (
         <div
-            className={cn("group relative w-full overflow-hidden rounded-[24px]", className)}
+            className={cn("group relative w-full overflow-hidden rounded-lg", className)}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >

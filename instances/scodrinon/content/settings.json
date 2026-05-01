@@ -91,7 +91,37 @@
     "favicon": "/favicon.ico",
     "appleTouchIcon": "/logo.png",
     "manifestThemeColor": "#020617",
-    "manifestBackgroundColor": "#f6f7f2"
+    "manifestBackgroundColor": "#f6f7f2",
+    "design": {
+      "theme": "forest",
+      "colors": {
+        "primary": "#059669",
+        "accent": "#7dd3fc",
+        "background": "#f8fafc",
+        "surfaceDark": "#020617",
+        "darkBackground": "#020617"
+      },
+      "atmosphere": {
+        "showGlows": true,
+        "showNoise": true,
+        "pattern": "grid",
+        "glowIntensity": 0.8
+      },
+      "surfaces": {
+        "glassBlur": 12,
+        "glassOpacity": 0.84,
+        "borderRadius": "3xl"
+      },
+      "mascot": {
+        "enabled": true,
+        "type": "cat",
+        "message": "Hi, I'm Tito the hostel's friendly adopted cat! 🐾"
+      },
+      "typography": {
+        "headingFont": "nunito",
+        "character": "playful"
+      }
+    }
   },
   "features": {
     "volunteersNeeded": true,

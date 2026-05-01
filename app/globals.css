@@ -27,12 +27,12 @@
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
   --font-mono: var(--font-mono);
-  --radius-sm: calc(var(--radius) * 0.7);
-  --radius-md: calc(var(--radius) * 0.85);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.3);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.4);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-3xl: var(--radius-3xl);
 }
 
 
@@ -252,6 +252,8 @@
   h3,
   h4 {
     @apply font-heading;
+    font-weight: var(--heading-weight, 700);
+    letter-spacing: var(--heading-spacing, -0.05em);
   }
 
   ::selection {
@@ -285,7 +287,7 @@
 }
 
 @utility media-frame {
-  @apply overflow-hidden rounded-[30px];
+  @apply overflow-hidden rounded-2xl;
   border: 1px solid var(--glass-border);
   background-color: var(--glass-bg);
   box-shadow: 0 24px 70px -42px var(--glass-shadow);
@@ -333,17 +335,20 @@
 
 /** Full-screen immersive hero h1 (homepage) */
 @utility heading-hero {
-  @apply font-heading text-4xl sm:text-6xl lg:text-7xl tracking-[-0.05em] leading-[0.95];
+  @apply font-heading text-4xl sm:text-6xl lg:text-7xl leading-[0.95];
+  letter-spacing: var(--heading-spacing);
 }
 
 /** Inner-page hero h1 (Rooms, Experiences, Contact) */
 @utility heading-page {
-  @apply font-heading text-4xl leading-none tracking-[-0.075em] md:text-6xl;
+  @apply font-heading text-4xl leading-none md:text-6xl;
+  letter-spacing: var(--heading-spacing);
 }
 
 /** Section-level title h2 (SectionHeading, CtaStrip) */
 @utility heading-section {
-  @apply font-heading text-4xl leading-none tracking-[-0.06em] md:text-6xl;
+  @apply font-heading text-4xl leading-none md:text-6xl;
+  letter-spacing: var(--heading-spacing);
 }
 
 /** Card / panel headline h2 or h3 */

@@ -9,6 +9,7 @@ import { SiteHeader } from "@/components/site-header";
 import { StickyBookingBar } from "@/components/sticky-booking-bar";
 import { SwUpdatePrompt } from "@/components/sw-update-prompt";
 import { TitoTheCat } from "@/components/tito-the-cat";
+import { ThemeVars } from "@/components/theme-vars";
 import { StructuredData } from "@/components/structured-data";
 import { activeInstance } from "@/instances";
 import { buildBusinessSchema, getSiteUrl, metadataBase } from "@/lib/metadata";
@@ -21,7 +22,7 @@ import {
   siteCopyContent
 } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
-import { Nunito } from "next/font/google";
+import { Nunito, Inter, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
@@ -29,6 +30,20 @@ const nunito = Nunito({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-nunito",
+  preload: false,
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+  preload: false,
+});
+
+const serif = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-serif",
   preload: false,
 });
 
@@ -156,27 +171,30 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("h-full scroll-smooth", nunito.variable)}
+      className={cn("h-full scroll-smooth", nunito.variable, inter.variable, serif.variable)}
       data-scroll-behavior="smooth"
     >
       <head>
-        <Script id="theme-bootstrap" strategy="beforeInteractive">
-          {themeBootstrapScript}
-        </Script>
-        <Script id="performance-bootstrap" strategy="beforeInteractive">
-          {performanceBootstrapScript}
-        </Script>
+        <script
+          id="theme-bootstrap"
+          dangerouslySetInnerHTML={{ __html: themeBootstrapScript }}
+        />
+        <script
+          id="performance-bootstrap"
+          dangerouslySetInnerHTML={{ __html: performanceBootstrapScript }}
+        />
+        <ThemeVars />
         {externalPreconnectOrigins.map((origin) => (
           <link key={`preconnect-${origin}`} rel="preconnect" href={origin} />
         ))}
         {externalPreconnectOrigins.map((origin) => (
           <link key={`dns-prefetch-${origin}`} rel="dns-prefetch" href={origin} />
         ))}
+        <StructuredData data={buildBusinessSchema()} />
       </head>
       <body className="min-h-full bg-background font-sans text-foreground antialiased">
         {analyticsWebsiteId ? (
           <Script
-            defer
             src={activeInstance.integrations.analytics.scriptSrc}
             data-website-id={analyticsWebsiteId}
             data-domains={siteDomain}
@@ -194,7 +212,6 @@ export default function RootLayout({
             whatsappUrl={propertyConfig.whatsappUrl}
             phoneRaw={propertyConfig.phoneRaw}
           />
-          <StructuredData data={buildBusinessSchema()} />
           <AtmosphereBackground />
           <main className="flex-1">{children}</main>
           {modal}
@@ -209,7 +226,13 @@ export default function RootLayout({
           <DeferredClient>
             <SerwistRoot>
               <SwUpdatePrompt />
-              {propertyConfig.features.showMascot ? <TitoTheCat isEnabled={propertyConfig.features.showMascot} /> : null}
+              {propertyConfig.branding.design?.mascot.enabled ? (
+                <TitoTheCat 
+                  isEnabled={propertyConfig.branding.design.mascot.enabled} 
+                  message={propertyConfig.branding.design.mascot.message}
+                  type={propertyConfig.branding.design.mascot.type}
+                />
+              ) : null}
             </SerwistRoot>
           </DeferredClient>
         </div>

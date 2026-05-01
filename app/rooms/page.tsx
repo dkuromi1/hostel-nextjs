@@ -84,7 +84,7 @@ export default function RoomsPage() {
               sizes="(max-width: 768px) 100vw, 25vw"
             />
           </div>
-          <div className="glass-panel rounded-[28px] p-5">
+          <div className="glass-panel rounded-3xl p-5">
             <SectionLabel variant="emerald" className="mb-4">
               {siteCopyContent.rooms.heroPriceBlurb.labelPrefix}{" "}
               <strong>{primaryPricedRoom?.price ? `${primaryPricedRoom.price} / Night` : siteCopyContent.rooms.heroPriceBlurb.contactForRatesLabel}</strong>
@@ -119,8 +119,6 @@ export default function RoomsPage() {
                         autoPlayInterval={0}
                       />
 
-                      {/* Gradient overlay - pointer-events-none is crucial here so arrows are clickable! */}
-                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--surface-dark)]/70 via-transparent to-transparent" />
 
                       {/* Price Badge - pointer-events-none to prevent blocking dots/arrows */}
                       <div className="pointer-events-none absolute left-0 top-0 z-10 p-5 sm:inset-x-0 sm:bottom-0 sm:top-auto sm:px-6 sm:py-4">

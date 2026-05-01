@@ -35,10 +35,10 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
             href="/rooms"
             className={cn(
               "group relative inline-flex items-center justify-center gap-4 overflow-hidden rounded-full px-8 py-4",
-              "bg-gradient-to-br from-[var(--surface-dark)] via-[var(--surface-dark-secondary)] to-[var(--surface-dark)]",
-              "text-sm font-semibold tracking-tight text-[var(--text-on-surface-dark)]",
-              "shadow-lg shadow-[var(--surface-dark)]/30 ring-1 ring-white/10",
-              "transition-all duration-300 hover:shadow-xl hover:shadow-[var(--surface-dark)]/40 hover:-translate-y-0.5",
+              "bg-gradient-to-br from-black via-zinc-900 to-black",
+              "text-sm font-semibold tracking-tight text-white",
+              "shadow-lg shadow-black/50 ring-1 ring-white/10",
+              "transition-all duration-300 hover:shadow-xl hover:shadow-black/60 hover:-translate-y-0.5",
               "active:scale-95 active:translate-y-0"
             )}
           >

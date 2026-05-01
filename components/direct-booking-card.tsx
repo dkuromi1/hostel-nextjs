@@ -24,7 +24,7 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
   if (variant === "inline") {
     return (
       <div className={cn(
-        "flex flex-col sm:flex-row items-center justify-between glass-panel rounded-[28px] p-6 gap-6 w-full",
+        "flex flex-col sm:flex-row items-center justify-between glass-panel rounded-xl p-6 gap-6 w-full",
         className
       )}>
         <div className="text-center sm:text-left">
@@ -55,7 +55,7 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
 
   // "Block" variant for vertical layouts (mobile column)
   return (
-    <div className={cn("glass-panel rounded-[28px] p-5", className)}>
+    <div className={cn("glass-panel rounded-xl p-5", className)}>
       <SectionLabel variant="emerald" className="mb-4">
         {content.directBookingLabel}
       </SectionLabel>

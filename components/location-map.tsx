@@ -265,7 +265,7 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                         initialCenter = matchedPoi.coords as [number, number];
                         initialZoom = 16.5;
                     } else {
-                        const matchedView = namedViews.find(v => 
+                        const matchedView = namedViews.find((v: any) => 
                             (v.query && q === v.query) || 
                             (v.keywords && v.keywords.every((k: string) => q.includes(k)))
                         );
@@ -436,7 +436,7 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
             targetCenter = matchedPoi.coords as [number, number]; targetZoom = 16.5;
             document.querySelector(`[data-poi-label="${matchedPoi.name.toLowerCase()}"]`)?.classList.add('poi-highlight');
         } else {
-            const matchedView = namedViews.find(v => 
+            const matchedView = namedViews.find((v: any) => 
                 (v.query && q === v.query) || 
                 (v.keywords && v.keywords.every((k: string) => q.includes(k)))
             );
@@ -511,7 +511,7 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                         let zoom = 15.0;
                         
                         if (isRegional) {
-                            const regionalView = namedViews.find(v => v.variant === "regional");
+                            const regionalView = namedViews.find((v: any) => v.variant === "regional");
                             if (regionalView) {
                                 center = regionalView.center as [number, number];
                                 zoom = regionalView.zoom || 10.0;

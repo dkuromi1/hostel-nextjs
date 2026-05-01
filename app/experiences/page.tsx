@@ -110,7 +110,7 @@ export default function ExperiencesPage() {
 
               {/* Left Column: Tall Featured Image */}
               <Reveal className="row-span-2 h-full" delay={100}>
-                <div className="media-frame relative h-full min-h-[20rem] md:min-h-[36rem] overflow-hidden rounded-[2rem] shadow-xl shadow-[var(--glass-shadow)]/10">
+                <div className="media-frame relative h-full min-h-[20rem] md:min-h-[36rem] overflow-hidden rounded-3xl shadow-xl shadow-[var(--glass-shadow)]/10">
                   <Image
                     src="/images/hiking_3.jpg"
                     alt={siteCopyContent.experiences.metadata.title}
@@ -125,7 +125,7 @@ export default function ExperiencesPage() {
 
               {/* Right Column: Top Square Image */}
               <Reveal delay={200}>
-                <div className="media-frame relative min-h-[10rem] md:min-h-[17.5rem] overflow-hidden rounded-[2rem] shadow-md">
+                <div className="media-frame relative min-h-[10rem] md:min-h-[17.5rem] overflow-hidden rounded-3xl shadow-md">
                   <Image
                     src="/images/hiking_4.webp"
                     alt={siteCopyContent.experiences.metadata.title}
@@ -138,7 +138,7 @@ export default function ExperiencesPage() {
 
               {/* Right Column: Bottom Square Image */}
               <Reveal delay={300}>
-                <div className="media-frame relative min-h-[10rem] md:min-h-[17.5rem] overflow-hidden rounded-[2rem] shadow-md">
+                <div className="media-frame relative min-h-[10rem] md:min-h-[17.5rem] overflow-hidden rounded-3xl shadow-md">
                   <Image
                     src="/images/hiking_1.jpg"
                     alt={siteCopyContent.experiences.metadata.title}
@@ -168,7 +168,7 @@ export default function ExperiencesPage() {
           {siteConfig.features.showLocalExperienceMap ? (
             <Reveal className="pt-4 sm:pt-8">
               <div className="mx-auto max-w-[1400px] px-2 sm:px-0">
-                <div id="map" className="media-frame relative h-[500px] w-full overflow-hidden rounded-[2rem] shadow-xl shadow-[var(--glass-shadow)]/10 ring-1 ring-[var(--glass-border)]">
+                <div id="map" className="media-frame relative h-[500px] w-full overflow-hidden rounded-3xl shadow-xl shadow-[var(--glass-shadow)]/10 ring-1 ring-[var(--glass-border)]">
                   <LocationMap />
                 </div>
               </div>

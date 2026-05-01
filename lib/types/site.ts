@@ -130,6 +130,37 @@ export interface GalleryItem {
   [key: string]: unknown;
 }
 
+export interface DesignConfig {
+  theme: "cool" | "warm" | "forest" | "custom";
+  colors: {
+    primary: string;
+    accent: string;
+    background: string;
+    surfaceDark: string;
+    darkBackground: string;
+  };
+  atmosphere: {
+    showGlows: boolean;
+    showNoise: boolean;
+    pattern: "grid" | "dots" | "none";
+    glowIntensity: number;
+  };
+  surfaces: {
+    glassBlur: number;
+    glassOpacity: number;
+    borderRadius: "none" | "sm" | "md" | "lg" | "xl" | "3xl";
+  };
+  mascot: {
+    enabled: boolean;
+    type: "cat" | "dog" | "none";
+    message?: string;
+  };
+  typography: {
+    headingFont: "nunito" | "inter" | "serif";
+    character: "playful" | "clean" | "elegant";
+  };
+}
+
 export interface HikingGuideContent {
   metadata: {
     title: string;
@@ -253,6 +284,7 @@ export interface SettingsContent {
     appleTouchIcon: string;
     manifestThemeColor: string;
     manifestBackgroundColor: string;
+    design?: DesignConfig;
   };
   features: {
     volunteersNeeded: boolean;

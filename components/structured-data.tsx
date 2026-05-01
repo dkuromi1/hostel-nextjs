@@ -1,3 +1,5 @@
+
+
 type StructuredDataProps = {
   data: Record<string, unknown> | Array<Record<string, unknown>>;
 };
@@ -10,6 +12,7 @@ export function StructuredData({ data }: StructuredDataProps) {
       {items.map((item, index) => (
         <script
           key={index}
+          id={`structured-data-${index}`}
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }}
         />

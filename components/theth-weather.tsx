@@ -40,7 +40,7 @@ export async function ThethWeather({ variant = "default" }: { variant?: "default
 
   if (variant === "small") {
     return (
-      <div className="group flex w-fit items-center gap-3 rounded-[22px] border border-white/16 bg-[var(--surface-dark)]/42 pl-2.5 pr-4 py-2 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-[var(--surface-dark)]/52">
+      <div className="group flex w-fit items-center gap-3 rounded-lg border border-white/16 bg-[var(--surface-dark)]/42 pl-2.5 pr-4 py-2 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-[var(--surface-dark)]/52">
         <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-white/10">
           <Icon className={`size-4.5 ${details.colorClass}`} strokeWidth={2} />
         </div>
