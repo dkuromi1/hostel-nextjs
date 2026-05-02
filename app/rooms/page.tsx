@@ -84,14 +84,19 @@ export default function RoomsPage() {
               sizes="(max-width: 768px) 100vw, 25vw"
             />
           </div>
-          <div className="glass-panel rounded-3xl p-5">
+          <div className="glass-panel rounded-3xl p-6 sm:p-7">
             <SectionLabel variant="emerald" className="mb-4">
               {siteCopyContent.rooms.heroPriceBlurb.labelPrefix}{" "}
               <strong>{primaryPricedRoom?.price ? `${primaryPricedRoom.price} / Night` : siteCopyContent.rooms.heroPriceBlurb.contactForRatesLabel}</strong>
             </SectionLabel>
-            <p className="mt-3 font-heading text-2xl leading-tight text-[var(--text-heading)]">
-              {siteCopyContent.rooms.heroPriceBlurb.title}
-            </p>
+            <div className="space-y-3">
+              <h2 className="heading-card text-[var(--text-heading)]">
+                {siteCopyContent.rooms.heroPriceBlurb.title}
+              </h2>
+              <p className="text-[14px] leading-snug text-[var(--text-body-subtle)]">
+                {siteCopyContent.rooms.heroPriceBlurb.description}
+              </p>
+            </div>
           </div>
         </div>
       </PageHero>

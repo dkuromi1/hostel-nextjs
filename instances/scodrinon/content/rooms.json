@@ -1,9 +1,9 @@
 {
   "roomHeroHighlights": [
-    { "text": "Curtained privacy pods in the mixed dorm", "icon": "Blinds" },
-    { "text": "Four-bed dorms with male and female options", "icon": "Bed" },
-    { "text": "A/C and heat, secure lockers, power sockets, and WiFi", "icon": "Snowflake" },
-    { "text": "All rooms include breakfast every morning (excl. off-season)", "icon": "Coffee" }
+    { "title": "Privacy Pods", "text": "Curtained privacy pods in the mixed dorm", "icon": "Blinds" },
+    { "title": "4-Bed Dorms", "text": "Options for male and female groups", "icon": "Bed" },
+    { "title": "Modern Essentials", "text": "A/C, secure lockers, power, and WiFi", "icon": "Snowflake" },
+    { "title": "Free Breakfast", "text": "Included every morning (excl. off-season)", "icon": "Coffee" }
   ],
   "moduleType": "hospitality",
   "offerings": [

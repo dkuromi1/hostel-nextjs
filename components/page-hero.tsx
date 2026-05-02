@@ -3,10 +3,12 @@ import type { ReactNode } from "react";
 import { BookingActions } from "@/components/booking-actions";
 import { Reveal } from "@/components/reveal";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { cn } from "@/lib/utils";
 import { resolveIcon, type IconName } from "@/lib/icon-registry";
 import type { BusinessChannel } from "@/lib/site-data";
 
 type HighlightItem = {
+  title?: string;
   text: string;
   icon?: IconName;
 };
@@ -47,17 +49,33 @@ export function PageHero({
           </div>
           {!hideActions && <BookingActions bookingChannels={bookingChannels} contactChannels={contactChannels} />}
           {highlights ? (
-            <ul className="grid gap-[var(--layout-grid-gutter)] sm:grid-cols-2">
+            <ul className="grid w-full gap-4 sm:grid-cols-2">
               {highlights.map((item) => {
                 const text = typeof item === "string" ? item : item.text;
+                const title = typeof item === "object" ? item.title : undefined;
                 const Icon = typeof item === "object" && item.icon ? resolveIcon(item.icon) : resolveIcon("Check");
+                
                 return (
                   <li
                     key={text}
-                    className="flex items-center gap-3 rounded-2xl border border-primary/20 bg-card/70 px-4 py-3 text-sm text-foreground shadow-[0_16px_40px_-28px_var(--shadow-interactive-soft)] dark:shadow-none transition-colors hover:border-primary/30 hover:bg-primary/5"
+                    className="group flex items-start gap-4 rounded-2xl border border-[var(--border)] bg-[var(--card)]/50 p-4 transition-all duration-300 hover:border-[var(--brand-primary)]/30 hover:bg-[var(--glass-bg)] hover:shadow-md dark:hover:shadow-primary/5"
                   >
-                    <Icon className="size-4 shrink-0 text-[var(--brand-primary)]" />
-                    <span>{text}</span>
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--glass-bg)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-300 group-hover:bg-[var(--brand-primary-light)] group-hover:text-[var(--brand-primary)] group-hover:ring-[var(--brand-primary)]/20">
+                      <Icon className="size-5" strokeWidth={1.5} />
+                    </div>
+                    <div className="flex flex-col gap-0.5 py-0.5">
+                      {title && (
+                        <span className="text-[13px] font-bold leading-none tracking-tight text-[var(--text-heading)]">
+                          {title}
+                        </span>
+                      )}
+                      <span className={cn(
+                        "text-[13px] leading-snug text-[var(--text-body-subtle)]",
+                        !title && "text-[14px] font-medium text-[var(--text-body)]"
+                      )}>
+                        {text}
+                      </span>
+                    </div>
                   </li>
                 );
               })}

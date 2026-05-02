@@ -179,7 +179,8 @@
     "pageTitle": "Rooms",
     "heroPriceBlurb": {
       "labelPrefix": "Beds From",
-      "title": "Hotel privacy at a hostel price. It's why so many guests book two nights and end up extending.",
+      "title": "Hotel privacy at a hostel price.",
+      "description": "It's why so many guests book two nights and end up extending.",
       "contactForRatesLabel": "Contact us for rates"
     },
     "testimonialsImages": {
