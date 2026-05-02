@@ -588,7 +588,7 @@ export function LocationMap({ defaultPoi, variant = "local" }: { defaultPoi?: st
         </Panel>
     );
 
-    const shouldRenderMap = shouldLoad || Boolean(poiQuery) || Boolean(defaultPoi);
+    const shouldRenderMap = shouldLoad || Boolean(poiQuery) || (Boolean(defaultPoi) && !forceManualLoad);
 
     return (
         <div ref={containerRef} className="relative h-full w-full">
