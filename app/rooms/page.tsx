@@ -93,7 +93,7 @@ export default function RoomsPage() {
               <h2 className="heading-card text-[var(--text-heading)]">
                 {siteCopyContent.rooms.heroPriceBlurb.title}
               </h2>
-              <p className="text-[14px] leading-snug text-[var(--text-body-subtle)]">
+              <p className="text-card-body">
                 {siteCopyContent.rooms.heroPriceBlurb.description}
               </p>
             </div>
@@ -170,7 +170,7 @@ export default function RoomsPage() {
                             {room.bullets.map((bullet) => (
                               <li
                                 key={bullet}
-                                className="flex items-start gap-2 text-[13px] leading-tight text-[var(--text-body-subtle)]"
+                                className="flex items-start gap-2 text-card-body text-[var(--text-body-subtle)]"
                               >
                                 <Check
                                   className="mt-0.5 size-3.5 shrink-0 text-[var(--brand-primary)]"
@@ -216,7 +216,7 @@ export default function RoomsPage() {
                         <h4 className="text-sm font-bold tracking-tight text-[var(--text-heading)]">
                           {service.title}
                         </h4>
-                        <p className="text-[13px] leading-snug text-[var(--text-body-subtle)]">
+                        <p className="text-card-body">
                           {service.description}
                         </p>
                       </div>
@@ -248,7 +248,7 @@ export default function RoomsPage() {
                         <h4 className="text-sm font-bold tracking-tight text-[var(--text-heading)]">
                           {service.title}
                         </h4>
-                        <p className="text-[13px] leading-snug text-[var(--text-body-subtle)]">
+                        <p className="text-card-body">
                           {service.description}
                         </p>
                       </div>

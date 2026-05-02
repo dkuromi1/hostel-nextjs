@@ -90,8 +90,8 @@ export default function HikingGuidePage() {
                 </div>
                 <div>
                   <SectionLabel variant="rose" className="mb-2">Seasonal Safety Warning</SectionLabel>
-                  <h3 className="text-xl font-bold text-rose-950 dark:text-rose-100">Dangerous Conditions Outside Summer</h3>
-                  <div className="mt-3 space-y-3 text-base leading-relaxed text-rose-900/90 dark:text-rose-300/90">
+                  <h3 className="heading-item font-bold text-rose-950 dark:text-rose-100">Dangerous Conditions Outside Summer</h3>
+                  <div className="mt-3 space-y-3 text-body-lg leading-relaxed text-rose-900/90 dark:text-rose-300/90">
                     <p>
                       Between <strong>October and June</strong>, the Valbona Pass (1,800m) is frequently covered in deep snow and ice. Outside the peak summer window, the standard trail markings often become invisible and the terrain becomes extremely hazardous.
                     </p>
@@ -134,7 +134,7 @@ export default function HikingGuidePage() {
             <Reveal className="mb-12">
               <SectionLabel variant="emerald" className="mb-6">ROUTE PLAN</SectionLabel>
               <h2 className="heading-section text-[var(--text-heading)]">{hikingGuide.itinerary.title}</h2>
-              <p className="mt-4 max-w-2xl text-lg text-[var(--text-body-subtle)]">
+              <p className="mt-4 max-w-2xl text-section-desc text-[var(--text-body-subtle)]">
                 {hikingGuide.itinerary.description}
               </p>
             </Reveal>
@@ -170,7 +170,7 @@ export default function HikingGuidePage() {
             <Reveal className="mb-12">
               <SectionLabel variant="sky" className="mb-6">GEAR</SectionLabel>
               <h2 className="heading-section text-[var(--text-heading)]">{hikingGuide.packingList.title}</h2>
-              <p className="mt-4 max-w-2xl text-lg text-[var(--text-body-subtle)]">
+              <p className="mt-4 max-w-2xl text-section-desc text-[var(--text-body-subtle)]">
                 {hikingGuide.packingList.description}
               </p>
             </Reveal>
@@ -190,7 +190,7 @@ export default function HikingGuidePage() {
                   <h2 className="heading-section text-white">
                     {hikingGuide.luggage.title}
                   </h2>
-                  <p className="text-lg leading-relaxed text-white/80">
+                  <p className="text-section-desc leading-relaxed text-white/80">
                     {hikingGuide.luggage.description}
                   </p>
                   <div className="flex flex-col gap-4 sm:flex-row mt-2">
