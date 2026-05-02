@@ -49,21 +49,68 @@ export default function ContactPage() {
       <PageHero
         eyebrow={siteCopyContent.contact.hero.eyebrow}
         title={siteCopyContent.contact.hero.title}
-        description={siteCopyContent.contact.hero.description}
+        description="We prefer WhatsApp because it's the fastest way to answer your questions and secure your bed. Send your dates, room preference, and arrival time. You can also ask about hikes, bikes, lake plans, or the easiest way to move on from Shkoder after your stay."
         bookingChannels={bookingChannels}
         contactChannels={contactChannels}
       >
         <div className="grid gap-[var(--layout-grid-gutter)]">
-          <Panel className="p-6 sm:p-7">
-            <SectionLabel variant="emerald" className="mb-4">{siteCopyContent.contact.bestBookingRoute.label}</SectionLabel>
-            <h2 className="mt-4 heading-card text-[var(--text-heading)]">
-              {siteCopyContent.contact.bestBookingRoute.title}
-            </h2>
-            <p className="mt-4 max-w-[44ch] text-section-desc text-[var(--text-body-subtle)]">
-              {siteCopyContent.contact.bestBookingRoute.description}
-            </p>
-            <div className="mt-6">
-              <BookingActions className="max-w-4xl" whatsappOnly={true} bookingChannels={bookingChannels} contactChannels={contactChannels} />
+          <Panel className="p-6 sm:p-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+              {/* Item 1: Phone */}
+              <div className="flex flex-col">
+                <div className="flex items-center gap-2.5 mb-4">
+                  <MessageCircleMore className="size-4 text-[var(--brand-primary)]" strokeWidth={2.5} />
+                  <SectionLabel variant="emerald">Direct Contact</SectionLabel>
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-lg font-bold text-[var(--text-heading)]">
+                    {siteConfig.phoneDisplay}
+                  </p>
+                  <a 
+                    href={`tel:${siteConfig.phoneRaw}`}
+                    className="mt-1 text-xs font-bold uppercase tracking-widest text-[var(--brand-primary)] hover:underline"
+                  >
+                    Call Now →
+                  </a>
+                </div>
+              </div>
+
+              {/* Item 2: Hours */}
+              <div className="flex flex-col">
+                <div className="flex items-center gap-2.5 mb-4">
+                  <Clock className="size-4 text-amber-600 dark:text-amber-400" strokeWidth={2.5} />
+                  <SectionLabel variant="sun">Reception & Check-in</SectionLabel>
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-base font-semibold text-[var(--text-heading)]">
+                    Reception: 24-hour access
+                  </p>
+                  <p className="text-sm text-[var(--text-body-subtle)]">
+                    Check-in: {siteConfig.checkInHours}
+                  </p>
+                </div>
+              </div>
+
+              {/* Item 3: Location (Spans bottom row) */}
+              <div className="md:col-span-2 flex flex-col">
+                <div className="flex items-center gap-2.5 mb-4">
+                  <MapPinned className="size-4 text-sky-600 dark:text-sky-400" strokeWidth={2.5} />
+                  <SectionLabel variant="sky">Our Location</SectionLabel>
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-base font-semibold leading-snug text-[var(--text-heading)]">
+                    {siteConfig.location}
+                  </p>
+                  <a 
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.name + " " + siteConfig.location)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-1 text-xs font-bold uppercase tracking-widest text-sky-600 dark:text-sky-400 hover:underline"
+                  >
+                    Open in Maps →
+                  </a>
+                </div>
+              </div>
             </div>
           </Panel>
           <div className="grid gap-[var(--layout-grid-gutter)] md:grid-cols-2">
@@ -92,43 +139,6 @@ export default function ContactPage() {
       <section className="py-[var(--layout-section-spacing)]">
         <div className="shell-container sm:px-6 lg:px-8 grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.2fr_0.8fr]">
           <div className="flex flex-col gap-6 h-full">
-            <Reveal>
-              <Panel className="p-6 sm:p-8">
-                <SectionLabel variant="sun" className="mb-4">{siteCopyContent.contact.contactDetails.label}</SectionLabel>
-                <div className="mt-6 space-y-4 text-base leading-snug text-[var(--text-body-subtle)]">
-                  <p className="flex items-start gap-3">
-                    <MessageCircleMore
-                      className="mt-1 size-5 shrink-0 text-[var(--brand-primary)]"
-                      strokeWidth={1.8}
-                    />
-                    <span>{siteConfig.phoneDisplay}</span>
-                  </p>
-                  <p className="flex items-start gap-3">
-                    <MapPinned
-                      className="mt-1 size-5 shrink-0 text-[var(--brand-primary)]"
-                      strokeWidth={1.8}
-                    />
-                    <a
-                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                        siteConfig.name + " " + siteConfig.location
-                      )}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="underline decoration-[var(--border)] underline-offset-4 hover:text-[var(--brand-primary)] transition-colors"
-                    >
-                      {siteConfig.location}
-                    </a>
-                  </p>
-                  <p className="flex items-start gap-3">
-                    <Clock
-                      className="mt-1 size-5 shrink-0 text-[var(--brand-primary)]"
-                      strokeWidth={1.8}
-                    />
-                    <span>{siteCopyContent.contact.contactDetails.reception.replace("{checkInHours}", siteConfig.checkInHours)}</span>
-                  </p>
-                </div>
-              </Panel>
-            </Reveal>
 
             {siteConfig.features.showLocalExperienceMap ? (
               <Reveal className="flex-1 px-2 sm:px-0" delay={50}>
