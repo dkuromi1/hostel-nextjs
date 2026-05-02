@@ -66,12 +66,12 @@ function FaqItem({ question, answer }: FaqItemProps) {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{
-              height: { type: "spring", damping: 20, stiffness: 180 },
+              height: { duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] },
               opacity: { duration: 0.25 },
             }}
             className="overflow-hidden"
           >
-            <div className="mt-3 pr-6 text-sm leading-snug text-[var(--text-body-subtle)]">
+            <div className="pt-2 pb-1 pr-6 text-sm leading-snug text-[var(--text-body-subtle)]">
               {answer}
             </div>
           </motion.div>
