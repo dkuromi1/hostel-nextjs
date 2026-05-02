@@ -96,6 +96,18 @@ export function TestimonialCarousel({
             initial="enter"
             animate="center"
             exit="exit"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            onDragEnd={(_, info) => {
+              const swipeThreshold = 50;
+              if (info.offset.x < -swipeThreshold) {
+                next();
+              } else if (info.offset.x > swipeThreshold) {
+                prev();
+              }
+            }}
+            className="cursor-grab active:cursor-grabbing"
           >
             <div className="flex gap-1 text-[var(--accent)]">
               {[...Array(testimonial.rating)].map((_, i) => (
