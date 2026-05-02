@@ -81,7 +81,7 @@ export function SiteFooter({ contactChannels, bookingChannels, navLinks, siteCon
             ))}
           </div>
         </div>
-        <div className="grid gap-8 sm:grid-cols-[20%_auto_1fr] xl:gap-10 xl:max-w-[750px] shrink min-w-0">
+        <div className="grid gap-[var(--layout-grid-gutter)] sm:grid-cols-[20%_auto_1fr] xl:gap-10 xl:max-w-[750px] shrink min-w-0">
           {/* Explore */}
           <div className="min-w-0">
             <SectionLabel className="mb-4">

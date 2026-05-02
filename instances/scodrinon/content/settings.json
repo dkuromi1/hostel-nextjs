@@ -120,6 +120,11 @@
       "typography": {
         "headingFont": "serif",
         "character": "elegant"
+      },
+      "layout": {
+        "width": "standard",
+        "spacing": "standard",
+        "gutter": "standard"
       }
     }
   },

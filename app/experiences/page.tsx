@@ -55,7 +55,7 @@ export default function ExperiencesPage() {
       />
 
       {/* The Northbound Launchpad */}
-      <section className="py-8 sm:py-16">
+      <section className="py-[var(--layout-section-spacing)]">
         <div className="shell-container grid gap-12 lg:grid-cols-12 lg:items-center">
 
           {/* Left Side: Editorial Context & Logistics */}
@@ -107,7 +107,7 @@ export default function ExperiencesPage() {
                 <ThethWeather />
               </div>
             ) : null}
-            <div className="grid grid-cols-2 gap-4 h-full">
+            <div className="grid grid-cols-2 gap-[var(--layout-grid-gutter)] h-full">
 
               {/* Left Column: Tall Featured Image */}
               <Reveal className="row-span-2 h-full" delay={100}>
@@ -156,7 +156,7 @@ export default function ExperiencesPage() {
       </section>
 
       {/* Things To Do Section */}
-      <section id="things-to-do" className="py-8 sm:py-16">
+      <section id="things-to-do" className="py-[var(--layout-section-spacing)]">
         <div className="shell-container space-y-12">
           <Reveal className="max-w-3xl">
             <SectionHeading
@@ -177,7 +177,7 @@ export default function ExperiencesPage() {
           ) : null}
 
           <Reveal delay={100}>
-            <SwipableRow itemCount={thingsToDo.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <SwipableRow itemCount={thingsToDo.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-[var(--layout-grid-gutter)]">
               {thingsToDo.map((item) => (
                 <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full">
                   <Panel className="group relative flex h-full flex-col overflow-hidden border border-[var(--glass-border)] bg-[var(--glass-bg)] transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
@@ -274,7 +274,7 @@ export default function ExperiencesPage() {
       </section>
 
       {/* Local Texture Section */}
-      <section id="social-connection" className="py-8 sm:py-16">
+      <section id="social-connection" className="py-[var(--layout-section-spacing)]">
         <div className="shell-container space-y-12">
 
           {/* Section Header */}
@@ -289,7 +289,7 @@ export default function ExperiencesPage() {
           <Reveal delay={100}>
             <SwipableRow
               itemCount={3}
-              className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+              className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-[var(--layout-grid-gutter)]"
             >
               {socialConnectionFeatures.map((item) => {
                 const Icon = resolveIcon(item.icon);
@@ -335,7 +335,7 @@ export default function ExperiencesPage() {
         </div>
       </section>
 
-      <section className="py-8 sm:py-16">
+      <section className="py-[var(--layout-section-spacing)]">
         <div className="shell-container">
           <CtaStrip
             eyebrow={siteCopyContent.experiences.planStay.eyebrow}

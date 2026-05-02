@@ -23,7 +23,7 @@ export interface RoomsSectionProps {
 
 export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
   return (
-    <section className="py-8 sm:py-16">
+    <section className="py-[var(--layout-section-spacing)]">
       <div className="shell-container space-y-10">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
@@ -52,7 +52,7 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
           </Link>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-2">
+        <div className="grid gap-[var(--layout-grid-gutter)] lg:grid-cols-2">
           {roomTypes.map((room, index) => (
             <Reveal key={room.name} delay={index * 100}>
               <Panel className="flex h-full flex-col overflow-hidden">

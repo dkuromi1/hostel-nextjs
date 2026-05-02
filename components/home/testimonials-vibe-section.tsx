@@ -17,7 +17,7 @@ export interface TestimonialsVibeSectionProps {
 
 export function TestimonialsVibeSection({ testimonials, extendReasons, copy }: TestimonialsVibeSectionProps) {
   return (
-    <section className="py-8 sm:py-16">
+    <section className="py-[var(--layout-section-spacing)]">
       <div className="shell-container flex flex-col gap-10 lg:flex-row lg:items-start relative">
         {/* Left Column: Testimonials */}
         <Reveal delay={0} className="lg:w-[40%] flex flex-col lg:sticky lg:top-32">
@@ -37,7 +37,7 @@ export function TestimonialsVibeSection({ testimonials, extendReasons, copy }: T
           <Reveal delay={300}>
             <SwipableRow
               itemCount={extendReasons.length}
-              className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-4"
+              className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-[var(--layout-grid-gutter)]"
             >
               {extendReasons.map((reason, index) => {
                 const Icon = resolveIcon(reason.icon);

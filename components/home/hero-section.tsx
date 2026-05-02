@@ -67,7 +67,7 @@ export function HeroSection({ hero, quickFacts, tagline, backgroundAlt, guestRat
           <Reveal delay={350} immediate>
             <SwipableRow
               itemCount={quickFacts.length}
-              className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
+              className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-[var(--layout-grid-gutter)]"
             >
               {quickFacts.map((fact, index) => {
                 const Icon = resolveIcon(fact.icon);

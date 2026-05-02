@@ -148,7 +148,7 @@ export interface DesignConfig {
   surfaces: {
     glassBlur: number;
     glassOpacity: number;
-    borderRadius: "none" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl";
+    borderRadius: "none" | "sm" | "md" | "lg" | "xl" | "3xl" | "2xl";
   };
   mascot: {
     enabled: boolean;
@@ -158,6 +158,11 @@ export interface DesignConfig {
   typography: {
     headingFont: "nunito" | "inter" | "serif" | "bevan" | "syne" | "cormorant";
     character: "playful" | "clean" | "elegant" | "sharp" | "bold";
+  };
+  layout?: {
+    width?: "compact" | "standard" | "wide";
+    spacing?: "compact" | "standard" | "wide";
+    gutter?: "none" | "compact" | "standard" | "wide";
   };
 }
 

@@ -61,7 +61,7 @@ export default function RoomsPage() {
         hideActions={true}
         highlights={roomHeroHighlights}
       >
-        <div className="grid gap-4 md:grid-cols-[1.1fr_0.9fr]">
+        <div className="grid gap-[var(--layout-grid-gutter)] md:grid-cols-[1.1fr_0.9fr]">
           <div className="group media-frame relative min-h-[22rem] md:row-span-2">
             <Image
               src="/images/rooms_2.jpg"
@@ -96,14 +96,14 @@ export default function RoomsPage() {
         </div>
       </PageHero>
 
-      <section className="py-8 sm:py-16">
+      <section className="py-[var(--layout-section-spacing)]">
         <div className="shell-container space-y-10">
           <SectionHeading
             eyebrow={siteCopyContent.rooms.chooseSetup.eyebrow}
             title={siteCopyContent.rooms.chooseSetup.title}
             description={siteCopyContent.rooms.chooseSetup.description}
           />
-          <div className="grid gap-8 lg:grid-cols-2">
+          <div className="grid gap-[var(--layout-grid-gutter)] lg:grid-cols-2">
             {roomTypes.map((room, index) => {
               const carouselImages = room.images ?? [];
 
@@ -186,8 +186,8 @@ export default function RoomsPage() {
         </div>
       </section>
 
-      <section className="py-8 sm:py-16">
-        <div className="shell-container grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+      <section className="py-[var(--layout-section-spacing)]">
+        <div className="shell-container grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.05fr_0.95fr]">
           <Reveal>
             <Panel className="p-6 sm:p-8">
               <SectionHeading
@@ -196,7 +196,7 @@ export default function RoomsPage() {
                 title={siteCopyContent.rooms.includedStay.title}
                 description={siteCopyContent.rooms.includedStay.description}
               />
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <div className="mt-8 grid gap-[var(--layout-grid-gutter)] sm:grid-cols-2">
                 {freeServices.map((service, idx) => {
                   const Icon = resolveIcon(service.icon);
                   return (
@@ -228,7 +228,7 @@ export default function RoomsPage() {
               <h2 className="mt-4 heading-card text-[var(--text-heading)]">
                 {siteCopyContent.rooms.extraHelp.title}
               </h2>
-              <div className="mt-8 grid gap-4">
+              <div className="mt-8 grid gap-[var(--layout-grid-gutter)]">
                 {paidServices.map((service, idx) => {
                   const Icon = resolveIcon(service.icon);
                   return (
@@ -265,14 +265,14 @@ export default function RoomsPage() {
         </div>
       </section>
 
-      <section className="py-8 sm:py-16">
+      <section className="py-[var(--layout-section-spacing)]">
         <div className="shell-container">
           <Reveal>
-            <div className="grid gap-6 lg:grid-cols-2">
+            <div className="grid gap-[var(--layout-grid-gutter)] lg:grid-cols-2">
               <div className="flex flex-col">
                 <TestimonialCarousel testimonials={testimonials.slice(5, 10)} className="h-full" />
               </div>
-              <div className="grid grid-cols-2 gap-4 lg:grid-cols-1">
+              <div className="grid grid-cols-2 gap-[var(--layout-grid-gutter)] lg:grid-cols-1">
                 <div className="media-frame relative min-h-[12rem] lg:min-h-[15rem]">
                   <Image
                     src="/images/indoor_common_1.webp"
@@ -297,7 +297,7 @@ export default function RoomsPage() {
         </div>
       </section>
 
-      <section className="py-8 sm:py-16">
+      <section className="py-[var(--layout-section-spacing)]">
         <div className="shell-container">
           <CtaStrip
             eyebrow={siteCopyContent.rooms.cta.eyebrow}

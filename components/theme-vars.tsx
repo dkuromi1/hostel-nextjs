@@ -12,6 +12,7 @@ export function ThemeVars() {
   if (!design) return null;
 
   const { theme, colors, surfaces, atmosphere, typography } = design;
+  let finalLayout = { ...design.layout };
 
   // Exact pixel mappings for radii
   const getRadiusValues = (mode: string) => {
@@ -132,7 +133,7 @@ export function ThemeVars() {
     },
   };
 
-  // Handle Preset Overrides (Forest Preset)
+  // Handle Preset Overrides
   let finalColors = { ...colors };
   let finalTypography = { ...typography };
 
@@ -151,6 +152,10 @@ export function ThemeVars() {
     surfaces.borderRadius = "xl";
     surfaces.glassBlur = 8;
     surfaces.glassOpacity = 0.9;
+    // Bold/Editorial layout
+    finalLayout.width = "wide";
+    finalLayout.spacing = "wide";
+    finalLayout.gutter = "wide";
   } else if (theme === "warm") {
     finalColors = {
       primary: "#b07d62",      // Muted Clay — warm but restrained
@@ -166,6 +171,10 @@ export function ThemeVars() {
     surfaces.borderRadius = "3xl";
     surfaces.glassBlur = 10;
     surfaces.glassOpacity = 0.85;
+    // Relaxed layout
+    finalLayout.width = "standard";
+    finalLayout.spacing = "standard";
+    finalLayout.gutter = "standard";
   } else if (theme === "nordic-earth") {
     finalColors = {
       primary: "#5f7470", // Eucalyptus
@@ -179,9 +188,13 @@ export function ThemeVars() {
       character: "sharp",
     };
     // Force sharp architectural surfaces for Nordic
-    surfaces.borderRadius = "sm";
+    surfaces.borderRadius = "none";
     surfaces.glassBlur = 20;
     surfaces.glassOpacity = 0.7;
+    // Architectural layout
+    finalLayout.width = "wide";
+    finalLayout.spacing = "compact";
+    finalLayout.gutter = "none";
   } else if (theme === "cool") {
     finalColors = {
       primary: "#059669",
@@ -197,11 +210,33 @@ export function ThemeVars() {
     surfaces.borderRadius = "2xl";
     surfaces.glassBlur = 12;
     surfaces.glassOpacity = 0.84;
+    // Clean standard layout
+    finalLayout.width = "standard";
+    finalLayout.spacing = "standard";
+    finalLayout.gutter = "standard";
   }
 
   const rv = getRadiusValues(surfaces.borderRadius);
   const finalHeadingFont = fontMap[finalTypography?.headingFont as keyof typeof fontMap] || "var(--font-nunito)";
   const finalCharStyle = characterStylesMap[finalTypography?.character as keyof typeof characterStylesMap] || characterStylesMap.playful;
+
+  // Layout Mappings
+  const layoutWidth = finalLayout.width === "compact" ? "1200px" : finalLayout.width === "wide" ? "1600px" : "1400px";
+  
+  const spacingMap = {
+    compact: "clamp(1.5rem, 4vw, 2.5rem)",
+    standard: "clamp(2rem, 5vw, 4rem)", /* matches original relaxed feel */
+    wide: "clamp(3rem, 6vw, 6rem)",    /* matches original editorial feel */
+  };
+  const layoutSpacing = spacingMap[finalLayout.spacing as keyof typeof spacingMap] || "clamp(2rem, 5vw, 4rem)";
+
+  const gutterMap = {
+    none: "0px",
+    compact: "0.75rem",  /* tighter than original */
+    standard: theme === "warm" ? "1.25rem" : "1rem", /* matches original services/gallery feel */
+    wide: "1.5rem",      /* matches original rooms-section feel */
+  };
+  const layoutGutter = gutterMap[finalLayout.gutter as keyof typeof gutterMap] || "1rem";
 
   const cssString = `
     :root {
@@ -233,6 +268,10 @@ export function ThemeVars() {
       --heading-spacing: ${finalCharStyle.spacing};
       --heading-page-spacing: ${theme === "cool" ? "-0.0275em" : finalCharStyle.spacing};
       --heading-section-spacing: ${theme === "cool" ? "-0.06em" : finalCharStyle.spacing};
+
+      --layout-max-width: ${layoutWidth};
+      --layout-section-spacing: ${layoutSpacing};
+      --layout-grid-gutter: ${layoutGutter};
 
       /* Dark mode contrast overrides */
       --brand-accent: ${theme === "forest" ? finalColors.accent : "var(--accent)"};

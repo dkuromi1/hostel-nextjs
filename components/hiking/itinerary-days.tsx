@@ -17,7 +17,7 @@ interface ItineraryDaysProps {
 
 export function ItineraryDays({ days }: ItineraryDaysProps) {
   return (
-    <div className="grid gap-6 lg:grid-cols-3">
+    <div className="grid gap-[var(--layout-grid-gutter)] lg:grid-cols-3">
       {days.map((day, i) => {
         const Icon = resolveIcon(day.icon);
         return (

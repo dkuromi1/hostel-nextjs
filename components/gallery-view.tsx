@@ -20,7 +20,7 @@ export interface GalleryViewProps {
 export function GalleryView({ galleryItems, bookingAwardImage, galleryCopy, bookingChannels, contactChannels }: GalleryViewProps) {
   return (
     <>
-      <section className="py-8 sm:py-16">
+      <section className="py-[var(--layout-section-spacing)]">
         <div className="shell-container space-y-10">
           <SectionHeading
             eyebrow={galleryCopy.visualTour.eyebrow}
@@ -32,8 +32,8 @@ export function GalleryView({ galleryItems, bookingAwardImage, galleryCopy, book
         </div>
       </section>
 
-      <section className="py-8 sm:py-16">
-        <div className="shell-container grid gap-6 lg:grid-cols-[1.05fr_0.95fr] items-start">
+      <section className="py-[var(--layout-section-spacing)]">
+        <div className="shell-container grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.05fr_0.95fr] items-start">
           <Reveal>
             <Panel className="overflow-hidden">
               <div className="grid gap-0 sm:grid-cols-[1.05fr_0.95fr] h-full">
@@ -73,7 +73,7 @@ export function GalleryView({ galleryItems, bookingAwardImage, galleryCopy, book
         </div>
       </section>
 
-      <section className="py-8 sm:py-16">
+      <section className="py-[var(--layout-section-spacing)]">
         <div className="shell-container">
           <CtaStrip
             eyebrow={galleryCopy.cta.eyebrow}

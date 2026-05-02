@@ -70,7 +70,7 @@ export interface ExperiencesSectionProps {
 
 export function ExperiencesSection({ eventCards, experiencePillars, copy, showRegionalWeather }: ExperiencesSectionProps) {
   return (
-    <section className="py-8 sm:py-16">
+    <section className="py-[var(--layout-section-spacing)]">
       <div className="shell-container space-y-10">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
@@ -145,7 +145,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
             </Reveal>
           </div>
 
-          <div className="hidden lg:grid gap-6 lg:grid-cols-12">
+          <div className="hidden lg:grid gap-[var(--layout-grid-gutter)] lg:grid-cols-12">
             <Reveal delay={0} className="lg:col-span-7 h-full">
               <Panel className="group overflow-hidden h-full transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
                 <div className="relative h-full min-h-[30rem]">
@@ -175,7 +175,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
               </Panel>
             </Reveal>
 
-            <div className="lg:col-span-5 grid gap-6">
+            <div className="lg:col-span-5 grid gap-[var(--layout-grid-gutter)]">
               {experiencePillars.slice(1).map((pillar, index) => {
                 const isSecondElement = index === 0;
                 return (
@@ -240,7 +240,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
           </div>
 
           <Reveal delay={120}>
-            <SwipableRow itemCount={eventCards.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-2">
+            <SwipableRow itemCount={eventCards.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-[var(--layout-grid-gutter)] lg:grid-cols-2">
               {eventCards.map((event, index) => (
                 <div key={event.title} className="min-w-[82vw] snap-center sm:min-w-0">
                   <Panel className="group overflow-hidden transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">

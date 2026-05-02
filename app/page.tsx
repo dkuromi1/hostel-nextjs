@@ -89,7 +89,7 @@ export default function Home() {
         hostelworldReviews={siteConfig.hostelworldReviews}
       />
 
-      <section className="py-8 sm:py-16">
+      <section className="py-[var(--layout-section-spacing)]">
         <div className="shell-container">
           <CtaStrip
             eyebrow={siteCopyContent.home.cta.eyebrow}

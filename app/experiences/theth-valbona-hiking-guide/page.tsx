@@ -53,7 +53,7 @@ export default function HikingGuidePage() {
       {/* Quick Stats Bar */}
       <section className="relative z-20 pb-8 sm:pb-16">
         <div className="shell-container">
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-[var(--layout-grid-gutter)] md:grid-cols-4">
             {hikingGuide.quickStats.map((stat, i) => {
               const Icon = resolveIcon(stat.icon);
               return (
@@ -79,7 +79,7 @@ export default function HikingGuidePage() {
       </section>
 
       {/* Logistics Section */}
-      <section className="py-8 sm:py-16">
+      <section className="py-[var(--layout-section-spacing)]">
         <div className="shell-container">
           <div className="grid gap-12 lg:grid-cols-[0.45fr_0.55fr] lg:items-start">
             <Reveal className="space-y-6">
@@ -98,7 +98,7 @@ export default function HikingGuidePage() {
 
       {/* Itinerary Section */}
       {hikingGuide.itinerary && (
-        <section className="py-8 sm:py-16 bg-[var(--muted)]/20">
+        <section className="py-[var(--layout-section-spacing)] bg-[var(--muted)]/20">
           <div className="shell-container">
             <Reveal className="mb-12">
               <SectionLabel variant="emerald" className="mb-6">ROUTE PLAN</SectionLabel>
@@ -115,7 +115,7 @@ export default function HikingGuidePage() {
       )}
 
       {/* Map Section */}
-      <section className="py-8 sm:py-16 bg-[var(--muted)]/30">
+      <section className="py-[var(--layout-section-spacing)] bg-[var(--muted)]/30">
         <div className="shell-container sm:px-6 lg:px-8">
           <Reveal className="mb-12">
             <SectionLabel variant="sky" className="mb-6">INTERACTIVE MAP</SectionLabel>
@@ -134,7 +134,7 @@ export default function HikingGuidePage() {
 
       {/* Packing List */}
       {hikingGuide.packingList && (
-        <section className="py-8 sm:py-16">
+        <section className="py-[var(--layout-section-spacing)]">
           <div className="shell-container">
             <Reveal className="mb-12">
               <SectionLabel variant="sky" className="mb-6">GEAR</SectionLabel>
@@ -149,7 +149,7 @@ export default function HikingGuidePage() {
       )}
 
       {/* Luggage Feature */}
-      <section className="py-8 sm:py-16">
+      <section className="py-[var(--layout-section-spacing)]">
         <div className="shell-container">
           <Reveal>
             <Panel className="overflow-hidden bg-[var(--surface-dark)] p-0 text-white">

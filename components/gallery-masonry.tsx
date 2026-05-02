@@ -127,9 +127,9 @@ export function GalleryMasonry({
 
     return (
         <div className="w-full">
-            <div className="flex gap-4">
+            <div className="flex gap-[var(--layout-grid-gutter)]">
                 {cols.map((colItems, colIdx) => (
-                    <div key={colIdx} className="flex flex-col gap-4 flex-1">
+                    <div key={colIdx} className="flex flex-col gap-[var(--layout-grid-gutter)] flex-1">
                         {colItems.map(({ item, originalIndex }) => (
                             <div key={item.id} className="w-full">
                                 {renderItem(item, originalIndex < priorityImageCount)}

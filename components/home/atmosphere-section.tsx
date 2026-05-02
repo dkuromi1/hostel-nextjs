@@ -24,9 +24,9 @@ export interface AtmosphereSectionProps {
 
 export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSectionProps) {
   return (
-    <section className="py-8 sm:py-16">
+    <section className="py-[var(--layout-section-spacing)]">
       <div className="shell-container max-w-5xl">
-        <div className="flex flex-col gap-4 lg:grid lg:grid-cols-[2fr_1fr] lg:grid-rows-[1fr_auto] lg:gap-5">
+        <div className="flex flex-col gap-[var(--layout-grid-gutter)] lg:grid lg:grid-cols-[2fr_1fr] lg:grid-rows-[1fr_auto] lg:gap-[var(--layout-grid-gutter)]">
 
           {/* DESKTOP ONLY: Direct Booking card */}
           <Reveal delay={200} className="hidden lg:flex lg:row-start-2">
@@ -55,10 +55,10 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
           </Reveal>
 
           {/* Right column */}
-          <div className="flex flex-col gap-4 lg:col-start-2 lg:row-start-1 lg:row-span-2">
-            <div className="grid grid-cols-[3fr_2fr] gap-4 lg:grid-cols-1 lg:h-full">
+          <div className="flex flex-col gap-[var(--layout-grid-gutter)] lg:col-start-2 lg:row-start-1 lg:row-span-2">
+            <div className="grid grid-cols-[3fr_2fr] gap-[var(--layout-grid-gutter)] lg:grid-cols-1 lg:h-full">
               {/* Room image + mobile booking */}
-              <Reveal delay={100} className="flex min-w-0 flex-col gap-4 h-full">
+              <Reveal delay={100} className="flex min-w-0 flex-col gap-[var(--layout-grid-gutter)] h-full">
                 <div className="media-frame relative aspect-[4/3] h-full lg:h-auto">
                   <Image
                     src="/images/rooms_1_min.webp"

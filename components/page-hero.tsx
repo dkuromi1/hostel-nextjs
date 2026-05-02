@@ -47,7 +47,7 @@ export function PageHero({
           </div>
           {!hideActions && <BookingActions bookingChannels={bookingChannels} contactChannels={contactChannels} />}
           {highlights ? (
-            <ul className="grid gap-3 sm:grid-cols-2">
+            <ul className="grid gap-[var(--layout-grid-gutter)] sm:grid-cols-2">
               {highlights.map((item) => {
                 const text = typeof item === "string" ? item : item.text;
                 const Icon = typeof item === "object" && item.icon ? resolveIcon(item.icon) : resolveIcon("Check");

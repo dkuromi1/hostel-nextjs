@@ -53,7 +53,7 @@ export default function ContactPage() {
         bookingChannels={bookingChannels}
         contactChannels={contactChannels}
       >
-        <div className="grid gap-4">
+        <div className="grid gap-[var(--layout-grid-gutter)]">
           <Panel className="p-6 sm:p-7">
             <SectionLabel variant="emerald" className="mb-4">{siteCopyContent.contact.bestBookingRoute.label}</SectionLabel>
             <h2 className="mt-4 heading-card text-[var(--text-heading)]">
@@ -66,7 +66,7 @@ export default function ContactPage() {
               <BookingActions className="max-w-4xl" whatsappOnly={true} bookingChannels={bookingChannels} contactChannels={contactChannels} />
             </div>
           </Panel>
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-[var(--layout-grid-gutter)] md:grid-cols-2">
             <div className="media-frame relative min-h-[16rem]">
               <Image
                 src="/images/ambiance_2.jpg"
@@ -89,8 +89,8 @@ export default function ContactPage() {
         </div>
       </PageHero>
 
-      <section className="py-8 sm:py-16">
-        <div className="shell-container sm:px-6 lg:px-8 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+      <section className="py-[var(--layout-section-spacing)]">
+        <div className="shell-container sm:px-6 lg:px-8 grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.2fr_0.8fr]">
           <div className="flex flex-col gap-6 h-full">
             <Reveal>
               <Panel className="p-6 sm:p-8">
@@ -155,7 +155,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="py-8 sm:py-16">
+      <section className="py-[var(--layout-section-spacing)]">
         <div className="shell-container">
           <CtaStrip
             eyebrow={siteCopyContent.contact.cta.eyebrow}

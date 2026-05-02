@@ -34,7 +34,7 @@ export function CompactGuestRatingsStrip({
   hostelworldReviews,
 }: GuestRatingsProps) {
   return (
-    <div className="grid w-full gap-3 sm:grid-cols-2">
+    <div className="grid w-full gap-[var(--layout-grid-gutter)] sm:grid-cols-2">
       <a
         href={bookingUrl}
         target="_blank"
@@ -110,7 +110,7 @@ export function GuestRatingsSection({
               <SectionLabel>{copy.label}</SectionLabel>
               <span className="faded-line h-px flex-1" />
             </div>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:items-stretch">
+            <div className="mt-4 grid gap-[var(--layout-grid-gutter)] sm:grid-cols-2 sm:items-stretch">
               <a
                 href={bookingUrl}
                 target="_blank"

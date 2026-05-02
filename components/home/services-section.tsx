@@ -15,7 +15,7 @@ export interface IncludedServicesSectionProps {
 
 export function IncludedServicesSection({ services, copy }: IncludedServicesSectionProps) {
   return (
-    <section className="py-8 sm:py-16">
+    <section className="py-[var(--layout-section-spacing)]">
       <div className="shell-container space-y-12">
         <Reveal>
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
@@ -30,7 +30,7 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
         <Reveal delay={100}>
           <SwipableRow
             itemCount={services.length}
-            className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+            className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[var(--layout-grid-gutter)]"
           >
             {services.map((service, idx) => {
               const Icon = resolveIcon(service.icon);
