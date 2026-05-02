@@ -109,7 +109,7 @@ export function TestimonialCarousel({
             }}
             className="cursor-grab active:cursor-grabbing"
           >
-            <div className="flex gap-1 text-[var(--accent)]">
+            <div className="flex gap-1 text-[#f59e0b]">
               {[...Array(testimonial.rating)].map((_, i) => (
                 <Star key={i} className="size-4 fill-current" />
               ))}
@@ -143,14 +143,14 @@ export function TestimonialCarousel({
                 aria-hidden="true"
                 className={cn(
                   "absolute left-1/2 top-1/2 z-10 flex size-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full transition-all duration-300",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--brand-tertiary)]"
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f59e0b]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--brand-tertiary)]"
                 )}
               >
                 <span
                   className={cn(
                     "block h-2 rounded-full transition-all duration-300",
                     index === currentIndex
-                      ? "w-8 bg-[var(--accent)]"
+                      ? "w-8 bg-[#f59e0b]"
                       : "w-2 bg-white/20 hover:bg-white/30"
                   )}
                 />
