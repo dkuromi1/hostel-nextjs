@@ -36,6 +36,15 @@
   --radius-full: var(--radius-full, 9999px);
   --spacing-section: var(--layout-section-spacing, 5rem);
   --spacing-gutter: var(--layout-grid-gutter, 2rem);
+
+  /* Fluid Room Image Height */
+  --room-image-height: clamp(18rem, 15.43rem + 11.43vw, 20rem);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --room-image-height: 22rem;
+  }
 }
 
 
@@ -460,6 +469,7 @@
 ::view-transition-old(root) {
   z-index: 1;
 }
+
 ::view-transition-new(root) {
   z-index: 2;
 }
@@ -467,6 +477,7 @@
 .dark::view-transition-old(root) {
   z-index: 2;
 }
+
 .dark::view-transition-new(root) {
   z-index: 1;
 }

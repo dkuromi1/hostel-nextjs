@@ -56,7 +56,7 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
           {roomTypes.map((room, index) => (
             <Reveal key={room.name} delay={index * 100}>
               <Panel className="flex h-full flex-col overflow-hidden">
-                <div className="relative min-h-[18rem]">
+                <div className="relative min-h-[var(--room-image-height)]">
                   <ImageCarousel
                     images={room.images}
                     className="absolute inset-0 h-full rounded-none"
@@ -69,29 +69,29 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
                   </div>
                 </div>
 
-                <div className="space-y-6 p-6 sm:p-8">
+                <div className="space-y-4 p-5 sm:p-6">
                   <div>
-                    <SectionLabel variant="emerald" className="mb-3">
+                    <SectionLabel variant="emerald" className="mb-2">
                       {room.label}
                     </SectionLabel>
                     <h3 className="mt-3 heading-card text-[var(--text-heading)]">
                       {room.name}
                     </h3>
-                    <p className="mt-4 text-section-desc">
+                    <p className="mt-3 text-section-desc text-[var(--text-body-subtle)] line-clamp-3">
                       {room.description}
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mt-2">
                     {room.amenities.map((amenity, idx) => {
                       const AmenityIcon = resolveIcon(amenity.icon);
                       return (
                         <div
                           key={idx}
-                          className="flex w-fit items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--muted)]/50 px-3 py-2 text-[var(--text-body)]"
+                          className="flex w-fit items-center gap-1.5 rounded-lg border border-[var(--border)] bg-[var(--muted)]/50 px-2.5 py-1.5 text-[var(--text-body)] transition-all duration-300 hover:border-[var(--brand-primary)]/10 hover:shadow-sm hover:bg-[var(--glass-bg)]"
                         >
-                          <AmenityIcon className="size-3.5 shrink-0 text-[var(--brand-primary)]" />
-                          <span className="whitespace-nowrap text-xs font-medium tracking-tight">
+                          <AmenityIcon className="size-3 shrink-0 text-[var(--brand-primary)]" />
+                          <span className="whitespace-nowrap text-[10px] font-semibold tracking-tight uppercase">
                             {amenity.label}
                           </span>
                         </div>
@@ -99,18 +99,18 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
                     })}
                   </div>
 
-                  <div className="space-y-3">
-                    <SectionLabel weight="bold" className="mb-4">
+                  <div className="space-y-2">
+                    <SectionLabel weight="bold" className="mb-1 text-[11px] opacity-70">
                       {roomsSection.detailsLabel}
                     </SectionLabel>
-                    <ul className="grid gap-3">
+                    <ul className="grid gap-2">
                       {room.bullets.map((bullet) => (
                         <li
                           key={bullet}
-                          className="flex items-start gap-2.5 text-sm leading-6 text-[var(--text-body-subtle)]"
+                          className="flex items-start gap-2 text-[13px] leading-tight text-[var(--text-body-subtle)]"
                         >
                           <Check
-                            className="mt-1 size-4 shrink-0 text-[var(--brand-primary)]"
+                            className="mt-0.5 size-3.5 shrink-0 text-[var(--brand-primary)]"
                             strokeWidth={2}
                           />
                           <span>{bullet}</span>

@@ -117,7 +117,7 @@ export default function RoomsPage() {
                   <Panel className="group relative flex h-full flex-col overflow-hidden transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
 
                     {/* Updated Image Carousel Section */}
-                    <div className="relative min-h-[22rem]">
+                    <div className="relative min-h-[var(--room-image-height)]">
                       <ImageCarousel
                         images={carouselImages}
                         className="absolute inset-0 h-full w-full !rounded-none"
@@ -133,30 +133,30 @@ export default function RoomsPage() {
                       </div>
                     </div>
 
-                    <div className="flex flex-1 flex-col justify-between p-7 lg:p-9">
-                      <div className="space-y-6">
+                    <div className="flex flex-1 flex-col justify-between p-5 sm:p-6">
+                      <div className="space-y-4">
                         <div>
-                          <SectionLabel variant="emerald" className="mb-3">
+                          <SectionLabel variant="emerald" className="mb-2">
                             {room.label}
                           </SectionLabel>
-                          <h2 className="mt-3 heading-card text-[var(--text-heading)]">
+                          <h2 className="mt-2 heading-card text-[var(--text-heading)]">
                             {room.name}
                           </h2>
-                          <p className="mt-4 text-section-desc text-[var(--text-body-subtle)]">
+                          <p className="mt-3 text-section-desc text-[var(--text-body-subtle)] line-clamp-3">
                             {room.description}
                           </p>
                         </div>
 
-                        <div className="flex flex-wrap gap-2 mt-4">
+                        <div className="flex flex-wrap gap-2 mt-2">
                           {room.amenities.map((amenity, idx) => {
                             const AmenityIcon = resolveIcon(amenity.icon);
                             return (
                               <div
                                 key={idx}
-                                className="flex w-fit items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--muted)]/50 px-3 py-2 text-[var(--text-body)] transition-all duration-300 hover:border-[var(--brand-primary)]/10 hover:shadow-sm hover:bg-[var(--glass-bg)]"
+                                className="flex w-fit items-center gap-1.5 rounded-lg border border-[var(--border)] bg-[var(--muted)]/50 px-2.5 py-1.5 text-[var(--text-body)] transition-all duration-300 hover:border-[var(--brand-primary)]/10 hover:shadow-sm hover:bg-[var(--glass-bg)]"
                               >
-                                <AmenityIcon className="size-3.5 shrink-0 text-[var(--brand-primary)]" />
-                                <span className="whitespace-nowrap text-[11px] font-medium tracking-tight">
+                                <AmenityIcon className="size-3 shrink-0 text-[var(--brand-primary)]" />
+                                <span className="whitespace-nowrap text-[10px] font-semibold tracking-tight uppercase">
                                   {amenity.label}
                                 </span>
                               </div>
@@ -164,16 +164,16 @@ export default function RoomsPage() {
                           })}
                         </div>
 
-                        <div className="space-y-3">
-                          <SectionLabel weight="bold" className="mb-4">Room Details</SectionLabel>
-                          <ul className="grid gap-3 sm:grid-cols-2">
+                        <div className="space-y-2">
+                          <SectionLabel weight="bold" className="mb-1 text-[11px] opacity-70">Room Details</SectionLabel>
+                          <ul className="grid gap-2 sm:grid-cols-2">
                             {room.bullets.map((bullet) => (
                               <li
                                 key={bullet}
-                                className="flex items-start gap-2.5 text-sm leading-6 text-[var(--text-body-subtle)]"
+                                className="flex items-start gap-2 text-[13px] leading-tight text-[var(--text-body-subtle)]"
                               >
                                 <Check
-                                  className="mt-1 size-4 shrink-0 text-[var(--brand-primary)]"
+                                  className="mt-0.5 size-3.5 shrink-0 text-[var(--brand-primary)]"
                                   strokeWidth={2}
                                 />
                                 <span>{bullet}</span>
