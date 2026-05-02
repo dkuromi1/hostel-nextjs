@@ -61,24 +61,24 @@ export default function RoomsPage() {
         hideActions={true}
         highlights={roomHeroHighlights}
       >
-        <div className="grid gap-4 md:grid-cols-2">
-          <div className="media-frame relative min-h-[22rem] md:row-span-2">
+        <div className="grid gap-4 md:grid-cols-[1.1fr_0.9fr]">
+          <div className="group media-frame relative min-h-[22rem] md:row-span-2">
             <Image
               src="/images/rooms_2.jpg"
               alt={siteCopyContent.rooms.heroImages.fourBedAlt}
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-1000 group-hover:scale-105"
               priority
               fetchPriority="high"
               sizes="(max-width: 768px) 100vw, 40vw"
             />
           </div>
-          <div className="media-frame relative min-h-[14rem]">
+          <div className="group media-frame relative min-h-[14rem]">
             <Image
               src="/images/room_18bed2.jpg"
               alt={siteCopyContent.rooms.heroImages.podAlt}
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-1000 group-hover:scale-105"
               priority
               fetchPriority="high"
               sizes="(max-width: 768px) 100vw, 25vw"
@@ -89,7 +89,7 @@ export default function RoomsPage() {
               {siteCopyContent.rooms.heroPriceBlurb.labelPrefix}{" "}
               <strong>{primaryPricedRoom?.price ? `${primaryPricedRoom.price} / Night` : siteCopyContent.rooms.heroPriceBlurb.contactForRatesLabel}</strong>
             </SectionLabel>
-            <p className="mt-3 font-sans text-2xl leading-none tracking-[-0.04em] text-[var(--text-heading)]">
+            <p className="mt-3 font-heading text-2xl leading-tight text-[var(--text-heading)]">
               {siteCopyContent.rooms.heroPriceBlurb.title}
             </p>
           </div>

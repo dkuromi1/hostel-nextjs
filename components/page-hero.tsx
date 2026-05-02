@@ -34,7 +34,7 @@ export function PageHero({
 }: PageHeroProps) {
   return (
     <section className="relative overflow-hidden pb-8 sm:pb-16 pt-8 sm:pt-16">
-      <div className="shell-container grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+      <div className="shell-container grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
         <Reveal className="relative z-10 flex flex-col items-start gap-8">
           <Eyebrow>{eyebrow}</Eyebrow>
           <div className="flex flex-col gap-5">

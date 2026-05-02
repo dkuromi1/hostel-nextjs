@@ -102,7 +102,7 @@ export function TestimonialCarousel({
                 <Star key={i} className="size-4 fill-current" />
               ))}
             </div>
-            <blockquote className="mt-6 font-heading text-3xl italic leading-[1.1] tracking-[-0.01em] text-white dark:text-[var(--text-heading)] sm:text-4xl">
+            <blockquote className="mt-6 font-heading text-3xl leading-[1.3] text-white dark:text-[var(--text-heading)] sm:text-4xl" style={{ letterSpacing: 'var(--heading-spacing)' }}>
               &ldquo;{testimonial.quote}&rdquo;
             </blockquote>
             <p className="mt-8 font-medium text-[var(--text-on-surface-dark)] dark:text-[var(--text-body)]">

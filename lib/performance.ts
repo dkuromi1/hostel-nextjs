@@ -32,8 +32,8 @@ export function isLowEndDevice(): boolean {
 
   // 2. ANDROID / CHROME-LIKE (Reliable Spec Sniffing)
   if (isAndroid) {
-    // Flag 4GB RAM and below (Common for budget phones that struggle with 3D)
-    const isLowMemory = nav.deviceMemory && nav.deviceMemory <= 4;
+    // Flag below 4GB RAM (Ensures 4GB mid-range devices aren't throttled)
+    const isLowMemory = nav.deviceMemory && nav.deviceMemory < 4;
     
     // Flag 4 cores and below (Modern flagships are almost all 8-core)
     const isWeakCPU = nav.hardwareConcurrency && nav.hardwareConcurrency <= 4;

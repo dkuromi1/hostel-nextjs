@@ -35,7 +35,7 @@ export function HeroSection({ hero, quickFacts, tagline, backgroundAlt, guestRat
         <div className="max-w-4xl space-y-8 sm:space-y-10">
           <div className="flex flex-col items-start gap-6">
             <div className="flex flex-col gap-5">
-              <p className="text-xs font-medium uppercase tracking-[0.28em] text-white/90 antialiased [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]">
+              <p className="text-xs font-medium uppercase tracking-[0.25em] text-white/90 antialiased [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]">
                 {tagline}
               </p>
               <h1 className="heading-hero text-white">

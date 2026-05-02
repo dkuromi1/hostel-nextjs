@@ -343,25 +343,25 @@
 
 /** Full-screen immersive hero h1 (homepage) */
 @utility heading-hero {
-  @apply font-heading text-[36px] md:text-[40px] lg:text-[48px] leading-[0.95];
+  @apply font-heading text-[36px] md:text-[40px] lg:text-[48px] leading-[1.1];
   letter-spacing: 0.000em;
 }
 
 /** Inner-page hero h1 (Rooms, Experiences, Contact) */
 @utility heading-page {
-  @apply font-heading text-[36px] md:text-[40px] lg:text-[48px] leading-none;
+  @apply font-heading text-[36px] md:text-[40px] lg:text-[48px] leading-[1.1];
   letter-spacing: var(--heading-page-spacing);
 }
 
 /** Section-level title h2 (SectionHeading, CtaStrip) */
 @utility heading-section {
-  @apply font-heading text-[32px] md:text-[40px] lg:text-[48px] leading-none;
+  @apply font-heading text-[32px] md:text-[40px] lg:text-[48px] leading-[1.1];
   letter-spacing: var(--heading-section-spacing);
 }
 
 /** Card / panel headline h2 or h3 */
 @utility heading-card {
-  @apply font-heading text-[28px] md:text-[32px] lg:text-[36px] leading-none;
+  @apply font-heading text-[28px] md:text-[32px] lg:text-[36px] leading-[1.2];
   letter-spacing: var(--heading-spacing);
 }
 
