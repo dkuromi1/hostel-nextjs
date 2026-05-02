@@ -49,18 +49,28 @@ export function ThemeToggle({ variant = "footer" }: { variant?: ThemeToggleVaria
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    persistTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    
-    if (newTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
 
-    // Broadcast change to other mounted ThemeToggle instances
-    window.dispatchEvent(new CustomEvent("theme-change", { detail: newTheme }));
+    const updateDOM = () => {
+      setTheme(newTheme);
+      persistTheme(newTheme);
+      localStorage.setItem("theme", newTheme);
+
+      if (newTheme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+
+      // Broadcast change to other mounted ThemeToggle instances
+      window.dispatchEvent(new CustomEvent("theme-change", { detail: newTheme }));
+    };
+
+    // Use native View Transitions API if available
+    if (typeof document !== "undefined" && "startViewTransition" in document) {
+      (document as any).startViewTransition(updateDOM);
+    } else {
+      updateDOM();
+    }
   };
 
   // Prevent hydration mismatch by not rendering the icon/text until mounted
