@@ -34,6 +34,14 @@
         {
           "src": "/images/secure_dorm_lockers.webp",
           "alt": "Secure lockers in the dorm"
+        },
+        {
+          "src": "/images/room_18bed6.jpg",
+          "alt": "Inside the privacy pod"
+        },
+        {
+          "src": "/images/room_18bed5.jpg",
+          "alt": "Inside the privacy pod"
         }
       ],
       "amenities": [

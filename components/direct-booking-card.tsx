@@ -1,6 +1,8 @@
 import { SectionLabel } from "@/components/ui/section-label";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { resolveIcon } from "@/lib/icon-registry";
+
 interface DirectBookingCardProps {
   className?: string;
   variant?: "inline" | "block";
@@ -15,36 +17,38 @@ interface DirectBookingCardProps {
   };
 }
 
-/**
- * A unified Direct Booking card for WhatsApp.
- * Handles the responsive text swapping and consistent styling.
- */
 export function DirectBookingCard({ className, variant = "inline", whatsappUrl, content }: DirectBookingCardProps) {
+  const Icon = resolveIcon("Whatsapp");
 
   if (variant === "inline") {
     return (
       <div className={cn(
-        "flex flex-col sm:flex-row items-center justify-between glass-panel rounded-xl p-6 gap-6 w-full",
+        "group flex flex-col sm:flex-row items-center justify-between glass-panel rounded-2xl p-6 sm:p-8 gap-8 w-full transition-all duration-300 hover:border-[var(--brand-primary)]/20",
         className
       )}>
-        <div className="text-center sm:text-left">
-          <SectionLabel variant="emerald" className="mb-4 mx-auto sm:mx-0">
-            {content.directBookingLabel}
-          </SectionLabel>
-          <p className="mt-2 font-heading text-xl sm:text-2xl leading-tight tracking-tight text-[var(--text-heading)]">
-            {content.directBookingTitle}
-          </p>
-          <p className="mt-2 text-card-body max-w-md mx-auto sm:mx-0">
-            {content.directBookingDescription}
-          </p>
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
+          <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-[var(--glass-bg)] text-[var(--brand-primary)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-300 group-hover:bg-[var(--brand-primary-light)] group-hover:ring-[var(--brand-primary)]/20">
+            <Icon className="size-6" strokeWidth={1.5} />
+          </div>
+          <div className="flex flex-col gap-2">
+            <SectionLabel variant="emerald" className="mx-auto sm:mx-0">
+              {content.directBookingLabel}
+            </SectionLabel>
+            <h3 className="font-heading text-xl sm:text-2xl leading-tight tracking-tight text-[var(--text-heading)]">
+              {content.directBookingTitle}
+            </h3>
+            <p className="text-[14px] leading-snug text-[var(--text-body-subtle)] max-w-md mx-auto sm:mx-0">
+              {content.directBookingDescription}
+            </p>
+          </div>
         </div>
         <a
           href={whatsappUrl}
           target="_blank"
           rel="noreferrer"
           className={cn(
-            buttonVariants({ variant: "whatsapp", size: "lg" }),
-            "shrink-0 w-full sm:w-auto rounded-full px-7 font-semibold transition-all duration-300 hover:scale-[1.02] shadow-whatsapp"
+            buttonVariants({ variant: "whatsapp" }),
+            "shrink-0 w-full sm:w-auto h-12 rounded-full px-10 text-[15px] font-bold transition-all duration-300 hover:scale-[1.02] shadow-whatsapp"
           )}
         >
           {content.directBookingButton}
@@ -55,25 +59,32 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
 
   // "Block" variant for vertical layouts (mobile column)
   return (
-    <div className={cn("glass-panel rounded-xl p-5", className)}>
-      <SectionLabel variant="emerald" className="mb-4">
-        {content.directBookingLabel}
-      </SectionLabel>
-      <p className="mt-2 font-heading text-lg leading-tight tracking-tight text-[var(--text-heading)]">
-        <span className="sm:hidden">{content.directBookingTitleMobile}</span>
-        <span className="hidden sm:inline">{content.directBookingTitle}</span>
-      </p>
-      <p className="mt-2 text-sm leading-snug text-[var(--text-body-subtle)]">
-        <span className="sm:hidden">{content.directBookingDescriptionMobile}</span>
-        <span className="hidden sm:inline">{content.directBookingDescription}</span>
-      </p>
+    <div className={cn("group glass-panel rounded-2xl p-6 transition-all duration-300 hover:border-[var(--brand-primary)]/20", className)}>
+      <div className="flex items-center gap-4 mb-5">
+        <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--glass-bg)] text-[var(--brand-primary)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-300 group-hover:bg-[var(--brand-primary-light)] group-hover:ring-[var(--brand-primary)]/20">
+          <Icon className="size-5" strokeWidth={1.5} />
+        </div>
+        <SectionLabel variant="emerald">
+          {content.directBookingLabel}
+        </SectionLabel>
+      </div>
+      <div className="space-y-2">
+        <h3 className="font-heading text-xl leading-tight tracking-tight text-[var(--text-heading)]">
+          <span className="sm:hidden">{content.directBookingTitleMobile || content.directBookingTitle}</span>
+          <span className="hidden sm:inline">{content.directBookingTitle}</span>
+        </h3>
+        <p className="text-[13px] leading-snug text-[var(--text-body-subtle)]">
+          <span className="sm:hidden">{content.directBookingDescriptionMobile || content.directBookingDescription}</span>
+          <span className="hidden sm:inline">{content.directBookingDescription}</span>
+        </p>
+      </div>
       <a
         href={whatsappUrl}
         target="_blank"
         rel="noreferrer"
         className={cn(
-          buttonVariants({ variant: "whatsapp", size: "sm" }),
-          "mt-4 w-full rounded-full font-semibold transition-all duration-300 hover:scale-[1.02] shadow-whatsapp"
+          buttonVariants({ variant: "whatsapp" }),
+          "mt-6 w-full h-11 rounded-full px-10 text-[14px] font-bold transition-all duration-300 hover:scale-[1.02] shadow-whatsapp"
         )}
       >
         {content.directBookingButton}
