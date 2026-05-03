@@ -34,7 +34,7 @@ export function GalleryView({ galleryItems, bookingAwardImage, galleryCopy, book
 
       <section className="py-[var(--layout-section-spacing)]">
         <div className="shell-container grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.05fr_0.95fr] items-start">
-          <Reveal>
+          <Reveal className="lg:sticky lg:top-32">
             <Panel className="overflow-hidden">
               <div className="grid gap-0 sm:grid-cols-[1.05fr_0.95fr] h-full">
                 <div className="relative min-h-[16rem] h-full bg-[#003b95]">
@@ -59,7 +59,7 @@ export function GalleryView({ galleryItems, bookingAwardImage, galleryCopy, book
             </Panel>
           </Reveal>
 
-          <Reveal delay={120}>
+          <Reveal delay={120} className="lg:sticky lg:top-32">
             <Panel className="p-6 sm:p-8">
               <SectionHeading
                 variant="simple"

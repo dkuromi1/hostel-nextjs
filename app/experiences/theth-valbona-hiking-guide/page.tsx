@@ -113,7 +113,7 @@ export default function HikingGuidePage() {
       <section className="py-[var(--layout-section-spacing)]">
         <div className="shell-container">
           <div className="grid gap-12 lg:grid-cols-[0.45fr_0.55fr] lg:items-start">
-            <Reveal className="space-y-6">
+            <Reveal className="space-y-6 lg:sticky lg:top-32">
               <SectionLabel variant="sky">TRANSPORT</SectionLabel>
               <h2 className="heading-section text-[var(--text-heading)]">
                 {hikingGuide.logistics.title}
@@ -122,7 +122,9 @@ export default function HikingGuidePage() {
                 {hikingGuide.logistics.description}
               </p>
             </Reveal>
-            <LogisticsSteps steps={hikingGuide.logistics.steps} />
+            <div className="lg:sticky lg:top-32">
+              <LogisticsSteps steps={hikingGuide.logistics.steps} />
+            </div>
           </div>
         </div>
       </section>

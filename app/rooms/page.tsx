@@ -192,8 +192,8 @@ export default function RoomsPage() {
       </section>
 
       <section className="py-[var(--layout-section-spacing)]">
-        <div className="shell-container grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.05fr_0.95fr]">
-          <Reveal>
+        <div className="shell-container grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+          <Reveal className="lg:sticky lg:top-32">
             <Panel className="p-6 sm:p-8">
               <SectionHeading
                 eyebrow={siteCopyContent.rooms.includedStay.eyebrow}
@@ -227,7 +227,7 @@ export default function RoomsPage() {
             </Panel>
           </Reveal>
 
-          <Reveal delay={120}>
+          <Reveal delay={120} className="lg:sticky lg:top-32">
             <Panel className="p-6 sm:p-8">
               <SectionLabel className="mb-6">{siteCopyContent.rooms.extraHelp.label}</SectionLabel>
               <h2 className="mt-4 heading-card text-[var(--text-heading)]">

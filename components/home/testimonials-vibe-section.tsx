@@ -25,7 +25,7 @@ export function TestimonialsVibeSection({ testimonials, extendReasons, copy }: T
         </Reveal>
 
         {/* Right Column: Vibe Content */}
-        <div className="flex-1 space-y-8 lg:max-w-[60%]">
+        <div className="flex-1 space-y-8 lg:max-w-[60%] lg:sticky lg:top-32">
           <Reveal delay={100}>
             <SectionHeading
               eyebrow={copy.eyebrow}
