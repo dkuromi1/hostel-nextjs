@@ -33,7 +33,7 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
               <Icon className="size-5" strokeWidth={1.5} />
             </div>
             <div className="space-y-1.5 pt-0.5">
-              <h3 className="text-[15px] font-bold tracking-tight text-[var(--text-heading)]">
+              <h3 className="text-lg font-bold tracking-tight text-[var(--text-heading)]">
                 {service.title}
               </h3>
               <p className="text-sm leading-snug text-[var(--text-body-subtle)] line-clamp-2 transition-colors group-hover:text-[var(--text-body)]">

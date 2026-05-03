@@ -29,12 +29,12 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
                   <Icon className="size-5" strokeWidth={1.5} />
                 </div>
                 {fact.title && (
-                  <h4 className="font-heading text-base font-bold leading-tight text-[var(--text-heading)] dark:text-white">
+                  <h4 className="font-heading text-lg font-bold leading-tight text-[var(--text-heading)] dark:text-white">
                     {fact.title}
                   </h4>
                 )}
               </div>
-              <p className="text-[13px] leading-relaxed text-[var(--text-body-subtle)] transition-colors group-hover:text-[var(--text-body)] dark:text-white/80 dark:group-hover:text-white">
+              <p className="text-sm leading-relaxed text-[var(--text-body-subtle)] transition-colors group-hover:text-[var(--text-body)] dark:text-white/80 dark:group-hover:text-white">
                 {fact.text}
               </p>
             </div>

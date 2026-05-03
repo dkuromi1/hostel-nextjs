@@ -20,7 +20,7 @@ export function SectionLabel({
     <p
       className={cn(
         "uppercase tracking-[0.24em] antialiased",
-        weight === "light" ? "text-xs font-bold" : "text-[10px] font-bold",
+        weight === "light" ? "text-xs font-semibold" : "text-xs font-bold",
         colorScheme === "light"
           ? "text-white/70"
           : variant === "default"

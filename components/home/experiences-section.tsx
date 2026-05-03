@@ -89,7 +89,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
               "active:scale-95 active:translate-y-0"
             )}
           >
-            <div className="absolute inset-0 z-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 group-hover:translate-x-[100%]" />
+            <div className="absolute inset-0 z-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/15 to-transparent transition-transform duration-1000 group-hover:translate-x-[100%]" />
             <span className="relative z-10">
               {copy.buttonLabel}
             </span>
@@ -133,7 +133,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                           </SectionLabel>
                         </div>
                       </div>
-                      <div className="p-6 text-sm leading-snug text-[var(--text-body-subtle)] bg-[var(--glass-bg)] flex-1 flex flex-col">
+                      <div className="p-6 text-card-body bg-[var(--glass-bg)] flex-1 flex flex-col">
                         <p className="flex-1">{formatText(pillar.description)}</p>
                         <PillarCta cta={pillar.cta} />
                       </div>
@@ -166,7 +166,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                     <SectionLabel colorScheme="light" className="drop-shadow-md">
                       {experiencePillars[0].title}
                     </SectionLabel>
-                    <p className="mt-3 max-w-lg text-base leading-snug text-white/90">
+                    <p className="mt-3 max-w-lg text-card-body !text-white/90">
                       {formatText(experiencePillars[0].description)}
                     </p>
                     <PillarCta cta={experiencePillars[0].cta} variant="dark" />
@@ -216,7 +216,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                             <h3 className="heading-feature text-[var(--text-heading)]">
                               {pillar.title}
                             </h3>
-                            <p className="text-section-desc">
+                            <p className="text-card-body">
                               {formatText(pillar.description)}
                             </p>
                             <PillarCta cta={pillar.cta} />

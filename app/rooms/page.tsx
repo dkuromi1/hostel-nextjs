@@ -153,10 +153,10 @@ export default function RoomsPage() {
                             return (
                               <div
                                 key={idx}
-                                className="flex w-fit items-center gap-1.5 rounded-lg border border-[var(--border)] bg-[var(--muted)]/50 px-2.5 py-1.5 text-[var(--text-body)] transition-all duration-300 hover:border-[var(--brand-primary)]/10 hover:shadow-sm hover:bg-[var(--glass-bg)]"
+                                className="flex w-fit items-center gap-1.5 rounded-lg border border-[var(--border)] bg-[var(--muted)]/50 px-2.5 py-1.5 text-[var(--text-body-subtle)] transition-all duration-300 hover:border-[var(--brand-primary)]/10 hover:shadow-sm hover:bg-[var(--glass-bg)]"
                               >
                                 <AmenityIcon className="size-3 shrink-0 text-[var(--brand-primary)]" />
-                                <span className="whitespace-nowrap text-[10px] font-semibold tracking-tight uppercase">
+                                <span className="whitespace-nowrap text-xs font-medium">
                                   {amenity.label}
                                 </span>
                               </div>
@@ -165,7 +165,7 @@ export default function RoomsPage() {
                         </div>
 
                         <div className="space-y-2">
-                          <SectionLabel weight="bold" className="mb-1 text-[11px] opacity-70">Room Details</SectionLabel>
+                          <SectionLabel weight="bold" className="mb-1 opacity-70">Room Details</SectionLabel>
                           <ul className="grid gap-2 sm:grid-cols-2">
                             {room.bullets.map((bullet) => (
                               <li
@@ -213,7 +213,7 @@ export default function RoomsPage() {
                         <Icon className="size-5" strokeWidth={1.5} />
                       </div>
                       <div className="space-y-1">
-                        <h4 className="text-sm font-bold tracking-tight text-[var(--text-heading)]">
+                        <h4 className="text-base font-bold tracking-tight text-[var(--text-heading)]">
                           {service.title}
                         </h4>
                         <p className="text-card-body">
@@ -245,7 +245,7 @@ export default function RoomsPage() {
                         <Icon className="size-5" strokeWidth={1.5} />
                       </div>
                       <div className="space-y-1">
-                        <h4 className="text-sm font-bold tracking-tight text-[var(--text-heading)]">
+                        <h4 className="text-base font-bold tracking-tight text-[var(--text-heading)]">
                           {service.title}
                         </h4>
                         <p className="text-card-body">

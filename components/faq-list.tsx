@@ -35,7 +35,7 @@ function FaqItem({ question, answer }: FaqItemProps) {
       >
         <span
           className={cn(
-            "font-heading text-base font-medium transition-colors",
+            "font-heading text-lg font-medium transition-colors",
             isOpen ? "text-[var(--brand-primary)]" : "text-[var(--text-heading)] group-hover:text-[var(--brand-primary)]"
           )}
         >

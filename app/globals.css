@@ -405,14 +405,12 @@
 
 /** Large section description paragraph */
 @utility text-section-desc {
-  @apply leading-snug text-[var(--text-body)];
-  font-size: clamp(1rem, 0.5vw + 0.9rem, 1.125rem);
+  @apply text-base leading-snug text-[var(--text-body)];
 }
 
 /** Standard card / component body paragraph */
 @utility text-card-body {
-  @apply leading-snug text-[var(--text-body-subtle)];
-  font-size: clamp(0.875rem, 0.25vw + 0.8rem, 1rem);
+  @apply text-sm md:text-base leading-snug text-[var(--text-body-subtle)];
 }
 
 /** Supporting paragraph for page states and large editorial blocks */
