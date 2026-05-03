@@ -42,7 +42,7 @@ export function CompactGuestRatingsStrip({
         className="group flex items-center justify-between gap-3 rounded-2xl border border-white/16 bg-black/40 px-4 py-3 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-black/50"
       >
         <div className="flex min-w-0 items-center gap-3">
-          <BookingComLogo iconOnly className="size-9" />
+          <BookingComLogo iconOnly monochromeHover className="size-9" />
           <div className="min-w-0">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/65">
               {copy.bookingSourceLabel}
@@ -69,7 +69,7 @@ export function CompactGuestRatingsStrip({
         className="group flex items-center justify-between gap-3 rounded-2xl border border-white/16 bg-black/40 px-4 py-3 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-black/50"
       >
         <div className="flex min-w-0 items-center gap-3">
-          <HostelworldLogo iconOnly className="size-9" />
+          <HostelworldLogo iconOnly monochromeHover className="size-9" />
           <div className="min-w-0">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/65">
               {copy.hostelworldSourceLabel}

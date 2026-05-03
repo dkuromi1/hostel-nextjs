@@ -18,6 +18,7 @@ type ChannelIconProps = {
   className?: string;
   iconOnly?: boolean;
   strokeWidth?: number;
+  monochromeHover?: boolean;
 };
 
 export function ChannelIcon({
@@ -25,6 +26,7 @@ export function ChannelIcon({
   className,
   iconOnly = false,
   strokeWidth = 1.8,
+  monochromeHover = false,
 }: ChannelIconProps) {
   const normalizedKey = iconKey.trim().toLowerCase();
 
@@ -36,9 +38,9 @@ export function ChannelIcon({
   switch (normalizedKey) {
     case "bookingcom":
     case "booking-com":
-      return <BookingComLogo className={finalClassName} iconOnly={iconOnly} />;
+      return <BookingComLogo className={finalClassName} iconOnly={iconOnly} monochromeHover={monochromeHover} />;
     case "hostelworld":
-      return <HostelworldLogo className={finalClassName} iconOnly={iconOnly} />;
+      return <HostelworldLogo className={finalClassName} iconOnly={iconOnly} monochromeHover={monochromeHover} />;
     case "instagram":
       return <InstagramGlyph className={finalClassName} strokeWidth={strokeWidth} />;
     case "whatsapp":

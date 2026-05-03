@@ -24,6 +24,7 @@ export interface HeroContent {
 }
 
 export interface IconTextItem {
+  title?: string;
   text: string;
   icon: IconName;
 }

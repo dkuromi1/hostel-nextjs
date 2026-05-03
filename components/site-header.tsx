@@ -130,15 +130,13 @@ export function SiteHeader({ navLinks, contactChannels, bookingChannels, siteNam
                   aria-label={channel.label}
                   className={cn(
                     buttonVariants({ variant: "ghost", size: "icon" }),
-                    "size-9 rounded-full border border-[var(--border)] bg-transparent text-[var(--text-heading)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-[var(--muted)]",
+                    "group size-9 rounded-full border border-[var(--border)] bg-transparent text-[var(--text-heading)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-[var(--muted)]",
                     isTransparent
                       ? "border-white/10 bg-[var(--surface-dark)]/20 text-white hover:bg-[var(--surface-dark)]/40 shadow-[0_8px_20px_-8px_rgba(0,0,0,0.4)]"
-                      : channel.icon === "hostelworld"
-                        ? "border-orange-200/80 bg-orange-50/90 text-orange-900 hover:bg-orange-100/90 dark:border-orange-900/30 dark:bg-orange-900/20 dark:text-orange-400 dark:hover:bg-orange-900/40 shadow-[0_0_12px_-3px_rgba(251,146,60,0.4)] dark:shadow-[0_0_12px_-3px_rgba(251,146,60,0.2)]"
-                        : "border-border bg-muted/95 text-foreground hover:bg-muted"
+                      : "border-border bg-muted/95 text-foreground hover:bg-muted"
                   )}
                 >
-                  <ChannelIcon iconKey={channel.icon} iconOnly />
+                  <ChannelIcon iconKey={channel.icon} iconOnly monochromeHover />
                 </a>
               ))}
               <ThemeToggle variant="header" />

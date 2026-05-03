@@ -12,16 +12,24 @@
   ],
   "quickFacts": [
     {
+      "title": "Privacy Pods",
       "text": "Spacious privacy pods in our mixed dorm create a personal bedroom feel within a social space",
       "icon": "BedDouble"
     },
     {
+      "title": "Boutique Dorms",
       "text": "Boutique 4-bed female or male dorms, offering a bright, high-end sanctuary for peaceful stays",
       "icon": "Luggage"
     },
     {
-      "text": "Included: breakfast (excl. off-season), WiFi, luggage storage, and 24h access",
+      "title": "Included Perks",
+      "text": "Included: breakfast (excl. off-season), WiFi, luggage storage, 24h access, and rooftop socials",
       "icon": "ShieldCheck"
+    },
+    {
+      "title": "Adventure Ready",
+      "text": "Adventure-ready services including transportation or tours arrangements, laundry, and bike rentals",
+      "icon": "Mountain"
     }
   ],
   "includedFeatures": [

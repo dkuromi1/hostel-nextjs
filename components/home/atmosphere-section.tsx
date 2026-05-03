@@ -14,9 +14,7 @@ export interface AtmosphereSectionProps {
     roomImageAlt: string;
     directBookingLabel: string;
     directBookingTitle: string;
-    directBookingTitleMobile: string;
     directBookingDescription: string;
-    directBookingDescriptionMobile: string;
     directBookingButton: string;
   };
   whatsappUrl?: string;
@@ -24,12 +22,12 @@ export interface AtmosphereSectionProps {
 
 export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSectionProps) {
   return (
-    <section className="py-[var(--layout-section-spacing)]">
+    <section className="pt-8 pb-[var(--layout-section-spacing)] lg:pt-12">
       <div className="shell-container max-w-5xl">
         <div className="flex flex-col gap-[var(--layout-grid-gutter)] lg:grid lg:grid-cols-[2fr_1fr] lg:grid-rows-[1fr_auto] lg:gap-[var(--layout-grid-gutter)]">
 
           {/* DESKTOP ONLY: Direct Booking card */}
-          <Reveal delay={200} className="hidden lg:flex lg:row-start-2">
+          <Reveal delay={200} className="hidden lg:flex lg:row-start-2 h-full">
             <DirectBookingCard variant="inline" className="h-full" whatsappUrl={whatsappUrl} content={atmosphere} />
           </Reveal>
 
@@ -59,7 +57,7 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
             <div className="grid grid-cols-[3fr_2fr] gap-[var(--layout-grid-gutter)] lg:grid-cols-1 lg:h-full">
               {/* Room image + mobile booking */}
               <Reveal delay={100} className="flex min-w-0 flex-col gap-[var(--layout-grid-gutter)] h-full">
-                <div className="media-frame relative aspect-[4/3] h-full lg:h-auto">
+                <div className="media-frame relative aspect-[4/3] lg:h-auto">
                   <Image
                     src="/images/rooms_1_min.webp"
                     alt={atmosphere.roomImageAlt}

@@ -95,8 +95,8 @@
   /* emerald-100 */
   --brand-primary-dark: #047857;
   /* emerald-700 */
-  --brand-accent: #7dd3fc;
-  /* sky-300 — lighter blue for visibility */
+  --brand-accent: #99f6ff;
+  /* brighter cyan-200 for better visibility */
 
   /* ─── Semantic Text Colors ──────────────────────────────────────────────────
      Use these instead of raw slate-* classes so a palette swap is one edit.
@@ -205,8 +205,8 @@
   /* slate-800 for dark mode */
   --brand-primary-dark: #6ee7b7;
   /* emerald-300 — lighter for hover on dark */
-  --brand-accent: #7dd3fc;
-  /* sky-300 */
+  --brand-accent: #99f6ff;
+  /* brighter cyan-200 for visibility */
 
   --atmosphere-glow-primary: rgba(52, 211, 153, 0.14);
   --atmosphere-glow-accent: rgba(56, 189, 248, 0.10);

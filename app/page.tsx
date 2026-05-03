@@ -5,10 +5,10 @@ import {
   buildBusinessSchema,
   buildMetadata,
 } from "@/lib/metadata";
-import { 
-  siteCopyContent, 
-  hero, 
-  quickFacts, 
+import {
+  siteCopyContent,
+  hero,
+  quickFacts,
   siteConfig,
   roomTypes,
   freeServices,
@@ -25,6 +25,7 @@ import {
 import dynamic from "next/dynamic";
 import { HeroSection } from "@/components/home/hero-section";
 import { AtmosphereSection } from "@/components/home/atmosphere-section";
+import { QuickFactsSection } from "@/components/home/quick-facts-section";
 
 const RoomsSection = dynamic(() => import("@/components/home/rooms-section").then(mod => mod.RoomsSection), { ssr: true });
 const IncludedServicesSection = dynamic(() => import("@/components/home/services-section").then(mod => mod.IncludedServicesSection), { ssr: true });
@@ -45,11 +46,10 @@ export default function Home() {
     <>
       <StructuredData data={[buildBusinessSchema(), buildFaqSchema()]} />
 
-      <HeroSection 
-        hero={hero} 
-        quickFacts={quickFacts} 
-        tagline={siteConfig.tagline} 
-        backgroundAlt={siteCopyContent.home.hero.backgroundAlt} 
+      <HeroSection
+        hero={hero}
+        tagline={siteConfig.tagline}
+        backgroundAlt={siteCopyContent.home.hero.backgroundAlt}
         guestRatingsProps={{
           copy: siteCopyContent.home.guestRatings,
           bookingUrl: siteConfig.bookingUrl,
@@ -60,10 +60,13 @@ export default function Home() {
         }}
       />
 
-      <AtmosphereSection 
-        atmosphere={siteCopyContent.home.atmosphere} 
-        whatsappUrl={siteConfig.whatsappUrl}
-      />
+      <div className="relative">
+        <QuickFactsSection quickFacts={quickFacts} className="pt-16 pb-0" />
+        <AtmosphereSection
+          atmosphere={siteCopyContent.home.atmosphere}
+          whatsappUrl={siteConfig.whatsappUrl}
+        />
+      </div>
 
       <RoomsSection roomsSection={siteCopyContent.home.roomsSection} roomTypes={roomTypes} />
 
@@ -71,16 +74,16 @@ export default function Home() {
 
       <HomeGallerySection items={galleryItems} copy={siteCopyContent.home.gallerySection} />
 
-      <ExperiencesSection 
-        eventCards={eventCards} 
-        experiencePillars={experiencePillars} 
-        copy={siteCopyContent.home.experiencesSection} 
-        showRegionalWeather={siteConfig.features.showRegionalWeather} 
+      <ExperiencesSection
+        eventCards={eventCards}
+        experiencePillars={experiencePillars}
+        copy={siteCopyContent.home.experiencesSection}
+        showRegionalWeather={siteConfig.features.showRegionalWeather}
       />
 
       <TestimonialsVibeSection testimonials={testimonials} extendReasons={extendReasons} copy={siteCopyContent.home.whyStayLonger} />
 
-      <GuestRatingsSection 
+      <GuestRatingsSection
         copy={siteCopyContent.home.guestRatings}
         bookingUrl={siteConfig.bookingUrl}
         hostelworldUrl={siteConfig.hostelworldUrl}
