@@ -68,7 +68,7 @@ const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
-  preload: false,
+  preload: true,
 });
 
 // Determine which fonts the active theme needs
@@ -86,10 +86,11 @@ const themeFontClasses: Record<string, string[]> = {
 // Start with the theme defaults
 let activeFontClasses = [...(themeFontClasses[activeTheme ?? "cool"] ?? [serif.variable, inter.variable])];
 
-// Force-add Cormorant if explicitly requested (e.g. for Scodrinon's Emerald + Cormorant look)
-if (requestedHeadingFont === "cormorant" && !activeFontClasses.includes(cormorant.variable)) {
+// Force-add Cormorant (used for Hero H1 override)
+if (!activeFontClasses.includes(cormorant.variable)) {
   activeFontClasses.push(cormorant.variable);
 }
+
 // Force-add Playfair if explicitly requested
 if (requestedHeadingFont === "serif" && !activeFontClasses.includes(serif.variable)) {
   activeFontClasses.push(serif.variable);

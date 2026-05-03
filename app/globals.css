@@ -26,6 +26,7 @@
   --color-ring: var(--ring);
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
+  --font-cormorant: var(--font-cormorant);
   --font-mono: var(--font-mono);
   --radius-sm: var(--radius-sm, calc(var(--radius) * 0.7));
   --radius-md: var(--radius-md, calc(var(--radius) * 0.85));
@@ -356,8 +357,8 @@
 
 /** Full-screen immersive hero h1 (homepage) */
 @utility heading-hero {
-  @apply font-heading leading-[1.05];
-  font-size: clamp(2.25rem, 5vw + 1rem, 4.5rem);
+  @apply font-cormorant leading-[1.05];
+  font-size: clamp(2.5rem, 6vw + 1rem, 5.25rem);
   letter-spacing: 0.000em;
 }
 

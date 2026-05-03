@@ -51,7 +51,7 @@ export function HeroSection({ hero, tagline, backgroundAlt, guestRatingsProps }:
                   immediate
                 />
               </h1>
-              <p className="max-w-[50ch] text-hero-sub text-white/95 antialiased [text-shadow:0_2px_10px_rgba(0,0,0,0.6)]">
+              <p className="max-w-[50ch] text-hero-sub text-white/95 font-light antialiased [text-shadow:0_2px_10px_rgba(0,0,0,0.6)]">
                 {hero.description}
               </p>
             </div>
