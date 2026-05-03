@@ -42,9 +42,9 @@ export function TitoTheCat({ isEnabled, message, type = "cat" }: TitoTheCatProps
 
   const coords = useMemo(() => ({
     start: 150,
-    intro: getXPos(-45, -8),
-    jump: getXPos(-120, -20),
-    further: getXPos(-320, -45),
+    intro: getXPos(-30, -5),
+    jump: getXPos(-80, -12),
+    further: getXPos(-180, -25),
   }), [getXPos]);
 
   const durations = useMemo(() => ({
