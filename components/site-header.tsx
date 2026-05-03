@@ -65,7 +65,7 @@ export function SiteHeader({ navLinks, contactChannels, bookingChannels, siteNam
             </div>
             <div>
               <p className={cn(
-                "font-heading text-lg leading-none tracking-[-0.05em] transition-colors",
+                "font-cormorant text-xl leading-none transition-colors",
                 isTransparent ? "text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]" : "text-[var(--text-heading)]"
               )}>
                 {siteName}

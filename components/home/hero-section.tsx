@@ -17,12 +17,12 @@ export function HeroSection({ hero, tagline, backgroundAlt, guestRatingsProps }:
     <section className="relative min-h-[90dvh] flex flex-col justify-center overflow-hidden pb-12 pt-[calc(env(safe-area-inset-top,0px)+7rem)] sm:pb-20 sm:pt-[calc(env(safe-area-inset-top,0px)+9rem)]">
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hiking_2.webp"
+          src="/images/social_hostel_banner_1.webp"
           alt={backgroundAlt}
           fill
           priority
           className="object-cover"
-          style={{ objectPosition: "60% center" }}
+          style={{ objectPosition: "10% 50%" }}
           sizes="100vw"
         />
         <div className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(to_bottom,rgba(2,6,23,0.4)_0%,rgba(2,6,23,0.5)_50%,rgba(2,6,23,0.95)_100%)]" />
