@@ -110,7 +110,7 @@
       "surfaces": {
         "glassBlur": 12,
         "glassOpacity": 0.84,
-        "borderRadius": "sm"
+        "borderRadius": "2xl"
       },
       "mascot": {
         "enabled": true,
@@ -118,13 +118,13 @@
         "message": "Hi, I'm Tito the hostel's friendly adopted cat! 🐾"
       },
       "typography": {
-        "headingFont": "serif",
+        "headingFont": "cormorant",
         "character": "elegant"
       },
       "layout": {
-        "width": "standard",
-        "spacing": "standard",
-        "gutter": "standard"
+        "width": "wide",
+        "spacing": "wide",
+        "gutter": "wide"
       }
     }
   },

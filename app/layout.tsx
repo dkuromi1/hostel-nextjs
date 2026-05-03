@@ -71,15 +71,29 @@ const cormorant = Cormorant_Garamond({
   preload: false,
 });
 
-// Determine which fonts the active theme needs so we only load what's used
-const activeTheme = activeInstance.content.settings.branding?.design?.theme;
+// Determine which fonts the active theme needs
+const design = activeInstance.content.settings.branding?.design;
+const activeTheme = design?.theme;
+const requestedHeadingFont = design?.typography?.headingFont;
+
 const themeFontClasses: Record<string, string[]> = {
   cool:           [serif.variable, inter.variable],
   warm:           [cormorant.variable, inter.variable],
   forest:         [bevan.variable, inter.variable],
   "nordic-earth": [syne.variable, inter.variable],
 };
-const activeFontClasses = themeFontClasses[activeTheme ?? "cool"] ?? [serif.variable, inter.variable];
+
+// Start with the theme defaults
+let activeFontClasses = [...(themeFontClasses[activeTheme ?? "cool"] ?? [serif.variable, inter.variable])];
+
+// Force-add Cormorant if explicitly requested (e.g. for Scodrinon's Emerald + Cormorant look)
+if (requestedHeadingFont === "cormorant" && !activeFontClasses.includes(cormorant.variable)) {
+  activeFontClasses.push(cormorant.variable);
+}
+// Force-add Playfair if explicitly requested
+if (requestedHeadingFont === "serif" && !activeFontClasses.includes(serif.variable)) {
+  activeFontClasses.push(serif.variable);
+}
 
 const themeBootstrapScript = `
 (() => {

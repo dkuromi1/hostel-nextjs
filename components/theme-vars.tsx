@@ -139,81 +139,81 @@ export function ThemeVars() {
 
   if (theme === "forest") {
     finalColors = {
-      primary: "#344e41", // Shadow Forest (Tone)
-      accent: "#cb997e", // Cedar Terra Cotta
-      background: "#f1f5f2", // Forest Mist
-      surfaceDark: "#0d2119", // Midnight Pine
-      darkBackground: "#020805", // Black Forest
+      primary: colors?.primary || "#344e41",
+      accent: colors?.accent || "#cb997e",
+      background: colors?.background || "#f1f5f2",
+      surfaceDark: colors?.surfaceDark || "#0d2119",
+      darkBackground: colors?.darkBackground || "#020805",
     };
     finalTypography = {
-      headingFont: "bevan",
-      character: "bold",
+      headingFont: typography?.headingFont || "bevan",
+      character: typography?.character || "bold",
     };
-    surfaces.borderRadius = "xl";
-    surfaces.glassBlur = 8;
-    surfaces.glassOpacity = 0.9;
+    surfaces.borderRadius = design.surfaces?.borderRadius || "xl";
+    surfaces.glassBlur = design.surfaces?.glassBlur || 8;
+    surfaces.glassOpacity = design.surfaces?.glassOpacity || 0.9;
     // Bold/Editorial layout
-    finalLayout.width = "wide";
-    finalLayout.spacing = "wide";
-    finalLayout.gutter = "wide";
+    finalLayout.width = design.layout?.width || "wide";
+    finalLayout.spacing = design.layout?.spacing || "wide";
+    finalLayout.gutter = design.layout?.gutter || "wide";
   } else if (theme === "warm") {
     finalColors = {
-      primary: "#b07d62",      // Muted Clay — warm but restrained
-      accent: "#d4b896",       // Warm Linen — sandy, not yellow
-      background: "#faf8f5",   // Warm Off-White — Aesop-style cream
-      surfaceDark: "#2c1f14",  // Dark Espresso Brown — no red undertone
-      darkBackground: "#1a1208", // Near-Black with warm undertone
+      primary: colors?.primary || "#b07d62",
+      accent: colors?.accent || "#d4b896",
+      background: colors?.background || "#faf8f5",
+      surfaceDark: colors?.surfaceDark || "#2c1f14",
+      darkBackground: colors?.darkBackground || "#1a1208",
     };
     finalTypography = {
-      headingFont: "cormorant",
-      character: "elegant",
+      headingFont: typography?.headingFont || "cormorant",
+      character: typography?.character || "elegant",
     };
-    surfaces.borderRadius = "3xl";
-    surfaces.glassBlur = 10;
-    surfaces.glassOpacity = 0.85;
+    surfaces.borderRadius = design.surfaces?.borderRadius || "3xl";
+    surfaces.glassBlur = design.surfaces?.glassBlur || 10;
+    surfaces.glassOpacity = design.surfaces?.glassOpacity || 0.85;
     // Relaxed layout
-    finalLayout.width = "standard";
-    finalLayout.spacing = "standard";
-    finalLayout.gutter = "standard";
+    finalLayout.width = design.layout?.width || "standard";
+    finalLayout.spacing = design.layout?.spacing || "standard";
+    finalLayout.gutter = design.layout?.gutter || "standard";
   } else if (theme === "nordic-earth") {
     finalColors = {
-      primary: "#5f7470", // Eucalyptus
-      accent: "#cb997e", // Cedar Clay
-      background: "#fbf9f4", // Alabaster (Lighter)
-      surfaceDark: "#22223b", // Deep Space Indigo
-      darkBackground: "#171721", // Nordic Night
+      primary: colors?.primary || "#5f7470",
+      accent: colors?.accent || "#cb997e",
+      background: colors?.background || "#fbf9f4",
+      surfaceDark: colors?.surfaceDark || "#22223b",
+      darkBackground: colors?.darkBackground || "#171721",
     };
     finalTypography = {
-      headingFont: "syne",
-      character: "sharp",
+      headingFont: typography?.headingFont || "syne",
+      character: typography?.character || "sharp",
     };
     // Force sharp architectural surfaces for Nordic
-    surfaces.borderRadius = "none";
-    surfaces.glassBlur = 20;
-    surfaces.glassOpacity = 0.7;
+    surfaces.borderRadius = design.surfaces?.borderRadius || "none";
+    surfaces.glassBlur = design.surfaces?.glassBlur || 20;
+    surfaces.glassOpacity = design.surfaces?.glassOpacity || 0.7;
     // Architectural layout
-    finalLayout.width = "wide";
-    finalLayout.spacing = "compact";
-    finalLayout.gutter = "none";
+    finalLayout.width = design.layout?.width || "wide";
+    finalLayout.spacing = design.layout?.spacing || "compact";
+    finalLayout.gutter = design.layout?.gutter || "none";
   } else if (theme === "cool") {
     finalColors = {
-      primary: "#059669",
-      accent: "#8ac7eb", // Final balanced midpoint (Vibrant Tone)
-      background: "#f8fafc",
-      surfaceDark: "#1e293b",
-      darkBackground: "#020617",
+      primary: colors?.primary || "#059669",
+      accent: colors?.accent || "#8ac7eb",
+      background: colors?.background || "#f8fafc",
+      surfaceDark: colors?.surfaceDark || "#1e293b",
+      darkBackground: colors?.darkBackground || "#020617",
     };
     finalTypography = {
-      headingFont: "serif",
-      character: "elegant",
+      headingFont: typography?.headingFont || "serif",
+      character: typography?.character || "elegant",
     };
-    surfaces.borderRadius = "2xl";
-    surfaces.glassBlur = 12;
-    surfaces.glassOpacity = 0.84;
+    surfaces.borderRadius = design.surfaces?.borderRadius || "2xl";
+    surfaces.glassBlur = design.surfaces?.glassBlur || 12;
+    surfaces.glassOpacity = design.surfaces?.glassOpacity || 0.84;
     // Clean standard layout
-    finalLayout.width = "standard";
-    finalLayout.spacing = "standard";
-    finalLayout.gutter = "standard";
+    finalLayout.width = design.layout?.width || "standard";
+    finalLayout.spacing = design.layout?.spacing || "standard";
+    finalLayout.gutter = design.layout?.gutter || "standard";
   }
 
   const rv = getRadiusValues(surfaces.borderRadius);
@@ -275,6 +275,25 @@ export function ThemeVars() {
 
       /* Dark mode contrast overrides */
       --brand-accent: ${theme === "forest" ? finalColors.accent : "var(--accent)"};
+    }
+
+    /* Responsive Layout Overrides */
+    @media (max-width: 1024px) {
+      :root {
+        /* Step down spacing and gutter on tablet if they are set to wide */
+        ${finalLayout.spacing === "wide" ? `--layout-section-spacing: ${spacingMap.standard};` : ""}
+        ${finalLayout.gutter === "wide" ? `--layout-grid-gutter: ${gutterMap.standard};` : ""}
+      }
+    }
+
+    @media (max-width: 640px) {
+      :root {
+        /* Force compact gutter on mobile */
+        --layout-grid-gutter: ${gutterMap.compact};
+        
+        /* Ensure spacing isn't too large on tiny screens */
+        ${finalLayout.spacing !== "compact" ? `--layout-section-spacing: ${spacingMap.standard};` : ""}
+      }
     }
 
     .dark {

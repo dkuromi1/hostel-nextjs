@@ -32,7 +32,7 @@ export function StickyBookingBar({ bookingChannels, contactChannels }: StickyBoo
         ? "border-t border-white/5 bg-[var(--surface-dark)]/50 backdrop-blur-md"
         : "border-t border-[var(--glass-border)] bg-[var(--glass-bg)] shadow-[0_-20px_40px_-30px_var(--glass-shadow)] backdrop-blur"
     )}>
-      <div className="mx-auto flex max-w-[1400px] items-center gap-2">
+      <div className="mx-auto flex max-w-[var(--layout-max-width)] items-center gap-2">
         {primaryContactChannel ? (
           <a
             href={primaryContactChannel.url}

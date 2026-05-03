@@ -135,7 +135,7 @@ export function GalleryLightbox({ currentId, isModal = false, galleryItems }: Ga
                 />
 
                 {/* Media + controls container */}
-                <div className="relative w-full h-full max-w-[1400px] mx-auto flex items-center justify-center group">
+                <div className="relative w-full h-full max-w-[var(--layout-max-width)] mx-auto flex items-center justify-center group">
 
                     {/* Single draggable layer — Framer picks x or y based on dragDirectionLock */}
                     <motion.div

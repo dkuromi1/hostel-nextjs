@@ -50,7 +50,7 @@ export function SiteHeader({ navLinks, contactChannels, bookingChannels, siteNam
           ? "bg-transparent border-transparent"
           : "border-b border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md shadow-sm"
       )}>
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-[var(--layout-max-width)] items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-3 transition-transform duration-300 hover:scale-[1.02] active:scale-95">
             <div className="relative size-11 overflow-hidden rounded-2xl">
               <Image
