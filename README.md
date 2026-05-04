@@ -32,6 +32,10 @@ This project is engineered beyond typical static hospitality sites, using advanc
 *   **Editorial Design System (Sharp Aesthetic)**: A premium "No-Radius" (0px) design philosophy enforced across all UI components for a modern, editorial, and high-density boutique look.
 *   **Dynamic Theme & Layout Engine**: Granular control over the site's "Density" and "Width" via `settings.json`. Supports configurable container max-widths, grid gutters, and section spacing that automatically synchronize across the entire application.
 *   **Configuration-Driven Typography**: Built-in support for dynamic font-swapping (e.g., Cormorant Garamond vs. Inter) via CSS variables mapped directly to instance settings, allowing for rapid re-branding without code changes.
+*   **Zero-Config Site URL Resolution**: An intelligent metadata engine (`lib/metadata.ts`) that automatically resolves the correct canonical URL across local development, Vercel, Netlify, and Cloudflare Pages environments.
+*   **Deep JSON-LD Schema Integration**: Automated generation of `LocalBusiness`, `FAQPage`, and `BreadcrumbList` schemas based on instance data to maximize search engine rich-snippet performance.
+*   **Build-Time Asset Isolation**: A custom prebuild engine (`scripts/prebuild.js`) that dynamically syncs instance-specific assets to the public root, ensuring lean and isolated production bundles for multi-tenant deployments.
+*   **Type-Safe Icon Registry**: Centralized icon management (`lib/icon-registry.ts`) that validates all JSON-backed icon fields against a strict registry, preventing broken visuals during content updates.
 
 
 
