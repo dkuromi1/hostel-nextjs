@@ -59,7 +59,7 @@ export default function ContactPage() {
               {/* Item 1: Phone */}
               <div className="flex flex-col">
                 <div className="flex items-center gap-2.5 mb-4">
-                  <MessageCircleMore className="size-4 text-[var(--brand-primary)]" strokeWidth={2.5} />
+                  <MessageCircleMore className="size-4 text-[var(--brand-primary)]" />
                   <SectionLabel variant="emerald">Direct Contact</SectionLabel>
                 </div>
                 <div className="flex flex-col">
@@ -78,7 +78,7 @@ export default function ContactPage() {
               {/* Item 2: Hours */}
               <div className="flex flex-col">
                 <div className="flex items-center gap-2.5 mb-4">
-                  <Clock className="size-4 text-amber-600 dark:text-amber-400" strokeWidth={2.5} />
+                  <Clock className="size-4 text-amber-600 dark:text-amber-400" />
                   <SectionLabel variant="sun">Reception & Check-in</SectionLabel>
                 </div>
                 <div className="flex flex-col">
@@ -94,7 +94,7 @@ export default function ContactPage() {
               {/* Item 3: Location (Spans bottom row) */}
               <div className="md:col-span-2 flex flex-col">
                 <div className="flex items-center gap-2.5 mb-4">
-                  <MapPinned className="size-4 text-sky-600 dark:text-sky-400" strokeWidth={2.5} />
+                  <MapPinned className="size-4 text-sky-600 dark:text-sky-400" />
                   <SectionLabel variant="sky">Our Location</SectionLabel>
                 </div>
                 <div className="flex flex-col">

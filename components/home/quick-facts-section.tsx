@@ -27,7 +27,7 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
             <div className="relative z-10 flex flex-col h-full gap-4">
               <div className="flex items-center gap-3">
                 <div className="flex size-10 shrink-0 items-center justify-center rounded-[var(--radius-xl)] bg-white text-[var(--brand-primary)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-300 group-hover:bg-[var(--brand-primary)] group-hover:text-white dark:bg-white/5 dark:text-[var(--brand-accent)] dark:group-hover:bg-[var(--brand-primary)]">
-                  <Icon className="size-5" strokeWidth={1.5} />
+                  <Icon className="size-5" />
                 </div>
                 {fact.title && (
                   <h4 className="font-heading text-lg font-bold leading-tight text-[var(--text-heading)] dark:text-white">

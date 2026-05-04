@@ -237,6 +237,14 @@ export function ThemeVars() {
     wide: "1.5rem",      /* matches original rooms-section feel */
   };
   const layoutGutter = gutterMap[finalLayout.gutter as keyof typeof gutterMap] || "1rem";
+  
+  // Icon Stroke Mappings
+  const strokeMap = {
+    thin: "1.5px",
+    normal: "2px",
+    bold: "2.5px",
+  };
+  const iconStroke = strokeMap[design.iconStroke as keyof typeof strokeMap] || "1.5px";
 
   const cssString = `
     :root {
@@ -247,6 +255,8 @@ export function ThemeVars() {
       --surface-dark: ${finalColors.surfaceDark};
       --brand-tertiary: ${theme === "cool" ? "#314158" : finalColors.primary};
       --brand-tertiary-dark: ${theme === "cool" ? "#1e293b" : finalColors.surfaceDark};
+      
+      --icon-stroke-width: ${iconStroke};
       
       --radius: ${rv.base};
       --radius-sm: ${rv.sm};

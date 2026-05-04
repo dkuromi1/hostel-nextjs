@@ -31,7 +31,7 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
             className="group flex h-full gap-4 p-5 transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md"
           >
             <div className="flex size-11 shrink-0 items-center justify-center rounded-[var(--radius-xl)] bg-[var(--muted)] text-[var(--text-body)] shadow-sm ring-1 ring-[var(--foreground)]/5 transition-all duration-300 group-hover:bg-[var(--brand-primary-light)] group-hover:text-[var(--brand-primary)] group-hover:ring-[var(--brand-primary)]/20">
-              <Icon className="size-5" strokeWidth={1.5} />
+              <Icon className="size-5" />
             </div>
             <div className="space-y-1.5 pt-0.5">
               <h3 className="text-lg font-bold tracking-tight text-[var(--text-heading)]">

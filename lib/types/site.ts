@@ -160,6 +160,7 @@ export interface DesignConfig {
     headingFont: "nunito" | "inter" | "serif" | "bevan" | "syne" | "cormorant";
     character: "playful" | "clean" | "elegant" | "sharp" | "bold";
   };
+  iconStroke?: "thin" | "normal" | "bold";
   layout?: {
     width?: "compact" | "standard" | "wide";
     spacing?: "compact" | "standard" | "wide";

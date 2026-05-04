@@ -1,11 +1,11 @@
 type InstagramGlyphProps = {
   className?: string;
-  strokeWidth?: number;
+  strokeWidth?: string | number;
 };
 
 export function InstagramGlyph({
   className,
-  strokeWidth = 1.8,
+  strokeWidth = "var(--icon-stroke-width)",
 }: InstagramGlyphProps) {
   return (
     <svg

@@ -51,7 +51,7 @@ const PillarCta = ({ cta, variant = "light" }: { cta?: CtaLink; variant?: "light
       )}
     >
       {cta.text}
-      <ArrowRight className="size-3.5" strokeWidth={2.5} />
+      <ArrowRight className="size-3.5" />
     </Link>
   );
 };

@@ -61,7 +61,7 @@ export function PageHero({
                     className="group flex items-start gap-4 rounded-2xl border border-[var(--border)] bg-[var(--card)]/50 p-4 transition-all duration-300 hover:border-[var(--brand-primary)]/30 hover:bg-[var(--glass-bg)] hover:shadow-md dark:hover:shadow-primary/5"
                   >
                     <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--glass-bg)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-300 group-hover:bg-[var(--brand-primary-light)] group-hover:text-[var(--brand-primary)] group-hover:ring-[var(--brand-primary)]/20">
-                      <Icon className="size-5" strokeWidth={1.5} />
+                      <Icon className="size-5" />
                     </div>
                     <div className="flex flex-col gap-0.5 py-0.5">
                       {title && (

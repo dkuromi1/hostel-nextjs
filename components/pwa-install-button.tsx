@@ -51,7 +51,7 @@ export function PwaInstallButton() {
       className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--text-muted)]/70 transition-all hover:text-[var(--text-heading)]"
       title="Install as app for offline access"
     >
-      <Download className="size-3" strokeWidth={2} />
+      <Download className="size-3" />
       <span>Install App</span>
     </button>
   );

@@ -121,6 +121,7 @@
         "headingFont": "serif",
         "character": "elegant"
       },
+      "iconStroke": "thin",
       "layout": {
         "width": "wide",
         "spacing": "wide",

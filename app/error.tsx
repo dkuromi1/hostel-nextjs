@@ -39,7 +39,7 @@ export default function Error({
               "rounded-full bg-[var(--brand-primary)] text-[var(--primary-foreground)] hover:bg-[var(--brand-primary-dark)]"
             )}
           >
-            <RefreshCw className="size-4" strokeWidth={1.8} />
+            <RefreshCw className="size-4" />
             {siteCopyContent.errorPage.reloadLabel}
           </button>
           <a

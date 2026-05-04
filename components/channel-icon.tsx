@@ -17,7 +17,7 @@ type ChannelIconProps = {
   iconKey: BusinessChannelIconKey;
   className?: string;
   iconOnly?: boolean;
-  strokeWidth?: number;
+  strokeWidth?: string | number;
   monochromeHover?: boolean;
 };
 
@@ -25,7 +25,7 @@ export function ChannelIcon({
   iconKey,
   className,
   iconOnly = false,
-  strokeWidth = 1.8,
+  strokeWidth = "var(--icon-stroke-width)",
   monochromeHover = false,
 }: ChannelIconProps) {
   const normalizedKey = iconKey.trim().toLowerCase();

@@ -118,7 +118,7 @@ export function MobileNav({ navLinks, contactChannels, bookingChannels, mapUrl }
             : "bg-[var(--glass-bg)] backdrop-blur-md"
         )}
       >
-        <Menu className="size-5" strokeWidth={1.9} />
+        <Menu className="size-5" />
       </button>
 
       <AnimatePresence>

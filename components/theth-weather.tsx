@@ -42,7 +42,7 @@ export async function ThethWeather({ variant = "default" }: { variant?: "default
     return (
       <div className="group flex w-fit items-center gap-3 rounded-lg border border-white/16 bg-[var(--surface-dark)]/42 pl-2.5 pr-4 py-2 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-[var(--surface-dark)]/52">
         <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-white/10">
-          <Icon className={`size-4.5 ${details.colorClass}`} strokeWidth={2} />
+          <Icon className={`size-4.5 ${details.colorClass}`} />
         </div>
         <div className="flex flex-col py-0.5">
           <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-white/65 leading-none mb-1">
@@ -59,7 +59,7 @@ export async function ThethWeather({ variant = "default" }: { variant?: "default
   return (
     <div className="flex w-fit items-center gap-4 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass-bg)] px-5 py-4 shadow-sm shadow-[var(--glass-shadow)]/10">
       <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-[var(--muted)] shadow-sm border border-[var(--border)]">
-        <Icon className={`size-6 ${details.colorClass}`} strokeWidth={1.5} />
+        <Icon className={`size-6 ${details.colorClass}`} />
       </div>
       <div>
         <p className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-primary)] opacity-80">

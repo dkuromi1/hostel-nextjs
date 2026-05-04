@@ -23,7 +23,7 @@ export function TrailTips({ tips }: TrailTipsProps) {
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-3">
                   <div className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] transition-transform group-hover:scale-110">
-                    <Info className="size-4" strokeWidth={2.5} />
+                    <Info className="size-4" />
                   </div>
                   <h3 className="font-heading text-lg font-bold text-[var(--text-heading)]">
                     {tip.title}

@@ -27,7 +27,7 @@ export function ItineraryDays({ days }: ItineraryDaysProps) {
                 <div className="absolute -top-4 -left-4 size-20 bg-[var(--brand-primary)]/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="relative flex items-center justify-between">
                   <div className="flex size-14 items-center justify-center rounded-2xl bg-[var(--muted)] text-[var(--brand-primary)] shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--brand-primary)] group-hover:text-white group-hover:shadow-lg group-hover:shadow-[var(--brand-primary)]/20">
-                    <Icon className="size-7" strokeWidth={1.5} />
+                    <Icon className="size-7" />
                   </div>
                   <span className="text-xs font-black uppercase tracking-[0.2em] text-[var(--brand-primary)]/80 group-hover:text-[var(--brand-primary)] transition-colors">
                     {day.day}

@@ -84,7 +84,7 @@ export default function ExperiencesPage() {
                   >
                     {/* Interactive Icon Box */}
                     <div className="flex size-12 shrink-0 items-center justify-center rounded-[var(--radius-2xl)] bg-[var(--muted)] text-[var(--brand-primary)] transition-all duration-300 group-hover:bg-[var(--brand-primary)] group-hover:text-[var(--primary-foreground)] group-hover:shadow-lg group-hover:shadow-[var(--brand-primary)]/20">
-                      <Icon className="size-5" strokeWidth={1.5} />
+                      <Icon className="size-5" />
                     </div>
                     <div>
                       <h4 className="heading-item text-[var(--text-heading)]">
@@ -219,7 +219,7 @@ export default function ExperiencesPage() {
                             href={`?poi=${encodeURIComponent(item.mapQuery ?? item.title)}#map`}
                             className="group flex w-fit items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--muted)]/50 px-3 py-1.5 text-[var(--brand-primary)] shadow-sm ring-1 ring-[var(--brand-primary)]/5 transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--brand-primary)]/20 hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-md"
                           >
-                            <MapPin className="size-3.5 transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110" strokeWidth={2} />
+                            <MapPin className="size-3.5 transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110" />
                             <span className="text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">
                               View on Our Local Map
                             </span>
@@ -237,7 +237,7 @@ export default function ExperiencesPage() {
                             className="group ml-auto flex size-8 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--muted)]/50 text-[var(--text-muted)] transition-all duration-300 hover:border-[var(--brand-primary)]/30 hover:bg-[var(--brand-primary-light)] hover:text-[var(--brand-primary)] hover:shadow-sm"
                             title="Open in Google Maps"
                           >
-                            <Navigation className="size-4" strokeWidth={2.5} />
+                            <Navigation className="size-4" />
                           </a>
                         )}
                       </div>
@@ -314,7 +314,7 @@ export default function ExperiencesPage() {
                       <div className="flex flex-1 flex-col px-8 pb-8">
                         {/* Floating Icon Box (Overlaps the image and background) */}
                         <div className="relative -mt-6 mb-6 flex size-12 items-center justify-center rounded-[var(--radius-2xl)] bg-[var(--glass-bg)] text-[var(--text-body)] shadow-lg shadow-[var(--glass-shadow)]/10 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-[var(--brand-primary-light)] group-hover:text-[var(--brand-primary)]">
-                          <Icon className="size-5" strokeWidth={1.5} />
+                          <Icon className="size-5" />
                         </div>
 
                         <h3 className="mb-3 heading-item text-[var(--text-heading)]">

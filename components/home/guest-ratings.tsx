@@ -131,7 +131,7 @@ export function GuestRatingsSection({
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex min-w-0 items-center gap-2">
                       <div className="shrink-0 rounded-full bg-blue-500/12 p-1.5 text-blue-700 dark:text-blue-400">
-                        <Award className="size-5" strokeWidth={1.8} />
+                        <Award className="size-5" />
                       </div>
                       <p className="text-sm font-medium leading-6 text-[var(--text-heading)] transition-colors group-hover:text-blue-700 dark:group-hover:text-blue-400">
                         {copy.bookingAwardTitle}
@@ -171,7 +171,7 @@ export function GuestRatingsSection({
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex min-w-0 items-center gap-2">
                       <div className="shrink-0 rounded-full bg-amber-500/12 p-1.5 text-amber-700 dark:text-amber-500">
-                        <Star className="size-5" strokeWidth={1.8} />
+                        <Star className="size-5" />
                       </div>
                       <p className="text-sm font-medium leading-6 text-[var(--text-heading)] transition-colors group-hover:text-amber-700 dark:group-hover:text-amber-500">
                         {copy.hostelworldTitle}

@@ -48,7 +48,7 @@ export function StickyBookingBar({ bookingChannels, contactChannels }: StickyBoo
               isTransparent && "backdrop-blur-sm"
             )}
           >
-            <ChannelIcon iconKey={primaryContactChannel.icon} className="size-4 shrink-0" strokeWidth={1.8} />
+            <ChannelIcon iconKey={primaryContactChannel.icon} className="size-4 shrink-0" />
             {primaryContactChannel.label}
           </a>
         ) : null}

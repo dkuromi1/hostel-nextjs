@@ -123,7 +123,7 @@ export function SiteHeader({ navLinks, contactChannels, bookingChannels, siteNam
                           : "text-[var(--text-body)] hover:bg-[var(--muted)] hover:text-[var(--text-heading)]"
                       )}
                     >
-                      <MapIcon className={cn("transition-all duration-500", isScrolled ? "size-4" : "size-[1.125rem]")} strokeWidth={2} />
+                      <MapIcon className={cn("transition-all duration-500", isScrolled ? "size-4" : "size-[1.125rem]")} />
                     </Link>
                   ) : null}
 

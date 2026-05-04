@@ -32,7 +32,7 @@ export function TestimonialsVibeSection({ testimonials, extendReasons, copy }: T
           <Panel className="group relative flex h-full flex-col justify-between p-8 transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
             <div>
               <div className="float-left mb-3 mr-4 flex size-12 items-center justify-center rounded-[var(--radius-2xl)] bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-[var(--brand-primary)]/20">
-                <Icon className="size-5" strokeWidth={1.8} />
+                <Icon className="size-5" />
               </div>
               <h3 className="mb-2 heading-item text-[var(--text-heading)] pt-1">
                 {reason.title}

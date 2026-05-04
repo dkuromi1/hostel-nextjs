@@ -26,7 +26,7 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
       )}>
         <div className="relative z-10 flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
           <div className="hidden sm:flex size-14 shrink-0 items-center justify-center rounded-2xl bg-white text-[var(--brand-primary)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-300 group-hover:bg-[var(--brand-primary)] group-hover:text-white dark:bg-white/5 dark:text-[var(--brand-accent)] dark:group-hover:bg-[var(--brand-primary)]">
-            <Icon className="size-7" strokeWidth={1.5} />
+            <Icon className="size-7" />
           </div>
           <div className="flex flex-col gap-2">
             <SectionLabel variant="emerald" className="mx-auto sm:mx-0">
@@ -63,7 +63,7 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
     )}>
       <div className="relative z-10 flex items-center gap-4 mb-5">
         <div className="hidden sm:flex size-11 shrink-0 items-center justify-center rounded-xl bg-white text-[var(--brand-primary)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-300 group-hover:bg-[var(--brand-primary)] group-hover:text-white dark:bg-white/5 dark:text-[var(--brand-accent)] dark:group-hover:bg-[var(--brand-primary)]">
-          <Icon className="size-6" strokeWidth={1.5} />
+          <Icon className="size-6" />
         </div>
         <SectionLabel variant="emerald">
           {content.directBookingLabel}

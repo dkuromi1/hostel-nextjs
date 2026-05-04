@@ -99,7 +99,7 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
                         >
                           <Check
                             className="mt-0.5 size-3.5 shrink-0 text-[var(--brand-primary)]"
-                            strokeWidth={2}
+                           
                           />
                           <span>{bullet}</span>
                         </li>

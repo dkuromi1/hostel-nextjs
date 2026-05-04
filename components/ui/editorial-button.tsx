@@ -32,7 +32,7 @@ export function EditorialButton({
       </span>
       {showIcon && (
         <div className="relative z-10 flex size-7 items-center justify-center rounded-full bg-white/15 text-white transition-all duration-300 group-hover:bg-[var(--brand-accent)] group-hover:scale-110">
-          <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
+          <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
         </div>
       )}
     </>

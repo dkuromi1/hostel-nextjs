@@ -174,7 +174,7 @@ export default function RoomsPage() {
                               >
                                 <Check
                                   className="mt-0.5 size-3.5 shrink-0 text-[var(--brand-primary)]"
-                                  strokeWidth={2}
+                                 
                                 />
                                 <span>{bullet}</span>
                               </li>
@@ -210,7 +210,7 @@ export default function RoomsPage() {
                       className="group flex gap-4 rounded-[var(--radius-2xl)] border border-[var(--border)] bg-[var(--muted)]/30 p-4 transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:bg-[var(--glass-bg)] hover:shadow-md"
                     >
                       <div className="flex size-10 shrink-0 items-center justify-center rounded-[var(--radius-xl)] bg-[var(--glass-bg)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-300 group-hover:bg-[var(--brand-primary-light)] group-hover:text-[var(--brand-primary)] group-hover:ring-[var(--brand-primary)]/20">
-                        <Icon className="size-5" strokeWidth={1.5} />
+                        <Icon className="size-5" />
                       </div>
                       <div className="space-y-1">
                         <h4 className="text-base font-bold tracking-tight text-[var(--text-heading)]">
@@ -242,7 +242,7 @@ export default function RoomsPage() {
                       className="group flex gap-4 rounded-[var(--radius-2xl)] border border-amber-500/10 bg-amber-50/10 p-4 transition-all duration-300 hover:border-amber-500/20 hover:bg-[var(--glass-bg)] hover:shadow-md"
                     >
                       <div className="flex size-10 shrink-0 items-center justify-center rounded-[var(--radius-xl)] bg-[var(--glass-bg)] shadow-sm ring-1 ring-amber-500/10 transition-all duration-300 group-hover:bg-amber-50 dark:group-hover:bg-amber-500/20 group-hover:text-amber-600 dark:group-hover:text-amber-400 group-hover:ring-amber-500/20">
-                        <Icon className="size-5" strokeWidth={1.5} />
+                        <Icon className="size-5" />
                       </div>
                       <div className="space-y-1">
                         <h4 className="text-base font-bold tracking-tight text-[var(--text-heading)]">

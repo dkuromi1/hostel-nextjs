@@ -530,7 +530,7 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                     }}
                     className="flex items-center gap-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white transition-all hover:bg-black/60 active:scale-95"
                 >
-                    <Home className="size-3 text-sky-400" strokeWidth={2.5} /><span>Home</span>
+                    <Home className="size-3 text-sky-400" /><span>Home</span>
                 </button>
                 <button onClick={toggleStyle} className="flex items-center gap-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white transition-all hover:bg-black/60 active:scale-95">
                     <div className="size-2 rounded-full bg-sky-400 shadow-[0_0_8px_#38bdf8]" />{isSatellite ? 'View Streets' : 'View Aerial'}
