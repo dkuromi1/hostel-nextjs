@@ -215,6 +215,7 @@ export default function RootLayout({
   // Static reference to ensure Next.js replaces the env var at build time
   const analyticsWebsiteId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
   const siteDomain = process.env.NEXT_PUBLIC_SITE_URL ? new URL(process.env.NEXT_PUBLIC_SITE_URL).hostname : undefined;
+  const mapUrl = "/experiences?poi=hostel#map";
 
   return (
     <html
@@ -260,6 +261,7 @@ export default function RootLayout({
             volunteersNeeded={propertyConfig.volunteersNeeded}
             whatsappUrl={propertyConfig.whatsappUrl}
             phoneRaw={propertyConfig.phoneRaw}
+            mapUrl={mapUrl}
           />
           <AtmosphereBackground />
           <main className="flex-1">{children}</main>

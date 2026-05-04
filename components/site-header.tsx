@@ -11,6 +11,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { VolunteerBanner } from "@/components/volunteer-banner";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Map as MapIcon } from "@/lib/icon-registry";
 import type { BusinessChannel } from "@/lib/site-data";
 
 export interface SiteHeaderProps {
@@ -22,9 +23,10 @@ export interface SiteHeaderProps {
   volunteersNeeded: boolean;
   whatsappUrl?: string;
   phoneRaw: string;
+  mapUrl?: string;
 }
 
-export function SiteHeader({ navLinks, contactChannels, bookingChannels, siteName, siteAddressSummary, volunteersNeeded, whatsappUrl, phoneRaw }: SiteHeaderProps) {
+export function SiteHeader({ navLinks, contactChannels, bookingChannels, siteName, siteAddressSummary, volunteersNeeded, whatsappUrl, phoneRaw, mapUrl }: SiteHeaderProps) {
   const scrollY = useScrollPosition();
   const pathname = usePathname();
   const isHome = pathname === "/";
@@ -50,8 +52,8 @@ export function SiteHeader({ navLinks, contactChannels, bookingChannels, siteNam
           ? "bg-transparent border-transparent"
           : "border-b border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md shadow-sm"
       )}>
-        <div className="mx-auto flex max-w-[var(--layout-max-width)] items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8">
-          <Link href="/" className="flex items-center gap-3 transition-transform duration-300 hover:scale-[1.02] active:scale-95">
+        <div className="mx-auto flex max-w-[var(--layout-max-width)] items-center justify-between gap-2 xl:gap-4 px-4 py-2 sm:px-6 lg:px-8">
+          <Link href="/" className="flex shrink-0 items-center gap-3 transition-transform duration-300 hover:scale-[1.02] active:scale-95">
             <div className="relative size-11 overflow-hidden rounded-2xl">
               <Image
                 src="/logo.webp"
@@ -82,25 +84,42 @@ export function SiteHeader({ navLinks, contactChannels, bookingChannels, siteNam
           <nav className="hidden items-center gap-1 lg:flex">
             {navLinks.map((item) => {
               const isActive = pathname === item.href;
+              const isExperiences = item.label.toLowerCase() === "experiences";
+
               return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    "relative inline-block rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 hover:scale-[1.02] active:scale-95",
-                    isTransparent
-                      ? "text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.5)] hover:bg-white/10 hover:text-white"
-                      : "text-[var(--text-body)] hover:bg-[var(--muted)] hover:text-[var(--text-heading)]",
-                    isActive && "after:absolute after:bottom-1.5 after:left-4 after:right-4 after:h-[1px] after:rounded-full after:bg-current after:transition-all after:duration-300"
-                  )}
-                >
-                  {item.label}
-                </Link>
+                <div key={item.href} className="flex items-center gap-1">
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      "relative inline-block rounded-full px-3 xl:px-4 py-2 text-sm font-medium transition-all duration-300 hover:scale-[1.02] active:scale-95",
+                      isTransparent
+                        ? "text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.5)] hover:bg-white/10 hover:text-white"
+                        : "text-[var(--text-body)] hover:bg-[var(--muted)] hover:text-[var(--text-heading)]",
+                      isActive && "after:absolute after:bottom-1.5 after:left-4 after:right-4 after:h-[1px] after:rounded-full after:bg-current after:transition-all after:duration-300"
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                  {isExperiences && mapUrl ? (
+                    <Link
+                      href={mapUrl}
+                      aria-label="View on Custom Map"
+                      className={cn(
+                        "flex size-9 -ml-2 items-center justify-center rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-95",
+                        isTransparent
+                          ? "text-white hover:bg-white/10"
+                          : "text-[var(--text-body)] hover:bg-[var(--muted)] hover:text-[var(--text-heading)]"
+                      )}
+                    >
+                      <MapIcon className="size-[1.125rem]" strokeWidth={2} />
+                    </Link>
+                  ) : null}
+                </div>
               );
             })}
           </nav>
 
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden items-center gap-2 xl:gap-3 lg:flex">
             {primaryContactChannel ? (
               <a
                 href={primaryContactChannel.url}
@@ -143,7 +162,7 @@ export function SiteHeader({ navLinks, contactChannels, bookingChannels, siteNam
             </div>
           </div>
 
-          <MobileNav navLinks={navLinks} contactChannels={contactChannels} bookingChannels={bookingChannels} />
+          <MobileNav navLinks={navLinks} contactChannels={contactChannels} bookingChannels={bookingChannels} mapUrl={mapUrl} />
         </div>
       </header>
     </div>

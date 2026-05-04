@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu } from "@/lib/icon-registry";
+import { Menu, Map as MapIcon } from "@/lib/icon-registry";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 import { buttonVariants } from "@/components/ui/button";
@@ -58,9 +58,10 @@ export interface MobileNavProps {
   navLinks: { href: string; label: string }[];
   contactChannels: BusinessChannel[];
   bookingChannels: BusinessChannel[];
+  mapUrl?: string;
 }
 
-export function MobileNav({ navLinks, contactChannels, bookingChannels }: MobileNavProps) {
+export function MobileNav({ navLinks, contactChannels, bookingChannels, mapUrl }: MobileNavProps) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
@@ -140,13 +141,16 @@ export function MobileNav({ navLinks, contactChannels, bookingChannels }: Mobile
             <nav className="flex flex-col gap-2">
               {navLinks.map((item) => {
                 const isActive = pathname === item.href;
+                const isExperiences = item.label.toLowerCase() === "experiences";
+
                 return (
-                  <motion.div key={item.href} variants={itemVariants} custom={shouldReduce}>
+                  <motion.div key={item.href} variants={itemVariants} custom={shouldReduce} className={cn(isExperiences && "flex items-center gap-2")}>
                     <Link
                       href={item.href}
                       onClick={() => setOpen(false)}
                       className={cn(
                         "block rounded-2xl px-4 py-3 text-base font-medium transition-colors",
+                        isExperiences && "flex-1",
                         isActive
                           ? "text-[var(--brand-tertiary)]/75 dark:text-[var(--text-body)] font-semibold ring-1 ring-[var(--brand-tertiary)]/20 dark:ring-0 bg-[var(--brand-tertiary)]/5 dark:bg-transparent"
                           : "text-[var(--text-body)] dark:text-[#cbd5e1] hover:bg-[var(--muted)] hover:text-[var(--text-heading)]"
@@ -154,6 +158,19 @@ export function MobileNav({ navLinks, contactChannels, bookingChannels }: Mobile
                     >
                       {item.label}
                     </Link>
+                    {isExperiences && mapUrl ? (
+                      <Link
+                        href={mapUrl}
+                        onClick={() => setOpen(false)}
+                        aria-label="View on Custom Map"
+                        className={cn(
+                          "flex items-center justify-center shrink-0 size-12 rounded-2xl transition-colors border border-transparent hover:border-[var(--glass-border)] -ml-2",
+                          "text-[var(--text-body)] dark:text-[#cbd5e1] hover:bg-[var(--muted)] hover:text-[var(--text-heading)]"
+                        )}
+                      >
+                        <MapIcon className="size-5" />
+                      </Link>
+                    ) : null}
                   </motion.div>
                 );
               })}
