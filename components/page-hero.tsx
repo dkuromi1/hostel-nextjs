@@ -63,18 +63,18 @@ export function PageHero({
                     <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--glass-bg)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-300 group-hover:bg-[var(--brand-primary-light)] group-hover:text-[var(--brand-primary)] group-hover:ring-[var(--brand-primary)]/20">
                       <Icon className="size-5" />
                     </div>
-                    <div className="flex flex-col gap-0.5 py-0.5">
+                    <div className="flex flex-col gap-1.5 py-0.5">
                       {title && (
-                        <span className="text-[13px] font-bold leading-none tracking-tight text-[var(--text-heading)]">
+                        <div className="font-heading text-base sm:text-[17px] font-bold leading-none tracking-tight text-[var(--text-heading)] m-0">
                           {title}
-                        </span>
+                        </div>
                       )}
-                      <span className={cn(
-                        "text-[13px] leading-snug text-[var(--text-body-subtle)]",
-                        !title && "text-[14px] font-medium text-[var(--text-body)]"
+                      <div className={cn(
+                        "text-sm leading-snug text-[var(--text-body-subtle)] transition-colors group-hover:text-[var(--text-body)] m-0",
+                        !title && "text-base font-medium text-[var(--text-body)]"
                       )}>
                         {text}
-                      </span>
+                      </div>
                     </div>
                   </li>
                 );
