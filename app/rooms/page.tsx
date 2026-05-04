@@ -84,7 +84,7 @@ export default function RoomsPage() {
               sizes="(max-width: 768px) 100vw, 25vw"
             />
           </div>
-          <div className="glass-panel rounded-3xl p-6 sm:p-7">
+          <div className="glass-panel rounded-[var(--radius-3xl)] p-6 sm:p-7">
             <SectionLabel variant="emerald" className="mb-4">
               {siteCopyContent.rooms.heroPriceBlurb.labelPrefix}{" "}
               <strong>{primaryPricedRoom?.price ? `${primaryPricedRoom.price} / Night` : siteCopyContent.rooms.heroPriceBlurb.contactForRatesLabel}</strong>
@@ -153,7 +153,7 @@ export default function RoomsPage() {
                             return (
                               <div
                                 key={idx}
-                                className="flex w-fit items-center gap-1.5 rounded-lg border border-[var(--border)] bg-[var(--muted)]/50 px-2.5 py-1.5 text-[var(--text-body-subtle)] transition-all duration-300 hover:border-[var(--brand-primary)]/10 hover:shadow-sm hover:bg-[var(--glass-bg)]"
+                                className="flex w-fit items-center gap-1.5 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--muted)]/50 px-2.5 py-1.5 text-[var(--text-body-subtle)] transition-all duration-300 hover:border-[var(--brand-primary)]/10 hover:shadow-sm hover:bg-[var(--glass-bg)]"
                               >
                                 <AmenityIcon className="size-3 shrink-0 text-[var(--brand-primary)]" />
                                 <span className="whitespace-nowrap text-xs font-medium">
@@ -207,9 +207,9 @@ export default function RoomsPage() {
                   return (
                     <div
                       key={idx}
-                      className="group flex gap-4 rounded-2xl border border-[var(--border)] bg-[var(--muted)]/30 p-4 transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:bg-[var(--glass-bg)] hover:shadow-md"
+                      className="group flex gap-4 rounded-[var(--radius-2xl)] border border-[var(--border)] bg-[var(--muted)]/30 p-4 transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:bg-[var(--glass-bg)] hover:shadow-md"
                     >
-                      <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--glass-bg)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-300 group-hover:bg-[var(--brand-primary-light)] group-hover:text-[var(--brand-primary)] group-hover:ring-[var(--brand-primary)]/20">
+                      <div className="flex size-10 shrink-0 items-center justify-center rounded-[var(--radius-xl)] bg-[var(--glass-bg)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-300 group-hover:bg-[var(--brand-primary-light)] group-hover:text-[var(--brand-primary)] group-hover:ring-[var(--brand-primary)]/20">
                         <Icon className="size-5" strokeWidth={1.5} />
                       </div>
                       <div className="space-y-1">
@@ -239,9 +239,9 @@ export default function RoomsPage() {
                   return (
                     <div
                       key={idx}
-                      className="group flex gap-4 rounded-2xl border border-amber-500/10 bg-amber-50/10 p-4 transition-all duration-300 hover:border-amber-500/20 hover:bg-[var(--glass-bg)] hover:shadow-md"
+                      className="group flex gap-4 rounded-[var(--radius-2xl)] border border-amber-500/10 bg-amber-50/10 p-4 transition-all duration-300 hover:border-amber-500/20 hover:bg-[var(--glass-bg)] hover:shadow-md"
                     >
-                      <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--glass-bg)] shadow-sm ring-1 ring-amber-500/10 transition-all duration-300 group-hover:bg-amber-50 dark:group-hover:bg-amber-500/20 group-hover:text-amber-600 dark:group-hover:text-amber-400 group-hover:ring-amber-500/20">
+                      <div className="flex size-10 shrink-0 items-center justify-center rounded-[var(--radius-xl)] bg-[var(--glass-bg)] shadow-sm ring-1 ring-amber-500/10 transition-all duration-300 group-hover:bg-amber-50 dark:group-hover:bg-amber-500/20 group-hover:text-amber-600 dark:group-hover:text-amber-400 group-hover:ring-amber-500/20">
                         <Icon className="size-5" strokeWidth={1.5} />
                       </div>
                       <div className="space-y-1">
@@ -269,6 +269,7 @@ export default function RoomsPage() {
           </Reveal>
         </div>
       </section>
+
 
       <section className="py-[var(--layout-section-spacing)]">
         <div className="shell-container">

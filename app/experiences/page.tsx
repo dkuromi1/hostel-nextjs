@@ -83,7 +83,7 @@ export default function ExperiencesPage() {
                     className="group flex items-start gap-5 transition-all duration-300 hover:translate-x-2"
                   >
                     {/* Interactive Icon Box */}
-                    <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-[var(--muted)] text-[var(--brand-primary)] transition-all duration-300 group-hover:bg-[var(--brand-primary)] group-hover:text-[var(--primary-foreground)] group-hover:shadow-lg group-hover:shadow-[var(--brand-primary)]/20">
+                    <div className="flex size-12 shrink-0 items-center justify-center rounded-[var(--radius-2xl)] bg-[var(--muted)] text-[var(--brand-primary)] transition-all duration-300 group-hover:bg-[var(--brand-primary)] group-hover:text-[var(--primary-foreground)] group-hover:shadow-lg group-hover:shadow-[var(--brand-primary)]/20">
                       <Icon className="size-5" strokeWidth={1.5} />
                     </div>
                     <div>
@@ -111,7 +111,7 @@ export default function ExperiencesPage() {
 
               {/* Left Column: Tall Featured Image */}
               <Reveal className="row-span-2 h-full" delay={100}>
-                <div className="media-frame relative h-full min-h-[20rem] md:min-h-[36rem] overflow-hidden rounded-3xl shadow-xl shadow-[var(--glass-shadow)]/10">
+                <div className="media-frame relative h-full min-h-[20rem] md:min-h-[36rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-xl shadow-[var(--glass-shadow)]/10">
                   <Image
                     src="/images/hiking_3.jpg"
                     alt={siteCopyContent.experiences.metadata.title}
@@ -126,7 +126,7 @@ export default function ExperiencesPage() {
 
               {/* Right Column: Top Square Image */}
               <Reveal delay={200}>
-                <div className="media-frame relative min-h-[10rem] md:min-h-[17.5rem] overflow-hidden rounded-3xl shadow-md">
+                <div className="media-frame relative min-h-[10rem] md:min-h-[17.5rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-md">
                   <Image
                     src="/images/hiking_4.webp"
                     alt={siteCopyContent.experiences.metadata.title}
@@ -139,7 +139,7 @@ export default function ExperiencesPage() {
 
               {/* Right Column: Bottom Square Image */}
               <Reveal delay={300}>
-                <div className="media-frame relative min-h-[10rem] md:min-h-[17.5rem] overflow-hidden rounded-3xl shadow-md">
+                <div className="media-frame relative min-h-[10rem] md:min-h-[17.5rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-md">
                   <Image
                     src="/images/hiking_1.jpg"
                     alt={siteCopyContent.experiences.metadata.title}
@@ -169,7 +169,7 @@ export default function ExperiencesPage() {
           {siteConfig.features.showLocalExperienceMap ? (
             <Reveal className="pt-4 sm:pt-8">
               <div className="mx-auto max-w-[1400px] px-2 sm:px-0">
-                <div id="map" className="media-frame relative h-[500px] w-full overflow-hidden rounded-3xl shadow-xl shadow-[var(--glass-shadow)]/10 ring-1 ring-[var(--glass-border)] scroll-mt-24 sm:scroll-mt-32">
+                <div id="map" className="media-frame relative h-[500px] w-full overflow-hidden rounded-[var(--radius-3xl)] shadow-xl shadow-[var(--glass-shadow)]/10 ring-1 ring-[var(--glass-border)] scroll-mt-24 sm:scroll-mt-32">
                   <LocationMap />
                 </div>
               </div>
@@ -180,7 +180,7 @@ export default function ExperiencesPage() {
             <SwipableRow itemCount={thingsToDo.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-[var(--layout-grid-gutter)]">
               {thingsToDo.map((item) => (
                 <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full">
-                  <Panel className="group relative flex h-full flex-col overflow-hidden border border-[var(--glass-border)] bg-[var(--glass-bg)] transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
+                  <Panel className="group relative flex h-full flex-col overflow-hidden transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
                     <div className="relative h-48 w-full overflow-hidden bg-[var(--muted)]">
                       <Image
                         src={item.image}
@@ -234,7 +234,7 @@ export default function ExperiencesPage() {
                             }
                             target="_blank"
                             rel="noreferrer"
-                            className="group ml-auto flex size-8 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--muted)]/50 text-[var(--text-muted)] transition-all duration-300 hover:border-[var(--brand-primary)]/30 hover:bg-[var(--brand-primary-light)] hover:text-[var(--brand-primary)] hover:shadow-sm"
+                            className="group ml-auto flex size-8 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--muted)]/50 text-[var(--text-muted)] transition-all duration-300 hover:border-[var(--brand-primary)]/30 hover:bg-[var(--brand-primary-light)] hover:text-[var(--brand-primary)] hover:shadow-sm"
                             title="Open in Google Maps"
                           >
                             <Navigation className="size-4" strokeWidth={2.5} />
@@ -253,7 +253,7 @@ export default function ExperiencesPage() {
                           <Link
                             href={item.ctaUrl}
                             className={cn(
-                              "group/btn flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-[13px] font-bold text-white shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]",
+                              "group/btn flex w-full items-center justify-center gap-2 rounded-[var(--radius-xl)] px-4 py-3 text-[13px] font-bold text-white shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]",
                               "bg-[var(--brand-primary)] shadow-[var(--brand-primary)]/20 hover:bg-[var(--brand-primary-dark)]"
                             )}
                           >
@@ -296,7 +296,7 @@ export default function ExperiencesPage() {
                 return (
                   <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full" >
                     <Panel
-                      className="group relative flex h-full flex-col overflow-hidden border border-[var(--glass-border)] bg-[var(--glass-bg)] transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md"
+                      className="group relative flex h-full flex-col overflow-hidden transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md"
                     >
                       {/* Card Image Header */}
                       <div className="relative h-56 w-full overflow-hidden bg-[var(--muted)]">
@@ -313,7 +313,7 @@ export default function ExperiencesPage() {
                       {/* Card Content Area */}
                       <div className="flex flex-1 flex-col px-8 pb-8">
                         {/* Floating Icon Box (Overlaps the image and background) */}
-                        <div className="relative -mt-6 mb-6 flex size-12 items-center justify-center rounded-2xl bg-[var(--glass-bg)] text-[var(--text-body)] shadow-lg shadow-[var(--glass-shadow)]/10 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-[var(--brand-primary-light)] group-hover:text-[var(--brand-primary)]">
+                        <div className="relative -mt-6 mb-6 flex size-12 items-center justify-center rounded-[var(--radius-2xl)] bg-[var(--glass-bg)] text-[var(--text-body)] shadow-lg shadow-[var(--glass-shadow)]/10 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-[var(--brand-primary-light)] group-hover:text-[var(--brand-primary)]">
                           <Icon className="size-5" strokeWidth={1.5} />
                         </div>
 
@@ -328,6 +328,7 @@ export default function ExperiencesPage() {
                   </div>
                 )
               })}
+
               {/* Trailing Spacer for mobile snapping */}
               <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
             </SwipableRow>

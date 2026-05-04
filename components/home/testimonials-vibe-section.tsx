@@ -2,6 +2,7 @@
 import { resolveIcon } from "@/lib/icon-registry";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
+import { Panel } from "@/components/ui/panel";
 import { SwipableRow } from "@/components/swipable-row";
 import { TestimonialCarousel, type Testimonial } from "@/components/testimonial-carousel";
 import { useIsMobile } from "@/lib/use-is-mobile";
@@ -28,9 +29,9 @@ export function TestimonialsVibeSection({ testimonials, extendReasons, copy }: T
       {extendReasons.map((reason, index) => {
         const Icon = resolveIcon(reason.icon);
         const cardContent = (
-          <div className="group relative flex h-full flex-col justify-between overflow-hidden border border-[var(--glass-border)] bg-[var(--glass-bg)] p-8 transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md rounded-xl">
+          <Panel className="group relative flex h-full flex-col justify-between p-8 transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
             <div>
-              <div className="float-left mb-3 mr-4 flex size-12 items-center justify-center rounded-2xl bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-[var(--brand-primary)]/20">
+              <div className="float-left mb-3 mr-4 flex size-12 items-center justify-center rounded-[var(--radius-2xl)] bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-[var(--brand-primary)]/20">
                 <Icon className="size-5" strokeWidth={1.8} />
               </div>
               <h3 className="mb-2 heading-item text-[var(--text-heading)] pt-1">
@@ -40,8 +41,9 @@ export function TestimonialsVibeSection({ testimonials, extendReasons, copy }: T
                 {reason.description}
               </p>
             </div>
-          </div>
+          </Panel>
         );
+
 
         if (isMobile) {
           return (

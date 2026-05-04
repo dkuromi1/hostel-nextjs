@@ -1,6 +1,7 @@
 "use client";
 import { resolveIcon } from "@/lib/icon-registry";
 import { Reveal } from "@/components/reveal";
+import { Panel } from "@/components/ui/panel";
 import { SwipableRow } from "@/components/swipable-row";
 import { useIsMobile } from "@/lib/use-is-mobile";
 import type { IconTextItem } from "@/lib/site-data";
@@ -22,10 +23,10 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
       {quickFacts.map((fact, index) => {
         const Icon = resolveIcon(fact.icon || "Info");
         const cardContent = (
-          <div className="group relative h-full overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--glass-bg)] p-6 shadow-[0_12px_40px_-20px_rgba(0,0,0,0.1)] backdrop-blur-[12px] transition-all duration-500 hover:border-[var(--brand-primary)]/20 hover:shadow-md dark:bg-black/40 dark:border-white/10 dark:shadow-none">
+          <Panel className="group relative h-full p-6 transition-all duration-500 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
             <div className="relative z-10 flex flex-col h-full gap-4">
               <div className="flex items-center gap-3">
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white text-[var(--brand-primary)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-300 group-hover:bg-[var(--brand-primary)] group-hover:text-white dark:bg-white/5 dark:text-[var(--brand-accent)] dark:group-hover:bg-[var(--brand-primary)]">
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-[var(--radius-xl)] bg-white text-[var(--brand-primary)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-300 group-hover:bg-[var(--brand-primary)] group-hover:text-white dark:bg-white/5 dark:text-[var(--brand-accent)] dark:group-hover:bg-[var(--brand-primary)]">
                   <Icon className="size-5" strokeWidth={1.5} />
                 </div>
                 {fact.title && (
@@ -38,8 +39,9 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
                 {fact.text}
               </p>
             </div>
-          </div>
+          </Panel>
         );
+
 
         if (isMobile) {
           return (
@@ -65,7 +67,8 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
 
   return (
     <div className={cn("relative z-20", className)}>
-      <div className="shell-container max-w-5xl relative z-10">
+      <div className="shell-container relative z-10">
+
         {isMobile ? (
           <Reveal delay={100}>{factsContent}</Reveal>
         ) : (

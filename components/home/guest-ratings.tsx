@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Star, Award } from "@/lib/icon-registry";
 import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
 import { Reveal } from "@/components/reveal";
+import { Panel } from "@/components/ui/panel";
 import { SectionLabel } from "@/components/ui/section-label";
 export interface GuestRatingsData {
   label: string;
@@ -39,7 +40,7 @@ export function CompactGuestRatingsStrip({
         href={bookingUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center justify-between gap-3 rounded-2xl border border-white/16 bg-black/40 px-4 py-3 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-black/50"
+        className="group flex items-center justify-between gap-3 rounded-[var(--radius-2xl)] border border-white/16 bg-black/40 px-4 py-3 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-black/50"
       >
         <div className="flex min-w-0 items-center gap-3">
           <BookingComLogo iconOnly monochromeHover className="size-9" />
@@ -52,7 +53,7 @@ export function CompactGuestRatingsStrip({
             </p>
           </div>
         </div>
-        <div className="shrink-0 rounded-2xl bg-white/8 px-3 py-2 text-right ring-1 ring-white/12 shadow-sm">
+        <div className="shrink-0 rounded-[var(--radius-xl)] bg-white/8 px-3 py-2 text-right ring-1 ring-white/12 shadow-sm">
           <p className="font-sans text-xl leading-none tracking-tight text-white text-center font-bold">
             {bookingRating}
           </p>
@@ -66,7 +67,7 @@ export function CompactGuestRatingsStrip({
         href={hostelworldUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center justify-between gap-3 rounded-2xl border border-white/16 bg-black/40 px-4 py-3 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-black/50"
+        className="group flex items-center justify-between gap-3 rounded-[var(--radius-2xl)] border border-white/16 bg-black/40 px-4 py-3 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-black/50"
       >
         <div className="flex min-w-0 items-center gap-3">
           <HostelworldLogo iconOnly monochromeHover className="size-9" />
@@ -79,7 +80,7 @@ export function CompactGuestRatingsStrip({
             </p>
           </div>
         </div>
-        <div className="shrink-0 rounded-2xl bg-white/8 px-3 py-2 text-right ring-1 ring-white/12 shadow-sm">
+        <div className="shrink-0 rounded-[var(--radius-xl)] bg-white/8 px-3 py-2 text-right ring-1 ring-white/12 shadow-sm">
           <p className="font-sans text-xl leading-none tracking-tight text-white text-center font-bold">
             {hostelworldRating}
           </p>
@@ -104,7 +105,7 @@ export function GuestRatingsSection({
     <section className="pb-8 sm:pb-16">
       <div className="shell-container">
         <Reveal>
-          <div className="glass-panel rounded-xl p-4 sm:p-5">
+          <Panel className="p-4 sm:p-5">
             <div className="flex items-center gap-3">
               <span className="faded-line h-px flex-1" />
               <SectionLabel>{copy.label}</SectionLabel>
@@ -115,7 +116,7 @@ export function GuestRatingsSection({
                 href={bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex h-full flex-col overflow-hidden rounded-lg border border-[var(--glass-border)] bg-[var(--glass-bg)] px-4 py-5 shadow-[0_20px_55px_-40px_var(--glass-shadow)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_var(--glass-shadow)]"
+                className="group relative flex h-full flex-col overflow-hidden rounded-[var(--radius-2xl)] border border-[var(--glass-border)] bg-[var(--glass-bg)] px-4 py-5 shadow-[0_20px_55px_-40px_var(--glass-shadow)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_var(--glass-shadow)]"
               >
                 <div className="flex min-h-[3rem] flex-wrap items-center justify-between gap-x-2 gap-y-2">
                   <BookingComLogo className="min-w-0 shrink-0" />
@@ -136,7 +137,7 @@ export function GuestRatingsSection({
                         {copy.bookingAwardTitle}
                       </p>
                     </div>
-                    <div className="shrink-0 rounded-tr-sm rounded-tl-sm rounded-br-sm rounded-bl-none bg-blue-700 px-3 py-1 text-center font-semibold text-white shadow-sm">
+                    <div className="shrink-0 rounded-[var(--radius-sm)] bg-blue-700 px-3 py-1 text-center font-semibold text-white shadow-sm">
                       <p className="font-sans text-xl leading-none tracking-tight font-bold">
                         {bookingRating}
                       </p>
@@ -155,7 +156,7 @@ export function GuestRatingsSection({
                 href={hostelworldUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-[var(--glass-border)] bg-[var(--glass-bg)] px-4 py-5 shadow-[0_20px_55px_-40px_var(--glass-shadow)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_var(--glass-shadow)]"
+                className="group relative flex h-full flex-col overflow-hidden rounded-[var(--radius-2xl)] border border-[var(--glass-border)] bg-[var(--glass-bg)] px-4 py-5 shadow-[0_20px_55px_-40px_var(--glass-shadow)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_var(--glass-shadow)]"
               >
                 <div className="flex min-h-[3rem] flex-wrap items-center justify-between gap-x-2 gap-y-2">
                   <HostelworldLogo className="h-7 w-auto shrink-0" />
@@ -176,7 +177,7 @@ export function GuestRatingsSection({
                         {copy.hostelworldTitle}
                       </p>
                     </div>
-                    <div className="relative h-15 w-25 shrink-0 overflow-hidden rounded-md shadow-sm">
+                    <div className="relative h-15 w-25 shrink-0 overflow-hidden rounded-[var(--radius-md)] shadow-sm">
                       <Image
                         src="/images/hostelworld_reviews.png"
                         alt={copy.hostelworldImageAlt}
@@ -190,9 +191,10 @@ export function GuestRatingsSection({
                 <p className="mt-auto pt-2 text-sm leading-6 text-[var(--text-body-subtle)]" />
               </a>
             </div>
-          </div>
+          </Panel>
         </Reveal>
       </div>
     </section>
   );
 }
+
