@@ -2,7 +2,8 @@
 
 import { useSyncExternalStore, type ReactNode } from "react";
 
-function subscribe() {
+function subscribe(onStoreChange: () => void) {
+  // No-op: performance state is static for the life of the session
   return () => {};
 }
 

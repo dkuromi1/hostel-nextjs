@@ -134,89 +134,86 @@ export function ThemeVars() {
   };
 
   // Handle Preset Overrides
-  let finalColors = { ...colors };
-  let finalTypography = { ...typography };
+  const finalColors = { ...colors };
+  const finalTypography = { ...typography };
+  const finalSurfaces = { ...surfaces };
 
   if (theme === "forest") {
-    finalColors = {
-      primary: colors?.primary || "#344e41",
-      accent: colors?.accent || "#cb997e",
-      background: colors?.background || "#f1f5f2",
-      surfaceDark: colors?.surfaceDark || "#0d2119",
-      darkBackground: colors?.darkBackground || "#020805",
-    };
-    finalTypography = {
-      headingFont: typography?.headingFont || "bevan",
-      character: typography?.character || "bold",
-    };
-    surfaces.borderRadius = design.surfaces?.borderRadius || "xl";
-    surfaces.glassBlur = design.surfaces?.glassBlur || 8;
-    surfaces.glassOpacity = design.surfaces?.glassOpacity || 0.9;
+    finalColors.primary = colors?.primary || "#344e41";
+    finalColors.accent = colors?.accent || "#cb997e";
+    finalColors.background = colors?.background || "#f1f5f2";
+    finalColors.surfaceDark = colors?.surfaceDark || "#0d2119";
+    finalColors.darkBackground = colors?.darkBackground || "#020805";
+    
+    finalTypography.headingFont = typography?.headingFont || "bevan";
+    finalTypography.character = typography?.character || "bold";
+    
+    finalSurfaces.borderRadius = design.surfaces?.borderRadius || "xl";
+    finalSurfaces.glassBlur = design.surfaces?.glassBlur || 8;
+    finalSurfaces.glassOpacity = design.surfaces?.glassOpacity || 0.9;
+    
     // Bold/Editorial layout
     finalLayout.width = design.layout?.width || "wide";
     finalLayout.spacing = design.layout?.spacing || "wide";
     finalLayout.gutter = design.layout?.gutter || "wide";
   } else if (theme === "warm") {
-    finalColors = {
-      primary: colors?.primary || "#b07d62",
-      accent: colors?.accent || "#d4b896",
-      background: colors?.background || "#faf8f5",
-      surfaceDark: colors?.surfaceDark || "#2c1f14",
-      darkBackground: colors?.darkBackground || "#1a1208",
-    };
-    finalTypography = {
-      headingFont: typography?.headingFont || "cormorant",
-      character: typography?.character || "elegant",
-    };
-    surfaces.borderRadius = design.surfaces?.borderRadius || "3xl";
-    surfaces.glassBlur = design.surfaces?.glassBlur || 10;
-    surfaces.glassOpacity = design.surfaces?.glassOpacity || 0.85;
+    finalColors.primary = colors?.primary || "#b07d62";
+    finalColors.accent = colors?.accent || "#d4b896";
+    finalColors.background = colors?.background || "#faf8f5";
+    finalColors.surfaceDark = colors?.surfaceDark || "#2c1f14";
+    finalColors.darkBackground = colors?.darkBackground || "#1a1208";
+    
+    finalTypography.headingFont = typography?.headingFont || "cormorant";
+    finalTypography.character = typography?.character || "elegant";
+    
+    finalSurfaces.borderRadius = design.surfaces?.borderRadius || "3xl";
+    finalSurfaces.glassBlur = design.surfaces?.glassBlur || 10;
+    finalSurfaces.glassOpacity = design.surfaces?.glassOpacity || 0.85;
+    
     // Relaxed layout
     finalLayout.width = design.layout?.width || "standard";
     finalLayout.spacing = design.layout?.spacing || "standard";
     finalLayout.gutter = design.layout?.gutter || "standard";
   } else if (theme === "nordic-earth") {
-    finalColors = {
-      primary: colors?.primary || "#5f7470",
-      accent: colors?.accent || "#cb997e",
-      background: colors?.background || "#fbf9f4",
-      surfaceDark: colors?.surfaceDark || "#22223b",
-      darkBackground: colors?.darkBackground || "#171721",
-    };
-    finalTypography = {
-      headingFont: typography?.headingFont || "syne",
-      character: typography?.character || "sharp",
-    };
+    finalColors.primary = colors?.primary || "#5f7470";
+    finalColors.accent = colors?.accent || "#cb997e";
+    finalColors.background = colors?.background || "#fbf9f4";
+    finalColors.surfaceDark = colors?.surfaceDark || "#22223b";
+    finalColors.darkBackground = colors?.darkBackground || "#171721";
+    
+    finalTypography.headingFont = typography?.headingFont || "syne";
+    finalTypography.character = typography?.character || "sharp";
+    
     // Force sharp architectural surfaces for Nordic
-    surfaces.borderRadius = design.surfaces?.borderRadius || "none";
-    surfaces.glassBlur = design.surfaces?.glassBlur || 20;
-    surfaces.glassOpacity = design.surfaces?.glassOpacity || 0.7;
+    finalSurfaces.borderRadius = design.surfaces?.borderRadius || "none";
+    finalSurfaces.glassBlur = design.surfaces?.glassBlur || 20;
+    finalSurfaces.glassOpacity = design.surfaces?.glassOpacity || 0.7;
+    
     // Architectural layout
     finalLayout.width = design.layout?.width || "wide";
     finalLayout.spacing = design.layout?.spacing || "compact";
     finalLayout.gutter = design.layout?.gutter || "none";
   } else if (theme === "cool") {
-    finalColors = {
-      primary: colors?.primary || "#059669",
-      accent: colors?.accent || "#8ac7eb",
-      background: colors?.background || "#f8fafc",
-      surfaceDark: colors?.surfaceDark || "#1e293b",
-      darkBackground: colors?.darkBackground || "#020617",
-    };
-    finalTypography = {
-      headingFont: typography?.headingFont || "serif",
-      character: typography?.character || "elegant",
-    };
-    surfaces.borderRadius = design.surfaces?.borderRadius || "2xl";
-    surfaces.glassBlur = design.surfaces?.glassBlur || 12;
-    surfaces.glassOpacity = design.surfaces?.glassOpacity || 0.84;
+    finalColors.primary = colors?.primary || "#059669";
+    finalColors.accent = colors?.accent || "#8ac7eb";
+    finalColors.background = colors?.background || "#f8fafc";
+    finalColors.surfaceDark = colors?.surfaceDark || "#1e293b";
+    finalColors.darkBackground = colors?.darkBackground || "#020617";
+    
+    finalTypography.headingFont = typography?.headingFont || "serif";
+    finalTypography.character = typography?.character || "elegant";
+    
+    finalSurfaces.borderRadius = design.surfaces?.borderRadius || "2xl";
+    finalSurfaces.glassBlur = design.surfaces?.glassBlur || 12;
+    finalSurfaces.glassOpacity = design.surfaces?.glassOpacity || 0.84;
+    
     // Clean standard layout
     finalLayout.width = design.layout?.width || "standard";
     finalLayout.spacing = design.layout?.spacing || "standard";
     finalLayout.gutter = design.layout?.gutter || "standard";
   }
 
-  const rv = getRadiusValues(surfaces.borderRadius);
+  const rv = getRadiusValues(finalSurfaces.borderRadius);
   const finalHeadingFont = fontMap[finalTypography?.headingFont as keyof typeof fontMap] || "var(--font-nunito)";
   const finalCharStyle = characterStylesMap[finalTypography?.character as keyof typeof characterStylesMap] || characterStylesMap.playful;
 

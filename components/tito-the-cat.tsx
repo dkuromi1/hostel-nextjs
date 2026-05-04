@@ -126,7 +126,7 @@ export function TitoTheCat({ isEnabled, message, type = "cat" }: TitoTheCatProps
 
     runSequence();
     return () => { isMounted = false; };
-  }, [isEnabled, viewportWidth, durations, calculateAndTriggerJump]);
+  }, [isEnabled, viewportWidth, calculateAndTriggerJump]);
 
   if (!isEnabled || state === "hidden" || state === "done") return null;
 

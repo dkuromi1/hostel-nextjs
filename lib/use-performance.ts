@@ -7,7 +7,7 @@ import { isLowEndDevice } from "./performance";
  * React hook to safely access performance state on the client without hydration mismatches.
  */
 
-function subscribe() {
+function subscribe(onStoreChange: () => void) {
   // No-op: performance state is static for the life of the session
   return () => {};
 }

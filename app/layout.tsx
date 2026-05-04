@@ -71,10 +71,6 @@ const cormorant = Cormorant_Garamond({
   preload: true,
 });
 
-// Determine which fonts the active theme needs
-const design = activeInstance.content.settings.branding?.design;
-const activeTheme = design?.theme;
-const requestedHeadingFont = design?.typography?.headingFont;
 
 const themeFontClasses: Record<string, string[]> = {
   cool:           [serif.variable, inter.variable],
@@ -82,19 +78,6 @@ const themeFontClasses: Record<string, string[]> = {
   forest:         [bevan.variable, inter.variable],
   "nordic-earth": [syne.variable, inter.variable],
 };
-
-// Start with the theme defaults
-let activeFontClasses = [...(themeFontClasses[activeTheme ?? "cool"] ?? [serif.variable, inter.variable])];
-
-// Force-add Cormorant (used for Hero H1 override)
-if (!activeFontClasses.includes(cormorant.variable)) {
-  activeFontClasses.push(cormorant.variable);
-}
-
-// Force-add Playfair if explicitly requested
-if (requestedHeadingFont === "serif" && !activeFontClasses.includes(serif.variable)) {
-  activeFontClasses.push(serif.variable);
-}
 
 const themeBootstrapScript = `
 (() => {
@@ -217,6 +200,24 @@ export default function RootLayout({
   const siteDomain = process.env.NEXT_PUBLIC_SITE_URL ? new URL(process.env.NEXT_PUBLIC_SITE_URL).hostname : undefined;
   const mapUrl = "/experiences?poi=hostel#map";
 
+  // Determine which fonts the active theme needs
+  const design = activeInstance.content.settings.branding?.design;
+  const activeTheme = design?.theme;
+  const requestedHeadingFont = design?.typography?.headingFont;
+
+  // Start with the theme defaults
+  const activeFontClasses = [...(themeFontClasses[activeTheme ?? "cool"] ?? [serif.variable, inter.variable])];
+
+  // Force-add Cormorant (used for Hero H1 override)
+  if (!activeFontClasses.includes(cormorant.variable)) {
+    activeFontClasses.push(cormorant.variable);
+  }
+
+  // Force-add Playfair if explicitly requested
+  if (requestedHeadingFont === "serif" && !activeFontClasses.includes(serif.variable)) {
+    activeFontClasses.push(serif.variable);
+  }
+
   return (
     <html
       lang="en"
@@ -245,6 +246,7 @@ export default function RootLayout({
       <body className="min-h-full bg-background font-sans text-foreground antialiased">
         {analyticsWebsiteId ? (
           <Script
+            id="umami-analytics"
             src={activeInstance.integrations.analytics.scriptSrc}
             data-website-id={analyticsWebsiteId}
             data-domains={siteDomain}
