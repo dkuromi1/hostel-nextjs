@@ -73,7 +73,8 @@ export function SiteHeader({ navLinks, contactChannels, bookingChannels, siteNam
             </div>
             <div className="flex flex-col justify-center">
               <p className={cn(
-                "font-cormorant leading-none transition-all duration-500 ease-in-out text-xl sm:text-[22px]",
+                "font-heading font-normal leading-none transition-all duration-500 ease-in-out",
+                isScrolled ? "text-lg" : "text-xl sm:text-[22px]",
 
                 isTransparent ? "text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]" : "text-[var(--text-heading)]"
               )}>
