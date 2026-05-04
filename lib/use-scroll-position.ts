@@ -5,16 +5,33 @@ import { useSyncExternalStore } from "react";
 const listeners: Set<() => void> = new Set();
 let rafId: number | null = null;
 
+// Cached scroll position — updated only through the scroll handler or on
+// first subscribe.  getSnapshot() MUST return a value that doesn't change
+// between renders unless `subscribe`'s callback has fired; reading
+// window.scrollY live violates that contract and causes infinite re-renders
+// when hydration layout shifts nudge scrollY between render and commit.
+let cachedScrollY = 0;
+
+function syncScrollY() {
+  if (typeof window !== "undefined") {
+    cachedScrollY = window.scrollY;
+  }
+}
+
 function handleScroll() {
   if (rafId !== null) return;
   rafId = requestAnimationFrame(() => {
     rafId = null;
+    syncScrollY();
     listeners.forEach((cb) => cb());
   });
 }
 
 function subscribe(callback: () => void) {
   if (listeners.size === 0 && typeof window !== "undefined") {
+    // Seed the cache with the real scroll position on first subscribe so
+    // the initial render gets the correct value (e.g. after a back-nav).
+    syncScrollY();
     window.addEventListener("scroll", handleScroll, { passive: true });
   }
   listeners.add(callback);
@@ -27,10 +44,7 @@ function subscribe(callback: () => void) {
 }
 
 function getSnapshot() {
-  // Always read directly from the DOM — never from a stale module-level cache.
-  // This ensures navigating to the homepage never picks up scroll state
-  // left over from a previous page.
-  return typeof window !== "undefined" ? window.scrollY : 0;
+  return cachedScrollY;
 }
 
 function getServerSnapshot() {
@@ -40,7 +54,9 @@ function getServerSnapshot() {
 /**
  * Returns current window.scrollY.
  * Uses a single shared scroll listener across all components.
- * Reads directly from window.scrollY so it is always accurate after navigation.
+ * The cached value is seeded on first subscribe and updated on every scroll
+ * frame, so it stays accurate after navigation without violating the
+ * useSyncExternalStore snapshot-stability contract.
  */
 export function useScrollPosition() {
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
