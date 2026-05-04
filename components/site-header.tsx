@@ -47,39 +47,49 @@ export function SiteHeader({ navLinks, contactChannels, bookingChannels, siteNam
     <div className={containerClasses}>
       <VolunteerBanner volunteersNeeded={volunteersNeeded} whatsappUrl={whatsappUrl} phoneRaw={phoneRaw} />
       <header className={cn(
-        "transition-all duration-300",
+        "transition-all duration-500 ease-in-out",
         isTransparent
           ? "bg-transparent border-transparent"
-          : "border-b border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md shadow-sm"
+          : "border-b border-[var(--glass-border)] bg-[var(--glass-bg)]/80 backdrop-blur-xl shadow-sm"
       )}>
-        <div className="mx-auto flex max-w-[var(--layout-max-width)] items-center justify-between gap-2 xl:gap-4 px-4 py-2 sm:px-6 lg:px-8">
+        <div className={cn(
+          "mx-auto flex max-w-[var(--layout-max-width)] items-center justify-between gap-2 xl:gap-4 px-4 sm:px-6 lg:px-8 transition-all duration-500 ease-in-out",
+          isScrolled ? "py-1.5" : "py-3 sm:py-4"
+        )}>
           <Link href="/" className="flex shrink-0 items-center gap-3 transition-transform duration-300 hover:scale-[1.02] active:scale-95">
-            <div className="relative size-11 overflow-hidden rounded-2xl">
+            <div className={cn(
+              "relative overflow-hidden rounded-[var(--radius-2xl)] transition-all duration-500 ease-in-out",
+              isScrolled ? "size-9" : "size-12 sm:size-14"
+            )}>
               <Image
                 src="/logo.webp"
                 alt={`${siteName} logo`}
                 fill
                 className="object-cover"
-                sizes="44px"
+                sizes="(max-width: 768px) 36px, 56px"
                 priority
                 unoptimized
               />
             </div>
-            <div>
+            <div className="flex flex-col justify-center">
               <p className={cn(
-                "font-cormorant text-xl leading-none transition-colors",
+                "font-cormorant leading-none transition-all duration-500 ease-in-out text-xl sm:text-[22px]",
+
                 isTransparent ? "text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]" : "text-[var(--text-heading)]"
               )}>
+
                 {siteName}
               </p>
               <p className={cn(
-                "mt-1 text-xs uppercase tracking-[0.24em] transition-colors",
+                "uppercase tracking-[0.24em] transition-all duration-500 ease-in-out overflow-hidden",
+                isScrolled ? "h-0 opacity-0 mt-0" : "h-auto opacity-100 mt-1.5 text-[10px] sm:text-xs",
                 isTransparent ? "text-[var(--brand-accent)]" : "text-[var(--text-muted)]"
               )}>
                 {siteAddressSummary}
               </p>
             </div>
           </Link>
+
 
           <nav className="hidden items-center gap-1 lg:flex">
             {navLinks.map((item) => {
@@ -91,11 +101,12 @@ export function SiteHeader({ navLinks, contactChannels, bookingChannels, siteNam
                   <Link
                     href={item.href}
                     className={cn(
-                      "relative inline-block rounded-full px-3 xl:px-4 py-2 text-sm font-medium transition-all duration-300 hover:scale-[1.02] active:scale-95",
+                      "relative inline-block rounded-full px-3 xl:px-4 text-sm font-medium transition-all duration-500 ease-in-out hover:scale-[1.02] active:scale-95",
+                      isScrolled ? "py-1.5" : "py-2.5",
                       isTransparent
                         ? "text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.5)] hover:bg-white/10 hover:text-white"
                         : "text-[var(--text-body)] hover:bg-[var(--muted)] hover:text-[var(--text-heading)]",
-                      isActive && "after:absolute after:bottom-1.5 after:left-4 after:right-4 after:h-[1px] after:rounded-full after:bg-current after:transition-all after:duration-300"
+                      isActive && "after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[1px] after:rounded-full after:bg-current after:transition-all after:duration-500"
                     )}
                   >
                     {item.label}
@@ -105,15 +116,17 @@ export function SiteHeader({ navLinks, contactChannels, bookingChannels, siteNam
                       href={mapUrl}
                       aria-label="View on Custom Map"
                       className={cn(
-                        "flex size-9 -ml-2 items-center justify-center rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-95",
+                        "flex items-center justify-center rounded-full transition-all duration-500 ease-in-out hover:scale-[1.02] active:scale-95",
+                        isScrolled ? "size-8 -ml-1.5" : "size-10 -ml-2",
                         isTransparent
                           ? "text-white hover:bg-white/10"
                           : "text-[var(--text-body)] hover:bg-[var(--muted)] hover:text-[var(--text-heading)]"
                       )}
                     >
-                      <MapIcon className="size-[1.125rem]" strokeWidth={2} />
+                      <MapIcon className={cn("transition-all duration-500", isScrolled ? "size-4" : "size-[1.125rem]")} strokeWidth={2} />
                     </Link>
                   ) : null}
+
                 </div>
               );
             })}
