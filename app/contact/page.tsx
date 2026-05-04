@@ -142,7 +142,7 @@ export default function ContactPage() {
 
             {siteConfig.features.showLocalExperienceMap ? (
               <Reveal className="flex-1 px-2 sm:px-0" delay={50}>
-                <div id="map" className="media-frame relative min-h-[450px] h-full w-full overflow-hidden rounded-3xl">
+                <div id="map" className="media-frame relative min-h-[450px] h-full w-full overflow-hidden rounded-3xl scroll-mt-24 sm:scroll-mt-32">
                   <LocationMap />
                 </div>
               </Reveal>

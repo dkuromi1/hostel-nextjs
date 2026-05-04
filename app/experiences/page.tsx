@@ -156,7 +156,7 @@ export default function ExperiencesPage() {
       </section>
 
       {/* Things To Do Section */}
-      <section id="things-to-do" className="py-[var(--layout-section-spacing)]">
+      <section id="things-to-do" className="py-[var(--layout-section-spacing)] scroll-mt-24">
         <div className="shell-container space-y-12">
           <Reveal className="max-w-3xl">
             <SectionHeading
@@ -169,7 +169,7 @@ export default function ExperiencesPage() {
           {siteConfig.features.showLocalExperienceMap ? (
             <Reveal className="pt-4 sm:pt-8">
               <div className="mx-auto max-w-[1400px] px-2 sm:px-0">
-                <div id="map" className="media-frame relative h-[500px] w-full overflow-hidden rounded-3xl shadow-xl shadow-[var(--glass-shadow)]/10 ring-1 ring-[var(--glass-border)]">
+                <div id="map" className="media-frame relative h-[500px] w-full overflow-hidden rounded-3xl shadow-xl shadow-[var(--glass-shadow)]/10 ring-1 ring-[var(--glass-border)] scroll-mt-24 sm:scroll-mt-32">
                   <LocationMap />
                 </div>
               </div>
@@ -274,7 +274,7 @@ export default function ExperiencesPage() {
       </section>
 
       {/* Local Texture Section */}
-      <section id="social-connection" className="py-[var(--layout-section-spacing)]">
+      <section id="social-connection" className="py-[var(--layout-section-spacing)] scroll-mt-24">
         <div className="shell-container space-y-12">
 
           {/* Section Header */}
