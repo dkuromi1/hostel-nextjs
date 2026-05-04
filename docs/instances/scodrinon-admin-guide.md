@@ -40,6 +40,23 @@ This site includes several high-end engineering features for performance and sta
 - **Mapbox GPU Safety**: The interactive map automatically detects low-power mobile devices and optimizes its rendering to prevent browser crashes.
 - **Predictive Warming**: The site pre-fetches and pre-decodes gallery images before they are clicked, ensuring an instant, lag-free media experience.
 - **Automated Schema**: Every page automatically generates structured data (JSON-LD) for better Google Search visibility.
+- **Intelligent Performance Engine**: The site automatically audits the user's hardware (concurrency, memory, connection). On low-end devices, it disables battery-draining effects like backdrop-blur and 3D map extrusions to ensure a smooth booking experience.
+- **Dynamic Layout Engine**: Site density (compact/wide), container widths, and section gutters are all managed via `settings.json`, allowing the layout to reflow consistently across all pages.
+
+## Design & Theme Management
+
+The site's visual character is controlled in `settings.json` under the `branding.design` object.
+
+### 1. Typography & Layout
+- **Typography**: Change `headingFont` to `serif` or `sans` to swap the site's primary character.
+- **Layout Density**: The `layout` object (`width`, `spacing`, `gutter`) accepts `compact`, `standard`, or `wide` to globally adjust the site's vertical and horizontal rhythm.
+
+### 2. Feature Toggles
+In the `features` object of `settings.json`, you can enable or disable:
+- `showRegionalWeather`: Live weather data for hiking planning.
+- `showRegionalTrails`: Interactive trail overlays on the map.
+- `volunteersNeeded`: The recruitment banner for the volunteer program.
+- `showMascot`: The friendly character (Tito) in the corner of the site.
 
 
 **Important**: if you change the WhatsApp number, update `phoneDisplay`, `phoneRaw`, and `whatsappUrl` together in `settings.json`.
@@ -95,4 +112,7 @@ Add stronger new reviews to the top if they should appear on the homepage first.
 | Add a guest review | `Testimonials` -> add new |
 | Add a gallery photo | `Gallery` -> add new |
 | Update FAQ | `FAQs` -> edit FAQ content |
+| Change Layout Density | `Settings` -> `Branding` -> `Layout` |
+| Toggle Site Mascot | `Settings` -> `Features` -> `Show Mascot` |
+| Swap Heading Fonts | `Settings` -> `Branding` -> `Typography` |
 

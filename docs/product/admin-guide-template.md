@@ -53,6 +53,8 @@ This product includes several high-end engineering features out of the box:
 - **Mapbox GPU Safety**: The interactive map automatically detects low-power mobile devices and optimizes its rendering to prevent browser crashes.
 - **Predictive Warming**: The site pre-fetches and pre-decodes gallery images before they are clicked, ensuring an instant, lag-free media experience.
 - **Automated Schema**: Every page automatically generates structured data (JSON-LD) for better Google Search visibility.
+- **Intelligent Performance Engine**: Automatically audits hardware capabilities to throttle battery-intensive effects on low-end devices.
+- **Dynamic Layout Engine**: Enables global control over site density, container widths, and section gutters via `settings.json`.
 
 
 ## Media & Assets
