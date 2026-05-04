@@ -34,7 +34,7 @@ export function TestimonialsVibeSection({ testimonials, extendReasons, copy }: T
               <div className="float-left mb-3 mr-4 flex size-12 items-center justify-center rounded-[var(--radius-2xl)] bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-[var(--brand-primary)]/20">
                 <Icon className="size-5" />
               </div>
-              <h3 className="mb-2 heading-item text-[var(--text-heading)] pt-1">
+              <h3 className="heading-item mb-1.5 text-[var(--text-heading)]">
                 {reason.title}
               </h3>
               <p className="text-card-body">

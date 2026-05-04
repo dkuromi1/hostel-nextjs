@@ -212,8 +212,8 @@ export default function RoomsPage() {
                       <div className="flex size-10 shrink-0 items-center justify-center rounded-[var(--radius-xl)] bg-[var(--glass-bg)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-300 group-hover:bg-[var(--brand-primary-light)] group-hover:text-[var(--brand-primary)] group-hover:ring-[var(--brand-primary)]/20">
                         <Icon className="size-5" />
                       </div>
-                      <div className="space-y-1">
-                        <h4 className="text-base font-bold tracking-tight text-[var(--text-heading)]">
+                      <div className="space-y-1.5">
+                        <h4 className="heading-item text-[var(--text-heading)]">
                           {service.title}
                         </h4>
                         <p className="text-card-body">
@@ -244,8 +244,8 @@ export default function RoomsPage() {
                       <div className="flex size-10 shrink-0 items-center justify-center rounded-[var(--radius-xl)] bg-[var(--glass-bg)] shadow-sm ring-1 ring-amber-500/10 transition-all duration-300 group-hover:bg-amber-50 dark:group-hover:bg-amber-500/20 group-hover:text-amber-600 dark:group-hover:text-amber-400 group-hover:ring-amber-500/20">
                         <Icon className="size-5" />
                       </div>
-                      <div className="space-y-1">
-                        <h4 className="text-base font-bold tracking-tight text-[var(--text-heading)]">
+                      <div className="space-y-1.5">
+                        <h4 className="heading-item text-[var(--text-heading)]">
                           {service.title}
                         </h4>
                         <p className="text-card-body">

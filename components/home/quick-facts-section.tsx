@@ -23,19 +23,19 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
       {quickFacts.map((fact, index) => {
         const Icon = resolveIcon(fact.icon || "Info");
         const cardContent = (
-          <Panel className="group relative h-full p-6 transition-all duration-500 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
+          <Panel className="group relative h-full p-8 transition-all duration-500 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
             <div className="relative z-10 flex flex-col h-full gap-4">
               <div className="flex items-center gap-3">
                 <div className="flex size-10 shrink-0 items-center justify-center rounded-[var(--radius-xl)] bg-white text-[var(--brand-primary)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-300 group-hover:bg-[var(--brand-primary)] group-hover:text-white dark:bg-white/5 dark:text-[var(--brand-accent)] dark:group-hover:bg-[var(--brand-primary)]">
                   <Icon className="size-5" />
                 </div>
                 {fact.title && (
-                  <h4 className="font-heading text-lg font-bold leading-tight text-[var(--text-heading)] dark:text-white">
+                  <h4 className="heading-item text-[var(--text-heading)] dark:text-white">
                     {fact.title}
                   </h4>
                 )}
               </div>
-              <p className="text-sm leading-relaxed text-[var(--text-body-subtle)] transition-colors group-hover:text-[var(--text-body)] dark:text-white/80 dark:group-hover:text-white">
+              <p className="text-card-body transition-colors group-hover:text-[var(--text-body)] dark:text-white/80 dark:group-hover:text-white">
                 {fact.text}
               </p>
             </div>

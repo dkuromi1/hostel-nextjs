@@ -65,13 +65,13 @@ export function PageHero({
                     </div>
                     <div className="flex flex-col gap-1.5 py-0.5">
                       {title && (
-                        <div className="font-heading text-base sm:text-[17px] font-bold leading-none tracking-tight text-[var(--text-heading)] m-0">
+                        <div className="heading-item font-bold text-[var(--text-heading)] m-0">
                           {title}
                         </div>
                       )}
                       <div className={cn(
-                        "text-sm leading-snug text-[var(--text-body-subtle)] transition-colors group-hover:text-[var(--text-body)] m-0",
-                        !title && "text-base font-medium text-[var(--text-body)]"
+                        "text-card-body transition-colors group-hover:text-[var(--text-body)] m-0",
+                        !title && "font-medium text-[var(--text-body)]"
                       )}>
                         {text}
                       </div>
