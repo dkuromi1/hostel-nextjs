@@ -213,7 +213,15 @@ collections:
             widget: "list"
             fields:
               - { label: "Label", name: "label", widget: "string" }
-              - { label: "URL", name: "href", widget: "string" }
+              - label: "Destination"
+                name: "href"
+                widget: "select"
+                options:
+                  - { label: "Home", value: "/" }
+                  - { label: "Rooms", value: "/rooms" }
+                  - { label: "Experiences", value: "/experiences" }
+                  - { label: "Gallery", value: "/gallery" }
+                  - { label: "Contact", value: "/contact" }
 
   - name: "rooms"
     label: "Offerings"
@@ -226,7 +234,14 @@ collections:
         file: "instances/scodrinon/content/rooms.json"
         fields:
           - { label: "Module Type", name: "moduleType", widget: "string", required: false }
-          - { label: "Hero Highlights", name: "roomHeroHighlights", widget: "list" }
+          - label: "Hero Highlights"
+            name: "roomHeroHighlights"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "string" }
+              - { label: "Icon", name: "icon", widget: "string", hint: "Example: Bed, Blinds, Snowflake, Coffee" }
           - label: "Offerings"
             name: "offerings"
             widget: "list"
@@ -247,6 +262,13 @@ collections:
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt", name: "alt", widget: "string" }
+              - label: "Amenities"
+                name: "amenities"
+                widget: "list"
+                summary: "{{fields.label}}"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Icon", name: "icon", widget: "string", hint: "Example: Snowflake, Lock, Wifi, BatteryCharging, LampDesk" }
 
   - name: "content"
     label: "Site Content"
@@ -266,19 +288,58 @@ collections:
               - { label: "Title 2", name: "title2", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
           - { label: "Hero Highlights", name: "heroHighlights", widget: "list" }
-          - { label: "Quick Facts", name: "quickFacts", widget: "list" }
+          - label: "Quick Facts"
+            name: "quickFacts"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "string" }
+              - { label: "Icon", name: "icon", widget: "string", hint: "Example: BedDouble, Luggage, ShieldCheck, Mountain" }
           - { label: "Included Features", name: "includedFeatures", widget: "list" }
-          - { label: "Included Services", name: "includedServices", widget: "list" }
-          - { label: "Add-On Services", name: "addOnServices", widget: "list" }
-          - { label: "Experience Logistics", name: "experienceLogisticsFeatures", widget: "list" }
-          - { label: "Social Connection Features", name: "socialConnectionFeatures", widget: "list" }
+          - label: "Included Services"
+            name: "includedServices"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Icon", name: "icon", widget: "string", hint: "Example: Coffee, Mountain, Luggage, Wifi" }
+          - label: "Add-On Services"
+            name: "addOnServices"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Icon", name: "icon", widget: "string", hint: "Example: Bus, WashingMachine, Bike" }
+          - label: "Experience Logistics"
+            name: "experienceLogisticsFeatures"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Icon", name: "icon", widget: "string", hint: "Example: Backpack, Bus, Mountain" }
+          - label: "Social Connection Features"
+            name: "socialConnectionFeatures"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Icon", name: "icon", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Focus", name: "focus", widget: "string", default: "50% 40%" }
           - { label: "Contact Checklist", name: "contactChecklist", widget: "list" }
           - label: "Reasons to Extend"
             name: "extendReasons"
             widget: "list"
+            summary: "{{fields.title}}"
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
+              - { label: "Icon", name: "icon", widget: "string", hint: "Example: Moon, Zap, MapPin, Compass" }
           - label: "Experience Pillars"
             name: "experiencePillars"
             widget: "list"
