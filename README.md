@@ -28,6 +28,10 @@ This project is engineered beyond typical static hospitality sites, using advanc
 *   **Intelligent Performance Engine**: includes a custom device-detection heuristic (`lib/performance.ts`) that audits hardware concurrency, device memory, connection speed, and browser age. On low-end mobile devices, the system automatically adjusts the experience:
     *   **Removals**: Disables site-wide `backdrop-blur` effects, 3D building extrusions in the map, and complex spring animations.
     *   **Additions**: Injects high-opacity solid fallbacks for UI elements, enforces standard 2D map views to save VRAM, and utilizes throttled interaction listeners to prevent layout thrashing on older mobile CPUs.
+*   **Automatic Data Normalization Layer**: A robust adapter layer (`lib/data-normalizer.ts`) that handles variant JSON schemas, provides strict TypeScript safety for content, and validates icon registries at build-time to ensure UI stability.
+*   **Editorial Design System (Sharp Aesthetic)**: A premium "No-Radius" (0px) design philosophy enforced across all UI components for a modern, editorial, and high-density boutique look.
+*   **Dynamic Theme & Layout Engine**: Granular control over the site's "Density" and "Width" via `settings.json`. Supports configurable container max-widths, grid gutters, and section spacing that automatically synchronize across the entire application.
+*   **Configuration-Driven Typography**: Built-in support for dynamic font-swapping (e.g., Cormorant Garamond vs. Inter) via CSS variables mapped directly to instance settings, allowing for rapid re-branding without code changes.
 
 
 
@@ -58,7 +62,7 @@ This project is engineered beyond typical static hospitality sites, using advanc
 
 ## Site Management & Content Editing
 
-This site can be managed in two ways:
+61: This site can be managed in two ways:
 *   Through the Decap CMS admin panel at `/admin`
 *   Directly through the JSON content files in `instances/[property-name]/content/`
 
@@ -108,4 +112,3 @@ Regardless of platform, ensure these are set:
 - `NEXT_PUBLIC_SITE_URL`: Your live domain (e.g., `https://www.property.com`).
 - `NEXT_PUBLIC_MAPBOX_TOKEN`: Required for interactive maps.
 - `ANALYTICS_ID`: (Optional) For tracking.
-
