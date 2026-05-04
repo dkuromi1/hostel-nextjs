@@ -53,7 +53,7 @@ export function BookingActions({
               rel="noreferrer"
               className={cn(
                 buttonVariants({ variant: "ghost", size: compact ? "sm" : "lg" }),
-                "h-auto min-h-12 flex-1 justify-center border border-[var(--glass-border)] bg-[var(--glass-bg)] px-3 py-3 text-sm text-[var(--text-heading)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-[var(--glass-bg)]/90"
+                "h-auto min-h-12 flex-1 rounded-full justify-center border border-[var(--glass-border)] bg-[var(--glass-bg)] px-3 py-3 text-sm text-[var(--text-heading)] transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-[var(--glass-bg)]/90"
               )}
             >
               <span className="truncate">{channel.label}</span>
