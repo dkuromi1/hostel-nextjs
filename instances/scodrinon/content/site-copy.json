@@ -139,7 +139,7 @@
     },
     "hero": {
       "eyebrow": "Contact & Book",
-      "title": "Skip the fees. Book directly with a simple message.",
+      "title": "Skip the fees and book directly with a simple message.",
       "description": "We prefer WhatsApp because it's the fastest way to answer your questions and secure your bed. (But if you prefer the booking apps, you'll find those links here too)."
     },
     "bestBookingRoute": {
@@ -227,7 +227,7 @@
     "launchpad": {
       "eyebrow": "The Northbound Launchpad",
       "title": "Leave the heavy bags behind and head for the mountains.",
-      "description": "We've built Scodrinon to be the ultimate reset point for your Albanian Alps trek. Don't waste a day figuring out schedules—we handle the friction so you can focus on the trail."
+      "description": "We've built Scodrinon to be the ultimate reset point for your Albanian Alps trek. Don't waste a day figuring out schedules. We handle the friction so you can focus on the trail."
     },
     "thingsToDo": {
       "eyebrow": "Beyond the Hostel",
