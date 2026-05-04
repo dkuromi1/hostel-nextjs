@@ -67,10 +67,12 @@ export default function ContactPage() {
                     {siteConfig.phoneDisplay}
                   </p>
                   <a 
-                    href={`tel:${siteConfig.phoneRaw}`}
+                    href={siteConfig.whatsappUrl}
+                    target="_blank"
+                    rel="noreferrer"
                     className="mt-1 text-xs font-bold uppercase tracking-widest text-[var(--brand-primary)] hover:underline"
                   >
-                    Call Now →
+                    Message Us →
                   </a>
                 </div>
               </div>
