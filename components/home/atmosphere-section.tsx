@@ -55,9 +55,9 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
           {/* Right column */}
           <div className="flex flex-col gap-[var(--layout-grid-gutter)] lg:col-start-2 lg:row-start-1 lg:row-span-2">
             <div className="grid grid-cols-[3fr_2fr] gap-[var(--layout-grid-gutter)] lg:grid-cols-1 lg:h-full">
-              {/* Room image + mobile booking */}
-              <Reveal delay={100} className="flex min-w-0 flex-col gap-[var(--layout-grid-gutter)] h-full">
-                <div className="media-frame relative aspect-[4/3] lg:h-auto">
+              {/* Room image */}
+              <Reveal delay={100} className="flex min-w-0 h-full">
+                <div className="media-frame relative w-full aspect-[4/3] lg:h-auto">
                   <Image
                     src="/images/rooms_1_min.webp"
                     alt={atmosphere.roomImageAlt}
@@ -66,13 +66,10 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
                     sizes="(max-width: 1024px) 60vw, (max-width: 1400px) 33vw, 466px"
                   />
                 </div>
-
-                {/* Mobile-only booking card */}
-                <DirectBookingCard variant="block" className="lg:hidden" whatsappUrl={whatsappUrl} content={atmosphere} />
               </Reveal>
 
               {/* Video */}
-              <Reveal delay={300} className="media-frame relative flex items-start lg:items-center self-start lg:self-auto overflow-hidden">
+              <Reveal delay={300} className="media-frame relative flex items-start lg:items-center self-start lg:self-auto overflow-hidden min-[500px]:row-span-2 lg:row-span-1">
                 <LazyVideo
                   src="/videos/videoplayback.mp4"
                   poster="/images/video-poster.webp"
@@ -83,6 +80,11 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
                   playsInline
                   preload="none"
                 />
+              </Reveal>
+
+              {/* Mobile-only booking card */}
+              <Reveal delay={150} className="max-[499px]:col-span-full lg:hidden">
+                <DirectBookingCard variant="block" className="h-full" whatsappUrl={whatsappUrl} content={atmosphere} />
               </Reveal>
             </div>
           </div>

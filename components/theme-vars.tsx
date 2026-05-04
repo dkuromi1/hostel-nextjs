@@ -280,8 +280,7 @@ export function ThemeVars() {
     /* Responsive Layout Overrides */
     @media (max-width: 1024px) {
       :root {
-        /* Step down spacing and gutter on tablet if they are set to wide */
-        ${finalLayout.spacing === "wide" ? `--layout-section-spacing: ${spacingMap.standard};` : ""}
+        /* Step down gutter on tablet if set to wide */
         ${finalLayout.gutter === "wide" ? `--layout-grid-gutter: ${gutterMap.standard};` : ""}
       }
     }
@@ -290,9 +289,6 @@ export function ThemeVars() {
       :root {
         /* Force compact gutter on mobile */
         --layout-grid-gutter: ${gutterMap.compact};
-        
-        /* Ensure spacing isn't too large on tiny screens */
-        ${finalLayout.spacing !== "compact" ? `--layout-section-spacing: ${spacingMap.standard};` : ""}
       }
     }
 

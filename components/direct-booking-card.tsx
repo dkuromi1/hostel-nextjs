@@ -32,9 +32,9 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
             <SectionLabel variant="emerald" className="mx-auto sm:mx-0">
               {content.directBookingLabel}
             </SectionLabel>
-        <h3 className="text-2xl sm:text-3xl font-heading font-bold leading-tight text-[var(--text-heading)] dark:text-white">
-          {content.directBookingTitle}
-        </h3>
+            <h3 className="heading-item text-[var(--text-heading)] dark:text-white">
+              {content.directBookingTitle}
+            </h3>
             <p className="text-card-body max-w-md mx-auto sm:mx-0 transition-colors group-hover:text-[var(--text-body)] dark:text-white/80 dark:group-hover:text-white">
               {content.directBookingDescription}
             </p>
@@ -46,7 +46,7 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
           rel="noreferrer"
           className={cn(
             buttonVariants({ variant: "whatsapp" }),
-            "relative z-10 shrink-0 w-full sm:w-auto h-12 rounded-full px-10 text-base font-bold transition-all duration-300 hover:scale-[1.02] shadow-whatsapp"
+            "relative z-10 shrink-0 w-full sm:w-auto h-12 rounded-full px-10 text-base font-medium tracking-tight transition-all duration-300 hover:scale-[1.02] shadow-whatsapp"
           )}
         >
           {content.directBookingButton}
@@ -58,7 +58,7 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
   // "Block" variant for vertical layouts (mobile column)
   return (
     <div className={cn(
-      "group relative glass-panel rounded-3xl p-6 overflow-hidden transition-all duration-500 hover:border-[var(--brand-primary)]/20 hover:shadow-md", 
+      "group relative glass-panel rounded-3xl p-6 overflow-hidden transition-all duration-500 hover:border-[var(--brand-primary)]/20 hover:shadow-md",
       className
     )}>
       <div className="relative z-10 flex items-center gap-4 mb-5">
@@ -70,7 +70,7 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
         </SectionLabel>
       </div>
       <div className="relative z-10 space-y-2">
-        <h3 className="text-2xl font-heading font-bold leading-tight text-[var(--text-heading)] dark:text-white">
+        <h3 className="heading-item text-[var(--text-heading)] dark:text-white">
           {content.directBookingTitle}
         </h3>
         <p className="text-card-body transition-colors group-hover:text-[var(--text-body)] dark:text-white/80 dark:group-hover:text-white">
@@ -83,7 +83,7 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
         rel="noreferrer"
         className={cn(
           buttonVariants({ variant: "whatsapp" }),
-          "relative z-10 mt-6 w-full h-11 rounded-full px-10 text-[15px] font-bold transition-all duration-300 hover:scale-[1.02] shadow-whatsapp"
+          "relative z-10 mt-6 w-full h-11 rounded-full px-10 text-[15px] font-medium tracking-tight transition-all duration-300 hover:scale-[1.02] shadow-whatsapp"
         )}
       >
         {content.directBookingButton}

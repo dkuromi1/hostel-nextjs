@@ -22,7 +22,7 @@ export function HeroSection({ hero, tagline, backgroundAlt, guestRatingsProps }:
           fill
           priority
           className="object-cover"
-          style={{ objectPosition: "10% 50%" }}
+          style={{ objectPosition: "15% 50%" }}
           sizes="100vw"
         />
         <div className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(to_bottom,rgba(2,6,23,0.4)_0%,rgba(2,6,23,0.5)_50%,rgba(2,6,23,0.95)_100%)]" />
