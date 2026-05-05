@@ -40,7 +40,7 @@ export function SiteHeader({ navLinks, contactChannels, bookingChannels, siteNam
 
   const containerClasses = cn(
     "z-50 pt-safe transition-all duration-300",
-    isTransparent ? "absolute inset-x-0 top-0" : (isHome ? "fixed inset-x-0 top-0" : "sticky top-0")
+    isTransparent ? "absolute inset-x-0 top-0" : (isHome ? "fixed inset-x-0 top-0" : "sticky top-0 inset-x-0 w-full")
   );
 
   return (

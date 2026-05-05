@@ -5,23 +5,33 @@ type LogoProps = {
   /** Mark only (no wordmark) — for compact UI like the site header. */
   iconOnly?: boolean;
   monochromeHover?: boolean;
+  size?: "sm" | "md";
 };
 
-export function BookingComLogo({ className, iconOnly, monochromeHover }: LogoProps) {
+export function BookingComLogo({ className, iconOnly, monochromeHover, size = "md" }: LogoProps) {
+  const isSm = size === "sm";
+  
   const mark = (
     <div
       role="img"
       aria-label="Booking.com"
       className={cn(
-        "relative flex size-8 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[#003580] shadow-[0_2px_8px_-2px_rgba(0,0,0,0.4)] transition-all duration-300",
+        "relative flex shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[#003580] shadow-[0_2px_8px_-2px_rgba(0,0,0,0.4)] transition-all duration-300",
+        isSm ? "size-4 rounded-[4px]" : "size-8",
         monochromeHover && "saturate-75 opacity-80 group-hover:saturate-100 group-hover:opacity-100",
         iconOnly && className
       )}
     >
-      <span className="translate-x-[-2px] font-sans text-2xl font-extrabold text-white">
+      <span className={cn(
+        "font-sans font-extrabold text-white leading-none",
+        isSm ? "text-[10px] translate-x-[-0.5px]" : "text-2xl translate-x-[-2px]"
+      )}>
         B
       </span>
-      <span className="absolute bottom-[24%] right-[17%] size-1 rounded-full bg-[#00AEEF]" />
+      <span className={cn(
+        "absolute rounded-full bg-[#00AEEF]",
+        isSm ? "bottom-[20%] right-[15%] size-1" : "bottom-[24%] right-[17%] size-1"
+      )} />
     </div>
 
   );
@@ -43,20 +53,23 @@ export function BookingComLogo({ className, iconOnly, monochromeHover }: LogoPro
   );
 }
 
-export function HostelworldLogo({ className, iconOnly, monochromeHover }: LogoProps) {
+export function HostelworldLogo({ className, iconOnly, monochromeHover, size = "md" }: LogoProps) {
+  const isSm = size === "sm";
+
   const mark = (
     <div
       role="img"
       aria-label="Hostelworld"
       className={cn(
-        "flex size-8 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[#F25621] shadow-[0_2px_8px_-2px_rgba(0,0,0,0.4)] transition-all duration-300",
+        "flex shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[#F25621] shadow-[0_2px_8px_-2px_rgba(0,0,0,0.4)] transition-all duration-300",
+        isSm ? "size-4 rounded-[4px]" : "size-8",
         monochromeHover && "saturate-75 opacity-80 group-hover:saturate-100 group-hover:opacity-100",
         iconOnly && className
       )}
     >
       <svg
         viewBox="0 0 100 100"
-        className="size-full text-white"
+        className={cn("text-white", isSm ? "size-[70%]" : "size-full")}
         fill="currentColor"
         aria-hidden="true"
       >

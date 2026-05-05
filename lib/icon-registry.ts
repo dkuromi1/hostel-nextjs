@@ -128,6 +128,7 @@ import {
   Coins,
   Droplets,
   Zap as PowerIcon,
+  Image,
 } from "lucide-react";
 
 /**
@@ -179,6 +180,7 @@ export const ICON_REGISTRY = {
   Dumbbell,
   Music,
   Camera,
+  Image,
   // Location
   MapPin,
   Map,
@@ -195,6 +197,8 @@ export const ICON_REGISTRY = {
   AtSign,
   Mail,
   Instagram: InstagramGlyph as any,
+  Whatsapp: MessageCircleMore,
+  whatsapp: MessageCircleMore,
   Zap,
   // Storage
   Luggage,
@@ -283,6 +287,7 @@ export {
   Dumbbell,
   Music,
   Camera,
+  Image,
   MapPin,
   Map,
   Compass,
