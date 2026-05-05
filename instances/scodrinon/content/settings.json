@@ -110,7 +110,8 @@
       "surfaces": {
         "glassBlur": 12,
         "glassOpacity": 0.84,
-        "borderRadius": "2xl"
+        "borderRadius": "2xl",
+        "eyebrowStyle": "ghost"
       },
       "mascot": {
         "enabled": true,

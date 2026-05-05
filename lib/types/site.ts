@@ -150,6 +150,7 @@ export interface DesignConfig {
     glassBlur: number;
     glassOpacity: number;
     borderRadius: "none" | "sm" | "md" | "lg" | "xl" | "3xl" | "2xl";
+    eyebrowStyle?: "pill" | "ghost";
   };
   mascot: {
     enabled: boolean;
