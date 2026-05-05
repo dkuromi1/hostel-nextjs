@@ -425,19 +425,27 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
         };
     }, [accessToken]);
 
-    useEffect(() => {
-        if (!siteConfig.features.showLocalExperienceMap || !mapRef.current || !poiQuery) return;
-        const q = poiQuery.toLowerCase();
-        let targetCenter = HOSTEL_COORDS; let targetZoom = 15.5;
+    // Store performFlyTo in a ref so the stable global click listener always
+    // calls the latest version with an up-to-date mapRef (avoids stale closure).
+    const performFlyToRef = useRef<((q: string) => void) | null>(null);
+    performFlyToRef.current = (q: string) => {
+        if (!mapRef.current) return;
+
+        let targetCenter = HOSTEL_COORDS;
+        let targetZoom = 15.5;
         document.querySelectorAll('.poi-label-el').forEach(el => el.classList.remove('poi-highlight'));
 
-        const matchedPoi = recommendedPoisRef.current.find(p => q.includes(p.name.toLowerCase()) || p.name.toLowerCase().includes(q));
+        const matchedPoi = recommendedPoisRef.current.find(p =>
+            q.includes(p.name.toLowerCase()) || p.name.toLowerCase().includes(q)
+        );
+
         if (matchedPoi) {
-            targetCenter = matchedPoi.coords as [number, number]; targetZoom = 16.5;
+            targetCenter = matchedPoi.coords as [number, number];
+            targetZoom = 16.5;
             document.querySelector(`[data-poi-label="${matchedPoi.name.toLowerCase()}"]`)?.classList.add('poi-highlight');
         } else {
-            const matchedView = namedViews.find((v: any) => 
-                (v.query && q === v.query) || 
+            const matchedView = namedViews.find((v: any) =>
+                (v.query && q === v.query) ||
                 (v.keywords && v.keywords.every((k: string) => q.includes(k)))
             );
             if (matchedView) {
@@ -450,16 +458,49 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                 document.querySelector(`[data-poi-label="${hostel.label}"]`)?.classList.add('poi-highlight');
             }
         }
+
         const preferredView = getPreferredView();
-        mapRef.current.flyTo({ 
-            center: targetCenter, 
-            zoom: targetZoom, 
+        mapRef.current.flyTo({
+            center: targetCenter,
+            zoom: targetZoom,
             pitch: preferredView.pitch,
             bearing: preferredView.bearing,
-            speed: 1.2, 
-            curve: 1, 
-            essential: true 
+            speed: 1.2,
+            curve: 1,
+            essential: true
         });
+    };
+
+    // Global click listener — registered once, never goes stale because it
+    // always invokes through performFlyToRef which is updated every render.
+    useEffect(() => {
+        if (!siteConfig.features.showLocalExperienceMap) return;
+
+        const handleGlobalClick = (e: MouseEvent) => {
+            const link = (e.target as HTMLElement).closest('a');
+            if (!link) return;
+
+            try {
+                const url = new URL(link.href, window.location.origin);
+                const poi = url.searchParams.get('poi');
+                if (poi) {
+                    // Defer slightly so Next.js router can settle before we fly
+                    requestAnimationFrame(() => performFlyToRef.current?.(poi.toLowerCase()));
+                }
+            } catch {
+                // ignore malformed URLs
+            }
+        };
+
+        window.addEventListener('click', handleGlobalClick);
+        return () => window.removeEventListener('click', handleGlobalClick);
+    }, []);
+
+    useEffect(() => {
+        if (!siteConfig.features.showLocalExperienceMap || !poiQuery) return;
+        // Defer to allow the map to finish any in-progress initialization
+        const id = requestAnimationFrame(() => performFlyToRef.current?.(poiQuery.toLowerCase()));
+        return () => cancelAnimationFrame(id);
     }, [poiQuery]);
 
     const toggleStyle = () => {

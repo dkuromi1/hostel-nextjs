@@ -228,8 +228,8 @@ export default function ExperiencesPage() {
                         {item.showDirections !== false && (
                           <a
                             href={
-                              item.title === "Theth to Valbona Trek"
-                                ? (siteConfig.maps?.thethTrailheadUrl || "")
+                              item.title === "Valbona to Theth Trek"
+                                ? (siteConfig.maps?.trekTrailheadUrl || "")
                                 : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(item.title + ' Shkoder')}`
                             }
                             target="_blank"

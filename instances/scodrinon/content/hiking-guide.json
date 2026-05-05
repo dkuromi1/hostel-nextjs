@@ -1,18 +1,18 @@
 {
   "metadata": {
-    "title": "Theth to Valbona Hiking Guide | Logistics & Trail Tips",
-    "description": "The complete 2025 guide for the Theth to Valbona hike. Learn about minibus prices, luggage storage at Scodrinon Hostel, and expert trail tips.",
+    "title": "Valbona to Theth Hiking Guide | Logistics & Trail Tips",
+    "description": "The complete 2026 guide for the Valbona to Theth hike. Learn about minibus prices, luggage storage at Scodrinon Hostel, and expert trail tips.",
     "image": "/images/hiking_5.jpg"
   },
   "hero": {
     "eyebrow": "Hiking Guide",
-    "title": "Theth to Valbona: The heart of the Albanian Alps.",
-    "description": "It’s the most famous trail in the country for a reason, a classic high-altitude crossing through the raw beauty of the Accursed Mountains. Here is everything you need to know about the logistics, the costs, and how to use Scodrinon Hostel as your basecamp."
+    "title": "Valbona to Theth: The heart of the Albanian Alps.",
+    "description": "While most hikers go from Theth to Valbona, we recommend the reverse. Starting in Valbona provides a shorter, earlier ascent, while reducing exposure to the peak afternoon heat. Here is everything you need to know about the logistics, the costs, and how to use Scodrinon as your basecamp."
   },
   "quickStats": [
     {
       "label": "Distance",
-      "value": "17 km",
+      "value": "13-17 km",
       "icon": "Map"
     },
     {
@@ -22,7 +22,7 @@
     },
     {
       "label": "Elevation Gain",
-      "value": "1,050m",
+      "value": "770m",
       "icon": "TrendingUp"
     },
     {
@@ -33,22 +33,22 @@
   ],
   "logistics": {
     "title": "Getting There & Back",
-    "description": "Most hikers start in Shkoder, head to Theth, hike to Valbona, and return via the Komani Lake ferry. You can also do it in reverse for a shorter uphill section.",
+    "description": "We recommend the Valbona to Theth direction for a better experience. It allows you to tackle the steepest part of the climb in the morning shade and enjoy the spectacular Komani Lake ferry on your way to the trailhead.",
     "steps": [
       {
-        "title": "Shkoder to Theth",
-        "price": "€12",
-        "description": "Minibuses depart at 7:00 AM from in front of the Rozafa Hotel. We can book your seat for you. The return from Theth departs at 11:00 AM & 5:00 PM from Jezerca Market."
-      },
-      {
-        "title": "Theth to Valbona",
-        "price": "",
-        "description": "The main event. The trail is well-marked and winds through ancient forests before opening up to high-alpine terrain. No permits are required."
-      },
-      {
-        "title": "Valbona to Shkoder",
+        "title": "Shkoder to Valbona",
         "price": "€26",
-        "description": "To start from Valbona, transport departs at 6:30 AM from Scodrinon Hostel. For the return journey, minibuses leave Valbona at 10:00 AM from your guesthouse to catch the Komani Lake ferry."
+        "description": "Transport departs at 6:30 AM from Scodrinon Hostel. This includes the minibus to Komani, the legendary ferry ride across the lake, and the final 4x4 or minibus transfer into Valbona valley."
+      },
+      {
+        "title": "Valbona to Theth",
+        "price": "",
+        "description": "The main event. The trail is well-marked and winds through ancient forests before opening up to high-alpine terrain. Starting from Valbona offers a shorter, more manageable ascent to the pass."
+      },
+      {
+        "title": "Theth to Shkoder",
+        "price": "€12",
+        "description": "For the return journey, minibuses depart from Theth (Jezerca Market) at 11:00 AM and 5:00 PM. We can book your seat for you in advance."
       }
     ]
   },
@@ -104,31 +104,31 @@
   },
   "itinerary": {
     "title": "Suggested 3-Day Loop",
-    "description": "The classic Shkoder-Theth-Valbona-Shkoder route that we recommend to most guests.",
+    "description": "The recommended Shkoder-Valbona-Theth-Shkoder route for the ultimate mountain experience.",
     "days": [
       {
         "day": "Day 1",
-        "title": "Shkoder to Theth",
-        "icon": "Bus",
-        "description": "Leave your heavy bags at Scodrinon. Take the 7 AM minibus to Theth—the mountain-ringed heart of the park. Use the afternoon for a perfect warm-up hike to the crystal-blue waters of the Blue Eye or the hidden Grunas Waterfall."
+        "title": "The Komani Lake Route",
+        "icon": "Ship",
+        "description": "Leave your heavy bags at Scodrinon. Take the 6:30 AM transport to Komani Lake for one of the world's most beautiful ferry rides. You'll arrive in Valbona by early afternoon—just in time for a cold beer and views of the jagged peaks."
       },
       {
         "day": "Day 2",
-        "title": "The Hike to Valbona",
+        "title": "The Hike to Theth",
         "icon": "Mountain",
-        "description": "Start early. You'll climb to the spectacular Valbona Pass (1,795m) for uninterrupted views across the jagged peaks of the Accursed Mountains. Descend into the Valbona valley for a celebratory dinner under the stars."
+        "description": "Start early to climb the Valbona Pass (1,795m) in the morning shade. From the top, you'll have panoramic views of both valleys. Descend into the lush forests of Theth for a traditional mountain dinner."
       },
       {
         "day": "Day 3",
-        "title": "Return via Komani Lake",
-        "icon": "Ship",
-        "description": "Take the 10:00 AM minibus to Fierze, then board the famous Komani Lake ferry. This three-hour journey through fjord-like passages and vertical cliffs is often called one of the most beautiful boat rides in the world."
+        "title": "Blue Eye & Return to Shkoder",
+        "icon": "Bus",
+        "description": "Spend the morning visiting the stunning Blue Eye or the Grunas Waterfall. Catch the 5:00 PM minibus back to Shkoder, arriving in time for a late dinner at Scodrinon."
       }
     ]
   },
   "labels": {
     "trailTitle": "The Trail",
-    "trailDescription": "A visual overview of the famous Theth to Valbona hike in the Accursed Mountains.",
-    "whatsAppMessage": "Hi! I'm planning the Theth to Valbona hike. Can you help me with booking a bed and transport?"
+    "trailDescription": "A visual overview of the famous Valbona to Theth hike in the Accursed Mountains.",
+    "whatsAppMessage": "Hi! I'm planning the Valbona to Theth hike. Can you help me with booking a bed and transport?"
   }
 }

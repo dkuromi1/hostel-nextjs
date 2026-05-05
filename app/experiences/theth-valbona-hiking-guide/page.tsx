@@ -27,7 +27,7 @@ export default function HikingGuidePage() {
         data={buildBreadcrumbSchema([
           { name: "Home", path: "/" },
           { name: "Experiences", path: "/experiences" },
-          { name: "Theth to Valbona Hiking Guide", path: "/experiences/theth-valbona-hiking-guide" },
+          { name: "Valbona to Theth Hiking Guide", path: "/experiences/theth-valbona-hiking-guide" },
         ])}
       />
 
@@ -159,7 +159,7 @@ export default function HikingGuidePage() {
           </Reveal>
           <Reveal className="px-2 sm:px-0">
             <Panel className="h-[500px] w-full overflow-hidden p-0 rounded-3xl">
-              <LocationMap defaultPoi="theth-valbona-midpoint" variant="regional" />
+              <LocationMap defaultPoi="valbona-theth-midpoint" variant="regional" />
             </Panel>
           </Reveal>
         </div>

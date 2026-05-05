@@ -13,8 +13,8 @@
   },
   "namedViews": [
     {
-      "id": "thethValbona",
-      "query": "theth-valbona-midpoint",
+      "id": "valbonaTheth",
+      "query": "valbona-theth-midpoint",
       "keywords": ["theth", "valbona"],
       "center": [19.8290120989, 42.4208252183],
       "zoom": 10.0,

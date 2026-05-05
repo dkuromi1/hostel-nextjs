@@ -24,7 +24,7 @@
     { "name": "Mesi Bridge", "coords": [19.57507048757086, 42.114467845122725, 0], "category": "see", "minZoom": 9 },
     { "name": "Shiroka Village", "coords": [19.44972160885021, 42.06053385014611, 0], "category": "see", "minZoom": 9 },
     { "name": "Hermes Airport Shuttle", "coords": [19.518613662164896, 42.065060836150614, 0], "category": "transit", "minZoom": 11 },
-    { "name": "Trailhead", "coords": [19.870570709799853, 42.42571084825586, 0], "category": "see", "minZoom": 6 },
+    { "name": "Rragam Trailhead", "coords": [19.84605403131156, 42.41258193168048, 0], "category": "see", "minZoom": 6 },
     { "name": "Valbona Pass", "coords": [19.81528, 42.40583, 0], "category": "see", "minZoom": 6 },
     { "name": "Velipojë Beach", "coords": [19.416597409355276, 41.8618988805818, 0], "category": "see", "minZoom": 6 },
     { "name": "Valbona Village", "coords": [19.88570882131251, 42.444877303358666, 0], "category": "transit", "minZoom": 6 },

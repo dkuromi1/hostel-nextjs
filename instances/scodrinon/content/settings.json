@@ -3,7 +3,7 @@
     "name": "Scodrinon Hostel",
     "shortName": "Scodrinon",
     "tagline": "The hostel you won't want to leave",
-    "description": "A chill, social hostel on Shkodër’s main pedestrian street. The perfect base for the Theth-Valbona trek with privacy pods, rooftop sunsets, and direct booking.",
+    "description": "A chill, social hostel on Shkodër’s main pedestrian street. The perfect base for the Valbona-Theth trek with privacy pods, rooftop sunsets, and direct booking.",
     "category": "travel"
   },
   "address": {
@@ -75,7 +75,7 @@
       "best hostel in Shkoder",
       "solo travel Albania",
       "privacy pod hostel Albania",
-      "Theth Valbona hostel base",
+      "Valbona-Theth hostel base",
       "Komani Lake ferry transport",
       "Shala River boat trips",
       "Shkoder pedestrian street",
@@ -165,6 +165,6 @@
     ]
   },
   "maps": {
-    "thethTrailheadUrl": "https://www.google.com/maps/dir/?api=1&destination=42.397171,19.772164"
+    "trekTrailheadUrl": "https://www.google.com/maps/dir/?api=1&destination=42.41258193168048,19.84605403131156"
   }
 }

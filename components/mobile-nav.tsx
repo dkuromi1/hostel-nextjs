@@ -85,6 +85,9 @@ export function MobileNav({ navLinks, contactChannels, bookingChannels, mapUrl }
     function handlePointerDown(event: PointerEvent) {
       const el = containerRef.current;
       if (el && !el.contains(event.target as Node)) {
+        // Prevent the default click from firing on whatever is beneath the tap,
+        // so closing the menu doesn't accidentally activate underlying buttons.
+        event.preventDefault();
         setOpen(false);
       }
     }
@@ -131,7 +134,7 @@ export function MobileNav({ navLinks, contactChannels, bookingChannels, mapUrl }
             animate="visible"
             exit="exit"
             className={cn(
-              "absolute right-0 top-full z-50 mt-3 w-[min(22rem,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-[var(--glass-border)] p-4 shadow-2xl",
+              "absolute right-0 top-full z-50 mt-3 w-[min(22rem,calc(100vw-4rem))] overflow-hidden rounded-2xl border border-[var(--glass-border)] p-4 shadow-2xl",
               shouldReduce
                 ? "bg-white dark:bg-[var(--surface-dark-secondary,#1a0f0a)]"
                 : "bg-white/98 dark:bg-[var(--surface-dark-secondary,#1a0f0a)]/95 backdrop-blur-xl"

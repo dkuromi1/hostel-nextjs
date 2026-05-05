@@ -310,7 +310,7 @@ export interface SettingsContent {
     amenities: string[];
   };
   "maps"?: {
-    "thethTrailheadUrl"?: string;
+    "trekTrailheadUrl"?: string;
   };
 }
 
@@ -341,7 +341,7 @@ export interface PropertyConfig extends SettingsContent {
   hostelworldRating: string;
   hostelworldReviews: string;
   maps?: {
-    thethTrailheadUrl?: string;
+    trekTrailheadUrl?: string;
   };
 }
 
