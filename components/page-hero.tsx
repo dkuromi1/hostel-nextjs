@@ -25,6 +25,7 @@ type PageHeroProps = {
   contactChannels?: BusinessChannel[];
   backgroundImage?: string;
   backgroundAlt?: string;
+  backgroundPosition?: string;
   topRight?: ReactNode;
   className?: string;
 };
@@ -40,6 +41,7 @@ export function PageHero({
   contactChannels = [],
   backgroundImage,
   backgroundAlt,
+  backgroundPosition = "center",
   topRight,
   className,
 }: PageHeroProps) {
@@ -64,6 +66,7 @@ export function PageHero({
             fill
             priority
             className="object-cover"
+            style={{ objectPosition: backgroundPosition }}
             sizes="100vw"
           />
           <div className="absolute inset-0 z-10 bg-[linear-gradient(to_right,rgba(2,6,23,0.85)_0%,rgba(2,6,23,0.6)_40%,rgba(2,6,23,0.2)_100%)] dark:bg-[linear-gradient(to_right,rgba(2,6,23,0.9)_0%,rgba(2,6,23,0.7)_50%,rgba(2,6,23,0.3)_100%)]" />

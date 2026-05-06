@@ -54,6 +54,7 @@ export default function ContactPage() {
         contactChannels={contactChannels}
         backgroundImage="/images/shkoder_pedestrian_street_2.webp"
         backgroundAlt={siteCopyContent.contact.hero.title}
+        backgroundPosition="20% center"
       >
         <div className="grid gap-[var(--layout-grid-gutter)]">
           <Panel className="p-6 sm:p-8">
