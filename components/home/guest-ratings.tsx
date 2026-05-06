@@ -40,12 +40,12 @@ export function CompactGuestRatingsStrip({
         href={bookingUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center justify-between gap-3 rounded-[var(--radius-2xl)] border border-white/16 bg-black/40 px-4 py-3 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-black/50"
+        className="group flex min-w-0 items-center justify-between gap-2 rounded-xl border border-white/16 bg-black/40 px-3 py-2.5 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-black/50 sm:gap-3 sm:rounded-[var(--radius-2xl)] sm:px-4 sm:py-3"
       >
-        <div className="flex min-w-0 items-center gap-3">
-          <BookingComLogo iconOnly monochromeHover className="size-9" />
-          <div className="min-w-0">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/65">
+        <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
+          <BookingComLogo iconOnly monochromeHover className="size-7 shrink-0 sm:size-9" />
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-[10px] font-semibold uppercase tracking-[0.22em] text-white/65">
               {copy.bookingSourceLabel}
             </p>
             <p className="truncate text-sm font-medium text-white/92">
@@ -53,11 +53,11 @@ export function CompactGuestRatingsStrip({
             </p>
           </div>
         </div>
-        <div className="shrink-0 rounded-[var(--radius-xl)] bg-white/8 px-3 py-2 text-right ring-1 ring-white/12 shadow-sm">
-          <p className="font-sans text-xl leading-none tracking-tight text-white text-center font-bold">
+        <div className="shrink-0 rounded-lg bg-white/8 px-2 py-1.5 text-right ring-1 ring-white/12 shadow-sm sm:rounded-[var(--radius-xl)] sm:px-3 sm:py-2">
+          <p className="font-sans text-lg font-bold leading-none tracking-tight text-white text-center sm:text-xl">
             {bookingRating}
           </p>
-          <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/100">
+          <p className="mt-0.5 text-[9px] uppercase tracking-[0.2em] text-white/100 text-center sm:mt-1 sm:text-[10px]">
             {copy.bookingScoreSuffix}
           </p>
         </div>
@@ -67,12 +67,12 @@ export function CompactGuestRatingsStrip({
         href={hostelworldUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center justify-between gap-3 rounded-[var(--radius-2xl)] border border-white/16 bg-black/40 px-4 py-3 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-black/50"
+        className="group flex min-w-0 items-center justify-between gap-2 rounded-xl border border-white/16 bg-black/40 px-3 py-2.5 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-black/50 sm:gap-3 sm:rounded-[var(--radius-2xl)] sm:px-4 sm:py-3"
       >
-        <div className="flex min-w-0 items-center gap-3">
-          <HostelworldLogo iconOnly monochromeHover className="size-9" />
-          <div className="min-w-0">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/65">
+        <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
+          <HostelworldLogo iconOnly monochromeHover className="size-7 shrink-0 sm:size-9" />
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-[10px] font-semibold uppercase tracking-[0.22em] text-white/65">
               {copy.hostelworldSourceLabel}
             </p>
             <p className="truncate text-sm font-medium text-white/92">
@@ -80,11 +80,11 @@ export function CompactGuestRatingsStrip({
             </p>
           </div>
         </div>
-        <div className="shrink-0 rounded-[var(--radius-xl)] bg-white/8 px-3 py-2 text-right ring-1 ring-white/12 shadow-sm">
-          <p className="font-sans text-xl leading-none tracking-tight text-white text-center font-bold">
+        <div className="shrink-0 rounded-lg bg-white/8 px-2 py-1.5 text-right ring-1 ring-white/12 shadow-sm sm:rounded-[var(--radius-xl)] sm:px-3 sm:py-2">
+          <p className="font-sans text-lg font-bold leading-none tracking-tight text-white text-center sm:text-xl">
             {hostelworldRating}
           </p>
-          <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/100">
+          <p className="mt-0.5 text-[9px] uppercase tracking-[0.2em] text-white/100 text-center sm:mt-1 sm:text-[10px]">
             ({hostelworldReviews} {copy.hostelworldReviewsSuffix})
           </p>
         </div>
@@ -128,12 +128,12 @@ export function GuestRatingsSection({
                   </div>
                 </div>
                 <div className="flex flex-1 flex-col justify-center py-1">
-                  <div className="flex items-center justify-between gap-2">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
                     <div className="flex min-w-0 items-center gap-2">
                       <div className="shrink-0 rounded-full bg-blue-500/12 p-1.5 text-blue-700 dark:text-blue-400">
                         <Award className="size-5" />
                       </div>
-                      <p className="text-sm font-medium leading-6 text-[var(--text-heading)] transition-colors group-hover:text-blue-700 dark:group-hover:text-blue-400">
+                      <p className="truncate text-sm font-medium leading-6 text-[var(--text-heading)] transition-colors group-hover:text-blue-700 dark:group-hover:text-blue-400">
                         {copy.bookingAwardTitle}
                       </p>
                     </div>
@@ -168,22 +168,22 @@ export function GuestRatingsSection({
                   </div>
                 </div>
                 <div className="flex flex-1 flex-col justify-center py-1">
-                  <div className="flex items-center justify-between gap-2">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
                     <div className="flex min-w-0 items-center gap-2">
                       <div className="shrink-0 rounded-full bg-amber-500/12 p-1.5 text-amber-700 dark:text-amber-500">
                         <Star className="size-5" />
                       </div>
-                      <p className="text-sm font-medium leading-6 text-[var(--text-heading)] transition-colors group-hover:text-amber-700 dark:group-hover:text-amber-500">
+                      <p className="truncate text-sm font-medium leading-6 text-[var(--text-heading)] transition-colors group-hover:text-amber-700 dark:group-hover:text-amber-500">
                         {copy.hostelworldTitle}
                       </p>
                     </div>
-                    <div className="relative h-15 w-25 shrink-0 overflow-hidden rounded-[var(--radius-md)] shadow-sm">
+                    <div className="relative h-12 w-28 shrink-0 overflow-hidden rounded-[var(--radius-md)] shadow-sm">
                       <Image
                         src="/images/hostelworld_reviews.png"
                         alt={copy.hostelworldImageAlt}
                         fill
-                        className="object-contain"
-                        sizes="100px"
+                        className="object-contain object-right"
+                        sizes="120px"
                       />
                     </div>
                   </div>
