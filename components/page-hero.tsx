@@ -65,6 +65,7 @@ export function PageHero({
             alt={backgroundAlt || ""}
             fill
             priority
+            fetchPriority="high"
             className="object-cover"
             style={{ objectPosition: backgroundPosition }}
             sizes="100vw"

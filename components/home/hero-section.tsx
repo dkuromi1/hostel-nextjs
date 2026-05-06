@@ -21,6 +21,7 @@ export function HeroSection({ hero, tagline, backgroundAlt, guestRatingsProps }:
           alt={backgroundAlt}
           fill
           priority
+          fetchPriority="high"
           className="object-cover"
           style={{ objectPosition: "15% 50%" }}
           sizes="100vw"
