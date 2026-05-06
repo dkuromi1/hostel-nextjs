@@ -61,6 +61,7 @@ export default function ExperiencesPage() {
         description={siteCopyContent.experiences.launchpad.description}
         backgroundImage="/images/hiking_2.webp"
         backgroundAlt={siteCopyContent.experiences.launchpad.title}
+        backgroundPosition="80% center"
         highlights={experienceLogisticsFeatures.map(f => ({
           title: f.title,
           text: f.description,
