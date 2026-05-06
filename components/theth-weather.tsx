@@ -1,5 +1,5 @@
 import { Cloud, CloudFog, CloudLightning, CloudRain, CloudSnow, Sun, SunMedium } from "@/lib/icon-registry";
-// no siteConfig import needed anymore
+import { cn } from "@/lib/utils";
 
 async function getThethWeather() {
   try {
@@ -18,18 +18,18 @@ function getWeatherDetails(code: number) {
   // WMO weather codes mapping
   if (code === 0) return { label: "Clear Skies", icon: Sun, colorClass: "text-amber-400" };
   if (code === 1 || code === 2) return { label: "Partly Cloudy", icon: SunMedium, colorClass: "text-amber-400" };
-  if (code === 3) return { label: "Overcast", icon: Cloud, colorClass: "text-[var(--text-muted)]" };
-  if (code === 45 || code === 48) return { label: "Foggy", icon: CloudFog, colorClass: "text-[var(--text-muted)]" };
-  if (code >= 51 && code <= 67) return { label: "Raining", icon: CloudRain, colorClass: "text-[var(--brand-accent)]" };
-  if (code >= 71 && code <= 86) return { label: "Snowing", icon: CloudSnow, colorClass: "text-[var(--brand-accent)]/80" };
-  if (code >= 95) return { label: "Thunderstorm", icon: CloudLightning, colorClass: "text-[var(--brand-primary)]" };
+  if (code === 3) return { label: "Overcast", icon: Cloud, colorClass: "text-slate-400" };
+  if (code === 45 || code === 48) return { label: "Foggy", icon: CloudFog, colorClass: "text-slate-400" };
+  if (code >= 51 && code <= 67) return { label: "Raining", icon: CloudRain, colorClass: "text-sky-400" };
+  if (code >= 71 && code <= 86) return { label: "Snowing", icon: CloudSnow, colorClass: "text-blue-200" };
+  if (code >= 95) return { label: "Thunderstorm", icon: CloudLightning, colorClass: "text-amber-300" };
   return { label: "Clear", icon: Sun, colorClass: "text-amber-400" };
 }
 
 export async function ThethWeather({ variant = "default" }: { variant?: "default" | "small" } = {}) {
 
   const weather = await getThethWeather();
-  
+
   if (!weather || !weather.current) {
     return null;
   }
@@ -40,15 +40,15 @@ export async function ThethWeather({ variant = "default" }: { variant?: "default
 
   if (variant === "small") {
     return (
-      <div className="group flex w-fit items-center gap-3 rounded-lg border border-white/16 bg-[var(--surface-dark)]/42 pl-2.5 pr-4 py-2 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-[var(--surface-dark)]/52">
-        <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-white/10">
-          <Icon className={`size-4.5 ${details.colorClass}`} />
+      <div className="group flex w-fit items-center gap-3 rounded-xl border border-[var(--glass-border)] bg-[var(--glass-bg)] pl-2.5 pr-4 py-2 shadow-sm shadow-[var(--glass-shadow)]/10 backdrop-blur-md transition-all duration-300 hover:scale-[1.02]">
+        <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[var(--muted)] border border-[var(--border)] shadow-sm">
+          <Icon className={cn("size-5", details.colorClass)} strokeWidth={2} />
         </div>
         <div className="flex flex-col py-0.5">
-          <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-white/65 leading-none mb-1">
+          <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[var(--brand-primary)] opacity-85 leading-none mb-1">
             Theth
           </span>
-          <span className="text-sm font-medium text-white/92 leading-none">
+          <span className="text-sm font-bold text-[var(--text-heading)] leading-none">
             {Math.round(temperature_2m)}°C
           </span>
         </div>
@@ -63,10 +63,10 @@ export async function ThethWeather({ variant = "default" }: { variant?: "default
       </div>
       <div>
         <p className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-primary)] opacity-80">
-          Theth National Park Currently
+          Theth National <br /> Park Currently
         </p>
         <p className="mt-0.5 font-heading text-2xl leading-none tracking-tight text-[var(--text-heading)]">
-          {Math.round(temperature_2m)}°C 
+          {Math.round(temperature_2m)}°C
           <span className="ml-2 font-sans text-sm font-medium text-[var(--text-muted)]">
             {details.label}
           </span>
