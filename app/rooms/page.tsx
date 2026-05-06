@@ -60,9 +60,11 @@ export default function RoomsPage() {
         description={siteCopyContent.rooms.hero.description}
         hideActions={true}
         highlights={roomHeroHighlights}
+        backgroundImage="/images/rooms_3.jpg"
+        backgroundAlt={siteCopyContent.rooms.hero.title}
       >
         <div className="grid gap-[var(--layout-grid-gutter)] md:grid-cols-[1.1fr_0.9fr]">
-          <div className="group media-frame relative min-h-[22rem] md:row-span-2">
+          <div className="group media-frame border-none bg-transparent relative min-h-[22rem] md:row-span-2">
             <Image
               src="/images/rooms_2.jpg"
               alt={siteCopyContent.rooms.heroImages.fourBedAlt}
@@ -73,7 +75,7 @@ export default function RoomsPage() {
               sizes="(max-width: 768px) 100vw, 40vw"
             />
           </div>
-          <div className="group media-frame relative min-h-[14rem]">
+          <div className="group media-frame border-none bg-transparent relative min-h-[14rem]">
             <Image
               src="/images/room_18bed2.jpg"
               alt={siteCopyContent.rooms.heroImages.podAlt}

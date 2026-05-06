@@ -9,6 +9,8 @@ import { CtaStrip } from "@/components/cta-strip";
 import { SectionLabel } from "@/components/ui/section-label";
 import { GalleryMasonry } from "@/components/gallery-masonry";
 
+import { PageHero } from "@/components/page-hero";
+
 export interface GalleryViewProps {
   galleryItems: GalleryItem[];
   bookingAwardImage: string;
@@ -20,14 +22,20 @@ export interface GalleryViewProps {
 export function GalleryView({ galleryItems, bookingAwardImage, galleryCopy, bookingChannels, contactChannels }: GalleryViewProps) {
   return (
     <>
+      <PageHero
+        eyebrow={galleryCopy.visualTour.eyebrow}
+        title={galleryCopy.visualTour.title}
+        description={galleryCopy.visualTour.description}
+        backgroundImage="/images/rooftop_panorama.webp"
+        backgroundAlt={galleryCopy.visualTour.title}
+        hideActions={true}
+        className="min-h-[35dvh] sm:min-h-[50dvh] pt-14 pb-8 sm:pt-16 sm:pb-16"
+      >
+        {null}
+      </PageHero>
+
       <section className="py-[var(--layout-section-spacing)]">
-        <div className="shell-container space-y-10">
-          <SectionHeading
-            eyebrow={galleryCopy.visualTour.eyebrow}
-            title={galleryCopy.visualTour.title}
-            description={galleryCopy.visualTour.description}
-            headingLevel="h1"
-          />
+        <div className="shell-container">
           <GalleryMasonry items={galleryItems} />
         </div>
       </section>

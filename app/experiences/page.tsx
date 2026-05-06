@@ -30,7 +30,7 @@ import {
   bookingChannels,
   contactChannels
 } from "@/lib/site-data";
-// resolveIcon now imported from registry above
+import { PageHero } from "@/components/page-hero";
 
 export const metadata = buildMetadata({
   title: siteCopyContent.experiences.metadata.title,
@@ -55,105 +55,74 @@ export default function ExperiencesPage() {
       />
 
       {/* The Northbound Launchpad */}
-      <section className="py-[var(--layout-section-spacing)]">
-        <div className="shell-container grid gap-12 lg:grid-cols-12 lg:items-center">
-
-          {/* Left Side: Editorial Context & Logistics */}
-          <Reveal className="space-y-10 lg:col-span-5">
-            <SectionHeading
-              eyebrow={siteCopyContent.experiences.launchpad.eyebrow}
-              title={siteCopyContent.experiences.launchpad.title}
-              description={siteCopyContent.experiences.launchpad.description}
-              headingLevel="h1"
-            />
-
-            {siteConfig.features.showRegionalWeather ? (
-              <div className="lg:hidden">
-                <ThethWeather />
-              </div>
-            ) : null}
-
-            {/* High-End Feature Rows */}
-            <div className="space-y-8">
-              {experienceLogisticsFeatures.map((item, i) => {
-                const Icon = resolveIcon(item.icon);
-                return (
-                  <div
-                    key={i}
-                    className="group flex items-start gap-5 transition-all duration-300 hover:translate-x-2"
-                  >
-                    {/* Interactive Icon Box */}
-                    <div className="flex size-12 shrink-0 items-center justify-center rounded-[var(--radius-2xl)] bg-[var(--muted)] text-[var(--brand-primary)] transition-all duration-300 group-hover:bg-[var(--brand-primary)] group-hover:text-[var(--primary-foreground)] group-hover:shadow-lg group-hover:shadow-[var(--brand-primary)]/20">
-                      <Icon className="size-5" />
-                    </div>
-                    <div>
-                      <h4 className="heading-item text-[var(--text-heading)]">
-                        {item.title}
-                      </h4>
-                      <p className="mt-2 text-card-body text-[var(--text-body)]">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                )
-              })}
+      <PageHero
+        eyebrow={siteCopyContent.experiences.launchpad.eyebrow}
+        title={siteCopyContent.experiences.launchpad.title}
+        description={siteCopyContent.experiences.launchpad.description}
+        backgroundImage="/images/hiking_2.webp"
+        backgroundAlt={siteCopyContent.experiences.launchpad.title}
+        highlights={experienceLogisticsFeatures.map(f => ({
+          title: f.title,
+          text: f.description,
+          icon: f.icon
+        }))}
+        hideActions={true}
+        topRight={siteConfig.features.showRegionalWeather ? (
+          <div className="flex flex-col items-end scale-90 sm:scale-100 origin-top-right">
+            <div className="hidden lg:block">
+              <ThethWeather />
             </div>
-          </Reveal>
-
-          {/* Right Side: Premium Asymmetrical Image Grid */}
-          <div className="relative lg:col-span-7">
-            {siteConfig.features.showRegionalWeather ? (
-              <div className="hidden lg:block absolute -top-24 right-0 z-20">
-                <ThethWeather />
-              </div>
-            ) : null}
-            <div className="grid grid-cols-2 gap-[var(--layout-grid-gutter)] h-full">
-
-              {/* Left Column: Tall Featured Image */}
-              <Reveal className="row-span-2 h-full" delay={100}>
-                <div className="media-frame relative h-full min-h-[20rem] md:min-h-[36rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-xl shadow-[var(--glass-shadow)]/10">
-                  <Image
-                    src="/images/hiking_3.jpg"
-                    alt={siteCopyContent.experiences.metadata.title}
-                    fill
-                    priority
-                    fetchPriority="high"
-                    className="object-cover object-[30%_center] transition-transform duration-1000 hover:scale-105"
-                    sizes="(max-width: 1024px) 50vw, 30vw"
-                  />
-                </div>
-              </Reveal>
-
-              {/* Right Column: Top Square Image */}
-              <Reveal delay={200}>
-                <div className="media-frame relative min-h-[10rem] md:min-h-[17.5rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-md">
-                  <Image
-                    src="/images/hiking_4.webp"
-                    alt={siteCopyContent.experiences.metadata.title}
-                    fill
-                    className="object-cover transition-transform duration-1000 hover:scale-105"
-                    sizes="(max-width: 1024px) 50vw, 20vw"
-                  />
-                </div>
-              </Reveal>
-
-              {/* Right Column: Bottom Square Image */}
-              <Reveal delay={300}>
-                <div className="media-frame relative min-h-[10rem] md:min-h-[17.5rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-md">
-                  <Image
-                    src="/images/hiking_1.jpg"
-                    alt={siteCopyContent.experiences.metadata.title}
-                    fill
-                    className="object-cover transition-transform duration-1000 hover:scale-105"
-                    sizes="(max-width: 1024px) 50vw, 20vw"
-                  />
-                </div>
-              </Reveal>
-
+            <div className="block lg:hidden">
+              <ThethWeather variant="small" />
             </div>
           </div>
+        ) : null}
+      >
+        <div className="flex flex-col gap-8">
+          <div className="grid grid-cols-2 gap-[var(--layout-grid-gutter)]">
+            {/* Left Column: Tall Featured Image */}
+            <Reveal className="row-span-2 h-full" delay={100}>
+              <div className="media-frame border-none bg-transparent relative h-full min-h-[20rem] md:min-h-[32rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-xl shadow-black/20">
+                <Image
+                  src="/images/hiking_3.jpg"
+                  alt={siteCopyContent.experiences.metadata.title}
+                  fill
+                  priority
+                  fetchPriority="high"
+                  className="object-cover object-[30%_center] transition-transform duration-1000 hover:scale-105"
+                  sizes="(max-width: 1024px) 50vw, 30vw"
+                />
+              </div>
+            </Reveal>
+
+            {/* Right Column: Top Square Image */}
+            <Reveal delay={200}>
+              <div className="media-frame border-none bg-transparent relative min-h-[10rem] md:min-h-[15.5rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-md">
+                <Image
+                  src="/images/hiking_4.webp"
+                  alt={siteCopyContent.experiences.metadata.title}
+                  fill
+                  className="object-cover transition-transform duration-1000 hover:scale-105"
+                  sizes="(max-width: 1024px) 50vw, 20vw"
+                />
+              </div>
+            </Reveal>
+
+            {/* Right Column: Bottom Square Image */}
+            <Reveal delay={300}>
+              <div className="media-frame border-none bg-transparent relative min-h-[10rem] md:min-h-[15.5rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-md">
+                <Image
+                  src="/images/scodrinon_play_1.webp"
+                  alt={siteCopyContent.experiences.metadata.title}
+                  fill
+                  className="object-cover transition-transform duration-1000 hover:scale-105"
+                  sizes="(max-width: 1024px) 50vw, 20vw"
+                />
+              </div>
+            </Reveal>
+          </div>
         </div>
-      </section>
+      </PageHero>
 
       {/* Things To Do Section */}
       <section id="things-to-do" className="py-[var(--layout-section-spacing)] scroll-mt-24">
@@ -244,7 +213,7 @@ export default function ExperiencesPage() {
                       <h3 className="mb-2 heading-item text-[var(--text-heading)]">
                         {item.title}
                       </h3>
-                      <p 
+                      <p
                         className="text-card-body text-[var(--text-body-subtle)]"
                         dangerouslySetInnerHTML={{ __html: item.description }}
                       />

@@ -46,7 +46,7 @@ export async function ThethWeather({ variant = "default" }: { variant?: "default
         </div>
         <div className="flex flex-col py-0.5">
           <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-white/65 leading-none mb-1">
-            Theth Currently
+            Theth
           </span>
           <span className="text-sm font-medium text-white/92 leading-none">
             {Math.round(temperature_2m)}°C

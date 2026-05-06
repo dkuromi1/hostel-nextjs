@@ -231,13 +231,6 @@
       "aspect": "1741/1166"
     },
     {
-      "id": "panoramic-rooftop",
-      "type": "image",
-      "src": "/images/rooftop_panorama.jpg",
-      "alt": "Panoramic rooftop view at Scodrinon Hostel",
-      "aspect": "1813/576"
-    },
-    {
       "id": "evening-events",
       "type": "image",
       "src": "/images/events_pool.jpg",

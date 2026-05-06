@@ -52,6 +52,8 @@ export default function ContactPage() {
         description="We prefer WhatsApp because it's the fastest way to answer your questions and secure your bed. Send your dates, room preference, and arrival time. You can also ask about hikes, bikes, lake plans, or the easiest way to move on from Shkoder after your stay."
         bookingChannels={bookingChannels}
         contactChannels={contactChannels}
+        backgroundImage="/images/shkoder_pedestrian_street_2.webp"
+        backgroundAlt={siteCopyContent.contact.hero.title}
       >
         <div className="grid gap-[var(--layout-grid-gutter)]">
           <Panel className="p-6 sm:p-8">
@@ -66,7 +68,7 @@ export default function ContactPage() {
                   <p className="text-lg font-bold text-[var(--text-heading)]">
                     {siteConfig.phoneDisplay}
                   </p>
-                  <a 
+                  <a
                     href={siteConfig.whatsappUrl}
                     target="_blank"
                     rel="noreferrer"
@@ -103,7 +105,7 @@ export default function ContactPage() {
                   <p className="text-base font-semibold leading-snug text-[var(--text-heading)]">
                     {siteConfig.location}
                   </p>
-                  <a 
+                  <a
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.name + " " + siteConfig.location)}`}
                     target="_blank"
                     rel="noreferrer"
@@ -115,23 +117,23 @@ export default function ContactPage() {
               </div>
             </div>
           </Panel>
-          <div className="grid gap-[var(--layout-grid-gutter)] md:grid-cols-2">
-            <div className="media-frame relative min-h-[16rem]">
+          <div className="grid gap-[var(--layout-grid-gutter)] sm:grid-cols-2">
+            <div className="group media-frame border-none bg-transparent relative min-h-[16rem]">
               <Image
-                src="/images/ambiance_2.jpg"
+                src="/images/hiking_1.jpg"
                 alt={siteCopyContent.contact.heroImages.streetAlt}
                 fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 25vw"
+                className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, 25vw"
               />
             </div>
-            <div className="media-frame relative min-h-[16rem]">
+            <div className="group media-frame border-none bg-transparent relative min-h-[16rem]">
               <Image
-                src="/images/bar_2.jpg"
+                src="/images/scodrinon_play_2.webp"
                 alt={siteCopyContent.contact.heroImages.socialAlt}
                 fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 25vw"
+                className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, 25vw"
               />
             </div>
           </div>
