@@ -2,13 +2,13 @@
   "hero": {
     "title1": "Rooftop sunsets, privacy pods,",
     "title2": "and the part of Shkodër you actually want to wake up in.",
-    "description": "Ideally placed on Shkodër’s vibrant pedestrian street. A social gateway to legendary rooftop sunsets, the Valbona-Theth trek, and the raw beauty of Europe's 'last frontier'."
+    "description": "Ideally placed on Shkodër’s vibrant pedestrian street. A social gateway to legendary rooftop sunsets, cold local beers, and the unmissable energy of Albania's most social city."
   },
   "heroHighlights": [
     "Privacy pods with curtains, reading lights, sockets, and lockers",
     "Rooftop sunsets with mountain and city views",
     "Historic home on vibrant Kolë Idromeno street",
-    "A calm, social vibe that feels safe for solo travelers"
+    "A lively, social atmosphere perfect for meeting travelers over cold beers and raki"
   ],
   "quickFacts": [
     {
@@ -98,8 +98,8 @@
       "icon": "Moon"
     },
     {
-      "title": "Rooftop nights, zero pressure",
-      "description": "Sunset views, easy conversation, and movie nights make it simple to connect without the space ever feeling chaotic. It’s social, but at your own pace.",
+      "title": "Rooftop nights, unmissable vibes",
+      "description": "Sunset views, lively conversation, and cold drinks make it simple to connect. It’s the social heart of Shkodër, where every night has a story.",
       "icon": "Zap"
     },
     {
@@ -144,7 +144,7 @@
     },
     {
       "title": "Spontaneous Socials",
-      "description": "Whether it’s rooftop raki or a local food crawl, we prioritize warm, unscripted moments that make it easy for solo travelers to join. It’s social, but never forced.",
+      "description": "Whether it’s rooftop raki shots or exploring the local craft beer scene, we prioritize high-energy moments that make it easy for everyone to join. It’s all about the social rhythm of the city.",
       "image": "/images/local_food_night.jpeg",
       "alt": "Traditional food event at Scodrinon Hostel"
     },
@@ -156,7 +156,7 @@
     },
     {
       "title": "Rooftop Magic",
-      "description": "The rooftop is the social heart of the hostel: mountain light at sunset, city views after dark, and a pace that feels relaxed from the first drink to the last chat.",
+      "description": "The rooftop is the social heart of the hostel: mountain light at sunset, city views after dark, and a pulse that keeps going from the first drink to the last chat.",
       "image": "/images/rooftop_social_4_flare.jpg",
       "alt": "Guests relaxing on the Scodrinon Hostel rooftop at sunset"
     }
@@ -196,7 +196,7 @@
     },
     {
       "title": "Spontaneous Socials",
-      "description": "Whether it’s rooftop raki or an informal food crawl, we prioritize warm, unscripted moments that make it easy for solo travelers to join. It’s social, but never forced.",
+      "description": "Whether it’s rooftop raki shots or exploring the local craft beer scene, we prioritize high-energy moments that make it easy for everyone to join. It’s all about the social rhythm of the city.",
       "icon": "Zap",
       "image": "/images/rooftop_social_7.webp",
       "focus": "50% 40%"
