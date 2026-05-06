@@ -23,7 +23,7 @@
     },
     {
       "title": "Included Perks",
-      "text": "Included: Free Breakfast (excl. off-season), storage, fast WiFi, 24h access, and rooftop socials",
+      "text": "Included: Free Breakfast (excl. off-season), luggage storage, shared kitchen, fast WiFi, 24h access, and rooftop socials",
       "icon": "ShieldCheck"
     },
     {
@@ -50,23 +50,18 @@
     },
     {
       "title": "For Hikers",
-      "description": "Early take-away breakfast for hikers & morning travelers.",
+      "description": "Early take-away breakfast for hikers & morning travelers, and free secure luggage storage.",
       "icon": "Mountain"
     },
     {
-      "title": "Storage",
-      "description": "Luggage storage before and during your stay.",
-      "icon": "Luggage"
-    },
-    {
       "title": "Modern Facilities",
-      "description": "Clean, modern bathrooms and hot, high pressure showers, espresso and ice machine.",
+      "description": "Clean modern bathrooms, hot high-pressure showers, and high-speed WiFi in all rooms.",
       "icon": "ShowerHead"
     },
     {
-      "title": "High-Speed WiFi",
-      "description": "High speed WiFi in all rooms and social spaces.",
-      "icon": "Wifi"
+      "title": "Shared Kitchen",
+      "description": "Well equipped kitchen for guest use, including refrigerator, espresso and ice machine.",
+      "icon": "Utensils"
     },
     {
       "title": "Community",

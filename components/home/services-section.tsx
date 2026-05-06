@@ -37,7 +37,7 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
               <h3 className="heading-item text-[var(--text-heading)]">
                 {service.title}
               </h3>
-              <p className="text-card-body line-clamp-2 transition-colors group-hover:text-[var(--text-body)]">
+              <p className="text-card-body transition-colors group-hover:text-[var(--text-body)]">
                 {service.description}
               </p>
             </div>

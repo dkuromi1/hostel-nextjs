@@ -2,7 +2,7 @@
   "footer": {
     "exploreLabel": "Explore",
     "heading": "Stay central, sleep properly, and book fast.",
-    "detailsSummary": "Check-in: {checkInHours}, 24h access (message ahead if arriving after 10pm), luggage storage, rooftop social nights",
+    "detailsSummary": "Check-in: {checkInHours}, 24h access (message ahead if arriving after 10pm) , shared kitchen, luggage storage, rooftop social nights",
     "communityLabel": "Community",
     "socialLabels": {
       "instagram": "Instagram",
@@ -214,7 +214,7 @@
     "hero": {
       "eyebrow": "Rooms",
       "title": "Sleep like you booked a thoughtful hostel, not a compromise.",
-      "description": "Scodrinon keeps the comfort side of the stay strong: privacy pods, smaller dorm options, clean shared bathrooms, breakfast, and the essentials that matter when you are traveling for real."
+      "description": "Scodrinon keeps the comfort side of the stay strong: privacy pods, smaller dorm options, shared kitchen, clean shared bathrooms, breakfast, and the essentials that matter when you are traveling for real."
     }
   },
   "experiences": {
