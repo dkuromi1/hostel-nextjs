@@ -368,6 +368,7 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                     new mapbox.Marker({ element: poiEl, anchor: 'bottom' }).setLngLat(poi.coords as [number, number]).addTo(m);
                 });
 
+                const legendEl = document.getElementById('map-legend');
                 m.on('move', () => {
                     if (moveThrottleId !== null) return;
                     moveThrottleId = requestAnimationFrame(() => {
@@ -377,11 +378,10 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                             const minZ = parseFloat(e.getAttribute('data-min-zoom') || '0');
                             e.classList.toggle('zoom-hidden', zoom < minZ);
                         });
-                        const legend = document.getElementById('map-legend');
-                        if (legend) {
-                            legend.classList.toggle('opacity-0', zoom <= 11);
-                            legend.classList.toggle('pointer-events-none', zoom <= 11);
-                            legend.classList.toggle('opacity-100', zoom > 11);
+                        if (legendEl) {
+                            legendEl.classList.toggle('opacity-0', zoom <= 11);
+                            legendEl.classList.toggle('pointer-events-none', zoom <= 11);
+                            legendEl.classList.toggle('opacity-100', zoom > 11);
                         }
                     });
                 });
