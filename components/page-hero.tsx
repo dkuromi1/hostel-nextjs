@@ -76,9 +76,7 @@ export function PageHero({
       )}>
         <Reveal className="relative z-10 flex flex-col items-start gap-8">
           <Eyebrow 
-            className={cn(
-              hasBackground && "bg-white/10 border-white/20 text-white dark:bg-white/10 dark:border-white/20 shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
-            )}
+            className={cn(hasBackground && "text-white")}
             variant={hasBackground ? "footer" : "default"}
           >
             {eyebrow}

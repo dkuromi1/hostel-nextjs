@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -33,7 +34,17 @@ export function SiteHeader({ navLinks, contactChannels, bookingChannels, siteNam
   const primaryContactChannel =
     contactChannels.find((channel) => channel.stylePriority === "primary") ?? contactChannels[0];
 
-  const isScrolled = scrollY > 50;
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    // Hysteresis: switch to compact at 80px, return to large at 20px.
+    // This prevents "flickering" if the layout change itself shifts the scroll position.
+    if (scrollY > 80) {
+      setIsScrolled(true);
+    } else if (scrollY < 20) {
+      setIsScrolled(false);
+    }
+  }, [scrollY]);
 
   // On the homepage, if not scrolled, we want it transparent with white text
   const isTransparent = isHome && !isScrolled;

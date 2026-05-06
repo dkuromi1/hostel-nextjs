@@ -14,14 +14,14 @@ export function Eyebrow({
   variant = "default",
 }: EyebrowProps) {
   const globalStyle = siteConfig.branding.design?.surfaces.eyebrowStyle;
-  const isGhost = variant === "ghost" || (variant === "default" && globalStyle === "ghost");
+  const isGhost = variant === "ghost" || (globalStyle === "ghost" && variant !== "sun");
 
   return (
     <div
       className={cn(
         "group relative inline-flex items-center overflow-hidden transition-all duration-300 text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] antialiased",
         isGhost
-          ? "bg-transparent border-none text-[var(--text-heading)] dark:text-white"
+          ? cn("bg-transparent border-none", variant === "footer" ? "text-white [text-shadow:0_2px_10px_rgba(0,0,0,0.3)]" : "text-[var(--text-heading)] dark:text-white")
           : "rounded-full px-4 py-1.5",
         !isGhost && variant === "default" && "bg-slate-200/40 dark:bg-white/10 border border-slate-300/30 dark:border-white/10 text-[var(--text-heading)] dark:text-white backdrop-blur-md shadow-sm hover:border-slate-400/40 dark:hover:border-white/30",
         !isGhost && variant === "sun" && "bg-amber-100/40 border border-amber-200/50 text-amber-950 backdrop-blur-md",
