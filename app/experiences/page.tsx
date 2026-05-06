@@ -46,7 +46,6 @@ export default function ExperiencesPage() {
     <>
       <StructuredData
         data={[
-          buildBusinessSchema(),
           buildBreadcrumbSchema([
             { name: "Home", path: "/" },
             { name: siteCopyContent.experiences.pageTitle, path: "/experiences" },

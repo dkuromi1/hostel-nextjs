@@ -44,7 +44,7 @@ export const metadata = buildMetadata({
 export default function Home() {
   return (
     <>
-      <StructuredData data={[buildBusinessSchema(), buildFaqSchema()]} />
+      <StructuredData data={buildFaqSchema()} />
 
       <HeroSection
         hero={hero}

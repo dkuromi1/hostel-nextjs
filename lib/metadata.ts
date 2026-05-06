@@ -110,6 +110,22 @@ export function buildMetadata({
   };
 }
 
+function formatTime(timeStr: string) {
+  if (!timeStr) return undefined;
+  // Simple extraction: look for something like "2pm", "10:00am", "11:00"
+  const match = timeStr.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i);
+  if (!match) return timeStr;
+
+  let hours = parseInt(match[1], 10);
+  const minutes = match[2] || "00";
+  const ampm = match[3]?.toLowerCase();
+
+  if (ampm === "pm" && hours < 12) hours += 12;
+  if (ampm === "am" && hours === 12) hours = 0;
+
+  return `${hours.toString().padStart(2, "0")}:${minutes}:00`;
+}
+
 export function buildBusinessSchema() {
   return {
     "@context": "https://schema.org",
@@ -119,9 +135,19 @@ export function buildBusinessSchema() {
     url: getSiteUrl("/"),
     image: siteConfig.schema.images.map((image) => getSiteUrl(image)),
     logo: getSiteUrl(siteConfig.branding.logoWebp),
-    telephone: siteConfig.phoneDisplay,
+    telephone: `+${siteConfig.phoneRaw}`,
+    email: siteConfig.email,
     sameAs: siteConfig.schema.sameAs,
     priceRange: siteConfig.schema.priceRange,
+    checkinTime: formatTime(siteConfig.checkInHours),
+    checkoutTime: formatTime(siteConfig.checkOutHours),
+    aggregateRating: {
+      "@type": "AggregateRating",
+      "ratingValue": siteConfig.bookingRating,
+      "reviewCount": siteConfig.bookingReviews,
+      "bestRating": "10",
+      "worstRating": "1"
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: siteConfig.address.streetAddress,

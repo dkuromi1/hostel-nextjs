@@ -19,6 +19,7 @@
     "phoneRaw": "355685310744",
     "instagramUrl": "https://www.instagram.com/scodrinon_hostel/",
     "whatsappCommunityUrl": "https://chat.whatsapp.com/L9ruuWA5G8S0l4CSmwCewa",
+    "email": "scodrinonhostel@gmail.com",
     "channels": [
       {
         "id": "whatsapp",
@@ -43,8 +44,9 @@
     "bookingUrl": "https://www.booking.com/hotel/al/scodrinon-hostel.html",
     "hostelworldUrl": "https://www.hostelworld.com/hostels/p/325721/scodrinon-hostel/",
     "bookingRating": "9.3",
+    "bookingReviews": "388",
     "hostelworldRating": "10",
-    "hostelworldReviews": "115",
+    "hostelworldReviews": "116",
     "channels": [
       {
         "id": "booking-com",
@@ -66,7 +68,8 @@
   },
   "operations": {
     "breakfastHours": "8:00 to 9:30am (excl. off-season)",
-    "checkInHours": "2pm - 10pm"
+    "checkInHours": "2pm - 10pm",
+    "checkOutHours": "10:00am"
   },
   "seo": {
     "baseKeywords": [
@@ -155,14 +158,18 @@
     ],
     "amenities": [
       "Privacy pods",
-      "Free breakfast (excl. off-season)",
+      "Free breakfast",
       "Free WiFi",
+      "Air conditioning",
+      "Non-smoking rooms",
       "Shared kitchen",
+      "Guest Laundry",
       "Rooftop terrace",
+      "Rooftop bar",
       "Luggage storage",
+      "Personal Lockers",
       "24h access",
-      "Bike rentals (across the street)",
-      "Walking tours"
+      "Tours & Transport"
     ]
   },
   "maps": {

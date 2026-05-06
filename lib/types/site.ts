@@ -264,6 +264,7 @@ export interface SettingsContent {
     phoneRaw: string;
     instagramUrl: string;
     whatsappCommunityUrl: string;
+    email: string;
     channels: SettingsChannel[];
   };
   booking: {
@@ -271,6 +272,7 @@ export interface SettingsContent {
     bookingUrl: string;
     hostelworldUrl: string;
     bookingRating: string;
+    bookingReviews: string;
     hostelworldRating: string;
     hostelworldReviews: string;
     channels: SettingsChannel[];
@@ -278,6 +280,7 @@ export interface SettingsContent {
   operations: {
     breakfastHours: string;
     checkInHours: string;
+    checkOutHours: string;
   };
   seo: {
     baseKeywords: string[];
@@ -328,8 +331,10 @@ export interface PropertyConfig extends SettingsContent {
   hostelworldUrl: string;
   instagramUrl: string;
   whatsappCommunityUrl: string;
+  email: string;
   breakfastHours: string;
   checkInHours: string;
+  checkOutHours: string;
   volunteersNeeded: boolean;
   showMascot: boolean;
   showRegionalWeather: boolean;
@@ -338,6 +343,7 @@ export interface PropertyConfig extends SettingsContent {
   showRegionalTrails: boolean;
   baseKeywords: string[];
   bookingRating: string;
+  bookingReviews: string;
   hostelworldRating: string;
   hostelworldReviews: string;
   maps?: {

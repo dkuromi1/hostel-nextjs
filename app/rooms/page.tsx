@@ -46,7 +46,6 @@ export default function RoomsPage() {
     <>
       <StructuredData
         data={[
-          buildBusinessSchema(),
           buildBreadcrumbSchema([
             { name: "Home", path: "/" },
             { name: siteCopyContent.rooms.pageTitle, path: "/rooms" },
