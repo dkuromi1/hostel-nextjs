@@ -299,6 +299,13 @@ export function ThemeVars() {
       }
     }
 
+    @media (max-width: 420px) {
+      :root {
+        /* Subcompact gutter for narrow devices */
+        --layout-grid-gutter: 0.5rem;
+      }
+    }
+
     .dark {
       --background: ${finalColors.darkBackground};
       --surface-dark: ${finalColors.surfaceDark};
