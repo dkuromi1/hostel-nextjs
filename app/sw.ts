@@ -27,7 +27,8 @@ const MAPBOX_TILE_CACHE_MAX_AGE_SECONDS = 30 * 24 * 60 * 60;
 const IMAGE_PATH_PATTERN = /^\/images\/.+\.(?:avif|gif|jpe?g|png|svg|webp)$/i;
 const VIDEO_PATH_PATTERN = /^\/videos\/.+\.(?:mp4|webm)$/i;
 const FONT_PATH_PATTERN = /\.(?:woff2?|ttf|otf)$/i;
-const ICON_PATH_PATTERN = /^\/(?:favicon\.ico|apple-icon(?:-\d+x\d+)?\.png|icon(?:-\d+)?\.png|icon\.png|logo\.(?:png|webp)|site\.webmanifest|manifest\.webmanifest|.*\.svg)$/i;
+const ICON_PATH_PATTERN = /^\/(?:favicon\.ico|apple-icon(?:-\d+x\d+)?\.png|icon(?:-\d+)?\.png|icon\.png|logo\.(?:png|webp)|.*\.svg)$/i;
+const MANIFEST_PATH_PATTERN = /\.(?:webmanifest|manifest\.json)$/i;
 const NEXT_STATIC_PATH_PATTERN = /^\/_next\/static\/.+/i;
 const NEXT_IMAGE_PATH_PATTERN = /^\/_next\/image$/i;
 const MAPBOX_HOST_PATTERN = /(?:^|\.)mapbox\.com$/i;
@@ -137,14 +138,48 @@ const runtimeCaching = [
     }),
   },
   {
+    // Fonts served from same origin (e.g. via next/font output under /_next/static)
+    // are content-hashed, so CacheFirst is safe: a cache miss always gets a fresh file.
     matcher: ({ sameOrigin, url }: { sameOrigin: boolean; url: URL }) =>
-      sameOrigin && (FONT_PATH_PATTERN.test(url.pathname) || ICON_PATH_PATTERN.test(url.pathname)),
+      sameOrigin && FONT_PATH_PATTERN.test(url.pathname),
+    handler: new CacheFirst({
+      cacheName: "app-shell-fonts",
+      plugins: [
+        new ExpirationPlugin({
+          maxEntries: 32,
+          maxAgeSeconds: APP_SHELL_CACHE_MAX_AGE_SECONDS,
+          maxAgeFrom: "last-used",
+        }),
+      ],
+    }),
+  },
+  {
+    // Icons and brand assets (favicons, logos, SVGs). Not content-hashed, so use
+    // StaleWhileRevalidate with a short 7-day TTL so design changes propagate quickly.
+    matcher: ({ sameOrigin, url }: { sameOrigin: boolean; url: URL }) =>
+      sameOrigin && ICON_PATH_PATTERN.test(url.pathname),
     handler: new StaleWhileRevalidate({
-      cacheName: "app-shell-assets",
+      cacheName: "app-shell-icons",
       plugins: [
         new ExpirationPlugin({
           maxEntries: 48,
-          maxAgeSeconds: APP_SHELL_CACHE_MAX_AGE_SECONDS,
+          maxAgeSeconds: 7 * 24 * 60 * 60, // 7 days — not content-hashed
+          maxAgeFrom: "last-used",
+        }),
+      ],
+    }),
+  },
+  {
+    // Web manifests (.webmanifest) must stay fresh so PWA installs pick up name,
+    // theme_color, and start_url changes. NetworkFirst with a short cache fallback.
+    matcher: ({ sameOrigin, url }: { sameOrigin: boolean; url: URL }) =>
+      sameOrigin && MANIFEST_PATH_PATTERN.test(url.pathname),
+    handler: new StaleWhileRevalidate({
+      cacheName: "app-shell-manifests",
+      plugins: [
+        new ExpirationPlugin({
+          maxEntries: 4,
+          maxAgeSeconds: 24 * 60 * 60, // 1 day — must stay up-to-date for PWA
           maxAgeFrom: "last-used",
         }),
       ],

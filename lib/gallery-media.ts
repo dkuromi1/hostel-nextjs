@@ -19,8 +19,20 @@ function warmImageSrc(src: string, fetchPriority: "high" | "auto" = "auto") {
     const finish = () => {
       warmedImageSrcs.add(src);
       pendingImageWarmups.delete(src);
+      clearTimeout(safetyTimeout);
       resolve();
     };
+
+    const bail = () => {
+      pendingImageWarmups.delete(src);
+      clearTimeout(safetyTimeout);
+      resolve();
+    };
+
+    // Safety valve: if onload/onerror never fires (e.g. navigation cancels
+    // the request mid-flight), ensure the promise and the img closure are
+    // released after 10 s so they don't leak indefinitely.
+    const safetyTimeout = setTimeout(bail, 10_000);
 
     img.onload = () => {
       if (typeof img.decode === "function") {
@@ -31,10 +43,7 @@ function warmImageSrc(src: string, fetchPriority: "high" | "auto" = "auto") {
       finish();
     };
 
-    img.onerror = () => {
-      pendingImageWarmups.delete(src);
-      resolve();
-    };
+    img.onerror = bail;
 
     img.src = src;
 

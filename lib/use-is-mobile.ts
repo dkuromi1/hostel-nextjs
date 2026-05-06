@@ -29,6 +29,13 @@ function subscribe(callback: () => void) {
   listeners.add(callback);
   return () => {
     listeners.delete(callback);
+    // Tear down the global listener when the last subscriber leaves,
+    // matching the scroll-position hook pattern. Resets `initialized` so
+    // the listener is correctly re-attached if components remount (e.g. HMR).
+    if (listeners.size === 0 && typeof window !== "undefined") {
+      window.removeEventListener("resize", checkMobile);
+      initialized = false;
+    }
   };
 }
 

@@ -59,7 +59,7 @@ export default function ExperiencesPage() {
         eyebrow={siteCopyContent.experiences.launchpad.eyebrow}
         title={siteCopyContent.experiences.launchpad.title}
         description={siteCopyContent.experiences.launchpad.description}
-        backgroundImage="/images/hiking_2.webp"
+        backgroundImage="/images/hiking_2.jpg"
         backgroundAlt={siteCopyContent.experiences.launchpad.title}
         backgroundPosition="80% center"
         highlights={experienceLogisticsFeatures.map(f => ({
