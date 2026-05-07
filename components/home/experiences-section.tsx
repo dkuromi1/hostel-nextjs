@@ -102,20 +102,22 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                   <div key={pillar.title} className="min-w-[85vw] sm:min-w-[45vw] snap-center h-full">
                     <Panel className="group overflow-hidden flex h-full flex-col transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
                       <div className="relative min-h-[16rem] sm:min-h-[22rem]">
-                        <Image
-                          src={pillar.image}
-                          alt={pillar.alt}
-                          fill
-                          loading="lazy"
-                          className="object-cover transition-transform duration-700 group-hover:scale-105"
-                          sizes="(max-width: 1024px) 85vw, 50vw"
-                        />
+                        <div className="absolute inset-0 overflow-hidden">
+                          <Image
+                            src={pillar.image}
+                            alt={pillar.alt}
+                            fill
+                            loading="lazy"
+                            className="object-cover transition-transform duration-700 group-hover:scale-105 z-0 transform-gpu"
+                            sizes="(max-width: 1024px) 85vw, 50vw"
+                          />
+                        </div>
                         {index === 0 && showRegionalWeather && (
                           <div className="absolute right-4 top-4 z-20">
                             <ThethWeather variant="small" />
                           </div>
                         )}
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-card pt-24 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
+                        <div className="absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-card pt-24 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
                           <SectionLabel colorScheme="light" className="mb-2">
                             {pillar.title}
                           </SectionLabel>
@@ -137,20 +139,22 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
             <Reveal delay={0} className="lg:col-span-7 h-full">
               <Panel className="group overflow-hidden h-full transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
                 <div className="relative h-full min-h-[30rem]">
-                  <Image
-                    src={experiencePillars[0].image}
-                    alt={experiencePillars[0].alt}
-                    fill
-                    loading="lazy"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 58vw, 812px"
-                  />
+                  <div className="absolute inset-0 overflow-hidden">
+                    <Image
+                      src={experiencePillars[0].image}
+                      alt={experiencePillars[0].alt}
+                      fill
+                      loading="lazy"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105 z-0 transform-gpu"
+                      sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 58vw, 812px"
+                    />
+                  </div>
                   {showRegionalWeather ? (
                     <div className="absolute right-4 top-4 z-20">
                       <ThethWeather variant="small" />
                     </div>
                   ) : null}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent p-card pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
+                  <div className="absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/95 via-black/50 to-transparent p-card pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
                     <SectionLabel colorScheme="light" className="drop-shadow-md">
                       {experiencePillars[0].title}
                     </SectionLabel>
@@ -171,15 +175,17 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                     <Panel className="group overflow-hidden h-full transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
                       {isSecondElement ? (
                         <div className="relative h-full min-h-[22rem]">
-                          <Image
-                            src={pillar.image}
-                            alt={pillar.alt}
-                            fill
-                            loading="lazy"
-                            className="object-cover transition-transform duration-700 group-hover:scale-105"
-                            sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 42vw, 588px"
-                          />
-                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent p-card pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
+                          <div className="absolute inset-0 overflow-hidden">
+                            <Image
+                              src={pillar.image}
+                              alt={pillar.alt}
+                              fill
+                              loading="lazy"
+                              className="object-cover transition-transform duration-700 group-hover:scale-105 z-0 transform-gpu"
+                              sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 42vw, 588px"
+                            />
+                          </div>
+                          <div className="absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/95 via-black/50 to-transparent p-card pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
                             <SectionLabel colorScheme="light" className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                               {pillar.title}
                             </SectionLabel>
@@ -191,12 +197,12 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                         </div>
                       ) : (
                         <div className="grid gap-0 md:grid-cols-[0.9fr_1.1fr]">
-                          <div className="relative min-h-[16rem]">
+                          <div className="absolute inset-0 overflow-hidden">
                             <Image
                               src={pillar.image}
                               alt={pillar.alt}
                               fill
-                              className="object-cover transition-transform duration-700 group-hover:scale-105"
+                              className="object-cover transition-transform duration-700 group-hover:scale-105 z-0 transform-gpu"
                               sizes="(max-width: 768px) 100vw, (max-width: 1400px) 18vw, 250px"
                             />
                           </div>
@@ -239,7 +245,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                           alt={event.alt}
                           fill
                           loading="lazy"
-                          className="object-cover transition-transform duration-700 group-hover:scale-105"
+                          className="object-cover transition-transform duration-700 group-hover:scale-105 z-0 transform-gpu"
                           sizes="(max-width: 768px) 100vw, (max-width: 1400px) 23vw, 322px"
                         />
                       </div>
