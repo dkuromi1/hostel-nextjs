@@ -287,7 +287,12 @@
   /* Atmosphere background is now handled by components/atmosphere-background.tsx 
      to improve render performance and reduce critical CSS size. */
 
-  h1,
+  h1 {
+    @apply font-cormorant;
+    font-weight: var(--heading-weight, 600);
+    letter-spacing: var(--heading-spacing, 0);
+  }
+
   h2,
   h3,
   h4 {
@@ -410,8 +415,8 @@
 
 /** Inner-page hero h1 (Rooms, Experiences, Contact) */
 @utility heading-page {
-  @apply font-heading leading-[1.1];
-  font-size: clamp(2rem, 4vw + 1rem, 3.5rem);
+  @apply font-cormorant leading-[1.05];
+  font-size: clamp(2.31rem, 4.62vw + 1.16rem, 4.05rem);
   letter-spacing: var(--heading-page-spacing);
 }
 
@@ -431,7 +436,7 @@
 
 /** High-visibility system / state message title */
 @utility heading-state {
-  @apply font-heading leading-none;
+  @apply font-cormorant leading-none;
   font-size: clamp(1.5rem, 2vw + 1rem, 2.25rem);
   letter-spacing: var(--heading-spacing);
 }
