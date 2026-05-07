@@ -44,8 +44,8 @@
   ],
   "includedServices": [
     {
-      "title": "Social Breakfast",
-      "description": "Fresh locally sourced breakfast from 8 to 9:30am (excl. off-season). Complimentary morning espresso year round.",
+      "title": "Free Breakfast",
+      "description": "Fresh, locally-sourced breakfast (excl. off-season) including morning espresso.",
       "icon": "Coffee"
     },
     {
@@ -65,7 +65,7 @@
     },
     {
       "title": "Community",
-      "description": "Regular social events and a helpful WhatsApp community.",
+      "description": "Regular social events, excursions, and a helpful WhatsApp community.",
       "icon": "Zap"
     }
   ],
