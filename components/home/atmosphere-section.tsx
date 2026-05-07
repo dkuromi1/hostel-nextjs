@@ -45,7 +45,7 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
                 <SectionLabel colorScheme="light">
                   {atmosphere.rooftopEyebrow}
                 </SectionLabel>
-                <p className="mt-2 max-w-sm font-heading text-2xl leading-tight tracking-tight">
+                <p className="mt-2 max-w-sm font-heading text-xl sm:text-2xl leading-tight tracking-tight">
                   {atmosphere.rooftopTitle}
                 </p>
               </div>
@@ -54,26 +54,26 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
 
           {/* Right column */}
           <div className="flex flex-col gap-[var(--layout-grid-gutter)] lg:col-start-2 lg:row-start-1 lg:row-span-2">
-            <div className="grid grid-cols-[3fr_2fr] gap-[var(--layout-grid-gutter)] lg:grid-cols-1 lg:h-full">
+            <div className="grid grid-cols-[1.1fr_1fr] gap-[var(--layout-grid-gutter)] lg:grid-cols-1 lg:h-full">
               {/* Room image */}
               <Reveal delay={100} className="flex min-w-0 h-full">
-                <div className="media-frame relative w-full aspect-[4/3] lg:h-auto">
+                <div className="media-frame relative w-full aspect-[4/5] sm:aspect-[4/3] lg:h-auto h-full">
                   <Image
                     src="/images/rooms_1_min.webp"
                     alt={atmosphere.roomImageAlt}
                     fill
-                    className="object-cover"
+                    className="object-cover object-[75%_center]"
                     sizes="(max-width: 1024px) 60vw, (max-width: 1400px) 33vw, 466px"
                   />
                 </div>
               </Reveal>
 
               {/* Video */}
-              <Reveal delay={300} className="media-frame relative flex items-start lg:items-center self-start lg:self-auto overflow-hidden min-[500px]:row-span-2 lg:row-span-1">
+              <Reveal delay={300} className="media-frame relative flex items-start lg:items-center self-start lg:self-auto overflow-hidden min-[500px]:row-span-2 lg:row-span-1 aspect-[9/16] min-[500px]:aspect-auto">
                 <LazyVideo
                   src="/videos/videoplayback.mp4"
                   poster="/images/video-poster.webp"
-                  className="w-full"
+                  className="w-full h-full"
                   autoPlay
                   muted
                   loop

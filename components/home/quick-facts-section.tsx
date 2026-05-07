@@ -23,25 +23,25 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
       {quickFacts.map((fact, index) => {
         const Icon = resolveIcon(fact.icon || "Info");
         const cardContent = (
-          <Panel className="group relative h-full p-8 transition-all duration-500 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
-            <div className="relative z-10 flex flex-col h-full gap-4">
-              <div className="flex items-center gap-3">
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-[var(--radius-xl)] bg-white text-[var(--brand-primary)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-300 group-hover:bg-[var(--brand-primary)] group-hover:text-white dark:bg-white/5 dark:text-[var(--brand-accent)] dark:group-hover:bg-[var(--brand-primary)]">
-                  <Icon className="size-5" />
+          <Panel className="group relative h-full p-8 transition-all duration-500 hover:border-[var(--brand-primary)]/30 hover:shadow-xl hover:shadow-[var(--brand-primary)]/5">
+            <div className="relative z-10 flex flex-col h-full gap-5">
+              <div className="flex items-center gap-4">
+                <div className="relative flex size-12 shrink-0 items-center justify-center rounded-[var(--radius-xl)] bg-white text-[var(--brand-primary)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-500 group-hover:scale-110 group-hover:bg-[var(--brand-primary)] group-hover:text-white dark:bg-white/5 dark:text-[var(--brand-accent)] dark:group-hover:bg-[var(--brand-primary)]">
+                  <Icon className="size-6 transition-transform duration-500" />
                 </div>
+                
                 {fact.title && (
                   <h4 className="heading-item text-[var(--text-heading)] dark:text-white">
                     {fact.title}
                   </h4>
                 )}
               </div>
-              <p className="text-card-body transition-colors group-hover:text-[var(--text-body)] dark:text-white/80 dark:group-hover:text-white">
+              <p className="text-card-body leading-relaxed transition-colors group-hover:text-[var(--text-body)] dark:text-white/80 dark:group-hover:text-white">
                 {fact.text}
               </p>
             </div>
           </Panel>
         );
-
 
         if (isMobile) {
           return (
@@ -54,7 +54,7 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
         return (
           <Reveal
             key={index}
-            delay={index * 120}
+            delay={index * 80}
             className="min-w-[85%] snap-center sm:min-w-0 h-full"
           >
             {cardContent}
@@ -66,15 +66,21 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
   );
 
   return (
-    <div className={cn("relative z-20", className)}>
-      <div className="shell-container relative z-10">
-
-        {isMobile ? (
-          <Reveal delay={100}>{factsContent}</Reveal>
-        ) : (
-          factsContent
-        )}
+    <section className={cn("relative z-20 py-12 lg:py-20", className)}>
+      {/* Decorative Background Elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-[0.03] soft-grid" />
       </div>
-    </div>
+
+      <div className="shell-container relative z-10">
+        <div className="flex flex-col gap-10">
+          {isMobile ? (
+            <Reveal delay={100}>{factsContent}</Reveal>
+          ) : (
+            factsContent
+          )}
+        </div>
+      </div>
+    </section>
   );
 }
