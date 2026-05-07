@@ -156,6 +156,12 @@ export function ThemeVars() {
     finalLayout.width = design.layout?.width || "wide";
     finalLayout.spacing = design.layout?.spacing || "wide";
     finalLayout.gutter = design.layout?.gutter || "wide";
+
+    // Theme Padding Defaults (Forest - Expansive)
+    finalLayout.cardPaddingMobile = design.layout?.cardPaddingMobile || "2rem";
+    finalLayout.cardPaddingPremiumMobile = design.layout?.cardPaddingPremiumMobile || "2.75rem";
+    finalLayout.cardPaddingDesktop = design.layout?.cardPaddingDesktop || "2.5rem";
+    finalLayout.cardPaddingPremiumDesktop = design.layout?.cardPaddingPremiumDesktop || "3.75rem";
   } else if (theme === "warm") {
     finalColors.primary = colors?.primary || "#b07d62";
     finalColors.accent = colors?.accent || "#d4b896";
@@ -174,6 +180,12 @@ export function ThemeVars() {
     finalLayout.width = design.layout?.width || "standard";
     finalLayout.spacing = design.layout?.spacing || "standard";
     finalLayout.gutter = design.layout?.gutter || "standard";
+
+    // Theme Padding Defaults (Warm - Cozy)
+    finalLayout.cardPaddingMobile = design.layout?.cardPaddingMobile || "1.85rem";
+    finalLayout.cardPaddingPremiumMobile = design.layout?.cardPaddingPremiumMobile || "2.6rem";
+    finalLayout.cardPaddingDesktop = design.layout?.cardPaddingDesktop || "2.35rem";
+    finalLayout.cardPaddingPremiumDesktop = design.layout?.cardPaddingPremiumDesktop || "3.6rem";
   } else if (theme === "nordic-earth") {
     finalColors.primary = colors?.primary || "#5f7470";
     finalColors.accent = colors?.accent || "#cb997e";
@@ -193,6 +205,12 @@ export function ThemeVars() {
     finalLayout.width = design.layout?.width || "wide";
     finalLayout.spacing = design.layout?.spacing || "compact";
     finalLayout.gutter = design.layout?.gutter || "none";
+
+    // Theme Padding Defaults (Nordic - Architectural/Elegant)
+    finalLayout.cardPaddingMobile = design.layout?.cardPaddingMobile || "2rem";
+    finalLayout.cardPaddingPremiumMobile = design.layout?.cardPaddingPremiumMobile || "2.75rem";
+    finalLayout.cardPaddingDesktop = design.layout?.cardPaddingDesktop || "2.5rem";
+    finalLayout.cardPaddingPremiumDesktop = design.layout?.cardPaddingPremiumDesktop || "3.75rem";
   } else if (theme === "cool") {
     finalColors.primary = colors?.primary || "#059669";
     finalColors.accent = colors?.accent || "#8ac7eb";
@@ -207,10 +225,16 @@ export function ThemeVars() {
     finalSurfaces.glassBlur = design.surfaces?.glassBlur || 12;
     finalSurfaces.glassOpacity = design.surfaces?.glassOpacity || 0.84;
     
-    // Clean standard layout
-    finalLayout.width = design.layout?.width || "standard";
-    finalLayout.spacing = design.layout?.spacing || "standard";
-    finalLayout.gutter = design.layout?.gutter || "standard";
+    // Clean wide layout
+    finalLayout.width = design.layout?.width || "wide";
+    finalLayout.spacing = design.layout?.spacing || "wide";
+    finalLayout.gutter = design.layout?.gutter || "wide";
+
+    // Theme Padding Defaults (Cool)
+    finalLayout.cardPaddingMobile = design.layout?.cardPaddingMobile || "1.75rem";
+    finalLayout.cardPaddingPremiumMobile = design.layout?.cardPaddingPremiumMobile || "2.5rem";
+    finalLayout.cardPaddingDesktop = design.layout?.cardPaddingDesktop || "2.25rem";
+    finalLayout.cardPaddingPremiumDesktop = design.layout?.cardPaddingPremiumDesktop || "3.5rem";
   }
 
   const rv = getRadiusValues(finalSurfaces.borderRadius);
