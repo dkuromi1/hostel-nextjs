@@ -54,7 +54,7 @@ export function GalleryView({ galleryItems, bookingAwardImage, galleryCopy, book
                     sizes="(max-width: 640px) 100vw, 28vw"
                   />
                 </div>
-                <div className="p-6 flex flex-col justify-center">
+                <div className="p-card flex flex-col justify-center">
                   <SectionLabel variant="sun" className="mb-4">{galleryCopy.awardPanel.label}</SectionLabel>
                   <h2 className="mt-4 heading-card text-[var(--text-heading)]">
                     {galleryCopy.awardPanel.title}
@@ -68,7 +68,7 @@ export function GalleryView({ galleryItems, bookingAwardImage, galleryCopy, book
           </Reveal>
 
           <Reveal delay={120} className="lg:sticky lg:top-32">
-            <Panel className="p-6 sm:p-8">
+            <Panel className="p-card-premium">
               <SectionHeading
                 variant="simple"
                 eyebrow={galleryCopy.vibePanel.eyebrow}

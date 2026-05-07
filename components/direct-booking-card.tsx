@@ -21,7 +21,7 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
   if (variant === "inline") {
     return (
       <div className={cn(
-        "group relative flex flex-col sm:flex-row items-center justify-between glass-panel rounded-3xl p-7 sm:p-10 gap-8 w-full overflow-hidden transition-all duration-500 hover:border-[var(--brand-primary)]/30 hover:shadow-xl hover:shadow-[var(--brand-primary)]/5",
+        "group relative flex flex-col sm:flex-row items-center justify-between glass-panel rounded-3xl p-card-premium gap-8 w-full overflow-hidden transition-all duration-500 hover:border-[var(--brand-primary)]/30 hover:shadow-xl hover:shadow-[var(--brand-primary)]/5",
         className
       )}>
         {/* Decorative Background Elements */}
@@ -61,7 +61,7 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
   // "Block" variant for vertical layouts (mobile column)
   return (
     <div className={cn(
-      "group relative glass-panel rounded-3xl p-8 overflow-hidden transition-all duration-500 hover:border-[var(--brand-primary)]/30 hover:shadow-xl hover:shadow-[var(--brand-primary)]/5",
+      "group relative glass-panel rounded-3xl p-card-premium overflow-hidden transition-all duration-500 hover:border-[var(--brand-primary)]/30 hover:shadow-xl hover:shadow-[var(--brand-primary)]/5",
       className
     )}>
       {/* Decorative Background Elements */}

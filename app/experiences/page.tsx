@@ -181,7 +181,7 @@ export default function ExperiencesPage() {
                       )}
                     </div>
 
-                    <div className="flex flex-1 flex-col p-6">
+                    <div className="flex flex-1 flex-col p-card">
                       <div className="mb-3 flex flex-wrap items-center gap-2">
                         {siteConfig.features.showLocalExperienceMap ? (
                           <Link
@@ -280,7 +280,7 @@ export default function ExperiencesPage() {
                       </div>
 
                       {/* Card Content Area */}
-                      <div className="flex flex-1 flex-col px-8 pb-8">
+                      <div className="flex flex-1 flex-col p-card">
                         {/* Floating Icon Box (Overlaps the image and background) */}
                         <div className="relative -mt-6 mb-6 flex size-12 items-center justify-center rounded-[var(--radius-2xl)] bg-[var(--glass-bg)] text-[var(--text-body)] shadow-lg shadow-[var(--glass-shadow)]/10 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-[var(--brand-primary-light)] group-hover:text-[var(--brand-primary)]">
                           <Icon className="size-5" />

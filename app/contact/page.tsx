@@ -57,7 +57,7 @@ export default function ContactPage() {
         backgroundPosition="20% center"
       >
         <div className="grid gap-[var(--layout-grid-gutter)]">
-          <Panel className="p-6 sm:p-8">
+          <Panel className="p-card-premium">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
               {/* Item 1: Phone */}
               <div className="flex flex-col">
@@ -155,7 +155,7 @@ export default function ContactPage() {
           </div>
 
           <Reveal delay={120}>
-            <Panel className="p-6 sm:p-8 h-full">
+            <Panel className="p-card-premium h-full">
               <SectionHeading
                 variant="simple"
                 eyebrow={siteCopyContent.contact.faq.eyebrow}

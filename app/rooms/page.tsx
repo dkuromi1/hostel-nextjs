@@ -85,7 +85,7 @@ export default function RoomsPage() {
               sizes="(max-width: 768px) 100vw, 25vw"
             />
           </div>
-          <div className="glass-panel rounded-[var(--radius-3xl)] p-6 sm:p-7">
+          <div className="glass-panel rounded-[var(--radius-3xl)] p-card-premium">
             <SectionLabel variant="emerald" className="mb-4">
               {siteCopyContent.rooms.heroPriceBlurb.labelPrefix}{" "}
               <strong>{primaryPricedRoom?.price ? `${primaryPricedRoom.price} / Night` : siteCopyContent.rooms.heroPriceBlurb.contactForRatesLabel}</strong>
@@ -134,7 +134,7 @@ export default function RoomsPage() {
                       </div>
                     </div>
 
-                    <div className="flex flex-1 flex-col justify-between p-5 sm:p-6">
+                    <div className="flex flex-1 flex-col justify-between p-card-premium">
                       <div className="space-y-4">
                         <div>
                           <SectionLabel variant="emerald" className="mb-2">
@@ -195,7 +195,7 @@ export default function RoomsPage() {
       <section className="py-[var(--layout-section-spacing)]">
         <div className="shell-container grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <Reveal className="lg:sticky lg:top-32">
-            <Panel className="p-6 sm:p-8">
+            <Panel className="p-card-premium">
               <SectionHeading
                 eyebrow={siteCopyContent.rooms.includedStay.eyebrow}
                 variant="simple"
@@ -229,7 +229,7 @@ export default function RoomsPage() {
           </Reveal>
 
           <Reveal delay={120} className="lg:sticky lg:top-32">
-            <Panel className="p-6 sm:p-8">
+            <Panel className="p-card-premium">
               <SectionLabel className="mb-6">{siteCopyContent.rooms.extraHelp.label}</SectionLabel>
               <h2 className="mt-4 heading-card text-[var(--text-heading)]">
                 {siteCopyContent.rooms.extraHelp.title}

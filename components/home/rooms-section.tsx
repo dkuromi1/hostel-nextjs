@@ -57,7 +57,7 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
                   </div>
                 </div>
 
-                <div className="space-y-4 p-5 sm:p-6">
+                <div className="space-y-4 p-card-premium">
                   <div>
                     <SectionLabel variant="emerald" className="mb-2">
                       {room.label}

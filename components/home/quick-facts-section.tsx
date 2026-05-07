@@ -23,7 +23,7 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
       {quickFacts.map((fact, index) => {
         const Icon = resolveIcon(fact.icon || "Info");
         const cardContent = (
-          <Panel className="group relative h-full p-8 transition-all duration-500 hover:border-[var(--brand-primary)]/30 hover:shadow-xl hover:shadow-[var(--brand-primary)]/5">
+          <Panel className="group relative h-full p-card-premium transition-all duration-500 hover:border-[var(--brand-primary)]/30 hover:shadow-xl hover:shadow-[var(--brand-primary)]/5">
             <div className="relative z-10 flex flex-col h-full gap-5">
               <div className="flex items-center gap-4">
                 <div className="relative flex size-12 shrink-0 items-center justify-center rounded-[var(--radius-xl)] bg-white text-[var(--brand-primary)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-500 group-hover:scale-110 group-hover:bg-[var(--brand-primary)] group-hover:text-white dark:bg-white/5 dark:text-[var(--brand-accent)] dark:group-hover:bg-[var(--brand-primary)]">

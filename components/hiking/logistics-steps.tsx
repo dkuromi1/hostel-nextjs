@@ -19,7 +19,7 @@ export function LogisticsSteps({ steps }: LogisticsStepsProps) {
       <Panel className="p-0 overflow-hidden">
         <div className="divide-y divide-[var(--border)]/50">
           {steps.map((step, i) => (
-            <div key={step.title} className="group relative flex gap-6 p-6 transition-colors hover:bg-[var(--muted)]/30">
+            <div key={step.title} className="group relative flex gap-6 p-card transition-colors hover:bg-[var(--muted)]/30">
               {/* Vertical connector line */}
               {i < steps.length - 1 && (
                 <div className="absolute left-[3rem] top-20 bottom-0 w-px bg-gradient-to-b from-[var(--brand-primary)]/30 to-transparent z-0" />

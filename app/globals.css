@@ -43,18 +43,30 @@
   --radius-full: var(--radius-full, 9999px);
   --spacing-section: var(--layout-section-spacing, 5rem);
   --spacing-gutter: var(--layout-grid-gutter, 2rem);
+  --spacing-card: var(--layout-card-padding, 2.0rem);
+  --spacing-card-premium: var(--layout-card-padding-premium, 3.5rem);
 
   /* Fluid Room Image Height */
   --room-image-height: clamp(18rem, 15.43rem + 11.43vw, 20rem);
 }
 
+
+
+
+
+:root {
+  /* ─── Layout Tokens ──────────────────────────────────────────────────────── */
+  --layout-card-padding: 1.75rem;
+  --layout-card-padding-premium: 2.5rem;
+}
+
 @media (min-width: 640px) {
   :root {
     --room-image-height: 22rem;
+    --layout-card-padding: 2.25rem;
+    --layout-card-padding-premium: 3.5rem;
   }
 }
-
-
 
 :root {
   /* ─── Original Cool Palette ─────────────────────────────────────────────────
@@ -291,6 +303,34 @@
 
 @utility shell-container {
   @apply mx-auto max-w-[var(--layout-max-width)] px-4 sm:px-6 lg:px-8;
+}
+
+@utility p-card {
+  padding: var(--spacing-card);
+}
+
+@utility px-card {
+  padding-left: var(--spacing-card);
+  padding-right: var(--spacing-card);
+}
+
+@utility py-card {
+  padding-top: var(--spacing-card);
+  padding-bottom: var(--spacing-card);
+}
+
+@utility p-card-premium {
+  padding: var(--spacing-card-premium);
+}
+
+@utility px-card-premium {
+  padding-left: var(--spacing-card-premium);
+  padding-right: var(--spacing-card-premium);
+}
+
+@utility py-card-premium {
+  padding-top: var(--spacing-card-premium);
+  padding-bottom: var(--spacing-card-premium);
 }
 
 @utility soft-grid {

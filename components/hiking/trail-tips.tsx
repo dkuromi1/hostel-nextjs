@@ -19,7 +19,7 @@ export function TrailTips({ tips }: TrailTipsProps) {
       <Panel className="p-0 overflow-hidden">
         <div className="grid divide-y divide-[var(--border)]/50 lg:grid-cols-3 lg:divide-y-0 lg:divide-x">
           {tips.map((tip, i) => (
-            <div key={tip.title} className="group relative p-6 sm:p-8 transition-colors hover:bg-[var(--muted)]/30">
+            <div key={tip.title} className="group relative p-card-premium transition-colors hover:bg-[var(--muted)]/30">
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-3">
                   <div className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] transition-transform group-hover:scale-110">

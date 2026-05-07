@@ -115,13 +115,13 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                             <ThethWeather variant="small" />
                           </div>
                         )}
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 pt-24 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-card pt-24 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
                           <SectionLabel colorScheme="light" className="mb-2">
                             {pillar.title}
                           </SectionLabel>
                         </div>
                       </div>
-                      <div className="p-6 text-card-body bg-[var(--glass-bg)] flex-1 flex flex-col">
+                      <div className="p-card text-card-body bg-[var(--glass-bg)] flex-1 flex flex-col">
                         <p className="flex-1">{formatText(pillar.description)}</p>
                         <PillarCta cta={pillar.cta} />
                       </div>
@@ -150,7 +150,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                       <ThethWeather variant="small" />
                     </div>
                   ) : null}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent p-6 pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent p-card pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
                     <SectionLabel colorScheme="light" className="drop-shadow-md">
                       {experiencePillars[0].title}
                     </SectionLabel>
@@ -179,7 +179,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                             className="object-cover transition-transform duration-700 group-hover:scale-105"
                             sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 42vw, 588px"
                           />
-                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent p-6 pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent p-card pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
                             <SectionLabel colorScheme="light" className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                               {pillar.title}
                             </SectionLabel>
@@ -200,7 +200,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                               sizes="(max-width: 768px) 100vw, (max-width: 1400px) 18vw, 250px"
                             />
                           </div>
-                          <div className="space-y-3 p-6">
+                          <div className="space-y-3 p-card">
                             <h3 className="heading-feature text-[var(--text-heading)]">
                               {pillar.title}
                             </h3>
@@ -243,7 +243,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                           sizes="(max-width: 768px) 100vw, (max-width: 1400px) 23vw, 322px"
                         />
                       </div>
-                      <div className="p-5">
+                      <div className="p-card">
                         <h3 className="font-heading text-2xl leading-none tracking-[-0.04em] text-[var(--text-heading)]">
                           {event.title}
                         </h3>

@@ -105,7 +105,7 @@ export function GuestRatingsSection({
     <section className="pb-8 sm:pb-16">
       <div className="shell-container">
         <Reveal>
-          <Panel className="p-4 sm:p-5">
+          <Panel className="p-card">
             <div className="flex items-center gap-3">
               <span className="faded-line h-px flex-1" />
               <SectionLabel>{copy.label}</SectionLabel>
@@ -116,7 +116,7 @@ export function GuestRatingsSection({
                 href={bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex h-full flex-col overflow-hidden rounded-[var(--radius-2xl)] border border-[var(--glass-border)] bg-[var(--glass-bg)] px-4 py-5 shadow-[0_20px_55px_-40px_var(--glass-shadow)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_var(--glass-shadow)]"
+                className="group relative flex h-full flex-col overflow-hidden rounded-[var(--radius-2xl)] border border-[var(--glass-border)] bg-[var(--glass-bg)] p-card shadow-[0_20px_55px_-40px_var(--glass-shadow)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_var(--glass-shadow)]"
               >
                 <div className="flex min-h-[3rem] flex-wrap items-center justify-between gap-x-2 gap-y-2">
                   <BookingComLogo className="min-w-0 shrink-0" />
@@ -156,7 +156,7 @@ export function GuestRatingsSection({
                 href={hostelworldUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex h-full flex-col overflow-hidden rounded-[var(--radius-2xl)] border border-[var(--glass-border)] bg-[var(--glass-bg)] px-4 py-5 shadow-[0_20px_55px_-40px_var(--glass-shadow)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_var(--glass-shadow)]"
+                className="group relative flex h-full flex-col overflow-hidden rounded-[var(--radius-2xl)] border border-[var(--glass-border)] bg-[var(--glass-bg)] p-card shadow-[0_20px_55px_-40px_var(--glass-shadow)] transition-all hover:scale-[1.01] hover:shadow-[0_20px_55px_-30px_var(--glass-shadow)]"
               >
                 <div className="flex min-h-[3rem] flex-wrap items-center justify-between gap-x-2 gap-y-2">
                   <HostelworldLogo className="h-7 w-auto shrink-0" />
