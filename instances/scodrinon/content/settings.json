@@ -129,7 +129,11 @@
       "layout": {
         "width": "wide",
         "spacing": "wide",
-        "gutter": "wide"
+        "gutter": "wide",
+        "cardPaddingMobile": "1.75rem",
+        "cardPaddingPremiumMobile": "2.5rem",
+        "cardPaddingDesktop": "2.25rem",
+        "cardPaddingPremiumDesktop": "3.5rem"
       }
     }
   },

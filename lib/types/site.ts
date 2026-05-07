@@ -166,6 +166,10 @@ export interface DesignConfig {
     width?: "compact" | "standard" | "wide";
     spacing?: "compact" | "standard" | "wide";
     gutter?: "none" | "compact" | "standard" | "wide";
+    cardPaddingMobile?: string;
+    cardPaddingPremiumMobile?: string;
+    cardPaddingDesktop?: string;
+    cardPaddingPremiumDesktop?: string;
   };
 }
 

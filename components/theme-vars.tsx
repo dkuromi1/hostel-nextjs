@@ -280,11 +280,22 @@ export function ThemeVars() {
       --layout-section-spacing: ${layoutSpacing};
       --layout-grid-gutter: ${layoutGutter};
 
+      /* Standardized Padding Overrides */
+      --layout-card-padding: ${finalLayout.cardPaddingMobile || "1.75rem"};
+      --layout-card-padding-premium: ${finalLayout.cardPaddingPremiumMobile || "2.5rem"};
+
       /* Dark mode contrast overrides */
       --brand-accent: ${theme === "forest" ? finalColors.accent : "var(--accent)"};
     }
 
     /* Responsive Layout Overrides */
+    @media (min-width: 640px) {
+      :root {
+        --layout-card-padding: ${finalLayout.cardPaddingDesktop || "2.25rem"};
+        --layout-card-padding-premium: ${finalLayout.cardPaddingPremiumDesktop || "3.5rem"};
+      }
+    }
+
     @media (max-width: 1024px) {
       :root {
         /* Step down gutter on tablet if set to wide */
