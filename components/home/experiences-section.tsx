@@ -114,7 +114,12 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                         </div>
                         {index === 0 && showRegionalWeather && (
                           <div className="absolute right-4 top-4 z-20">
-                            <ThethWeather variant="small" />
+                            <div className="hidden sm:block">
+                              <ThethWeather />
+                            </div>
+                            <div className="block sm:hidden">
+                              <ThethWeather variant="small" />
+                            </div>
                           </div>
                         )}
                         <div className="absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-card pt-24 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
@@ -151,7 +156,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                   </div>
                   {showRegionalWeather ? (
                     <div className="absolute right-4 top-4 z-20">
-                      <ThethWeather variant="small" />
+                      <ThethWeather />
                     </div>
                   ) : null}
                   <div className="absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/95 via-black/50 to-transparent p-card pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">

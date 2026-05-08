@@ -68,11 +68,11 @@ export default function ExperiencesPage() {
         }))}
         hideActions={true}
         topRight={siteConfig.features.showRegionalWeather ? (
-          <div className="flex flex-col items-end scale-90 sm:scale-100 origin-top-right">
-            <div className="hidden lg:block">
+          <div className="flex flex-col items-end scale-90 sm:scale-100 origin-top-right sm:-mt-2 lg:mt-0">
+            <div className="hidden sm:block">
               <ThethWeather />
             </div>
-            <div className="block lg:hidden">
+            <div className="block sm:hidden">
               <ThethWeather variant="small" />
             </div>
           </div>
