@@ -59,7 +59,7 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
               <Reveal delay={100} className="flex min-w-0 h-full">
                 <div className="media-frame relative w-full aspect-[4/5] sm:aspect-[4/3] lg:h-auto h-full">
                   <Image
-                    src="/images/rooms_1_min.webp"
+                    src="/images/rooms_1.jpg"
                     alt={atmosphere.roomImageAlt}
                     fill
                     className="object-cover object-[75%_center]"
