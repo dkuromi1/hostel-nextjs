@@ -68,7 +68,7 @@ export default function RoomsPage() {
               src="/images/rooms_2.jpg"
               alt={siteCopyContent.rooms.heroImages.fourBedAlt}
               fill
-              className="object-cover transition-transform duration-1000 group-hover:scale-105"
+              className="object-cover transition-transform duration-1000 group-hover:scale-105 shadow-2xl"
               priority
               fetchPriority="high"
               sizes="(max-width: 768px) 100vw, 40vw"
@@ -79,7 +79,7 @@ export default function RoomsPage() {
               src="/images/room_18bed2.jpg"
               alt={siteCopyContent.rooms.heroImages.podAlt}
               fill
-              className="object-cover transition-transform duration-1000 group-hover:scale-105"
+              className="object-cover transition-transform duration-1000 group-hover:scale-105 shadow-xl"
               priority
               fetchPriority="high"
               sizes="(max-width: 768px) 100vw, 25vw"
@@ -102,8 +102,14 @@ export default function RoomsPage() {
         </div>
       </PageHero>
 
-      <section className="py-[var(--layout-section-spacing)]">
-        <div className="shell-container space-y-10">
+      <section className="section-muted py-[var(--layout-section-spacing)] relative overflow-hidden">
+        {/* Subtle decorative elements */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute top-1/4 -right-48 w-96 h-96 rounded-full bg-[var(--brand-primary)]/[0.02] blur-3xl" />
+          <div className="absolute bottom-1/3 -left-32 w-80 h-80 rounded-full bg-[var(--accent)]/[0.015] blur-3xl" />
+        </div>
+        
+        <div className="shell-container space-y-10 relative z-10">
           <SectionHeading
             eyebrow={siteCopyContent.rooms.chooseSetup.eyebrow}
             title={siteCopyContent.rooms.chooseSetup.title}
@@ -115,7 +121,7 @@ export default function RoomsPage() {
 
               return (
                 <Reveal key={room.name} delay={index * 100}>
-                  <Panel className="group relative flex h-full flex-col overflow-hidden transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
+                  <Panel className="group relative flex h-full flex-col overflow-hidden transition-all duration-300 hover:shadow-md">
 
                     {/* Updated Image Carousel Section */}
                     <div className="relative min-h-[var(--room-image-height)]">
@@ -134,7 +140,7 @@ export default function RoomsPage() {
                       </div>
                     </div>
 
-                    <div className="flex flex-1 flex-col justify-between p-card-premium">
+                    <div className="flex flex-1 flex-col justify-between p-card-premium bg-white dark:bg-card">
                       <div className="space-y-4">
                         <div>
                           <SectionLabel variant="emerald" className="mb-2">
@@ -165,9 +171,9 @@ export default function RoomsPage() {
                           })}
                         </div>
 
-                        <div className="space-y-2">
-                          <SectionLabel weight="bold" className="mb-1 opacity-70">Room Details</SectionLabel>
-                          <ul className="grid gap-2 sm:grid-cols-2">
+                        <div className="space-y-3 pt-4">
+                          <SectionLabel weight="bold" className="opacity-70 text-[10px] uppercase tracking-widest">Room Details</SectionLabel>
+                          <ul className="grid gap-x-6 gap-y-2 sm:grid-cols-2">
                             {room.bullets.map((bullet) => (
                               <li
                                 key={bullet}
@@ -192,7 +198,10 @@ export default function RoomsPage() {
         </div>
       </section>
 
-      <section className="py-[var(--layout-section-spacing)]">
+      <section className="py-[var(--layout-section-spacing)] relative">
+        {/* Top section divider */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" aria-hidden="true" />
+        
         <div className="shell-container grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <Reveal className="lg:sticky lg:top-32">
             <Panel className="p-card-premium">
@@ -272,12 +281,18 @@ export default function RoomsPage() {
       </section>
 
 
-      <section className="py-[var(--layout-section-spacing)]">
-        <div className="shell-container">
+      <section className="section-slate py-[var(--layout-section-spacing)] relative overflow-hidden">
+        {/* Subtle background texture */}
+        <div className="absolute inset-0 opacity-[0.03]" aria-hidden="true">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(110,231,183,0.08),transparent_40%)]" />
+        </div>
+        
+        <div className="shell-container relative z-10">
           <Reveal>
             <div className="grid gap-[var(--layout-grid-gutter)] lg:grid-cols-2">
               <div className="flex flex-col">
-                <TestimonialCarousel testimonials={testimonials.slice(5, 10)} className="h-full" />
+                <TestimonialCarousel testimonials={testimonials.slice(5, 10)} className="h-full" variant="dark" />
               </div>
               <div className="grid grid-cols-2 gap-[var(--layout-grid-gutter)] lg:grid-cols-1">
                 <div className="media-frame relative min-h-[12rem] lg:min-h-[15rem]">

@@ -8,7 +8,7 @@ type SectionHeadingProps = {
   description: string;
   className?: string;
   titleClassName?: string;
-  variant?: "default" | "simple";
+  variant?: "default" | "simple" | "light";
   headingLevel?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 };
 
@@ -22,19 +22,27 @@ export function SectionHeading({
   headingLevel = "h2",
 }: SectionHeadingProps) {
   const HeadingTag = headingLevel;
+  const isLight = variant === "light";
 
   return (
     <div className={cn("flex max-w-2xl flex-col items-start gap-5", className)}>
-      {variant === "default" ? (
-        <Eyebrow>{eyebrow}</Eyebrow>
-      ) : (
+      {variant === "simple" ? (
         <SectionLabel>{eyebrow}</SectionLabel>
+      ) : (
+        <Eyebrow variant={isLight ? "footer" : "default"}>{eyebrow}</Eyebrow>
       )}
       <div className="flex flex-col gap-3">
-        <HeadingTag className={cn(headingLevel === "h1" ? "heading-page" : "heading-section", "text-[var(--text-heading)]", titleClassName)}>
+        <HeadingTag className={cn(
+          headingLevel === "h1" ? "heading-page" : "heading-section", 
+          isLight ? "text-white" : "text-[var(--text-heading)]", 
+          titleClassName
+        )}>
           {title}
         </HeadingTag>
-        <p className="max-w-[62ch] text-section-desc">
+        <p className={cn(
+          "max-w-[62ch] text-section-desc",
+          isLight && "text-white/80"
+        )}>
           {description}
         </p>
       </div>

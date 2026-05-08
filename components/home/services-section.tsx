@@ -27,27 +27,24 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
       {services.map((service, idx) => {
         const Icon = resolveIcon(service.icon);
         const cardContent = (
-          <Panel
-            className="group flex h-full gap-4 p-8 transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md"
-          >
-            <div className="flex size-12 shrink-0 items-center justify-center rounded-[var(--radius-xl)] bg-[var(--muted)] text-[var(--text-body)] shadow-sm ring-1 ring-[var(--foreground)]/5 transition-all duration-300 group-hover:bg-[var(--brand-primary-light)] group-hover:text-[var(--brand-primary)] group-hover:ring-[var(--brand-primary)]/20">
-              <Icon className="size-5" />
+          <div className="group h-full flex flex-col gap-6 p-card rounded-[var(--radius-lg)] border border-[var(--border)] bg-white dark:bg-card transition-all duration-300 hover:shadow-xl hover:shadow-[var(--brand-primary)]/5 hover:border-[var(--brand-primary)]/20">
+            <div className="flex size-14 shrink-0 items-center justify-center rounded-[var(--radius-lg)] bg-[var(--muted)] text-[var(--brand-primary)] shadow-sm ring-1 ring-[var(--foreground)]/5 transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-[var(--brand-primary)] group-hover:text-white group-hover:shadow-lg group-hover:shadow-[var(--brand-primary)]/20">
+              <Icon className="size-7" />
             </div>
-            <div className="space-y-1.5 pt-0.5">
-              <h3 className="heading-item text-[var(--text-heading)]">
+            <div className="space-y-3">
+              <h3 className="heading-item text-xl tracking-tight text-[var(--text-heading)]">
                 {service.title}
               </h3>
-              <p className="text-card-body transition-colors group-hover:text-[var(--text-body)]">
+              <p className="text-[15px] leading-relaxed text-[var(--text-body-subtle)] transition-colors group-hover:text-[var(--text-body)]">
                 {service.description}
               </p>
             </div>
-          </Panel>
-
+          </div>
         );
 
         if (isMobile) {
           return (
-            <div key={idx} className="min-w-[85%] snap-center sm:min-w-0 h-full">
+            <div key={idx} className="min-w-[85%] snap-center sm:min-w-0 h-full p-1">
               {cardContent}
             </div>
           );
@@ -68,8 +65,16 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
   );
 
   return (
-    <section className="py-[var(--layout-section-spacing)]">
-      <div className="shell-container space-y-12">
+    <section className="section-muted py-[var(--layout-section-spacing)] relative overflow-hidden">
+      {/* Top section divider transition from previous section */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" aria-hidden="true" />
+      
+      {/* Subtle decorative elements */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute bottom-1/4 -left-32 w-80 h-80 rounded-full bg-[var(--accent)]/[0.015] blur-3xl" />
+      </div>
+      
+      <div className="shell-container space-y-12 relative z-10">
         <Reveal>
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading

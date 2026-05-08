@@ -26,6 +26,7 @@ import dynamic from "next/dynamic";
 import { HeroSection } from "@/components/home/hero-section";
 import { AtmosphereSection } from "@/components/home/atmosphere-section";
 import { QuickFactsSection } from "@/components/home/quick-facts-section";
+import { CinematicBreak } from "@/components/home/cinematic-break";
 
 const RoomsSection = dynamic(() => import("@/components/home/rooms-section").then(mod => mod.RoomsSection), { ssr: true });
 const IncludedServicesSection = dynamic(() => import("@/components/home/services-section").then(mod => mod.IncludedServicesSection), { ssr: true });
@@ -61,16 +62,18 @@ export default function Home() {
       />
 
       <div className="relative">
-        <QuickFactsSection quickFacts={quickFacts} className="pt-16 pb-0" />
         <AtmosphereSection
           atmosphere={siteCopyContent.home.atmosphere}
           whatsappUrl={siteConfig.whatsappUrl}
         />
+        <QuickFactsSection quickFacts={quickFacts} />
       </div>
 
       <RoomsSection roomsSection={siteCopyContent.home.roomsSection} roomTypes={roomTypes} />
 
       <IncludedServicesSection services={freeServices} copy={siteCopyContent.home.includedStay} />
+
+      <CinematicBreak />
 
       <HomeGallerySection items={galleryItems} copy={siteCopyContent.home.gallerySection} />
 
@@ -92,7 +95,10 @@ export default function Home() {
         hostelworldReviews={siteConfig.hostelworldReviews}
       />
 
-      <section className="py-[var(--layout-section-spacing)]">
+      <section className="py-[var(--layout-section-spacing)] relative">
+        {/* Top section divider */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" aria-hidden="true" />
+        
         <div className="shell-container">
           <CtaStrip
             eyebrow={siteCopyContent.home.cta.eyebrow}

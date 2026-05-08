@@ -53,6 +53,8 @@ export function PageHero({
       hasBackground ? "min-h-[45dvh] sm:min-h-[60dvh] flex flex-col justify-center" : "",
       className
     )}>
+      {/* Bottom section divider for transitions */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent z-20" aria-hidden="true" />
       {topRight && (
         <div className="absolute right-4 top-4 z-40 sm:right-6 sm:top-6 lg:right-10 lg:top-10">
           {topRight}

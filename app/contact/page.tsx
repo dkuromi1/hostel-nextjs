@@ -57,7 +57,7 @@ export default function ContactPage() {
         backgroundPosition="20% center"
       >
         <div className="grid gap-[var(--layout-grid-gutter)]">
-          <Panel className="p-card-premium">
+          <Panel className="p-card-premium bg-white dark:bg-card shadow-xl border-[var(--border)]">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
               {/* Item 1: Phone */}
               <div className="flex flex-col">
@@ -119,7 +119,7 @@ export default function ContactPage() {
             </div>
           </Panel>
           <div className="grid gap-[var(--layout-grid-gutter)] sm:grid-cols-2">
-            <div className="group media-frame border-none bg-transparent relative min-h-[16rem]">
+            <div className="group media-frame border-none bg-transparent relative min-h-[16rem] shadow-2xl">
               <Image
                 src="/images/hiking_1.jpg"
                 alt={siteCopyContent.contact.heroImages.streetAlt}
@@ -128,7 +128,7 @@ export default function ContactPage() {
                 sizes="(max-width: 640px) 100vw, 25vw"
               />
             </div>
-            <div className="group media-frame border-none bg-transparent relative min-h-[16rem]">
+            <div className="group media-frame border-none bg-transparent relative min-h-[16rem] shadow-xl">
               <Image
                 src="/images/scodrinon_play_2.webp"
                 alt={siteCopyContent.contact.heroImages.socialAlt}
@@ -141,8 +141,17 @@ export default function ContactPage() {
         </div>
       </PageHero>
 
-      <section className="py-[var(--layout-section-spacing)]">
-        <div className="shell-container sm:px-6 lg:px-8 grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.2fr_0.8fr]">
+      <section className="section-muted py-[var(--layout-section-spacing)] relative overflow-hidden">
+        {/* Top section divider */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" aria-hidden="true" />
+        
+        {/* Subtle decorative elements */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute top-1/4 -right-48 w-96 h-96 rounded-full bg-[var(--brand-primary)]/[0.02] blur-3xl" />
+          <div className="absolute bottom-1/3 -left-32 w-80 h-80 rounded-full bg-[var(--accent)]/[0.015] blur-3xl" />
+        </div>
+        
+        <div className="shell-container sm:px-6 lg:px-8 grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.2fr_0.8fr] relative z-10">
           <div className="flex flex-col gap-6 h-full">
 
             {siteConfig.features.showLocalExperienceMap ? (
@@ -155,7 +164,7 @@ export default function ContactPage() {
           </div>
 
           <Reveal delay={120}>
-            <Panel className="p-card-premium h-full">
+            <Panel className="p-card-premium bg-white dark:bg-card shadow-xl border-[var(--border)] h-full">
               <SectionHeading
                 variant="simple"
                 eyebrow={siteCopyContent.contact.faq.eyebrow}
@@ -170,7 +179,10 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="py-[var(--layout-section-spacing)]">
+      <section className="py-[var(--layout-section-spacing)] relative">
+        {/* Top section divider */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" aria-hidden="true" />
+        
         <div className="shell-container">
           <CtaStrip
             eyebrow={siteCopyContent.contact.cta.eyebrow}

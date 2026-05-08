@@ -34,13 +34,25 @@ export function GalleryView({ galleryItems, bookingAwardImage, galleryCopy, book
         {null}
       </PageHero>
 
-      <section className="py-[var(--layout-section-spacing)]">
-        <div className="shell-container">
+      <section className="section-muted py-[var(--layout-section-spacing)] relative overflow-hidden">
+        {/* Top section divider */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" aria-hidden="true" />
+        
+        {/* Subtle decorative elements */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute top-1/4 -right-48 w-96 h-96 rounded-full bg-[var(--brand-primary)]/[0.02] blur-3xl" />
+          <div className="absolute bottom-1/3 -left-32 w-80 h-80 rounded-full bg-[var(--accent)]/[0.015] blur-3xl" />
+        </div>
+        
+        <div className="shell-container relative z-10">
           <GalleryMasonry items={galleryItems} />
         </div>
       </section>
 
-      <section className="py-[var(--layout-section-spacing)]">
+      <section className="py-[var(--layout-section-spacing)] relative">
+        {/* Top section divider */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" aria-hidden="true" />
+        
         <div className="shell-container grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.05fr_0.95fr] items-start">
           <Reveal className="lg:sticky lg:top-32">
             <Panel className="overflow-hidden">
@@ -81,7 +93,10 @@ export function GalleryView({ galleryItems, bookingAwardImage, galleryCopy, book
         </div>
       </section>
 
-      <section className="py-[var(--layout-section-spacing)]">
+      <section className="py-[var(--layout-section-spacing)] relative">
+        {/* Top section divider */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" aria-hidden="true" />
+        
         <div className="shell-container">
           <CtaStrip
             eyebrow={galleryCopy.cta.eyebrow}

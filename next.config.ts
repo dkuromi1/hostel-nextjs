@@ -20,6 +20,14 @@ function getAllowedDevOrigins() {
 const nextConfig: NextConfig = {
   turbopack: {},
   allowedDevOrigins: isDev ? getAllowedDevOrigins() : undefined,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
+  },
   async redirects() {
     return [
       {

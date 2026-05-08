@@ -297,7 +297,7 @@
     {
       "id": "hostel-video-1",
       "type": "video",
-      "src": "/videos/videoplayback.mp4",
+      "src": "/videos/videoplayback_sound.mp4",
       "poster": "/images/video-poster.webp",
       "alt": "Short rooftop video from Scodrinon Hostel",
       "aspect": "360/640"

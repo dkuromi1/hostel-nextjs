@@ -27,18 +27,18 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
         {/* Decorative Background Elements */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.03] soft-grid" />
 
-        <div className="relative z-10 flex flex-col sm:flex-row items-center sm:items-start gap-8 text-center sm:text-left">
+        <div className="relative z-10 flex flex-col sm:flex-row flex-1 items-center sm:items-start gap-6 sm:gap-8 text-center sm:text-left">
           <div className="flex size-16 shrink-0 items-center justify-center rounded-2xl bg-white text-[var(--brand-primary)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-500 group-hover:scale-110 group-hover:bg-[var(--brand-primary)] group-hover:text-white dark:bg-white/5 dark:text-[var(--brand-accent)] dark:group-hover:bg-[var(--brand-primary)]">
             <Icon className="size-8 transition-transform duration-500" />
           </div>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 flex-1">
             <SectionLabel variant="emerald" className="mx-auto sm:mx-0">
               {content.directBookingLabel}
             </SectionLabel>
             <h3 className="heading-item text-xl sm:text-2xl text-[var(--text-heading)] dark:text-white">
               {content.directBookingTitle}
             </h3>
-            <p className="text-card-body max-w-lg mx-auto sm:mx-0 leading-relaxed transition-colors group-hover:text-[var(--text-body)] dark:text-white/80 dark:group-hover:text-white">
+            <p className="text-card-body max-w-2xl mx-auto sm:mx-0 leading-relaxed transition-colors group-hover:text-[var(--text-body)] dark:text-white/80 dark:group-hover:text-white">
               {content.directBookingDescription}
             </p>
           </div>
@@ -49,7 +49,7 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
           rel="noreferrer"
           className={cn(
             buttonVariants({ variant: "whatsapp" }),
-            "relative z-10 shrink-0 w-full sm:w-auto h-14 rounded-full px-12 text-base font-semibold tracking-tight transition-all duration-500 hover:scale-[1.05] shadow-whatsapp active:scale-95"
+            "relative z-10 shrink-0 w-full sm:w-auto h-14 rounded-full px-8 text-base font-semibold tracking-tight transition-all duration-500 hover:scale-[1.05] shadow-whatsapp active:scale-95"
           )}
         >
           {content.directBookingButton}

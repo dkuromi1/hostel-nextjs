@@ -22,7 +22,7 @@ export function SectionLabel({
         "uppercase tracking-[0.24em] antialiased",
         weight === "light" ? "text-xs font-semibold" : "text-xs font-bold",
         colorScheme === "light"
-          ? "text-white/70"
+          ? "text-white"
           : variant === "default"
             ? "text-[var(--text-muted)] dark:text-[var(--text-body-subtle)]"
             : variant === "emerald"

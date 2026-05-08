@@ -138,7 +138,7 @@
     }
   },
   "features": {
-    "volunteersNeeded": true,
+    "volunteersNeeded": false,
     "showMascot": true,
     "showRegionalWeather": true,
     "showLocalExperienceMap": true,

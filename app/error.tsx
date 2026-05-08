@@ -19,8 +19,8 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="shell-container py-[var(--layout-section-spacing)]">
-      <div className="glass-panel mx-auto max-w-3xl rounded-3xl p-8 shadow-[0_24px_80px_-42px_rgba(15,23,42,0.35)]">
+    <div className="shell-container py-[var(--layout-section-spacing)] pt-[calc(var(--layout-section-spacing)+120px)] flex flex-col items-center justify-center min-h-[70vh]">
+      <div className="glass-panel w-full max-w-3xl rounded-3xl p-8 shadow-[0_24px_80px_-42px_rgba(15,23,42,0.35)]">
         <p className="text-xs uppercase tracking-[0.28em] text-[var(--brand-primary)]">
           {siteCopyContent.errorPage.eyebrow}
         </p>

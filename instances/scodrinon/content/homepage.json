@@ -28,7 +28,7 @@
     },
     {
       "title": "Adventure Ready",
-      "text": "Services including transportation or tour arrangements, laundry, and luggage storage",
+      "text": "Services including transportation and tour arrangements, laundry, and luggage storage",
       "icon": "Mountain"
     }
   ],
@@ -60,12 +60,12 @@
     },
     {
       "title": "Shared Kitchen",
-      "description": "Well equipped kitchen for guest use, including refrigerator, espresso and ice machine.",
+      "description": "Well equipped kitchen for guest use, including refrigerators, stoves, an espresso and ice machine.",
       "icon": "Utensils"
     },
     {
       "title": "Community",
-      "description": "Regular social events, excursions, and a helpful WhatsApp community.",
+      "description": "Regular social events, daytrips, movie nights, family dinners, games and a helpful WhatsApp community.",
       "icon": "Zap"
     }
   ],

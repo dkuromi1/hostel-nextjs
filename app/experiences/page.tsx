@@ -89,7 +89,7 @@ export default function ExperiencesPage() {
                   fill
                   priority
                   fetchPriority="high"
-                  className="object-cover object-[30%_center] transition-transform duration-1000 hover:scale-105"
+                  className="object-cover object-[30%_center] transition-transform duration-1000 hover:scale-105 shadow-2xl"
                   sizes="(max-width: 1024px) 50vw, 30vw"
                 />
               </div>
@@ -125,8 +125,14 @@ export default function ExperiencesPage() {
       </PageHero>
 
       {/* Things To Do Section */}
-      <section id="things-to-do" className="py-[var(--layout-section-spacing)] scroll-mt-24">
-        <div className="shell-container space-y-12">
+      <section id="things-to-do" className="section-muted py-[var(--layout-section-spacing)] scroll-mt-24 relative overflow-hidden">
+        {/* Subtle decorative elements */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute top-1/4 -right-48 w-96 h-96 rounded-full bg-[var(--brand-primary)]/[0.02] blur-3xl" />
+          <div className="absolute bottom-1/3 -left-32 w-80 h-80 rounded-full bg-[var(--accent)]/[0.015] blur-3xl" />
+        </div>
+        
+        <div className="shell-container space-y-12 relative z-10">
           <Reveal className="max-w-3xl">
             <SectionHeading
               eyebrow={siteCopyContent.experiences.thingsToDo.eyebrow}
@@ -149,7 +155,7 @@ export default function ExperiencesPage() {
             <SwipableRow itemCount={thingsToDo.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-[var(--layout-grid-gutter)]">
               {thingsToDo.map((item) => (
                 <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full">
-                  <Panel className="group relative flex h-full flex-col overflow-hidden transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
+                  <Panel className="group relative flex h-full flex-col overflow-hidden transition-all duration-300 bg-white dark:bg-card hover:border-[var(--brand-primary)]/20 hover:shadow-xl">
                     <div className="relative h-48 w-full overflow-hidden bg-[var(--muted)]">
                       <Image
                         src={item.image}
@@ -243,8 +249,14 @@ export default function ExperiencesPage() {
       </section>
 
       {/* Local Texture Section */}
-      <section id="social-connection" className="py-[var(--layout-section-spacing)] scroll-mt-24">
-        <div className="shell-container space-y-12">
+      <section id="social-connection" className="section-slate py-[var(--layout-section-spacing)] scroll-mt-24 relative overflow-hidden">
+        {/* Subtle background texture */}
+        <div className="absolute inset-0 opacity-[0.03]" aria-hidden="true">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(110,231,183,0.08),transparent_40%)]" />
+        </div>
+        
+        <div className="shell-container space-y-12 relative z-10">
 
           {/* Section Header */}
           <Reveal className="max-w-3xl">
@@ -252,6 +264,7 @@ export default function ExperiencesPage() {
               eyebrow={siteCopyContent.experiences.socialConnection.eyebrow}
               title={siteCopyContent.experiences.socialConnection.title}
               description={siteCopyContent.experiences.socialConnection.description}
+              variant="light"
             />
           </Reveal>
 
@@ -280,16 +293,16 @@ export default function ExperiencesPage() {
                       </div>
 
                       {/* Card Content Area */}
-                      <div className="flex flex-1 flex-col p-card">
-                        {/* Floating Icon Box (Overlaps the image and background) */}
-                        <div className="relative -mt-6 mb-6 flex size-12 items-center justify-center rounded-[var(--radius-2xl)] bg-[var(--glass-bg)] text-[var(--text-body)] shadow-lg shadow-[var(--glass-shadow)]/10 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-[var(--brand-primary-light)] group-hover:text-[var(--brand-primary)]">
+                      <div className="flex flex-1 flex-col p-card-premium">
+                        {/* Floating Icon Box */}
+                        <div className="relative -mt-10 mb-6 flex size-12 items-center justify-center rounded-[var(--radius-2xl)] bg-white/10 text-[var(--brand-primary)] shadow-lg shadow-black/20 backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-white/20 group-hover:text-white">
                           <Icon className="size-5" />
                         </div>
 
-                        <h3 className="mb-3 heading-item text-[var(--text-heading)]">
+                        <h3 className="mb-3 heading-item text-white">
                           {item.title}
                         </h3>
-                        <p className="text-card-body text-[var(--text-body-subtle)]">
+                        <p className="text-card-body text-white/75">
                           {item.description}
                         </p>
                       </div>

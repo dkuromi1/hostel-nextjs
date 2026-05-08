@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Moon, Zap, MapPin, Compass } from "@/lib/icon-registry";
+import { ArrowRight, Moon, Zap, MapPin, Compass, Mountain, Users, resolveIcon } from "@/lib/icon-registry";
 import { EditorialButton } from "@/components/ui/editorial-button";
 
 import { SectionHeading } from "@/components/section-heading";
@@ -72,8 +72,14 @@ export interface ExperiencesSectionProps {
 
 export function ExperiencesSection({ eventCards, experiencePillars, copy, showRegionalWeather }: ExperiencesSectionProps) {
   return (
-    <section className="py-[var(--layout-section-spacing)]">
-      <div className="shell-container space-y-10">
+    <section className="py-[var(--layout-section-spacing)] relative overflow-hidden">
+      {/* Decorative background gradients */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute top-1/4 -left-48 w-96 h-96 rounded-full bg-[var(--brand-primary)]/[0.025] blur-3xl" />
+        <div className="absolute bottom-1/3 -right-32 w-80 h-80 rounded-full bg-[var(--accent)]/[0.02] blur-3xl" />
+      </div>
+      
+      <div className="shell-container space-y-10 relative z-10">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
             eyebrow={copy.eyebrow}
@@ -87,155 +93,65 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
 
         </div>
 
-        {/* --- DISCOVER SUBSECTION --- */}
-        <div className="relative pt-12 sm:pt-16">
-          <div className="absolute left-0 top-4 z-0 select-none opacity-[0.07] sm:top-4">
-            <span className="font-sans text-[44px] leading-none tracking-tighter text-[var(--text-heading)] sm:text-[64px]" role="presentation" aria-hidden="true">
-              {copy.discoverLabel}
-            </span>
-          </div>
-
-          <div className="lg:hidden">
-            <Reveal delay={120}>
-              <SwipableRow itemCount={experiencePillars.length} className="-mx-4 px-4 sm:-mx-8 sm:px-8">
-                {experiencePillars.map((pillar, index) => (
-                  <div key={pillar.title} className="min-w-[85vw] sm:min-w-[45vw] snap-center h-full">
-                    <Panel className="group overflow-hidden flex h-full flex-col transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
-                      <div className="relative min-h-[16rem] sm:min-h-[22rem]">
-                        <div className="absolute inset-0 overflow-hidden">
-                          <Image
-                            src={pillar.image}
-                            alt={pillar.alt}
-                            fill
-                            loading="lazy"
-                            className="object-cover transition-transform duration-700 group-hover:scale-105 z-0 transform-gpu"
-                            sizes="(max-width: 1024px) 85vw, 50vw"
-                          />
-                        </div>
-                        {index === 0 && showRegionalWeather && (
-                          <div className="absolute right-4 top-4 z-20">
-                            <div className="hidden sm:block">
-                              <ThethWeather />
-                            </div>
-                            <div className="block sm:hidden">
-                              <ThethWeather variant="small" />
-                            </div>
-                          </div>
-                        )}
-                        <div className="absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-card pt-24 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
-                          <SectionLabel colorScheme="light" className="mb-2">
-                            {pillar.title}
-                          </SectionLabel>
-                        </div>
-                      </div>
-                      <div className="p-card text-card-body bg-[var(--glass-bg)] flex-1 flex flex-col">
-                        <p className="flex-1">{formatText(pillar.description)}</p>
-                        <PillarCta cta={pillar.cta} />
-                      </div>
-                    </Panel>
-                  </div>
-                ))}
-                <div className="w-8 flex-shrink-0 lg:hidden" aria-hidden="true" />
-              </SwipableRow>
-            </Reveal>
-          </div>
-
-          <div className="hidden lg:grid gap-[var(--layout-grid-gutter)] lg:grid-cols-12">
-            <Reveal delay={0} className="lg:col-span-7 h-full">
-              <Panel className="group overflow-hidden h-full transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
-                <div className="relative h-full min-h-[30rem]">
-                  <div className="absolute inset-0 overflow-hidden">
+        {/* --- PILLARS SUBSECTION --- */}
+        <div className="space-y-24">
+          {experiencePillars.map((pillar, index) => {
+            const isEven = index % 2 === 1;
+            const PillarIcon = index === 0 ? Mountain : MapPin;
+            return (
+              <Reveal key={pillar.title} delay={100}>
+                <div className={cn(
+                  "group relative flex flex-col gap-8 lg:items-center",
+                  isEven ? "lg:flex-row-reverse" : "lg:flex-row"
+                )}>
+                  <div className="relative aspect-[16/10] lg:w-[55%] shrink-0 overflow-hidden rounded-[var(--radius-3xl)] shadow-2xl">
                     <Image
-                      src={experiencePillars[0].image}
-                      alt={experiencePillars[0].alt}
+                      src={pillar.image}
+                      alt={pillar.alt}
                       fill
-                      loading="lazy"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105 z-0 transform-gpu"
-                      sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 58vw, 812px"
+                      className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                     />
+                    {index === 0 && showRegionalWeather && (
+                      <div className="absolute right-6 top-6 z-20">
+                        <ThethWeather />
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   </div>
-                  {showRegionalWeather ? (
-                    <div className="absolute right-4 top-4 z-20">
-                      <ThethWeather />
+                  
+                  <div className={cn(
+                    "flex-1 space-y-4 lg:space-y-6",
+                    isEven ? "lg:pr-12" : "lg:pl-12"
+                  )}>
+                    <div className="flex items-center gap-3">
+                      <PillarIcon className="size-5 text-[var(--brand-primary)]" />
+                      <SectionLabel weight="bold" className="text-[var(--brand-primary)] tracking-[0.2em] uppercase">
+                        {pillar.title}
+                      </SectionLabel>
                     </div>
-                  ) : null}
-                  <div className="absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/95 via-black/50 to-transparent p-card pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
-                    <SectionLabel colorScheme="light" className="drop-shadow-md">
-                      {experiencePillars[0].title}
-                    </SectionLabel>
-                    <p className="mt-3 max-w-lg text-card-body !text-white/90">
-                      {formatText(experiencePillars[0].description)}
+                    <h3 className="text-3xl sm:text-4xl font-heading leading-tight tracking-tight text-[var(--text-heading)]">
+                      {index === 0 ? "The Gateway to the North" : "The Heart of the City"}
+                    </h3>
+                    <p className="text-lg leading-relaxed text-[var(--text-body-subtle)]">
+                      {formatText(pillar.description)}
                     </p>
-                    <PillarCta cta={experiencePillars[0].cta} variant="dark" />
+                    <PillarCta cta={pillar.cta} />
                   </div>
                 </div>
-              </Panel>
-            </Reveal>
-
-            <div className="lg:col-span-5 grid gap-[var(--layout-grid-gutter)]">
-              {experiencePillars.slice(1).map((pillar, index) => {
-                const isSecondElement = index === 0;
-                return (
-                  <Reveal key={pillar.title} delay={150 + index * 100}>
-                    <Panel className="group overflow-hidden h-full transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
-                      {isSecondElement ? (
-                        <div className="relative h-full min-h-[22rem]">
-                          <div className="absolute inset-0 overflow-hidden">
-                            <Image
-                              src={pillar.image}
-                              alt={pillar.alt}
-                              fill
-                              loading="lazy"
-                              className="object-cover transition-transform duration-700 group-hover:scale-105 z-0 transform-gpu"
-                              sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 42vw, 588px"
-                            />
-                          </div>
-                          <div className="absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/95 via-black/50 to-transparent p-card pt-32 lg:pt-64 text-white [--link-color:var(--brand-accent)] [--link-color-hover:white] [--link-decoration:var(--brand-accent)]">
-                            <SectionLabel colorScheme="light" className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-                              {pillar.title}
-                            </SectionLabel>
-                            <p className="mt-3 text-base leading-snug text-white/90">
-                              {formatText(pillar.description)}
-                            </p>
-                            <PillarCta cta={pillar.cta} variant="dark" />
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="grid gap-0 md:grid-cols-[0.9fr_1.1fr]">
-                          <div className="absolute inset-0 overflow-hidden">
-                            <Image
-                              src={pillar.image}
-                              alt={pillar.alt}
-                              fill
-                              className="object-cover transition-transform duration-700 group-hover:scale-105 z-0 transform-gpu"
-                              sizes="(max-width: 768px) 100vw, (max-width: 1400px) 18vw, 250px"
-                            />
-                          </div>
-                          <div className="space-y-3 p-card">
-                            <h3 className="heading-feature text-[var(--text-heading)]">
-                              {pillar.title}
-                            </h3>
-                            <p className="text-card-body">
-                              {formatText(pillar.description)}
-                            </p>
-                            <PillarCta cta={pillar.cta} />
-                          </div>
-                        </div>
-                      )}
-                    </Panel>
-                  </Reveal>
-                );
-              })}
-            </div>
-          </div>
+              </Reveal>
+            );
+          })}
         </div>
 
         {/* --- CONNECT SUBSECTION --- */}
-        <div className="relative pt-12 sm:pt-16 mt-8 sm:mt-12">
-          <div className="absolute left-0 top-4 z-0 select-none opacity-[0.07] sm:top-4">
-            <span className="font-sans text-[44px] leading-none tracking-tighter text-[var(--text-heading)] sm:text-[64px]" role="presentation" aria-hidden="true">
-              {copy.connectLabel}
-            </span>
+        <div className="relative pt-12 sm:pt-16 mt-8 sm:mt-12 space-y-8">
+          <div className="flex items-center gap-3">
+            <Users className="size-5 text-[var(--brand-primary)]" />
+            <SectionLabel weight="bold" className="text-[var(--brand-primary)] tracking-[0.2em] uppercase">
+              SOCIALS
+            </SectionLabel>
+            <div className="h-px flex-1 bg-gradient-to-r from-[var(--border)] to-transparent opacity-50" />
           </div>
 
           <Reveal delay={120}>

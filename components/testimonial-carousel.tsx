@@ -17,12 +17,15 @@ export type Testimonial = {
 type TestimonialCarouselProps = {
   testimonials: readonly Testimonial[];
   className?: string;
+  variant?: "default" | "dark";
 };
 
 export function TestimonialCarousel({
   testimonials,
   className,
+  variant = "default",
 }: TestimonialCarouselProps) {
+  const isDark = variant === "dark";
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   // Use a ref for direction so rapid clicks always read the latest value
@@ -80,7 +83,10 @@ export function TestimonialCarousel({
   return (
     <Panel
       className={cn(
-        "relative flex flex-col justify-between border-white/10 bg-[var(--brand-tertiary)] dark:bg-[var(--brand-tertiary-dark)] p-card-premium text-white shadow-xl shadow-slate-900/15",
+        "relative flex flex-col justify-between p-card-premium shadow-xl",
+        isDark 
+          ? "border-white/10 bg-black/30 text-white shadow-black/40 backdrop-blur-md" 
+          : "border-white/10 bg-[var(--brand-tertiary)] dark:bg-[var(--brand-tertiary-dark)] text-white shadow-slate-900/15",
         className
       )}
       onMouseEnter={() => setIsHovered(true)}
