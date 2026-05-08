@@ -238,7 +238,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
               {eventCards.map((event, index) => (
                 <div key={event.title} className="min-w-[82vw] snap-center sm:min-w-0">
                   <Panel className="group overflow-hidden transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
-                    <div className="grid gap-0 md:grid-cols-[0.92fr_1.08fr]">
+                    <div className="grid gap-0 lg:grid-cols-[0.92fr_1.08fr]">
                       <div className="relative min-h-[14rem]">
                         <Image
                           src={event.image}
@@ -246,7 +246,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                           fill
                           loading="lazy"
                           className="object-cover transition-transform duration-700 group-hover:scale-105 z-0 transform-gpu"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1400px) 23vw, 322px"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1400px) 23vw, 322px"
                         />
                       </div>
                       <div className="p-card">
