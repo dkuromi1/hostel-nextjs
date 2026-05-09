@@ -46,7 +46,7 @@ export function BookingActions({
         </a>
       ) : null}
       {!whatsappOnly && bookingChannels.length > 0 && (
-        <div className="flex w-full min-w-0 flex-row gap-2 sm:w-auto sm:shrink-0 sm:flex-nowrap sm:gap-3">
+        <div className="flex w-full min-w-0 flex-row flex-wrap gap-2 sm:w-auto sm:shrink-0 sm:flex-nowrap sm:gap-3">
           {bookingChannels.map((channel) => (
             <a
               key={channel.id}
@@ -55,12 +55,13 @@ export function BookingActions({
               rel="noreferrer"
               className={cn(
                 buttonVariants({ variant: "ghost", size: compact ? "sm" : "lg" }),
-                "h-auto min-h-12 flex-1 rounded-full justify-center border px-3 py-3 text-sm transition-all duration-300 hover:scale-[1.02] active:scale-95",
+                "h-auto min-h-12 flex-1 rounded-full flex items-center justify-center gap-2.5 border px-4 py-3 text-sm font-medium transition-all duration-300 hover:scale-[1.02] active:scale-95",
                 forceLight 
                   ? "border-white/30 bg-white/10 text-white hover:bg-white/20 hover:border-white/50"
                   : "border-[var(--glass-border)] bg-[var(--glass-bg)] text-[var(--text-heading)] hover:bg-[var(--glass-bg)]/90"
               )}
             >
+              <ChannelIcon iconKey={channel.icon} iconOnly className="size-6 shrink-0" />
               <span className="truncate">{channel.label}</span>
             </a>
           ))}

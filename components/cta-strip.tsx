@@ -39,7 +39,7 @@ export function CtaStrip({
               {description}
             </p>
           </div>
-          <BookingActions className="max-w-3xl" bookingChannels={bookingChannels} contactChannels={contactChannels} />
+          <BookingActions className="max-w-3xl" bookingChannels={bookingChannels} contactChannels={contactChannels} forceLight={true} />
         </div>
         <div className="relative min-h-72">
           <Image
