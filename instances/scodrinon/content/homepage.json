@@ -45,13 +45,8 @@
   "includedServices": [
     {
       "title": "Free Breakfast",
-      "description": "Fresh, locally-sourced breakfast (excl. off-season) including morning espresso.",
+      "description": "Fresh, locally-sourced breakfast (excl. off-season) including morning espresso. Early take-away breakfast for hikers",
       "icon": "Coffee"
-    },
-    {
-      "title": "For Hikers",
-      "description": "Early take-away breakfast for hikers & morning travelers, and free secure luggage storage.",
-      "icon": "Mountain"
     },
     {
       "title": "Modern Facilities",
