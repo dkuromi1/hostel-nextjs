@@ -46,7 +46,7 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
 
           {/* Rooftop image */}
           <Reveal delay={0} className="lg:row-start-1 relative group">
-            <div className="media-frame !border-[var(--border)] relative aspect-[16/10] sm:aspect-[21/9] lg:aspect-auto lg:min-h-[26rem] h-full overflow-hidden shadow-2xl">
+            <div className="media-frame !border-white/[0.03] relative aspect-[16/10] sm:aspect-[21/9] lg:aspect-auto lg:min-h-[26rem] h-full overflow-hidden shadow-2xl">
               <Image
                 src="/images/rooftop_social.webp"
                 alt={atmosphere.rooftopImageAlt}
@@ -107,7 +107,7 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
             <div className="grid grid-cols-[1.1fr_1fr] gap-[var(--layout-grid-gutter)] lg:grid-cols-1 lg:h-full">
               {/* Room image */}
               <Reveal delay={100} className="flex min-w-0 relative lg:-mt-12 lg:translate-x-8 z-20 w-full">
-                <div className="media-frame !border-[var(--border)] relative w-full aspect-[4/5] sm:aspect-[4/3]">
+                <div className="media-frame !border-white/[0.03] relative w-full aspect-[4/5] sm:aspect-[4/3]">
                   <Image
                     src="/images/rooms_1.jpg"
                     alt={atmosphere.roomImageAlt}
@@ -119,7 +119,7 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
               </Reveal>
 
               {/* Video */}
-              <Reveal delay={300} className="media-frame !border-[var(--border)] relative flex items-start lg:items-center self-start lg:self-auto overflow-hidden min-[500px]:row-span-2 lg:row-span-1 aspect-[9/16] min-[500px]:aspect-auto">
+              <Reveal delay={300} className="media-frame !border-white/[0.03] relative flex items-start lg:items-center self-start lg:self-auto overflow-hidden min-[500px]:row-span-2 lg:row-span-1 aspect-[9/16] min-[500px]:aspect-auto">
                 <LazyVideo
                   src="/videos/videoplayback.mp4"
                   poster="/images/video-poster.webp"
