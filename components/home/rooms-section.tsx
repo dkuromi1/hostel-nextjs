@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Check } from "@/lib/icon-registry";
+import { ArrowRight, Check, Star } from "@/lib/icon-registry";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
 import { Panel } from "@/components/ui/panel";
@@ -62,8 +62,17 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
                     </div>
                     {isFirst && (
                       <div className="absolute top-5 right-5 z-20">
-                        <div className="bg-[var(--brand-primary)] text-white text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full shadow-lg rotate-3 group-hover:rotate-0 transition-transform duration-500">
-                          Most Popular
+                        <div className="relative overflow-hidden rounded-full bg-[var(--accent)] px-4 py-2 shadow-2xl backdrop-blur-md ring-1 ring-white/30 transition-all duration-500 hover:-translate-y-0.5 hover:bg-[var(--accent)] group/popular">
+                          {/* Glossy shine */}
+                          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent -translate-x-full group-hover/popular:translate-x-full transition-transform duration-1000 ease-in-out" />
+                          
+                          <div className="relative z-10 flex items-center gap-3 text-slate-900">
+                            <Star className="size-3 text-slate-900 fill-slate-900" />
+                            <div className="h-3 w-px bg-slate-900/20" />
+                            <span className="text-[10px] font-bold uppercase tracking-[0.2em]">
+                              Most Popular
+                            </span>
+                          </div>
                         </div>
                       </div>
                     )}
