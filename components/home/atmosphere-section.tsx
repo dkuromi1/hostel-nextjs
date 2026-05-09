@@ -25,7 +25,7 @@ export interface AtmosphereSectionProps {
 
 export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSectionProps) {
   const containerRef = useRef<HTMLElement>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
@@ -63,18 +63,44 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
                 </p>
               </div>
             </div>
-            
+
             {/* Floating Sticker/Badge */}
-            <div className="absolute -top-4 -right-4 lg:-top-6 lg:-right-6 z-30 rotate-12 group-hover:rotate-0 transition-transform duration-500">
-              <div className="size-20 lg:size-24 rounded-full bg-[var(--brand-primary)] text-white flex flex-col items-center justify-center text-center p-2 shadow-2xl ring-1 ring-white/20">
-                <span className="text-[10px] lg:text-[12px] font-black uppercase tracking-tighter leading-none">Best View</span>
-                <span className="text-lg lg:text-xl font-black leading-none mt-1">In Town</span>
+            <div className="absolute -top-6 -right-6 lg:-top-12 lg:-right-12 z-30 -rotate-12 group-hover:rotate-0 transition-all duration-700 ease-out scale-100 group-hover:scale-110">
+              <div className="relative size-24 lg:size-32 rounded-full flex items-center justify-center shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] group/badge">
+                {/* Layered Backgrounds */}
+                <div className="absolute inset-0 rounded-full bg-slate-950/90 backdrop-blur-md border border-white/10" />
+                <div className="absolute inset-1 rounded-full border border-amber-400/20" />
+
+                {/* Subtle Inner Glow */}
+                <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.08)_0%,transparent_70%)]" />
+
+                {/* Content */}
+                <div className="relative z-10 flex flex-col items-center">
+                  <span className="text-[7px] lg:text-[8px] font-bold uppercase tracking-[0.4em] text-amber-200/60 mb-1">Undisputed</span>
+
+                  <div className="flex flex-col items-center -space-y-1 lg:-space-y-2">
+                    <span className="font-cormorant text-xl lg:text-3xl italic font-medium text-white">Best View</span>
+                    <span className="font-cormorant text-xl lg:text-3xl italic font-medium text-white">in Town</span>
+                  </div>
+
+                  {/* Decorative element */}
+                  <div className="mt-2 flex items-center gap-2">
+                    <div className="h-[0.5px] w-4 bg-gradient-to-r from-transparent via-amber-400/30 to-transparent" />
+                    <div className="size-1 rounded-full bg-amber-400/60 shadow-[0_0_8px_rgba(251,191,36,0.4)]" />
+                    <div className="h-[0.5px] w-4 bg-gradient-to-r from-transparent via-amber-400/30 to-transparent" />
+                  </div>
+                </div>
+
+                {/* Shine Effect on hover */}
+                <div className="absolute inset-0 rounded-full overflow-hidden pointer-events-none">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent -translate-x-full group-hover/badge:translate-x-full transition-transform duration-1000 ease-in-out" />
+                </div>
               </div>
             </div>
           </Reveal>
 
           {/* Right column */}
-          <motion.div 
+          <motion.div
             style={{ y: rightColumnY }}
             className="flex flex-col gap-[var(--layout-grid-gutter)] lg:col-start-2 lg:row-start-1 lg:row-span-2"
           >
