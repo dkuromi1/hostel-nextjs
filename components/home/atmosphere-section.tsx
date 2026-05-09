@@ -65,7 +65,7 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
             </div>
 
             {/* Floating Sticker/Badge */}
-            <div className="absolute -top-6 -right-6 lg:-top-12 lg:-right-12 z-30 -rotate-12 group-hover:rotate-0 transition-all duration-700 ease-out scale-100 group-hover:scale-110">
+            <div className="absolute -top-6 -right-[14px] lg:-top-12 lg:-right-12 z-30 -rotate-12 group-hover:rotate-0 transition-all duration-700 ease-out scale-100 group-hover:scale-110">
               <div className="relative size-24 lg:size-32 rounded-full flex items-center justify-center shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] group/badge">
                 {/* Layered Backgrounds */}
                 <div className="absolute inset-0 rounded-full bg-slate-950/90 backdrop-blur-md border border-white/10" />
