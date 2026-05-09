@@ -152,7 +152,7 @@ export function MobileNav({ navLinks, contactChannels, bookingChannels, mapUrl }
                   "fixed right-4 top-20 z-[70] w-[min(22rem,calc(100vw-3.5rem))] overflow-hidden rounded-2xl border p-4 shadow-2xl lg:hidden transition-colors duration-500",
                   shouldReduce
                     ? "border-[var(--border)] bg-white dark:bg-[var(--surface-dark-secondary)]"
-                    : "border-[var(--glass-border)] bg-white/80 dark:bg-[var(--surface-dark-secondary)]/85 backdrop-blur-2xl transform-gpu"
+                    : "border-[var(--glass-border)] bg-white/85 dark:bg-[var(--surface-dark-secondary)]/80 backdrop-blur-2xl transform-gpu"
                 )}
                 style={{ 
                   originX: 1, 
