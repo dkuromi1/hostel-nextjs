@@ -119,7 +119,7 @@ export function ImageCarousel({
                         type="button"
                         onClick={prev}
                         aria-label="Previous image"
-                        className="absolute left-3 top-1/2 z-20 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-[var(--foreground)] opacity-0 shadow-sm backdrop-blur transition-all duration-300 hover:scale-105 hover:bg-white focus:opacity-100 group-hover:opacity-100 sm:left-4"
+                        className="absolute left-3 top-1/2 z-20 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-slate-900 opacity-0 shadow-sm backdrop-blur transition-all duration-300 hover:scale-105 hover:bg-white focus:opacity-100 group-hover:opacity-100 sm:left-4"
                     >
                         <ChevronLeft className="size-5" />
                     </button>
@@ -127,7 +127,7 @@ export function ImageCarousel({
                         type="button"
                         onClick={next}
                         aria-label="Next image"
-                        className="absolute right-3 top-1/2 z-20 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-[var(--foreground)] opacity-0 shadow-sm backdrop-blur transition-all duration-300 hover:scale-105 hover:bg-white focus:opacity-100 group-hover:opacity-100 sm:right-4"
+                        className="absolute right-3 top-1/2 z-20 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-slate-900 opacity-0 shadow-sm backdrop-blur transition-all duration-300 hover:scale-105 hover:bg-white focus:opacity-100 group-hover:opacity-100 sm:right-4"
                     >
                         <ChevronRight className="size-5" />
                     </button>
