@@ -15,11 +15,11 @@ export function CinematicBreak() {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
-    <section ref={ref} className="relative h-[35dvh] sm:h-[50dvh] lg:h-[80dvh] w-full overflow-hidden flex items-center justify-center">
+    <section ref={ref} className="relative h-[40vh] sm:h-[50vh] lg:h-[80vh] min-h-[300px] w-full overflow-hidden flex items-center justify-center bg-black">
       {/* Full-bleed background with parallax */}
       <motion.div
         style={{ y }}
-        className="absolute inset-0 z-0 h-[130%] w-full"
+        className="absolute -inset-y-1/4 inset-x-0 z-0 w-full h-[150%]"
       >
         <Image
           src="/images/lake_shkoder.jpg"
