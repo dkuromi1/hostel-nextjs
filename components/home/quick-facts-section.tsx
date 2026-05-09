@@ -68,7 +68,7 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
   );
 
   return (
-    <section className={cn("section-muted relative z-20 py-12 lg:py-20", className)}>
+    <section className={cn("section-muted relative z-20 py-[var(--layout-section-spacing)]", className)}>
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-[0.03] soft-grid" />
