@@ -295,7 +295,7 @@ export default function ExperiencesPage() {
                       {/* Card Content Area */}
                       <div className="flex flex-1 flex-col p-card-premium">
                         {/* Floating Icon Box */}
-                        <div className="relative -mt-10 mb-6 flex size-12 items-center justify-center rounded-[var(--radius-2xl)] bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] shadow-lg shadow-black/5 ring-1 ring-white/50 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-[var(--brand-primary)] group-hover:text-white">
+                        <div className="relative -mt-10 mb-6 flex size-12 items-center justify-center rounded-[var(--radius-2xl)] bg-[#059669]/10 text-[#059669] shadow-lg shadow-black/5 ring-1 ring-white/50 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-[#059669] group-hover:text-white dark:bg-[#34d399]/10 dark:text-[#34d399] dark:group-hover:bg-[#34d399]">
                           <Icon className="size-5" />
                         </div>
 
