@@ -449,12 +449,31 @@
   /* Complex Layered Rhomboid Pattern - Refined Opacities */
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='100' viewBox='0 0 60 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 50L30 100L0 50Z' fill='none' stroke='%23000000' stroke-opacity='0.06' stroke-width='0.75'/%3E%3Cpath d='M30 15L51 50L30 85L9 50Z' fill='none' stroke='%23000000' stroke-opacity='0.05' stroke-width='0.5'/%3E%3Cpath d='M0 0L15 25M60 0L45 25M0 100L15 75M60 100L45 75' fill='none' stroke='%23000000' stroke-opacity='0.04' stroke-width='0.5'/%3E%3C/svg%3E");
   background-size: 60px 100px;
+  background-attachment: scroll;
+  
+  /* High-Quality Native Parallax */
+  view-timeline: --section-scroll block;
+  animation: rhomboid-parallax linear both;
+  animation-timeline: --section-scroll;
+  animation-range: entry 0% exit 100%;
+  will-change: background-position;
 
   &:is(.dark *) {
     --glass-border: rgba(255, 255, 255, 0.05);
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='100' viewBox='0 0 60 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 50L30 100L0 50Z' fill='none' stroke='%23ffffff' stroke-opacity='0.06' stroke-width='0.75'/%3E%3Cpath d='M30 15L51 50L30 85L9 50Z' fill='none' stroke='%23ffffff' stroke-opacity='0.05' stroke-width='0.5'/%3E%3Cpath d='M0 0L15 25M60 0L45 25M0 100L15 75M60 100L45 75' fill='none' stroke='%23ffffff' stroke-opacity='0.04' stroke-width='0.5'/%3E%3C/svg%3E");
   }
 }
+
+@keyframes rhomboid-parallax {
+  from {
+    background-position: 50% 0%;
+  }
+  to {
+    /* Subtle drift: 100px is exactly one pattern height for seamlessness */
+    background-position: 50% 100px;
+  }
+}
+
 
 @utility section-image-backed {
   position: relative;
