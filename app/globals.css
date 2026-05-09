@@ -469,8 +469,8 @@
     background-position: 50% 0%;
   }
   to {
-    /* Subtle drift: 100px is exactly one pattern height for seamlessness */
-    background-position: 50% 100px;
+    /* Seamless drift: 200px is exactly two pattern heights (2x speed) */
+    background-position: 50% 200px;
   }
 }
 
