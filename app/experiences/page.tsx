@@ -278,7 +278,7 @@ export default function ExperiencesPage() {
                 return (
                   <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full" >
                     <Panel
-                      className="group relative flex h-full flex-col overflow-hidden transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md"
+                      className="group relative flex h-full flex-col overflow-hidden transition-all duration-300 bg-white dark:bg-card !border-0 shadow-md hover:shadow-xl hover:shadow-[var(--brand-primary)]/5"
                     >
                       {/* Card Image Header */}
                       <div className="relative h-56 w-full overflow-hidden bg-[var(--muted)]">
@@ -295,14 +295,14 @@ export default function ExperiencesPage() {
                       {/* Card Content Area */}
                       <div className="flex flex-1 flex-col p-card-premium">
                         {/* Floating Icon Box */}
-                        <div className="relative -mt-10 mb-6 flex size-12 items-center justify-center rounded-[var(--radius-2xl)] bg-white/10 text-[var(--brand-primary)] shadow-lg shadow-black/20 backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-white/20 group-hover:text-white">
+                        <div className="relative -mt-10 mb-6 flex size-12 items-center justify-center rounded-[var(--radius-2xl)] bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] shadow-lg shadow-black/5 ring-1 ring-white/50 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-[var(--brand-primary)] group-hover:text-white">
                           <Icon className="size-5" />
                         </div>
 
-                        <h3 className="mb-3 heading-item text-white">
+                        <h3 className="mb-3 heading-item text-gray-900 dark:text-white">
                           {item.title}
                         </h3>
-                        <p className="text-card-body text-white/75">
+                        <p className="text-card-body text-gray-600 dark:text-white/75">
                           {item.description}
                         </p>
                       </div>
