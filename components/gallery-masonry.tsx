@@ -18,7 +18,7 @@ type GalleryMasonryProps = {
     priorityImageCount?: number;
 };
 
-const DEFAULT_PRIORITY_IMAGE_COUNT = 2;
+const DEFAULT_PRIORITY_IMAGE_COUNT = 4;
 
 function distributeItems(items: GalleryItem[], numColumns: number) {
     const columnData = Array.from({ length: numColumns }, () => ({
@@ -95,6 +95,7 @@ export function GalleryMasonry({
                         src={item.src}
                         alt={item.alt}
                         loading={isPriority ? "eager" : "lazy"}
+                        fetchPriority={isPriority ? "low" : undefined}
                         className="w-full h-auto object-cover will-change-transform transition-transform duration-[400ms] [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                         style={item.aspect ? { aspectRatio: item.aspect } : undefined}
                     />

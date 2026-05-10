@@ -69,8 +69,8 @@ export default function RoomsPage() {
               alt={siteCopyContent.rooms.heroImages.fourBedAlt}
               fill
               className="object-cover transition-transform duration-1000 group-hover:scale-105 shadow-2xl"
-              priority
-              fetchPriority="high"
+              loading="eager"
+              fetchPriority="low"
               sizes="(max-width: 768px) 100vw, 40vw"
             />
           </div>
@@ -80,8 +80,8 @@ export default function RoomsPage() {
               alt={siteCopyContent.rooms.heroImages.podAlt}
               fill
               className="object-cover transition-transform duration-1000 group-hover:scale-105 shadow-xl"
-              priority
-              fetchPriority="high"
+              loading="eager"
+              fetchPriority="low"
               sizes="(max-width: 768px) 100vw, 25vw"
             />
           </div>

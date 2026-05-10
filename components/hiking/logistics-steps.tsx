@@ -20,13 +20,12 @@ export function LogisticsSteps({ steps }: LogisticsStepsProps) {
         <div className="divide-y divide-[var(--border)]/50">
           {steps.map((step, i) => (
             <div key={step.title} className="group relative flex gap-6 p-card transition-colors hover:bg-[var(--muted)]/30">
-              {/* Vertical connector line */}
-              {i < steps.length - 1 && (
-                <div className="absolute left-[3rem] top-20 bottom-0 w-px bg-gradient-to-b from-[var(--brand-primary)]/30 to-transparent z-0" />
-              )}
-              
               <div className="relative z-10 flex size-12 shrink-0 items-center justify-center rounded-2xl bg-[var(--muted)] font-heading text-xl font-bold text-[var(--brand-primary)] shadow-sm transition-transform group-hover:scale-110">
                 {i + 1}
+                {/* Vertical connector line - anchored to icon center */}
+                {i < steps.length - 1 && (
+                  <div className="absolute top-full left-1/2 h-16 w-px -translate-x-1/2 bg-gradient-to-b from-[var(--brand-primary)]/40 to-transparent" />
+                )}
               </div>
               
               <div className="flex-1 space-y-2">

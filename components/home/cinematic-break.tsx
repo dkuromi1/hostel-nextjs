@@ -22,11 +22,10 @@ export function CinematicBreak() {
         className="absolute -inset-y-1/4 inset-x-0 z-0 w-full h-[150%]"
       >
         <Image
-          src="/images/lake_shkoder.jpg"
+          src="/images/lake_shkoder.webp"
           alt="Lake Shkoder"
           fill
           className="object-cover"
-          priority
         />
         <div className="absolute inset-0 bg-black/40" />
       </motion.div>

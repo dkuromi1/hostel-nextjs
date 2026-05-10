@@ -87,8 +87,8 @@ export default function ExperiencesPage() {
                   src="/images/hiking_3.jpg"
                   alt={siteCopyContent.experiences.metadata.title}
                   fill
-                  priority
-                  fetchPriority="high"
+                  loading="eager"
+                  fetchPriority="low"
                   className="object-cover object-[30%_center] transition-transform duration-1000 hover:scale-105 shadow-2xl"
                   sizes="(max-width: 1024px) 50vw, 30vw"
                 />
@@ -102,6 +102,8 @@ export default function ExperiencesPage() {
                   src="/images/hiking_4.webp"
                   alt={siteCopyContent.experiences.metadata.title}
                   fill
+                  loading="eager"
+                  fetchPriority="low"
                   className="object-cover transition-transform duration-1000 hover:scale-105"
                   sizes="(max-width: 1024px) 50vw, 20vw"
                 />
@@ -115,6 +117,8 @@ export default function ExperiencesPage() {
                   src="/images/scodrinon_play_1.webp"
                   alt={siteCopyContent.experiences.metadata.title}
                   fill
+                  loading="eager"
+                  fetchPriority="low"
                   className="object-cover transition-transform duration-1000 hover:scale-105"
                   sizes="(max-width: 1024px) 50vw, 20vw"
                 />

@@ -52,6 +52,8 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
                 alt={atmosphere.rooftopImageAlt}
                 fill
                 className="object-cover"
+                loading="eager"
+                fetchPriority="low"
                 sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 66vw, 924px"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent px-card-premium pb-card-premium pt-32 text-white">
@@ -109,10 +111,12 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
               <Reveal delay={100} className="flex min-w-0 relative lg:-mt-12 lg:translate-x-8 z-20 w-full">
                 <div className="media-frame !border-0 ring-1 ring-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_24px_70px_-42px_rgba(0,0,0,0.5)] relative w-full aspect-[4/5] sm:aspect-[4/3]">
                   <Image
-                    src="/images/rooms_1.jpg"
+                    src="/images/rooms_1.webp"
                     alt={atmosphere.roomImageAlt}
                     fill
                     className="object-cover object-[75%_center]"
+                    loading="eager"
+                    fetchPriority="low"
                     sizes="(max-width: 1024px) 60vw, (max-width: 1400px) 33vw, 466px"
                   />
                 </div>

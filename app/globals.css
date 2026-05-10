@@ -455,7 +455,7 @@
   view-timeline: --section-scroll block;
   animation: rhomboid-parallax linear both;
   animation-timeline: --section-scroll;
-  animation-range: entry 0% exit 100%;
+  animation-range: cover;
   will-change: background-position;
 
   &:is(.dark *) {
@@ -469,8 +469,8 @@
     background-position: 50% 0%;
   }
   to {
-    /* Seamless drift: 200px is exactly two pattern heights (2x speed) */
-    background-position: 50% 200px;
+    /* Seamless drift: 500px is exactly five pattern heights (5x speed) */
+    background-position: 50% 500px;
   }
 }
 

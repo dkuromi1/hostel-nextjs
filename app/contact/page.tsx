@@ -125,6 +125,8 @@ export default function ContactPage() {
                 alt={siteCopyContent.contact.heroImages.streetAlt}
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                loading="eager"
+                fetchPriority="low"
                 sizes="(max-width: 640px) 100vw, 25vw"
               />
             </div>
@@ -134,6 +136,8 @@ export default function ContactPage() {
                 alt={siteCopyContent.contact.heroImages.socialAlt}
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                loading="eager"
+                fetchPriority="low"
                 sizes="(max-width: 640px) 100vw, 25vw"
               />
             </div>

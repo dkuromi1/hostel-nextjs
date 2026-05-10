@@ -1,9 +1,25 @@
 {
   "roomHeroHighlights": [
-    { "title": "Privacy Pods", "text": "Curtained privacy pods in the mixed dorm", "icon": "Blinds" },
-    { "title": "4-Bed Dorms", "text": "Options for male and female groups", "icon": "Bed" },
-    { "title": "Modern Essentials", "text": "A/C, secure lockers, power, and WiFi", "icon": "Snowflake" },
-    { "title": "Free Breakfast", "text": "Included every morning (excl. off-season)", "icon": "Coffee" }
+    {
+      "title": "Privacy Pods",
+      "text": "Curtained privacy pods in the mixed dorm",
+      "icon": "Blinds"
+    },
+    {
+      "title": "4-Bed Dorms",
+      "text": "Options for male and female groups",
+      "icon": "Bed"
+    },
+    {
+      "title": "Modern Essentials",
+      "text": "A/C, secure lockers, power, and WiFi",
+      "icon": "Snowflake"
+    },
+    {
+      "title": "Free Breakfast",
+      "text": "Included every morning (excl. off-season)",
+      "icon": "Coffee"
+    }
   ],
   "moduleType": "hospitality",
   "offerings": [
@@ -36,7 +52,7 @@
           "alt": "Secure lockers in the dorm"
         },
         {
-          "src": "/images/room_18bed6.jpg",
+          "src": "/images/room_18bed6.webp",
           "alt": "Inside the privacy pod"
         },
         {
@@ -45,11 +61,26 @@
         }
       ],
       "amenities": [
-        { "icon": "Snowflake",      "label": "A/C & Heat" },
-        { "icon": "Lock",           "label": "Secure Lockers" },
-        { "icon": "BatteryCharging","label": "2 Power Sockets" },
-        { "icon": "Wifi",           "label": "High-speed WiFi" },
-        { "icon": "LampDesk",       "label": "Reading Light" }
+        {
+          "icon": "Snowflake",
+          "label": "A/C & Heat"
+        },
+        {
+          "icon": "Lock",
+          "label": "Secure Lockers"
+        },
+        {
+          "icon": "BatteryCharging",
+          "label": "2 Power Sockets"
+        },
+        {
+          "icon": "Wifi",
+          "label": "High-speed WiFi"
+        },
+        {
+          "icon": "LampDesk",
+          "label": "Reading Light"
+        }
       ]
     },
     {
@@ -59,7 +90,7 @@
       "price": "€15",
       "label": "Best for lighter sleepers, small groups, and guests wanting a calmer setup",
       "description": "The four-bed rooms keep the same clean, modern essentials while giving you a quieter rhythm after a long day out in Shkoder or the Alps.",
-      "image": "/images/rooms_1.jpg",
+      "image": "/images/rooms_1.webp",
       "alt": "Four-bed dorm room at Scodrinon Hostel, Shkoder",
       "bullets": [
         "Male and female options available",
@@ -68,7 +99,7 @@
       ],
       "images": [
         {
-          "src": "/images/rooms_1.jpg",
+          "src": "/images/rooms_1.webp",
           "alt": "Four Bed Dorm Room at Scodrinon Hostel"
         },
         {
@@ -89,10 +120,22 @@
         }
       ],
       "amenities": [
-        { "icon": "Snowflake",      "label": "A/C & Heat" },
-        { "icon": "Lock",           "label": "Secure Lockers" },
-        { "icon": "BatteryCharging","label": "Power Socket" },
-        { "icon": "Wifi",           "label": "High-speed WiFi" }
+        {
+          "icon": "Snowflake",
+          "label": "A/C & Heat"
+        },
+        {
+          "icon": "Lock",
+          "label": "Secure Lockers"
+        },
+        {
+          "icon": "BatteryCharging",
+          "label": "Power Socket"
+        },
+        {
+          "icon": "Wifi",
+          "label": "High-speed WiFi"
+        }
       ]
     }
   ]

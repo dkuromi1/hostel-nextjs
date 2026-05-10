@@ -7,7 +7,7 @@
   "hero": {
     "eyebrow": "Hiking Guide",
     "title": "Valbona to Theth: The heart of the Albanian Alps.",
-    "description": "While most hikers go from Theth to Valbona, we recommend the reverse. Starting in Valbona provides a shorter, earlier ascent, while reducing exposure to the peak afternoon heat. Here is everything you need to know about the logistics, the costs, and how to use Scodrinon as your basecamp."
+    "description": "Experience the full spectrum of the Albanian Alps, from the glacial waters of Komani Lake to the high-alpine pass and the stone-tower villages of Theth. While most hikers go from Theth to Valbona, we recommend starting in Valbona for a shorter, earlier ascent while reducing exposure to the peak afternoon heat."
   },
   "quickStats": [
     {
@@ -66,7 +66,7 @@
         "items": [
           {
             "name": "Sturdy Footwear",
-            "description": "Trail runners or lightweight hiking boots. The terrain is very rocky and loose in sections."
+            "description": "Trail runners or lightweight hiking boots. The terrain is very rocky and loose in sections. Crampons are essential gear outside summer months."
           },
           {
             "name": "Offline Maps & Power Bank",
@@ -104,13 +104,13 @@
   },
   "itinerary": {
     "title": "Suggested 3-Day Loop",
-    "description": "The recommended Shkoder-Valbona-Theth-Shkoder route for the ultimate mountain experience.",
+    "description": "The most seamless 3-day journey through the Albanian Alps, starting and ending at your base in Shkoder.",
     "days": [
       {
         "day": "Day 1",
         "title": "The Komani Lake Route",
         "icon": "Ship",
-        "description": "Leave your heavy bags at Scodrinon. Take the 6:30 AM transport to Komani Lake for one of the world's most beautiful ferry rides. You'll arrive in Valbona by early afternoon—just in time for a cold beer and views of the jagged peaks."
+        "description": "Leave your heavy bags at Scodrinon. Take the 6:30 AM transport to Komani Lake for one of the world's most beautiful ferry rides. You'll arrive in Valbona by early afternoon, just in time for a cold beer and views of the jagged peaks."
       },
       {
         "day": "Day 2",
