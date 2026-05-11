@@ -40,7 +40,7 @@ collections:
             widget: "object"
             fields:
               - { label: "Phone (Display)", name: "phoneDisplay", widget: "string" }
-              - { label: "Phone (Raw Number)", name: "phoneRaw", widget: "string", hint: "Format: 355685310744" }
+              - { label: "Phone (Raw Number)", name: "phoneRaw", widget: "string", hint: "Format: 355684474400" }
               - { label: "Instagram URL", name: "instagramUrl", widget: "string", required: false }
               - { label: "WhatsApp Community URL", name: "whatsappCommunityUrl", widget: "string", required: false }
               - label: "Contact Channels"
