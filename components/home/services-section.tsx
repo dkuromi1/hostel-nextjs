@@ -28,7 +28,7 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
         const Icon = resolveIcon(service.icon);
         const cardContent = (
           <div className="group h-full flex flex-col gap-6 p-card rounded-[var(--radius-lg)] border border-[var(--border)] bg-white dark:bg-card transition-all duration-300 hover:shadow-xl hover:shadow-[var(--brand-primary)]/5 hover:border-[var(--brand-primary)]/20">
-            <div className="flex size-14 shrink-0 items-center justify-center rounded-[var(--radius-lg)] bg-white text-[var(--brand-primary)] shadow-sm ring-1 ring-[var(--foreground)]/5 transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-[var(--brand-primary)] group-hover:text-white group-hover:shadow-lg group-hover:shadow-[var(--brand-primary)]/20">
+            <div className="flex size-14 shrink-0 items-center justify-center rounded-[var(--radius-lg)] bg-white text-[var(--brand-primary)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-[var(--brand-primary)] group-hover:text-white group-hover:shadow-lg group-hover:shadow-[var(--brand-primary)]/20 dark:bg-white/5">
               <Icon className="size-7" />
             </div>
             <div className="space-y-3">
