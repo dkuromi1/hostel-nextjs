@@ -45,6 +45,11 @@
   --spacing-card: var(--layout-card-padding, 2.0rem);
   --spacing-card-premium: var(--layout-card-padding-premium, 3.5rem);
 
+  /* Brand Colors */
+  --color-gold: var(--brand-gold);
+  --color-gold-light: var(--brand-gold-light);
+  --color-gold-dark: var(--brand-gold-dark);
+
   /* Fluid Room Image Height */
   --room-image-height: clamp(18rem, 15.43rem + 11.43vw, 20rem);
 }
@@ -115,6 +120,12 @@
   /* emerald-700 */
   --brand-accent: #99f6ff;
   /* brighter cyan-200 for better visibility */
+  --brand-gold: #d97706;
+  /* amber-600 — premium gold alternative */
+  --brand-gold-light: #fef3c7;
+  /* amber-100 */
+  --brand-gold-dark: #92400e;
+  /* amber-800 */
 
   /* ─── Semantic Text Colors ──────────────────────────────────────────────────
      Use these instead of raw slate-* classes so a palette swap is one edit.
@@ -225,6 +236,8 @@
   /* emerald-300 — lighter for hover on dark */
   --brand-accent: #99f6ff;
   /* brighter cyan-200 for visibility */
+  --brand-gold: #fbbf24;
+  /* amber-400 — brighter for dark mode visibility */
 
   --atmosphere-glow-primary: rgba(52, 211, 153, 0.14);
   --atmosphere-glow-accent: rgba(56, 189, 248, 0.10);

@@ -23,11 +23,11 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
       {quickFacts.map((fact, index) => {
         const Icon = resolveIcon(fact.icon || "Info");
         const cardContent = (
-          <div className="group relative h-full flex flex-col gap-6 p-card rounded-[var(--radius-lg)] border border-[var(--border)] bg-white dark:bg-card transition-all duration-300 hover:shadow-xl hover:shadow-[var(--brand-primary)]/5 hover:border-[var(--brand-primary)]/20">
+          <div className="group relative h-full flex flex-col gap-6 p-card rounded-[var(--radius-lg)] border border-[var(--border)] bg-white dark:bg-card transition-all duration-300 hover:shadow-xl hover:shadow-gold/5 hover:border-gold/20">
 
             
             <div className="relative z-10 flex flex-col gap-5">
-              <div className="relative flex size-14 shrink-0 items-center justify-center rounded-[var(--radius-lg)] bg-white text-[var(--brand-primary)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-500 group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-[var(--brand-primary)] group-hover:text-white dark:bg-white/5 dark:text-[var(--brand-accent)]">
+              <div className="relative flex size-14 shrink-0 items-center justify-center rounded-[var(--radius-lg)] bg-white text-gold shadow-sm ring-1 ring-[var(--border)] transition-all duration-500 group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-gold group-hover:text-white dark:bg-white/5">
                 <Icon className="size-7" />
               </div>
               
@@ -72,7 +72,7 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-[0.03] soft-grid" />
-        <div className="absolute top-1/4 -right-48 w-96 h-96 rounded-full bg-[var(--brand-primary)]/[0.015] blur-3xl" />
+        <div className="absolute top-1/4 -right-48 w-96 h-96 rounded-full bg-gold/5 blur-3xl" />
       </div>
 
       <div className="shell-container relative z-10">
