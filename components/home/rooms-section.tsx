@@ -62,7 +62,7 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
                     </div>
                     {isFirst && (
                       <div className="absolute top-5 right-5 z-20">
-                        <div className="relative overflow-hidden rounded-full bg-amber-400 px-3 py-1.5 shadow-2xl backdrop-blur-md ring-1 ring-white/40 transition-all duration-500 hover:-translate-y-0.5 hover:bg-amber-500 group/popular">
+                        <div className="relative overflow-hidden rounded-full bg-amber-400 px-3 py-1.5 shadow-2xl backdrop-blur-md transition-all duration-500 hover:-translate-y-0.5 hover:bg-amber-500 group/popular">
                           {/* Glossy shine */}
                           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/30 to-transparent -translate-x-full group-hover/popular:translate-x-full transition-transform duration-1000 ease-in-out" />
                           
