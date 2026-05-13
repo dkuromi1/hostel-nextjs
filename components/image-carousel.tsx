@@ -59,8 +59,14 @@ export function ImageCarousel({
     const handleDragEnd = useCallback(
         (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
             setIsDragging(false);
-            if (info.offset.x < -SWIPE_THRESHOLD) next();
-            else if (info.offset.x > SWIPE_THRESHOLD) prev();
+            const { offset, velocity } = info;
+
+            // If the swipe is fast enough or far enough
+            if (offset.x < -SWIPE_THRESHOLD || velocity.x < -500) {
+                next();
+            } else if (offset.x > SWIPE_THRESHOLD || velocity.x > 500) {
+                prev();
+            }
         },
         [next, prev]
     );
@@ -84,9 +90,10 @@ export function ImageCarousel({
             <motion.div
                 className="flex h-full w-full"
                 animate={{ x: `-${currentIndex * 100}%` }}
-                transition={{ type: "spring", stiffness: 300, damping: 35, mass: 0.8 }}
+                transition={{ type: "spring", stiffness: 400, damping: 40, mass: 1 }}
                 drag="x"
-                dragElastic={0.15}
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.2}
                 onDragStart={() => setIsDragging(true)}
                 onDragEnd={handleDragEnd}
                 style={{ cursor: isDragging ? "grabbing" : "grab" }}
