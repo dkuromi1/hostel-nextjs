@@ -65,7 +65,7 @@ export default function RoomsPage() {
         <div className="grid gap-[var(--layout-grid-gutter)] md:grid-cols-[1.1fr_0.9fr]">
           <div className="group media-frame border-none bg-transparent relative min-h-[22rem] md:row-span-2">
             <Image
-              src="/images/rooms_2.jpg"
+              src="/images/rooms_2.webp"
               alt={siteCopyContent.rooms.heroImages.fourBedAlt}
               fill
               className="object-cover transition-transform duration-1000 group-hover:scale-105 shadow-2xl"
@@ -108,7 +108,7 @@ export default function RoomsPage() {
           <div className="absolute top-1/4 -right-48 w-96 h-96 rounded-full bg-[var(--brand-primary)]/[0.02] blur-3xl" />
           <div className="absolute bottom-1/3 -left-32 w-80 h-80 rounded-full bg-[var(--accent)]/[0.015] blur-3xl" />
         </div>
-        
+
         <div className="shell-container space-y-10 relative z-10">
           <SectionHeading
             eyebrow={siteCopyContent.rooms.chooseSetup.eyebrow}
@@ -181,7 +181,7 @@ export default function RoomsPage() {
                               >
                                 <Check
                                   className="mt-0.5 size-3.5 shrink-0 text-[var(--brand-primary)]"
-                                 
+
                                 />
                                 <span>{bullet}</span>
                               </li>
@@ -201,7 +201,7 @@ export default function RoomsPage() {
       <section className="py-[var(--layout-section-spacing)] relative">
         {/* Top section divider */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" aria-hidden="true" />
-        
+
         <div className="shell-container grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <Reveal className="lg:sticky lg:top-32">
             <Panel className="p-card-premium">
@@ -287,7 +287,7 @@ export default function RoomsPage() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15),transparent_50%)]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(110,231,183,0.08),transparent_40%)]" />
         </div>
-        
+
         <div className="shell-container relative z-10">
           <Reveal>
             <div className="grid gap-[var(--layout-grid-gutter)] lg:grid-cols-2">
