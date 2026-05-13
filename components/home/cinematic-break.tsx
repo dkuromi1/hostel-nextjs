@@ -15,7 +15,7 @@ export function CinematicBreak() {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
-    <section ref={ref} className="relative h-[40vh] sm:h-[50vh] lg:h-[80vh] min-h-[300px] w-full overflow-hidden flex items-center justify-center bg-black">
+    <section ref={ref} className="relative h-[45vh] md:h-[65vh] lg:h-[80vh] min-h-[400px] w-full overflow-hidden flex items-center justify-center bg-black">
       {/* Full-bleed background with parallax */}
       <motion.div
         style={{ y }}
@@ -32,14 +32,14 @@ export function CinematicBreak() {
 
       {/* Content */}
       <div className="relative z-10 shell-container text-center text-white px-4">
-        <Reveal delay={200} className="flex flex-col items-center gap-4 sm:gap-8">
-          <div className="h-12 sm:h-20 w-px bg-gradient-to-b from-transparent to-white/60 mb-2 sm:mb-4" />
-          <h2 className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-cormorant leading-[1.2] sm:leading-[1.1] tracking-tight max-w-4xl mx-auto italic px-2">
+        <Reveal delay={200} className="flex flex-col items-center gap-6 sm:gap-8">
+          <div className="h-12 md:h-24 w-px bg-gradient-to-b from-transparent to-white/60 mb-2 sm:mb-4" />
+          <h2 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-cormorant leading-[1.2] sm:leading-[1.1] tracking-tight max-w-5xl mx-auto italic px-2">
             &ldquo;Life is a mystery to be lived, not a problem to be solved.&rdquo;
           </h2>
-          <div className="flex items-center gap-4 mt-4">
+          <div className="flex items-center gap-4 mt-6">
             <div className="h-px w-8 bg-white/40" />
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-white/80">
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em] text-white/80">
               The Scodrinon Philosophy
             </span>
             <div className="h-px w-8 bg-white/40" />
