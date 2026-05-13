@@ -193,45 +193,46 @@
 
 
 .dark {
-  --background: #000000;
-  /* pure black */
-  --foreground: #f8fafc;
-  /* slate-50 */
-  --card: rgba(15, 23, 42, 0.90);
-  --card-foreground: #f8fafc;
-  --popover: #0f172a;
-  --popover-foreground: #f8fafc;
+  --background: #09090b;
+  /* neutral dark background */
+  --foreground: #f4f4f5;
+  /* zinc-50 */
+  --card: rgba(24, 24, 27, 0.92);
+  /* zinc-900 with high opacity */
+  --card-foreground: #f4f4f5;
+  --popover: #18181b;
+  --popover-foreground: #f4f4f5;
   --primary: #34d399;
   /* emerald-400 — brighter for dark bg */
-  --primary-foreground: #020617;
-  --secondary: #1e293b;
-  /* slate-800 */
-  --secondary-foreground: #f8fafc;
-  --muted: #1e293b;
-  /* slate-800 */
-  --muted-foreground: #94a3b8;
-  /* slate-400 */
+  --primary-foreground: #09090b;
+  --secondary: #27272a;
+  /* zinc-800 */
+  --secondary-foreground: #f4f4f5;
+  --muted: #27272a;
+  /* zinc-800 */
+  --muted-foreground: #a1a1aa;
+  /* zinc-400 */
   --accent: #7dd3fc;
   /* sky-300 */
-  --accent-foreground: #020617;
-  --border: rgba(255, 255, 255, 0.1);
-  --input: rgba(255, 255, 255, 0.1);
+  --accent-foreground: #09090b;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.08);
   --ring: rgba(52, 211, 153, 0.35);
 
-  --text-heading: #f8fafc;
-  --text-body: #94a3b8;
-  /* slate-400 */
-  --text-body-subtle: #cbd5e1;
-  /* slate-300 */
-  --text-muted: #64748b;
-  /* slate-500 */
-  --text-on-dark: #f8fafc;
+  --text-heading: #f4f4f5;
+  --text-body: #a1a1aa;
+  /* zinc-400 */
+  --text-body-subtle: #d4d4d8;
+  /* zinc-300 */
+  --text-muted: #71717a;
+  /* zinc-500 */
+  --text-on-dark: #f4f4f5;
 
-  --brand-tertiary: #314158;
+  --brand-tertiary: #27272a;
   --brand-primary: #34d399;
   /* emerald-400 for dark mode */
-  --brand-primary-light: #1e293b;
-  /* slate-800 for dark mode */
+  --brand-primary-light: #18181b;
+  /* zinc-900 for dark mode */
   --brand-primary-dark: #6ee7b7;
   /* emerald-300 — lighter for hover on dark */
   --brand-accent: #99f6ff;
@@ -239,30 +240,30 @@
   --brand-gold: #fbbf24;
   /* amber-400 — brighter for dark mode visibility */
 
-  --atmosphere-glow-primary: rgba(52, 211, 153, 0.14);
-  --atmosphere-glow-accent: rgba(56, 189, 248, 0.10);
-  --atmosphere-glow-secondary: rgba(5, 150, 105, 0.07);
-  --atmosphere-grid-line: rgba(255, 255, 255, 0.025);
-  --atmosphere-dots-line: rgba(255, 255, 255, 0.0525);
+  --atmosphere-glow-primary: rgba(52, 211, 153, 0.12);
+  --atmosphere-glow-accent: rgba(56, 189, 248, 0.08);
+  --atmosphere-glow-secondary: rgba(5, 150, 105, 0.06);
+  --atmosphere-grid-line: rgba(255, 255, 255, 0.02);
+  --atmosphere-dots-line: rgba(255, 255, 255, 0.04);
 
-  --glass-bg: rgba(15, 23, 42, 0.85);
-  --glass-border: rgba(255, 255, 255, 0.07);
-  --glass-shadow: rgba(0, 0, 0, 0.55);
+  --glass-bg: rgba(24, 24, 27, 0.88);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-shadow: rgba(0, 0, 0, 0.6);
 
-  --surface-dark: #020617;
-  /* slate-950 */
-  --surface-dark-secondary: #0f172a;
-  /* slate-900 */
-  --surface-dark-border: rgba(255, 255, 255, 0.06);
-  --text-on-surface-dark: #f8fafc;
-  --text-on-surface-dark-muted: #94a3b8;
+  --surface-dark: #09090b;
+  /* neutral dark */
+  --surface-dark-secondary: #18181b;
+  /* zinc-900 */
+  --surface-dark-border: rgba(255, 255, 255, 0.05);
+  --text-on-surface-dark: #f4f4f5;
+  --text-on-surface-dark-muted: #a1a1aa;
 
-  --brand-tertiary: #1e293b;
-  /* deeper blue-grey for dark mode background */
-  --brand-tertiary-dark: #0f172a;
-  --brand-tertiary-light: #334155;
+  --brand-tertiary: #18181b;
+  /* neutral deeper grey for dark mode background */
+  --brand-tertiary-dark: #09090b;
+  --brand-tertiary-light: #27272a;
   --tertiary-foreground: #ffffff;
-  --text-on-tertiary-muted: rgba(226, 232, 240, 0.70);
+  --text-on-tertiary-muted: rgba(244, 244, 245, 0.65);
   --brand-whatsapp: #059669;
   --brand-whatsapp-dark: #047857;
 }
