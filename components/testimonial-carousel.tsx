@@ -57,10 +57,10 @@ export function TestimonialCarousel({
 
   // Auto-play interval
   useEffect(() => {
-    if (isHovered) return;
+    if (isHovered || testimonials.length <= 1) return;
     const timer = setInterval(next, 6000);
     return () => clearInterval(timer);
-  }, [isHovered, next]);
+  }, [isHovered, next, currentIndex, testimonials.length]);
 
   if (!testimonials?.length) return null;
 

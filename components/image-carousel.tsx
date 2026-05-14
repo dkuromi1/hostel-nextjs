@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "@/lib/icon-registry";
 import { motion, type PanInfo } from "framer-motion";
@@ -44,6 +44,20 @@ export function ImageCarousel({
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
     const [isDragging, setIsDragging] = useState(false);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [containerWidth, setContainerWidth] = useState(0);
+
+    // Track container width for precise pixel-based transforms
+    useEffect(() => {
+        if (!containerRef.current) return;
+        const observer = new ResizeObserver((entries) => {
+            if (entries[0]) {
+                setContainerWidth(entries[0].contentRect.width);
+            }
+        });
+        observer.observe(containerRef.current);
+        return () => observer.disconnect();
+    }, []);
 
     const next = useCallback(() => {
         setCurrentIndex((current) => (current + 1) % images.length);
@@ -62,9 +76,10 @@ export function ImageCarousel({
             const { offset, velocity } = info;
 
             // If the swipe is fast enough or far enough
-            if (offset.x < -SWIPE_THRESHOLD || velocity.x < -500) {
+            // Increased velocity threshold slightly to avoid accidental triggers
+            if (offset.x < -SWIPE_THRESHOLD || velocity.x < -600) {
                 next();
-            } else if (offset.x > SWIPE_THRESHOLD || velocity.x > 500) {
+            } else if (offset.x > SWIPE_THRESHOLD || velocity.x > 600) {
                 prev();
             }
         },
@@ -74,14 +89,17 @@ export function ImageCarousel({
     // Auto-play interval
     useEffect(() => {
         if (isHovered || !autoPlayInterval || images.length <= 1) return;
+        // Adding currentIndex to deps ensures the timer resets on any manual navigation,
+        // preventing "double-moves" where the timer fires right after a swipe.
         const timer = setInterval(next, autoPlayInterval);
         return () => clearInterval(timer);
-    }, [isHovered, next, autoPlayInterval, images.length]);
+    }, [isHovered, next, autoPlayInterval, images.length, currentIndex]);
 
     if (!images?.length) return null;
 
     return (
         <div
+            ref={containerRef}
             className={cn("group relative w-full overflow-hidden rounded-lg", className)}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -89,11 +107,12 @@ export function ImageCarousel({
             {/* Sliding Track — driven by Framer Motion spring, draggable on all devices */}
             <motion.div
                 className="flex h-full w-full"
-                animate={{ x: `-${currentIndex * 100}%` }}
+                animate={{ x: -currentIndex * containerWidth }}
                 transition={{ type: "spring", stiffness: 400, damping: 40, mass: 1 }}
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
                 dragElastic={0.2}
+                dragMomentum={false} // Prevent overshoot and conflict with index state
                 onDragStart={() => setIsDragging(true)}
                 onDragEnd={handleDragEnd}
                 style={{ cursor: isDragging ? "grabbing" : "grab" }}
