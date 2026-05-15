@@ -158,7 +158,7 @@ export interface DesignConfig {
     message?: string;
   };
   typography: {
-    headingFont: "nunito" | "inter" | "serif" | "bevan" | "syne" | "cormorant";
+    headingFont: "nunito" | "inter" | "serif" | "fraunces" | "syne" | "cormorant";
     character: "playful" | "clean" | "elegant" | "sharp" | "bold";
   };
   iconStroke?: "thin" | "normal" | "bold";

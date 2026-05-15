@@ -52,6 +52,9 @@
 
   /* Fluid Room Image Height */
   --room-image-height: clamp(18rem, 15.43rem + 11.43vw, 20rem);
+
+  /* Border Width */
+  --border-width: var(--border-width);
 }
 
 
@@ -60,6 +63,7 @@
 
 :root {
   /* ─── Layout Tokens ──────────────────────────────────────────────────────── */
+  --border-width: 1px;
   --layout-card-padding: 1.75rem;
   --layout-card-padding-premium: 2.5rem;
 }

@@ -22,7 +22,7 @@ import {
   siteCopyContent
 } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
-import { Nunito, Inter, Playfair_Display, Bevan, Syne, Cormorant_Garamond } from "next/font/google";
+import { Nunito, Inter, Playfair_Display, Fraunces, Syne, Cormorant_Garamond } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
@@ -47,11 +47,12 @@ const serif = Playfair_Display({
   preload: false,
 });
 
-const bevan = Bevan({
+const fraunces = Fraunces({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-bevan",
-  weight: "400",
+  variable: "--font-fraunces",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
   preload: false,
 });
 
@@ -75,7 +76,7 @@ const cormorant = Cormorant_Garamond({
 const themeFontClasses: Record<string, string[]> = {
   cool:           [serif.variable, inter.variable],
   warm:           [cormorant.variable, inter.variable],
-  forest:         [bevan.variable, inter.variable],
+  forest:         [fraunces.variable, inter.variable],
   "nordic-earth": [syne.variable, inter.variable],
 };
 
