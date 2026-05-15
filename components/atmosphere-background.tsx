@@ -56,7 +56,6 @@ export function AtmosphereBackground() {
         mounted ? "opacity-100" : "opacity-0"
       )}
       style={{
-        willChange: "transform",
         transform: "translateZ(0)",
         backgroundImage: isLowEnd ? finalGradients.join(",") : `${noiseUrl}, ${finalGradients.join(",")}`,
         backgroundSize: isLowEnd
