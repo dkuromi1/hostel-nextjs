@@ -13,10 +13,18 @@ interface DirectBookingCardProps {
     directBookingDescription: string;
     directBookingButton: string;
   };
+  headingLevel?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
-export function DirectBookingCard({ className, variant = "inline", whatsappUrl, content }: DirectBookingCardProps) {
+export function DirectBookingCard({
+  className,
+  variant = "inline",
+  whatsappUrl,
+  content,
+  headingLevel = "h2",
+}: DirectBookingCardProps) {
   const Icon = resolveIcon("Whatsapp");
+  const HeadingTag = headingLevel;
 
   if (variant === "inline") {
     return (
@@ -35,9 +43,9 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
             <SectionLabel variant="emerald" className="mx-auto sm:mx-0">
               {content.directBookingLabel}
             </SectionLabel>
-            <h3 className="heading-item text-xl sm:text-2xl text-[var(--text-heading)] dark:text-white">
+            <HeadingTag className="heading-item text-xl sm:text-2xl text-[var(--text-heading)] dark:text-white">
               {content.directBookingTitle}
-            </h3>
+            </HeadingTag>
             <p className="text-card-body max-w-2xl mx-auto sm:mx-0 leading-relaxed transition-colors group-hover:text-[var(--text-body)] dark:text-white/80 dark:group-hover:text-white">
               {content.directBookingDescription}
             </p>
@@ -76,9 +84,9 @@ export function DirectBookingCard({ className, variant = "inline", whatsappUrl, 
         </SectionLabel>
       </div>
       <div className="relative z-10 space-y-3">
-        <h3 className="heading-item text-xl text-[var(--text-heading)] dark:text-white">
+        <HeadingTag className="heading-item text-xl text-[var(--text-heading)] dark:text-white">
           {content.directBookingTitle}
-        </h3>
+        </HeadingTag>
         <p className="text-card-body leading-relaxed transition-colors group-hover:text-[var(--text-body)] dark:text-white/80 dark:group-hover:text-white">
           {content.directBookingDescription}
         </p>

@@ -33,9 +33,9 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
               
               <div className="space-y-2">
                 {fact.title && (
-                  <h4 className="heading-item text-xl tracking-tight text-[var(--text-heading)]">
+                  <h3 className="heading-item text-xl tracking-tight text-[var(--text-heading)]">
                     {fact.title}
-                  </h4>
+                  </h3>
                 )}
                 <p className="text-[15px] leading-relaxed text-[var(--text-body-subtle)] transition-colors group-hover:text-[var(--text-body)]">
                   {fact.text}
