@@ -223,9 +223,9 @@ export default function RoomsPage() {
                         <Icon className="size-5" />
                       </div>
                       <div className="space-y-1.5">
-                        <h4 className="heading-item text-[var(--text-heading)]">
+                        <h3 className="heading-item text-[var(--text-heading)]">
                           {service.title}
-                        </h4>
+                        </h3>
                         <p className="text-card-body">
                           {service.description}
                         </p>
@@ -255,9 +255,9 @@ export default function RoomsPage() {
                         <Icon className="size-5" />
                       </div>
                       <div className="space-y-1.5">
-                        <h4 className="heading-item text-[var(--text-heading)]">
+                        <h3 className="heading-item text-[var(--text-heading)]">
                           {service.title}
-                        </h4>
+                        </h3>
                         <p className="text-card-body">
                           {service.description}
                         </p>

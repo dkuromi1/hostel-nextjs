@@ -90,7 +90,7 @@ export default function HikingGuidePage() {
                 </div>
                 <div>
                   <SectionLabel variant="rose" className="mb-2">Seasonal Safety Warning</SectionLabel>
-                  <h3 className="heading-item font-bold text-rose-950 dark:text-rose-100">Dangerous Conditions Outside Summer</h3>
+                  <h2 className="heading-item font-bold text-rose-950 dark:text-rose-100">Dangerous Conditions Outside Summer</h2>
                   <div className="mt-3 space-y-3 text-body-lg leading-relaxed text-rose-900/90 dark:text-rose-300/90">
                     <p>
                       Between <strong>October and June</strong>, the Valbona Pass (1,800m) is frequently covered in deep snow and ice. Outside the peak summer window, the standard trail markings often become invisible and the terrain becomes extremely hazardous.
