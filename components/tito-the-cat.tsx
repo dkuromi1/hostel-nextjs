@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import { cn } from "@/lib/utils";
+import { useIsLowEndDevice } from "@/lib/use-performance";
 
 type AnimationState =
   | "hidden" | "idle" | "walking-in" | "paused"
@@ -17,6 +18,7 @@ export interface TitoTheCatProps {
 }
 
 export function TitoTheCat({ isEnabled, message, type = "cat" }: TitoTheCatProps) {
+  const isLowEnd = useIsLowEndDevice();
 
   const titoRef = useRef<HTMLDivElement>(null);
   const [state, setState] = useState<AnimationState>("hidden");
@@ -27,13 +29,13 @@ export function TitoTheCat({ isEnabled, message, type = "cat" }: TitoTheCatProps
   const [facingRight, setFacingRight] = useState(false);
 
   useEffect(() => {
-    if (!isEnabled) return;
+    if (!isEnabled || isLowEnd) return;
 
     const handleResize = () => setViewportWidth(window.innerWidth);
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [isEnabled]);
+  }, [isEnabled, isLowEnd]);
 
   const getXPos = useCallback((px: number, vw: number) => {
     const vwInPx = (vw / 100) * viewportWidth;
@@ -78,7 +80,7 @@ export function TitoTheCat({ isEnabled, message, type = "cat" }: TitoTheCatProps
   }, []);
 
   useEffect(() => {
-    if (!isEnabled) return;
+    if (!isEnabled || isLowEnd) return;
     if (viewportWidth === 0) return;
     let isMounted = true;
 
@@ -126,9 +128,9 @@ export function TitoTheCat({ isEnabled, message, type = "cat" }: TitoTheCatProps
 
     runSequence();
     return () => { isMounted = false; };
-  }, [isEnabled, viewportWidth, calculateAndTriggerJump]);
+  }, [isEnabled, isLowEnd, viewportWidth, calculateAndTriggerJump]);
 
-  if (!isEnabled || state === "hidden" || state === "done") return null;
+  if (isLowEnd || !isEnabled || state === "hidden" || state === "done") return null;
 
   const getAnimationConfig = () => {
     switch (state) {

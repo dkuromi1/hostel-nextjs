@@ -8,6 +8,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { DirectBookingCard } from "@/components/direct-booking-card";
 import { LazyVideo } from "@/components/lazy-video";
+import { useIsLowEndDevice } from "@/lib/use-performance";
 
 export interface AtmosphereSectionProps {
   atmosphere: {
@@ -24,6 +25,7 @@ export interface AtmosphereSectionProps {
 }
 
 export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSectionProps) {
+  const isLowEnd = useIsLowEndDevice();
   const containerRef = useRef<HTMLElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -33,6 +35,7 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
 
   // Parallax shift for the entire right column to create depth
   const rightColumnY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const yVal = isLowEnd ? 0 : rightColumnY;
 
   return (
     <section ref={containerRef} className="relative z-10 -mt-[40px] md:-mt-[48px] lg:-mt-[44px] pt-8 pb-[var(--layout-section-spacing)] lg:pt-12">
@@ -103,7 +106,7 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
 
           {/* Right column */}
           <motion.div
-            style={{ y: rightColumnY }}
+            style={{ y: yVal }}
             className="flex flex-col gap-[var(--layout-grid-gutter)] lg:col-start-2 lg:row-start-1 lg:row-span-2"
           >
             <div className="grid grid-cols-[1.1fr_1fr] gap-[var(--layout-grid-gutter)] lg:grid-cols-1 lg:h-full">

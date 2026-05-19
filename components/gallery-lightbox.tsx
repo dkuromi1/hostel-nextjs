@@ -11,6 +11,7 @@ import {
     useTransform,
     type PanInfo,
 } from "framer-motion";
+import { useIsLowEndDevice } from "@/lib/use-performance";
 
 interface GalleryLightboxProps {
     currentId: string;
@@ -19,6 +20,7 @@ interface GalleryLightboxProps {
 }
 
 export function GalleryLightbox({ currentId, isModal = false, galleryItems }: GalleryLightboxProps) {
+    const isLowEnd = useIsLowEndDevice();
     const router = useRouter();
 
     const decodedId = decodeURIComponent(currentId);
@@ -33,7 +35,7 @@ export function GalleryLightbox({ currentId, isModal = false, galleryItems }: Ga
     const backdropOpacity = useTransform(dragY, [-300, 0, 300], [0, 0.9, 0]);
     const backdropBlur = useTransform(dragY, [-300, 0, 300], [0, 8, 0]);
     const backdropBackground = useTransform(backdropOpacity, (v) => `rgba(2,6,23,${v})`);
-    const backdropBlurStyle = useTransform(backdropBlur, (v) => `blur(${v}px)`);
+    const backdropBlurStyle = useTransform(backdropBlur, (v) => isLowEnd ? "none" : `blur(${v}px)`);
 
     const handleClose = React.useCallback(() => {
         if (isModal) {

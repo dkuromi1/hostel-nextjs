@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { Panel } from "@/components/ui/panel";
 import { cn } from "@/lib/utils";
+import { useIsLowEndDevice } from "@/lib/use-performance";
 
 export type Testimonial = {
   quote: string;
@@ -25,6 +26,7 @@ export function TestimonialCarousel({
   className,
   variant = "default",
 }: TestimonialCarouselProps) {
+  const isLowEnd = useIsLowEndDevice();
   const isDark = variant === "dark";
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -66,7 +68,11 @@ export function TestimonialCarousel({
 
   const testimonial = testimonials[currentIndex];
 
-  const variants = {
+  const variants = isLowEnd ? {
+    enter: { opacity: 0 },
+    center: { opacity: 1, transition: { duration: 0.15 } },
+    exit: { opacity: 0, transition: { duration: 0.1 } }
+  } : {
     enter: (d: number) => ({ x: d > 0 ? 56 : -56, opacity: 0 }),
     center: {
       x: 0,
