@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { warmGalleryItemMedia } from "@/lib/gallery-media";
 import { useState, useEffect } from "react";
 import { type GalleryItem } from "@/lib/site-data";
@@ -91,14 +92,29 @@ export function GalleryMasonry({
         >
             <div className="media-frame relative overflow-hidden">
                 {item.type === "image" ? (
-                    <img
-                        src={item.src}
-                        alt={item.alt}
-                        loading={isPriority ? "eager" : "lazy"}
-                        fetchPriority={isPriority ? "low" : undefined}
-                        className="w-full h-auto object-cover will-change-transform transition-transform duration-[400ms] [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-                        style={item.aspect ? { aspectRatio: item.aspect } : undefined}
-                    />
+                    (() => {
+                        const [w, h] = (() => {
+                            if (item.aspect) {
+                                const parts = item.aspect.split('/').map(Number);
+                                if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+                                    return parts;
+                                }
+                            }
+                            return [800, 600];
+                        })();
+                        return (
+                            <Image
+                                src={item.src}
+                                alt={item.alt}
+                                width={w}
+                                height={h}
+                                priority={isPriority}
+                                className="w-full h-auto object-cover will-change-transform transition-transform duration-[400ms] [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                                style={item.aspect ? { aspectRatio: item.aspect } : undefined}
+                                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                            />
+                        );
+                    })()
                 ) : (
                     <div className="w-full h-auto bg-slate-100/50" style={item.aspect ? { aspectRatio: item.aspect } : undefined}>
                         <video
