@@ -88,7 +88,6 @@ export default function ExperiencesPage() {
                   alt={siteCopyContent.experiences.metadata.title}
                   fill
                   loading="eager"
-                  fetchPriority="low"
                   className="object-cover object-[30%_center] transition-transform duration-1000 hover:scale-105 shadow-2xl"
                   sizes="(max-width: 1024px) 50vw, 30vw"
                 />
@@ -103,7 +102,6 @@ export default function ExperiencesPage() {
                   alt={siteCopyContent.experiences.metadata.title}
                   fill
                   loading="eager"
-                  fetchPriority="low"
                   className="object-cover transition-transform duration-1000 hover:scale-105"
                   sizes="(max-width: 1024px) 50vw, 20vw"
                 />
@@ -118,7 +116,6 @@ export default function ExperiencesPage() {
                   alt={siteCopyContent.experiences.metadata.title}
                   fill
                   loading="eager"
-                  fetchPriority="low"
                   className="object-cover transition-transform duration-1000 hover:scale-105"
                   sizes="(max-width: 1024px) 50vw, 20vw"
                 />

@@ -126,7 +126,6 @@ export default function ContactPage() {
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-105"
                 loading="eager"
-                fetchPriority="low"
                 sizes="(max-width: 640px) 100vw, 25vw"
               />
             </div>
@@ -137,7 +136,6 @@ export default function ContactPage() {
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-105"
                 loading="eager"
-                fetchPriority="low"
                 sizes="(max-width: 640px) 100vw, 25vw"
               />
             </div>

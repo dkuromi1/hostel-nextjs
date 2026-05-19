@@ -56,7 +56,6 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
                 fill
                 className="object-cover"
                 loading="eager"
-                fetchPriority="low"
                 sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 66vw, 924px"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent px-card-premium pb-card-premium pt-32 text-white">
@@ -119,7 +118,6 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
                     fill
                     className="object-cover object-[75%_center]"
                     loading="eager"
-                    fetchPriority="low"
                     sizes="(max-width: 1024px) 60vw, (max-width: 1400px) 33vw, 466px"
                   />
                 </div>
