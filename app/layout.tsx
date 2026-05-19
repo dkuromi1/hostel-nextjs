@@ -37,14 +37,14 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
-  preload: false,
+  preload: true,
 });
 
 const serif = Playfair_Display({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-serif",
-  preload: false,
+  preload: true,
 });
 
 const fraunces = Fraunces({
