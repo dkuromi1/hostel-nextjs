@@ -110,7 +110,7 @@ export function ImageCarousel({
                 animate={{ x: -currentIndex * containerWidth }}
                 transition={{ type: "spring", stiffness: 400, damping: 40, mass: 1 }}
                 drag="x"
-                dragConstraints={{ left: 0, right: 0 }}
+                dragConstraints={{ left: -((images.length - 1) * containerWidth), right: 0 }}
                 dragElastic={0.2}
                 dragMomentum={false} // Prevent overshoot and conflict with index state
                 onDragStart={() => setIsDragging(true)}
