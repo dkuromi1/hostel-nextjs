@@ -98,19 +98,53 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
           {experiencePillars.map((pillar, index) => {
             const isEven = index % 2 === 1;
             const PillarIcon = index === 0 ? Mountain : MapPin;
+
+            const containerClasses = cn(
+              "group relative flex flex-col gap-0 w-full",
+              "md:grid md:grid-cols-12 md:items-center md:gap-0 md:max-w-none md:mx-0 md:w-full",
+              "lg:max-w-none lg:mx-0 lg:w-full lg:flex lg:flex-row lg:items-center lg:gap-0",
+              isEven ? "lg:flex-row-reverse" : "lg:flex-row"
+            );
+
+            const imageContainerClasses = cn(
+              "relative aspect-[4/3] w-full shrink-0 overflow-hidden shadow-xl z-0 transition-all duration-750",
+              isEven
+                ? "rounded-[2rem_2rem_2rem_0] md:rounded-[3rem_3rem_3rem_0] lg:rounded-[3.5rem_3.5rem_3.5rem_0]"
+                : "rounded-[2rem_2rem_0_2rem] md:rounded-[3rem_3rem_0_3rem] lg:rounded-[3.5rem_3.5rem_0_3.5rem]",
+              "md:col-span-9 md:aspect-[16/10] md:shadow-2xl",
+              isEven ? "md:col-start-4" : "md:col-start-1",
+              "lg:w-[55%] lg:aspect-[16/10]"
+            );
+
+            const cardClasses = cn(
+              // Mobile floating card
+              "relative z-10 -mt-16 mx-4 p-6 sm:p-8 glass-panel shadow-2xl flex-1 transition-all duration-500",
+              isEven
+                ? "rounded-[2rem_0_2rem_2rem] md:rounded-[3rem_0_3rem_3rem]"
+                : "rounded-[0_2rem_2rem_2rem] md:rounded-[0_3rem_3rem_3rem]",
+              
+              // Tablet overlapping grid
+              "md:col-span-7 md:-mt-0 md:mx-0 md:p-8 md:shadow-2xl",
+              isEven
+                ? "md:col-start-1 md:-mr-24"
+                : "md:col-start-6 md:-ml-24",
+              
+              // Desktop flat block (card styles are fully reset here)
+              "lg:col-span-5 lg:relative lg:z-auto lg:m-0 lg:p-0 lg:bg-transparent lg:border-0 lg:shadow-none lg:backdrop-blur-none lg:rounded-none",
+              isEven ? "lg:pr-12" : "lg:pl-12"
+            );
+
             return (
               <Reveal key={pillar.title} delay={100}>
-                <div className={cn(
-                  "group relative flex flex-col gap-8 lg:items-center",
-                  isEven ? "lg:flex-row-reverse" : "lg:flex-row"
-                )}>
-                  <div className="relative aspect-[16/10] lg:w-[55%] shrink-0 overflow-hidden rounded-[var(--radius-3xl)] shadow-2xl">
+                <div className={containerClasses}>
+                  {/* Image Container */}
+                  <div className={imageContainerClasses}>
                     <Image
                       src={pillar.image}
                       alt={pillar.alt}
                       fill
                       className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 70vw, 50vw"
                     />
                     {index === 0 && showRegionalWeather && (
                       <div className="absolute right-6 top-6 z-20">
@@ -120,23 +154,23 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   </div>
                   
-                  <div className={cn(
-                    "flex-1 space-y-4 lg:space-y-6",
-                    isEven ? "lg:pr-12" : "lg:pl-12"
-                  )}>
-                    <div className="flex items-center gap-3">
-                      <PillarIcon className="size-5 text-[var(--brand-primary)]" />
-                      <SectionLabel weight="bold" className="text-[var(--brand-primary)] tracking-[0.2em] uppercase">
-                        {pillar.title}
-                      </SectionLabel>
+                  {/* Text Details Card */}
+                  <div className={cardClasses}>
+                    <div className="space-y-4 lg:space-y-6">
+                      <div className="flex items-center gap-3">
+                        <PillarIcon className="size-5 text-[var(--brand-primary)]" />
+                        <SectionLabel weight="bold" className="text-[var(--brand-primary)] tracking-[0.2em] uppercase">
+                          {pillar.title}
+                        </SectionLabel>
+                      </div>
+                      <h3 className="text-3xl sm:text-4xl font-heading leading-tight tracking-tight text-[var(--text-heading)]">
+                        {index === 0 ? "The Gateway to the North" : "The Heart of the City"}
+                      </h3>
+                      <p className="text-lg leading-relaxed text-[var(--text-body-subtle)]">
+                        {formatText(pillar.description)}
+                      </p>
+                      <PillarCta cta={pillar.cta} />
                     </div>
-                    <h3 className="text-3xl sm:text-4xl font-heading leading-tight tracking-tight text-[var(--text-heading)]">
-                      {index === 0 ? "The Gateway to the North" : "The Heart of the City"}
-                    </h3>
-                    <p className="text-lg leading-relaxed text-[var(--text-body-subtle)]">
-                      {formatText(pillar.description)}
-                    </p>
-                    <PillarCta cta={pillar.cta} />
                   </div>
                 </div>
               </Reveal>

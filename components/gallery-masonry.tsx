@@ -90,7 +90,7 @@ export function GalleryMasonry({
             }}
             className="group block w-full cursor-zoom-in"
         >
-            <div className="media-frame relative overflow-hidden">
+            <div className="media-frame !rounded-[var(--radius-sm)] relative overflow-hidden">
                 {item.type === "image" ? (
                     (() => {
                         const [w, h] = (() => {

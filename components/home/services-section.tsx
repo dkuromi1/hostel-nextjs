@@ -6,6 +6,7 @@ import { Panel } from "@/components/ui/panel";
 import { SwipableRow } from "@/components/swipable-row";
 import { useIsMobile } from "@/lib/use-is-mobile";
 import type { ServiceItem } from "@/lib/site-data";
+import { cn } from "@/lib/utils";
 
 export interface IncludedServicesSectionProps {
   services: ServiceItem[];
@@ -19,6 +20,21 @@ export interface IncludedServicesSectionProps {
 export function IncludedServicesSection({ services, copy }: IncludedServicesSectionProps) {
   const isMobile = useIsMobile();
 
+  const getJaggedStyles = (index: number) => {
+    switch (index % 4) {
+      case 0:
+        return "lg:-translate-y-1 lg:rotate-[-0.1deg]";
+      case 1:
+        return "lg:translate-y-1.5 lg:rotate-[0.1deg]";
+      case 2:
+        return "lg:-translate-y-0.5 lg:rotate-[-0.05deg]";
+      case 3:
+        return "lg:translate-y-1 lg:rotate-[0.15deg]";
+      default:
+        return "";
+    }
+  };
+
   const servicesContent = (
     <SwipableRow
       itemCount={services.length}
@@ -27,7 +43,10 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
       {services.map((service, idx) => {
         const Icon = resolveIcon(service.icon);
         const cardContent = (
-          <div className="group h-full flex flex-col gap-6 p-card rounded-[var(--radius-lg)] border border-[var(--border)] bg-white dark:bg-card transition-all duration-300 hover:shadow-xl hover:shadow-[var(--brand-primary)]/5 hover:border-[var(--brand-primary)]/20">
+          <div className="group relative h-full flex flex-col gap-6 p-card rounded-[var(--radius-lg)] border border-[var(--border)] bg-white dark:bg-card transition-all duration-300 hover:shadow-xl hover:shadow-[var(--brand-primary)]/5 hover:border-[var(--brand-primary)]/20">
+            {/* Offset layered background sheet for tactile visual depth */}
+            <div className="absolute -inset-px rounded-[var(--radius-lg)] border border-[var(--border)] -z-10 bg-[var(--muted)]/50 opacity-40 transition-transform duration-500 translate-x-2 translate-y-2 group-hover:translate-x-3.5 group-hover:translate-y-3.5 dark:bg-card/40" />
+
             <div className="flex size-14 shrink-0 items-center justify-center rounded-[var(--radius-lg)] bg-white text-[var(--brand-primary)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-[var(--brand-primary)] group-hover:text-white group-hover:shadow-lg group-hover:shadow-[var(--brand-primary)]/20 dark:bg-white/5">
               <Icon className="size-7" />
             </div>
@@ -54,7 +73,7 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
           <Reveal
             key={idx}
             delay={idx * 100}
-            className="min-w-[85%] snap-center sm:min-w-0 h-full"
+            className={cn("min-w-[85%] snap-center sm:min-w-0 h-full", getJaggedStyles(idx))}
           >
             {cardContent}
           </Reveal>

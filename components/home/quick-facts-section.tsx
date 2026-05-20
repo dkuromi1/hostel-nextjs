@@ -15,17 +15,34 @@ export interface QuickFactsSectionProps {
 export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionProps) {
   const isMobile = useIsMobile();
 
+  // Asymmetric offsets and rotations for a jagged grid flow on desktop viewports
+  const getJaggedStyles = (index: number) => {
+    switch (index % 4) {
+      case 0:
+        return "lg:-translate-y-1 lg:rotate-[-0.1deg]";
+      case 1:
+        return "lg:translate-y-1.5 lg:rotate-[0.1deg]";
+      case 2:
+        return "lg:-translate-y-0.5 lg:rotate-[-0.05deg]";
+      case 3:
+        return "lg:translate-y-1 lg:rotate-[0.15deg]";
+      default:
+        return "";
+    }
+  };
+
   const factsContent = (
     <SwipableRow
       itemCount={quickFacts.length}
-      className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-[var(--layout-grid-gutter)]"
+      className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-[var(--layout-grid-gutter)] lg:gap-x-10 lg:gap-y-12"
     >
       {quickFacts.map((fact, index) => {
         const Icon = resolveIcon(fact.icon || "Info");
         const cardContent = (
           <div className="group relative h-full flex flex-col gap-6 p-card rounded-[var(--radius-lg)] border border-[var(--border)] bg-white dark:bg-card transition-all duration-300 hover:shadow-xl hover:shadow-gold/5 hover:border-gold/20">
+            {/* Offset layered background sheet for tactile visual depth */}
+            <div className="absolute -inset-px rounded-[var(--radius-lg)] border border-[var(--border)] -z-10 bg-[var(--muted)]/50 opacity-40 transition-transform duration-500 translate-x-2 translate-y-2 group-hover:translate-x-3.5 group-hover:translate-y-3.5 dark:bg-card/40" />
 
-            
             <div className="relative z-10 flex flex-col gap-5">
               <div className="relative flex size-14 shrink-0 items-center justify-center rounded-[var(--radius-lg)] bg-white text-gold shadow-sm ring-1 ring-[var(--border)] transition-all duration-500 group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-gold group-hover:text-white dark:bg-white/5">
                 <Icon className="size-7" />
@@ -57,7 +74,7 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
           <Reveal
             key={index}
             delay={index * 80}
-            className="min-w-[85%] snap-center sm:min-w-0 h-full"
+            className={cn("min-w-[85%] snap-center sm:min-w-0 h-full transition-all duration-500", getJaggedStyles(index))}
           >
             {cardContent}
           </Reveal>
