@@ -109,8 +109,8 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
             const imageContainerClasses = cn(
               "relative aspect-[4/3] w-full shrink-0 overflow-hidden shadow-xl z-0 transition-all duration-750",
               isEven
-                ? "rounded-[2rem_2rem_2rem_0] md:rounded-[3rem_3rem_3rem_0] lg:rounded-[3.5rem_3.5rem_3.5rem_0]"
-                : "rounded-[2rem_2rem_0_2rem] md:rounded-[3rem_3rem_0_3rem] lg:rounded-[3.5rem_3.5rem_0_3.5rem]",
+                ? "rounded-[var(--radius-3xl)_var(--radius-3xl)_var(--radius-3xl)_0]"
+                : "rounded-[var(--radius-3xl)_var(--radius-3xl)_0_var(--radius-3xl)]",
               "md:col-span-9 md:aspect-[16/10] md:shadow-2xl",
               isEven ? "md:col-start-4" : "md:col-start-1",
               "lg:w-[55%] lg:aspect-[16/10]"
@@ -120,8 +120,8 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
               // Mobile floating card
               "relative z-10 -mt-16 mx-4 p-6 sm:p-8 glass-panel shadow-2xl flex-1 transition-all duration-500",
               isEven
-                ? "rounded-[2rem_0_2rem_2rem] md:rounded-[3rem_0_3rem_3rem]"
-                : "rounded-[0_2rem_2rem_2rem] md:rounded-[0_3rem_3rem_3rem]",
+                ? "rounded-[var(--radius-3xl)_0_var(--radius-3xl)_var(--radius-3xl)]"
+                : "rounded-[0_var(--radius-3xl)_var(--radius-3xl)_var(--radius-3xl)]",
               
               // Tablet overlapping grid
               "md:col-span-7 md:-mt-0 md:mx-0 md:p-8 md:shadow-2xl",

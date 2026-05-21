@@ -569,19 +569,19 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                             essential: true
                         });
                     }}
-                    className="flex items-center gap-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white transition-all hover:bg-black/60 active:scale-95"
+                    className="flex items-center gap-2 rounded-[var(--radius-full)] border border-white/20 bg-black/40 backdrop-blur-md px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white transition-all hover:bg-black/60 active:scale-95"
                 >
                     <Home className="size-3 text-sky-400" /><span>Home</span>
                 </button>
-                <button onClick={toggleStyle} className="flex items-center gap-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white transition-all hover:bg-black/60 active:scale-95">
-                    <div className="size-2 rounded-full bg-sky-400 shadow-[0_0_8px_#38bdf8]" />{isSatellite ? 'View Streets' : 'View Aerial'}
+                <button onClick={toggleStyle} className="flex items-center gap-2 rounded-[var(--radius-full)] border border-white/20 bg-black/40 backdrop-blur-md px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white transition-all hover:bg-black/60 active:scale-95">
+                    <div className="size-2 rounded-[var(--radius-full)] bg-sky-400 shadow-[0_0_8px_#38bdf8]" />{isSatellite ? 'View Streets' : 'View Aerial'}
                 </button>
             </div>
-            <div id="map-legend" className="absolute bottom-4 left-4 z-10 flex flex-col gap-2 rounded-xl border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md p-2.5 text-[9px] font-bold uppercase tracking-widest text-[var(--text-heading)] shadow-lg transition-opacity duration-500 opacity-100">
+            <div id="map-legend" className="absolute bottom-4 left-4 z-10 flex flex-col gap-2 rounded-[var(--radius-xl)] border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md p-2.5 text-[9px] font-bold uppercase tracking-widest text-[var(--text-heading)] shadow-lg transition-opacity duration-500 opacity-100">
                 {variant === "local" && (
                     <>
                         <div className="flex items-center gap-3"><div className="h-0.5 w-6 border-t border-dashed border-[var(--brand-primary)] opacity-90" /><span>{siteCopyContent.locationMap.legend.walkArea}</span></div>
-                        <div className="flex items-center gap-3"><div className="h-1.5 w-6 rounded-full bg-[var(--brand-primary)]/40" /><span>{siteCopyContent.locationMap.legend.pedestrianStreet}</span></div>
+                        <div className="flex items-center gap-3"><div className="h-1.5 w-6 rounded-[var(--radius-full)] bg-[var(--brand-primary)]/40" /><span>{siteCopyContent.locationMap.legend.pedestrianStreet}</span></div>
                     </>
                 )}
                 {variant === "regional" && siteConfig.features.showRegionalTrails && (
@@ -659,7 +659,7 @@ function MapPreview({ mapsHref, onLoad }: { mapsHref: string; onLoad: () => void
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.18),transparent_45%),linear-gradient(180deg,rgba(15,23,42,0.4),rgba(15,23,42,0.9))]" />
 
             <div className="relative z-10 flex max-w-md flex-col items-center gap-4 px-6 text-center">
-                <div className="flex size-16 items-center justify-center rounded-full bg-sky-500/15 ring-1 ring-sky-400/20">
+                <div className="flex size-16 items-center justify-center rounded-[var(--radius-full)] bg-sky-500/15 ring-1 ring-sky-400/20">
                     <MapPin className="size-8 text-sky-400" />
                 </div>
                 <div className="space-y-2">
@@ -677,7 +677,7 @@ function MapPreview({ mapsHref, onLoad }: { mapsHref: string; onLoad: () => void
                     <button
                         type="button"
                         onClick={onLoad}
-                        className="rounded-full bg-[#059669] px-6 py-3 text-sm font-bold text-white shadow-lg transition-transform hover:scale-105 active:scale-95"
+                        className="rounded-[var(--radius-full)] bg-[#059669] px-6 py-3 text-sm font-bold text-white shadow-lg transition-transform hover:scale-105 active:scale-95"
                     >
                         Load Interactive Map
                     </button>
@@ -685,7 +685,7 @@ function MapPreview({ mapsHref, onLoad }: { mapsHref: string; onLoad: () => void
                         href={mapsHref}
                         target="_blank"
                         rel="noreferrer"
-                        className="rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold text-white transition-all hover:bg-white/10 hover:scale-105 active:scale-95"
+                        className="rounded-[var(--radius-full)] border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold text-white transition-all hover:bg-white/10 hover:scale-105 active:scale-95"
                     >
                         Open Google Maps
                     </Link>
