@@ -35,29 +35,114 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
     }
   };
 
+  const getCardTheme = (index: number) => {
+    const themes = [
+      {
+        // Free Breakfast
+        iconColor: "text-amber-600 dark:text-amber-400",
+        iconBg: "bg-amber-50 dark:bg-amber-500/10",
+        iconRing: "ring-amber-500/10 dark:ring-amber-500/20",
+        glowColor: "hover:shadow-amber-500/[0.08] dark:hover:shadow-amber-500/[0.15] hover:border-amber-500/30",
+        hoverBg: "group-hover/service-card:bg-amber-600",
+        glowDot: "bg-amber-400",
+        backdropBg: "bg-amber-500/10 dark:bg-amber-500/20",
+        badgeText: "Breakfast Perks"
+      },
+      {
+        // Modern Facilities
+        iconColor: "text-sky-600 dark:text-sky-400",
+        iconBg: "bg-sky-50 dark:bg-sky-500/10",
+        iconRing: "ring-sky-500/10 dark:ring-sky-500/20",
+        glowColor: "hover:shadow-sky-500/[0.08] dark:hover:shadow-sky-500/[0.15] hover:border-sky-500/30",
+        hoverBg: "group-hover/service-card:bg-sky-600",
+        glowDot: "bg-sky-400",
+        backdropBg: "bg-sky-500/10 dark:bg-sky-500/20",
+        badgeText: "Comfort & Tech"
+      },
+      {
+        // Shared Kitchen
+        iconColor: "text-emerald-600 dark:text-emerald-400",
+        iconBg: "bg-emerald-50 dark:bg-emerald-500/10",
+        iconRing: "ring-emerald-500/10 dark:ring-emerald-500/20",
+        glowColor: "hover:shadow-emerald-500/[0.08] dark:hover:shadow-emerald-500/[0.15] hover:border-emerald-500/30",
+        hoverBg: "group-hover/service-card:bg-emerald-600",
+        glowDot: "bg-emerald-400",
+        backdropBg: "bg-emerald-500/10 dark:bg-emerald-500/20",
+        badgeText: "Culinary Space"
+      },
+      {
+        // Community
+        iconColor: "text-rose-600 dark:text-rose-400",
+        iconBg: "bg-rose-50 dark:bg-rose-500/10",
+        iconRing: "ring-rose-500/10 dark:ring-rose-500/20",
+        glowColor: "hover:shadow-rose-500/[0.08] dark:hover:shadow-rose-500/[0.15] hover:border-rose-500/30",
+        hoverBg: "group-hover/service-card:bg-rose-600",
+        glowDot: "bg-rose-400",
+        backdropBg: "bg-rose-500/10 dark:bg-rose-500/20",
+        badgeText: "Hostel Vibe"
+      },
+      {
+        // Adventure Ready
+        iconColor: "text-violet-600 dark:text-violet-400",
+        iconBg: "bg-violet-50 dark:bg-violet-500/10",
+        iconRing: "ring-violet-500/10 dark:ring-violet-500/20",
+        glowColor: "hover:shadow-violet-500/[0.08] dark:hover:shadow-violet-500/[0.15] hover:border-violet-500/30",
+        hoverBg: "group-hover/service-card:bg-violet-600",
+        glowDot: "bg-violet-400",
+        backdropBg: "bg-violet-500/10 dark:bg-violet-500/20",
+        badgeText: "Adventure Ready"
+      }
+    ];
+    return themes[index % themes.length];
+  };
+
   const servicesContent = (
     <SwipableRow
       itemCount={services.length}
-      className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[var(--layout-grid-gutter)]"
+      className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-[var(--layout-grid-gutter)]"
     >
       {services.map((service, idx) => {
         const Icon = resolveIcon(service.icon);
+        const theme = getCardTheme(idx);
         const cardContent = (
-          <div className="group relative h-full flex flex-col gap-6 p-card rounded-[var(--radius-lg)] border border-[var(--border)] bg-white dark:bg-card transition-all duration-300 hover:shadow-xl hover:shadow-[var(--brand-primary)]/5 hover:border-[var(--brand-primary)]/20">
+          <div className={cn(
+            "group/service-card relative h-full flex flex-col gap-6 p-card rounded-[var(--radius-2xl)] border border-[var(--border)] bg-white/70 dark:bg-zinc-950/60 backdrop-blur-md transition-all duration-500 hover:shadow-2xl",
+            theme.glowColor
+          )}>
             {/* Offset layered background sheet for tactile visual depth */}
-            <div className="absolute -inset-px rounded-[var(--radius-lg)] border border-[var(--border)] -z-10 bg-[var(--muted)]/50 opacity-40 transition-transform duration-500 translate-x-2 translate-y-2 group-hover:translate-x-3.5 group-hover:translate-y-3.5 dark:bg-card/40" />
+            <div className={cn(
+              "absolute -inset-px rounded-[var(--radius-2xl)] border border-[var(--border)] -z-10 opacity-30 transition-all duration-500 translate-x-2.5 translate-y-2.5 group-hover/service-card:translate-x-4 group-hover/service-card:translate-y-4 dark:bg-card/25",
+              theme.backdropBg
+            )} />
 
-            <div className="flex size-14 shrink-0 items-center justify-center rounded-[var(--radius-lg)] bg-white text-[var(--brand-primary)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-[var(--brand-primary)] group-hover:text-white group-hover:shadow-lg group-hover:shadow-[var(--brand-primary)]/20 dark:bg-white/5">
-              <Icon className="size-7" />
+            {/* Horizontal Header: Icon + Title/Badge side-by-side */}
+            <div className="flex items-center gap-4">
+              {/* Glowing Icon Container */}
+              <div className={cn(
+                "relative flex size-14 shrink-0 items-center justify-center rounded-[var(--radius-xl)] shadow-sm ring-1 transition-all duration-500 group-hover/service-card:-translate-y-0.5 group-hover/service-card:shadow-lg group-hover/service-card:ring-transparent",
+                theme.iconBg,
+                theme.iconRing,
+                theme.hoverBg
+              )}>
+                <div className="absolute inset-0 rounded-[var(--radius-xl)] bg-current opacity-[0.03] blur-[4px] transition-all duration-500 group-hover/service-card:opacity-0" />
+                <Icon className={cn("size-6 transition-colors duration-500", theme.iconColor, "group-hover/service-card:text-white")} />
+              </div>
+
+              {/* Title + Badge stacked to the right of icon */}
+              <div className="flex flex-col gap-0.5 min-w-0">
+                <span className={cn("text-[9px] font-bold uppercase tracking-[0.2em]", theme.iconColor)}>
+                  {theme.badgeText}
+                </span>
+                <h3 className="heading-item text-[1.05rem] leading-tight tracking-tight text-[var(--text-heading)]">
+                  {service.title}
+                </h3>
+              </div>
             </div>
-            <div className="space-y-3">
-              <h3 className="heading-item text-xl tracking-tight text-[var(--text-heading)]">
-                {service.title}
-              </h3>
-              <p className="text-[15px] leading-relaxed text-[var(--text-body-subtle)] transition-colors group-hover:text-[var(--text-body)]">
-                {service.description}
-              </p>
-            </div>
+
+            {/* Description spanning full width below the header */}
+            <p className="text-[14.5px] leading-relaxed text-[var(--text-body-subtle)] transition-colors group-hover/service-card:text-[var(--text-body)]">
+              {service.description}
+            </p>
           </div>
         );
 
@@ -89,8 +174,10 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" aria-hidden="true" />
       
       {/* Subtle decorative elements */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute bottom-1/4 -left-32 w-80 h-80 rounded-full bg-[var(--accent)]/[0.015] blur-3xl" />
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        <div className="absolute top-10 right-10 w-96 h-96 rounded-full bg-amber-500/[0.035] blur-[120px] dark:bg-amber-500/[0.02]" />
+        <div className="absolute bottom-10 left-10 w-96 h-96 rounded-full bg-sky-500/[0.035] blur-[120px] dark:bg-sky-500/[0.02]" />
+        <div className="absolute top-1/2 left-1/3 w-80 h-80 rounded-full bg-emerald-500/[0.02] blur-[100px]" />
       </div>
       
       <div className="shell-container space-y-12 relative z-10">

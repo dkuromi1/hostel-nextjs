@@ -61,10 +61,24 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
                         className="absolute inset-0 h-full rounded-none"
                         autoPlayInterval={isFirst ? 5000 : 0}
                       />
-                      <div className="pointer-events-none absolute inset-0 z-10 flex p-5 sm:px-6 sm:py-4 items-start sm:items-end">
-                        <Badge className="bg-black/40 border border-white/10 text-white shadow-md backdrop-blur-md pointer-events-auto">
-                          {room.price}/night
-                        </Badge>
+                      <div className="pointer-events-none absolute inset-0 z-10 flex p-5 sm:p-6 items-start justify-start">
+                        <div className="bg-slate-950/40 border border-white/10 text-white shadow-2xl backdrop-blur-md px-4 py-2.5 pointer-events-auto transition-all duration-300 hover:bg-slate-950/55 w-fit">
+                          <div className="flex items-center gap-3">
+                            <h3 className="text-sm sm:text-base font-semibold tracking-tight text-white whitespace-nowrap">
+                              {room.name}
+                            </h3>
+                            <div className={cn(
+                              "flex items-baseline gap-0.5 shrink-0 bg-white/5 text-white border border-white/15 font-semibold",
+                              isFirst ? "px-2.5 py-1 text-xs" : "px-2 py-0.5 text-[10px]"
+                            )}>
+                              <span>{room.price}</span>
+                              <span className={cn(
+                                "font-medium uppercase tracking-widest opacity-70",
+                                isFirst ? "text-[8px]" : "text-[7px]"
+                              )}>/night</span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                       {isFirst && (
                         <div className="absolute top-5 right-5 z-20">
@@ -87,11 +101,19 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
                     <div className="space-y-6 p-card-premium flex-1 flex flex-col bg-white dark:bg-card">
                       <div>
                         <SectionLabel variant="emerald" className="mb-3">
-                          {room.label}
+                          {(() => {
+                            const parts = room.label.split(":");
+                            if (parts.length > 1) {
+                              return (
+                                <>
+                                  <span className="font-extrabold">{parts[0]}:</span>
+                                  {parts.slice(1).join(":")}
+                                </>
+                              );
+                            }
+                            return room.label;
+                          })()}
                         </SectionLabel>
-                        <h3 className="mt-3 heading-card text-[var(--text-heading)]">
-                          {room.name}
-                        </h3>
                         <p className="mt-4 text-section-desc text-[var(--text-body-subtle)] line-clamp-3">
                           {room.description}
                         </p>

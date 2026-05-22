@@ -142,7 +142,18 @@ export default function RoomsPage() {
                       <div className="space-y-4">
                         <div>
                           <SectionLabel variant="emerald" className="mb-2">
-                            {room.label}
+                            {(() => {
+                              const parts = room.label.split(":");
+                              if (parts.length > 1) {
+                                return (
+                                  <>
+                                    <span className="font-extrabold">{parts[0]}:</span>
+                                    {parts.slice(1).join(":")}
+                                  </>
+                                );
+                              }
+                              return room.label;
+                            })()}
                           </SectionLabel>
                           <h2 className="mt-2 heading-card text-[var(--text-heading)]">
                             {room.name}
