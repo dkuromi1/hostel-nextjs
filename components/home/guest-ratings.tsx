@@ -133,9 +133,8 @@ export function GuestRatingsSection({
       
       <div className="shell-container relative z-10">
         <Reveal>
-          <div className="flex items-center gap-4 mb-10">
+          <div className="flex justify-center mb-10">
             <SectionLabel>{copy.label}</SectionLabel>
-            <div className="h-px flex-1 bg-gradient-to-r from-[var(--border)] to-transparent" />
           </div>
           
           <div className="flex flex-col sm:flex-row justify-around items-center gap-16 lg:gap-24">
