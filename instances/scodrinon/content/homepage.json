@@ -127,12 +127,6 @@
   ],
   "featuredMoments": [
     {
-      "title": "River Days at the Drin",
-      "description": "We head out to the river regularly for swimming and sun. These trips are a hostel favorite — a chance to see a different side of Shkoder and spend the afternoon with a great crew.",
-      "image": "/images/drin_swimming_trip.jpeg",
-      "alt": "Guests enjoying an evening event at Scodrinon Hostel"
-    },
-    {
       "title": "Spontaneous Socials",
       "description": "Whether it’s rooftop raki shots or exploring the local craft beer scene, we prioritize high-energy moments that make it easy for everyone to join. It’s all about the social rhythm of the city.",
       "image": "/images/local_food_night.jpeg",
@@ -149,6 +143,12 @@
       "description": "The rooftop is the social heart of the hostel: mountain light at sunset, city views after dark, and a pulse that keeps going from the first drink to the last chat.",
       "image": "/images/rooftop_social_4_flare.jpg",
       "alt": "Guests relaxing on the Scodrinon Hostel rooftop at sunset"
+    },
+        {
+      "title": "River Days at the Drin",
+      "description": "We head out to the river regularly for swimming and sun. These trips are a hostel favorite — a chance to see a different side of Shkoder and spend the afternoon with a great crew.",
+      "image": "/images/drin_swimming_trip.jpeg",
+      "alt": "Guests enjoying an evening event at Scodrinon Hostel"
     }
   ],
   "contactChecklist": [

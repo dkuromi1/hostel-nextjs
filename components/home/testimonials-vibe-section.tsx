@@ -2,7 +2,6 @@
 import { resolveIcon } from "@/lib/icon-registry";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
-import { Panel } from "@/components/ui/panel";
 import { SwipableRow } from "@/components/swipable-row";
 import { TestimonialCarousel, type Testimonial } from "@/components/testimonial-carousel";
 import { useIsMobile } from "@/lib/use-is-mobile";
@@ -28,22 +27,38 @@ export function TestimonialsVibeSection({ testimonials, extendReasons, copy }: T
     >
       {extendReasons.map((reason, index) => {
         const Icon = resolveIcon(reason.icon);
-        const cardContent = (
-          <Panel className="group relative flex h-full flex-col justify-between p-card-premium transition-all duration-300 bg-white !rounded-[var(--radius-lg)] border border-[var(--border)] hover:border-[#059669]/20 hover:shadow-xl hover:shadow-[#059669]/5 dark:bg-card">
-            <div>
-              <div className="float-left mb-3 mr-4 flex size-12 items-center justify-center rounded-[var(--radius-lg)] bg-[#059669]/10 text-[#059669] transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-[#059669] group-hover:text-white">
-                <Icon className="size-5" />
-              </div>
-              <h3 className="heading-item mb-1.5 text-gray-900 dark:text-white">
-                {reason.title}
-              </h3>
-              <p className="text-card-body text-gray-600 dark:text-white/75">
-                {reason.description}
-              </p>
-            </div>
-          </Panel>
-        );
+        const ordinal = String(index + 1).padStart(2, "0");
 
+        const cardContent = (
+          <div className="group relative h-full overflow-hidden rounded-2xl border border-white/[0.07] bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-6 backdrop-blur-sm transition-all duration-500 hover:border-white/[0.15] hover:shadow-2xl hover:shadow-black/30">
+
+            {/* Top accent line */}
+            <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--brand-primary)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+            {/* Watermark icon */}
+            <div className="absolute -right-4 -top-4 text-white/[0.04] transition-all duration-700 group-hover:text-white/[0.07] group-hover:scale-110 group-hover:-rotate-6" aria-hidden="true">
+              <Icon className="size-32" />
+            </div>
+
+            {/* Ordinal */}
+            <span className="mb-4 block font-mono text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)]/60">
+              {ordinal}
+            </span>
+
+            {/* Icon chip */}
+            <div className="mb-4 flex size-10 items-center justify-center rounded-xl bg-[var(--brand-primary)]/15 text-[var(--brand-primary)] ring-1 ring-[var(--brand-primary)]/20 transition-all duration-300 group-hover:bg-[var(--brand-primary)]/25 group-hover:ring-[var(--brand-primary)]/40">
+              <Icon className="size-5" />
+            </div>
+
+            {/* Text */}
+            <h3 className="mb-2 font-heading text-lg font-semibold leading-snug tracking-tight text-white">
+              {reason.title}
+            </h3>
+            <p className="text-sm leading-relaxed text-white/55">
+              {reason.description}
+            </p>
+          </div>
+        );
 
         if (isMobile) {
           return (
