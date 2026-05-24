@@ -6,10 +6,9 @@ import { EditorialButton } from "@/components/ui/editorial-button";
 import { SectionHeading } from "@/components/section-heading";
 import { SectionLabel } from "@/components/ui/section-label";
 import { Reveal } from "@/components/reveal";
-import { Panel } from "@/components/ui/panel";
+import { buttonVariants } from "@/components/ui/button";
 import { SwipableRow } from "@/components/swipable-row";
 import { ThethWeather } from "@/components/theth-weather";
-import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
   type CtaLink,
@@ -190,30 +189,43 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
 
           <Reveal delay={120}>
             <SwipableRow itemCount={eventCards.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-[var(--layout-grid-gutter)] lg:grid-cols-2">
-              {eventCards.map((event, index) => (
+              {eventCards.map((event) => (
                 <div key={event.title} className="min-w-[82vw] snap-center sm:min-w-0">
-                  <Panel className="group overflow-hidden transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:shadow-md">
-                    <div className="grid gap-0 lg:grid-cols-[0.92fr_1.08fr]">
-                      <div className="relative min-h-[14rem]">
-                        <Image
-                          src={event.image}
-                          alt={event.alt}
-                          fill
-                          loading="lazy"
-                          className="object-cover transition-transform duration-700 group-hover:scale-105 z-0 transform-gpu"
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1400px) 23vw, 322px"
-                        />
-                      </div>
-                      <div className="p-card">
-                        <h3 className="font-heading text-2xl leading-none tracking-[-0.04em] text-[var(--text-heading)]">
-                          {event.title}
-                        </h3>
-                        <p className="mt-3 text-card-body">
-                          {event.description}
-                        </p>
-                      </div>
+                  <div className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-lg cursor-default select-none">
+                    {/* Full-bleed image */}
+                    <Image
+                      src={event.image}
+                      alt={event.alt}
+                      fill
+                      loading="lazy"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 transform-gpu"
+                      sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, (max-width: 1400px) 25vw, 360px"
+                    />
+
+                    {/* Permanent gradient — bottom fade for title legibility */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+
+                    {/* Hover tint — monochrome dark */}
+                    <div className="absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+
+
+                    {/* Bottom content — always visible title, description slides up on hover */}
+                    <div className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-6 flex flex-col gap-2">
+                      {/* Description: hidden by default, revealed on hover */}
+                      <p className="text-sm leading-relaxed text-white/85 line-clamp-3 sm:translate-y-2 sm:opacity-0 sm:transition-all sm:duration-400 sm:ease-out sm:group-hover:translate-y-0 sm:group-hover:opacity-100">
+                        {event.description}
+                      </p>
+
+                      {/* Title: always visible */}
+                      <h3 className="font-heading text-xl sm:text-2xl leading-tight tracking-[-0.03em] text-white">
+                        {event.title}
+                      </h3>
                     </div>
-                  </Panel>
+
+                    {/* Bottom accent line — brand colour, grows on hover */}
+                    <div className="absolute bottom-0 inset-x-0 h-[3px] bg-[var(--brand-primary)] scale-x-0 origin-left transition-transform duration-500 ease-out group-hover:scale-x-100" />
+                  </div>
                 </div>
               ))}
               <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
