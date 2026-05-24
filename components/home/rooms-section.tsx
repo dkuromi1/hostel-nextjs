@@ -53,6 +53,21 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
                 <div className="group/room-card relative h-full">
                   {/* Offset layered backdrop sheet for tactility */}
                   <div className="absolute -inset-px rounded-[var(--radius-3xl)] border border-[var(--border)] -z-10 bg-[var(--muted)]/50 opacity-40 transition-transform duration-500 translate-x-3 translate-y-3 group-hover/room-card:translate-x-5 group-hover/room-card:translate-y-5 dark:bg-card/30" />
+
+                  {/* Most Popular badge — outside Panel so overflow-hidden doesn't clip it */}
+                  {isFirst && (
+                    <div className="absolute -top-4 right-4 z-20 sm:top-5 sm:right-5 sm:[position:absolute]">
+                      <div className="relative overflow-hidden rounded-full bg-amber-400 px-3 py-1.5 shadow-2xl backdrop-blur-md transition-all duration-500 hover:-translate-y-0.5 hover:bg-amber-500 group/popular">
+                        {/* Glossy shine */}
+                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/30 to-transparent -translate-x-full group-hover/popular:translate-x-full transition-transform duration-1000 ease-in-out" />
+                        <div className="relative z-10 flex items-center gap-2.5 text-slate-900">
+                          <Star className="size-3 text-slate-900 fill-slate-900" />
+                          <div className="h-3 w-px bg-slate-900/20" />
+                          <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Most Popular</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                   
                   <Panel className="flex h-full flex-col overflow-hidden !rounded-[var(--radius-3xl)]">
                     <div className="relative min-h-[var(--room-image-height)]">
@@ -80,22 +95,7 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
                           </div>
                         </div>
                       </div>
-                      {isFirst && (
-                        <div className="absolute top-5 right-5 z-20">
-                          <div className="relative overflow-hidden rounded-full bg-amber-400 px-3 py-1.5 shadow-2xl backdrop-blur-md transition-all duration-500 hover:-translate-y-0.5 hover:bg-amber-500 group/popular">
-                            {/* Glossy shine */}
-                            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/30 to-transparent -translate-x-full group-hover/popular:translate-x-full transition-transform duration-1000 ease-in-out" />
-                            
-                            <div className="relative z-10 flex items-center gap-2.5 text-slate-900">
-                              <Star className="size-3 text-slate-900 fill-slate-900" />
-                              <div className="h-3 w-px bg-slate-900/20" />
-                              <span className="text-[10px] font-bold uppercase tracking-[0.2em]">
-                                Most Popular
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      )}
+
                     </div>
 
                     <div className="space-y-6 p-card-premium flex-1 flex flex-col bg-white dark:bg-card">
