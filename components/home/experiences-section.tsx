@@ -123,10 +123,10 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                 : "rounded-[0_var(--radius-3xl)_var(--radius-3xl)_var(--radius-3xl)]",
               
               // Tablet overlapping grid
-              "md:col-span-7 md:-mt-0 md:mx-0 md:p-8 md:shadow-2xl",
+              "md:col-span-9 md:-mt-0 md:mx-0 md:p-8 md:shadow-2xl",
               isEven
                 ? "md:col-start-1 md:-mr-24"
-                : "md:col-start-6 md:-ml-24",
+                : "md:col-start-4 md:-ml-24",
               
               // Desktop flat block (card styles are fully reset here)
               "lg:col-span-5 lg:relative lg:z-auto lg:m-0 lg:p-0 lg:bg-transparent lg:border-0 lg:shadow-none lg:backdrop-blur-none lg:rounded-none",
@@ -162,10 +162,10 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                           {pillar.title}
                         </SectionLabel>
                       </div>
-                      <h3 className="text-3xl sm:text-4xl font-heading leading-tight tracking-tight text-[var(--text-heading)]">
+                      <h3 className="heading-card text-[var(--text-heading)]">
                         {index === 0 ? "The Gateway to the North" : "The Heart of the City"}
                       </h3>
-                      <p className="text-lg leading-relaxed text-[var(--text-body-subtle)]">
+                      <p className="text-card-body">
                         {formatText(pillar.description)}
                       </p>
                       <PillarCta cta={pillar.cta} />
@@ -213,7 +213,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                     {/* Bottom content — always visible title, description slides up on hover */}
                     <div className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-6 flex flex-col gap-2">
                       {/* Description: hidden by default, revealed on hover */}
-                      <p className="text-sm leading-relaxed text-white/85 line-clamp-3 sm:translate-y-2 sm:opacity-0 sm:transition-all sm:duration-400 sm:ease-out sm:group-hover:translate-y-0 sm:group-hover:opacity-100">
+                      <p className="text-sm leading-relaxed text-white/85 line-clamp-3 lg:translate-y-2 lg:opacity-0 lg:transition-all lg:duration-400 lg:ease-out lg:group-hover:translate-y-0 lg:group-hover:opacity-100">
                         {event.description}
                       </p>
 

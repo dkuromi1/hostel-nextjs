@@ -46,7 +46,7 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
         hoverBg: "group-hover/service-card:bg-amber-600",
         glowDot: "bg-amber-400",
         backdropBg: "bg-amber-500/10 dark:bg-amber-500/20",
-        badgeText: "Breakfast Perks"
+        badgeText: "Morning Fuel"
       },
       {
         // Modern Facilities
@@ -68,7 +68,7 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
         hoverBg: "group-hover/service-card:bg-emerald-600",
         glowDot: "bg-emerald-400",
         backdropBg: "bg-emerald-500/10 dark:bg-emerald-500/20",
-        badgeText: "Culinary Space"
+        badgeText: "Social Cooking"
       },
       {
         // Community
@@ -90,7 +90,7 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
         hoverBg: "group-hover/service-card:bg-violet-600",
         glowDot: "bg-violet-400",
         backdropBg: "bg-violet-500/10 dark:bg-violet-500/20",
-        badgeText: "Adventure Ready"
+        badgeText: "Trip Logistics"
       }
     ];
     return themes[index % themes.length];

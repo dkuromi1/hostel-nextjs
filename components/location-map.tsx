@@ -131,6 +131,7 @@ const applyCustomizations = (map: MapboxMap, trailGeoJson: MapboxGeoJSONData | n
             const currentFilter = map.getFilter(layer.id) || ['all'];
             map.setFilter(layer.id, [
                 'all', currentFilter,
+                ['!=', ['get', 'class'], 'lodging'],
                 ['!=', ['get', 'category_en'], 'Lodging'],
                 ['!=', ['get', 'category_en'], 'Hotel'],
                 ['!=', ['get', 'category_en'], 'Hostel'],

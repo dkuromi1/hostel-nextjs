@@ -25,15 +25,37 @@ export function DirectBookingCard({
 }: DirectBookingCardProps) {
   const Icon = resolveIcon("Whatsapp");
   const HeadingTag = headingLevel;
+  const bgImage = "/images/ambiance_1.jpg"; // Cozy local social ambiance background
 
   if (variant === "inline") {
     return (
       <div className={cn(
-        "group relative flex flex-col sm:flex-row items-center justify-between glass-panel rounded-[var(--radius-3xl)] p-card gap-8 w-full overflow-hidden transition-all duration-500 hover:border-[var(--brand-primary)]/40 hover:shadow-2xl hover:shadow-[var(--brand-primary)]/10",
+        "group relative flex flex-col sm:flex-row items-center justify-between glass-panel rounded-[var(--radius-3xl)] p-card gap-8 w-full transition-all duration-500 hover:border-[var(--brand-primary)]/40 hover:shadow-2xl hover:shadow-[var(--brand-primary)]/10",
         className
       )}>
+        {/* Subtle offset shadow layer / background base */}
+        <div className="absolute -inset-px rounded-[var(--radius-3xl)] border border-[var(--border)] bg-[var(--muted)]/40 -z-10 opacity-50 transition-transform duration-500 translate-x-1 translate-y-1 group-hover:translate-x-2 group-hover:translate-y-2" />
+
         {/* Radial brand glow emanating from top-left */}
         <div className="absolute -top-12 -left-12 size-64 rounded-full bg-[var(--brand-primary)] opacity-[0.07] blur-3xl pointer-events-none transition-all duration-700 group-hover:opacity-[0.13] group-hover:scale-110" />
+
+        {/* Beautiful Masked Background Image in the upper right */}
+        <div className="absolute inset-0 rounded-[var(--radius-3xl)] overflow-hidden pointer-events-none select-none -z-10" aria-hidden="true">
+          <div className="absolute top-0 right-0 w-72 h-72 transition-transform duration-500 group-hover:scale-105">
+            {/* Soft blending overlays */}
+            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[var(--glass-bg)]/60 to-[var(--glass-bg)] z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--glass-bg)]/60 to-[var(--glass-bg)] z-10" />
+            {/* Soft radial mask */}
+            <div 
+              className="absolute inset-0 w-full h-full bg-cover bg-center opacity-[0.50] dark:opacity-[0.35] mix-blend-luminosity dark:mix-blend-normal"
+              style={{
+                backgroundImage: `url(${bgImage})`,
+                maskImage: "radial-gradient(circle at top right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 50%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0) 100%)",
+                WebkitMaskImage: "radial-gradient(circle at top right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 50%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0) 100%)",
+              }}
+            />
+          </div>
+        </div>
 
         {/* Secondary accent glow bottom-right */}
         <div className="absolute -bottom-8 -right-8 size-48 rounded-full bg-[var(--brand-accent)] opacity-[0.05] blur-2xl pointer-events-none transition-all duration-700 group-hover:opacity-[0.09]" />
@@ -42,8 +64,6 @@ export function DirectBookingCard({
         <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[var(--radius-3xl)]">
           <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[1200ms] ease-in-out bg-gradient-to-r from-transparent via-white/[0.05] to-transparent skew-x-12" />
         </div>
-
-
 
         {/* Top border highlight */}
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-primary)]/40 to-transparent pointer-events-none" />
@@ -92,11 +112,32 @@ export function DirectBookingCard({
   // "Block" variant for vertical layouts (mobile column)
   return (
     <div className={cn(
-      "group relative glass-panel rounded-[var(--radius-3xl)] p-card overflow-hidden transition-all duration-500 hover:border-[var(--brand-primary)]/40 hover:shadow-2xl hover:shadow-[var(--brand-primary)]/10",
+      "group relative glass-panel rounded-[var(--radius-3xl)] p-card transition-all duration-500 hover:border-[var(--brand-primary)]/40 hover:shadow-2xl hover:shadow-[var(--brand-primary)]/10",
       className
     )}>
+      {/* Subtle offset shadow layer / background base */}
+      <div className="absolute -inset-px rounded-[var(--radius-3xl)] border border-[var(--border)] bg-[var(--muted)]/40 -z-10 opacity-50 transition-transform duration-500 translate-x-1 translate-y-1 group-hover:translate-x-2 group-hover:translate-y-2" />
+
       {/* Radial brand glow */}
       <div className="absolute -top-8 -left-8 size-48 rounded-full bg-[var(--brand-primary)] opacity-[0.08] blur-2xl pointer-events-none transition-all duration-700 group-hover:opacity-[0.14] group-hover:scale-110" />
+
+      {/* Beautiful Masked Background Image inside vertical block */}
+      <div className="absolute inset-0 rounded-[var(--radius-3xl)] overflow-hidden pointer-events-none select-none -z-10" aria-hidden="true">
+        <div className="absolute top-0 right-0 w-56 h-56 transition-transform duration-500 group-hover:scale-105">
+          {/* Soft blending overlays */}
+          <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[var(--glass-bg)]/60 to-[var(--glass-bg)] z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--glass-bg)]/60 to-[var(--glass-bg)] z-10" />
+          {/* Soft radial mask */}
+          <div 
+            className="absolute inset-0 w-full h-full bg-cover bg-center opacity-[0.50] dark:opacity-[0.35] mix-blend-luminosity dark:mix-blend-normal"
+            style={{
+              backgroundImage: `url(${bgImage})`,
+              maskImage: "radial-gradient(circle at top right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 50%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0) 100%)",
+              WebkitMaskImage: "radial-gradient(circle at top right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 50%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0) 100%)",
+            }}
+          />
+        </div>
+      </div>
 
       {/* Bottom-right accent */}
       <div className="absolute -bottom-6 -right-6 size-36 rounded-full bg-[var(--brand-accent)] opacity-[0.05] blur-xl pointer-events-none transition-all duration-700 group-hover:opacity-[0.10]" />
@@ -105,8 +146,6 @@ export function DirectBookingCard({
       <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[var(--radius-3xl)]">
         <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[1200ms] ease-in-out bg-gradient-to-r from-transparent via-white/[0.06] to-transparent skew-x-12" />
       </div>
-
-
 
       {/* Top border highlight */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-primary)]/40 to-transparent pointer-events-none" />

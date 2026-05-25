@@ -2,7 +2,7 @@
   "footer": {
     "exploreLabel": "Explore",
     "heading": "Stay central, sleep properly, and book fast.",
-    "detailsSummary": "Check-in: {checkInHours}, 24h access (message ahead if arriving after 10pm) , shared kitchen, luggage storage, rooftop social nights",
+    "detailsSummary": "Check-in: {checkInHours}, 24h access (message ahead if arriving after 10pm), shared kitchen, luggage storage, rooftop social nights",
     "communityLabel": "Community",
     "socialLabels": {
       "instagram": "Instagram",
@@ -35,11 +35,11 @@
       "directBookingButton": "Book on WhatsApp",
       "directBookingLabel": "Direct Booking",
       "directBookingTitle": "Message the hostel and book direct",
-      "rooftopEyebrow": "Rooftop Socials",
+      "rooftopEyebrow": "Rooftop Terrace",
       "roomImageAlt": "Privacy pod dorm room at Scodrinon Hostel",
       "directBookingDescription": "WhatsApp is the most direct way to confirm dates, room type, arrival time, and any trip planning.",
       "rooftopImageAlt": "Guests enjoying the rooftop at Scodrinon Hostel",
-      "rooftopTitle": "The social heart of the hostel, where sunset drinks turn into legendary nights."
+      "rooftopTitle": "Sunset drinks that turn into legendary stories."
     },
     "whyStayLonger": {
       "eyebrow": "Why People Stay Longer",
@@ -108,8 +108,8 @@
     },
     "pageTitle": "Gallery",
     "visualTour": {
-      "eyebrow": "Visual Tour",
-      "title": "Scroll through the stay before you step into it.",
+      "eyebrow": "Inside Scodrinon",
+      "title": "A visual tour of the hostel and rooftop.",
       "description": "Get a feel for the hostel in a few swipes: the rooftop, the pods, the breakfast, and the overall vibe of the place."
     },
     "awardPanel": {

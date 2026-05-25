@@ -27,8 +27,6 @@ export function TestimonialsVibeSection({ testimonials, extendReasons, copy }: T
     >
       {extendReasons.map((reason, index) => {
         const Icon = resolveIcon(reason.icon);
-        const ordinal = String(index + 1).padStart(2, "0");
-
         const cardContent = (
           <div className="group relative h-full overflow-hidden rounded-2xl border border-white/[0.07] bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-6 backdrop-blur-sm transition-all duration-500 hover:border-white/[0.15] hover:shadow-2xl hover:shadow-black/30">
 
@@ -39,11 +37,6 @@ export function TestimonialsVibeSection({ testimonials, extendReasons, copy }: T
             <div className="absolute -right-4 -top-4 text-white/[0.04] transition-all duration-700 group-hover:text-white/[0.07] group-hover:scale-110 group-hover:-rotate-6" aria-hidden="true">
               <Icon className="size-32" />
             </div>
-
-            {/* Ordinal */}
-            <span className="mb-4 block font-mono text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)]/60">
-              {ordinal}
-            </span>
 
             {/* Icon chip */}
             <div className="mb-4 flex size-10 items-center justify-center rounded-xl bg-[var(--brand-primary)]/15 text-[var(--brand-primary)] ring-1 ring-[var(--brand-primary)]/20 transition-all duration-300 group-hover:bg-[var(--brand-primary)]/25 group-hover:ring-[var(--brand-primary)]/40">

@@ -14,17 +14,23 @@
     {
       "title": "Privacy Pods",
       "text": "Spacious privacy pods in our mixed dorm create a personal bedroom feel within a social space",
-      "icon": "BedDouble"
+      "icon": "BedDouble",
+      "image": "/images/room_18bed4.webp",
+      "focus": "50% 50%"
     },
     {
       "title": "Boutique Dorms",
       "text": "Boutique 4-bed female or male dorms, offering a bright, high-end sanctuary for peaceful stays",
-      "icon": "Luggage"
+      "icon": "Luggage",
+      "image": "/images/rooms_2.webp",
+      "focus": "50% 50%"
     },
     {
       "title": "Included Perks",
-      "text": "Included: Free Breakfast (excl. off-season), luggage storage, shared kitchen, fast WiFi, 24h access, and rooftop socials",
-      "icon": "ShieldCheck"
+      "text": "Included: Free Breakfast (excl. off-season), luggage storage, shared kitchen, fast WiFi & 24h access",
+      "icon": "ShieldCheck",
+      "image": "/images/breakfast.jpg",
+      "focus": "50% 40%"
     }
   ],
   "includedFeatures": [
@@ -50,7 +56,7 @@
     },
     {
       "title": "Shared Kitchen",
-      "description": "Well equipped kitchen for guest use, including refrigerators, stoves, an espresso and ice machine.",
+      "description": "Well-equipped kitchen for guest use, including refrigerators, stoves, an espresso and ice machine.",
       "icon": "Utensils"
     },
     {
@@ -99,7 +105,7 @@
     },
     {
       "title": "Staff who keep things straightforward",
-      "description": "Honest local tips, breakfast that guests talk about, and help with your hiking route. We handle the logistics so you can focus on the trip.",
+      "description": "Honest local tips, fresh and locally-sourced breakfast, and help with your hiking route. We handle the logistics so you can focus on the trip.",
       "icon": "Compass"
     }
   ],
@@ -117,7 +123,7 @@
     {
       "title": "Right in the Center",
       "description": "Step out our front door directly onto Kolë Idromeno, Shkodër’s main pedestrian street. From your first morning espresso to late-night drinks, the city's best food, culture, and rhythm are literally at your doorstep.",
-      "image": "/images/shkoder_pedestrian_street.jpg",
+      "image": "/images/shkoder_pedestrian_street_1.jpg",
       "alt": "Pedestrian street scene near Scodrinon Hostel on Kolë Idromeno, Shkoder",
       "cta": {
         "text": "See Our City Highlights",
@@ -127,11 +133,12 @@
   ],
   "featuredMoments": [
     {
-      "title": "Spontaneous Socials",
-      "description": "Whether it’s rooftop raki shots or exploring the local craft beer scene, we prioritize high-energy moments that make it easy for everyone to join. It’s all about the social rhythm of the city.",
+      "title": "Movie Nights and Spontaneous Socials",
+      "description": "Whether it’s rooftop raki or exploring the local craft beer scene, we prioritize memorable moments that make it easy for everyone to join.",
       "image": "/images/local_food_night.jpeg",
       "alt": "Traditional food event at Scodrinon Hostel"
-    },
+    }
+    ,
     {
       "title": "Explore the Bicycle Capital",
       "description": "Shkodër runs on two wheels. Grab a rental and explore the city's flat streets, lake paths, and cafes exactly how the locals do.",
@@ -139,17 +146,18 @@
       "alt": "Bike tour event from Scodrinon Hostel"
     },
     {
+      "title": "River Days at the Drin",
+      "description": "We head out to the river regularly for swimming and sun. These trips are a hostel favorite, a chance to relax and spend the afternoon with a great crew.",
+      "image": "/images/drin_swimming_trip.jpeg",
+      "alt": "Guests enjoying an evening event at Scodrinon Hostel"
+    },
+    {
       "title": "Rooftop Magic",
       "description": "The rooftop is the social heart of the hostel: mountain light at sunset, city views after dark, and a pulse that keeps going from the first drink to the last chat.",
       "image": "/images/rooftop_social_4_flare.jpg",
       "alt": "Guests relaxing on the Scodrinon Hostel rooftop at sunset"
-    },
-        {
-      "title": "River Days at the Drin",
-      "description": "We head out to the river regularly for swimming and sun. These trips are a hostel favorite — a chance to see a different side of Shkoder and spend the afternoon with a great crew.",
-      "image": "/images/drin_swimming_trip.jpeg",
-      "alt": "Guests enjoying an evening event at Scodrinon Hostel"
     }
+
   ],
   "contactChecklist": [
     "Your dates",

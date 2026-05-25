@@ -1,28 +1,20 @@
 "use client";
 import Image from "next/image";
 import { Reveal } from "@/components/reveal";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
 import { useIsLowEndDevice } from "@/lib/use-performance";
+import { cn } from "@/lib/utils";
 
 export function CinematicBreak() {
   const isLowEnd = useIsLowEndDevice();
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const yVal = isLowEnd ? "0%" : y;
 
   return (
-    <section ref={ref} className="relative h-[45vh] md:h-[65vh] lg:h-[80vh] min-h-[400px] w-full overflow-hidden flex items-center justify-center bg-black">
-      {/* Full-bleed background with parallax */}
-      <motion.div
-        style={{ y: yVal }}
-        className="absolute -inset-y-1/4 inset-x-0 z-0 w-full h-[150%]"
+    <section className="relative h-[45vh] md:h-[65vh] lg:h-[80vh] min-h-[400px] w-full overflow-hidden flex items-center justify-center bg-black parallax-parent">
+      {/* Full-bleed background with native hardware-accelerated CSS parallax */}
+      <div
+        className={cn(
+          "absolute -inset-y-1/4 inset-x-0 z-0 w-full h-[150%]",
+          !isLowEnd && "parallax-child"
+        )}
       >
         <Image
           src="/images/lake_shkoder.webp"
@@ -31,7 +23,7 @@ export function CinematicBreak() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-black/40" />
-      </motion.div>
+      </div>
 
       {/* Content */}
       <div className="relative z-10 shell-container text-center text-white px-4">

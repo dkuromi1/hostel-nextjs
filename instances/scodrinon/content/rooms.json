@@ -36,7 +36,8 @@
       "bullets": [
         "Curtained pod layout for real personal space",
         "Reading light and 2 Power Sockets at every bed",
-        "Easy to meet people without feeling exposed all night"
+        "Easy to meet people without feeling exposed all night",
+        "Spacious Pods: 2.0 x 1.5 x 1.4m"
       ],
       "images": [
         {
@@ -130,7 +131,7 @@
         },
         {
           "icon": "BatteryCharging",
-          "label": "Power Socket"
+          "label": "Power Sockets"
         },
         {
           "icon": "Wifi",

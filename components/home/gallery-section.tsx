@@ -3,6 +3,7 @@ import { EditorialButton } from "@/components/ui/editorial-button";
 
 import { SectionHeading } from "@/components/section-heading";
 import { GalleryMasonry } from "@/components/gallery-masonry";
+import { Reveal } from "@/components/reveal";
 import type { GalleryItem } from "@/lib/site-data";
 
 export interface HomeGallerySectionProps {
@@ -39,13 +40,14 @@ export function HomeGallerySection({ items, copy }: HomeGallerySectionProps) {
 
         </div>
 
-        <div className="flow-root">
+        <Reveal className="flow-root">
           <GalleryMasonry
             items={items.slice(0, 10)}
             priorityImageCount={0}
           />
-        </div>
+        </Reveal>
       </div>
     </section>
   );
 }
+

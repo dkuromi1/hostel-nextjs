@@ -26,27 +26,51 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
           aria-hidden="true"
         />
 
-        {/* Card top row: icon halo */}
-        <div className="flex items-start justify-between">
+        {/* Beautiful Upper Right Image container: Absolute, rounded to match main card, hidden overflow only for the image */}
+        {fact.image && (
+          <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none select-none -z-10" aria-hidden="true">
+            <div className="absolute top-0 right-0 w-44 h-44 transition-transform duration-500 group-hover:scale-105">
+              {/* Soft blending overlays */}
+              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[var(--glass-bg)]/80 to-[var(--glass-bg)] z-10" />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--glass-bg)]/80 to-[var(--glass-bg)] z-10" />
+              {/* Diagonal brush/organic mask effect using modern CSS gradients */}
+              <div 
+                className="absolute inset-0 w-full h-full bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(${fact.image})`,
+                  backgroundPosition: fact.focus || "center",
+                  maskImage: "radial-gradient(circle at top right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 45%, rgba(0,0,0,0.5) 75%, rgba(0,0,0,0) 100%)",
+                  WebkitMaskImage: "radial-gradient(circle at top right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 45%, rgba(0,0,0,0.5) 75%, rgba(0,0,0,0) 100%)",
+                }}
+              />
+              {/* Warm highlight to make the image glow on card hover */}
+              <div className="absolute inset-0 bg-amber-500/5 mix-blend-color-burn opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
+            </div>
+          </div>
+        )}
+
+        {/* Horizontal Header: Icon + Title side-by-side */}
+        <div className="flex items-center gap-4 relative z-10">
+          {/* Glowing Icon Container */}
           <div className="relative">
             <div className="absolute inset-0 rounded-xl bg-gold/15 blur-md scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true" />
-            <div className="relative flex items-center justify-center size-12 rounded-xl bg-gradient-to-br from-amber-50 to-amber-100/60 dark:from-amber-900/30 dark:to-amber-800/20 border border-amber-200/60 dark:border-amber-700/30 shadow-sm">
+            <div className="relative flex size-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-amber-50 to-amber-100/60 dark:from-amber-900/30 dark:to-amber-800/20 border border-amber-200/60 dark:border-amber-700/30 shadow-sm">
               <Icon className="size-5 text-gold transition-transform duration-300 group-hover:scale-110" />
             </div>
           </div>
-        </div>
 
-        {/* Title */}
-        <div>
-          <h3 className="font-heading text-lg font-bold tracking-tight text-[var(--text-heading)] leading-snug transition-colors duration-300 group-hover:text-gold">
-            {fact.title}
-          </h3>
-          {/* Gold underline accent */}
-          <div className="mt-2 h-px w-8 bg-gold/40 transition-all duration-300 group-hover:w-14 group-hover:bg-gold/70" />
+          {/* Title stacked to the right of icon */}
+          <div className="flex flex-col gap-0.5 min-w-0">
+            <h3 className="font-heading text-lg font-bold tracking-tight text-[var(--text-heading)] leading-snug transition-colors duration-300 group-hover:text-gold">
+              {fact.title}
+            </h3>
+            {/* Gold underline accent */}
+            <div className="mt-2 h-px w-8 bg-gold/40 transition-all duration-300 group-hover:w-14 group-hover:bg-gold/70" />
+          </div>
         </div>
 
         {/* Description */}
-        <p className="text-[13.5px] leading-relaxed text-[var(--text-body-subtle)] mt-auto">
+        <p className="text-[13.5px] leading-relaxed text-[var(--text-body-subtle)] mt-auto relative z-10">
           {fact.text}
         </p>
       </div>

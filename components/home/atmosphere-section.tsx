@@ -37,14 +37,20 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
   const rightColumnY = useTransform(scrollYProgress, [0, 1], [40, -40]);
   const yVal = isLowEnd ? 0 : rightColumnY;
 
+  // Left to right parallax shift for the Direct Booking card to create dynamic horizontal layering
+  const directBookingX = useTransform(scrollYProgress, [0, 1], [-40, 40]);
+  const xVal = isLowEnd ? 0 : directBookingX;
+
   return (
-    <section ref={containerRef} className="relative z-10 -mt-[40px] md:-mt-[48px] lg:-mt-[44px] pt-8 pb-[var(--layout-section-spacing)] lg:pt-12">
+    <section ref={containerRef} className="relative z-10 -mt-[25px] md:-mt-[25px] lg:-mt-[44px] pt-8 pb-[var(--layout-section-spacing)] lg:pt-12">
       <div className="shell-container max-w-5xl">
         <div className="flex flex-col gap-[var(--layout-grid-gutter)] lg:grid lg:grid-cols-[1.8fr_1.2fr] lg:grid-rows-[1fr_auto] lg:gap-[var(--layout-grid-gutter)]">
 
           {/* DESKTOP ONLY: Direct Booking card */}
           <Reveal delay={200} className="hidden lg:flex lg:row-start-2 h-full lg:-translate-x-8">
-            <DirectBookingCard variant="inline" className="h-full w-full" whatsappUrl={whatsappUrl} content={atmosphere} />
+            <motion.div style={{ x: xVal }} className="h-full w-full">
+              <DirectBookingCard variant="inline" className="h-full w-full" whatsappUrl={whatsappUrl} content={atmosphere} />
+            </motion.div>
           </Reveal>
 
           {/* Rooftop image */}
@@ -59,10 +65,10 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
                 sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 66vw, 924px"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent px-card-premium pb-card-premium pt-32 text-white">
-                <SectionLabel colorScheme="light">
+                <SectionLabel colorScheme="light" className="text-[10px] lg:text-xs">
                   {atmosphere.rooftopEyebrow}
                 </SectionLabel>
-                <p className="mt-2 max-w-sm font-heading text-xl sm:text-2xl leading-tight tracking-tight">
+                <p className="mt-2 max-w-sm font-heading text-lg md:text-xl lg:text-2xl leading-tight tracking-tight">
                   {atmosphere.rooftopTitle}
                 </p>
               </div>
@@ -70,7 +76,7 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
 
             {/* Floating Sticker/Badge */}
             <div className="absolute -top-6 -right-[14px] lg:-top-12 lg:-right-12 z-30 -rotate-12 group-hover:rotate-0 transition-all duration-700 ease-out scale-100 group-hover:scale-110">
-              <div className="relative size-24 lg:size-32 rounded-full flex items-center justify-center shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] group/badge">
+              <div className="relative size-[134px] lg:size-[180px] rounded-full flex items-center justify-center shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] group/badge">
                 {/* Layered Backgrounds */}
                 <div className="absolute inset-0 rounded-full bg-slate-950/90 backdrop-blur-md border border-white/10" />
                 <div className="absolute inset-1 rounded-full border border-amber-400/20" />
@@ -80,18 +86,18 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
 
                 {/* Content */}
                 <div className="relative z-10 flex flex-col items-center">
-                  <span className="text-[7px] lg:text-[8px] font-bold uppercase tracking-[0.4em] text-amber-200/60 mb-1">Undisputed</span>
+                  <span className="text-[9.8px] lg:text-[11.2px] font-bold uppercase tracking-[0.4em] text-amber-200/60 mb-1.5">Undisputed</span>
 
-                  <div className="flex flex-col items-center -space-y-1 lg:-space-y-2">
-                    <span className="font-cormorant text-xl lg:text-3xl italic font-medium text-white">Best View</span>
-                    <span className="font-cormorant text-xl lg:text-3xl italic font-medium text-white">in Town</span>
+                  <div className="flex flex-col items-center -space-y-1.5 lg:-space-y-3">
+                    <span className="font-cormorant text-[28px] lg:text-[42px] italic font-medium text-white leading-none">Best View</span>
+                    <span className="font-cormorant text-[28px] lg:text-[42px] italic font-medium text-white leading-none">in Town</span>
                   </div>
 
                   {/* Decorative element */}
-                  <div className="mt-2 flex items-center gap-2">
-                    <div className="h-[0.5px] w-4 bg-gradient-to-r from-transparent via-amber-400/30 to-transparent" />
-                    <div className="size-1 rounded-full bg-amber-400/60 shadow-[0_0_8px_rgba(251,191,36,0.4)]" />
-                    <div className="h-[0.5px] w-4 bg-gradient-to-r from-transparent via-amber-400/30 to-transparent" />
+                  <div className="mt-3 flex items-center gap-2">
+                    <div className="h-[0.5px] w-6 bg-gradient-to-r from-transparent via-amber-400/30 to-transparent" />
+                    <div className="size-1.5 rounded-full bg-amber-400/60 shadow-[0_0_8px_rgba(251,191,36,0.4)]" />
+                    <div className="h-[0.5px] w-6 bg-gradient-to-r from-transparent via-amber-400/30 to-transparent" />
                   </div>
                 </div>
 

@@ -169,10 +169,10 @@ export default function RoomsPage() {
                             return (
                               <div
                                 key={idx}
-                                className="flex w-fit items-center gap-1.5 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--muted)]/50 px-2.5 py-1.5 text-[var(--text-body-subtle)] transition-all duration-300 hover:border-[var(--brand-primary)]/10 hover:shadow-sm hover:bg-[var(--glass-bg)]"
+                                className="flex w-fit items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--muted)]/50 px-2 py-1 text-[var(--text-body-subtle)] transition-all duration-300 hover:border-[var(--brand-primary)]/10 hover:shadow-sm hover:bg-[var(--glass-bg)]"
                               >
                                 <AmenityIcon className="size-3 shrink-0 text-[var(--brand-primary)]" />
-                                <span className="whitespace-nowrap text-xs font-medium">
+                                <span className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-wider">
                                   {amenity.label}
                                 </span>
                               </div>
