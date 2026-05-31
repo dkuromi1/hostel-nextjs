@@ -254,6 +254,24 @@ export default function RootLayout({
             strategy="afterInteractive"
           />
         ) : null}
+        <Script
+          id="netlify-identity-widget-script"
+          src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+          strategy="afterInteractive"
+        />
+        <Script id="netlify-identity-widget-init" strategy="afterInteractive">
+          {`
+            if (window.netlifyIdentity) {
+              window.netlifyIdentity.on("init", function (user) {
+                if (!user) {
+                  window.netlifyIdentity.on("login", function () {
+                    document.location.href = "/admin/";
+                  });
+                }
+              });
+            }
+          `}
+        </Script>
         <div className="relative flex min-h-screen flex-col overflow-x-clip">
           <SiteHeader 
             navLinks={navLinks} 
