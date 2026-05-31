@@ -8,13 +8,14 @@ import { SectionLabel } from "@/components/ui/section-label";
 import { Reveal } from "@/components/reveal";
 import { buttonVariants } from "@/components/ui/button";
 import { SwipableRow } from "@/components/swipable-row";
-import { ThethWeather } from "@/components/theth-weather";
+import { RegionalWeather } from "@/components/regional-weather";
 import { cn } from "@/lib/utils";
 import {
   type CtaLink,
   type EventCard,
   type ExperiencePillar,
 } from "@/lib/site-data";
+import { siteConfig } from "@/lib/site-data";
 
 const reasonIcons = [Moon, Zap, MapPin, Compass];
 
@@ -147,7 +148,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                     />
                     {index === 0 && showRegionalWeather && (
                       <div className="absolute right-6 top-6 z-20">
-                        <ThethWeather />
+                        {siteConfig.weather ? <RegionalWeather config={siteConfig.weather} /> : null}
                       </div>
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />

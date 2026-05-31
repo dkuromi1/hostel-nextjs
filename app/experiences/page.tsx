@@ -15,7 +15,7 @@ import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { cn } from "@/lib/utils";
 import { StructuredData } from "@/components/structured-data";
-import { ThethWeather } from "@/components/theth-weather";
+import { RegionalWeather } from "@/components/regional-weather";
 import {
   buildBreadcrumbSchema,
   buildBusinessSchema,
@@ -70,10 +70,10 @@ export default function ExperiencesPage() {
         topRight={siteConfig.features.showRegionalWeather ? (
           <div className="flex flex-col items-end scale-90 sm:scale-100 origin-top-right sm:-mt-2 lg:mt-0">
             <div className="hidden sm:block">
-              <ThethWeather />
+              {siteConfig.weather ? <RegionalWeather config={siteConfig.weather} /> : null}
             </div>
             <div className="block sm:hidden">
-              <ThethWeather variant="small" />
+              {siteConfig.weather ? <RegionalWeather config={siteConfig.weather} variant="small" /> : null}
             </div>
           </div>
         ) : null}

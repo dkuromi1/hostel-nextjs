@@ -27,6 +27,8 @@ export interface IconTextItem {
   title?: string;
   text: string;
   icon: IconName;
+  image?: string;
+  focus?: string;
 }
 
 export interface ServiceItem {
@@ -129,6 +131,13 @@ export interface GalleryItem {
   alt: string;
   poster?: string;
   [key: string]: unknown;
+}
+
+export interface WeatherConfig {
+  latitude: number;
+  longitude: number;
+  label: string;
+  sublabel: string;
 }
 
 export interface DesignConfig {
@@ -316,6 +325,7 @@ export interface SettingsContent {
     images: string[];
     amenities: string[];
   };
+  "weather"?: WeatherConfig;
   "maps"?: {
     "trekTrailheadUrl"?: string;
   };
@@ -350,6 +360,7 @@ export interface PropertyConfig extends SettingsContent {
   bookingReviews: string;
   hostelworldRating: string;
   hostelworldReviews: string;
+  weather?: WeatherConfig;
   maps?: {
     trekTrailheadUrl?: string;
   };

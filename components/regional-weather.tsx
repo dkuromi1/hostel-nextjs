@@ -1,10 +1,11 @@
 import { Cloud, CloudFog, CloudLightning, CloudRain, CloudSnow, Sun, SunMedium } from "@/lib/icon-registry";
 import { cn } from "@/lib/utils";
+import type { WeatherConfig } from "@/lib/types/site";
 
-async function getThethWeather() {
+async function fetchWeather(latitude: number, longitude: number) {
   try {
     const res = await fetch(
-      "https://api.open-meteo.com/v1/forecast?latitude=42.3983&longitude=19.7772&current=temperature_2m,weather_code",
+      `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,weather_code`,
       { next: { revalidate: 3600 } }
     );
     if (!res.ok) return null;
@@ -26,9 +27,14 @@ function getWeatherDetails(code: number) {
   return { label: "Clear", icon: Sun, colorClass: "text-amber-400" };
 }
 
-export async function ThethWeather({ variant = "default" }: { variant?: "default" | "small" } = {}) {
+interface RegionalWeatherProps {
+  config: WeatherConfig;
+  variant?: "default" | "small";
+}
 
-  const weather = await getThethWeather();
+export async function RegionalWeather({ config, variant = "default" }: RegionalWeatherProps) {
+
+  const weather = await fetchWeather(config.latitude, config.longitude);
 
   if (!weather || !weather.current) {
     return null;
@@ -46,7 +52,7 @@ export async function ThethWeather({ variant = "default" }: { variant?: "default
         </div>
         <div className="flex flex-col py-0.5">
           <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[var(--brand-primary)] opacity-85 leading-none mb-1">
-            Theth
+            {config.label}
           </span>
           <span className="text-sm font-bold text-[var(--text-heading)] leading-none">
             {Math.round(temperature_2m)}°C
@@ -63,7 +69,7 @@ export async function ThethWeather({ variant = "default" }: { variant?: "default
       </div>
       <div>
         <p className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-primary)] opacity-80">
-          Theth National <br /> Park Currently
+          {config.label} <br /> {config.sublabel}
         </p>
         <p className="mt-0.5 font-heading text-2xl leading-none tracking-tight text-[var(--text-heading)]">
           {Math.round(temperature_2m)}°C

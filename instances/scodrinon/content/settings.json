@@ -176,6 +176,12 @@
       "Tours & Transport"
     ]
   },
+  "weather": {
+    "latitude": 42.3983,
+    "longitude": 19.7772,
+    "label": "Theth National Park",
+    "sublabel": "Currently"
+  },
   "maps": {
     "trekTrailheadUrl": "https://www.google.com/maps/dir/?api=1&destination=42.41258193168048,19.84605403131156"
   }
