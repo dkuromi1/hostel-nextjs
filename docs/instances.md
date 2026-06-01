@@ -58,6 +58,34 @@ npm run validate-instances
 Validation checks required content files, required settings, enabled channels,
 weather/map feature consistency, registry wiring, and referenced public assets.
 
+## Booking Ratings
+
+New instances can define rating cards in `content/settings.json`:
+
+```json
+{
+  "booking": {
+    "ratings": [
+      {
+        "id": "booking-com",
+        "sourceLabel": "Booking.com",
+        "title": "Traveller Review Award",
+        "description": "Awarded for consistent guest satisfaction.",
+        "url": "https://example.com",
+        "rating": "9.3",
+        "scoreSuffix": "out of 10",
+        "icon": "bookingCom",
+        "enabled": true
+      }
+    ]
+  }
+}
+```
+
+The homepage renders up to two enabled rating cards. If `booking.ratings` is
+not present, the data normalizer falls back to the legacy Booking.com and
+Hostelworld fields for existing instances.
+
 ## Build Selection
 
 Instance selection checks these environment variables, in order:

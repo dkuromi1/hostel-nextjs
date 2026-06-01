@@ -29,6 +29,7 @@ export const {
   faqItems,
   contactChecklist,
   testimonials,
+  guestRatingCards,
   bookingAwardImage,
   thingsToDo,
   hikingGuide,

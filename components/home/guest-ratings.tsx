@@ -1,10 +1,10 @@
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Star, Award } from "@/lib/icon-registry";
-import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
+import { ChannelIcon } from "@/components/channel-icon";
 import { Reveal } from "@/components/reveal";
-import { Panel } from "@/components/ui/panel";
 import { SectionLabel } from "@/components/ui/section-label";
+import type { GuestRatingCard } from "@/lib/site-data";
+
 export interface GuestRatingsData {
   label: string;
   topRatedLabel: string;
@@ -20,89 +20,60 @@ export interface GuestRatingsData {
 
 export interface GuestRatingsProps {
   copy: GuestRatingsData;
-  bookingUrl: string;
-  hostelworldUrl: string;
-  bookingRating: string;
-  hostelworldRating: string;
-  hostelworldReviews: string;
+  ratings: GuestRatingCard[];
 }
 
 export function CompactGuestRatingsStrip({
   copy,
-  bookingUrl,
-  hostelworldUrl,
-  bookingRating,
-  hostelworldRating,
-  hostelworldReviews,
+  ratings,
 }: GuestRatingsProps) {
+  const visibleRatings = ratings.slice(0, 2);
+  if (visibleRatings.length === 0) return null;
+
   return (
     <div className="grid w-full gap-[var(--layout-grid-gutter)] sm:grid-cols-2">
-      <a
-        href={bookingUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group flex min-w-0 items-center justify-between gap-2 rounded-xl border border-white/16 bg-black/40 px-3 py-2.5 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-black/50 sm:gap-3 sm:rounded-[var(--radius-2xl)] sm:px-4 sm:py-3"
-      >
-        <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
-          <BookingComLogo iconOnly monochromeHover className="size-7 shrink-0 sm:size-9" />
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-[10px] font-semibold uppercase tracking-[0.22em] text-white/65">
-              {copy.bookingSourceLabel}
+      {visibleRatings.map((rating) => (
+        <a
+          key={rating.id}
+          href={rating.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex min-w-0 items-center justify-between gap-2 rounded-xl border border-white/16 bg-black/40 px-3 py-2.5 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-black/50 sm:gap-3 sm:rounded-[var(--radius-2xl)] sm:px-4 sm:py-3"
+        >
+          <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
+            <ChannelIcon iconKey={rating.icon} iconOnly monochromeHover className="size-7 shrink-0 sm:size-9" />
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-[10px] font-semibold uppercase tracking-[0.22em] text-white/65">
+                {rating.sourceLabel}
+              </p>
+              <p className="truncate text-sm font-medium text-white/92">
+                {rating.title}
+              </p>
+            </div>
+          </div>
+          <div className="shrink-0 rounded-lg bg-white/8 px-2 py-1.5 text-right ring-1 ring-white/12 shadow-sm sm:rounded-[var(--radius-xl)] sm:px-3 sm:py-2">
+            <p className="font-sans text-lg font-bold leading-none tracking-tight text-white text-center sm:text-xl">
+              {rating.rating}
             </p>
-            <p className="truncate text-sm font-medium text-white/92">
-              {copy.bookingAwardTitle}
+            <p className="mt-0.5 text-[9px] uppercase tracking-[0.2em] text-white/100 text-center sm:mt-1 sm:text-[10px]">
+              {rating.reviews ? `(${rating.reviews} ${rating.reviewsSuffix ?? "reviews"})` : rating.scoreSuffix ?? copy.topRatedLabel}
             </p>
           </div>
-        </div>
-        <div className="shrink-0 rounded-lg bg-white/8 px-2 py-1.5 text-right ring-1 ring-white/12 shadow-sm sm:rounded-[var(--radius-xl)] sm:px-3 sm:py-2">
-          <p className="font-sans text-lg font-bold leading-none tracking-tight text-white text-center sm:text-xl">
-            {bookingRating}
-          </p>
-          <p className="mt-0.5 text-[9px] uppercase tracking-[0.2em] text-white/100 text-center sm:mt-1 sm:text-[10px]">
-            {copy.bookingScoreSuffix}
-          </p>
-        </div>
-      </a>
-
-      <a
-        href={hostelworldUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group flex min-w-0 items-center justify-between gap-2 rounded-xl border border-white/16 bg-black/40 px-3 py-2.5 text-white shadow-[0_18px_45px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[5px] transition-all duration-300 hover:border-white/24 hover:bg-black/50 sm:gap-3 sm:rounded-[var(--radius-2xl)] sm:px-4 sm:py-3"
-      >
-        <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
-          <HostelworldLogo iconOnly monochromeHover className="size-7 shrink-0 sm:size-9" />
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-[10px] font-semibold uppercase tracking-[0.22em] text-white/65">
-              {copy.hostelworldSourceLabel}
-            </p>
-            <p className="truncate text-sm font-medium text-white/92">
-              {copy.hostelworldTitle}
-            </p>
-          </div>
-        </div>
-        <div className="shrink-0 rounded-lg bg-white/8 px-2 py-1.5 text-right ring-1 ring-white/12 shadow-sm sm:rounded-[var(--radius-xl)] sm:px-3 sm:py-2">
-          <p className="font-sans text-lg font-bold leading-none tracking-tight text-white text-center sm:text-xl">
-            {hostelworldRating}
-          </p>
-          <p className="mt-0.5 text-[9px] uppercase tracking-[0.2em] text-white/100 text-center sm:mt-1 sm:text-[10px]">
-            ({hostelworldReviews} {copy.hostelworldReviewsSuffix})
-          </p>
-        </div>
-      </a>
+        </a>
+      ))}
     </div>
   );
 }
 
-export function HostelworldRatingBadge({ 
-  rating, 
-  reviews, 
-  text, 
-  className 
-}: { 
-  rating: string; 
-  reviews: string; 
-  text: string; 
+export function GuestReviewBadge({
+  rating,
+  reviews,
+  text,
+  className
+}: {
+  rating: string;
+  reviews: string;
+  text: string;
   className?: string;
 }) {
   return (
@@ -120,12 +91,11 @@ export function HostelworldRatingBadge({
 
 export function GuestRatingsSection({
   copy,
-  bookingUrl,
-  hostelworldUrl,
-  bookingRating,
-  hostelworldRating,
-  hostelworldReviews,
+  ratings,
 }: GuestRatingsProps) {
+  const visibleRatings = ratings.slice(0, 2);
+  if (visibleRatings.length === 0) return null;
+
   return (
     <section className="pb-8 sm:pb-16 pt-8 sm:pt-12 relative">
       {/* Top gradient fade from dark testimonials section */}
@@ -138,67 +108,57 @@ export function GuestRatingsSection({
           </div>
           
           <div className="flex flex-col sm:flex-row justify-around items-center gap-16 lg:gap-24">
-            {/* Booking.com Side */}
-            <a
-              href={bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex flex-col gap-6 sm:flex-row sm:items-center max-w-sm"
-            >
-              <div className="relative flex size-24 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white shadow-2xl transition-transform duration-500 group-hover:scale-110">
-                <div className="text-center">
-                  <p className="text-3xl font-black leading-none">{bookingRating}</p>
-                  <p className="text-[10px] font-bold uppercase tracking-widest mt-1 opacity-80">{copy.bookingScoreSuffix}</p>
+            {visibleRatings.map((rating, index) => (
+              <a
+                key={rating.id}
+                href={rating.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  "group relative flex flex-col gap-6 sm:items-center max-w-sm",
+                  index % 2 === 0 ? "sm:flex-row" : "sm:flex-row-reverse sm:text-right"
+                )}
+              >
+                <div className={cn(
+                  "relative flex size-24 shrink-0 items-center justify-center text-white shadow-2xl transition-transform duration-500 group-hover:scale-110",
+                  index % 2 === 0 ? "rounded-full bg-blue-600" : "rounded-[var(--radius-3xl)] bg-amber-600 group-hover:rotate-6"
+                )}>
+                  <div className="text-center">
+                    <p className="text-3xl font-black leading-none">{rating.rating}</p>
+                    <p className="text-[10px] font-bold uppercase tracking-widest mt-1 opacity-80">
+                      {rating.badgeText ?? rating.scoreSuffix ?? copy.topRatedLabel}
+                    </p>
+                  </div>
+                  <div className={cn(
+                    "absolute size-8 rounded-full flex items-center justify-center shadow-lg",
+                    index % 2 === 0 ? "-top-2 -right-2 bg-yellow-400 text-blue-900" : "-bottom-2 -left-2 bg-white text-amber-600"
+                  )}>
+                    {index % 2 === 0 ? <Star className="size-4" fill="currentColor" /> : <Award className="size-4" />}
+                  </div>
                 </div>
-                <div className="absolute -top-2 -right-2 size-8 rounded-full bg-yellow-400 flex items-center justify-center text-blue-900 shadow-lg">
-                  <Star className="size-4" fill="currentColor" />
-                </div>
-              </div>
-              
-              <div className="space-y-3">
-                <BookingComLogo className="h-8 w-auto opacity-80 group-hover:opacity-100 transition-opacity" />
-                <h3 className="text-2xl font-heading tracking-tight text-[var(--text-heading)]">
-                  {copy.bookingAwardTitle}
-                </h3>
-                <p className="text-[15px] leading-relaxed text-[var(--text-body-subtle)]">
-                  {copy.bookingDescription}
-                </p>
-              </div>
-            </a>
 
-            {/* Hostelworld Side */}
-            <a
-              href={hostelworldUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex flex-col gap-6 sm:flex-row-reverse sm:items-center sm:text-right max-w-sm"
-            >
-              <div className="relative flex size-24 shrink-0 items-center justify-center rounded-[var(--radius-3xl)] bg-amber-600 text-white shadow-2xl transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
-                <div className="text-center">
-                  <p className="text-3xl font-black leading-none">{hostelworldRating}</p>
-                  <p className="text-[10px] font-bold uppercase tracking-widest mt-1 opacity-80">Superb</p>
+                <div className={cn("space-y-3 flex flex-col", index % 2 === 1 && "sm:items-end")}>
+                  <ChannelIcon iconKey={rating.icon} className="h-8 w-auto opacity-80 group-hover:opacity-100 transition-opacity" />
+                  <h3 className="text-2xl font-heading tracking-tight text-[var(--text-heading)]">
+                    {rating.title}
+                  </h3>
+                  {rating.description ? (
+                    <p className="text-[15px] leading-relaxed text-[var(--text-body-subtle)]">
+                      {rating.description}
+                    </p>
+                  ) : rating.reviews ? (
+                    <GuestReviewBadge
+                      rating={rating.rating}
+                      reviews={rating.reviews}
+                      text={rating.title}
+                    />
+                  ) : null}
                 </div>
-                <div className="absolute -bottom-2 -left-2 size-8 rounded-full bg-white flex items-center justify-center text-amber-600 shadow-lg">
-                  <Award className="size-4" />
-                </div>
-              </div>
-
-              <div className="space-y-3 flex flex-col sm:items-end">
-                <HostelworldLogo className="h-8 w-auto opacity-80 group-hover:opacity-100 transition-opacity" />
-                <h3 className="text-2xl font-heading tracking-tight text-[var(--text-heading)]">
-                  {copy.hostelworldTitle}
-                </h3>
-                <HostelworldRatingBadge 
-                  rating={hostelworldRating} 
-                  reviews={hostelworldReviews} 
-                  text={copy.hostelworldTitle}
-                />
-              </div>
-            </a>
+              </a>
+            ))}
           </div>
         </Reveal>
       </div>
     </section>
   );
 }
-

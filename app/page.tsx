@@ -17,6 +17,7 @@ import {
   eventCards,
   extendReasons,
   testimonials,
+  guestRatingCards,
   bookingChannels,
   contactChannels
 } from "@/lib/site-data";
@@ -53,11 +54,7 @@ export default function Home() {
         backgroundAlt={siteCopyContent.home.hero.backgroundAlt}
         guestRatingsProps={{
           copy: siteCopyContent.home.guestRatings,
-          bookingUrl: siteConfig.bookingUrl,
-          hostelworldUrl: siteConfig.hostelworldUrl,
-          bookingRating: siteConfig.bookingRating,
-          hostelworldRating: siteConfig.hostelworldRating,
-          hostelworldReviews: siteConfig.hostelworldReviews,
+          ratings: guestRatingCards,
         }}
       />
 
@@ -88,11 +85,7 @@ export default function Home() {
 
       <GuestRatingsSection
         copy={siteCopyContent.home.guestRatings}
-        bookingUrl={siteConfig.bookingUrl}
-        hostelworldUrl={siteConfig.hostelworldUrl}
-        bookingRating={siteConfig.bookingRating}
-        hostelworldRating={siteConfig.hostelworldRating}
-        hostelworldReviews={siteConfig.hostelworldReviews}
+        ratings={guestRatingCards}
       />
 
       <section className="py-[var(--layout-section-spacing)] relative">

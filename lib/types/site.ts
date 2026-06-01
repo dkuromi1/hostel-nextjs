@@ -12,6 +12,21 @@ export interface BusinessChannel {
   enabled: boolean;
 }
 
+export interface GuestRatingCard {
+  id: string;
+  sourceLabel: string;
+  title: string;
+  url: string;
+  rating: string;
+  reviews?: string;
+  scoreSuffix?: string;
+  reviewsSuffix?: string;
+  description?: string;
+  icon: BusinessChannelIconKey;
+  badgeText?: string;
+  enabled?: boolean;
+}
+
 export interface CtaLink {
   text: string;
   url: string;
@@ -289,6 +304,7 @@ export interface SettingsContent {
     hostelworldRating: string;
     hostelworldReviews: string;
     channels: SettingsChannel[];
+    ratings?: GuestRatingCard[];
   };
   operations: {
     breakfastHours: string;
@@ -365,4 +381,3 @@ export interface PropertyConfig extends SettingsContent {
     trekTrailheadUrl?: string;
   };
 }
-

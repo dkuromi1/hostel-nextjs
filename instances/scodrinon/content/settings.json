@@ -47,6 +47,31 @@
     "bookingReviews": "388",
     "hostelworldRating": "10",
     "hostelworldReviews": "116",
+    "ratings": [
+      {
+        "id": "booking-com",
+        "sourceLabel": "Booking.com",
+        "title": "2025 Traveller Review Award (9.5)",
+        "description": "Awarded for consistent excellence in guest hospitality.",
+        "url": "https://www.booking.com/hotel/al/scodrinon-hostel.html",
+        "rating": "9.3",
+        "scoreSuffix": "out of 10",
+        "icon": "bookingCom",
+        "enabled": true
+      },
+      {
+        "id": "hostelworld",
+        "sourceLabel": "Hostelworld",
+        "title": "'Superb' Guest Rating",
+        "url": "https://www.hostelworld.com/hostels/p/325721/scodrinon-hostel/",
+        "rating": "10",
+        "reviews": "116",
+        "reviewsSuffix": "Reviews",
+        "badgeText": "Top Rated",
+        "icon": "hostelworld",
+        "enabled": true
+      }
+    ],
     "channels": [
       {
         "id": "booking-com",

@@ -16,6 +16,8 @@ import {
   type GalleryItem,
   type HikingGuideContent,
   type PropertyConfig,
+  type GuestRatingCard,
+  type SettingsContent,
 } from "./types/site";
 
 function parseIconName(icon: string, context: string): IconName {
@@ -93,6 +95,69 @@ function parseHikingGuide(guide: any): HikingGuideContent {
   };
 }
 
+type GuestRatingsCopy = Partial<Record<
+  | "bookingSourceLabel"
+  | "bookingAwardTitle"
+  | "bookingDescription"
+  | "bookingScoreSuffix"
+  | "hostelworldSourceLabel"
+  | "hostelworldTitle"
+  | "hostelworldReviewsSuffix"
+  | "topRatedLabel",
+  string
+>>;
+
+function normalizeGuestRatings(
+  settings: SettingsContent,
+  bookingChannels: BusinessChannel[],
+  copy: { home?: { guestRatings?: GuestRatingsCopy } },
+): GuestRatingCard[] {
+  const configuredRatings = settings.booking?.ratings;
+  if (Array.isArray(configuredRatings)) {
+    return configuredRatings
+      .filter((rating) => rating.enabled !== false)
+      .filter((rating) => rating.url && rating.rating)
+      .map((rating) => ({
+        ...rating,
+        icon: rating.icon ?? bookingChannels.find((channel) => channel.id === rating.id)?.icon ?? "link",
+        sourceLabel: rating.sourceLabel ?? bookingChannels.find((channel) => channel.id === rating.id)?.label ?? rating.id,
+      }));
+  }
+
+  const guestRatingsCopy = copy?.home?.guestRatings ?? {};
+  const bookingUrl = bookingChannels.find((channel) => channel.id === "booking-com")?.url ?? settings.booking?.bookingUrl;
+  const hostelworldUrl = bookingChannels.find((channel) => channel.id === "hostelworld")?.url ?? settings.booking?.hostelworldUrl;
+  const ratings: Array<GuestRatingCard | null> = [
+    settings.booking?.bookingRating && bookingUrl
+      ? {
+          id: "booking-com",
+          sourceLabel: guestRatingsCopy.bookingSourceLabel ?? "Booking.com",
+          title: guestRatingsCopy.bookingAwardTitle ?? "Guest Rating",
+          description: guestRatingsCopy.bookingDescription,
+          url: bookingUrl,
+          rating: settings.booking.bookingRating,
+          scoreSuffix: guestRatingsCopy.bookingScoreSuffix,
+          icon: "bookingCom",
+        }
+      : null,
+    settings.booking?.hostelworldRating && hostelworldUrl
+      ? {
+          id: "hostelworld",
+          sourceLabel: guestRatingsCopy.hostelworldSourceLabel ?? "Hostelworld",
+          title: guestRatingsCopy.hostelworldTitle ?? "Guest Rating",
+          url: hostelworldUrl,
+          rating: settings.booking.hostelworldRating,
+          reviews: settings.booking.hostelworldReviews,
+          reviewsSuffix: guestRatingsCopy.hostelworldReviewsSuffix,
+          badgeText: guestRatingsCopy.topRatedLabel,
+          icon: "hostelworld",
+        }
+      : null,
+  ];
+
+  return ratings.filter((rating): rating is GuestRatingCard => rating !== null);
+}
+
 export function normalizeInstanceData(rawContent: any): {
   siteConfig: PropertyConfig;
   contactChannels: BusinessChannel[];
@@ -114,6 +179,7 @@ export function normalizeInstanceData(rawContent: any): {
   faqItems: any[];
   contactChecklist: string[];
   testimonials: Testimonial[];
+  guestRatingCards: GuestRatingCard[];
   bookingAwardImage: string;
   thingsToDo: ThingToDoItem[];
   hikingGuide: HikingGuideContent;
@@ -168,6 +234,7 @@ export function normalizeInstanceData(rawContent: any): {
 
   const contactChannels = (settings.contact.channels ?? []).filter((c: any) => c.enabled);
   const bookingChannels = (settings.booking.channels ?? []).filter((c: any) => c.enabled);
+  const guestRatingCards = normalizeGuestRatings(settings, bookingChannels, siteCopy);
 
   const findChannelUrl = (channels: any[], id: string, fallback: string) => 
     channels.find((c) => c.id === id)?.url ?? fallback;
@@ -227,6 +294,7 @@ export function normalizeInstanceData(rawContent: any): {
     faqItems: faq.faqItems,
     contactChecklist: normalizedHomepage.contactChecklist,
     testimonials: testimonials.reviews ?? testimonials.testimonials ?? [],
+    guestRatingCards,
     bookingAwardImage: normalizedHomepage.bookingAwardImage,
     thingsToDo: thingsToDo.localHighlights ?? thingsToDo.thingsToDo ?? [],
     hikingGuide: parseHikingGuide(hikingGuide),

@@ -223,6 +223,25 @@ function validateInstance(instanceId, options = {}) {
       });
     }
 
+    const bookingChannels = settings.booking?.channels || [];
+    const bookingChannelIds = new Set(bookingChannels.filter((channel) => channel.enabled).map((channel) => channel.id));
+    const ratings = settings.booking?.ratings || [];
+    if (Array.isArray(ratings)) {
+      ratings.forEach((rating, index) => {
+        if (rating.enabled === false) return;
+        for (const key of ["id", "sourceLabel", "title", "url", "rating", "icon"]) {
+          if (!hasValue(rating[key])) {
+            errors.push(`${context} enabled booking.ratings[${index}] is missing "${key}"`);
+          }
+        }
+        if (rating.id && !bookingChannelIds.has(rating.id)) {
+          warnings.push(`${context} booking.ratings[${index}] id "${rating.id}" does not match an enabled booking channel`);
+        }
+      });
+    } else {
+      errors.push(`${context} booking.ratings must be an array when provided`);
+    }
+
     if (settings.features?.showRegionalWeather && !settings.weather) {
       errors.push(`${context} enables showRegionalWeather but has no weather config`);
     }
