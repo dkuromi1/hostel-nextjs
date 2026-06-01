@@ -1,0 +1,30 @@
+{
+  "property": {
+    "coords": [
+      0,
+      0
+    ],
+    "label": "property"
+  },
+  "hostel": {
+    "coords": [
+      0,
+      0
+    ],
+    "label": "property"
+  },
+  "overlays": {
+    "walkRadiusKm": 0.45
+  },
+  "namedViews": [],
+  "keywords": {
+    "property": [
+      "hostel",
+      "template"
+    ]
+  },
+  "styles": {
+    "standard": "mapbox://styles/mapbox/standard",
+    "satellite": "mapbox://styles/mapbox/satellite-streets-v12"
+  }
+}

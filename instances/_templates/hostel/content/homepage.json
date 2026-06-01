@@ -1,0 +1,208 @@
+{
+  "hero": {
+    "title1": "Privacy pods, rooftop sunsets,",
+    "title2": "and the heart of Your City right at your door.",
+    "description": "Located on Your City’s historic pedestrian street, just a 5-minute walk from the main transport hub, this basecamp is built for travelers to rest and connect, combining custom quiet pods with mountain views and social evenings on the rooftop terrace."
+  },
+  "heroHighlights": [
+    "Privacy pods with curtains, reading lights, sockets, and lockers",
+    "Rooftop sunsets with mountain and city views",
+    "Historic home on vibrant Main Street street",
+    "A lively, social atmosphere perfect for meeting travelers over cold beers and raki"
+  ],
+  "quickFacts": [
+    {
+      "title": "Privacy Pods",
+      "text": "Spacious privacy pods in our mixed dorm create a personal bedroom feel within a social space",
+      "icon": "BedDouble",
+      "image": "/images/placeholder.svg",
+      "focus": "50% 50%"
+    },
+    {
+      "title": "Boutique Dorms",
+      "text": "Boutique 4-bed female or male dorms, offering a bright, high-end sanctuary for peaceful stays",
+      "icon": "Luggage",
+      "image": "/images/placeholder.svg",
+      "focus": "50% 50%"
+    },
+    {
+      "title": "Included Perks",
+      "text": "Included: Free Breakfast (excl. off-season), luggage storage, shared kitchen, fast WiFi & 24h access",
+      "icon": "ShieldCheck",
+      "image": "/images/placeholder.svg",
+      "focus": "50% 40%"
+    }
+  ],
+  "includedFeatures": [
+    "Air-con in all rooms",
+    "Secure lockers",
+    "Reading lights",
+    "Power sockets",
+    "High-speed WiFi",
+    "Clean modern bathrooms",
+    "Free breakfast (excl. off-season)",
+    "24h access"
+  ],
+  "includedServices": [
+    {
+      "title": "Free Breakfast",
+      "description": "Fresh, locally-sourced breakfast (excl. off-season) including morning espresso. Early take-away breakfast for hikers",
+      "icon": "Coffee"
+    },
+    {
+      "title": "Modern Facilities",
+      "description": "Clean modern bathrooms, hot high-pressure showers, and high-speed WiFi in all rooms.",
+      "icon": "ShowerHead"
+    },
+    {
+      "title": "Shared Kitchen",
+      "description": "Well-equipped kitchen for guest use, including refrigerators, stoves, an espresso and ice machine.",
+      "icon": "Utensils"
+    },
+    {
+      "title": "Community",
+      "description": "Regular social events, daytrips, movie nights, family dinners, games and a helpful WhatsApp community.",
+      "icon": "Zap"
+    },
+    {
+      "title": "Adventure Ready",
+      "description": "Transport and tour arrangements, laundry service, and secure luggage storage — all sorted from the hostel.",
+      "icon": "Mountain"
+    }
+  ],
+  "addOnServices": [
+    {
+      "title": "Tours & Transport",
+      "description": "Hassle-free shuttle booking to regional (€12), regional (€26), regional River (€35 - includes €5 discount), and regional Lake (€36).",
+      "icon": "Bus"
+    },
+    {
+      "title": "Guest Laundry",
+      "description": "Use our washing machine (€5) and dryer (€2) or air-dry your clothes on our clotheslines for free.",
+      "icon": "WashingMachine"
+    },
+    {
+      "title": "Bike Rentals",
+      "description": "Explore Your City on two wheels for just €5/day. Rentals located right across the street.",
+      "icon": "Bike"
+    }
+  ],
+  "extendReasons": [
+    {
+      "title": "Sleep well, still meet people",
+      "description": "Privacy pods give you a reset button after a long day in the mountains, so the social side of hostel life stays a choice, not a chore.",
+      "icon": "Moon"
+    },
+    {
+      "title": "Rooftop nights, unmissable vibes",
+      "description": "Sunset views, lively conversation, and cold drinks make it simple to connect. It’s the social heart of Your City, where every night has a story.",
+      "icon": "Zap"
+    },
+    {
+      "title": "Everything starts right outside",
+      "description": "You’re already on Your City's main pedestrian street, surrounded by local eats, museums, and nightlife. Whether you're heading to the Alps or the coast, transport is just a short walk away.",
+      "icon": "MapPin"
+    },
+    {
+      "title": "Staff who keep things straightforward",
+      "description": "Honest local tips, fresh and locally-sourced breakfast, and help with your hiking route. We handle the logistics so you can focus on the trip.",
+      "icon": "Compass"
+    }
+  ],
+  "experiencePillars": [
+    {
+      "title": "Your Local Basecamp",
+      "description": "Drop your bags and explore the best local experiences nearby. Use this section for tours, city highlights, day trips, food, culture, or outdoor adventures that fit this property.",
+      "image": "/images/placeholder.svg",
+      "alt": "Hiking and mountain views near Your City, Your Countryn Alps trips from Template Hostel",
+      "cta": {
+        "text": "View Local Experiences",
+        "url": "/experiences#things-to-do"
+      }
+    },
+    {
+      "title": "Right in the Center",
+      "description": "Step out our front door directly onto Main Street, Your City’s main pedestrian street. From your first morning espresso to late-night drinks, the city's best food, culture, and rhythm are literally at your doorstep.",
+      "image": "/images/placeholder.svg",
+      "alt": "Pedestrian street scene near Template Hostel on Main Street, Your City",
+      "cta": {
+        "text": "See Our City Highlights",
+        "url": "/experiences#things-to-do"
+      }
+    }
+  ],
+  "featuredMoments": [
+    {
+      "title": "Movie Nights and Spontaneous Socials",
+      "description": "Whether it’s rooftop raki or exploring the local craft beer scene, we prioritize memorable moments that make it easy for everyone to join.",
+      "image": "/images/placeholder.svg",
+      "alt": "Traditional food event at Template Hostel"
+    },
+    {
+      "title": "Explore the Bicycle Capital",
+      "description": "Your City runs on two wheels. Grab a rental and explore the city's flat streets, lake paths, and cafes exactly how the locals do.",
+      "image": "/images/placeholder.svg",
+      "alt": "Bike tour event from Template Hostel"
+    },
+    {
+      "title": "River Days at the regional",
+      "description": "We head out to the river regularly for swimming and sun. These trips are a hostel favorite, a chance to relax and spend the afternoon with a great crew.",
+      "image": "/images/placeholder.svg",
+      "alt": "Guests enjoying an evening event at Template Hostel"
+    },
+    {
+      "title": "Rooftop Magic",
+      "description": "The rooftop is the social heart of the hostel: mountain light at sunset, city views after dark, and a pulse that keeps going from the first drink to the last chat.",
+      "image": "/images/placeholder.svg",
+      "alt": "Guests relaxing on the Template Hostel rooftop at sunset"
+    }
+  ],
+  "contactChecklist": [
+    "Your dates",
+    "How many guests are coming",
+    "Whether you want the mixed pod dorm or a 4-bed room",
+    "Your arrival time into Your City",
+    "Any hiking, bike, or transport plans you want help with"
+  ],
+  "bookingAwardImage": "/images/placeholder.svg",
+  "experienceLogisticsFeatures": [
+    {
+      "title": "Free Luggage Storage",
+      "description": "Drop your main backpack in our secure storage. Hike the regional trail carrying only what you actually need.",
+      "icon": "Backpack"
+    },
+    {
+      "title": "Transport & Logistics",
+      "description": "We provide honest, up-to-date info on furgon (minibus) schedules, regional Lake ferries, and regional River boat trips.",
+      "icon": "Bus"
+    },
+    {
+      "title": "The Post-Hike Reset",
+      "description": "Return from the mountains to a hot shower, A/C, crisp linens, and a cold drink on the rooftop.",
+      "icon": "Mountain"
+    }
+  ],
+  "socialConnectionFeatures": [
+    {
+      "title": "The regional River Escape",
+      "description": "Just outside the city, the regional River offers a cool, scenic contrast to the Alps. We organize regular group swimming trips to our favorite spots along the water for a perfect, sun-drenched afternoon.",
+      "icon": "Waves",
+      "image": "/images/placeholder.svg",
+      "focus": "50% 40%"
+    },
+    {
+      "title": "Spontaneous Socials",
+      "description": "Whether it’s rooftop raki shots or exploring the local craft beer scene, we prioritize high-energy moments that make it easy for everyone to join. It’s all about the social rhythm of the city.",
+      "icon": "Zap",
+      "image": "/images/placeholder.svg",
+      "focus": "50% 40%"
+    },
+    {
+      "title": "Bicycle Capital Access",
+      "description": "Your City is best explored on two wheels. Grab a rental from across the street and navigate the flat streets, historic center, and scenic lake paths exactly how the locals do.",
+      "icon": "Bike",
+      "image": "/images/placeholder.svg",
+      "focus": "50% 40%"
+    }
+  ]
+}

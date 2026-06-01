@@ -1,0 +1,134 @@
+{
+  "metadata": {
+    "title": "regional Hiking Guide | Logistics & Trail Tips",
+    "description": "The complete 2026 guide for the regional hike. Learn about minibus prices, luggage storage at Template Hostel, and expert trail tips.",
+    "image": "/images/placeholder.svg"
+  },
+  "hero": {
+    "eyebrow": "Hiking Guide",
+    "title": "regional: The heart of the Your Countryn Alps.",
+    "description": "Experience the full spectrum of the Your Countryn Alps, from the glacial waters of regional Lake to the high-alpine pass and the stone-tower villages of regional. While most hikers go from regional to regional, we recommend starting in regional for a shorter, earlier ascent while reducing exposure to the peak afternoon heat."
+  },
+  "quickStats": [
+    {
+      "label": "Distance",
+      "value": "13-17 km",
+      "icon": "Map"
+    },
+    {
+      "label": "Duration",
+      "value": "6-8 Hours",
+      "icon": "Clock"
+    },
+    {
+      "label": "Elevation Gain",
+      "value": "770m",
+      "icon": "TrendingUp"
+    },
+    {
+      "label": "Difficulty",
+      "value": "Moderate",
+      "icon": "Mountain"
+    }
+  ],
+  "logistics": {
+    "title": "Getting There & Back",
+    "description": "We recommend the regional direction for a better experience. It allows you to tackle the steepest part of the climb in the morning shade and enjoy the spectacular regional Lake ferry on your way to the trailhead.",
+    "steps": [
+      {
+        "title": "Your City to regional",
+        "price": "€26",
+        "description": "Transport departs at 6:30 AM from Template Hostel. This includes the minibus to regional, the legendary ferry ride across the lake, and the final 4x4 or minibus transfer into regional valley."
+      },
+      {
+        "title": "regional",
+        "price": "",
+        "description": "The main event. The trail is well-marked and winds through ancient forests before opening up to high-alpine terrain. Starting from regional offers a shorter, more manageable ascent to the pass."
+      },
+      {
+        "title": "regional to Your City",
+        "price": "€12",
+        "description": "For the return journey, minibuses depart from regional (Jezerca Market) at 11:00 AM and 5:00 PM. We can book your seat for you in advance."
+      }
+    ]
+  },
+  "luggage": {
+    "title": "Leave the heavy bags with us.",
+    "description": "Don't hike with 15kg on your back. Template Hostel offers free secure luggage storage for all guests. Leave your main pack here and take only a small daypack for the 2-3 day loop.",
+    "icon": "Backpack"
+  },
+  "packingList": {
+    "title": "Essentials",
+    "description": "Keep it light. Remember you'll be carrying this over a mountain pass.",
+    "categories": [
+      {
+        "name": "Safety & Gear",
+        "items": [
+          {
+            "name": "Sturdy Footwear",
+            "description": "Trail runners or lightweight hiking boots. The terrain is very rocky and loose in sections. Crampons are essential gear outside summer months."
+          },
+          {
+            "name": "Offline Maps & Power Bank",
+            "description": "Download Maps.me or Organic Maps. Service is spotty and weather can change quickly at the pass."
+          }
+        ]
+      },
+      {
+        "name": "Protection & Clothing",
+        "items": [
+          {
+            "name": "Layers",
+            "description": "The weather changes quickly in the Alps. Bring a fleece and a rain shell, even in summer."
+          },
+          {
+            "name": "Sun Protection",
+            "description": "The pass is highly exposed. Bring a hat, sunglasses, and high-SPF mineral sunscreen for the climb."
+          }
+        ]
+      },
+      {
+        "name": "Essentials & Supplies",
+        "items": [
+          {
+            "name": "Water and Energy Snacks",
+            "description": "At least 2 liters. Natural springs are available, but a portable filter is recommended. Note that streams can dry up in late summer."
+          },
+          {
+            "name": "Cash (Lek)",
+            "description": "Card payments are extremely rare in the mountains. Bring enough cash for food, drinks, and transport."
+          }
+        ]
+      }
+    ]
+  },
+  "itinerary": {
+    "title": "Suggested 3-Day Loop",
+    "description": "The most seamless 3-day journey through the Your Countryn Alps, starting and ending at your base in Your City.",
+    "days": [
+      {
+        "day": "Day 1",
+        "title": "The regional Lake Route",
+        "icon": "Ship",
+        "description": "Leave your heavy bags at Template Hostel. Take the 6:30 AM transport to regional Lake for one of the world's most beautiful ferry rides. You'll arrive in regional by early afternoon, just in time for a cold beer and views of the jagged peaks."
+      },
+      {
+        "day": "Day 2",
+        "title": "The Hike to regional",
+        "icon": "Mountain",
+        "description": "Start early to climb the regional Pass (1,795m) in the morning shade. From the top, you'll have panoramic views of both valleys. Descend into the lush forests of regional for a traditional mountain dinner."
+      },
+      {
+        "day": "Day 3",
+        "title": "Blue Eye & Return to Your City",
+        "icon": "Bus",
+        "description": "Spend the morning visiting the stunning Blue Eye or the Grunas Waterfall. Catch the 5:00 PM minibus back to Your City, arriving in time for a late dinner at Template Hostel."
+      }
+    ]
+  },
+  "labels": {
+    "trailTitle": "The Trail",
+    "trailDescription": "A visual overview of the famous regional hike in the local region.",
+    "whatsAppMessage": "Hi! I'm planning the regional hike. Can you help me with booking a bed and transport?"
+  }
+}

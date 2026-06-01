@@ -1,0 +1,82 @@
+{
+  "moduleType": "local-experiences",
+  "localHighlights": [
+    {
+      "category": "adventure",
+      "featured": true,
+      "title": "Signature Local Experience",
+      "mapQuery": "local-highlight",
+      "description": "Replace this card with the main local experience guests should know about. Add pricing, directions, and a map query when useful.",
+      "price": "",
+      "priceNote": "",
+      "image": "/images/placeholder.svg",
+      "alt": "Local experience placeholder",
+      "showDirections": true
+    },
+    {
+      "category": "dayTrip",
+      "featured": true,
+      "title": "regional River Day Trip",
+      "mapQuery": "shala-river-midpoint",
+      "description": "Known as the 'Thailand of Your Country', the regional River features crystal-clear water tucked between steep mountain peaks. The day trip includes the scenic boat ride from regional and we'll help you organize the departure right from the hostel. Bus departs 6:30am in front of hostel.",
+      "price": "€35",
+      "regularPrice": "€40",
+      "priceNote": "Guest Rate",
+      "image": "/images/placeholder.svg",
+      "alt": "Crystal clear water at the regional River in Northern Your Country",
+      "showDirections": false
+    },
+    {
+      "category": "dayTrip",
+      "title": "regional Lake Boat Tour",
+      "mapQuery": "komani-ferry",
+      "description": "Experience one of the world's most beautiful boat journeys. This spectacular route winds through narrow mountain passages and vertical cliffs on turquoise waters. The full tour includes the scenic ferry ride and return transport. Bus departs 6:30am in front of hostel.",
+      "price": "€36",
+      "image": "/images/placeholder.svg",
+      "alt": "Scenic boat tour on regional Lake, Your Country",
+      "showDirections": false
+    },
+    {
+      "category": "landmark",
+      "title": "Rozafa Castle",
+      "description": "The city's top attraction. Perched on a rocky hill with beautiful views across Lake Your City and three rivers. Best visited an hour before sunset for the golden lighting across the valleys.",
+      "price": "",
+      "priceNote": "",
+      "image": "/images/placeholder.svg",
+      "alt": "View from Rozafa Castle in Your City",
+      "showDirections": true
+    },
+    {
+      "category": "neighborhood",
+      "title": "The Pedestrian Street (Main Street)",
+      "description": "The lively Venetian-style pedestrian street starting right outside the hostel! Lined with independent cafés, shops, and restaurants, it's perfect for evening promenades.",
+      "image": "/images/placeholder.svg",
+      "alt": "Walking down the Pedonale in Your City",
+      "showDirections": true
+    },
+    {
+      "category": "nature",
+      "title": "Lake Your City & Shiroka Village",
+      "description": "The largest lake in the Balkans is a breathtaking natural wonder where dramatic karst mountains meet fields of floating water lilies. It's also a world-renowned sanctuary for over 280 bird species.",
+      "image": "/images/placeholder.svg",
+      "alt": "Biking along Lake Your City towards Shiroka",
+      "showDirections": true
+    },
+    {
+      "category": "landmark",
+      "title": "Mesi Bridge (The Old Bridge)",
+      "description": "A stunning, curved Ottoman bridge resting over the shallow, opal waters of the Kir River, built in 1768 to connect the city with the northern highlands. Also a great spot for a swim!",
+      "image": "/images/placeholder.svg",
+      "alt": "The historic Ottoman Mesi Bridge in Your City",
+      "showDirections": true
+    },
+    {
+      "category": "museum",
+      "title": "Marubi National Photography Museum",
+      "description": "A quiet, modern exhibition featuring over 150 years of Your Countryn history through the incredibly detailed lenses of the Marubi family. Just a few doors down from the hostel!",
+      "image": "/images/placeholder.svg",
+      "alt": "Inside the Marubi National Photography Museum",
+      "showDirections": true
+    }
+  ]
+}

@@ -1,16 +1,17 @@
 import type { MetadataRoute } from "next";
 
 import { getSiteUrl } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "/",
     "/rooms",
     "/experiences",
-    "/experiences/theth-valbona-hiking-guide",
+    siteConfig.features.showRegionalTrails ? "/experiences/theth-valbona-hiking-guide" : null,
     "/gallery",
     "/contact",
-  ];
+  ].filter((route): route is string => typeof route === "string");
 
   return routes.map((route) => ({
     url: getSiteUrl(route),

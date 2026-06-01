@@ -1,0 +1,314 @@
+{
+  "mediaItems": [
+    {
+      "id": "breakfast-served",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Breakfast served at Template Hostel",
+      "aspect": "766/1020",
+      "featured": true,
+      "tags": [
+        "breakfast",
+        "hospitality"
+      ]
+    },
+    {
+      "id": "four-bed-room",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "4 Bed Room at Template Hostel",
+      "aspect": "1000/750"
+    },
+    {
+      "id": "patio-seating",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Patio seating at Template Hostel",
+      "aspect": "764/874"
+    },
+    {
+      "id": "pods-layout",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Privacy pods and dorm layout at Template Hostel 18-bed room",
+      "aspect": "1333/1000"
+    },
+    {
+      "id": "common-area",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Common area ambiance at Template Hostel",
+      "aspect": "1280/853"
+    },
+    {
+      "id": "outdoor-games",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Guests enjoying games on the outdoor patio at Template Hostel",
+      "aspect": "2560/1708"
+    },
+    {
+      "id": "lounge-seating",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Hostel lounge and seating at Template Hostel in Your City",
+      "aspect": "576/768"
+    },
+    {
+      "id": "glass-doodles",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Glass doodles on the patio at Template Hostel",
+      "aspect": "960/1200"
+    },
+    {
+      "id": "hiking-alps",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Spectacular views while hiking in the Your Countryn Alps",
+      "aspect": "670/835"
+    },
+    {
+      "id": "covered-patio",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Chill afternoons on the covered patio at Template Hostel",
+      "aspect": "1440/1274"
+    },
+    {
+      "id": "hostel-video-3",
+      "type": "video",
+      "src": "/images/placeholder.svg",
+      "poster": "/images/placeholder.svg",
+      "alt": "Intro video to Template Hostel",
+      "aspect": "720/1280"
+    },
+    {
+      "id": "food-outing",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Local food outing from Template Hostel",
+      "aspect": "1000/1250"
+    },
+    {
+      "id": "hiking-basecamp",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Hikers using Template Hostel as a basecamp",
+      "aspect": "1200/1200"
+    },
+    {
+      "id": "daytime-rooftop-outlook",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Daytime rooftop outlook in Your City",
+      "aspect": "1994/1056"
+    },
+    {
+      "id": "pod-dorm-detail",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Privacy pod dorm at Template Hostel in Your City",
+      "aspect": "852/852"
+    },
+    {
+      "id": "river-trip-fun",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Having fun on the river trip",
+      "aspect": "960/1199"
+    },
+    {
+      "id": "rooftop-cathedral-view",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "View of St. Stephen's Cathedral from the rooftop at Template Hostel",
+      "aspect": "1200/1600"
+    },
+    {
+      "id": "rooftop-terrace-social",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Guests relaxing on the rooftop terrace at Template Hostel",
+      "aspect": "1359/1020"
+    },
+    {
+      "id": "rooftop-terrace-relax",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Relaxing on the rooftop terrace at Template Hostel",
+      "aspect": "960/720"
+    },
+    {
+      "id": "drin-river-excursion",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Regular regional river excursions at Template Hostel",
+      "aspect": "1081/992"
+    },
+    {
+      "id": "pedonale-rain",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Rainy days on the Street Main Street pedestrian street",
+      "aspect": "1200/1600"
+    },
+    {
+      "id": "skodrinon-sign",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "The Template Hostel sign",
+      "aspect": "1000/1333"
+    },
+    {
+      "id": "courtyard-seating",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Courtyard and outdoor seating at Template Hostel",
+      "aspect": "1024/575"
+    },
+    {
+      "id": "breakfast-spread-shkoder",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Breakfast spread at Template Hostel, Your City",
+      "aspect": "1024/576"
+    },
+    {
+      "id": "hiking-shkoder-base",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Your Countryn Alps hiking from Your City base stay at Template Hostel",
+      "aspect": "1024/683"
+    },
+    {
+      "id": "coworking-internet",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Coworking and workations using the high-speed internet at Template Hostel",
+      "aspect": "1440/1800"
+    },
+    {
+      "id": "tito",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Tito the resident hostel cat",
+      "aspect": "896/1193"
+    },
+    {
+      "id": "secure-lockers",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Secure lockers for dorm guests at Template Hostel",
+      "aspect": "1019/571"
+    },
+    {
+      "id": "indoor-common-area",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Bright indoor common area at Template Hostel",
+      "aspect": "512/768"
+    },
+    {
+      "id": "shower-area",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Shower area at Template Hostel, Your City",
+      "aspect": "512/768"
+    },
+    {
+      "id": "pedestrian-street-life-1",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Main Street pedestrian street life near Template Hostel",
+      "aspect": "1080/1434"
+    },
+    {
+      "id": "pedestrian-street-life-2",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Main Street pedestrian street life near Template Hostel",
+      "aspect": "1741/1166"
+    },
+    {
+      "id": "evening-events",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Evening events and outings",
+      "aspect": "1440/1439"
+    },
+    {
+      "id": "rosafa-castle",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Rozafa Castle in Your City",
+      "aspect": "1277/627"
+    },
+    {
+      "id": "rosafa-video-1",
+      "type": "video",
+      "src": "/images/placeholder.svg",
+      "poster": "/images/placeholder.svg",
+      "alt": "Short video from Rosafa Castle",
+      "aspect": "1015/1800"
+    },
+    {
+      "id": "travelers-socializing",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Travelers socializing on the hostel rooftop",
+      "aspect": "1359/1020"
+    },
+    {
+      "id": "evening-drinks",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Evening drinks and conversation at the hostel",
+      "aspect": "680/1020"
+    },
+    {
+      "id": "rooftop-clouds",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Daytime view from the best hostel rooftop in Your City",
+      "aspect": "1333/856"
+    },
+    {
+      "id": "bathroom-modern",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Modern bathroom facilities at Template Hostel",
+      "aspect": "512/768"
+    },
+    {
+      "id": "guest-showers",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Guest showers at Template Hostel",
+      "aspect": "512/768"
+    },
+    {
+      "id": "shared-bathroom",
+      "type": "image",
+      "src": "/images/placeholder.svg",
+      "alt": "Clean shared bathroom at Template Hostel",
+      "aspect": "512/768"
+    },
+    {
+      "id": "hostel-video-1",
+      "type": "video",
+      "src": "/images/placeholder.svg",
+      "poster": "/images/placeholder.svg",
+      "alt": "Short rooftop video from Template Hostel",
+      "aspect": "360/640"
+    },
+    {
+      "id": "hostel-video-2",
+      "type": "video",
+      "src": "/images/placeholder.svg",
+      "poster": "/images/placeholder.svg",
+      "alt": "Traveler atmosphere video from Template Hostel",
+      "aspect": "360/640"
+    }
+  ]
+}

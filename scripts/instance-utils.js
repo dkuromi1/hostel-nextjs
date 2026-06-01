@@ -139,17 +139,22 @@ function collectAssetRefs(value, refs = new Set()) {
 }
 
 function publicPathForAsset(instanceId, assetRef) {
+  return publicPathForAssetRoot(path.join(INSTANCES_DIR, instanceId, "public"), assetRef);
+}
+
+function publicPathForAssetRoot(publicRoot, assetRef) {
   const normalized = assetRef.replace(/^\//, "");
 
   if (normalized === "logo.webp" || normalized === "logo.png" || normalized === "favicon.ico" || normalized === "icon.png" || normalized === "icon-192.png" || normalized === "apple-icon.png") {
-    return path.join(INSTANCES_DIR, instanceId, "public", "branding", normalized);
+    return path.join(publicRoot, "branding", normalized);
   }
 
-  return path.join(INSTANCES_DIR, instanceId, "public", normalized);
+  return path.join(publicRoot, normalized);
 }
 
-function validateInstance(instanceId, options = {}) {
+function validateInstanceDirectory(instanceId, instanceDir, options = {}) {
   const checkAssets = options.checkAssets !== false;
+  const requireRegistry = options.requireRegistry !== false;
   const errors = [];
   const warnings = [];
   const id = slugify(instanceId);
@@ -159,7 +164,6 @@ function validateInstance(instanceId, options = {}) {
     return { id, errors, warnings };
   }
 
-  const instanceDir = path.join(INSTANCES_DIR, id);
   const contentDir = path.join(instanceDir, "content");
   const publicDir = path.join(instanceDir, "public");
   const indexFile = path.join(instanceDir, "index.ts");
@@ -169,7 +173,7 @@ function validateInstance(instanceId, options = {}) {
     return { id, errors, warnings };
   }
 
-  if (!fs.existsSync(indexFile)) {
+  if (requireRegistry && !fs.existsSync(indexFile)) {
     errors.push(`${path.relative(ROOT, indexFile)} is missing`);
   }
 
@@ -272,7 +276,7 @@ function validateInstance(instanceId, options = {}) {
   }
 
   const registryPath = path.join(INSTANCES_DIR, "index.ts");
-  if (fs.existsSync(registryPath)) {
+  if (requireRegistry && fs.existsSync(registryPath)) {
     const registry = fs.readFileSync(registryPath, "utf8");
     if (!registry.includes(`${id}:`) && !registry.includes(`"${id}":`)) {
       errors.push(`instances/index.ts does not register "${id}"`);
@@ -283,7 +287,7 @@ function validateInstance(instanceId, options = {}) {
     const refs = new Set();
     Object.values(content).forEach((json) => collectAssetRefs(json, refs));
     for (const ref of refs) {
-      const assetPath = publicPathForAsset(id, ref);
+      const assetPath = publicPathForAssetRoot(publicDir, ref);
       if (!fs.existsSync(assetPath)) {
         warnings.push(`Referenced asset ${ref} was not found at ${path.relative(ROOT, assetPath)}`);
       }
@@ -291,6 +295,17 @@ function validateInstance(instanceId, options = {}) {
   }
 
   return { id, errors, warnings };
+}
+
+function validateInstance(instanceId, options = {}) {
+  return validateInstanceDirectory(instanceId, path.join(INSTANCES_DIR, slugify(instanceId)), options);
+}
+
+function validateTemplate(templateId, options = {}) {
+  return validateInstanceDirectory(templateId, path.join(INSTANCES_DIR, "_templates", slugify(templateId)), {
+    ...options,
+    requireRegistry: false,
+  });
 }
 
 module.exports = {
@@ -307,4 +322,6 @@ module.exports = {
   slugify,
   toPascalCase,
   validateInstance,
+  validateInstanceDirectory,
+  validateTemplate,
 };

@@ -1,0 +1,344 @@
+{
+  "recommendedPois": [
+    {
+      "name": "Puri",
+      "coords": [
+        19.51009801624253,
+        42.06929457675185,
+        0
+      ],
+      "category": "eat",
+      "minZoom": 13
+    },
+    {
+      "name": "Fontana",
+      "coords": [
+        19.51683043811039,
+        42.068970393417366,
+        0
+      ],
+      "category": "eat",
+      "minZoom": 15
+    },
+    {
+      "name": "Shega e Eger",
+      "coords": [
+        19.517080553739916,
+        42.06874587721213,
+        0
+      ],
+      "category": "eat",
+      "minZoom": 15
+    },
+    {
+      "name": "Instant Bar",
+      "coords": [
+        19.51732313385343,
+        42.06785497769449,
+        0
+      ],
+      "category": "eat",
+      "minZoom": 14
+    },
+    {
+      "name": "Vibez Café",
+      "coords": [
+        19.515232382525955,
+        42.0681764569026,
+        0
+      ],
+      "category": "eat",
+      "minZoom": 15
+    },
+    {
+      "name": "Margherita Wine",
+      "coords": [
+        19.51765672878231,
+        42.06750049616751,
+        0
+      ],
+      "category": "eat",
+      "minZoom": 13
+    },
+    {
+      "name": "Traditional Food",
+      "coords": [
+        19.51465274620761,
+        42.0672268599382,
+        0
+      ],
+      "category": "eat",
+      "minZoom": 15
+    },
+    {
+      "name": "Pasta e Vino",
+      "coords": [
+        19.51488598410907,
+        42.06707444829828,
+        0
+      ],
+      "category": "eat",
+      "minZoom": 13
+    },
+    {
+      "name": "Pizza Napoli",
+      "coords": [
+        19.516924614432696,
+        42.06442554255739,
+        0
+      ],
+      "category": "eat",
+      "minZoom": 13
+    },
+    {
+      "name": "Loami's",
+      "coords": [
+        19.51883720266519,
+        42.065574983633006,
+        0
+      ],
+      "category": "eat",
+      "minZoom": 13
+    },
+    {
+      "name": "Heaven's Gate Second Hand Clothing",
+      "coords": [
+        19.51576550286285,
+        42.07181580397553,
+        0
+      ],
+      "category": "shop",
+      "minZoom": 13
+    },
+    {
+      "name": "Ristorante Montalcino",
+      "coords": [
+        19.51331291568257,
+        42.06797338188613,
+        0
+      ],
+      "category": "eat",
+      "minZoom": 15
+    },
+    {
+      "name": "Venetian Art Mask Factory",
+      "coords": [
+        19.52961397179209,
+        42.08179583849546,
+        0
+      ],
+      "category": "see",
+      "minZoom": 10
+    },
+    {
+      "name": "Photography Museum",
+      "coords": [
+        19.51562698413464,
+        42.06853017247063,
+        0
+      ],
+      "category": "see",
+      "minZoom": 14
+    },
+    {
+      "name": "Site of Witness and Memory",
+      "coords": [
+        19.516818743502085,
+        42.06484828898112,
+        0
+      ],
+      "category": "see",
+      "minZoom": 13
+    },
+    {
+      "name": "Lonely Tree Hike",
+      "coords": [
+        19.468276251483733,
+        42.04246677134261,
+        0
+      ],
+      "category": "see",
+      "minZoom": 10
+    },
+    {
+      "name": "Bus Station to Velipoja",
+      "coords": [
+        19.51154103962045,
+        42.06843505545666,
+        0
+      ],
+      "category": "transit",
+      "minZoom": 13
+    },
+    {
+      "name": "Buna Bridge (bus Kosovo drop off/pick up)",
+      "coords": [
+        19.488394433688068,
+        42.045334948590565,
+        0
+      ],
+      "category": "transit",
+      "minZoom": 9
+    },
+    {
+      "name": "Bus to Tirana",
+      "coords": [
+        19.511176197844094,
+        42.068239311055464,
+        0
+      ],
+      "category": "transit",
+      "minZoom": 13
+    },
+    {
+      "name": "Central Bus Stop",
+      "coords": [
+        19.512929288055442,
+        42.06755637830981,
+        0
+      ],
+      "category": "transit",
+      "minZoom": 11
+    },
+    {
+      "name": "Rozafa Castle",
+      "coords": [
+        19.493844659339743,
+        42.04664614803619,
+        0
+      ],
+      "category": "see",
+      "minZoom": 9
+    },
+    {
+      "name": "Mesi Bridge",
+      "coords": [
+        19.57507048757086,
+        42.114467845122725,
+        0
+      ],
+      "category": "see",
+      "minZoom": 9
+    },
+    {
+      "name": "Shiroka Village",
+      "coords": [
+        19.44972160885021,
+        42.06053385014611,
+        0
+      ],
+      "category": "see",
+      "minZoom": 9
+    },
+    {
+      "name": "Hermes Airport Shuttle",
+      "coords": [
+        19.518613662164896,
+        42.065060836150614,
+        0
+      ],
+      "category": "transit",
+      "minZoom": 11
+    },
+    {
+      "name": "Rragam Trailhead",
+      "coords": [
+        19.84605403131156,
+        42.41258193168048,
+        0
+      ],
+      "category": "see",
+      "minZoom": 6
+    },
+    {
+      "name": "regional Pass",
+      "coords": [
+        19.81528,
+        42.40583,
+        0
+      ],
+      "category": "see",
+      "minZoom": 6
+    },
+    {
+      "name": "Velipojë Beach",
+      "coords": [
+        19.416597409355276,
+        41.8618988805818,
+        0
+      ],
+      "category": "see",
+      "minZoom": 6
+    },
+    {
+      "name": "regional Village",
+      "coords": [
+        19.88570882131251,
+        42.444877303358666,
+        0
+      ],
+      "category": "transit",
+      "minZoom": 6
+    },
+    {
+      "name": "Grunas Waterfall",
+      "coords": [
+        19.795592926753546,
+        42.377324468019275,
+        0
+      ],
+      "category": "see",
+      "minZoom": 6
+    },
+    {
+      "name": "Blue Eye",
+      "coords": [
+        19.747282680129018,
+        42.364520206540234,
+        0
+      ],
+      "category": "see",
+      "minZoom": 6
+    },
+    {
+      "name": "regional drop off/pick up",
+      "coords": [
+        19.772315376603874,
+        42.39677313338882,
+        0
+      ],
+      "category": "transit",
+      "minZoom": 6
+    },
+    {
+      "name": "Ferry (regional) drop off/pick up",
+      "coords": [
+        20.009769719020607,
+        42.26435854079236,
+        0
+      ],
+      "category": "transit",
+      "minZoom": 6
+    },
+    {
+      "name": "Blini Park (regional River Trip Stop)",
+      "coords": [
+        19.80642220690339,
+        42.19953460048828,
+        0
+      ],
+      "category": "transit",
+      "minZoom": 6
+    },
+    {
+      "name": "regional Lake Ferry (regional & regional)",
+      "coords": [
+        19.826066248202096,
+        42.10881657873157,
+        0
+      ],
+      "category": "transit",
+      "minZoom": 6
+    }
+  ]
+}

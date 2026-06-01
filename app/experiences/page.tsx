@@ -18,7 +18,6 @@ import { StructuredData } from "@/components/structured-data";
 import { RegionalWeather } from "@/components/regional-weather";
 import {
   buildBreadcrumbSchema,
-  buildBusinessSchema,
   buildMetadata,
 } from "@/lib/metadata";
 import {
@@ -39,7 +38,38 @@ export const metadata = buildMetadata({
   image: siteCopyContent.experiences.metadata.image,
 });
 
-const THETH_SIDE_TRAILHEAD_GOOGLE_MAPS = "https://www.google.com/maps/dir/?api=1&destination=42.397171,19.772164";
+const launchpadMedia = siteCopyContent.experiences.launchpad.media ?? [
+  {
+    src: "/images/hiking_2.jpg",
+    alt: siteCopyContent.experiences.launchpad.title,
+    position: "80% center",
+  },
+  {
+    src: "/images/hiking_3.jpg",
+    alt: siteCopyContent.experiences.metadata.title,
+    position: "30% center",
+  },
+  {
+    src: "/images/hiking_4.webp",
+    alt: siteCopyContent.experiences.metadata.title,
+  },
+  {
+    src: "/images/scodrinon_play_1.webp",
+    alt: siteCopyContent.experiences.metadata.title,
+  },
+];
+
+const planStayMedia = siteCopyContent.experiences.planStay.media ?? {
+  src: "/images/rooftop_social_3.webp",
+  alt: siteConfig.name,
+  position: "60% 100%",
+};
+
+function getDirectionsUrl(item: { title: string; directionsUrl?: string }) {
+  return item.directionsUrl ?? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+    `${item.title} ${siteConfig.address.addressLocality} ${siteConfig.address.addressCountry}`
+  )}`;
+}
 
 export default function ExperiencesPage() {
   return (
@@ -58,9 +88,9 @@ export default function ExperiencesPage() {
         eyebrow={siteCopyContent.experiences.launchpad.eyebrow}
         title={siteCopyContent.experiences.launchpad.title}
         description={siteCopyContent.experiences.launchpad.description}
-        backgroundImage="/images/hiking_2.jpg"
-        backgroundAlt={siteCopyContent.experiences.launchpad.title}
-        backgroundPosition="80% center"
+        backgroundImage={launchpadMedia[0].src}
+        backgroundAlt={launchpadMedia[0].alt}
+        backgroundPosition={launchpadMedia[0].position}
         highlights={experienceLogisticsFeatures.map(f => ({
           title: f.title,
           text: f.description,
@@ -84,11 +114,12 @@ export default function ExperiencesPage() {
             <Reveal className="row-span-2 h-full" delay={100}>
               <div className="media-frame border-none bg-transparent relative h-full min-h-[20rem] md:min-h-[32rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-xl shadow-black/20">
                 <Image
-                  src="/images/hiking_3.jpg"
-                  alt={siteCopyContent.experiences.metadata.title}
+                  src={launchpadMedia[1]?.src ?? launchpadMedia[0].src}
+                  alt={launchpadMedia[1]?.alt ?? launchpadMedia[0].alt}
                   fill
                   loading="eager"
                   className="object-cover object-[30%_center] transition-transform duration-1000 hover:scale-105 shadow-2xl"
+                  style={{ objectPosition: launchpadMedia[1]?.position ?? "30% center" }}
                   sizes="(max-width: 1024px) 50vw, 30vw"
                 />
               </div>
@@ -98,11 +129,12 @@ export default function ExperiencesPage() {
             <Reveal delay={200}>
               <div className="media-frame border-none bg-transparent relative min-h-[10rem] md:min-h-[15.5rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-md">
                 <Image
-                  src="/images/hiking_4.webp"
-                  alt={siteCopyContent.experiences.metadata.title}
+                  src={launchpadMedia[2]?.src ?? launchpadMedia[0].src}
+                  alt={launchpadMedia[2]?.alt ?? launchpadMedia[0].alt}
                   fill
                   loading="eager"
                   className="object-cover transition-transform duration-1000 hover:scale-105"
+                  style={{ objectPosition: launchpadMedia[2]?.position ?? "center" }}
                   sizes="(max-width: 1024px) 50vw, 20vw"
                 />
               </div>
@@ -112,11 +144,12 @@ export default function ExperiencesPage() {
             <Reveal delay={300}>
               <div className="media-frame border-none bg-transparent relative min-h-[10rem] md:min-h-[15.5rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-md">
                 <Image
-                  src="/images/scodrinon_play_1.webp"
-                  alt={siteCopyContent.experiences.metadata.title}
+                  src={launchpadMedia[3]?.src ?? launchpadMedia[0].src}
+                  alt={launchpadMedia[3]?.alt ?? launchpadMedia[0].alt}
                   fill
                   loading="eager"
                   className="object-cover transition-transform duration-1000 hover:scale-105"
+                  style={{ objectPosition: launchpadMedia[3]?.position ?? "center" }}
                   sizes="(max-width: 1024px) 50vw, 20vw"
                 />
               </div>
@@ -203,11 +236,7 @@ export default function ExperiencesPage() {
                         ) : null}
                         {item.showDirections !== false && (
                           <a
-                            href={
-                              item.title === "Valbona to Theth Trek"
-                                ? (siteConfig.maps?.trekTrailheadUrl || "")
-                                : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(item.title + ' Shkoder')}`
-                            }
+                            href={getDirectionsUrl(item)}
                             target="_blank"
                             rel="noreferrer"
                             className="group ml-auto flex size-8 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--muted)]/50 text-[var(--text-muted)] transition-all duration-300 hover:border-[var(--brand-primary)]/30 hover:bg-[var(--brand-primary-light)] hover:text-[var(--brand-primary)] hover:shadow-sm"
@@ -325,9 +354,10 @@ export default function ExperiencesPage() {
             eyebrow={siteCopyContent.experiences.planStay.eyebrow}
             title={siteCopyContent.experiences.planStay.title}
             description={siteCopyContent.experiences.planStay.description}
-            image="/images/rooftop_social_3.webp"
-            alt={siteConfig.name}
-            imageClassName="object-[60%_100%]"
+            image={planStayMedia.src}
+            alt={planStayMedia.alt}
+            imageClassName={planStayMedia.position ? "" : "object-[60%_100%]"}
+            imageStyle={planStayMedia.position ? { objectPosition: planStayMedia.position } : undefined}
             bookingChannels={bookingChannels}
             contactChannels={contactChannels}
           />

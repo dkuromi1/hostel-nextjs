@@ -12,6 +12,7 @@ const {
   slugify,
   toPascalCase,
   validateInstance,
+  validateInstanceDirectory,
 } = require("./instance-utils");
 
 const args = parseArgs();
@@ -205,8 +206,8 @@ export const ${variableName} = {
 `;
 }
 
-function patchContent(id, config) {
-  const contentDir = path.join(INSTANCES_DIR, id, "content");
+function patchContent(id, config, targetDir = path.join(INSTANCES_DIR, id)) {
+  const contentDir = path.join(targetDir, "content");
   const settingsPath = path.join(contentDir, "settings.json");
   const mapConfigPath = path.join(contentDir, "map-config.json");
 
@@ -314,6 +315,7 @@ async function main() {
     from: args.from,
     template: args.template,
     yes: Boolean(args.yes),
+    dryRun: Boolean(args["dry-run"]),
     map: args.map !== "false" && args["no-map"] !== true,
     mascot: args.mascot !== "false" && args["no-mascot"] !== true,
     weather: args.weather !== "false" && args["no-weather"] !== true,
@@ -333,7 +335,9 @@ async function main() {
   }
 
   const sourceDir = resolveSourceDir(config);
-  const targetDir = path.join(INSTANCES_DIR, id);
+  const targetDir = config.dryRun
+    ? path.join(ROOT, ".tmp", "instance-dry-runs", `${id}-${Date.now()}`)
+    : path.join(INSTANCES_DIR, id);
 
   if (!fs.existsSync(sourceDir)) {
     console.error(`[create-instance] Source template/instance does not exist: ${path.relative(ROOT, sourceDir)}`);
@@ -347,22 +351,28 @@ async function main() {
 
   copyRecursive(sourceDir, targetDir);
   fs.writeFileSync(path.join(targetDir, "index.ts"), generateInstanceModule(id));
-  patchContent(id, config);
+  patchContent(id, config, targetDir);
 
-  if (args.register !== "false" && args["no-register"] !== true) {
+  if (!config.dryRun && args.register !== "false" && args["no-register"] !== true) {
     updateRegistry(id);
   }
 
-  const result = validateInstance(id);
+  const result = config.dryRun
+    ? validateInstanceDirectory(id, targetDir, { requireRegistry: false })
+    : validateInstance(id);
   if (result.errors.length > 0) {
     console.error(`[create-instance] Created ${id}, but validation failed:`);
     result.errors.forEach((error) => console.error(`  error: ${error}`));
     process.exit(1);
   }
 
-  console.log(`[create-instance] Created instance "${id}" from ${path.relative(ROOT, sourceDir)}`);
+  console.log(`[create-instance] ${config.dryRun ? "Dry-run created" : "Created"} instance "${id}" from ${path.relative(ROOT, sourceDir)}`);
   result.warnings.forEach((warning) => console.warn(`  warning: ${warning}`));
-  console.log(`[create-instance] Try it with: INSTANCE_ID=${id} npm run dev`);
+  if (config.dryRun) {
+    console.log(`[create-instance] Dry-run output: ${path.relative(ROOT, targetDir)}`);
+  } else {
+    console.log(`[create-instance] Try it with: INSTANCE_ID=${id} npm run dev`);
+  }
 }
 
 main().catch((error) => {

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { resolveIcon } from "@/lib/icon-registry";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
@@ -13,14 +14,28 @@ import { PackingList } from "@/components/hiking/packing-list";
 import { buildBreadcrumbSchema, buildMetadata } from "@/lib/metadata";
 import { hikingGuide, siteConfig } from "@/lib/site-data";
 
-export const metadata = buildMetadata({
-  title: hikingGuide.metadata.title,
-  description: hikingGuide.metadata.description,
-  path: "/experiences/theth-valbona-hiking-guide",
-  image: hikingGuide.metadata.image,
-});
+function isHikingGuideEnabled() {
+  return Boolean(siteConfig.features.showRegionalTrails && hikingGuide?.metadata && hikingGuide?.hero);
+}
+
+export function generateMetadata() {
+  if (!isHikingGuideEnabled()) {
+    return {};
+  }
+
+  return buildMetadata({
+    title: hikingGuide.metadata.title,
+    description: hikingGuide.metadata.description,
+    path: "/experiences/theth-valbona-hiking-guide",
+    image: hikingGuide.metadata.image,
+  });
+}
 
 export default function HikingGuidePage() {
+  if (!isHikingGuideEnabled()) {
+    notFound();
+  }
+
   return (
     <>
       <StructuredData

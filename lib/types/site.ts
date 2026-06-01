@@ -125,6 +125,7 @@ export interface ThingToDoItem {
   featured?: boolean;
   ctaLabel?: string;
   ctaUrl?: string;
+  directionsUrl?: string;
   region?: string;
 }
 

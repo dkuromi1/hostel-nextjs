@@ -55,6 +55,12 @@ Validate all registered instances:
 npm run validate-instances
 ```
 
+Validate scaffold templates:
+
+```bash
+npm run validate-templates
+```
+
 Validation checks required content files, required settings, enabled channels,
 weather/map feature consistency, registry wiring, and referenced public assets.
 

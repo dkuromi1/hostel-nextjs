@@ -1,0 +1,190 @@
+{
+  "business": {
+    "name": "Template Hostel",
+    "shortName": "Template",
+    "tagline": "A reusable hostel website starter",
+    "description": "A central, social hostel template with dorm rooms, direct booking, local experiences, and configurable maps.",
+    "category": "travel"
+  },
+  "address": {
+    "label": "Main Street, Your City, Your Country",
+    "summary": "Your City, Your Country",
+    "streetAddress": "Main Street",
+    "addressLocality": "Your City",
+    "postalCode": "0000",
+    "addressCountry": "XX"
+  },
+  "contact": {
+    "phoneDisplay": "+00 000 000 000",
+    "phoneRaw": "0000000000",
+    "instagramUrl": "https://www.instagram.com/",
+    "whatsappCommunityUrl": "",
+    "email": "hello@example.com",
+    "channels": [
+      {
+        "id": "whatsapp",
+        "label": "WhatsApp Booking",
+        "url": "https://wa.me/0000000000?text=Hi%2C%20I%27d%20like%20to%20book%20a%20bed.",
+        "icon": "whatsapp",
+        "stylePriority": "primary",
+        "enabled": true
+      },
+      {
+        "id": "instagram",
+        "label": "Instagram",
+        "url": "https://www.instagram.com/",
+        "icon": "instagram",
+        "stylePriority": "secondary",
+        "enabled": false
+      }
+    ]
+  },
+  "booking": {
+    "whatsappUrl": "https://wa.me/0000000000?text=Hi%2C%20I%27d%20like%20to%20book%20a%20bed.",
+    "bookingUrl": "https://example.com/book",
+    "hostelworldUrl": "https://example.com/hostelworld",
+    "bookingRating": "",
+    "bookingReviews": "",
+    "hostelworldRating": "",
+    "hostelworldReviews": "",
+    "ratings": [
+      {
+        "id": "booking-com",
+        "sourceLabel": "Booking.com",
+        "title": "2025 Traveller Review Award (9.5)",
+        "description": "Awarded for consistent excellence in guest hospitality.",
+        "url": "https://example.com/book",
+        "rating": "9.0",
+        "scoreSuffix": "out of 10",
+        "icon": "bookingCom",
+        "enabled": false
+      },
+      {
+        "id": "hostelworld",
+        "sourceLabel": "Hostelworld",
+        "title": "'Superb' Guest Rating",
+        "url": "https://example.com/reviews",
+        "rating": "9.5",
+        "reviews": "116",
+        "reviewsSuffix": "Reviews",
+        "badgeText": "Top Rated",
+        "icon": "hostelworld",
+        "enabled": false
+      }
+    ],
+    "channels": [
+      {
+        "id": "booking-com",
+        "label": "Booking.com",
+        "url": "https://example.com/book",
+        "icon": "bookingCom",
+        "stylePriority": "secondary",
+        "enabled": false
+      },
+      {
+        "id": "hostelworld",
+        "label": "Hostelworld",
+        "url": "https://example.com/hostelworld",
+        "icon": "hostelworld",
+        "stylePriority": "secondary",
+        "enabled": false
+      }
+    ]
+  },
+  "operations": {
+    "breakfastHours": "8:00 to 10:00",
+    "checkInHours": "2pm - 10pm",
+    "checkOutHours": "10:00am"
+  },
+  "seo": {
+    "baseKeywords": [
+      "hostel in Your City",
+      "Your City accommodation",
+      "backpacker hostel",
+      "social hostel",
+      "budget accommodation"
+    ],
+    "titleSuffix": "Your City",
+    "locale": "en_US",
+    "ogImage": "/images/placeholder.svg"
+  },
+  "branding": {
+    "logoWebp": "/images/placeholder.svg",
+    "logoPng": "/images/placeholder.svg",
+    "favicon": "/images/placeholder.svg",
+    "appleTouchIcon": "/images/placeholder.svg",
+    "manifestThemeColor": "#020617",
+    "manifestBackgroundColor": "#f6f7f2",
+    "design": {
+      "theme": "cool",
+      "colors": {
+        "primary": "#059669",
+        "accent": "#8ac7eb",
+        "background": "#f8fafc",
+        "surfaceDark": "#1e293b",
+        "darkBackground": "#020617"
+      },
+      "atmosphere": {
+        "showGlows": true,
+        "showNoise": true,
+        "pattern": "grid",
+        "glowIntensity": 0.8
+      },
+      "surfaces": {
+        "glassBlur": 12,
+        "glassOpacity": 0.84,
+        "borderRadius": "2xl",
+        "eyebrowStyle": "ghost"
+      },
+      "mascot": {
+        "enabled": false,
+        "type": "none",
+        "message": ""
+      },
+      "typography": {
+        "headingFont": "serif",
+        "character": "elegant"
+      },
+      "iconStroke": "thin",
+      "layout": {
+        "width": "wide",
+        "spacing": "wide",
+        "gutter": "wide",
+        "cardPaddingMobile": "1.75rem",
+        "cardPaddingPremiumMobile": "2.5rem",
+        "cardPaddingDesktop": "2.25rem",
+        "cardPaddingPremiumDesktop": "3.5rem"
+      }
+    }
+  },
+  "features": {
+    "volunteersNeeded": false,
+    "showMascot": false,
+    "showRegionalWeather": true,
+    "showLocalExperienceMap": true,
+    "showLocalPois": true,
+    "showRegionalTrails": false
+  },
+  "schema": {
+    "type": "Hostel",
+    "priceRange": "€",
+    "sameAs": [],
+    "images": [
+      "/images/placeholder.svg"
+    ],
+    "amenities": [
+      "Free WiFi",
+      "Lockers",
+      "Shared kitchen",
+      "Common area",
+      "Luggage storage"
+    ]
+  },
+  "weather": {
+    "latitude": 0,
+    "longitude": 0,
+    "label": "Your City",
+    "sublabel": "Currently"
+  },
+  "maps": {}
+}

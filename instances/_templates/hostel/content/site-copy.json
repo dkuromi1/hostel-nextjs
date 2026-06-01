@@ -9,11 +9,11 @@
       "booking": "Booking.com",
       "hostelworld": "Hostelworld"
     },
-    "breakfastPrefix": "",
+    "breakfastPrefix": "Free breakfast:",
     "detailsLabel": "Details",
     "credit": "Custom Built in Next.js 16",
     "communityButton": "Join the Chat",
-    "description": "Scodrinon Hostel sits on Kolë Idromeno Street, right in the middle of Shkoder's cafe life, rich local culture, and gateway to adventure. Message on WhatsApp for the quickest direct booking response.",
+    "description": "Template Hostel sits on Main Street Street, right in the middle of Your City's cafe life, rich local culture, and gateway to adventure. Message on WhatsApp for the quickest direct booking response.",
     "communityCaption": "Scan to join the guest group chat"
   },
   "errorPage": {
@@ -36,10 +36,10 @@
       "directBookingLabel": "Direct Booking",
       "directBookingTitle": "Message the hostel and book direct",
       "rooftopEyebrow": "Rooftop Terrace",
-      "roomImageAlt": "Privacy pod dorm room at Scodrinon Hostel",
+      "roomImageAlt": "Privacy pod dorm room at Template Hostel",
       "directBookingDescription": "WhatsApp is the most direct way to confirm dates, room type, arrival time, and any trip planning.",
-      "rooftopImageAlt": "Guests enjoying the rooftop at Scodrinon Hostel",
-      "rooftopTitle": "Where sunset drinks turn into legendary stories."
+      "rooftopImageAlt": "Guests enjoying the rooftop at Template Hostel",
+      "rooftopTitle": "Sunset drinks that turn into legendary stories."
     },
     "whyStayLonger": {
       "eyebrow": "Why People Stay Longer",
@@ -54,16 +54,16 @@
       "detailsLabel": "Room Details"
     },
     "metadata": {
-      "title": "Privacy Pods & Rooftop Sunsets in Shkodër",
-      "description": "A lively, social hostel on Shkodër’s main pedestrian street. The perfect base for the Valbona-Theth trek with privacy pods, rooftop sunsets, and unmissable vibes.",
-      "image": "/logo.webp"
+      "title": "Privacy Pods & Rooftop Sunsets in Your City",
+      "description": "A lively, social hostel on Your City’s main pedestrian street. The perfect base for the regional trek with privacy pods, rooftop sunsets, and unmissable vibes.",
+      "image": "/images/placeholder.svg"
     },
     "cta": {
       "eyebrow": "Direct Booking First",
       "title": "If the dates work for you, send the message now.",
-      "description": "Direct WhatsApp booking is our preferred route but Booking.com and Hostelworld are available as well.",
-      "image": "/images/rooftop_view_day.jpg",
-      "alt": "Daytime rooftop view from Scodrinon Hostel"
+      "description": "Direct WhatsApp booking stays the fastest route. Then keep Booking.com and Hostelworld as easy backup options if you want to compare.",
+      "image": "/images/placeholder.svg",
+      "alt": "Daytime rooftop view from Template Hostel"
     },
     "gallerySection": {
       "eyebrow": "Gallery",
@@ -77,10 +77,10 @@
       "description": "No padded feature list, just the things that make the stay smoother."
     },
     "hero": {
-      "backgroundAlt": "Hiking in the Accursed Mountains near Shkoder"
+      "backgroundAlt": "Hiking in the local region near Your City"
     },
     "experiencesSection": {
-      "eyebrow": "Discover & Connect at Scodrinon Hostel",
+      "eyebrow": "Discover & Connect at Template Hostel",
       "title": "Built for legendary rooftop nights and fast adventure planning.",
       "description": "The social side here is the main event. Grab a drink on the terrace, meet your next travel crew, or stay up until the city lights switch on.",
       "buttonLabel": "See Experiences",
@@ -103,12 +103,12 @@
   "gallery": {
     "metadata": {
       "title": "Photo and Video Gallery",
-      "description": "Browse real photos and short videos from Scodrinon Hostel, including the rooftop, rooms, breakfast, events, and the atmosphere around the stay.",
-      "image": "/images/rooftop_panorama.webp"
+      "description": "Browse real photos and short videos from Template Hostel, including the rooftop, rooms, breakfast, events, and the atmosphere around the stay.",
+      "image": "/images/placeholder.svg"
     },
     "pageTitle": "Gallery",
     "visualTour": {
-      "eyebrow": "Inside Scodrinon",
+      "eyebrow": "Inside Template Hostel",
       "title": "A visual tour of the hostel and rooftop.",
       "description": "Get a feel for the hostel in a few swipes: the rooftop, the pods, the breakfast, and the overall vibe of the place."
     },
@@ -116,7 +116,7 @@
       "label": "Highly Rated",
       "title": "What you see is exactly what you get.",
       "description": "We’re proud of our 9.5 rating, but our real pride is our space. No heavy filters or staged tricks. Just real, comfortable environments ready for your next adventure.",
-      "imageAlt": "Booking award displayed at Scodrinon Hostel"
+      "imageAlt": "Booking award displayed at Template Hostel"
     },
     "vibePanel": {
       "eyebrow": "Our Vibe",
@@ -126,16 +126,16 @@
     "cta": {
       "eyebrow": "Ready To Stay",
       "title": "If the gallery feels like your kind of hostel, message now.",
-      "description": "The best move is the direct one: WhatsApp first, then Booking.com and Hostelworld right behind.",
-      "image": "/images/rooftop_view.jpg",
-      "alt": "Rooftop view from Scodrinon Hostel at sunset"
+      "description": "The fastest move is still the direct one: WhatsApp first, then Booking.com and Hostelworld right behind it.",
+      "image": "/images/placeholder.svg",
+      "alt": "Rooftop view from Template Hostel at sunset"
     }
   },
   "contact": {
     "metadata": {
       "title": "Contact and Book Direct",
-      "description": "Book Scodrinon Hostel directly on WhatsApp or use Booking.com and Hostelworld. Find the hostel links, booking checklist, and arrival details here.",
-      "image": "/images/shkoder_pedestrian_street.jpg"
+      "description": "Book Template Hostel directly on WhatsApp or use Booking.com and Hostelworld. Find the hostel links, booking checklist, and arrival details here.",
+      "image": "/images/placeholder.svg"
     },
     "hero": {
       "eyebrow": "Contact & Book",
@@ -144,12 +144,12 @@
     },
     "bestBookingRoute": {
       "label": "Best Booking Route",
-      "title": "Message Scodrinon on WhatsApp first.",
-      "description": "Send your dates, room preference, and arrival time. You can also ask about hikes, bikes, lake plans, or the easiest way to move on from Shkoder after your stay."
+      "title": "Message Template Hostel on WhatsApp first.",
+      "description": "Send your dates, room preference, and arrival time. You can also ask about hikes, bikes, lake plans, or the easiest way to move on from Your City after your stay."
     },
     "heroImages": {
-      "streetAlt": "Street outside Scodrinon Hostel on Kolë Idromeno",
-      "socialAlt": "Social atmosphere at Scodrinon Hostel"
+      "streetAlt": "Street outside Template Hostel on Main Street",
+      "socialAlt": "Social atmosphere at Template Hostel"
     },
     "contactDetails": {
       "label": "Contact Details",
@@ -163,9 +163,9 @@
     "cta": {
       "eyebrow": "Ready to visit?",
       "title": "Got your dates? Let's get you booked.",
-      "description": "Drop us a message on WhatsApp and we'll confirm your bed right away. We can't wait to welcome you to Shkoder.",
-      "image": "/images/promo_2.jpg",
-      "alt": "Promotional image for Scodrinon Hostel"
+      "description": "Drop us a message on WhatsApp and we'll confirm your bed right away. We can't wait to welcome you to Your City.",
+      "image": "/images/placeholder.svg",
+      "alt": "Promotional image for Template Hostel"
     }
   },
   "rooms": {
@@ -182,29 +182,29 @@
       "contactForRatesLabel": "Contact us for rates"
     },
     "testimonialsImages": {
-      "socialAlt": "Social common area at Scodrinon Hostel",
-      "breakfastAlt": "Fresh breakfast served at Scodrinon Hostel"
+      "socialAlt": "Social common area at Template Hostel",
+      "breakfastAlt": "Fresh breakfast served at Template Hostel"
     },
     "metadata": {
-      "title": "Rooms and Privacy Pods in Shkoder",
-      "description": "See the privacy pod dorm and four-bed dorm options at Scodrinon Hostel, plus breakfast, WiFi, lockers, air-con, and other included amenities.",
-      "image": "/images/room_18bed2.jpg"
+      "title": "Rooms and Privacy Pods in Your City",
+      "description": "See the privacy pod dorm and four-bed dorm options at Template Hostel, plus breakfast, WiFi, lockers, air-con, and other included amenities.",
+      "image": "/images/placeholder.svg"
     },
     "cta": {
       "eyebrow": "Book Your Bed",
       "title": "Tell the team what kind of room you want and lock it in directly.",
-      "description": "If you already know your dates, message on WhatsApp and ask for the pod dorm or a four-bed option. Booking.com and Hostelworld are available if you prefer those platforms.",
-      "image": "/images/ambiance_4.jpg",
-      "alt": "Evening ambiance at Scodrinon Hostel, Shkoder"
+      "description": "If you already know your dates, message on WhatsApp and ask for the pod dorm or a four-bed option. Booking.com and Hostelworld stay there if you prefer those platforms.",
+      "image": "/images/placeholder.svg",
+      "alt": "Evening ambiance at Template Hostel, Your City"
     },
     "extraHelp": {
       "label": "Extra Help When You Want It",
       "title": "Add bikes, tours, or laundry without overcomplicating your stay.",
-      "imageAlt": "Breakfast included at Scodrinon Hostel, Shkoder"
+      "imageAlt": "Breakfast included at Template Hostel, Your City"
     },
     "heroImages": {
-      "fourBedAlt": "Four-bed dorm room at Scodrinon Hostel, Shkoder",
-      "podAlt": "18-bed privacy pod dorm at Scodrinon Hostel, Shkoder"
+      "fourBedAlt": "Four-bed dorm room at Template Hostel, Your City",
+      "podAlt": "18-bed privacy pod dorm at Template Hostel, Your City"
     },
     "includedStay": {
       "eyebrow": "Included In Your Stay",
@@ -214,46 +214,46 @@
     "hero": {
       "eyebrow": "Rooms",
       "title": "Sleep like you booked a thoughtful hostel, not a compromise.",
-      "description": "Scodrinon keeps the comfort side of the stay strong: privacy pods, smaller dorm options, shared kitchen, clean shared bathrooms, breakfast, and the essentials that matter when you are traveling for real."
+      "description": "Template Hostel keeps the comfort side of the stay strong: privacy pods, smaller dorm options, shared kitchen, clean shared bathrooms, breakfast, and the essentials that matter when you are traveling for real."
     }
   },
   "experiences": {
     "metadata": {
-      "title": "Rooftop Events and Adventure Base in Shkoder",
-      "description": "See how Scodrinon Hostel works as a social rooftop hangout and a launch point for Valbona, Theth, Lake Shkoder, river trips, and city culture.",
-      "image": "/images/rooftop_social_2.jpg"
+      "title": "Rooftop Events and Adventure Base in Your City",
+      "description": "See how Template Hostel works as a social rooftop hangout and a launch point for regional, regional, Lake Your City, river trips, and city culture.",
+      "image": "/images/placeholder.svg"
     },
     "pageTitle": "Experiences",
     "launchpad": {
       "eyebrow": "The Northbound Launchpad",
       "title": "Leave the heavy bags behind and head for the mountains.",
-      "description": "We've built Scodrinon to be the ultimate reset point for your Albanian Alps trek. Don't waste a day figuring out schedules. We handle the friction so you can focus on the trail.",
+      "description": "We've built Template Hostel to be the ultimate reset point for your Your Countryn Alps trek. Don't waste a day figuring out schedules. We handle the friction so you can focus on the trail.",
       "media": [
         {
-          "src": "/images/hiking_2.jpg",
-          "alt": "Hiking in the mountains near Shkoder",
-          "position": "80% center"
-        },
-        {
-          "src": "/images/hiking_3.jpg",
-          "alt": "Guests preparing for hiking near Scodrinon Hostel",
-          "position": "30% center"
-        },
-        {
-          "src": "/images/hiking_4.webp",
-          "alt": "Mountain hiking experience from Scodrinon Hostel",
+          "src": "/images/placeholder.svg",
+          "alt": "Hostel experience placeholder",
           "position": "center"
         },
         {
-          "src": "/images/scodrinon_play_1.webp",
-          "alt": "Social guest moment at Scodrinon Hostel",
+          "src": "/images/placeholder.svg",
+          "alt": "Hostel social space placeholder",
+          "position": "center"
+        },
+        {
+          "src": "/images/placeholder.svg",
+          "alt": "Hostel local experience placeholder",
+          "position": "center"
+        },
+        {
+          "src": "/images/placeholder.svg",
+          "alt": "Hostel guest moment placeholder",
           "position": "center"
         }
       ]
     },
     "thingsToDo": {
       "eyebrow": "Beyond the Hostel",
-      "title": "Things to do in and around Shkodër",
+      "title": "Things to do in and around Your City",
       "description": "Whether you have an afternoon to spare before your hike or a few days to wander, here’s what makes the city worth sticking around for."
     },
     "socialConnection": {
@@ -266,9 +266,9 @@
       "title": "Send your dates and let the hostel help shape the rest.",
       "description": "You can book the bed and ask about hikes, bike rides, river excursions, or the easiest onward route in the same WhatsApp conversation.",
       "media": {
-        "src": "/images/rooftop_social_3.webp",
-        "alt": "Guests relaxing at Scodrinon Hostel",
-        "position": "60% 100%"
+        "src": "/images/placeholder.svg",
+        "alt": "Hostel booking placeholder",
+        "position": "center"
       }
     },
     "hikingGuideCta": "Read Full Hiking Guide"

@@ -8,6 +8,7 @@
     "create-instance": "node scripts/create-instance.js",
     "validate-instance": "node scripts/validate-instance.js",
     "validate-instances": "node scripts/validate-instance.js --all",
+    "validate-templates": "node scripts/validate-instance.js --templates --all",
     "build": "next build && serwist build serwist.config.mjs",
     "start": "next start",
     "lint": "eslint",
