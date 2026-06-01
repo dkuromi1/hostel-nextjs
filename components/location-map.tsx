@@ -23,15 +23,23 @@ interface MapPOI {
 }
 
 // --- Constants & Helpers (from location-map-inner) ---
+const mapConfig = activeInstance.mapConfig as any;
 const {
+    property,
     hostel,
     pedonale,
+    overlays = {},
     namedViews = [],
     keywords = { property: [] },
     styles = { standard: '', satellite: '' }
-} = activeInstance.mapConfig as any;
+} = mapConfig;
 
-const HOSTEL_COORDS = hostel.coords;
+const propertyMarker = property ?? hostel;
+const PROPERTY_COORDS = propertyMarker.coords as [number, number];
+const PROPERTY_LABEL = propertyMarker.label ?? "property";
+const WALK_RADIUS_KM = typeof overlays.walkRadiusKm === "number" ? overlays.walkRadiusKm : 0.45;
+const HAS_WALK_RADIUS = WALK_RADIUS_KM > 0;
+const HAS_PEDONALE = Array.isArray(pedonale?.coords) && pedonale.coords.length > 1;
 const STANDARD_STYLE = styles.standard;
 const SATELLITE_STYLE = styles.satellite;
 
@@ -145,14 +153,14 @@ const applyCustomizations = (map: MapboxMap, trailGeoJson: MapboxGeoJSONData | n
         }
     });
 
-    if (pedonale?.coords && !map.getSource('pedonale-street')) {
+    if (HAS_PEDONALE && !map.getSource('pedonale-street')) {
         map.addSource('pedonale-street', {
             type: 'geojson',
             data: { type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates: pedonale.coords } }
         } as MapboxAnySourceData);
     }
 
-    if (!map.getLayer('pedonale-line')) {
+    if (HAS_PEDONALE && !map.getLayer('pedonale-line')) {
         map.addLayer({
             'id': 'pedonale-line', 'type': 'line', 'source': 'pedonale-street',
             'layout': { 'line-cap': 'round', 'line-join': 'round' },
@@ -160,11 +168,11 @@ const applyCustomizations = (map: MapboxMap, trailGeoJson: MapboxGeoJSONData | n
         }, labelLayerId);
     }
 
-    if (!map.getSource('walk-radius')) {
-        map.addSource('walk-radius', { 'type': 'geojson', 'data': createGeoJSONCircle(HOSTEL_COORDS, 0.45) });
+    if (HAS_WALK_RADIUS && !map.getSource('walk-radius')) {
+        map.addSource('walk-radius', { 'type': 'geojson', 'data': createGeoJSONCircle(PROPERTY_COORDS, WALK_RADIUS_KM) });
     }
 
-    if (!map.getLayer('walk-radius-outline')) {
+    if (HAS_WALK_RADIUS && !map.getLayer('walk-radius-outline')) {
         map.addLayer({
             'id': 'walk-radius-outline', 'type': 'line', 'source': 'walk-radius',
             'layout': {}, 'paint': { 'line-color': '#0284c7', 'line-width': 3.5, 'line-dasharray': [2, 2], 'line-opacity': 0.95 }
@@ -257,7 +265,7 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                 if (isCancelled || !mapContainerRef.current) return;
 
                 const q = initialPoiQueryRef.current?.toLowerCase() || '';
-                let initialCenter = HOSTEL_COORDS;
+                let initialCenter = PROPERTY_COORDS;
                 let initialZoom = 15.5;
 
                 if (q) {
@@ -307,7 +315,7 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                 label.href = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(siteConfig.name + ' ' + siteConfig.address.addressLocality)}`;
                 label.target = '_blank'; label.rel = 'noreferrer';
                 applyLabelStyle(label, mobile, { marginBottom: '6px', padding: '6px 14px', borderRadius: 'var(--radius-md)', fontSize: '12px', border: '0.5px solid #0ea5e9' });
-                label.classList.add('poi-label-el'); label.setAttribute('data-poi-label', 'hostel');
+                label.classList.add('poi-label-el'); label.setAttribute('data-poi-label', PROPERTY_LABEL);
                 if (!mobile) label.style.boxShadow = '0 10px 15px -3px rgb(0 0 0 / 0.1)';
 
                 const mainText = document.createElement('div'); mainText.innerText = siteConfig.name;
@@ -342,7 +350,7 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                     .mapboxgl-ctrl-scale { position: absolute !important; bottom: 12px !important; right: 200px !important; margin: 0 !important; border-radius: 4px; background: var(--glass-bg); backdrop-filter: blur(4px); border: 1px solid var(--glass-border); padding: 2px 6px; }
                 `;
                 document.head.appendChild(styleTag);
-                new mapbox.Marker({ element: el, anchor: 'bottom' }).setLngLat(HOSTEL_COORDS).addTo(m);
+                new mapbox.Marker({ element: el, anchor: 'bottom' }).setLngLat(PROPERTY_COORDS).addTo(m);
 
                 // POIs
                 recommendedPoisRef.current.forEach(poi => {
@@ -432,7 +440,7 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
     performFlyToRef.current = (q: string) => {
         if (!mapRef.current) return;
 
-        let targetCenter = HOSTEL_COORDS;
+        let targetCenter = PROPERTY_COORDS;
         let targetZoom = 15.5;
         document.querySelectorAll('.poi-label-el').forEach(el => el.classList.remove('poi-highlight'));
 
@@ -455,8 +463,8 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                 matchedView.highlightLabels?.forEach((l: string) => {
                     document.querySelector(`[data-poi-label="${l.toLowerCase()}"]`)?.classList.add('poi-highlight');
                 });
-            } else if (keywords.property.some((k: string) => q.includes(k)) || q === siteConfig.shortName.toLowerCase()) {
-                document.querySelector(`[data-poi-label="${hostel.label}"]`)?.classList.add('poi-highlight');
+            } else if ((keywords.property ?? []).some((k: string) => q.includes(k)) || q === siteConfig.shortName.toLowerCase()) {
+                document.querySelector(`[data-poi-label="${PROPERTY_LABEL}"]`)?.classList.add('poi-highlight');
             }
         }
 
@@ -549,7 +557,7 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
                         const isRegional = variant === "regional";
                         const preferredView = getPreferredView();
                         
-                        let center = HOSTEL_COORDS;
+                        let center = PROPERTY_COORDS;
                         let zoom = 15.0;
                         
                         if (isRegional) {
@@ -581,8 +589,12 @@ function LocationMapInner({ accessToken, defaultPoi, variant = "local" }: { acce
             <div id="map-legend" className="absolute bottom-4 left-4 z-10 flex flex-col gap-2 rounded-[var(--radius-xl)] border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md p-2.5 text-[9px] font-bold uppercase tracking-widest text-[var(--text-heading)] shadow-lg transition-opacity duration-500 opacity-100">
                 {variant === "local" && (
                     <>
-                        <div className="flex items-center gap-3"><div className="h-0.5 w-6 border-t border-dashed border-[var(--brand-primary)] opacity-90" /><span>{siteCopyContent.locationMap.legend.walkArea}</span></div>
-                        <div className="flex items-center gap-3"><div className="h-1.5 w-6 rounded-[var(--radius-full)] bg-[var(--brand-primary)]/40" /><span>{siteCopyContent.locationMap.legend.pedestrianStreet}</span></div>
+                        {HAS_WALK_RADIUS ? (
+                            <div className="flex items-center gap-3"><div className="h-0.5 w-6 border-t border-dashed border-[var(--brand-primary)] opacity-90" /><span>{siteCopyContent.locationMap.legend.walkArea}</span></div>
+                        ) : null}
+                        {HAS_PEDONALE ? (
+                            <div className="flex items-center gap-3"><div className="h-1.5 w-6 rounded-[var(--radius-full)] bg-[var(--brand-primary)]/40" /><span>{siteCopyContent.locationMap.legend.pedestrianStreet}</span></div>
+                        ) : null}
                     </>
                 )}
                 {variant === "regional" && siteConfig.features.showRegionalTrails && (

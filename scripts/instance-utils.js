@@ -243,8 +243,9 @@ function validateInstance(instanceId, options = {}) {
   const mapConfig = content["map-config.json"];
   if (mapConfig) {
     const context = `${id}/content/map-config.json`;
-    if (!Array.isArray(mapConfig.hostel?.coords) || mapConfig.hostel.coords.length !== 2) {
-      errors.push(`${context} must define hostel.coords as [longitude, latitude]`);
+    const propertyMarker = mapConfig.property || mapConfig.hostel;
+    if (!Array.isArray(propertyMarker?.coords) || propertyMarker.coords.length !== 2) {
+      errors.push(`${context} must define property.coords as [longitude, latitude]`);
     }
     if (!mapConfig.styles?.standard) {
       warnings.push(`${context} has no styles.standard; Mapbox will not have a configured default style`);

@@ -113,7 +113,8 @@ function resolveSourceDir(config) {
 }
 
 function generateInstanceModule(id) {
-  const variableName = `${toPascalCase(id)}Instance`;
+  const baseName = toPascalCase(id);
+  const variableName = `${/^[0-9]/.test(baseName) ? "Instance" : ""}${baseName}Instance`;
   const pathsRoot = `instances/${id}`;
 
   return `import faq from "./content/faq.json";
@@ -241,6 +242,11 @@ function patchContent(id, config) {
   const latitude = Number(config.latitude);
   const longitude = Number(config.longitude);
   const hasCoords = Number.isFinite(latitude) && Number.isFinite(longitude);
+  if (!hasCoords) {
+    settings.features.showRegionalWeather = false;
+    settings.features.showLocalExperienceMap = false;
+    settings.features.showLocalPois = false;
+  }
   if (hasCoords) {
     settings.weather = {
       latitude,
@@ -254,9 +260,16 @@ function patchContent(id, config) {
 
   if (fs.existsSync(mapConfigPath) && hasCoords) {
     const mapConfig = readJson(mapConfigPath);
+    mapConfig.property = mapConfig.property || {};
+    mapConfig.property.coords = [longitude, latitude];
+    mapConfig.property.label = mapConfig.property.label || "property";
     mapConfig.hostel = mapConfig.hostel || {};
     mapConfig.hostel.coords = [longitude, latitude];
     mapConfig.hostel.label = mapConfig.hostel.label || "property";
+    mapConfig.overlays = mapConfig.overlays || {};
+    if (mapConfig.overlays.walkRadiusKm === undefined) {
+      mapConfig.overlays.walkRadiusKm = config.map === false ? 0 : 0.45;
+    }
     mapConfig.keywords = mapConfig.keywords || {};
     mapConfig.keywords.property = [id, config.shortName, config.name].filter(Boolean);
     writeJson(mapConfigPath, mapConfig);
@@ -265,7 +278,8 @@ function patchContent(id, config) {
 
 function updateRegistry(id) {
   const registryPath = path.join(INSTANCES_DIR, "index.ts");
-  const variableName = `${toPascalCase(id)}Instance`;
+  const baseName = toPascalCase(id);
+  const variableName = `${/^[0-9]/.test(baseName) ? "Instance" : ""}${baseName}Instance`;
   const importLine = `import { ${variableName} } from "./${id}";`;
   const key = id.includes("-") ? `"${id}"` : id;
   const entryLine = `  ${key}: ${variableName},`;

@@ -11,6 +11,9 @@
       [19.5171140522808, 42.069314649661514]
     ]
   },
+  "overlays": {
+    "walkRadiusKm": 0.45
+  },
   "namedViews": [
     {
       "id": "valbonaTheth",
