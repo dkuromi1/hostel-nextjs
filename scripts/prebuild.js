@@ -1,20 +1,22 @@
 const fs = require('fs');
 const path = require('path');
+const { getRequestedInstanceId, parseArgs, validateInstance } = require('./instance-utils');
 
 /**
  * Prebuild script to isolate instance assets.
  * Copies everything from instances/[INSTANCE_ID]/public to the root public/ directory.
  */
 
-const INSTANCE_ID = process.env.INSTANCE_ID || process.env.NEXT_PUBLIC_INSTANCE_ID || 'scodrinon';
-const IS_BUILD = process.env.npm_lifecycle_event === 'build' || process.env.NODE_ENV === 'production';
+const INSTANCE_ID = getRequestedInstanceId(parseArgs());
+const validation = validateInstance(INSTANCE_ID);
 
-// Guard: Only scodrinon can be built/deployed
-if (IS_BUILD && INSTANCE_ID !== 'scodrinon') {
-  console.error(`\x1b[31m[prebuild] GUARD VIOLATION: Building for instance "${INSTANCE_ID}" is prohibited.\x1b[0m`);
-  console.error(`\x1b[31m[prebuild] Only the "scodrinon" instance is allowed to be built for production.\x1b[0m`);
+if (validation.errors.length > 0) {
+  console.error(`\x1b[31m[prebuild] Instance "${INSTANCE_ID}" is not buildable.\x1b[0m`);
+  validation.errors.forEach((error) => console.error(`\x1b[31m[prebuild] ${error}\x1b[0m`));
   process.exit(1);
 }
+
+validation.warnings.forEach((warning) => console.warn(`\x1b[33m[prebuild] ${warning}\x1b[0m`));
 
 console.log(`[prebuild] Active Instance: ${INSTANCE_ID}`);
 
