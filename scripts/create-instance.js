@@ -113,24 +113,71 @@ function resolveSourceDir(config) {
   return path.join(INSTANCES_DIR, "scodrinon");
 }
 
-function generateInstanceModule(id) {
+function generateInstanceModule(id, targetDir = path.join(INSTANCES_DIR, id)) {
   const baseName = toPascalCase(id);
   const variableName = `${/^[0-9]/.test(baseName) ? "Instance" : ""}${baseName}Instance`;
   const pathsRoot = `instances/${id}`;
+  const hasTrailGeoJson = fs.existsSync(path.join(targetDir, "content", "theth_valbona_tracks.json"));
+  const hasHikingGuide = fs.existsSync(path.join(targetDir, "content", "hiking-guide.json"));
+  const imports = [
+    'import faq from "./content/faq.json";',
+    'import gallery from "./content/gallery.json";',
+    'import homepage from "./content/homepage.json";',
+    'import navigation from "./content/navigation.json";',
+    'import pois from "./content/pois.json";',
+    'import rooms from "./content/rooms.json";',
+    'import settings from "./content/settings.json";',
+    'import siteCopy from "./content/site-copy.json";',
+    'import testimonials from "./content/testimonials.json";',
+    'import thingsToDo from "./content/things-to-do.json";',
+    hasTrailGeoJson ? 'import thethValbonaTracks from "./content/theth_valbona_tracks.json";' : null,
+    hasHikingGuide ? 'import hikingGuide from "./content/hiking-guide.json";' : null,
+    'import mapConfig from "./content/map-config.json";',
+  ].filter(Boolean);
 
-  return `import faq from "./content/faq.json";
-import gallery from "./content/gallery.json";
-import homepage from "./content/homepage.json";
-import navigation from "./content/navigation.json";
-import pois from "./content/pois.json";
-import rooms from "./content/rooms.json";
-import settings from "./content/settings.json";
-import siteCopy from "./content/site-copy.json";
-import testimonials from "./content/testimonials.json";
-import thingsToDo from "./content/things-to-do.json";
-import thethValbonaTracks from "./content/theth_valbona_tracks.json";
-import hikingGuide from "./content/hiking-guide.json";
-import mapConfig from "./content/map-config.json";
+  const optionalFallbacks = [
+    hasTrailGeoJson ? null : 'const thethValbonaTracks = { type: "FeatureCollection", features: [] };',
+    hasHikingGuide ? null : "const hikingGuide = {};",
+  ].filter(Boolean);
+
+  const contentPathEntries = [
+    'settings: "${pathsRoot}/content/settings.json",',
+    'navigation: "${pathsRoot}/content/navigation.json",',
+    'rooms: "${pathsRoot}/content/rooms.json",',
+    'homepage: "${pathsRoot}/content/homepage.json",',
+    'faq: "${pathsRoot}/content/faq.json",',
+    'testimonials: "${pathsRoot}/content/testimonials.json",',
+    'gallery: "${pathsRoot}/content/gallery.json",',
+    'thingsToDo: "${pathsRoot}/content/things-to-do.json",',
+    'pois: "${pathsRoot}/content/pois.json",',
+    hasTrailGeoJson ? 'trails: "${pathsRoot}/content/theth_valbona_tracks.json",' : null,
+    'siteCopy: "${pathsRoot}/content/site-copy.json",',
+    'mapConfig: "${pathsRoot}/content/map-config.json",',
+  ].filter(Boolean);
+
+  const contentEntries = [
+    "settings,",
+    "navigation,",
+    "rooms,",
+    "homepage,",
+    "faq,",
+    "testimonials,",
+    "gallery,",
+    "thingsToDo,",
+    "siteCopy,",
+    "pois,",
+    "thethValbonaTracks,",
+    "hikingGuide,",
+    "mapConfig,",
+  ];
+
+  const loaderEntries = [
+    "loadPois: async () => pois,",
+    "loadTrailGeoJson: async () => thethValbonaTracks,",
+  ];
+
+  return `${imports.join("\n")}
+${optionalFallbacks.join("\n")}
 
 export const ${variableName} = {
   id: "${id}",
@@ -143,18 +190,7 @@ export const ${variableName} = {
     brandingRoot: "${pathsRoot}/public/branding",
   },
   contentPaths: {
-    settings: "${pathsRoot}/content/settings.json",
-    navigation: "${pathsRoot}/content/navigation.json",
-    rooms: "${pathsRoot}/content/rooms.json",
-    homepage: "${pathsRoot}/content/homepage.json",
-    faq: "${pathsRoot}/content/faq.json",
-    testimonials: "${pathsRoot}/content/testimonials.json",
-    gallery: "${pathsRoot}/content/gallery.json",
-    thingsToDo: "${pathsRoot}/content/things-to-do.json",
-    pois: "${pathsRoot}/content/pois.json",
-    trails: "${pathsRoot}/content/theth_valbona_tracks.json",
-    siteCopy: "${pathsRoot}/content/site-copy.json",
-    mapConfig: "${pathsRoot}/content/map-config.json",
+    ${contentPathEntries.join("\n    ")}
   },
   brandingAssets: {
     publicLogoWebp: "/logo.webp",
@@ -183,23 +219,10 @@ export const ${variableName} = {
     },
   },
   content: {
-    settings,
-    navigation,
-    rooms,
-    homepage,
-    faq,
-    testimonials,
-    gallery,
-    thingsToDo,
-    siteCopy,
-    pois,
-    thethValbonaTracks,
-    hikingGuide,
-    mapConfig,
+    ${contentEntries.join("\n    ")}
   },
   loaders: {
-    loadPois: async () => pois,
-    loadTrailGeoJson: async () => thethValbonaTracks,
+    ${loaderEntries.join("\n    ")}
   },
   mapConfig: mapConfig as any,
 } as const;
@@ -350,7 +373,7 @@ async function main() {
   }
 
   copyRecursive(sourceDir, targetDir);
-  fs.writeFileSync(path.join(targetDir, "index.ts"), generateInstanceModule(id));
+  fs.writeFileSync(path.join(targetDir, "index.ts"), generateInstanceModule(id, targetDir));
   patchContent(id, config, targetDir);
 
   if (!config.dryRun && args.register !== "false" && args["no-register"] !== true) {
