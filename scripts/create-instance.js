@@ -141,18 +141,18 @@ function generateInstanceModule(id, targetDir = path.join(INSTANCES_DIR, id)) {
   ].filter(Boolean);
 
   const contentPathEntries = [
-    'settings: "${pathsRoot}/content/settings.json",',
-    'navigation: "${pathsRoot}/content/navigation.json",',
-    'rooms: "${pathsRoot}/content/rooms.json",',
-    'homepage: "${pathsRoot}/content/homepage.json",',
-    'faq: "${pathsRoot}/content/faq.json",',
-    'testimonials: "${pathsRoot}/content/testimonials.json",',
-    'gallery: "${pathsRoot}/content/gallery.json",',
-    'thingsToDo: "${pathsRoot}/content/things-to-do.json",',
-    'pois: "${pathsRoot}/content/pois.json",',
-    hasTrailGeoJson ? 'trails: "${pathsRoot}/content/theth_valbona_tracks.json",' : null,
-    'siteCopy: "${pathsRoot}/content/site-copy.json",',
-    'mapConfig: "${pathsRoot}/content/map-config.json",',
+    `settings: "${pathsRoot}/content/settings.json",`,
+    `navigation: "${pathsRoot}/content/navigation.json",`,
+    `rooms: "${pathsRoot}/content/rooms.json",`,
+    `homepage: "${pathsRoot}/content/homepage.json",`,
+    `faq: "${pathsRoot}/content/faq.json",`,
+    `testimonials: "${pathsRoot}/content/testimonials.json",`,
+    `gallery: "${pathsRoot}/content/gallery.json",`,
+    `thingsToDo: "${pathsRoot}/content/things-to-do.json",`,
+    `pois: "${pathsRoot}/content/pois.json",`,
+    hasTrailGeoJson ? `trails: "${pathsRoot}/content/theth_valbona_tracks.json",` : null,
+    `siteCopy: "${pathsRoot}/content/site-copy.json",`,
+    `mapConfig: "${pathsRoot}/content/map-config.json",`,
   ].filter(Boolean);
 
   const contentEntries = [
@@ -236,10 +236,11 @@ function patchContent(id, config, targetDir = path.join(INSTANCES_DIR, id)) {
 
   const settings = readJson(settingsPath);
   settings.business.name = config.name;
-  settings.business.shortName = config.shortName;
+  settings.business.shortName = config.shortName || config.name;
   settings.business.tagline = settings.business.tagline || "";
   settings.business.description = config.description || settings.business.description;
-  settings.address.summary = [config.city, config.country].filter(Boolean).join(", ");
+  settings.address.summary =
+    [config.city, config.country].filter(Boolean).join(", ") || settings.address.summary;
   settings.address.addressLocality = config.city || settings.address.addressLocality;
   settings.address.addressCountry = config.country || settings.address.addressCountry;
 
