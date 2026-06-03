@@ -4,7 +4,17 @@ import { Reveal } from "@/components/reveal";
 import { useIsLowEndDevice } from "@/lib/use-performance";
 import { cn } from "@/lib/utils";
 
-export function CinematicBreak() {
+export function CinematicBreak({
+  copy
+}: {
+  copy: {
+    image: string;
+    imageAlt: string;
+    quote: string;
+    label: string;
+    locationLabel: string;
+  }
+}) {
   const isLowEnd = useIsLowEndDevice();
 
   return (
@@ -17,8 +27,8 @@ export function CinematicBreak() {
         )}
       >
         <Image
-          src="/images/lake_shkoder.webp"
-          alt="Lake Shkoder"
+          src={copy.image}
+          alt={copy.imageAlt}
           fill
           className="object-cover"
         />
@@ -30,12 +40,12 @@ export function CinematicBreak() {
         <Reveal delay={200} className="flex flex-col items-center gap-6 sm:gap-8">
           <div className="h-12 md:h-24 w-px bg-gradient-to-b from-transparent to-white/60 mb-2 sm:mb-4" />
           <h2 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-cormorant leading-[1.2] sm:leading-[1.1] tracking-tight max-w-5xl mx-auto italic px-2">
-            &ldquo;Life is a mystery to be lived, not a problem to be solved.&rdquo;
+            &ldquo;{copy.quote}&rdquo;
           </h2>
           <div className="flex items-center gap-4 mt-6">
             <div className="h-px w-8 bg-white/40" />
             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em] text-white/80">
-              The Scodrinon Philosophy
+              {copy.label}
             </span>
             <div className="h-px w-8 bg-white/40" />
           </div>
@@ -50,7 +60,7 @@ export function CinematicBreak() {
       <div className="absolute bottom-4 right-6 sm:bottom-6 sm:right-10 z-10">
         <Reveal delay={600}>
           <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.4em] text-white/50 font-medium">
-            Shkodra Lake
+            {copy.locationLabel}
           </span>
         </Reveal>
       </div>

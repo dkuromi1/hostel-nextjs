@@ -5,7 +5,7 @@ import { GalleryView } from "@/components/gallery-view";
 import { GalleryLightbox } from "@/components/gallery-lightbox";
 import { getGalleryRouteParams, isGalleryItemId } from "@/lib/gallery";
 import { buildMetadata } from "@/lib/metadata";
-import { galleryItems, bookingAwardImage, siteCopyContent, bookingChannels, contactChannels } from "@/lib/site-data";
+import { galleryItems, bookingAwardImage, siteCopyContent, bookingChannels, contactChannels, siteConfig } from "@/lib/site-data";
 
 export const dynamicParams = false;
 
@@ -31,7 +31,7 @@ export async function generateMetadata({
 
   return buildMetadata({
     title,
-    description: `View ${item.alt} in the Scodrinon Hostel gallery.`,
+    description: `View ${item.alt} in the ${siteConfig.shortName} gallery.`,
     path: `/gallery/${item.id}`,
     image: shareImage,
     imageAlt: item.alt,

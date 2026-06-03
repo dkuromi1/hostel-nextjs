@@ -70,7 +70,7 @@ export default function Home() {
 
       <IncludedServicesSection services={freeServices} copy={siteCopyContent.home.includedStay} />
 
-      <CinematicBreak />
+      <CinematicBreak copy={siteCopyContent.home.cinematic} />
 
       <HomeGallerySection items={galleryItems} copy={siteCopyContent.home.gallerySection} />
 

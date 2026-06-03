@@ -98,6 +98,13 @@
       "bookingAwardTitle": "2025 Traveller Review Award (9.5)",
       "hostelworldTitle": "'Superb' Guest Rating",
       "hostelworldSourceLabel": "Hostelworld"
+    },
+    "cinematic": {
+      "image": "/images/lake_shkoder.webp",
+      "imageAlt": "Lake Shkoder",
+      "quote": "Life is a mystery to be lived, not a problem to be solved.",
+      "label": "The Scodrinon Philosophy",
+      "locationLabel": "Shkodra Lake"
     }
   },
   "gallery": {
@@ -148,7 +155,9 @@
       "description": "Send your dates, room preference, and arrival time. You can also ask about hikes, bikes, lake plans, or the easiest way to move on from Shkoder after your stay."
     },
     "heroImages": {
+      "streetSrc": "/images/hiking_1.jpg",
       "streetAlt": "Street outside Scodrinon Hostel on Kolë Idromeno",
+      "socialSrc": "/images/scodrinon_play_2.webp",
       "socialAlt": "Social atmosphere at Scodrinon Hostel"
     },
     "contactDetails": {

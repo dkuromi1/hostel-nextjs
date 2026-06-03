@@ -98,6 +98,13 @@
       "bookingAwardTitle": "2025 Traveller Review Award (9.5)",
       "hostelworldTitle": "'Superb' Guest Rating",
       "hostelworldSourceLabel": "Hostelworld"
+    },
+    "cinematic": {
+      "image": "/images/placeholder.svg",
+      "imageAlt": "Cinematic visual break placeholder",
+      "quote": "Life is a mystery to be lived, not a problem to be solved.",
+      "label": "The Property Philosophy",
+      "locationLabel": "Local Area"
     }
   },
   "gallery": {
@@ -148,7 +155,9 @@
       "description": "Send your dates, room preference, and arrival time. You can also ask about hikes, bikes, lake plans, or the easiest way to move on from Your City after your stay."
     },
     "heroImages": {
+      "streetSrc": "/images/placeholder.svg",
       "streetAlt": "Street outside Template Hostel on Main Street",
+      "socialSrc": "/images/placeholder.svg",
       "socialAlt": "Social atmosphere at Template Hostel"
     },
     "contactDetails": {

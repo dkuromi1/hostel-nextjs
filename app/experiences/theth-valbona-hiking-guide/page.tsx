@@ -230,7 +230,7 @@ export default function HikingGuidePage() {
                 <div className="relative min-h-[300px]">
                   <Image
                     src="/images/room_18bed2.jpg"
-                    alt="Luggage storage at Scodrinon Hostel"
+                    alt={`Luggage storage at ${siteConfig.shortName}`}
                     fill
                     className="object-cover opacity-80"
                     sizes="(max-width: 768px) 100vw, 40vw"

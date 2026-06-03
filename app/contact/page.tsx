@@ -121,7 +121,7 @@ export default function ContactPage() {
           <div className="grid gap-[var(--layout-grid-gutter)] sm:grid-cols-2">
             <div className="group media-frame border-none bg-transparent relative min-h-[16rem] shadow-2xl">
               <Image
-                src="/images/hiking_1.jpg"
+                src={siteCopyContent.contact.heroImages.streetSrc ?? "/images/hiking_1.jpg"}
                 alt={siteCopyContent.contact.heroImages.streetAlt}
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-105"
@@ -131,7 +131,7 @@ export default function ContactPage() {
             </div>
             <div className="group media-frame border-none bg-transparent relative min-h-[16rem] shadow-xl">
               <Image
-                src="/images/scodrinon_play_2.webp"
+                src={siteCopyContent.contact.heroImages.socialSrc ?? "/images/placeholder.svg"}
                 alt={siteCopyContent.contact.heroImages.socialAlt}
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-105"
