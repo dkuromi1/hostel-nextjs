@@ -40,29 +40,31 @@ export const metadata = buildMetadata({
 
 const launchpadMedia = siteCopyContent.experiences.launchpad.media ?? [
   {
-    src: "/images/hiking_2.jpg",
+    src: "/images/placeholder.svg",
     alt: siteCopyContent.experiences.launchpad.title,
-    position: "80% center",
+    position: "center",
   },
   {
-    src: "/images/hiking_3.jpg",
+    src: "/images/placeholder.svg",
     alt: siteCopyContent.experiences.metadata.title,
-    position: "30% center",
+    position: "center",
   },
   {
-    src: "/images/hiking_4.webp",
+    src: "/images/placeholder.svg",
     alt: siteCopyContent.experiences.metadata.title,
+    position: "center",
   },
   {
-    src: "/images/scodrinon_play_1.webp",
+    src: "/images/placeholder.svg",
     alt: siteCopyContent.experiences.metadata.title,
+    position: "center",
   },
 ];
 
 const planStayMedia = siteCopyContent.experiences.planStay.media ?? {
-  src: "/images/rooftop_social_3.webp",
+  src: "/images/placeholder.svg",
   alt: siteConfig.name,
-  position: "60% 100%",
+  position: "center",
 };
 
 function getDirectionsUrl(item: { title: string; directionsUrl?: string }) {
