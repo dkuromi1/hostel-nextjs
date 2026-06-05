@@ -67,7 +67,7 @@
     ]
   },
   "operations": {
-    "breakfastHours": "8:00 to 9:30am (excl. off-season)",
+    "breakfastHours": "",
     "checkInHours": "2pm - 10pm",
     "checkOutHours": "10:00am"
   },
@@ -162,7 +162,6 @@
     ],
     "amenities": [
       "Privacy pods",
-      "Free breakfast",
       "Free WiFi",
       "Air conditioning",
       "Non-smoking rooms",

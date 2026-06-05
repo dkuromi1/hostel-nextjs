@@ -44,7 +44,7 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
   return (
     <section ref={containerRef} className="relative z-10 -mt-[25px] md:-mt-[25px] lg:-mt-[44px] pt-8 pb-[var(--layout-section-spacing)] lg:pt-12">
       <div className="shell-container max-w-5xl">
-        <div className="flex flex-col gap-[var(--layout-grid-gutter)] lg:grid lg:grid-cols-[1.8fr_1.2fr] lg:grid-rows-[1fr_auto] lg:gap-[var(--layout-grid-gutter)]">
+        <div className="flex flex-col gap-[var(--layout-grid-gutter)] lg:grid lg:grid-cols-[1.9fr_1.1fr] lg:grid-rows-[1fr_auto] lg:gap-[var(--layout-grid-gutter)]">
 
           {/* DESKTOP ONLY: Direct Booking card */}
           <Reveal delay={200} className="hidden lg:flex lg:row-start-2 h-full lg:-translate-x-8">

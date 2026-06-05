@@ -14,11 +14,6 @@
       "title": "Modern Essentials",
       "text": "A/C, secure lockers, power, and WiFi",
       "icon": "Snowflake"
-    },
-    {
-      "title": "Free Breakfast",
-      "text": "Included every morning (excl. off-season)",
-      "icon": "Coffee"
     }
   ],
   "moduleType": "hospitality",
@@ -72,7 +67,7 @@
         },
         {
           "icon": "BatteryCharging",
-          "label": "2 Power Sockets"
+          "label": "Power Sockets"
         },
         {
           "icon": "Wifi",

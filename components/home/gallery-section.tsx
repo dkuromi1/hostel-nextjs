@@ -36,6 +36,7 @@ export function HomeGallerySection({ items, copy }: HomeGallerySectionProps) {
           <EditorialButton
             href="/gallery"
             label={copy.buttonLabel}
+            variant="ghost"
           />
 
         </div>

@@ -39,6 +39,7 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
           <EditorialButton
             href="/rooms"
             label={roomsSection.buttonLabel}
+            variant="ghost"
           />
         </div>
 
@@ -74,16 +75,16 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
                       <ImageCarousel
                         images={room.images}
                         className="absolute inset-0 h-full rounded-none"
-                        autoPlayInterval={isFirst ? 5000 : 0}
+                        autoPlayInterval={isFirst ? 7500 : 0}
                       />
                       <div className="pointer-events-none absolute inset-0 z-10 flex p-5 sm:p-6 items-start justify-start">
-                        <div className="bg-slate-950/40 border border-white/10 text-white shadow-2xl backdrop-blur-md px-4 py-2.5 pointer-events-auto transition-all duration-300 hover:bg-slate-950/55 w-fit">
+                        <div className="bg-slate-950/40 border border-white/10 text-white shadow-2xl backdrop-blur-md px-4 py-2.5 pointer-events-auto transition-all duration-300 hover:bg-slate-950/55 w-fit rounded-lg">
                           <div className="flex items-center gap-3">
                             <h3 className="text-sm sm:text-base font-semibold tracking-tight text-white whitespace-nowrap">
                               {room.name}
                             </h3>
                             <div className={cn(
-                              "flex items-baseline gap-0.5 shrink-0 bg-white/5 text-white border border-white/15 font-semibold",
+                              "flex items-baseline gap-0.5 shrink-0 bg-white/5 text-white border border-white/15 font-semibold rounded",
                               isFirst ? "px-2.5 py-1 text-xs" : "px-2 py-0.5 text-[10px]"
                             )}>
                               <span>{room.price}</span>

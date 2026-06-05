@@ -24,13 +24,6 @@
       "icon": "Luggage",
       "image": "/images/rooms_2.webp",
       "focus": "50% 50%"
-    },
-    {
-      "title": "Included Perks",
-      "text": "Included: Free Breakfast (excl. off-season), luggage storage, shared kitchen, fast WiFi & 24h access",
-      "icon": "ShieldCheck",
-      "image": "/images/breakfast.jpg",
-      "focus": "50% 40%"
     }
   ],
   "includedFeatures": [
@@ -40,15 +33,9 @@
     "Power sockets",
     "High-speed WiFi",
     "Clean modern bathrooms",
-    "Free breakfast (excl. off-season)",
     "24h access"
   ],
   "includedServices": [
-    {
-      "title": "Free Breakfast",
-      "description": "Fresh, locally-sourced breakfast (excl. off-season) including morning espresso. Early take-away breakfast for hikers",
-      "icon": "Coffee"
-    },
     {
       "title": "Modern Facilities",
       "description": "Clean modern bathrooms, hot high-pressure showers, and high-speed WiFi in all rooms.",
@@ -60,13 +47,18 @@
       "icon": "Utensils"
     },
     {
-      "title": "Community",
+      "title": "Breakfast",
+      "description": "Fresh, locally-sourced breakfast including morning espresso. Early take-away breakfast for hikers",
+      "icon": "Coffee"
+    },
+    {
+      "title": "Community/Social",
       "description": "Regular social events, daytrips, movie nights, family dinners, games and a helpful WhatsApp community.",
       "icon": "Zap"
     },
     {
       "title": "Adventure Ready",
-      "description": "Transport and tour arrangements, laundry service, and secure luggage storage — all sorted from the hostel.",
+      "description": "Transport and tour arrangements, laundry service, and free secure luggage storage — all sorted from the hostel.",
       "icon": "Mountain"
     }
   ],
@@ -123,8 +115,8 @@
     {
       "title": "Right in the Center",
       "description": "Step out our front door directly onto Kolë Idromeno, Shkodër’s main pedestrian street. From your first morning espresso to late-night drinks, the city's best food, culture, and rhythm are literally at your doorstep.",
-      "image": "/images/shkoder_pedestrian_street_1.jpg",
-      "alt": "Pedestrian street scene near Scodrinon Hostel on Kolë Idromeno, Shkoder",
+      "image": "/images/shkoder_pedestrian_street_3.webp",
+      "alt": "Walking down the Pedonale in Shkoder",
       "cta": {
         "text": "See Our City Highlights",
         "url": "/experiences#things-to-do"
@@ -133,7 +125,7 @@
   ],
   "featuredMoments": [
     {
-      "title": "Movie Nights and Spontaneous Socials",
+      "title": "Movie Nights and Socials",
       "description": "Whether it’s rooftop raki or exploring the local craft beer scene, we prioritize memorable moments that make it easy for everyone to join.",
       "image": "/images/local_food_night.jpeg",
       "alt": "Traditional food event at Scodrinon Hostel"
@@ -148,7 +140,7 @@
     {
       "title": "River Days at the Drin",
       "description": "We head out to the river regularly for swimming and sun. These trips are a hostel favorite, a chance to relax and spend the afternoon with a great crew.",
-      "image": "/images/drin_swimming_trip.jpeg",
+      "image": "/images/drin_swimming_trip2.jpeg",
       "alt": "Guests enjoying an evening event at Scodrinon Hostel"
     },
     {
@@ -189,7 +181,7 @@
       "title": "The Drin River Escape",
       "description": "Just outside the city, the Drin River offers a cool, scenic contrast to the Alps. We organize regular group swimming trips to our favorite spots along the water for a perfect, sun-drenched afternoon.",
       "icon": "Waves",
-      "image": "/images/drin_swimming_trip2.jpeg",
+      "image": "/images/drin_swimming_trip.jpeg",
       "focus": "50% 40%"
     },
     {

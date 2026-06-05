@@ -271,7 +271,7 @@ export default function ExperiencesPage() {
 
           <Reveal delay={100}>
             <SwipableRow
-              itemCount={3}
+              itemCount={socialConnectionFeatures.length}
               className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-[var(--layout-grid-gutter)]"
             >
               {socialConnectionFeatures.map((item) => {

@@ -6,6 +6,7 @@ import { SwipableRow } from "@/components/swipable-row";
 import { useIsMobile } from "@/lib/use-is-mobile";
 import type { IconTextItem } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
+import { Eyebrow } from "@/components/ui/eyebrow";
 
 export interface QuickFactsSectionProps {
   quickFacts: IconTextItem[];
@@ -19,7 +20,7 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
     const Icon = resolveIcon(fact.icon || "Info");
 
     const cardContent = (
-      <div className="group relative h-full flex flex-col gap-5 rounded-2xl border border-[var(--border)] bg-[var(--glass-bg)] backdrop-blur-sm p-7 shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:border-gold/20">
+      <div className="group relative h-full flex flex-col gap-5 rounded-2xl border border-[var(--border)] bg-[var(--glass-bg)] backdrop-blur-sm px-7 py-9 lg:px-8 lg:py-10 shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:border-gold/20">
         {/* Subtle offset shadow layer */}
         <div
           className="absolute -inset-px rounded-2xl border border-[var(--border)] bg-[var(--muted)]/40 -z-10 opacity-50 transition-transform duration-500 translate-x-2 translate-y-2 group-hover:translate-x-3.5 group-hover:translate-y-3.5"
@@ -29,7 +30,7 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
         {/* Beautiful Upper Right Image container: Absolute, rounded to match main card, hidden overflow only for the image */}
         {fact.image && (
           <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none select-none -z-10" aria-hidden="true">
-            <div className="absolute top-0 right-0 w-44 h-44 transition-transform duration-500 group-hover:scale-105">
+            <div className="absolute inset-y-0 right-0 w-44 transition-transform duration-500 group-hover:scale-105">
               {/* Soft blending overlays */}
               <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[var(--glass-bg)]/80 to-[var(--glass-bg)] z-10" />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--glass-bg)]/80 to-[var(--glass-bg)] z-10" />
@@ -43,8 +44,6 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
                   WebkitMaskImage: "radial-gradient(circle at top right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 45%, rgba(0,0,0,0.5) 75%, rgba(0,0,0,0) 100%)",
                 }}
               />
-              {/* Warm highlight to make the image glow on card hover */}
-              <div className="absolute inset-0 bg-amber-500/5 mix-blend-color-burn opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
             </div>
           </div>
         )}
@@ -61,7 +60,7 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
 
           {/* Title stacked to the right of icon */}
           <div className="flex flex-col gap-0.5 min-w-0">
-            <h3 className="font-heading text-lg font-bold tracking-tight text-[var(--text-heading)] leading-snug transition-colors duration-300 group-hover:text-gold">
+            <h3 className="font-heading text-xl font-bold tracking-tight text-[var(--text-heading)] leading-snug transition-colors duration-300 group-hover:text-gold">
               {fact.title}
             </h3>
             {/* Gold underline accent */}
@@ -85,7 +84,7 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
     }
 
     return (
-      <Reveal key={index} delay={index * 100} className="min-w-0 h-full">
+      <Reveal key={index} delay={index * 100} className="min-w-0 h-full lg:w-[calc((100%-3.5rem)/3*1.15)]">
         {cardContent}
       </Reveal>
     );
@@ -94,7 +93,7 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
   const factsContent = (
     <SwipableRow
       itemCount={quickFacts.length}
-      className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7"
+      className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:flex lg:flex-wrap lg:justify-center gap-5 lg:gap-7"
     >
       {cards}
       <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
@@ -117,6 +116,12 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
           <div className="h-px flex-grow bg-gradient-to-r from-transparent to-[var(--border)]" />
           <div className="size-2 rotate-45 border border-gold bg-gold/10 dark:bg-gold/20" />
           <div className="h-px flex-grow bg-gradient-to-l from-transparent to-[var(--border)]" />
+        </div>
+
+        <div className="flex justify-center mb-10">
+          <Reveal delay={50}>
+            <Eyebrow>YOUR CHOICE</Eyebrow>
+          </Reveal>
         </div>
 
         {isMobile ? (

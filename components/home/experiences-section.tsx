@@ -89,6 +89,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
           <EditorialButton
             href="/experiences"
             label={copy.buttonLabel}
+            variant="ghost"
           />
 
         </div>
@@ -118,13 +119,13 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
 
             const cardClasses = cn(
               // Mobile floating card
-              "relative z-10 -mt-16 mx-4 p-6 sm:p-8 glass-panel shadow-2xl flex-1 transition-all duration-500",
+              "relative z-10 -mt-8 mx-4 p-6 sm:p-8 glass-panel shadow-2xl flex-1 transition-all duration-500",
               isEven
                 ? "rounded-[var(--radius-3xl)_0_var(--radius-3xl)_var(--radius-3xl)]"
                 : "rounded-[0_var(--radius-3xl)_var(--radius-3xl)_var(--radius-3xl)]",
               
               // Tablet overlapping grid
-              "md:col-span-9 md:-mt-0 md:mx-0 md:p-8 md:shadow-2xl",
+              "md:col-span-9 md:-mt-8 md:mx-0 md:p-8 md:shadow-2xl",
               isEven
                 ? "md:col-start-1 md:-mr-24"
                 : "md:col-start-4 md:-ml-24",

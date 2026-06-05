@@ -9,7 +9,7 @@
       "booking": "Booking.com",
       "hostelworld": "Hostelworld"
     },
-    "breakfastPrefix": "Free breakfast:",
+    "breakfastPrefix": "",
     "detailsLabel": "Details",
     "credit": "Custom Built in Next.js 16",
     "communityButton": "Join the Chat",
@@ -39,7 +39,7 @@
       "roomImageAlt": "Privacy pod dorm room at Scodrinon Hostel",
       "directBookingDescription": "WhatsApp is the most direct way to confirm dates, room type, arrival time, and any trip planning.",
       "rooftopImageAlt": "Guests enjoying the rooftop at Scodrinon Hostel",
-      "rooftopTitle": "Sunset drinks that turn into legendary stories."
+      "rooftopTitle": "Where sunset drinks turn into legendary stories."
     },
     "whyStayLonger": {
       "eyebrow": "Why People Stay Longer",
@@ -61,7 +61,7 @@
     "cta": {
       "eyebrow": "Direct Booking First",
       "title": "If the dates work for you, send the message now.",
-      "description": "Direct WhatsApp booking stays the fastest route. Then keep Booking.com and Hostelworld as easy backup options if you want to compare.",
+      "description": "Direct WhatsApp booking is our preferred route but Booking.com and Hostelworld are available as well.",
       "image": "/images/rooftop_view_day.jpg",
       "alt": "Daytime rooftop view from Scodrinon Hostel"
     },
@@ -126,7 +126,7 @@
     "cta": {
       "eyebrow": "Ready To Stay",
       "title": "If the gallery feels like your kind of hostel, message now.",
-      "description": "The fastest move is still the direct one: WhatsApp first, then Booking.com and Hostelworld right behind it.",
+      "description": "The best move is the direct one: WhatsApp first, then Booking.com and Hostelworld right behind.",
       "image": "/images/rooftop_view.jpg",
       "alt": "Rooftop view from Scodrinon Hostel at sunset"
     }
@@ -193,7 +193,7 @@
     "cta": {
       "eyebrow": "Book Your Bed",
       "title": "Tell the team what kind of room you want and lock it in directly.",
-      "description": "If you already know your dates, message on WhatsApp and ask for the pod dorm or a four-bed option. Booking.com and Hostelworld stay there if you prefer those platforms.",
+      "description": "If you already know your dates, message on WhatsApp and ask for the pod dorm or a four-bed option. Booking.com and Hostelworld are available if you prefer those platforms.",
       "image": "/images/ambiance_4.jpg",
       "alt": "Evening ambiance at Scodrinon Hostel, Shkoder"
     },

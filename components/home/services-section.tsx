@@ -38,17 +38,6 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
   const getCardTheme = (index: number) => {
     const themes = [
       {
-        // Free Breakfast
-        iconColor: "text-amber-600 dark:text-amber-400",
-        iconBg: "bg-amber-50 dark:bg-amber-500/10",
-        iconRing: "ring-amber-500/10 dark:ring-amber-500/20",
-        glowColor: "hover:shadow-amber-500/[0.08] dark:hover:shadow-amber-500/[0.15] hover:border-amber-500/30",
-        hoverBg: "group-hover/service-card:bg-amber-600",
-        glowDot: "bg-amber-400",
-        backdropBg: "bg-amber-500/10 dark:bg-amber-500/20",
-        badgeText: "Morning Fuel"
-      },
-      {
         // Modern Facilities
         iconColor: "text-sky-600 dark:text-sky-400",
         iconBg: "bg-sky-50 dark:bg-sky-500/10",
@@ -69,6 +58,17 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
         glowDot: "bg-emerald-400",
         backdropBg: "bg-emerald-500/10 dark:bg-emerald-500/20",
         badgeText: "Social Cooking"
+      },
+      {
+        // Breakfast
+        iconColor: "text-amber-600 dark:text-amber-400",
+        iconBg: "bg-amber-50 dark:bg-amber-500/10",
+        iconRing: "ring-amber-500/10 dark:ring-amber-500/20",
+        glowColor: "hover:shadow-amber-500/[0.08] dark:hover:shadow-amber-500/[0.15] hover:border-amber-500/30",
+        hoverBg: "group-hover/service-card:bg-amber-600",
+        glowDot: "bg-amber-400",
+        backdropBg: "bg-amber-500/10 dark:bg-amber-500/20",
+        badgeText: "Morning Fuel"
       },
       {
         // Community
