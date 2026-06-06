@@ -21,18 +21,7 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
   const isMobile = useIsMobile();
 
   const getJaggedStyles = (index: number) => {
-    switch (index % 4) {
-      case 0:
-        return "lg:-translate-y-1 lg:rotate-[-0.1deg]";
-      case 1:
-        return "lg:translate-y-1.5 lg:rotate-[0.1deg]";
-      case 2:
-        return "lg:-translate-y-0.5 lg:rotate-[-0.05deg]";
-      case 3:
-        return "lg:translate-y-1 lg:rotate-[0.15deg]";
-      default:
-        return "";
-    }
+    return "";
   };
 
   const getCardTheme = (index: number) => {
@@ -45,8 +34,7 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
         glowColor: "hover:shadow-sky-500/[0.08] dark:hover:shadow-sky-500/[0.15] hover:border-sky-500/30",
         hoverBg: "group-hover/service-card:bg-sky-600",
         glowDot: "bg-sky-400",
-        backdropBg: "bg-sky-500/10 dark:bg-sky-500/20",
-        badgeText: "Comfort & Tech"
+        backdropBg: "bg-sky-500/10 dark:bg-sky-500/20"
       },
       {
         // Shared Kitchen
@@ -56,19 +44,7 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
         glowColor: "hover:shadow-emerald-500/[0.08] dark:hover:shadow-emerald-500/[0.15] hover:border-emerald-500/30",
         hoverBg: "group-hover/service-card:bg-emerald-600",
         glowDot: "bg-emerald-400",
-        backdropBg: "bg-emerald-500/10 dark:bg-emerald-500/20",
-        badgeText: "Social Cooking"
-      },
-      {
-        // Breakfast
-        iconColor: "text-amber-600 dark:text-amber-400",
-        iconBg: "bg-amber-50 dark:bg-amber-500/10",
-        iconRing: "ring-amber-500/10 dark:ring-amber-500/20",
-        glowColor: "hover:shadow-amber-500/[0.08] dark:hover:shadow-amber-500/[0.15] hover:border-amber-500/30",
-        hoverBg: "group-hover/service-card:bg-amber-600",
-        glowDot: "bg-amber-400",
-        backdropBg: "bg-amber-500/10 dark:bg-amber-500/20",
-        badgeText: "Morning Fuel"
+        backdropBg: "bg-emerald-500/10 dark:bg-emerald-500/20"
       },
       {
         // Community
@@ -78,8 +54,7 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
         glowColor: "hover:shadow-rose-500/[0.08] dark:hover:shadow-rose-500/[0.15] hover:border-rose-500/30",
         hoverBg: "group-hover/service-card:bg-rose-600",
         glowDot: "bg-rose-400",
-        backdropBg: "bg-rose-500/10 dark:bg-rose-500/20",
-        badgeText: "Hostel Vibe"
+        backdropBg: "bg-rose-500/10 dark:bg-rose-500/20"
       },
       {
         // Adventure Ready
@@ -89,8 +64,7 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
         glowColor: "hover:shadow-violet-500/[0.08] dark:hover:shadow-violet-500/[0.15] hover:border-violet-500/30",
         hoverBg: "group-hover/service-card:bg-violet-600",
         glowDot: "bg-violet-400",
-        backdropBg: "bg-violet-500/10 dark:bg-violet-500/20",
-        badgeText: "Trip Logistics"
+        backdropBg: "bg-violet-500/10 dark:bg-violet-500/20"
       }
     ];
     return themes[index % themes.length];
@@ -99,7 +73,7 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
   const servicesContent = (
     <SwipableRow
       itemCount={services.length}
-      className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-[var(--layout-grid-gutter)]"
+      className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-2 gap-[var(--layout-grid-gutter)] max-w-5xl mx-auto"
     >
       {services.map((service, idx) => {
         const Icon = resolveIcon(service.icon);
@@ -130,9 +104,11 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
 
               {/* Title + Badge stacked to the right of icon */}
               <div className="flex flex-col gap-0.5 min-w-0">
-                <span className={cn("text-[9px] font-bold uppercase tracking-[0.2em]", theme.iconColor)}>
-                  {theme.badgeText}
-                </span>
+                {service.subheading && (
+                  <span className={cn("text-[9px] font-bold uppercase tracking-[0.2em]", theme.iconColor)}>
+                    {service.subheading}
+                  </span>
+                )}
                 <h3 className="heading-item text-[1.05rem] leading-tight tracking-tight text-[var(--text-heading)]">
                   {service.title}
                 </h3>

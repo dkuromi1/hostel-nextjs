@@ -35,6 +35,7 @@ export interface ServiceItem {
   title: string;
   description: string;
   icon: IconName;
+  subheading?: string;
 }
 
 export interface RoomImage {

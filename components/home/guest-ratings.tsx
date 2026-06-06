@@ -127,7 +127,7 @@ export function GuestRatingsSection({
   hostelworldReviews,
 }: GuestRatingsProps) {
   return (
-    <section className="pb-8 sm:pb-16 pt-8 sm:pt-12 relative">
+    <section className="py-[var(--layout-section-spacing)] relative">
       {/* Top gradient fade from dark testimonials section */}
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[var(--brand-tertiary)]/5 to-transparent pointer-events-none" aria-hidden="true" />
       

@@ -13,6 +13,8 @@ import { SectionLabel } from "@/components/ui/section-label";
 import { Badge } from "@/components/ui/badge";
 import { TestimonialCarousel } from "@/components/testimonial-carousel";
 
+import { cn } from "@/lib/utils";
+
 const SectionHeading = dynamic(() => import("@/components/section-heading").then(mod => mod.SectionHeading), { ssr: true });
 const Panel = dynamic(() => import("@/components/ui/panel").then(mod => mod.Panel), { ssr: true });
 const ImageCarousel = dynamic(() => import("@/components/image-carousel").then(mod => mod.ImageCarousel), { ssr: true });
@@ -32,12 +34,89 @@ import {
 } from "@/lib/site-data";
 import { testimonials } from "@/lib/site-data";
 
-export const metadata = buildMetadata({
-  title: siteCopyContent.rooms.metadata.title,
-  description: siteCopyContent.rooms.metadata.description,
-  path: "/rooms",
-  image: siteCopyContent.rooms.metadata.image,
-});
+const getFreeCardTheme = (index: number) => {
+  const themes = [
+    {
+      // Modern Facilities
+      iconColor: "text-sky-600 dark:text-sky-400",
+      iconBg: "bg-sky-50 dark:bg-sky-500/10",
+      iconRing: "ring-sky-500/10 dark:ring-sky-500/20",
+      glowColor: "hover:shadow-sky-500/[0.08] dark:hover:shadow-sky-500/[0.15] hover:border-sky-500/30",
+      hoverBg: "group-hover:bg-sky-600",
+      backdropBg: "bg-sky-500/10 dark:bg-sky-500/20"
+    },
+    {
+      // Shared Kitchen
+      iconColor: "text-emerald-600 dark:text-emerald-400",
+      iconBg: "bg-emerald-50 dark:bg-emerald-500/10",
+      iconRing: "ring-emerald-500/10 dark:ring-emerald-500/20",
+      glowColor: "hover:shadow-emerald-500/[0.08] dark:hover:shadow-emerald-500/[0.15] hover:border-emerald-500/30",
+      hoverBg: "group-hover:bg-emerald-600",
+      backdropBg: "bg-emerald-500/10 dark:bg-emerald-500/20"
+    },
+    {
+      // Community
+      iconColor: "text-rose-600 dark:text-rose-400",
+      iconBg: "bg-rose-50 dark:bg-rose-500/10",
+      iconRing: "ring-rose-500/10 dark:ring-rose-500/20",
+      glowColor: "hover:shadow-rose-500/[0.08] dark:hover:shadow-rose-500/[0.15] hover:border-rose-500/30",
+      hoverBg: "group-hover:bg-rose-600",
+      backdropBg: "bg-rose-500/10 dark:bg-rose-500/20"
+    },
+    {
+      // Adventure Ready
+      iconColor: "text-violet-600 dark:text-violet-400",
+      iconBg: "bg-violet-50 dark:bg-violet-500/10",
+      iconRing: "ring-violet-500/10 dark:ring-violet-500/20",
+      glowColor: "hover:shadow-violet-500/[0.08] dark:hover:shadow-violet-500/[0.15] hover:border-violet-500/30",
+      hoverBg: "group-hover:bg-violet-600",
+      backdropBg: "bg-violet-500/10 dark:bg-violet-500/20"
+    }
+  ];
+  return themes[index % themes.length];
+};
+
+const getPaidCardTheme = (index: number) => {
+  const themes = [
+    {
+      // Breakfast - Amber
+      iconColor: "text-amber-600 dark:text-amber-400",
+      iconBg: "bg-amber-50 dark:bg-amber-500/10",
+      iconRing: "ring-amber-500/10 dark:ring-amber-500/20",
+      glowColor: "hover:shadow-amber-500/[0.08] dark:hover:shadow-amber-500/[0.15] hover:border-amber-500/30",
+      hoverBg: "group-hover:bg-amber-600",
+      backdropBg: "bg-amber-500/10 dark:bg-amber-500/20"
+    },
+    {
+      // Tours & Transport - Fuchsia
+      iconColor: "text-fuchsia-600 dark:text-fuchsia-400",
+      iconBg: "bg-fuchsia-50 dark:bg-fuchsia-500/10",
+      iconRing: "ring-fuchsia-500/10 dark:ring-fuchsia-500/20",
+      glowColor: "hover:shadow-fuchsia-500/[0.08] dark:hover:shadow-fuchsia-500/[0.15] hover:border-fuchsia-500/30",
+      hoverBg: "group-hover:bg-fuchsia-600",
+      backdropBg: "bg-fuchsia-500/10 dark:bg-fuchsia-500/20"
+    },
+    {
+      // Laundry - Cyan
+      iconColor: "text-cyan-600 dark:text-cyan-400",
+      iconBg: "bg-cyan-50 dark:bg-cyan-500/10",
+      iconRing: "ring-cyan-500/10 dark:ring-cyan-500/20",
+      glowColor: "hover:shadow-cyan-500/[0.08] dark:hover:shadow-cyan-500/[0.15] hover:border-cyan-500/30",
+      hoverBg: "group-hover:bg-cyan-600",
+      backdropBg: "bg-cyan-500/10 dark:bg-cyan-500/20"
+    },
+    {
+      // Bike Rentals - Lime
+      iconColor: "text-lime-600 dark:text-lime-400",
+      iconBg: "bg-lime-50 dark:bg-lime-500/10",
+      iconRing: "ring-lime-500/10 dark:ring-lime-500/20",
+      glowColor: "hover:shadow-lime-500/[0.08] dark:hover:shadow-lime-500/[0.15] hover:border-lime-500/30",
+      hoverBg: "group-hover:bg-lime-600",
+      backdropBg: "bg-lime-500/10 dark:bg-lime-500/20"
+    }
+  ];
+  return themes[index % themes.length];
+};
 
 export default function RoomsPage() {
   const primaryPricedRoom = roomTypes.find((room) => room.featured) ?? roomTypes[0];
@@ -145,149 +224,209 @@ export default function RoomsPage() {
                             {(() => {
                               const parts = room.label.split(":");
                               if (parts.length > 1) {
-                                return (
-                                  <>
-                                    <span className="font-extrabold">{parts[0]}:</span>
-                                    {parts.slice(1).join(":")}
-                                  </>
-                                );
-                              }
-                              return room.label;
-                            })()}
-                          </SectionLabel>
-                          <h2 className="mt-2 heading-card text-[var(--text-heading)]">
-                            {room.name}
-                          </h2>
-                          <p className="mt-3 text-section-desc text-[var(--text-body-subtle)] line-clamp-3">
-                            {room.description}
-                          </p>
-                        </div>
-
-                        <div className="flex flex-wrap gap-2 mt-2">
-                          {room.amenities.map((amenity, idx) => {
-                            const AmenityIcon = resolveIcon(amenity.icon);
-                            return (
-                              <div
-                                key={idx}
-                                className="flex w-fit items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--muted)]/50 px-2 py-1 text-[var(--text-body-subtle)] transition-all duration-300 hover:border-[var(--brand-primary)]/10 hover:shadow-sm hover:bg-[var(--glass-bg)]"
-                              >
-                                <AmenityIcon className="size-3 shrink-0 text-[var(--brand-primary)]" />
-                                <span className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-wider">
-                                  {amenity.label}
-                                </span>
-                              </div>
-                            );
-                          })}
-                        </div>
-
-                        <div className="space-y-3 pt-4">
-                          <SectionLabel weight="bold" className="opacity-70 text-[10px] uppercase tracking-widest">Room Details</SectionLabel>
-                          <ul className="grid gap-x-6 gap-y-2 sm:grid-cols-2">
-                            {room.bullets.map((bullet) => (
-                              <li
-                                key={bullet}
-                                className="flex items-start gap-2 text-card-body text-[var(--text-body-subtle)]"
-                              >
-                                <Check
-                                  className="mt-0.5 size-3.5 shrink-0 text-[var(--brand-primary)]"
-
-                                />
-                                <span>{bullet}</span>
-                              </li>
-                            ))}
-                          </ul>
+                                  return (
+                                    <>
+                                      <span className="font-extrabold">{parts[0]}:</span>
+                                      {parts.slice(1).join(":")}
+                                    </>
+                                  );
+                                }
+                                return room.label;
+                              })()}
+                            </SectionLabel>
+                            <h2 className="mt-2 heading-card text-[var(--text-heading)]">
+                              {room.name}
+                            </h2>
+                            <p className="mt-3 text-section-desc text-[var(--text-body-subtle)] line-clamp-3">
+                              {room.description}
+                            </p>
+                          </div>
+  
+                          <div className="flex flex-wrap gap-2 mt-2">
+                            {room.amenities.map((amenity, idx) => {
+                              const AmenityIcon = resolveIcon(amenity.icon);
+                              return (
+                                <div
+                                  key={idx}
+                                  className="flex w-fit items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--muted)]/50 px-2 py-1 text-[var(--text-body-subtle)] transition-all duration-300 hover:border-[var(--brand-primary)]/10 hover:shadow-sm hover:bg-[var(--glass-bg)]"
+                                >
+                                  <AmenityIcon className="size-3 shrink-0 text-[var(--brand-primary)]" />
+                                  <span className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-wider">
+                                    {amenity.label}
+                                  </span>
+                                </div>
+                              );
+                            })}
+                          </div>
+  
+                          <div className="space-y-3 pt-4">
+                            <SectionLabel weight="bold" className="opacity-70 text-[10px] uppercase tracking-widest">Room Details</SectionLabel>
+                            <ul className="grid gap-x-6 gap-y-2 sm:grid-cols-2">
+                              {room.bullets.map((bullet) => (
+                                <li
+                                  key={bullet}
+                                  className="flex items-start gap-2 text-card-body text-[var(--text-body-subtle)]"
+                                >
+                                  <Check
+                                    className="mt-0.5 size-3.5 shrink-0 text-[var(--brand-primary)]"
+  
+                                  />
+                                  <span>{bullet}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Panel>
-                </Reveal>
-              );
-            })}
+                    </Panel>
+                  </Reveal>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
-
-      <section className="py-[var(--layout-section-spacing)] relative">
-        {/* Top section divider */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" aria-hidden="true" />
-
-        <div className="shell-container grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-          <Reveal className="lg:sticky lg:top-32">
-            <Panel className="p-card-premium">
-              <SectionHeading
-                eyebrow={siteCopyContent.rooms.includedStay.eyebrow}
-                variant="simple"
-                title={siteCopyContent.rooms.includedStay.title}
-                description={siteCopyContent.rooms.includedStay.description}
-              />
-              <div className="mt-8 grid gap-[var(--layout-grid-gutter)] sm:grid-cols-2">
-                {freeServices.map((service, idx) => {
-                  const Icon = resolveIcon(service.icon);
-                  return (
-                    <div
-                      key={idx}
-                      className="group flex gap-4 rounded-[var(--radius-2xl)] border border-[var(--border)] bg-[var(--muted)]/30 p-4 transition-all duration-300 hover:border-[var(--brand-primary)]/20 hover:bg-[var(--glass-bg)] hover:shadow-md"
-                    >
-                      <div className="flex size-10 shrink-0 items-center justify-center rounded-[var(--radius-xl)] bg-[var(--glass-bg)] shadow-sm ring-1 ring-[var(--border)] transition-all duration-300 group-hover:bg-[var(--brand-primary-light)] group-hover:text-[var(--brand-primary)] group-hover:ring-[var(--brand-primary)]/20">
-                        <Icon className="size-5" />
-                      </div>
-                      <div className="space-y-1.5">
-                        <h3 className="heading-item text-[var(--text-heading)]">
-                          {service.title}
-                        </h3>
-                        <p className="text-card-body">
-                          {service.description}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </Panel>
-          </Reveal>
-
-          <Reveal delay={120} className="lg:sticky lg:top-32">
-            <Panel className="p-card-premium">
-              <SectionLabel className="mb-6">{siteCopyContent.rooms.extraHelp.label}</SectionLabel>
-              <h2 className="mt-4 heading-card text-[var(--text-heading)]">
-                {siteCopyContent.rooms.extraHelp.title}
-              </h2>
-              <div className="mt-8 grid gap-[var(--layout-grid-gutter)]">
-                {paidServices.map((service, idx) => {
-                  const Icon = resolveIcon(service.icon);
-                  return (
-                    <div
-                      key={idx}
-                      className="group flex gap-4 rounded-[var(--radius-2xl)] border border-amber-500/10 bg-amber-50/10 p-4 transition-all duration-300 hover:border-amber-500/20 hover:bg-[var(--glass-bg)] hover:shadow-md"
-                    >
-                      <div className="flex size-10 shrink-0 items-center justify-center rounded-[var(--radius-xl)] bg-[var(--glass-bg)] shadow-sm ring-1 ring-amber-500/10 transition-all duration-300 group-hover:bg-amber-50 dark:group-hover:bg-amber-500/20 group-hover:text-amber-600 dark:group-hover:text-amber-400 group-hover:ring-amber-500/20">
-                        <Icon className="size-5" />
-                      </div>
-                      <div className="space-y-1.5">
-                        <h3 className="heading-item text-[var(--text-heading)]">
-                          {service.title}
-                        </h3>
-                        <p className="text-card-body">
-                          {service.description}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="mt-8 media-frame relative w-full aspect-[4/3] sm:aspect-[16/9]">
-                <Image
-                  src="/images/rooftop_social_2.jpg"
-                  alt={siteCopyContent.rooms.extraHelp.imageAlt}
-                  fill
-                  className="object-cover object-[50%_30%]"
-                  sizes="(max-width: 1024px) 100vw, 38vw"
+        </section>
+  
+        <section className="py-[var(--layout-section-spacing)] relative">
+          {/* Top section divider */}
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" aria-hidden="true" />
+  
+          <div className="shell-container grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+            <Reveal className="lg:sticky lg:top-32">
+              <Panel className="p-card-premium">
+                <SectionHeading
+                  eyebrow={siteCopyContent.rooms.includedStay.eyebrow}
+                  variant="simple"
+                  title={siteCopyContent.rooms.includedStay.title}
+                  description={siteCopyContent.rooms.includedStay.description}
                 />
-              </div>
-            </Panel>
-          </Reveal>
-        </div>
-      </section>
+                <div className="mt-8 grid gap-[var(--layout-grid-gutter)] sm:grid-cols-2">
+                  {freeServices.map((service, idx) => {
+                    const Icon = resolveIcon(service.icon);
+                    const theme = getFreeCardTheme(idx);
+                    return (
+                      <div
+                        key={idx}
+                        className={cn(
+                          "group relative flex flex-col gap-5 rounded-[var(--radius-2xl)] border border-[var(--border)] bg-white/70 dark:bg-zinc-950/60 backdrop-blur-md p-6 transition-all duration-500 hover:shadow-2xl",
+                          theme.glowColor
+                        )}
+                      >
+                        {/* Offset layered background sheet for tactile visual depth */}
+                        <div className={cn(
+                          "absolute -inset-px rounded-[var(--radius-2xl)] border border-[var(--border)] -z-10 opacity-30 transition-all duration-500 translate-x-2 translate-y-2 group-hover:translate-x-3.5 group-hover:translate-y-3.5 dark:bg-card/25",
+                          theme.backdropBg
+                        )} />
+
+                        {/* Horizontal Header: Icon + Title/Subheading side-by-side */}
+                        <div className="flex items-center gap-4">
+                          <div className={cn(
+                            "relative flex size-12 shrink-0 items-center justify-center rounded-[var(--radius-xl)] shadow-sm ring-1 transition-all duration-500 group-hover:-translate-y-0.5 group-hover:shadow-lg group-hover:ring-transparent",
+                            theme.iconBg,
+                            theme.iconRing,
+                            theme.hoverBg
+                          )}>
+                            <div className="absolute inset-0 rounded-[var(--radius-xl)] bg-current opacity-[0.03] blur-[4px] transition-all duration-500 group-hover:opacity-0" />
+                            <Icon className={cn("size-5.5 transition-colors duration-500", theme.iconColor, "group-hover:text-white")} />
+                          </div>
+                          <div className="flex flex-col gap-0.5 min-w-0">
+                            {service.subheading && (
+                              <span className={cn("text-[9px] font-bold uppercase tracking-[0.2em]", theme.iconColor)}>
+                                {service.subheading}
+                              </span>
+                            )}
+                            <h3 className="heading-item text-[1.05rem] leading-tight tracking-tight text-[var(--text-heading)]">
+                              {service.title}
+                            </h3>
+                          </div>
+                        </div>
+
+                        {/* Description spanning full width below the header */}
+                        <p className="text-[14.5px] leading-relaxed text-[var(--text-body-subtle)] transition-colors group-hover:text-[var(--text-body)]">
+                          {service.description}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </Panel>
+            </Reveal>
+  
+            <Reveal delay={120} className="lg:sticky lg:top-32">
+              <Panel className="p-card-premium">
+                <SectionLabel className="mb-6">{siteCopyContent.rooms.extraHelp.label}</SectionLabel>
+                <h2 className="mt-4 heading-card text-[var(--text-heading)]">
+                  {siteCopyContent.rooms.extraHelp.title}
+                </h2>
+                <div className="mt-8 grid gap-[var(--layout-grid-gutter)]">
+                  {paidServices.map((service, idx) => {
+                    const Icon = resolveIcon(service.icon);
+                    const theme = getPaidCardTheme(idx);
+                    const subheadings: Record<string, string> = {
+                      "Breakfast": "Morning Fuel",
+                      "Tours & Transport": "Discovery",
+                      "Guest Laundry": "Laundry Services",
+                      "Bike Rentals": "City Exploration"
+                    };
+                    const subheading = service.subheading || subheadings[service.title] || "Add-on Service";
+
+                    return (
+                      <div
+                        key={idx}
+                        className={cn(
+                          "group relative flex flex-col gap-5 rounded-[var(--radius-2xl)] border border-[var(--border)] bg-white/70 dark:bg-zinc-950/60 backdrop-blur-md p-6 transition-all duration-500 hover:shadow-2xl",
+                          theme.glowColor
+                        )}
+                      >
+                        {/* Offset layered background sheet for tactile visual depth */}
+                        <div className={cn(
+                          "absolute -inset-px rounded-[var(--radius-2xl)] border border-[var(--border)] -z-10 opacity-30 transition-all duration-500 translate-x-2 translate-y-2 group-hover:translate-x-3.5 group-hover:translate-y-3.5 dark:bg-card/25",
+                          theme.backdropBg
+                        )} />
+
+                        {/* Horizontal Header: Icon + Title/Subheading side-by-side */}
+                        <div className="flex items-center gap-4">
+                          <div className={cn(
+                            "relative flex size-12 shrink-0 items-center justify-center rounded-[var(--radius-xl)] shadow-sm ring-1 transition-all duration-500 group-hover:-translate-y-0.5 group-hover:shadow-lg group-hover:ring-transparent",
+                            theme.iconBg,
+                            theme.iconRing,
+                            theme.hoverBg
+                          )}>
+                            <div className="absolute inset-0 rounded-[var(--radius-xl)] bg-current opacity-[0.03] blur-[4px] transition-all duration-500 group-hover:opacity-0" />
+                            <Icon className={cn("size-5.5 transition-colors duration-500", theme.iconColor, "group-hover:text-white")} />
+                          </div>
+                          <div className="flex flex-col gap-0.5 min-w-0">
+                            {subheading && (
+                              <span className={cn("text-[9px] font-bold uppercase tracking-[0.2em]", theme.iconColor)}>
+                                {subheading}
+                              </span>
+                            )}
+                            <h3 className="heading-item text-[1.05rem] leading-tight tracking-tight text-[var(--text-heading)]">
+                              {service.title}
+                            </h3>
+                          </div>
+                        </div>
+
+                        {/* Description spanning full width below the header */}
+                        <p className="text-[14.5px] leading-relaxed text-[var(--text-body-subtle)] transition-colors group-hover:text-[var(--text-body)]">
+                          {service.description}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="mt-8 media-frame relative w-full aspect-[4/3] sm:aspect-[16/9]">
+                  <Image
+                    src="/images/rooftop_social_2.jpg"
+                    alt={siteCopyContent.rooms.extraHelp.imageAlt}
+                    fill
+                    className="object-cover object-[50%_30%]"
+                    sizes="(max-width: 1024px) 100vw, 38vw"
+                  />
+                </div>
+              </Panel>
+            </Reveal>
+          </div>
+        </section>
 
 
       <section className="section-slate py-[var(--layout-section-spacing)] relative overflow-hidden">

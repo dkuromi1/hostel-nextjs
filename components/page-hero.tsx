@@ -111,46 +111,85 @@ export function PageHero({
           )}
           {highlights ? (
             <ul className="grid w-full gap-4 sm:grid-cols-2">
-              {highlights.map((item) => {
+              {highlights.map((item, index) => {
                 const text = typeof item === "string" ? item : item.text;
                 const title = typeof item === "object" ? item.title : undefined;
                 const Icon = typeof item === "object" && item.icon ? resolveIcon(item.icon) : resolveIcon("Check");
                 
+                // Color theme mapping for a premium visual upgrade
+                const themes = [
+                  {
+                    iconColor: hasBackground ? "text-sky-300 group-hover:text-white" : "text-sky-600 dark:text-sky-400 group-hover:text-white",
+                    iconBg: hasBackground ? "bg-sky-500/10 ring-sky-500/20 group-hover:bg-sky-500" : "bg-sky-50 dark:bg-sky-500/10 ring-sky-500/10 dark:ring-sky-500/20 group-hover:bg-sky-600",
+                    glowBorder: hasBackground ? "group-hover:border-sky-500/40" : "group-hover:border-sky-500/30",
+                    backdropBg: hasBackground ? "bg-sky-500/5 border-sky-500/15" : "bg-sky-500/5 dark:bg-sky-500/10 border-[var(--border)]",
+                  },
+                  {
+                    iconColor: hasBackground ? "text-emerald-300 group-hover:text-white" : "text-emerald-600 dark:text-emerald-400 group-hover:text-white",
+                    iconBg: hasBackground ? "bg-emerald-500/10 ring-emerald-500/20 group-hover:bg-emerald-500" : "bg-emerald-50 dark:bg-emerald-500/10 ring-emerald-500/10 dark:ring-emerald-500/20 group-hover:bg-emerald-600",
+                    glowBorder: hasBackground ? "group-hover:border-emerald-500/40" : "group-hover:border-emerald-500/30",
+                    backdropBg: hasBackground ? "bg-emerald-500/5 border-emerald-500/15" : "bg-emerald-500/5 dark:bg-emerald-500/10 border-[var(--border)]",
+                  },
+                  {
+                    iconColor: hasBackground ? "text-amber-300 group-hover:text-white" : "text-amber-600 dark:text-amber-400 group-hover:text-white",
+                    iconBg: hasBackground ? "bg-amber-500/10 ring-amber-500/20 group-hover:bg-amber-500" : "bg-amber-50 dark:bg-amber-500/10 ring-amber-500/10 dark:ring-amber-500/20 group-hover:bg-amber-600",
+                    glowBorder: hasBackground ? "group-hover:border-amber-500/40" : "group-hover:border-amber-500/30",
+                    backdropBg: hasBackground ? "bg-amber-500/5 border-amber-500/15" : "bg-amber-500/5 dark:bg-amber-500/10 border-[var(--border)]",
+                  }
+                ];
+                const theme = themes[index % themes.length];
+
                 return (
                   <li
                     key={text}
                     className={cn(
-                      "group flex items-start gap-4 rounded-2xl border p-4 transition-all duration-300",
+                      "group relative flex flex-col gap-2.5 rounded-2xl border p-4 transition-all duration-500",
                       hasBackground 
-                        ? "border-white/10 bg-white/5 backdrop-blur-md hover:border-white/30 hover:bg-white/10 shadow-[0_4px_15px_rgba(0,0,0,0.2)]"
-                        : "border-[var(--border)] bg-[var(--card)]/50 hover:border-[var(--brand-primary)]/30 hover:bg-[var(--glass-bg)] hover:shadow-md dark:hover:shadow-primary/5"
+                        ? "border-white/10 bg-slate-950/40 backdrop-blur-md hover:bg-slate-950/60 shadow-[0_8px_30px_rgba(0,0,0,0.3)]"
+                        : "border-[var(--border)] bg-[var(--card)]/50 backdrop-blur-md hover:bg-[var(--glass-bg)] hover:shadow-xl dark:hover:shadow-primary/5",
+                      theme.glowBorder
                     )}
                   >
+                    {/* Layered backdrop sheet for physical depth */}
                     <div className={cn(
-                      "flex size-10 shrink-0 items-center justify-center rounded-xl shadow-sm ring-1 transition-all duration-300",
-                      hasBackground
-                        ? "bg-white/10 text-white ring-white/20 group-hover:bg-[var(--brand-primary)] group-hover:text-white"
-                        : "bg-[var(--glass-bg)] ring-[var(--border)] group-hover:bg-[var(--brand-primary-light)] group-hover:text-[var(--brand-primary)] group-hover:ring-[var(--brand-primary)]/20"
-                    )}>
-                      <Icon className="size-5" />
-                    </div>
-                    <div className="flex flex-col gap-1.5 py-0.5">
-                      {title && (
+                      "absolute -inset-px rounded-2xl border -z-10 opacity-30 transition-all duration-500 translate-x-2.5 translate-y-2.5 group-hover:translate-x-4 group-hover:translate-y-4 dark:bg-card/20",
+                      theme.backdropBg
+                    )} />
+
+                    {/* Icon + title row */}
+                    <div className="relative z-10 flex items-center gap-3">
+                      <div className={cn(
+                        "flex size-10 shrink-0 items-center justify-center rounded-xl shadow-sm ring-1 transition-all duration-500 group-hover:-translate-y-0.5 group-hover:shadow-md group-hover:ring-transparent",
+                        theme.iconBg
+                      )}>
+                        <Icon className={cn("size-5 transition-colors duration-500", theme.iconColor)} />
+                      </div>
+                      {title ? (
                         <div className={cn(
-                          "heading-item font-bold m-0",
+                          "heading-item font-bold m-0 transition-colors duration-300 min-w-0",
                           hasBackground ? "text-white" : "text-[var(--text-heading)]"
                         )}>
                           {title}
                         </div>
+                      ) : (
+                        <div className={cn(
+                          "text-card-body font-medium transition-colors duration-300 m-0 min-w-0",
+                          hasBackground ? "text-white group-hover:text-white" : "text-[var(--text-body)] group-hover:text-[var(--text-body)]"
+                        )}>
+                          {text}
+                        </div>
                       )}
+                    </div>
+
+                    {/* Description — full bubble width, wraps under icon */}
+                    {title && (
                       <div className={cn(
-                        "text-card-body transition-colors m-0",
-                        hasBackground ? "text-white/80 group-hover:text-white" : "group-hover:text-[var(--text-body)]",
-                        !title && (hasBackground ? "font-medium text-white" : "font-medium text-[var(--text-body)]")
+                        "relative z-10 text-card-body transition-colors duration-300",
+                        hasBackground ? "text-white/80 group-hover:text-white" : "group-hover:text-[var(--text-body)]"
                       )}>
                         {text}
                       </div>
-                    </div>
+                    )}
                   </li>
                 );
               })}

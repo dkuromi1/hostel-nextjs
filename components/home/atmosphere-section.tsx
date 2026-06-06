@@ -1,7 +1,7 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Reveal } from "@/components/reveal";
 import { SectionLabel } from "@/components/ui/section-label";
 import { buttonVariants } from "@/components/ui/button";
@@ -27,28 +27,43 @@ export interface AtmosphereSectionProps {
 export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSectionProps) {
   const isLowEnd = useIsLowEndDevice();
   const containerRef = useRef<HTMLElement>(null);
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+    setIsDesktop(mediaQuery.matches);
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mediaQuery.addEventListener("change", handler);
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
   });
 
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   // Parallax shift for the entire right column to create depth
-  const rightColumnY = useTransform(scrollYProgress, [0, 1], [40, -40]);
-  const yVal = isLowEnd ? 0 : rightColumnY;
+  const rightColumnY = useTransform(smoothProgress, [0, 1], [80, -80]);
+  const yVal = (isLowEnd || !isDesktop) ? 0 : rightColumnY;
 
   // Left to right parallax shift for the Direct Booking card to create dynamic horizontal layering
-  const directBookingX = useTransform(scrollYProgress, [0, 1], [-40, 40]);
-  const xVal = isLowEnd ? 0 : directBookingX;
+  const directBookingX = useTransform(smoothProgress, [0, 1], [-80, 42]);
+  const xVal = (isLowEnd || !isDesktop) ? 0 : directBookingX;
 
   return (
-    <section ref={containerRef} className="relative z-10 -mt-[25px] md:-mt-[25px] lg:-mt-[44px] pt-8 pb-[var(--layout-section-spacing)] lg:pt-12">
+    <section ref={containerRef} className="relative z-10 -mt-[20px] md:-mt-[20px] lg:-mt-[39px] pt-8 pb-[var(--layout-section-spacing)] lg:pt-12">
       <div className="shell-container max-w-5xl">
         <div className="flex flex-col gap-[var(--layout-grid-gutter)] lg:grid lg:grid-cols-[1.9fr_1.1fr] lg:grid-rows-[1fr_auto] lg:gap-[var(--layout-grid-gutter)]">
 
           {/* DESKTOP ONLY: Direct Booking card */}
-          <Reveal delay={200} className="hidden lg:flex lg:row-start-2 h-full lg:-translate-x-8">
-            <motion.div style={{ x: xVal }} className="h-full w-full">
+          <Reveal delay={200} className="hidden lg:flex lg:row-start-2 h-full lg:-translate-x-[42px]">
+            <motion.div style={{ x: xVal, willChange: "transform" }} className="h-full w-full">
               <DirectBookingCard variant="inline" className="h-full w-full" whatsappUrl={whatsappUrl} content={atmosphere} />
             </motion.div>
           </Reveal>
@@ -111,7 +126,7 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
 
           {/* Right column */}
           <motion.div
-            style={{ y: yVal }}
+            style={{ y: yVal, willChange: "transform" }}
             className="flex flex-col gap-[var(--layout-grid-gutter)] lg:col-start-2 lg:row-start-1 lg:row-span-2"
           >
             <div className="grid grid-cols-[1.1fr_1fr] gap-[var(--layout-grid-gutter)] lg:grid-cols-1 lg:h-full">

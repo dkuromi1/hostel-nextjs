@@ -39,22 +39,26 @@
     {
       "title": "Modern Facilities",
       "description": "Clean modern bathrooms, hot high-pressure showers, and high-speed WiFi in all rooms.",
-      "icon": "ShowerHead"
+      "icon": "ShowerHead",
+      "subheading": "Comfort & Tech"
     },
     {
       "title": "Shared Kitchen",
       "description": "Well-equipped kitchen for guest use, including refrigerators, stoves, an espresso and ice machine.",
-      "icon": "Utensils"
+      "icon": "Utensils",
+      "subheading": "Social Cooking"
     },
     {
       "title": "Community / Social",
       "description": "Regular social events, daytrips, movie nights, family dinners, games and friendly staff.",
-      "icon": "Zap"
+      "icon": "Zap",
+      "subheading": "Hostel Vibe"
     },
     {
       "title": "Adventure Ready",
       "description": "Transport and tour arrangements, and free secure luggage storage, all sorted from the hostel.",
-      "icon": "Mountain"
+      "icon": "Mountain",
+      "subheading": "Trip Logistics"
     }
   ],
   "addOnServices": [

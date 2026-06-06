@@ -57,62 +57,65 @@ export default function ContactPage() {
         backgroundPosition="20% center"
       >
         <div className="grid gap-[var(--layout-grid-gutter)]">
-          <Panel className="p-card-premium bg-white dark:bg-card shadow-xl border-[var(--border)]">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-              {/* Item 1: Phone */}
-              <div className="flex flex-col">
-                <div className="flex items-center gap-2.5 mb-4">
-                  <MessageCircleMore className="size-4 text-[var(--brand-primary)]" />
+          <Panel className="relative p-6 sm:p-8 bg-white/95 dark:bg-zinc-900/90 backdrop-blur-lg shadow-2xl border-[var(--border)] overflow-visible !rounded-[var(--radius-3xl)]">
+            {/* Offset backdrop sheet for contact panel tactility */}
+            <div className="absolute -inset-px rounded-[var(--radius-3xl)] border border-[var(--border)] -z-10 bg-[var(--muted)]/40 opacity-30 translate-x-3 translate-y-3 dark:bg-card/25" />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+              {/* Item 1: Direct Contact */}
+              <div className="group/item relative flex flex-col gap-4 p-5 rounded-2xl border border-[var(--border)] bg-zinc-50/50 dark:bg-zinc-950/20 hover:bg-white dark:hover:bg-zinc-900 hover:border-emerald-500/30 hover:shadow-xl hover:shadow-emerald-500/[0.02] transition-all duration-500">
+                <div className="flex items-center gap-2.5">
+                  <MessageCircleMore className="size-4 text-[var(--brand-primary)] transition-transform duration-300 group-hover/item:scale-110" />
                   <SectionLabel variant="emerald">Direct Contact</SectionLabel>
                 </div>
-                <div className="flex flex-col">
-                  <p className="text-lg font-bold text-[var(--text-heading)]">
+                <div className="flex flex-col gap-1.5">
+                  <p className="text-base sm:text-lg font-bold tracking-tight text-[var(--text-heading)]">
                     {siteConfig.phoneDisplay}
                   </p>
                   <a
                     href={siteConfig.whatsappUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-1 text-xs font-bold uppercase tracking-widest text-[var(--brand-primary)] hover:underline"
+                    className="w-fit inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-emerald-500/20 text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-500/[0.03] hover:bg-emerald-600 hover:text-white hover:border-transparent transition-all duration-300"
                   >
-                    Message Us →
+                    Message Us &rarr;
                   </a>
                 </div>
               </div>
 
               {/* Item 2: Hours */}
-              <div className="flex flex-col">
-                <div className="flex items-center gap-2.5 mb-4">
-                  <Clock className="size-4 text-amber-600 dark:text-amber-400" />
+              <div className="group/item relative flex flex-col gap-4 p-5 rounded-2xl border border-[var(--border)] bg-zinc-50/50 dark:bg-zinc-950/20 hover:bg-white dark:hover:bg-zinc-900 hover:border-amber-500/30 hover:shadow-xl hover:shadow-amber-500/[0.02] transition-all duration-500">
+                <div className="flex items-center gap-2.5">
+                  <Clock className="size-4 text-amber-600 dark:text-amber-400 transition-transform duration-300 group-hover/item:scale-110" />
                   <SectionLabel variant="sun">Reception & Check-in</SectionLabel>
                 </div>
-                <div className="flex flex-col">
-                  <p className="text-base font-semibold text-[var(--text-heading)]">
+                <div className="flex flex-col gap-1 py-0.5">
+                  <p className="text-sm sm:text-base font-bold text-[var(--text-heading)]">
                     Reception: 24-hour access
                   </p>
-                  <p className="text-sm text-[var(--text-body-subtle)]">
+                  <p className="text-xs sm:text-sm text-[var(--text-body-subtle)] font-semibold">
                     Check-in: {siteConfig.checkInHours}
                   </p>
                 </div>
               </div>
 
-              {/* Item 3: Location (Spans bottom row) */}
-              <div className="md:col-span-2 flex flex-col">
-                <div className="flex items-center gap-2.5 mb-4">
-                  <MapPinned className="size-4 text-sky-600 dark:text-sky-400" />
+              {/* Item 3: Location */}
+              <div className="md:col-span-2 group/item relative flex flex-col gap-4 p-5 rounded-2xl border border-[var(--border)] bg-zinc-50/50 dark:bg-zinc-950/20 hover:bg-white dark:hover:bg-zinc-900 hover:border-sky-500/30 hover:shadow-xl hover:shadow-sky-500/[0.02] transition-all duration-500">
+                <div className="flex items-center gap-2.5">
+                  <MapPinned className="size-4 text-sky-600 dark:text-sky-400 transition-transform duration-300 group-hover/item:scale-110" />
                   <SectionLabel variant="sky">Our Location</SectionLabel>
                 </div>
-                <div className="flex flex-col">
-                  <p className="text-base font-semibold leading-snug text-[var(--text-heading)]">
+                <div className="flex flex-col gap-2">
+                  <p className="text-sm sm:text-base font-bold leading-relaxed text-[var(--text-heading)]">
                     {siteConfig.location}
                   </p>
                   <a
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.name + " " + siteConfig.location)}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-1 text-xs font-bold uppercase tracking-widest text-sky-600 dark:text-sky-400 hover:underline"
+                    className="w-fit inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-sky-500/20 text-[10px] font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400 bg-sky-500/[0.03] hover:bg-sky-600 hover:text-white hover:border-transparent transition-all duration-300"
                   >
-                    Open in Maps →
+                    Open in Maps &rarr;
                   </a>
                 </div>
               </div>
@@ -143,7 +146,7 @@ export default function ContactPage() {
         </div>
       </PageHero>
 
-      <section className="section-muted py-[var(--layout-section-spacing)] relative overflow-hidden">
+      <section className="section-muted py-[var(--layout-section-spacing)] relative" style={{ overflow: "visible" }}>
         {/* Top section divider */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" aria-hidden="true" />
         
@@ -153,12 +156,12 @@ export default function ContactPage() {
           <div className="absolute bottom-1/3 -left-32 w-80 h-80 rounded-full bg-[var(--accent)]/[0.015] blur-3xl" />
         </div>
         
-        <div className="shell-container sm:px-6 lg:px-8 grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.2fr_0.8fr] relative z-10">
-          <div className="flex flex-col gap-6 h-full">
+        <div className="shell-container sm:px-6 lg:px-8 grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.1fr_0.9fr] lg:items-start relative z-10">
+          <div className="flex flex-col gap-6 lg:sticky lg:top-32">
 
             {siteConfig.features.showLocalExperienceMap ? (
-              <Reveal className="flex-1 px-2 sm:px-0" delay={50}>
-                <div id="map" className="media-frame relative min-h-[450px] h-full w-full overflow-hidden rounded-3xl scroll-mt-24 sm:scroll-mt-32">
+              <Reveal className="px-2 sm:px-0" delay={50}>
+                <div id="map" className="media-frame relative h-[500px] w-full overflow-hidden rounded-3xl scroll-mt-24 sm:scroll-mt-32">
                   <LocationMap />
                 </div>
               </Reveal>
