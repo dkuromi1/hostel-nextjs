@@ -54,9 +54,19 @@ export async function RegionalWeather({ config, variant = "default" }: RegionalW
           <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[var(--brand-primary)] opacity-85 leading-none mb-1">
             {config.label}
           </span>
-          <span className="text-sm font-bold text-[var(--text-heading)] leading-none">
-            {Math.round(temperature_2m)}°C
-          </span>
+          <div className="flex items-baseline gap-1.5 leading-none">
+            {config.sublabel && (
+              <span className="text-[10px] font-medium text-[var(--text-muted)] leading-none">
+                {config.sublabel}
+              </span>
+            )}
+            <span className="text-sm font-bold text-[var(--text-heading)] leading-none">
+              {Math.round(temperature_2m)}°C
+            </span>
+            <span className="text-[10px] font-medium text-[var(--text-muted)] leading-none">
+              {details.label}
+            </span>
+          </div>
         </div>
       </div>
     );

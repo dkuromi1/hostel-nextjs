@@ -317,6 +317,7 @@ export interface SettingsContent {
     showLocalExperienceMap: boolean;
     showLocalPois: boolean;
     showRegionalTrails: boolean;
+    showFooterQrCode?: boolean;
   };
   schema: {
     type: string;
@@ -355,6 +356,7 @@ export interface PropertyConfig extends SettingsContent {
   showLocalExperienceMap: boolean;
   showLocalPois: boolean;
   showRegionalTrails: boolean;
+  showFooterQrCode: boolean;
   baseKeywords: string[];
   bookingRating: string;
   bookingReviews: string;

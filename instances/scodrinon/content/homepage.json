@@ -47,22 +47,22 @@
       "icon": "Utensils"
     },
     {
-      "title": "Breakfast",
-      "description": "Fresh, locally-sourced breakfast including morning espresso. Early take-away breakfast for hikers",
-      "icon": "Coffee"
-    },
-    {
-      "title": "Community/Social",
-      "description": "Regular social events, daytrips, movie nights, family dinners, games and a helpful WhatsApp community.",
+      "title": "Community / Social",
+      "description": "Regular social events, daytrips, movie nights, family dinners, games and friendly staff.",
       "icon": "Zap"
     },
     {
       "title": "Adventure Ready",
-      "description": "Transport and tour arrangements, laundry service, and free secure luggage storage — all sorted from the hostel.",
+      "description": "Transport and tour arrangements, and free secure luggage storage, all sorted from the hostel.",
       "icon": "Mountain"
     }
   ],
   "addOnServices": [
+    {
+      "title": "Breakfast",
+      "description": "Fresh, locally-sourced breakfast including morning espresso. Early take-away breakfast for hikers",
+      "icon": "Coffee"
+    },
     {
       "title": "Tours & Transport",
       "description": "Hassle-free shuttle booking to Theth (€12), Valbona (€26), Shala River (€35 - includes €5 discount), and Komani Lake (€36).",
@@ -75,7 +75,7 @@
     },
     {
       "title": "Bike Rentals",
-      "description": "Explore Shkoder on two wheels for just €5/day. Rentals located right across the street.",
+      "description": "Explore Shkoder on two wheels for just €5/day. Rentals located nearby.",
       "icon": "Bike"
     }
   ],

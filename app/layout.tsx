@@ -292,7 +292,8 @@ export default function RootLayout({
             bookingChannels={bookingChannels} 
             navLinks={navLinks} 
             siteConfig={propertyConfig} 
-            copy={siteCopyContent.footer} 
+            copy={siteCopyContent.footer}
+            showQrCode={propertyConfig.showFooterQrCode}
           />
           <StickyBookingBar bookingChannels={bookingChannels} contactChannels={contactChannels} />
           <DeferredClient>

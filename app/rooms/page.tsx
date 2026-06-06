@@ -63,7 +63,7 @@ export default function RoomsPage() {
         backgroundAlt={siteCopyContent.rooms.hero.title}
       >
         <div className="grid gap-[var(--layout-grid-gutter)] md:grid-cols-[1.1fr_0.9fr]">
-          <div className="group media-frame border-none bg-transparent relative min-h-[22rem] md:row-span-2">
+          <div className="group media-frame border-none bg-transparent relative min-h-[18rem] md:min-h-[22rem] order-1 md:order-1 md:row-span-2">
             <Image
               src="/images/rooms_2.webp"
               alt={siteCopyContent.rooms.heroImages.fourBedAlt}
@@ -73,7 +73,7 @@ export default function RoomsPage() {
               sizes="(max-width: 768px) 100vw, 40vw"
             />
           </div>
-          <div className="group media-frame border-none bg-transparent relative min-h-[14rem]">
+          <div className="group media-frame border-none bg-transparent relative min-h-[18rem] md:min-h-[14rem] order-3 md:order-2">
             <Image
               src="/images/room_18bed2.jpg"
               alt={siteCopyContent.rooms.heroImages.podAlt}
@@ -83,7 +83,7 @@ export default function RoomsPage() {
               sizes="(max-width: 768px) 100vw, 25vw"
             />
           </div>
-          <div className="glass-panel rounded-[var(--radius-3xl)] p-card-premium">
+          <div className="glass-panel rounded-[var(--radius-3xl)] p-card-premium order-2 md:order-3">
             <SectionLabel variant="emerald" className="mb-4">
               {siteCopyContent.rooms.heroPriceBlurb.labelPrefix}{" "}
               <strong>{primaryPricedRoom?.price ? `${primaryPricedRoom.price} / Night` : siteCopyContent.rooms.heroPriceBlurb.contactForRatesLabel}</strong>

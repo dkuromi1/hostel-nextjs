@@ -13,6 +13,7 @@ export interface SiteFooterProps {
   contactChannels: BusinessChannel[];
   bookingChannels: BusinessChannel[];
   navLinks: { href: string; label: string }[];
+  showQrCode?: boolean;
   siteConfig: {
     checkInHours: string;
     tagline: string;
@@ -36,7 +37,7 @@ export interface SiteFooterProps {
   };
 }
 
-export function SiteFooter({ contactChannels, bookingChannels, navLinks, siteConfig, copy }: SiteFooterProps) {
+export function SiteFooter({ contactChannels, bookingChannels, navLinks, siteConfig, copy, showQrCode = false }: SiteFooterProps) {
   const detailsSummary = copy.detailsSummary.replace("{checkInHours}", siteConfig.checkInHours);
   const footerChannels = [...contactChannels, ...bookingChannels];
 
@@ -100,37 +101,39 @@ export function SiteFooter({ contactChannels, bookingChannels, navLinks, siteCon
             </div>
           </div>
 
-          {/* WhatsApp Community Section */}
-          <div className="flex flex-col items-start gap-4 min-w-0">
-            <SectionLabel className="mb-4">
-              {copy.communityLabel}
-            </SectionLabel>
-            {/* Desktop QR Code */}
-            <div className="hidden sm:flex flex-col items-center gap-3 rounded-2xl bg-[var(--muted)]/60 p-4 border border-[var(--border)] w-full max-w-[160px]">
-              <div className="relative size-full aspect-square overflow-hidden rounded-xl bg-white p-2">
-                <Image
-                  src="/images/whatsapp_community_qr.png"
-                  alt="WhatsApp Community QR Code"
-                  fill
-                  className="object-contain"
-                  sizes="160px"
-                />
+          {/* WhatsApp Community Section – controlled by showFooterQrCode in settings.json */}
+          {showQrCode && (
+            <div className="flex flex-col items-start gap-4 min-w-0">
+              <SectionLabel className="mb-4">
+                {copy.communityLabel}
+              </SectionLabel>
+              {/* Desktop QR Code */}
+              <div className="hidden sm:flex flex-col items-center gap-3 rounded-2xl bg-[var(--muted)]/60 p-4 border border-[var(--border)] w-full max-w-[160px]">
+                <div className="relative size-full aspect-square overflow-hidden rounded-xl bg-white p-2">
+                  <Image
+                    src="/images/whatsapp_community_qr.png"
+                    alt="WhatsApp Community QR Code"
+                    fill
+                    className="object-contain"
+                    sizes="160px"
+                  />
+                </div>
+                <span className="text-sm font-semibold text-[var(--text-muted)] text-center">
+                  {copy.communityCaption}
+                </span>
               </div>
-              <span className="text-sm font-semibold text-[var(--text-muted)] text-center">
-                {copy.communityCaption}
-              </span>
+              {/* Mobile Link Button */}
+              <a
+                href={siteConfig.whatsappCommunityUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="sm:hidden flex items-center gap-2 rounded-full bg-[var(--brand-whatsapp)] px-5 py-3 font-semibold text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-[var(--brand-whatsapp-dark)] w-full justify-center shadow-whatsapp"
+              >
+                <MessageCircleMore className="size-5 shrink-0" />
+                {copy.communityButton}
+              </a>
             </div>
-            {/* Mobile Link Button */}
-            <a
-              href={siteConfig.whatsappCommunityUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="sm:hidden flex items-center gap-2 rounded-full bg-[var(--brand-whatsapp)] px-5 py-3 font-semibold text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-[var(--brand-whatsapp-dark)] w-full justify-center shadow-whatsapp"
-            >
-              <MessageCircleMore className="size-5 shrink-0" />
-              {copy.communityButton}
-            </a>
-          </div>
+          )}
 
           {/* Details */}
           <div className="min-w-0">

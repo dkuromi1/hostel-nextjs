@@ -17,7 +17,7 @@
   "contact": {
     "phoneDisplay": "+355 68 447 4400",
     "phoneRaw": "355684474400",
-    "instagramUrl": "https://www.instagram.com/scodrinon_hostel/",
+    "instagramUrl": "https://www.instagram.com/scodrinonhostel/",
     "whatsappCommunityUrl": "https://chat.whatsapp.com/L9ruuWA5G8S0l4CSmwCewa",
     "email": "[EMAIL_ADDRESS]",
     "channels": [
@@ -32,7 +32,7 @@
       {
         "id": "instagram",
         "label": "Instagram",
-        "url": "https://www.instagram.com/scodrinon_hostel/",
+        "url": "https://www.instagram.com/scodrinonhostel/",
         "icon": "instagram",
         "stylePriority": "secondary",
         "enabled": true
@@ -143,13 +143,14 @@
     "showRegionalWeather": true,
     "showLocalExperienceMap": true,
     "showLocalPois": true,
-    "showRegionalTrails": true
+    "showRegionalTrails": true,
+    "showFooterQrCode": false
   },
   "schema": {
     "type": "Hostel",
     "priceRange": "€12 - €15",
     "sameAs": [
-      "https://www.instagram.com/scodrinon_hostel/",
+      "https://www.instagram.com/scodrinonhostel/",
       "https://www.booking.com/hotel/al/scodrinon-hostel.html",
       "https://www.hostelworld.com/hostels/p/325721/scodrinon-hostel/"
     ],

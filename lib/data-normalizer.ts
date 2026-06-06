@@ -197,6 +197,7 @@ export function normalizeInstanceData(rawContent: any): {
     showLocalExperienceMap: settings.features.showLocalExperienceMap,
     showLocalPois: settings.features.showLocalPois,
     showRegionalTrails: settings.features.showRegionalTrails,
+    showFooterQrCode: settings.features.showFooterQrCode ?? false,
     baseKeywords: settings.seo.baseKeywords,
     bookingRating: settings.booking.bookingRating,
     bookingReviews: settings.booking.bookingReviews,

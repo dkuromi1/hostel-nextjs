@@ -148,8 +148,19 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 70vw, 50vw"
                     />
                     {index === 0 && showRegionalWeather && (
-                      <div className="absolute right-6 top-6 z-20">
-                        {siteConfig.weather ? <RegionalWeather config={siteConfig.weather} /> : null}
+                      <div className="absolute right-4 top-4 z-20 md:right-6 md:top-6">
+                        {siteConfig.weather ? (
+                          <>
+                            {/* Compact widget — visible on mobile only */}
+                            <div className="md:hidden">
+                              <RegionalWeather config={siteConfig.weather} variant="small" />
+                            </div>
+                            {/* Full widget — visible on md+ only */}
+                            <div className="hidden md:block">
+                              <RegionalWeather config={siteConfig.weather} />
+                            </div>
+                          </>
+                        ) : null}
                       </div>
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -180,7 +191,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
         </div>
 
         {/* --- CONNECT SUBSECTION --- */}
-        <div className="relative pt-12 sm:pt-16 mt-8 sm:mt-12 space-y-8">
+        <div className="relative pt-12 sm:pt-16 mt-8 sm:mt-12 space-y-8 max-w-5xl mx-auto">
           <div className="flex items-center gap-3">
             <Users className="size-5 text-[var(--brand-primary)]" />
             <SectionLabel weight="bold" className="text-[var(--brand-primary)] tracking-[0.2em] uppercase">
@@ -215,12 +226,18 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                     {/* Bottom content — always visible title, description slides up on hover */}
                     <div className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-6 flex flex-col gap-2">
                       {/* Description: hidden by default, revealed on hover */}
-                      <p className="text-sm leading-relaxed text-white/85 line-clamp-3 lg:translate-y-2 lg:opacity-0 lg:transition-all lg:duration-400 lg:ease-out lg:group-hover:translate-y-0 lg:group-hover:opacity-100">
+                      <p 
+                        className="text-sm leading-relaxed text-white/90 line-clamp-3 lg:translate-y-2 lg:opacity-0 lg:transition-all lg:duration-400 lg:ease-out lg:group-hover:translate-y-0 lg:group-hover:opacity-100"
+                        style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}
+                      >
                         {event.description}
                       </p>
 
                       {/* Title: always visible */}
-                      <h3 className="font-heading text-xl sm:text-2xl leading-tight tracking-[-0.03em] text-white">
+                      <h3 
+                        className="font-heading text-xl sm:text-2xl leading-tight tracking-[-0.03em] text-white"
+                        style={{ textShadow: '0 2px 10px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.5)' }}
+                      >
                         {event.title}
                       </h3>
                     </div>
