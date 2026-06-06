@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, type VideoHTMLAttributes } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface LazyVideoProps extends VideoHTMLAttributes<HTMLVideoElement> {
@@ -46,13 +47,13 @@ export function LazyVideo({ src, poster, className, ...props }: LazyVideoProps) 
         </video>
       ) : (
         poster && (
-          <img
+          <Image
             src={poster}
             alt="Video poster"
-            className="size-full object-cover"
+            fill
+            className="object-cover"
+            sizes="100vw"
             loading="lazy"
-            fetchPriority="low"
-            decoding="async"
           />
         )
       )}

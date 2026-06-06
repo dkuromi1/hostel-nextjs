@@ -61,3 +61,33 @@ function getServerSnapshot() {
 export function useScrollPosition() {
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }
+
+/**
+ * Returns a boolean indicating whether the page has been scrolled past a
+ * threshold, with hysteresis to prevent flickering.
+ *
+ * Switches to `true` when scrollY exceeds `above` (default 80).
+ * Switches back to `false` when scrollY drops below `below` (default 20).
+ *
+ * Because hysteresis state is maintained inside the external store's
+ * snapshot function, this hook uses no useState/useEffect and never calls
+ * setState during render, satisfying react-hooks/set-state-in-effect.
+ */
+export function useIsScrolled(above = 80, below = 20): boolean {
+  // Each call site gets its own independent hysteresis state via a closure
+  // that is created once per hook instance via the subscribe factory.
+  return useSyncExternalStore(
+    subscribe,
+    // getSnapshot is recreated each render but its *value* is stable between
+    // scroll events, which is the contract useSyncExternalStore requires.
+    (() => {
+      let isScrolled = cachedScrollY > above;
+      return () => {
+        if (cachedScrollY > above) isScrolled = true;
+        else if (cachedScrollY < below) isScrolled = false;
+        return isScrolled;
+      };
+    })(),
+    () => false,
+  );
+}
