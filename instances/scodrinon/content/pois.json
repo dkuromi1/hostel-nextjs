@@ -17,7 +17,7 @@
     { "name": "Site of Witness and Memory", "coords": [19.516818743502085,42.06484828898112, 0], "category": "see", "minZoom": 13 },
     { "name": "Lonely Tree Hike", "coords": [19.468276251483733, 42.04246677134261, 0], "category": "see", "minZoom": 10 },
     { "name": "Bus Station to Velipoja", "coords": [19.51154103962045, 42.06843505545666, 0], "category": "transit", "minZoom": 13 },
-    { "name": "Buna Bridge (bus Kosovo drop off/pick up)", "coords": [19.488394433688068, 42.045334948590565, 0], "category": "transit", "minZoom": 9 },
+    { "name": "Buna Bridge (Kosovo bus drop off/pick up)", "coords": [19.488394433688068, 42.045334948590565, 0], "category": "transit", "minZoom": 9 },
     { "name": "Bus to Tirana", "coords": [19.511176197844094, 42.068239311055464, 0], "category": "transit", "minZoom": 13 },
     { "name": "Central Bus Stop", "coords": [19.512929288055442, 42.06755637830981, 0], "category": "transit", "minZoom": 11 },
     { "name": "Rozafa Castle", "coords": [19.493844659339743, 42.04664614803619, 0], "category": "see", "minZoom": 9 },

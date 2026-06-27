@@ -19,7 +19,7 @@
     "phoneRaw": "355684474400",
     "instagramUrl": "https://www.instagram.com/scodrinonhostel/",
     "whatsappCommunityUrl": "https://chat.whatsapp.com/L9ruuWA5G8S0l4CSmwCewa",
-    "email": "[EMAIL_ADDRESS]",
+    "email": "scodrinonhostel@gmail.com",
     "channels": [
       {
         "id": "whatsapp",
@@ -69,7 +69,7 @@
   "operations": {
     "breakfastHours": "",
     "checkInHours": "2pm - 10pm",
-    "checkOutHours": "10:00am"
+    "checkOutHours": "10am"
   },
   "seo": {
     "baseKeywords": [

@@ -20,7 +20,7 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
     const Icon = resolveIcon(fact.icon || "Info");
 
     const cardContent = (
-      <div className="group relative h-full flex flex-col gap-5 rounded-2xl border border-[var(--border)] bg-[var(--glass-bg)] backdrop-blur-sm px-7 py-9 lg:px-8 lg:py-10 shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:border-gold/20">
+      <div className="group relative flex-1 flex flex-col gap-5 rounded-2xl border border-[var(--border)] bg-[var(--glass-bg)] backdrop-blur-sm px-7 py-9 lg:px-9 lg:py-11 shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:border-gold/20">
         {/* Subtle offset shadow layer */}
         <div
           className="absolute -inset-px rounded-2xl border border-[var(--border)] bg-[var(--muted)]/40 -z-10 opacity-50 transition-transform duration-500 translate-x-2 translate-y-2 group-hover:translate-x-3.5 group-hover:translate-y-3.5"
@@ -30,18 +30,18 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
         {/* Beautiful Upper Right Image container: Absolute, rounded to match main card, hidden overflow only for the image */}
         {fact.image && (
           <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none select-none -z-10" aria-hidden="true">
-            <div className="absolute inset-y-0 right-0 w-44 transition-transform duration-500 group-hover:scale-105">
+            <div className="absolute inset-y-0 right-0 w-52 sm:w-60 lg:w-72 transition-transform duration-500 group-hover:scale-105">
               {/* Soft blending overlays */}
-              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[var(--glass-bg)]/80 to-[var(--glass-bg)] z-10" />
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--glass-bg)]/80 to-[var(--glass-bg)] z-10" />
+              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[var(--glass-bg)]/40 to-[var(--glass-bg)] z-10" />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--glass-bg)]/40 to-[var(--glass-bg)] z-10" />
               {/* Diagonal brush/organic mask effect using modern CSS gradients */}
               <div 
                 className="absolute inset-0 w-full h-full bg-cover bg-center"
                 style={{
                   backgroundImage: `url(${fact.image})`,
                   backgroundPosition: fact.focus || "center",
-                  maskImage: "radial-gradient(circle at top right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 45%, rgba(0,0,0,0.5) 75%, rgba(0,0,0,0) 100%)",
-                  WebkitMaskImage: "radial-gradient(circle at top right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 45%, rgba(0,0,0,0.5) 75%, rgba(0,0,0,0) 100%)",
+                  maskImage: "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.3) 85%, rgba(0,0,0,0) 100%)",
+                  WebkitMaskImage: "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.3) 85%, rgba(0,0,0,0) 100%)",
                 }}
               />
             </div>
@@ -69,7 +69,7 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
         </div>
 
         {/* Description */}
-        <p className="text-[13.5px] leading-relaxed text-[var(--text-body-subtle)] mt-auto relative z-10">
+        <p className="text-[13.5px] leading-relaxed text-[var(--text-body-subtle)] mt-auto relative z-10 max-w-[60%]">
           {fact.text}
         </p>
       </div>
@@ -77,14 +77,14 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
 
     if (isMobile) {
       return (
-        <div key={index} className="min-w-[85%] snap-center h-full p-1">
+        <div key={index} className="min-w-[85%] snap-center flex-1 p-1 flex flex-col">
           {cardContent}
         </div>
       );
     }
 
     return (
-      <Reveal key={index} delay={index * 100} className="min-w-0 h-full lg:w-[calc((100%-3.5rem)/3*1.15)]">
+      <Reveal key={index} delay={index * 100} className="min-w-0 flex-1 lg:w-[calc(50%-1rem)] lg:max-w-[580px] flex flex-col">
         {cardContent}
       </Reveal>
     );
@@ -93,7 +93,7 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
   const factsContent = (
     <SwipableRow
       itemCount={quickFacts.length}
-      className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:flex lg:flex-wrap lg:justify-center gap-5 lg:gap-7"
+      className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 items-stretch lg:flex lg:flex-wrap lg:justify-center lg:items-stretch gap-5 lg:gap-7"
     >
       {cards}
       <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />

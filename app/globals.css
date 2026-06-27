@@ -146,13 +146,14 @@
   /* slate-50 — text on dark bgs */
 
   --selection-background: rgba(5, 150, 105, 0.18);
-  --atmosphere-glow-primary: rgba(5, 150, 105, 0.12);
+  --atmosphere-glow-primary: rgba(5, 150, 105, 0.07);
   /* emerald glow */
-  --atmosphere-glow-accent: rgba(14, 165, 233, 0.10);
+  --atmosphere-glow-accent: rgba(14, 165, 233, 0.05);
   /* sky glow */
-  --atmosphere-glow-secondary: rgba(52, 211, 153, 0.06);
+  --atmosphere-glow-secondary: rgba(52, 211, 153, 0.03);
   /* emerald-300 secondary */
-  --atmosphere-grid-line: rgba(15, 23, 42, 0.025);
+  --atmosphere-grid-line: rgba(15, 23, 42, 0.018);
+  --atmosphere-grid-line-minor: rgba(15, 23, 42, 0.015);
   --atmosphere-dots-line: rgba(15, 23, 42, 0.0525);
   /* slate-900 grid */
 
@@ -244,10 +245,11 @@
   --brand-gold: #fbbf24;
   /* amber-400 — brighter for dark mode visibility */
 
-  --atmosphere-glow-primary: rgba(52, 211, 153, 0.12);
-  --atmosphere-glow-accent: rgba(56, 189, 248, 0.08);
-  --atmosphere-glow-secondary: rgba(5, 150, 105, 0.06);
-  --atmosphere-grid-line: rgba(255, 255, 255, 0.02);
+  --atmosphere-glow-primary: rgba(52, 211, 153, 0.07);
+  --atmosphere-glow-accent: rgba(56, 189, 248, 0.05);
+  --atmosphere-glow-secondary: rgba(5, 150, 105, 0.03);
+  --atmosphere-grid-line: rgba(255, 255, 255, 0.018);
+  --atmosphere-grid-line-minor: rgba(255, 255, 255, 0.015);
   --atmosphere-dots-line: rgba(255, 255, 255, 0.04);
 
   --glass-bg: rgba(24, 24, 27, 0.88);
@@ -298,7 +300,7 @@
 
   body {
     background-color: var(--background);
-    @apply text-foreground;
+    @apply text-foreground tracking-[0.015em];
   }
 
   /* Atmosphere background is now handled by components/atmosphere-background.tsx 
@@ -385,6 +387,23 @@
   isolation: isolate;
   transform: translateZ(0);
   backface-visibility: hidden;
+}
+
+@utility glass-card-metallic {
+  border: 1px solid transparent;
+  background: 
+    linear-gradient(to bottom right, rgba(10, 20, 40, 0.55), rgba(6, 14, 30, 0.65)) padding-box,
+    linear-gradient(to bottom right, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.05)) border-box;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    background: 
+      linear-gradient(to bottom right, rgba(10, 20, 40, 0.65), rgba(6, 14, 30, 0.75)) padding-box,
+      linear-gradient(to bottom right, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.08)) border-box;
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
 }
 
 @utility faded-line {

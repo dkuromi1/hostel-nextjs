@@ -1,6 +1,7 @@
 import Image from "next/image";
 import {
   Clock,
+  Mail,
   MapPinned,
   MessageCircleMore,
 } from "@/lib/icon-registry";
@@ -80,6 +81,14 @@ export default function ContactPage() {
                   >
                     Message Us &rarr;
                   </a>
+                  <div className="w-full h-px bg-[var(--border)] my-2 opacity-60" aria-hidden="true" />
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="w-fit inline-flex items-center gap-1.5 text-xs text-[var(--text-body-subtle)] hover:text-[var(--text-body)] transition-colors duration-200"
+                  >
+                    <Mail className="size-3 shrink-0 opacity-60" />
+                    {siteConfig.email}
+                  </a>
                 </div>
               </div>
 
@@ -87,14 +96,18 @@ export default function ContactPage() {
               <div className="group/item relative flex flex-col gap-4 p-5 rounded-2xl border border-[var(--border)] bg-zinc-50/50 dark:bg-zinc-950/20 hover:bg-white dark:hover:bg-zinc-900 hover:border-amber-500/30 hover:shadow-xl hover:shadow-amber-500/[0.02] transition-all duration-500">
                 <div className="flex items-center gap-2.5">
                   <Clock className="size-4 text-amber-600 dark:text-amber-400 transition-transform duration-300 group-hover/item:scale-110" />
-                  <SectionLabel variant="sun">Reception & Check-in</SectionLabel>
+                  <SectionLabel variant="sun">Reception & Check-in/out</SectionLabel>
                 </div>
                 <div className="flex flex-col gap-1 py-0.5">
                   <p className="text-sm sm:text-base font-bold text-[var(--text-heading)]">
                     Reception: 24-hour access
                   </p>
+                  <div className="w-full h-px bg-[var(--border)] my-2 opacity-60" aria-hidden="true" />
                   <p className="text-xs sm:text-sm text-[var(--text-body-subtle)] font-semibold">
                     Check-in: {siteConfig.checkInHours}
+                  </p>
+                  <p className="text-xs sm:text-sm text-[var(--text-body-subtle)] font-semibold">
+                    Check-out: {siteConfig.checkOutHours}
                   </p>
                 </div>
               </div>
@@ -146,7 +159,7 @@ export default function ContactPage() {
         </div>
       </PageHero>
 
-      <section className="section-muted py-[var(--layout-section-spacing)] relative" style={{ overflow: "visible" }}>
+      <section className="section-muted py-[var(--layout-section-spacing)] relative">
         {/* Top section divider */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" aria-hidden="true" />
         

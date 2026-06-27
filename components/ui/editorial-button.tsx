@@ -31,7 +31,7 @@ export function EditorialButton({
 
   const content = (
     <>
-      {/* Shimmer sweep — gold-tinted for ghost, white for solid */}
+      {/* Shimmer sweep — gold-tinted/light for ghost, white for solid */}
       <div
         className={cn(
           "absolute inset-0 z-0 translate-x-[-100%] bg-gradient-to-r from-transparent to-transparent transition-transform duration-1000 group-hover:translate-x-[100%]",
@@ -55,7 +55,7 @@ export function EditorialButton({
   );
 
   const baseClasses = cn(
-    "group relative inline-flex items-center justify-center gap-4 overflow-hidden rounded-full px-8 py-4",
+    "group relative inline-flex items-center justify-center gap-4 overflow-hidden rounded-full px-8 py-4 self-start",
     "text-sm font-semibold tracking-tight",
     "transition-all duration-300 hover:-translate-y-0.5 active:scale-95 active:translate-y-0",
     isGhost

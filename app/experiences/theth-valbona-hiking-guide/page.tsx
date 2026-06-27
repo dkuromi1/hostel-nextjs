@@ -13,6 +13,8 @@ import { PackingList } from "@/components/hiking/packing-list";
 import { buildBreadcrumbSchema, buildMetadata } from "@/lib/metadata";
 import { hikingGuide, siteConfig } from "@/lib/site-data";
 import { SeasonalSafetyWarning } from "./seasonal-warning";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 
 export const metadata = buildMetadata({
   title: hikingGuide.metadata.title,
@@ -54,30 +56,43 @@ export default function HikingGuidePage() {
       {/* Quick Stats Bar */}
       <section className="relative z-20 pb-8 sm:pb-16">
         <div className="shell-container">
-          <div className="grid grid-cols-2 gap-[var(--layout-grid-gutter)] md:grid-cols-4">
-            {hikingGuide.quickStats.map((stat, i) => {
-              const Icon = resolveIcon(stat.icon);
-              return (
-                <Reveal key={stat.label} delay={i * 100}>
-                  <Panel className="flex flex-col items-center gap-3 p-5 text-center shadow-lg backdrop-blur-xl dark:border-white/10">
-                    <div className="flex size-10 items-center justify-center rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] dark:bg-[var(--brand-primary)]/20">
-                      <Icon className="size-5" />
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-body-subtle)] dark:text-slate-400">
-                        {stat.label}
-                      </p>
-                      <p className="mt-1 font-heading text-xl font-bold text-[var(--text-heading)]">
-                        {stat.value}
-                      </p>
-                    </div>
-                  </Panel>
-                </Reveal>
-              );
-            })}
-          </div>
+          {(() => {
+            const STAT_PALETTE = [
+              { icon: "bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400", hover: "group-hover:bg-emerald-500 group-hover:text-white group-hover:shadow-emerald-400/30", line: "via-emerald-500/50" },
+              { icon: "bg-sky-50 text-sky-600 dark:bg-sky-900/30 dark:text-sky-400",                hover: "group-hover:bg-sky-500 group-hover:text-white group-hover:shadow-sky-400/30",       line: "via-sky-500/50" },
+              { icon: "bg-amber-50 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400",        hover: "group-hover:bg-amber-500 group-hover:text-white group-hover:shadow-amber-400/30",   line: "via-amber-500/50" },
+              { icon: "bg-rose-50 text-rose-600 dark:bg-rose-900/30 dark:text-rose-400",            hover: "group-hover:bg-rose-500 group-hover:text-white group-hover:shadow-rose-400/30",     line: "via-rose-500/50" },
+            ];
+            return (
+              <div className="grid grid-cols-2 gap-[var(--layout-grid-gutter)] md:grid-cols-4">
+                {hikingGuide.quickStats.map((stat, i) => {
+                  const Icon = resolveIcon(stat.icon);
+                  const c = STAT_PALETTE[i % STAT_PALETTE.length];
+                  return (
+                    <Reveal key={stat.label} delay={i * 100}>
+                      <Panel className="group relative flex flex-col items-center gap-4 overflow-hidden p-4 text-center transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl">
+                        <div className={`absolute inset-x-0 top-0 h-0.5 rounded-t-2xl bg-gradient-to-r from-transparent ${c.line} to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100`} />
+                        <div className={`flex size-14 items-center justify-center rounded-2xl shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg ${c.icon} ${c.hover}`}>
+                          <Icon className="size-6" />
+                        </div>
+                        <div>
+                          <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--text-muted)]">
+                            {stat.label}
+                          </p>
+                          <p className="mt-1.5 font-heading text-2xl font-extrabold tracking-tight text-[var(--text-heading)]">
+                            {stat.value}
+                          </p>
+                        </div>
+                      </Panel>
+                    </Reveal>
+                  );
+                })}
+              </div>
+            );
+          })()}
         </div>
       </section>
+
 
       {/* Seasonal Safety Warning */}
       <SeasonalSafetyWarning />
@@ -104,7 +119,7 @@ export default function HikingGuidePage() {
 
       {/* Itinerary Section */}
       {hikingGuide.itinerary && (
-        <section className="py-[var(--layout-section-spacing)] bg-[var(--muted)]/20">
+        <section className="section-muted py-[var(--layout-section-spacing)]">
           <div className="shell-container">
             <Reveal className="mb-12">
               <SectionLabel variant="emerald" className="mb-6">ROUTE PLAN</SectionLabel>
@@ -121,8 +136,8 @@ export default function HikingGuidePage() {
       )}
 
       {/* Map Section */}
-      <section className="py-[var(--layout-section-spacing)] bg-[var(--muted)]/30">
-        <div className="shell-container sm:px-6 lg:px-8">
+      <section className="py-[var(--layout-section-spacing)]">
+        <div className="shell-container">
           <Reveal className="mb-12">
             <SectionLabel variant="sky" className="mb-6">INTERACTIVE MAP</SectionLabel>
             <h2 className="heading-section text-[var(--text-heading)]">{hikingGuide.labels.trailTitle}</h2>
@@ -168,18 +183,24 @@ export default function HikingGuidePage() {
                   <p className="text-section-desc leading-relaxed text-white/80">
                     {hikingGuide.luggage.description}
                   </p>
-                  <div className="flex flex-col gap-4 sm:flex-row mt-2">
+                  <div className="flex flex-col gap-3 sm:flex-row mt-2">
                     <a
                       href={`https://wa.me/${siteConfig.phoneRaw}?text=${encodeURIComponent(hikingGuide.labels.whatsAppMessage)}`}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex items-center justify-center gap-2 rounded-xl bg-[var(--brand-whatsapp)] px-8 py-4 font-bold text-white shadow-whatsapp transition-all duration-300 hover:scale-[1.02] hover:bg-[var(--brand-whatsapp-dark)]"
+                      className={cn(
+                        buttonVariants({ variant: "whatsapp", size: "lg" }),
+                        "h-auto min-h-12 rounded-full px-5 py-3 text-sm font-bold transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-whatsapp flex items-center justify-center gap-2"
+                      )}
                     >
                       Book via WhatsApp
                     </a>
                     <Link
                       href="/experiences"
-                      className="flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-8 py-4 font-bold text-white backdrop-blur-sm transition-transform hover:scale-102 hover:bg-white/20"
+                      className={cn(
+                        buttonVariants({ variant: "ghost", size: "lg" }),
+                        "h-auto min-h-12 rounded-full px-5 py-3 text-sm font-bold transition-all duration-300 hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 border border-white/20 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20 hover:border-white/50"
+                      )}
                     >
                       All Experiences
                     </Link>

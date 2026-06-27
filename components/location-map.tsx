@@ -607,6 +607,14 @@ export function LocationMap({ defaultPoi, variant = "local" }: { defaultPoi?: st
     const isExperiencePage = pathname?.startsWith('/experiences');
     const forceManualLoad = isLowEnd || isContactPage || isExperiencePage;
 
+    // Auto-load when navigated here via #map hash (e.g. "See Our City Highlights" CTA)
+    useEffect(() => {
+        if (!isEnabled) return;
+        if (typeof window !== 'undefined' && window.location.hash === '#map') {
+            setShouldLoad(true);
+        }
+    }, [isEnabled]);
+
     useEffect(() => {
         if (!isEnabled || forceManualLoad) return;
         const node = containerRef.current;

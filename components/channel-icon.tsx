@@ -8,7 +8,7 @@ import {
   Phone,
 } from "@/lib/icon-registry";
 
-import { BookingComLogo, HostelworldLogo } from "@/components/brand-logos";
+import { BookingComLogo, HostelworldLogo, GoogleLogo } from "@/components/brand-logos";
 import { InstagramGlyph } from "@/components/instagram-glyph";
 import { cn } from "@/lib/utils";
 import type { BusinessChannelIconKey } from "@/lib/site-data";
@@ -31,7 +31,7 @@ export function ChannelIcon({
   const normalizedKey = iconKey.trim().toLowerCase();
 
   // Use slightly larger defaults for brand logos to maintain legibility
-  const isBrandLogo = normalizedKey === "bookingcom" || normalizedKey === "booking-com" || normalizedKey === "hostelworld";
+  const isBrandLogo = normalizedKey === "bookingcom" || normalizedKey === "booking-com" || normalizedKey === "hostelworld" || normalizedKey === "google";
   const defaultSize = isBrandLogo ? "size-8" : "size-5";
   const finalClassName = cn(defaultSize, className);
 
@@ -41,6 +41,9 @@ export function ChannelIcon({
       return <BookingComLogo className={finalClassName} iconOnly={iconOnly} monochromeHover={monochromeHover} />;
     case "hostelworld":
       return <HostelworldLogo className={finalClassName} iconOnly={iconOnly} monochromeHover={monochromeHover} />;
+    case "google":
+    case "google-review":
+      return <GoogleLogo className={finalClassName} iconOnly={iconOnly} monochromeHover={monochromeHover} />;
     case "instagram":
       return <InstagramGlyph className={finalClassName} strokeWidth={strokeWidth} />;
     case "whatsapp":

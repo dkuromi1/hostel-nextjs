@@ -20,8 +20,7 @@ function FaqItem({ question, answer }: FaqItemProps) {
   return (
     <div
       className={cn(
-        "group rounded-2xl border border-transparent bg-[var(--muted)]/50 p-5 transition-all duration-300",
-        "hover:border-[var(--brand-primary)]/20 hover:bg-[var(--glass-bg)] hover:shadow-sm",
+        "group rounded-2xl border border-[var(--brand-primary)]/20 bg-[var(--glass-bg)] p-5 shadow-sm transition-all duration-300",
         isOpen && "border-[var(--brand-primary)]/20 bg-[var(--glass-bg)] shadow-sm"
       )}
     >

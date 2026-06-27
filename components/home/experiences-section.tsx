@@ -86,11 +86,13 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
             title={copy.title}
             description={copy.description}
           />
-          <EditorialButton
-            href="/experiences"
-            label={copy.buttonLabel}
-            variant="ghost"
-          />
+          <div className="mt-auto">
+            <EditorialButton
+              href="/experiences"
+              label={copy.buttonLabel}
+              variant="ghost"
+            />
+          </div>
 
         </div>
 
@@ -191,62 +193,75 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
         </div>
 
         {/* --- CONNECT SUBSECTION --- */}
-        <div className="relative pt-12 sm:pt-16 mt-8 sm:mt-12 space-y-8 max-w-5xl mx-auto">
-          <div className="flex items-center gap-3">
-            <Users className="size-5 text-[var(--brand-primary)]" />
-            <SectionLabel weight="bold" className="text-[var(--brand-primary)] tracking-[0.2em] uppercase">
-              SOCIALS
+        <div className="relative mt-12 sm:mt-16 space-y-10 max-w-5xl mx-auto">
+          <div className="flex items-center gap-4">
+            <div className="p-2 rounded-xl bg-[var(--brand-primary)]/10 text-[var(--brand-primary)]">
+              <Users className="size-5" />
+            </div>
+            <SectionLabel weight="bold" className="text-[var(--brand-primary)] tracking-[0.25em] uppercase text-xs">
+              SOCIALS & VIBE
             </SectionLabel>
-            <div className="h-px flex-1 bg-gradient-to-r from-[var(--border)] to-transparent opacity-50" />
+            <div className="h-px flex-1 bg-gradient-to-r from-[var(--border)] to-transparent opacity-60" />
           </div>
 
           <Reveal delay={120}>
-            <SwipableRow itemCount={eventCards.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-[var(--layout-grid-gutter)] lg:grid-cols-2">
-              {eventCards.map((event) => (
-                <div key={event.title} className="min-w-[82vw] snap-center sm:min-w-0">
-                  <div className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-lg cursor-default select-none">
-                    {/* Full-bleed image */}
-                    <Image
-                      src={event.image}
-                      alt={event.alt}
-                      fill
-                      loading="lazy"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 transform-gpu"
-                      sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, (max-width: 1400px) 25vw, 360px"
-                    />
+            <SwipableRow itemCount={eventCards.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-[var(--layout-grid-gutter)] lg:grid-cols-12">
+              {eventCards.map((event, index) => {
+                // Alternating column span for an editorial layout
+                const isLargeCard = index === 0 || index === 3;
+                const cardColSpan = isLargeCard ? "lg:col-span-7" : "lg:col-span-5";
+                
+                return (
+                  <div 
+                    key={event.title} 
+                    className={cn(
+                      "min-w-[82vw] snap-center sm:min-w-0 transition-all duration-500",
+                      cardColSpan
+                    )}
+                  >
+                    <div className={cn(
+                      "group relative w-full overflow-hidden rounded-3xl shadow-md border border-black/5 dark:border-white/5 cursor-default select-none transition-all duration-500 hover:shadow-2xl hover:-translate-y-1",
+                      isLargeCard ? "aspect-[4/3] lg:aspect-[16/10]" : "aspect-[4/3]"
+                    )}>
+                      {/* Full-bleed image */}
+                      <Image
+                        src={event.image}
+                        alt={event.alt}
+                        fill
+                        loading="lazy"
+                        className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105 group-hover:rotate-[0.5deg] transform-gpu"
+                        sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, (max-width: 1400px) 40vw, 500px"
+                      />
 
-                    {/* Permanent gradient — bottom fade for title legibility */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+                      {/* Premium gradient overlay for readability and depth */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/5 transition-opacity duration-500 group-hover:from-black/95 group-hover:via-black/40" />
 
-                    {/* Hover tint — monochrome dark */}
-                    <div className="absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                      {/* Content block with smooth reveal transition */}
+                      <div className="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-8 flex flex-col justify-end">
+                        {/* Eyebrow tag */}
+                        <div className="mb-2">
+                          <span className="text-[10px] tracking-[0.25em] text-[var(--brand-primary)] font-bold uppercase">
+                            {index === 0 ? "Social" : index === 1 ? "Adventure" : index === 2 ? "Nature" : "Rooftop"}
+                          </span>
+                        </div>
 
+                        {/* Title with translate transition on desktop only */}
+                        <h3 className="font-heading text-2xl sm:text-3xl text-white tracking-tight transition-transform duration-500 ease-out lg:group-hover:-translate-y-2">
+                          {event.title}
+                        </h3>
 
+                        {/* Description reveals and slides up on hover on desktop; always visible on mobile/tablet */}
+                        <p className="text-sm leading-relaxed text-white/70 line-clamp-3 mt-1 transition-all duration-500 ease-out lg:opacity-0 lg:max-h-0 lg:translate-y-4 lg:group-hover:opacity-100 lg:group-hover:max-h-24 lg:group-hover:translate-y-0">
+                          {event.description}
+                        </p>
+                      </div>
 
-                    {/* Bottom content — always visible title, description slides up on hover */}
-                    <div className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-6 flex flex-col gap-2">
-                      {/* Description: hidden by default, revealed on hover */}
-                      <p 
-                        className="text-sm leading-relaxed text-white/90 line-clamp-3 lg:translate-y-2 lg:opacity-0 lg:transition-all lg:duration-400 lg:ease-out lg:group-hover:translate-y-0 lg:group-hover:opacity-100"
-                        style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}
-                      >
-                        {event.description}
-                      </p>
-
-                      {/* Title: always visible */}
-                      <h3 
-                        className="font-heading text-xl sm:text-2xl leading-tight tracking-[-0.03em] text-white"
-                        style={{ textShadow: '0 2px 10px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.5)' }}
-                      >
-                        {event.title}
-                      </h3>
+                      {/* Subtle bottom border accent line */}
+                      <div className="absolute bottom-0 inset-x-0 h-[2px] bg-[var(--brand-primary)] scale-x-0 origin-left transition-transform duration-500 ease-out group-hover:scale-x-100" />
                     </div>
-
-                    {/* Bottom accent line — brand colour, grows on hover */}
-                    <div className="absolute bottom-0 inset-x-0 h-[3px] bg-[var(--brand-primary)] scale-x-0 origin-left transition-transform duration-500 ease-out group-hover:scale-x-100" />
                   </div>
-                </div>
-              ))}
+                );
+              })}
               <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
             </SwipableRow>
           </Reveal>

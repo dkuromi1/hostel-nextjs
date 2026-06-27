@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Panel } from "@/components/ui/panel";
 import { cn } from "@/lib/utils";
 import { useIsLowEndDevice } from "@/lib/use-performance";
+import { BookingComLogo, HostelworldLogo, GoogleLogo } from "@/components/brand-logos";
 
 export type Testimonial = {
   quote: string;
@@ -14,6 +15,20 @@ export type Testimonial = {
   source: string;
   rating: number;
 };
+
+/**
+ * Returns a CSS font-size value that shrinks as the quote grows longer,
+ * keeping the text comfortable inside a fixed-height container.
+ */
+function getQuoteFontSize(quote: string): string {
+  const len = quote.length;
+  if (len <= 100) return "clamp(2rem, 7vw, 3rem)";
+  if (len <= 160) return "clamp(1.75rem, 5.8vw, 2.25rem)";
+  if (len <= 240) return "clamp(1.5rem, 4.8vw, 1.875rem)";
+  if (len <= 340) return "clamp(1.25rem, 4vw, 1.5rem)";
+  if (len <= 460) return "clamp(1.125rem, 3.5vw, 1.25rem)";
+  return "clamp(1rem, 3.2vw, 1.125rem)";
+}
 
 type TestimonialCarouselProps = {
   testimonials: readonly Testimonial[];
@@ -89,15 +104,24 @@ export function TestimonialCarousel({
   return (
     <Panel
       className={cn(
-        "relative flex flex-col justify-between p-card-premium shadow-xl",
+        "relative flex flex-col justify-between p-card-premium shadow-2xl transition-all duration-300",
         isDark 
-          ? "border-white/10 bg-black/30 text-white shadow-black/40 backdrop-blur-md" 
+          ? "border-white/20 bg-[#0d1b2e]/90 text-white ring-1 ring-white/[0.06] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.85),0_0_0_1px_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl bg-gradient-to-br from-white/[0.04] to-transparent" 
           : "border-white/10 bg-[var(--brand-tertiary)] dark:bg-[var(--brand-tertiary-dark)] text-white shadow-slate-900/15",
         className
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      {/* Elegant, static background double-quote mark - positioned relative to Panel to guarantee zero clipping */}
+      <div 
+        className="absolute left-6 top-4 select-none font-serif text-white/[0.035] pointer-events-none z-0" 
+        style={{ fontSize: "14rem", lineHeight: 1 }}
+        aria-hidden="true"
+      >
+        &ldquo;
+      </div>
+
       {/* Clip horizontal overflow from slide animation without clipping shadows */}
       <div className="overflow-hidden">
         <AnimatePresence custom={direction} mode="wait">
@@ -119,20 +143,43 @@ export function TestimonialCarousel({
                 prev();
               }
             }}
-            className="cursor-grab active:cursor-grabbing"
+            className="relative cursor-grab active:cursor-grabbing pt-4"
           >
-            <div className="flex gap-1 text-[#f59e0b]">
+            <div className="flex gap-1 text-[#f59e0b] relative z-10">
               {[...Array(testimonial.rating)].map((_, i) => (
                 <Star key={i} className="size-4 fill-current" />
               ))}
             </div>
-            <blockquote className="mt-6 font-heading text-3xl leading-[1.3] text-white dark:text-[var(--text-heading)] sm:text-4xl" style={{ letterSpacing: 'var(--heading-spacing)' }}>
-              &ldquo;{testimonial.quote}&rdquo;
-            </blockquote>
-            <p className="mt-8 font-medium text-[var(--text-on-surface-dark)] dark:text-[var(--text-body)]">
-              — {testimonial.author}{" "}
-              <span className="opacity-90 font-normal italic text-[var(--text-on-surface-dark-muted)] dark:text-[var(--text-muted)]">({testimonial.source})</span>
-            </p>
+            <div className="mt-6 flex items-start" style={{ minHeight: "10rem" }}>
+              <blockquote
+                className="font-heading leading-[1.4] text-white dark:text-[var(--text-heading)] relative z-10"
+                style={{
+                  fontSize: getQuoteFontSize(testimonial.quote),
+                  letterSpacing: "var(--heading-spacing)",
+                  transition: "font-size 0.3s ease",
+                }}
+              >
+                &ldquo;{testimonial.quote}&rdquo;
+              </blockquote>
+            </div>
+            <div className="mt-8 flex flex-wrap items-center gap-2 font-medium text-[var(--text-on-surface-dark)] dark:text-[var(--text-body)] relative z-10">
+              <span>— {testimonial.author}</span>
+              {(() => {
+                const src = testimonial.source.trim();
+                const normalized = src.toLowerCase();
+                const isBooking = normalized.includes("booking");
+                const isHostelworld = normalized.includes("hostelworld");
+                const isGoogle = normalized.includes("google");
+                return (
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1 text-[13px] font-medium text-white/80 backdrop-blur-sm shadow-sm transition-all duration-300 hover:bg-white/[0.08] hover:border-white/[0.12]">
+                    {isBooking && <BookingComLogo size="sm" iconOnly className="!size-4 !rounded-[3px]" />}
+                    {isHostelworld && <HostelworldLogo size="sm" iconOnly className="!size-4 !rounded-[3px]" />}
+                    {isGoogle && <GoogleLogo size="sm" iconOnly className="!size-4 !rounded-[3px]" />}
+                    <span>{src}</span>
+                  </span>
+                );
+              })()}
+            </div>
           </motion.div>
         </AnimatePresence>
       </div>

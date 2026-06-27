@@ -81,7 +81,7 @@ export function SiteHeader({ navLinks, contactChannels, bookingChannels, siteNam
               </p>
               <p className={cn(
                 "uppercase tracking-[0.24em] transition-all duration-500 ease-in-out overflow-hidden",
-                isScrolled ? "h-0 opacity-0 mt-0" : "h-auto opacity-100 mt-1.5 text-[10px] sm:text-xs",
+                isScrolled ? "h-0 opacity-0 mt-0 text-[0px]" : "h-auto opacity-100 mt-1.5 text-[10px] sm:text-xs",
                 isTransparent ? "text-[var(--brand-accent)]" : "text-[var(--text-muted)]"
               )}>
                 {siteAddressSummary}

@@ -56,7 +56,7 @@ export function PageHero({
       {/* Bottom section divider for transitions */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent z-20" aria-hidden="true" />
       {topRight && (
-        <div className="absolute right-4 top-4 z-40 sm:right-6 sm:top-6 lg:right-10 lg:top-10">
+        <div className="absolute right-4 top-4 z-40 sm:right-6 sm:top-6 lg:right-10 lg:top-10 hidden sm:block">
           {topRight}
         </div>
       )}
@@ -81,12 +81,19 @@ export function PageHero({
         hasBackground ? "w-full" : ""
       )}>
         <Reveal className="relative z-10 flex flex-col items-start gap-8">
-          <Eyebrow 
-            className={cn(hasBackground && "text-white")}
-            variant={hasBackground ? "footer" : "default"}
-          >
-            {eyebrow}
-          </Eyebrow>
+          <div className="flex flex-wrap items-center justify-between gap-4 w-full sm:block">
+            <Eyebrow 
+              className={cn(hasBackground && "text-white")}
+              variant={hasBackground ? "footer" : "default"}
+            >
+              {eyebrow}
+            </Eyebrow>
+            {topRight && (
+              <div className="sm:hidden ml-auto">
+                {topRight}
+              </div>
+            )}
+          </div>
           <div className="flex flex-col gap-5">
             <h1 className={cn(
               "heading-page",
@@ -143,9 +150,9 @@ export function PageHero({
                   <li
                     key={text}
                     className={cn(
-                      "group relative flex flex-col gap-2.5 rounded-2xl border p-4 transition-all duration-500",
+                      "group relative flex flex-col gap-3 rounded-2xl border p-4 sm:p-5 transition-all duration-500",
                       hasBackground 
-                        ? "border-white/10 bg-slate-950/40 backdrop-blur-md hover:bg-slate-950/60 shadow-[0_8px_30px_rgba(0,0,0,0.3)]"
+                        ? "border-white/[0.12] bg-black/50 backdrop-blur-lg hover:bg-black/60 shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
                         : "border-[var(--border)] bg-[var(--card)]/50 backdrop-blur-md hover:bg-[var(--glass-bg)] hover:shadow-xl dark:hover:shadow-primary/5",
                       theme.glowBorder
                     )}
@@ -159,14 +166,14 @@ export function PageHero({
                     {/* Icon + title row */}
                     <div className="relative z-10 flex items-center gap-3">
                       <div className={cn(
-                        "flex size-10 shrink-0 items-center justify-center rounded-xl shadow-sm ring-1 transition-all duration-500 group-hover:-translate-y-0.5 group-hover:shadow-md group-hover:ring-transparent",
+                        "flex size-9 shrink-0 items-center justify-center rounded-xl shadow-sm ring-1 transition-all duration-500 group-hover:-translate-y-0.5 group-hover:shadow-md group-hover:ring-transparent",
                         theme.iconBg
                       )}>
-                        <Icon className={cn("size-5 transition-colors duration-500", theme.iconColor)} />
+                        <Icon className={cn("size-[18px] transition-colors duration-500", theme.iconColor)} />
                       </div>
                       {title ? (
                         <div className={cn(
-                          "heading-item font-bold m-0 transition-colors duration-300 min-w-0",
+                          "font-sans font-bold text-sm sm:text-[0.925rem] leading-snug tracking-tight m-0 transition-colors duration-300 min-w-0",
                           hasBackground ? "text-white" : "text-[var(--text-heading)]"
                         )}>
                           {title}
@@ -184,8 +191,8 @@ export function PageHero({
                     {/* Description — full bubble width, wraps under icon */}
                     {title && (
                       <div className={cn(
-                        "relative z-10 text-card-body transition-colors duration-300",
-                        hasBackground ? "text-white/80 group-hover:text-white" : "group-hover:text-[var(--text-body)]"
+                        "relative z-10 text-[13px] leading-relaxed font-medium transition-colors duration-300",
+                        hasBackground ? "text-white/85 group-hover:text-white/95" : "text-[var(--text-body-subtle)] group-hover:text-[var(--text-body)]"
                       )}>
                         {text}
                       </div>

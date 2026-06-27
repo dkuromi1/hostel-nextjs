@@ -113,7 +113,7 @@
       "alt": "Hiking and mountain views near Shkoder, Albanian Alps trips from Scodrinon Hostel",
       "cta": {
         "text": "View Adventures",
-        "url": "/experiences#things-to-do"
+        "url": "/experiences#adventure-cards"
       }
     },
     {
@@ -122,8 +122,8 @@
       "image": "/images/shkoder_pedestrian_street_3.webp",
       "alt": "Walking down the Pedonale in Shkoder",
       "cta": {
-        "text": "See Our City Highlights",
-        "url": "/experiences#things-to-do"
+        "text": "See Our Interactive City Highlights Map",
+        "url": "/experiences#map"
       }
     }
   ],
@@ -133,8 +133,7 @@
       "description": "Whether it’s rooftop raki or exploring the local craft beer scene, we prioritize memorable moments that make it easy for everyone to join.",
       "image": "/images/local_food_night.jpeg",
       "alt": "Traditional food event at Scodrinon Hostel"
-    }
-    ,
+    },
     {
       "title": "Explore the Bicycle Capital",
       "description": "Shkodër runs on two wheels. Grab a rental and explore the city's flat streets, lake paths, and cafes exactly how the locals do.",

@@ -43,8 +43,10 @@ export function SiteFooter({ contactChannels, bookingChannels, navLinks, siteCon
 
   return (
     <footer className="pt-0 text-[var(--text-body)] pb-24 lg:pb-14">
-      {/* Top Divider - Not full width */}
-      <div className="mx-auto mb-14 w-[92%] border-t border-[var(--text-muted)]/70" />
+      {/* Top Divider - Aligned with content margins, but slightly inset */}
+      <div className="shell-container mb-14">
+        <div className="mx-auto w-[96%] border-t border-[var(--text-muted)]/70" />
+      </div>
 
       <div className="shell-container flex flex-col justify-between gap-10 xl:flex-row">
         <div className="space-y-5 xl:flex-1">
@@ -162,9 +164,10 @@ export function SiteFooter({ contactChannels, bookingChannels, navLinks, siteCon
         </div>
       </div>
 
-      {/* Bottom Divider - Not full width */}
-      <div className="mx-auto mt-16 w-[92%] border-t border-[var(--text-muted)]/70 pt-8">
-        <div className="shell-container">
+      {/* Bottom Divider - Aligned with content margins, but slightly inset */}
+      <div className="shell-container mt-16">
+        <div className="mx-auto w-[96%] border-t border-[var(--text-muted)]/70" />
+        <div className="pt-8">
           <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
             <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
               © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.

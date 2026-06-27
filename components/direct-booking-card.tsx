@@ -36,8 +36,6 @@ export function DirectBookingCard({
         {/* Subtle offset shadow layer / background base */}
         <div className="absolute -inset-px rounded-[var(--radius-3xl)] border border-[var(--border)] bg-[var(--muted)]/40 -z-10 opacity-50 transition-transform duration-500 translate-x-1 translate-y-1 group-hover:translate-x-2 group-hover:translate-y-2" />
 
-        {/* Radial brand glow emanating from top-left */}
-        <div className="absolute -top-12 -left-12 size-64 rounded-full bg-[var(--brand-primary)] opacity-[0.07] blur-3xl pointer-events-none transition-all duration-700 group-hover:opacity-[0.13] group-hover:scale-110" />
 
         {/* Beautiful Masked Background Image in the upper right */}
         <div className="absolute inset-0 rounded-[var(--radius-3xl)] overflow-hidden pointer-events-none select-none -z-10" aria-hidden="true">
@@ -57,8 +55,6 @@ export function DirectBookingCard({
           </div>
         </div>
 
-        {/* Secondary accent glow bottom-right */}
-        <div className="absolute -bottom-8 -right-8 size-48 rounded-full bg-[var(--brand-accent)] opacity-[0.05] blur-2xl pointer-events-none transition-all duration-700 group-hover:opacity-[0.09]" />
 
         {/* Animated shimmer sweep */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[var(--radius-3xl)]">
@@ -118,8 +114,6 @@ export function DirectBookingCard({
       {/* Subtle offset shadow layer / background base */}
       <div className="absolute -inset-px rounded-[var(--radius-3xl)] border border-[var(--border)] bg-[var(--muted)]/40 -z-10 opacity-50 transition-transform duration-500 translate-x-1 translate-y-1 group-hover:translate-x-2 group-hover:translate-y-2" />
 
-      {/* Radial brand glow */}
-      <div className="absolute -top-8 -left-8 size-48 rounded-full bg-[var(--brand-primary)] opacity-[0.08] blur-2xl pointer-events-none transition-all duration-700 group-hover:opacity-[0.14] group-hover:scale-110" />
 
       {/* Beautiful Masked Background Image inside vertical block */}
       <div className="absolute inset-0 rounded-[var(--radius-3xl)] overflow-hidden pointer-events-none select-none -z-10" aria-hidden="true">
@@ -139,8 +133,6 @@ export function DirectBookingCard({
         </div>
       </div>
 
-      {/* Bottom-right accent */}
-      <div className="absolute -bottom-6 -right-6 size-36 rounded-full bg-[var(--brand-accent)] opacity-[0.05] blur-xl pointer-events-none transition-all duration-700 group-hover:opacity-[0.10]" />
 
       {/* Shimmer sweep */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[var(--radius-3xl)]">

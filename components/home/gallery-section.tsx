@@ -33,11 +33,13 @@ export function HomeGallerySection({ items, copy }: HomeGallerySectionProps) {
             title={copy.title}
             description={copy.description}
           />
-          <EditorialButton
-            href="/gallery"
-            label={copy.buttonLabel}
-            variant="ghost"
-          />
+          <div className="mt-auto">
+            <EditorialButton
+              href="/gallery"
+              label={copy.buttonLabel}
+              variant="ghost"
+            />
+          </div>
 
         </div>
 

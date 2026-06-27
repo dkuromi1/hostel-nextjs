@@ -348,6 +348,15 @@ export default function RoomsPage() {
                     );
                   })}
                 </div>
+                <div className="mt-8 media-frame relative w-full aspect-[4/3] sm:aspect-[16/9]">
+                  <Image
+                    src="/images/rooftop_social_2.jpg"
+                    alt={siteCopyContent.rooms.extraHelp.imageAlt}
+                    fill
+                    className="object-cover object-[50%_30%]"
+                    sizes="(max-width: 1024px) 100vw, 38vw"
+                  />
+                </div>
               </Panel>
             </Reveal>
   
@@ -413,15 +422,6 @@ export default function RoomsPage() {
                       </div>
                     );
                   })}
-                </div>
-                <div className="mt-8 media-frame relative w-full aspect-[4/3] sm:aspect-[16/9]">
-                  <Image
-                    src="/images/rooftop_social_2.jpg"
-                    alt={siteCopyContent.rooms.extraHelp.imageAlt}
-                    fill
-                    className="object-cover object-[50%_30%]"
-                    sizes="(max-width: 1024px) 100vw, 38vw"
-                  />
                 </div>
               </Panel>
             </Reveal>

@@ -29,18 +29,20 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
       {/* Top section divider */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" aria-hidden="true" />
       
-      <div className="w-full px-4 sm:px-6 lg:px-12 2xl:px-20 space-y-14 relative z-10">
+      <div className="shell-container space-y-14 relative z-10">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
             eyebrow={`${roomsSection.titleEyebrowPrefix} ${roomTypes[0]?.price ?? ""}`}
             title={roomsSection.title}
             description={roomsSection.description}
           />
-          <EditorialButton
-            href="/rooms"
-            label={roomsSection.buttonLabel}
-            variant="ghost"
-          />
+          <div className="mt-auto">
+            <EditorialButton
+              href="/rooms"
+              label={roomsSection.buttonLabel}
+              variant="ghost"
+            />
+          </div>
         </div>
 
         <div className="grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.04fr_0.96fr] lg:gap-x-12 lg:gap-y-16">

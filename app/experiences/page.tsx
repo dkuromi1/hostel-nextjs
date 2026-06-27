@@ -152,7 +152,7 @@ export default function ExperiencesPage() {
             </Reveal>
           ) : null}
 
-          <Reveal delay={100}>
+          <Reveal id="adventure-cards" delay={100} className="scroll-mt-24 sm:scroll-mt-32">
             <SwipableRow itemCount={thingsToDo.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-[var(--layout-grid-gutter)]">
               {thingsToDo.map((item) => (
                 <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full">

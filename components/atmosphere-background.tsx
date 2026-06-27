@@ -32,21 +32,27 @@ export function AtmosphereBackground() {
   ];
 
   const patternGradients: string[] = [];
+  const patternSizes: string[] = [];
   if (pattern === "grid") {
+    // Major Grid lines (140px size, slightly thicker/more visible)
     patternGradients.push(
-      "linear-gradient(var(--atmosphere-grid-line) 1px, transparent 1px)",
-      "linear-gradient(90deg, var(--atmosphere-grid-line) 1px, transparent 1px)"
+      "linear-gradient(var(--atmosphere-grid-line) 1.2px, transparent 1.2px)",
+      "linear-gradient(90deg, var(--atmosphere-grid-line) 1.2px, transparent 1.2px)"
     );
+    patternSizes.push("140px 140px", "140px 140px");
+
+    // Minor Grid lines (28px size, extremely subtle) for hierarchical depth
+    patternGradients.push(
+      "linear-gradient(var(--atmosphere-grid-line-minor) 0.8px, transparent 0.8px)",
+      "linear-gradient(90deg, var(--atmosphere-grid-line-minor) 0.8px, transparent 0.8px)"
+    );
+    patternSizes.push("28px 28px", "28px 28px");
   } else if (pattern === "dots") {
     patternGradients.push(
       "radial-gradient(var(--atmosphere-dots-line) 1.2px, transparent 0)"
     );
+    patternSizes.push("24px 24px");
   }
-
-  const patternSize = pattern === "dots" ? "24px 24px" : "140px 140px";
-  
-  // Combine layers: [Noise] -> [Pattern] -> [Glows]
-  const finalGradients = [...patternGradients, ...glowGradients];
 
   return (
     <div
@@ -57,16 +63,32 @@ export function AtmosphereBackground() {
       )}
       style={{
         transform: "translateZ(0)",
-        backgroundImage: isLowEnd ? finalGradients.join(",") : `${noiseUrl}, ${finalGradients.join(",")}`,
+        backgroundImage: isLowEnd ? glowGradients.join(",") : `${noiseUrl}, ${glowGradients.join(",")}`,
         backgroundSize: isLowEnd
-          ? `${patternGradients.map(() => patternSize).join(", ")}, 100% 100%, 100% 100%, 100% 100%, 100% 100%`
-          : `140px 140px, ${patternGradients.map(() => patternSize).join(", ")}, 100% 100%, 100% 100%, 100% 100%, 100% 100%`,
+          ? "100% 100%, 100% 100%, 100% 100%, 100% 100%"
+          : "140px 140px, 100% 100%, 100% 100%, 100% 100%, 100% 100%",
         backgroundRepeat: isLowEnd
-          ? `${patternGradients.map(() => "repeat").join(", ")}, no-repeat, no-repeat, no-repeat, no-repeat`
-          : `repeat, ${patternGradients.map(() => "repeat").join(", ")}, no-repeat, no-repeat, no-repeat, no-repeat`,
-        backgroundBlendMode: isLowEnd ? "normal" : `overlay, ${patternGradients.map(() => "normal").join(", ")}, normal, normal, normal, normal`,
+          ? "no-repeat, no-repeat, no-repeat, no-repeat"
+          : "repeat, no-repeat, no-repeat, no-repeat, no-repeat",
+        backgroundBlendMode: isLowEnd ? "normal" : "overlay, normal, normal, normal, normal",
         opacity: mounted ? (isLowEnd ? 1 : 0.95) : 0
       }}
-    />
+    >
+      {/* Pattern overlay layer with organic radial gradient mask to fade grid edges */}
+      {pattern !== "none" && patternGradients.length > 0 && (
+        <div 
+          className="absolute inset-0 transition-opacity duration-1000"
+          style={{
+            backgroundImage: patternGradients.join(","),
+            backgroundSize: patternSizes.join(", "),
+            backgroundRepeat: "repeat",
+            // This mask organically fades the grid lines out toward the edges and bottom of the viewport
+            maskImage: "radial-gradient(circle at 50% 40%, black 35%, transparent 85%)",
+            WebkitMaskImage: "radial-gradient(circle at 50% 40%, black 35%, transparent 85%)",
+            opacity: mounted ? 0.92 : 0,
+          }}
+        />
+      )}
+    </div>
   );
 }

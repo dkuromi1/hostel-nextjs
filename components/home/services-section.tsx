@@ -73,7 +73,7 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
   const servicesContent = (
     <SwipableRow
       itemCount={services.length}
-      className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-2 gap-[var(--layout-grid-gutter)] max-w-5xl mx-auto"
+      className="-mx-8 px-8 sm:mx-auto sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-2 gap-[var(--layout-grid-gutter)] max-w-5xl"
     >
       {services.map((service, idx) => {
         const Icon = resolveIcon(service.icon);
@@ -157,20 +157,21 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
       </div>
       
       <div className="shell-container space-y-12 relative z-10">
-        <Reveal>
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <SectionHeading
-              eyebrow={copy.eyebrow}
-              title={copy.title}
-              description={copy.description}
-            />
-          </div>
+        <Reveal className="w-full">
+          <SectionHeading
+            eyebrow={copy.eyebrow}
+            title={copy.title}
+            description={copy.description}
+            layout="split"
+          />
         </Reveal>
 
         {isMobile ? (
           <Reveal delay={100}>{servicesContent}</Reveal>
         ) : (
-          servicesContent
+          <div className="flex justify-center">
+            {servicesContent}
+          </div>
         )}
       </div>
     </section>

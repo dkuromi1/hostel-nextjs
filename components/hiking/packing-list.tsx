@@ -42,7 +42,7 @@ export function PackingList({ categories }: PackingListProps) {
                 {category.items.map((item) => {
                   const Icon = resolveIcon(getGearIcon(item.name));
                   return (
-                    <div key={item.name} className="group p-5 transition-all duration-300 hover:bg-[var(--muted)]/40 h-full">
+                    <div key={item.name} className="group p-card transition-all duration-300 hover:bg-[var(--muted)]/40 h-full">
                       <div className="flex flex-col gap-4">
                         <div className="flex items-center gap-4">
                           <div className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] ring-1 ring-[var(--brand-primary)]/10 transition-all duration-300 group-hover:bg-[var(--brand-primary)] group-hover:text-white group-hover:shadow-lg group-hover:shadow-[var(--brand-primary)]/20">
