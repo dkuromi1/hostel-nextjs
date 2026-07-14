@@ -15,10 +15,16 @@ import { siteConfig } from "@/lib/site-data";
 export function AtmosphereBackground() {
   const [mounted, setMounted] = useState(false);
   const [isLowEnd, setIsLowEnd] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setMounted(true);
     setIsLowEnd(document.documentElement.classList.contains("low-end-device"));
+    const mq = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
   }, []);
 
   const pattern = siteConfig.branding.design?.atmosphere.pattern ?? "none";
@@ -34,19 +40,22 @@ export function AtmosphereBackground() {
   const patternGradients: string[] = [];
   const patternSizes: string[] = [];
   if (pattern === "grid") {
-    // Major Grid lines (140px size, slightly thicker/more visible)
+    const majorSize = isMobile ? "140px 140px" : "200px 200px";
+    const minorSize = isMobile ? "28px 28px" : "40px 40px";
+
+    // Major grid lines
     patternGradients.push(
       "linear-gradient(var(--atmosphere-grid-line) 1.2px, transparent 1.2px)",
       "linear-gradient(90deg, var(--atmosphere-grid-line) 1.2px, transparent 1.2px)"
     );
-    patternSizes.push("140px 140px", "140px 140px");
+    patternSizes.push(majorSize, majorSize);
 
-    // Minor Grid lines (28px size, extremely subtle) for hierarchical depth
+    // Minor grid lines — hierarchical depth
     patternGradients.push(
       "linear-gradient(var(--atmosphere-grid-line-minor) 0.8px, transparent 0.8px)",
       "linear-gradient(90deg, var(--atmosphere-grid-line-minor) 0.8px, transparent 0.8px)"
     );
-    patternSizes.push("28px 28px", "28px 28px");
+    patternSizes.push(minorSize, minorSize);
   } else if (pattern === "dots") {
     patternGradients.push(
       "radial-gradient(var(--atmosphere-dots-line) 1.2px, transparent 0)"
@@ -83,8 +92,8 @@ export function AtmosphereBackground() {
             backgroundSize: patternSizes.join(", "),
             backgroundRepeat: "repeat",
             // This mask organically fades the grid lines out toward the edges and bottom of the viewport
-            maskImage: "radial-gradient(circle at 50% 40%, black 35%, transparent 85%)",
-            WebkitMaskImage: "radial-gradient(circle at 50% 40%, black 35%, transparent 85%)",
+            maskImage: "radial-gradient(ellipse 54% 40% at 50% 42%, black 10%, transparent 100%)",
+            WebkitMaskImage: "radial-gradient(ellipse 54% 40% at 50% 42%, black 10%, transparent 100%)",
             opacity: mounted ? 0.92 : 0,
           }}
         />

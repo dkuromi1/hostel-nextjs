@@ -240,7 +240,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                       <div className="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-8 flex flex-col justify-end">
                         {/* Eyebrow tag */}
                         <div className="mb-2">
-                          <span className="text-[10px] tracking-[0.25em] text-[var(--brand-primary)] font-bold uppercase">
+                          <span className="text-[10px] tracking-[0.25em] text-white font-bold uppercase">
                             {index === 0 ? "Social" : index === 1 ? "Adventure" : index === 2 ? "Nature" : "Rooftop"}
                           </span>
                         </div>

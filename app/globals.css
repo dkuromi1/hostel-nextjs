@@ -152,8 +152,8 @@
   /* sky glow */
   --atmosphere-glow-secondary: rgba(52, 211, 153, 0.03);
   /* emerald-300 secondary */
-  --atmosphere-grid-line: rgba(15, 23, 42, 0.018);
-  --atmosphere-grid-line-minor: rgba(15, 23, 42, 0.015);
+  --atmosphere-grid-line: rgba(15, 23, 42, 0.037);
+  --atmosphere-grid-line-minor: rgba(15, 23, 42, 0.027);
   --atmosphere-dots-line: rgba(15, 23, 42, 0.0525);
   /* slate-900 grid */
 
@@ -248,8 +248,8 @@
   --atmosphere-glow-primary: rgba(52, 211, 153, 0.07);
   --atmosphere-glow-accent: rgba(56, 189, 248, 0.05);
   --atmosphere-glow-secondary: rgba(5, 150, 105, 0.03);
-  --atmosphere-grid-line: rgba(255, 255, 255, 0.018);
-  --atmosphere-grid-line-minor: rgba(255, 255, 255, 0.015);
+  --atmosphere-grid-line: rgba(255, 255, 255, 0.037);
+  --atmosphere-grid-line-minor: rgba(255, 255, 255, 0.027);
   --atmosphere-dots-line: rgba(255, 255, 255, 0.04);
 
   --glass-bg: rgba(24, 24, 27, 0.88);

@@ -96,7 +96,7 @@
     },
     {
       "title": "Everything starts right outside",
-      "description": "You’re already on Shkoder's main pedestrian street, surrounded by local eats, museums, and nightlife. Whether you're heading to the Alps or the coast, transport is just a short walk away.",
+      "description": "You’re already on Shkoder's main pedestrian street, surrounded by local food, museums, and nightlife. Whether you're heading to the Alps or the coast, transport is just a short walk away.",
       "icon": "MapPin"
     },
     {
@@ -122,7 +122,7 @@
       "image": "/images/shkoder_pedestrian_street_3.webp",
       "alt": "Walking down the Pedonale in Shkoder",
       "cta": {
-        "text": "See Our Interactive City Highlights Map",
+        "text": "See Our City Highlights Map",
         "url": "/experiences#map"
       }
     }

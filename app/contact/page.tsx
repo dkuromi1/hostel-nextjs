@@ -159,7 +159,7 @@ export default function ContactPage() {
         </div>
       </PageHero>
 
-      <section className="section-muted py-[var(--layout-section-spacing)] relative">
+      <section className="section-muted py-[var(--layout-section-spacing)] relative" style={{ overflow: "visible" }}>
         {/* Top section divider */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" aria-hidden="true" />
         

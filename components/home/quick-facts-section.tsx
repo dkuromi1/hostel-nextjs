@@ -69,7 +69,7 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
         </div>
 
         {/* Description */}
-        <p className="text-[13.5px] leading-relaxed text-[var(--text-body-subtle)] mt-auto relative z-10 max-w-[60%]">
+        <p className="text-[14px] leading-relaxed text-[var(--text-body-subtle)] mt-auto relative z-10 max-w-[60%]">
           {fact.text}
         </p>
       </div>

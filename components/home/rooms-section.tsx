@@ -147,7 +147,7 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
                           {room.bullets.map((bullet) => (
                             <li
                               key={bullet}
-                              className="flex items-start gap-2 text-[13px] leading-tight text-[var(--text-body-subtle)]"
+                              className="flex items-start gap-2 text-[13.5px] leading-tight text-[var(--text-body-subtle)]"
                             >
                               <Check className="mt-0.5 size-3.5 shrink-0 text-[var(--brand-primary)]" />
                               <span>{bullet}</span>
