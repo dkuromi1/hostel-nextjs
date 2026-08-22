@@ -3,16 +3,19 @@
     {
       "title": "Privacy Pods",
       "text": "Curtained privacy pods in our mixed dorms, equipped with individual reading lights, and premium setup for cozy privacy.",
+      "mobileText": "Curtained pods with individual reading lights and cozy privacy.",
       "icon": "Blinds"
     },
     {
       "title": "4-Bed Dorms",
       "text": "Quiet 4-bed dorms with options tailored for male, female, or private groups looking for a calmer, more intimate setup.",
+      "mobileText": "Calm, intimate dorms with male, female, and private group options.",
       "icon": "Bed"
     },
     {
       "title": "Modern Essentials",
       "text": "Enjoy modern comforts including quiet A/C, secure lockers, individual power outlets, and high-speed WiFi throughout.",
+      "mobileText": "Quiet A/C, secure lockers, individual power outlets, and fast WiFi.",
       "icon": "Snowflake"
     }
   ],

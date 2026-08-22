@@ -11,6 +11,7 @@ import type { BusinessChannel } from "@/lib/site-data";
 type HighlightItem = {
   title?: string;
   text: string;
+  mobileText?: string;
   icon?: IconName;
 };
 
@@ -19,6 +20,7 @@ type PageHeroProps = {
   title: string;
   description: string;
   highlights?: readonly (string | HighlightItem)[];
+  highlightVariant?: "ledger" | "timeline" | "pills";
   children: ReactNode;
   hideActions?: boolean;
   bookingChannels?: BusinessChannel[];
@@ -35,6 +37,7 @@ export function PageHero({
   title,
   description,
   highlights,
+  highlightVariant = "ledger",
   children,
   hideActions = false,
   bookingChannels = [],
@@ -77,10 +80,10 @@ export function PageHero({
       )}
 
       <div className={cn(
-        "shell-container relative z-10 grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center",
+        "shell-container relative z-10 grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center min-w-0 w-full max-w-full",
         hasBackground ? "w-full" : ""
       )}>
-        <Reveal className="relative z-10 flex flex-col items-start gap-8">
+        <Reveal className="relative z-10 flex flex-col items-start gap-8 min-w-0 w-full max-w-full">
           <div className="flex flex-wrap items-center justify-between gap-4 w-full sm:block">
             <Eyebrow 
               className={cn(hasBackground && "text-white")}
@@ -117,93 +120,174 @@ export function PageHero({
             />
           )}
           {highlights ? (
-            <ul className="grid w-full gap-4 sm:grid-cols-2">
-              {highlights.map((item, index) => {
-                const text = typeof item === "string" ? item : item.text;
-                const title = typeof item === "object" ? item.title : undefined;
-                const Icon = typeof item === "object" && item.icon ? resolveIcon(item.icon) : resolveIcon("Check");
-                
-                // Color theme mapping for a premium visual upgrade
-                const themes = [
-                  {
-                    iconColor: hasBackground ? "text-sky-300 group-hover:text-white" : "text-sky-600 dark:text-sky-400 group-hover:text-white",
-                    iconBg: hasBackground ? "bg-sky-500/10 ring-sky-500/20 group-hover:bg-sky-500" : "bg-sky-50 dark:bg-sky-500/10 ring-sky-500/10 dark:ring-sky-500/20 group-hover:bg-sky-600",
-                    glowBorder: hasBackground ? "group-hover:border-sky-500/40" : "group-hover:border-sky-500/30",
-                    backdropBg: hasBackground ? "bg-sky-500/5 border-sky-500/15" : "bg-sky-500/5 dark:bg-sky-500/10 border-[var(--border)]",
-                  },
-                  {
-                    iconColor: hasBackground ? "text-emerald-300 group-hover:text-white" : "text-emerald-600 dark:text-emerald-400 group-hover:text-white",
-                    iconBg: hasBackground ? "bg-emerald-500/10 ring-emerald-500/20 group-hover:bg-emerald-500" : "bg-emerald-50 dark:bg-emerald-500/10 ring-emerald-500/10 dark:ring-emerald-500/20 group-hover:bg-emerald-600",
-                    glowBorder: hasBackground ? "group-hover:border-emerald-500/40" : "group-hover:border-emerald-500/30",
-                    backdropBg: hasBackground ? "bg-emerald-500/5 border-emerald-500/15" : "bg-emerald-500/5 dark:bg-emerald-500/10 border-[var(--border)]",
-                  },
-                  {
-                    iconColor: hasBackground ? "text-amber-300 group-hover:text-white" : "text-amber-600 dark:text-amber-400 group-hover:text-white",
-                    iconBg: hasBackground ? "bg-amber-500/10 ring-amber-500/20 group-hover:bg-amber-500" : "bg-amber-50 dark:bg-amber-500/10 ring-amber-500/10 dark:ring-amber-500/20 group-hover:bg-amber-600",
-                    glowBorder: hasBackground ? "group-hover:border-amber-500/40" : "group-hover:border-amber-500/30",
-                    backdropBg: hasBackground ? "bg-amber-500/5 border-amber-500/15" : "bg-amber-500/5 dark:bg-amber-500/10 border-[var(--border)]",
-                  }
-                ];
-                const theme = themes[index % themes.length];
+            highlightVariant === "timeline" ? (
+              <div className="relative flex flex-col w-full">
+                {highlights.map((item, index) => {
+                  const text = typeof item === "string" ? item : item.text;
+                  const mobileText = typeof item === "object" ? item.mobileText : undefined;
+                  const title = typeof item === "object" ? item.title : undefined;
+                  const Icon = typeof item === "object" && item.icon ? resolveIcon(item.icon) : resolveIcon("Check");
+                  const isLast = index === highlights.length - 1;
 
-                return (
-                  <li
-                    key={text}
-                    className={cn(
-                      "group relative flex flex-col gap-3 rounded-2xl border p-4 sm:p-5 transition-all duration-500",
-                      hasBackground 
-                        ? "border-white/[0.12] bg-black/50 backdrop-blur-lg hover:bg-black/60 shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
-                        : "border-[var(--border)] bg-[var(--card)]/50 backdrop-blur-md hover:bg-[var(--glass-bg)] hover:shadow-xl dark:hover:shadow-primary/5",
-                      theme.glowBorder
-                    )}
-                  >
-                    {/* Layered backdrop sheet for physical depth */}
-                    <div className={cn(
-                      "absolute -inset-px rounded-2xl border -z-10 opacity-30 transition-all duration-500 translate-x-2.5 translate-y-2.5 group-hover:translate-x-4 group-hover:translate-y-4 dark:bg-card/20",
-                      theme.backdropBg
-                    )} />
-
-                    {/* Icon + title row */}
-                    <div className="relative z-10 flex items-center gap-3">
-                      <div className={cn(
-                        "flex size-9 shrink-0 items-center justify-center rounded-xl shadow-sm ring-1 transition-all duration-500 group-hover:-translate-y-0.5 group-hover:shadow-md group-hover:ring-transparent",
-                        theme.iconBg
-                      )}>
-                        <Icon className={cn("size-[18px] transition-colors duration-500", theme.iconColor)} />
+                  return (
+                    <div key={title || text} className="group relative flex items-start gap-4 sm:gap-5">
+                      {/* Node column with perfectly centered vertical line */}
+                      <div className="relative flex flex-col items-center self-stretch shrink-0">
+                        <div className={cn(
+                          "relative z-10 flex size-8 sm:size-9 shrink-0 items-center justify-center rounded-full border shadow-lg backdrop-blur-md transition-all duration-300 group-hover:scale-110",
+                          hasBackground
+                            ? "border-emerald-400/40 bg-slate-950/85 text-emerald-400 shadow-emerald-500/20 group-hover:border-emerald-400 group-hover:shadow-emerald-500/40"
+                            : "border-[var(--brand-primary)]/40 bg-white text-[var(--brand-primary)] shadow-sm group-hover:border-[var(--brand-primary)]"
+                        )}>
+                          <Icon className="size-3.5 sm:size-4" />
+                        </div>
+                        {!isLast && (
+                          <div 
+                            className="w-[1.5px] flex-1 bg-gradient-to-b from-emerald-400/70 via-emerald-400/35 to-emerald-400/15 my-1.5" 
+                            aria-hidden="true" 
+                          />
+                        )}
                       </div>
-                      {title ? (
-                        <div className={cn(
-                          "font-sans font-bold text-sm sm:text-[0.925rem] leading-snug tracking-tight m-0 transition-colors duration-300 min-w-0",
-                          hasBackground ? "text-white" : "text-[var(--text-heading)]"
+
+                      {/* Content */}
+                      <div className={cn("flex flex-1 flex-col gap-1 min-w-0 pt-1", !isLast && "pb-5 sm:pb-6")}>
+                        {title ? (
+                          <h3 className={cn(
+                            "font-sans font-bold text-sm sm:text-base leading-snug tracking-tight transition-colors duration-300",
+                            hasBackground ? "text-white group-hover:text-emerald-100" : "text-[var(--text-heading)]"
+                          )}>
+                            {title}
+                          </h3>
+                        ) : null}
+                        <p className={cn(
+                          "text-xs sm:text-[13px] leading-relaxed font-normal max-w-[54ch] transition-colors duration-300",
+                          hasBackground ? "text-white/80 group-hover:text-white/95" : "text-[var(--text-body-subtle)] group-hover:text-[var(--text-body)]"
                         )}>
-                          {title}
-                        </div>
-                      ) : (
-                        <div className={cn(
-                          "text-card-body font-medium transition-colors duration-300 m-0 min-w-0",
-                          hasBackground ? "text-white group-hover:text-white" : "text-[var(--text-body)] group-hover:text-[var(--text-body)]"
-                        )}>
-                          {text}
-                        </div>
-                      )}
+                          {mobileText ? (
+                            <>
+                              <span className="sm:hidden">{mobileText}</span>
+                              <span className="hidden sm:inline">{text}</span>
+                            </>
+                          ) : (
+                            text
+                          )}
+                        </p>
+                      </div>
                     </div>
+                  );
+                })}
+              </div>
+            ) : highlightVariant === "pills" ? (
+              <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 w-full">
+                {highlights.map((item) => {
+                  const text = typeof item === "string" ? item : item.text;
+                  const mobileText = typeof item === "object" ? item.mobileText : undefined;
+                  const title = typeof item === "object" ? item.title : undefined;
+                  const Icon = typeof item === "object" && item.icon ? resolveIcon(item.icon) : resolveIcon("Check");
+                  const label = title || text;
 
-                    {/* Description — full bubble width, wraps under icon */}
-                    {title && (
+                  return (
+                    <div
+                      key={label}
+                      title={text !== label ? text : undefined}
+                      className={cn(
+                        "group relative inline-flex items-center gap-2.5 rounded-full border px-4 py-2 text-xs sm:text-[13px] font-semibold tracking-tight transition-all duration-300 select-none cursor-default",
+                        hasBackground
+                          ? "border-white/20 bg-slate-950/40 text-white shadow-lg shadow-black/30 backdrop-blur-md hover:border-emerald-400/50 hover:bg-slate-900/60 hover:shadow-emerald-500/10 hover:-translate-y-0.5"
+                          : "border-[var(--border)] bg-card/80 text-[var(--text-heading)] shadow-sm backdrop-blur-md hover:border-[var(--brand-primary)]/40 hover:bg-card hover:-translate-y-0.5"
+                      )}
+                    >
                       <div className={cn(
-                        "relative z-10 text-[13px] leading-relaxed font-medium transition-colors duration-300",
-                        hasBackground ? "text-white/85 group-hover:text-white/95" : "text-[var(--text-body-subtle)] group-hover:text-[var(--text-body)]"
+                        "flex size-5 shrink-0 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110",
+                        hasBackground ? "text-emerald-400" : "text-[var(--brand-primary)]"
                       )}>
-                        {text}
+                        <Icon className="size-3.5" />
                       </div>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
+                      <span>
+                        {mobileText && !title ? (
+                          <>
+                            <span className="sm:hidden">{mobileText}</span>
+                            <span className="hidden sm:inline">{label}</span>
+                          </>
+                        ) : (
+                          label
+                        )}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              /* Direction A: Curated Editorial Ledger (without numbers) */
+              <div className={cn(
+                "w-full rounded-2xl border backdrop-blur-xl transition-all duration-500 overflow-hidden",
+                hasBackground
+                  ? "border-white/15 bg-slate-950/45 shadow-[0_16px_40px_rgba(0,0,0,0.45)] ring-1 ring-white/10"
+                  : "border-[var(--border)] bg-card/80 shadow-lg"
+              )}>
+                <div className={cn(
+                  "divide-y",
+                  hasBackground ? "divide-white/10" : "divide-[var(--border)]"
+                )}>
+                  {highlights.map((item) => {
+                    const text = typeof item === "string" ? item : item.text;
+                    const mobileText = typeof item === "object" ? item.mobileText : undefined;
+                    const title = typeof item === "object" ? item.title : undefined;
+                    const Icon = typeof item === "object" && item.icon ? resolveIcon(item.icon) : resolveIcon("Check");
+
+                    return (
+                      <div
+                        key={text}
+                        className={cn(
+                          "group relative flex items-start gap-3.5 sm:gap-4 p-4 sm:p-5 transition-colors duration-300",
+                          hasBackground ? "hover:bg-white/[0.05]" : "hover:bg-[var(--muted)]/50"
+                        )}
+                      >
+                        {/* Subtle icon badge */}
+                        <div className="flex shrink-0 pt-0.5">
+                          <div className={cn(
+                            "flex size-8 items-center justify-center rounded-lg transition-colors duration-300",
+                            hasBackground 
+                              ? "bg-white/[0.08] text-white/90 group-hover:bg-white/[0.15] group-hover:text-white" 
+                              : "bg-[var(--muted)] text-[var(--text-heading)] group-hover:bg-[var(--primary)]/10 group-hover:text-[var(--primary)]"
+                          )}>
+                            <Icon className="size-4" />
+                          </div>
+                        </div>
+
+                        {/* Content */}
+                        <div className="flex flex-1 flex-col gap-1 min-w-0">
+                          {title ? (
+                            <h3 className={cn(
+                              "font-sans font-semibold text-sm sm:text-[0.95rem] leading-snug tracking-tight transition-colors duration-300",
+                              hasBackground ? "text-white group-hover:text-white" : "text-[var(--text-heading)]"
+                            )}>
+                              {title}
+                            </h3>
+                          ) : null}
+                          <p className={cn(
+                            "text-xs sm:text-[13px] leading-relaxed font-normal transition-colors duration-300",
+                            hasBackground ? "text-white/80 group-hover:text-white/95" : "text-[var(--text-body-subtle)] group-hover:text-[var(--text-body)]"
+                          )}>
+                            {mobileText ? (
+                              <>
+                                <span className="sm:hidden">{mobileText}</span>
+                                <span className="hidden sm:inline">{text}</span>
+                              </>
+                            ) : (
+                              text
+                            )}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )
           ) : null}
         </Reveal>
-        <Reveal delay={120} className="relative">
+        <Reveal delay={120} className="relative min-w-0 w-full max-w-full">
           {children}
         </Reveal>
       </div>

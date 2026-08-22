@@ -82,31 +82,31 @@ export function SwipableRow({
   };
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-4 w-full min-w-0 max-w-full">
       <div
         ref={scrollRef}
         className={cn(
-          "relative flex gap-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-4 sm:grid sm:overflow-visible sm:pb-0",
+          "relative flex gap-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-3 touch-pan-x w-full min-w-0",
           className
         )}
       >
         {children}
       </div>
 
-      {/* Dots – mobile only */}
+      {/* Dots */}
       {itemCount > 1 && (
-        <div className="relative z-10 flex justify-center gap-2 sm:hidden" role="group" aria-label="Carousel navigation">
+        <div className="relative z-10 flex justify-center gap-2 pt-1" role="group" aria-label="Carousel navigation">
           {Array.from({ length: itemCount }).map((_, i) => (
-            <div
+            <button
               key={i}
+              type="button"
               onClick={() => goToItem(i)}
+              aria-label={`Go to slide ${i + 1}`}
               className={cn(
-                "relative cursor-pointer h-1.5 rounded-full transition-all duration-300 ring-1 ring-black/10 shadow-sm",
-                "before:absolute before:left-1/2 before:top-1/2 before:h-11",
-                "before:w-[calc(100%+8px)] before:-translate-x-1/2 before:-translate-y-1/2 before:content-['']",
+                "relative cursor-pointer h-1.5 rounded-full transition-all duration-300 ring-1 ring-black/10 shadow-sm focus:outline-none",
                 i === activeIndex
                   ? "w-6 bg-[var(--brand-primary)]"
-                  : "w-1.5 bg-[var(--muted)] hover:bg-[var(--text-muted)]"
+                  : "w-1.5 bg-white/40 hover:bg-white/70 dark:bg-zinc-600"
               )}
             />
           ))}

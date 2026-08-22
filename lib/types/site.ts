@@ -26,6 +26,7 @@ export interface HeroContent {
 export interface IconTextItem {
   title?: string;
   text: string;
+  mobileText?: string;
   icon: IconName;
   image?: string;
   focus?: string;

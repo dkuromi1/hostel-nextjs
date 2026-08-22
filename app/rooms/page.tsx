@@ -12,6 +12,7 @@ import { StructuredData } from "@/components/structured-data";
 import { SectionLabel } from "@/components/ui/section-label";
 import { Badge } from "@/components/ui/badge";
 import { TestimonialCarousel } from "@/components/testimonial-carousel";
+import { SwipableRow } from "@/components/swipable-row";
 
 import { cn } from "@/lib/utils";
 
@@ -141,28 +142,59 @@ export default function RoomsPage() {
         backgroundImage="/images/rooms_3.jpg"
         backgroundAlt={siteCopyContent.rooms.hero.title}
       >
-        <div className="grid gap-[var(--layout-grid-gutter)] md:grid-cols-[1.1fr_0.9fr]">
-          <div className="group media-frame border-none bg-transparent relative min-h-[18rem] md:min-h-[22rem] order-1 md:order-1 md:row-span-2">
+        <div className="flex flex-col gap-6 w-full min-w-0 max-w-full md:grid md:gap-[var(--layout-grid-gutter)] md:grid-cols-[1.1fr_0.9fr]">
+          {/* Desktop Left Column: Tall Featured Room Image (md+) */}
+          <div className="hidden md:block group media-frame border-none bg-transparent relative min-h-[22rem] md:row-span-2 overflow-hidden rounded-[var(--radius-3xl)] shadow-2xl">
             <Image
               src="/images/rooms_2.webp"
               alt={siteCopyContent.rooms.heroImages.fourBedAlt}
               fill
-              className="object-cover transition-transform duration-1000 group-hover:scale-105 shadow-2xl"
+              className="object-cover transition-transform duration-1000 group-hover:scale-105"
               loading="eager"
               sizes="(max-width: 768px) 100vw, 40vw"
             />
           </div>
-          <div className="group media-frame border-none bg-transparent relative min-h-[18rem] md:min-h-[14rem] order-3 md:order-2">
+
+          {/* Desktop Right Column Top: Secondary Room Image (md+) */}
+          <div className="hidden md:block group media-frame border-none bg-transparent relative min-h-[14rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-xl">
             <Image
               src="/images/room_18bed2.jpg"
               alt={siteCopyContent.rooms.heroImages.podAlt}
               fill
-              className="object-cover transition-transform duration-1000 group-hover:scale-105 shadow-xl"
+              className="object-cover transition-transform duration-1000 group-hover:scale-105"
               loading="eager"
               sizes="(max-width: 768px) 100vw, 25vw"
             />
           </div>
-          <div className="glass-panel rounded-[var(--radius-3xl)] p-card-premium order-2 md:order-3">
+
+          {/* Mobile-Only Swipable Row (< md) */}
+          <div className="block md:hidden w-full min-w-0 max-w-full overflow-hidden">
+            <SwipableRow itemCount={2} className="pb-1">
+              <div className="media-frame border-none bg-transparent relative w-[80vw] max-w-[340px] shrink-0 snap-center min-h-[17rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-xl">
+                <Image
+                  src="/images/rooms_2.webp"
+                  alt={siteCopyContent.rooms.heroImages.fourBedAlt}
+                  fill
+                  className="object-cover"
+                  loading="eager"
+                  sizes="(max-width: 768px) 80vw, 340px"
+                />
+              </div>
+              <div className="media-frame border-none bg-transparent relative w-[80vw] max-w-[340px] shrink-0 snap-center min-h-[17rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-xl">
+                <Image
+                  src="/images/room_18bed2.jpg"
+                  alt={siteCopyContent.rooms.heroImages.podAlt}
+                  fill
+                  className="object-cover"
+                  loading="eager"
+                  sizes="(max-width: 768px) 80vw, 340px"
+                />
+              </div>
+            </SwipableRow>
+          </div>
+
+          {/* Price Blurb Card */}
+          <div className="hidden md:block glass-panel rounded-[var(--radius-3xl)] p-card-premium min-w-0 w-full">
             <SectionLabel variant="emerald" className="mb-4">
               {siteCopyContent.rooms.heroPriceBlurb.labelPrefix}{" "}
               <strong>{primaryPricedRoom?.price ? `${primaryPricedRoom.price} / Night` : siteCopyContent.rooms.heroPriceBlurb.contactForRatesLabel}</strong>

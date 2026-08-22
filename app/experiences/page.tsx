@@ -66,6 +66,7 @@ export default function ExperiencesPage() {
           text: f.description,
           icon: f.icon
         }))}
+        highlightVariant="timeline"
         hideActions={true}
         topRight={siteConfig.features.showRegionalWeather ? (
           <div className="flex flex-col items-end scale-90 sm:scale-100 origin-top-right sm:-mt-2 lg:mt-0">

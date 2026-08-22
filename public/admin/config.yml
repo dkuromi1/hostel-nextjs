@@ -242,6 +242,7 @@ collections:
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Text", name: "text", widget: "string" }
+              - { label: "Mobile Text", name: "mobileText", widget: "string", required: false, hint: "Optional shorter copy for mobile screens" }
               - { label: "Icon", name: "icon", widget: "string", hint: "Example: Bed, Blinds, Snowflake, Coffee" }
           - label: "Offerings"
             name: "offerings"
