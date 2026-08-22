@@ -57,6 +57,7 @@ In the `features` object of `settings.json`, you can enable or disable:
 - `showRegionalTrails`: Interactive trail overlays on the map.
 - `volunteersNeeded`: The recruitment banner for the volunteer program.
 - `showMascot`: The friendly character (Tito) in the corner of the site.
+- `showPwaUpdatePrompt`: When `true`, shows a popup banner ("New version available. Refresh") upon new app versions. When `false`, updates apply organically in the background without user prompts.
 
 
 **Important**: if you change the WhatsApp number, update `phoneDisplay`, `phoneRaw`, and `whatsappUrl` together in `settings.json`.

@@ -198,6 +198,7 @@ export function normalizeInstanceData(rawContent: any): {
     showLocalPois: settings.features.showLocalPois,
     showRegionalTrails: settings.features.showRegionalTrails,
     showFooterQrCode: settings.features.showFooterQrCode ?? false,
+    showPwaUpdatePrompt: settings.features.showPwaUpdatePrompt ?? false,
     baseKeywords: settings.seo.baseKeywords,
     bookingRating: settings.booking.bookingRating,
     bookingReviews: settings.booking.bookingReviews,

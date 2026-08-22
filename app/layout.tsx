@@ -298,7 +298,7 @@ export default function RootLayout({
           <StickyBookingBar bookingChannels={bookingChannels} contactChannels={contactChannels} />
           <DeferredClient>
             <SerwistRoot>
-              <SwUpdatePrompt />
+              <SwUpdatePrompt showPrompt={propertyConfig.showPwaUpdatePrompt} />
               {propertyConfig.branding.design?.mascot.enabled ? (
                 <TitoTheCat 
                   isEnabled={propertyConfig.branding.design.mascot.enabled} 

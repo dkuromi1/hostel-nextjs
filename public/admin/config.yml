@@ -194,6 +194,7 @@ collections:
               - { label: "Show Local Experience Map", name: "showLocalExperienceMap", widget: "boolean", default: false }
               - { label: "Show Local POIs", name: "showLocalPois", widget: "boolean", default: false }
               - { label: "Show Regional Trails", name: "showRegionalTrails", widget: "boolean", default: false }
+              - { label: "Show PWA Update Prompt", name: "showPwaUpdatePrompt", widget: "boolean", default: false, hint: "When off, service worker updates apply organically in the background without a popup banner" }
           - label: "Structured Data"
             name: "schema"
             widget: "object"

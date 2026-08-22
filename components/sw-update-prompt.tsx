@@ -41,7 +41,11 @@ function clearDismissed() {
   }
 }
 
-export function SwUpdatePrompt() {
+interface SwUpdatePromptProps {
+  showPrompt?: boolean;
+}
+
+export function SwUpdatePrompt({ showPrompt = false }: SwUpdatePromptProps) {
   const { serwist } = useSerwist();
   const [isVisible, setIsVisible] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
@@ -61,6 +65,25 @@ export function SwUpdatePrompt() {
 
     const showUpdate = () => {
       if (!isMounted) return;
+      if (!showPrompt) {
+        // Organic / silent refresh mode: automatically tell the waiting service worker to skip waiting
+        // so it activates seamlessly in the background without displaying any prompt banner
+        try {
+          serwist?.messageSkipWaiting();
+        } catch {
+          // Ignore
+        }
+        if ("serviceWorker" in navigator) {
+          void navigator.serviceWorker.getRegistration().then((reg) => {
+            if (reg?.waiting) {
+              reg.waiting.postMessage({ type: "SKIP_WAITING" });
+            }
+          }).catch(() => {
+            // Ignore
+          });
+        }
+        return;
+      }
       if (isDismissedRef.current || wasDismissedThisSession()) return;
       setIsVisible(true);
     };
@@ -72,7 +95,7 @@ export function SwUpdatePrompt() {
     };
 
     const onControlling = () => {
-      if (isUpdating || reloadingRef.current) {
+      if (showPrompt && (isUpdating || reloadingRef.current)) {
         doReload();
       }
     };
@@ -126,7 +149,7 @@ export function SwUpdatePrompt() {
       }
       document.removeEventListener("visibilitychange", onVisibilityChange);
     };
-  }, [serwist, isUpdating]);
+  }, [serwist, isUpdating, showPrompt]);
 
   const refreshToUpdate = async () => {
     if (isUpdating || reloadingRef.current) return;

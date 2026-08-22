@@ -45,8 +45,8 @@
     "hostelworldUrl": "https://www.hostelworld.com/hostels/p/325721/scodrinon-hostel/",
     "bookingRating": "9.3",
     "bookingReviews": "388",
-    "hostelworldRating": "10",
-    "hostelworldReviews": "116",
+    "hostelworldRating": "9.4",
+    "hostelworldReviews": "141",
     "channels": [
       {
         "id": "booking-com",
@@ -144,7 +144,8 @@
     "showLocalExperienceMap": true,
     "showLocalPois": true,
     "showRegionalTrails": true,
-    "showFooterQrCode": false
+    "showFooterQrCode": false,
+    "showPwaUpdatePrompt": false
   },
   "schema": {
     "type": "Hostel",

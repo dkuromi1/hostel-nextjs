@@ -319,6 +319,7 @@ export interface SettingsContent {
     showLocalPois: boolean;
     showRegionalTrails: boolean;
     showFooterQrCode?: boolean;
+    showPwaUpdatePrompt?: boolean;
   };
   schema: {
     type: string;
@@ -358,6 +359,7 @@ export interface PropertyConfig extends SettingsContent {
   showLocalPois: boolean;
   showRegionalTrails: boolean;
   showFooterQrCode: boolean;
+  showPwaUpdatePrompt: boolean;
   baseKeywords: string[];
   bookingRating: string;
   bookingReviews: string;
