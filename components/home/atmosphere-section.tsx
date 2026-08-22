@@ -145,7 +145,7 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
 
           {/* Right column — top-right and bottom-right are now independent */}
           <div className="flex flex-col gap-[var(--layout-grid-gutter)] lg:col-start-2 lg:row-start-1 lg:row-span-2">
-            <div className="grid grid-cols-[1.1fr_1fr] gap-[var(--layout-grid-gutter)] lg:grid-cols-1 lg:h-full">
+            <div className="grid grid-cols-2 gap-[var(--layout-grid-gutter)] sm:grid-cols-[1.1fr_1fr] lg:grid-cols-1 lg:h-full">
 
               {/* Room image — Top-right, slides LEFT */}
               <Reveal delay={100} className="flex min-w-0 relative lg:-mt-12 lg:translate-x-8 z-20 w-full">
@@ -153,14 +153,14 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
                   style={{ x: disabled ? 0 : roomImageX, willChange: "transform" }}
                   className="w-full"
                 >
-                  <div className="media-frame !border-0 ring-1 ring-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_24px_70px_-42px_rgba(0,0,0,0.5)] relative w-full aspect-[4/5] sm:aspect-[4/3]">
+                  <div className="media-frame !border-0 ring-1 ring-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_24px_70px_-42px_rgba(0,0,0,0.5)] relative w-full aspect-[9/16] sm:aspect-[4/3] overflow-hidden">
                     <Image
                       src="/images/rooms_1.webp"
                       alt={atmosphere.roomImageAlt}
                       fill
                       className="object-cover object-[75%_center]"
                       loading="eager"
-                      sizes="(max-width: 1024px) 60vw, (max-width: 1400px) 33vw, 466px"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 60vw, (max-width: 1400px) 33vw, 466px"
                     />
                   </div>
                 </motion.div>
@@ -169,7 +169,7 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
               {/* Video — Bottom-right, slides UP */}
               <motion.div
                 style={{ y: disabled ? 0 : videoY, willChange: "transform" }}
-                className="media-frame !border-0 ring-1 ring-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_24px_70px_-42px_rgba(0,0,0,0.5)] relative flex items-start lg:items-center self-start lg:self-auto overflow-hidden min-[500px]:row-span-2 lg:row-span-1 aspect-[9/16] min-[500px]:aspect-auto"
+                className="media-frame !border-0 ring-1 ring-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_24px_70px_-42px_rgba(0,0,0,0.5)] relative flex items-start lg:items-center self-start sm:self-auto lg:self-auto overflow-hidden sm:row-span-2 lg:row-span-1 aspect-[9/16] sm:aspect-auto"
               >
                 <LazyVideo
                   src="/videos/videoplayback.mp4"
@@ -184,7 +184,7 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
               </motion.div>
 
               {/* Mobile-only booking card */}
-              <Reveal delay={150} className="max-[499px]:col-span-full lg:hidden">
+              <Reveal delay={150} className="col-span-full sm:col-span-1 lg:hidden">
                 <DirectBookingCard variant="block" className="h-full" whatsappUrl={whatsappUrl} content={atmosphere} />
               </Reveal>
             </div>
