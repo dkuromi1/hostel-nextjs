@@ -238,6 +238,13 @@ serwist.setCatchHandler(async ({ request }) => {
   return Response.error();
 });
 
+// Handle message from client to skip waiting and activate immediately
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    void self.skipWaiting();
+  }
+});
+
 // Add error handling for precaching failures
 self.addEventListener('unhandledrejection', (event) => {
   if (event.reason && event.reason.message && event.reason.message.includes('bad-precaching-response')) {

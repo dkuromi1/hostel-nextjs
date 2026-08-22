@@ -3,8 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { RefreshCw, X } from "@/lib/icon-registry";
 import { useSerwist } from "@serwist/next/react";
+import { cn } from "@/lib/utils";
 
 const DISMISSED_KEY = "sw-update-dismissed";
+const UPDATE_CHECK_INTERVAL_MS = 15 * 60 * 1000; // 15 minutes throttle for background checks
 
 function isAdminRoute(pathname: string) {
   return pathname === "/admin" || pathname.startsWith("/admin/");
@@ -12,8 +14,8 @@ function isAdminRoute(pathname: string) {
 
 /**
  * Returns true if the user has already dismissed the update banner this
- * browser session.  We use sessionStorage so the flag is cleared when the
- * tab closes (or after the page fully reloads on accept).
+ * browser session. We use sessionStorage so the flag is cleared when the
+ * tab closes or after the page fully reloads.
  */
 function wasDismissedThisSession(): boolean {
   try {
@@ -42,79 +44,135 @@ function clearDismissed() {
 export function SwUpdatePrompt() {
   const { serwist } = useSerwist();
   const [isVisible, setIsVisible] = useState(false);
-  const shouldReloadOnControllerChangeRef = useRef(false);
+  const [isUpdating, setIsUpdating] = useState(false);
+  const isDismissedRef = useRef(false);
+  const lastCheckTimeRef = useRef(0);
+  const reloadingRef = useRef(false);
 
   useEffect(() => {
-    if (!serwist) return;
+    if (typeof window === "undefined") return;
     if (isAdminRoute(window.location.pathname)) return;
-    // Don't re-show the banner if the user already dismissed it this session.
-    if (wasDismissedThisSession()) return;
+    if (wasDismissedThisSession()) {
+      isDismissedRef.current = true;
+      return;
+    }
 
     let isMounted = true;
 
     const showUpdate = () => {
       if (!isMounted) return;
+      if (isDismissedRef.current || wasDismissedThisSession()) return;
       setIsVisible(true);
     };
 
-    const onControlling = () => {
-      if (!shouldReloadOnControllerChangeRef.current) return;
+    const doReload = () => {
+      if (reloadingRef.current) return;
+      reloadingRef.current = true;
       window.location.reload();
+    };
+
+    const onControlling = () => {
+      if (isUpdating || reloadingRef.current) {
+        doReload();
+      }
     };
 
     const onVisibilityChange = () => {
       if (document.visibilityState !== "visible") return;
-      serwist
-        .update()
-        .catch(() => {
-          // Ignore transient update checks failure.
-        });
+      const now = Date.now();
+      // Throttle update checks to avoid aggressive polling on iOS tab switches
+      if (now - lastCheckTimeRef.current < UPDATE_CHECK_INTERVAL_MS) return;
+      lastCheckTimeRef.current = now;
+
+      serwist?.update().catch(() => {
+        // Ignore transient update check errors
+      });
     };
 
-    serwist.addEventListener("waiting", showUpdate);
-    serwist.addEventListener("controlling", onControlling);
-    document.addEventListener("visibilitychange", onVisibilityChange);
+    if (serwist) {
+      serwist.addEventListener("waiting", showUpdate);
+      serwist.addEventListener("controlling", onControlling);
+    }
 
-    // Detect a service worker that was already in the `waiting` state before
-    // our listener was attached (e.g. the SW updated while the component was
-    // unmounted and remounted during a soft Next.js navigation).
-    void navigator.serviceWorker
-      .getRegistration()
-      .then((reg) => {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.addEventListener("controllerchange", onControlling);
+
+      // Check if a service worker is already waiting
+      void navigator.serviceWorker.getRegistration().then((reg) => {
         if (isMounted && reg?.waiting) {
           showUpdate();
         }
-      })
-      .catch(() => {
-        // Ignore — SW may not be supported or registered yet.
+      }).catch(() => {
+        // Ignore
       });
 
-    void serwist.register().catch(() => {
-      // Ignore registration errors to avoid breaking the app shell.
-    });
+      if (serwist) {
+        void serwist.register().catch(() => {
+          // Ignore registration errors
+        });
+      }
+    }
+
+    document.addEventListener("visibilitychange", onVisibilityChange);
 
     return () => {
       isMounted = false;
-      serwist.removeEventListener("waiting", showUpdate);
-      serwist.removeEventListener("controlling", onControlling);
+      if (serwist) {
+        serwist.removeEventListener("waiting", showUpdate);
+        serwist.removeEventListener("controlling", onControlling);
+      }
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.removeEventListener("controllerchange", onControlling);
+      }
       document.removeEventListener("visibilitychange", onVisibilityChange);
     };
-  }, [serwist]);
+  }, [serwist, isUpdating]);
 
-  const refreshToUpdate = () => {
-    if (!serwist) return;
-
-    // Clear the dismissed flag — the page will fully reload anyway, which
-    // clears sessionStorage, but being explicit makes the intent obvious.
+  const refreshToUpdate = async () => {
+    if (isUpdating || reloadingRef.current) return;
+    setIsUpdating(true);
     clearDismissed();
-    shouldReloadOnControllerChangeRef.current = true;
-    setIsVisible(false);
-    serwist.messageSkipWaiting();
+
+    const doReload = () => {
+      if (reloadingRef.current) return;
+      reloadingRef.current = true;
+      window.location.reload();
+    };
+
+    // 1. Listen for controllerchange on serviceWorker
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.addEventListener("controllerchange", doReload, { once: true });
+    }
+
+    // 2. Tell serwist to skip waiting
+    try {
+      serwist?.messageSkipWaiting();
+    } catch {
+      // Ignore
+    }
+
+    // 3. Directly post SKIP_WAITING to waiting or active service worker for maximum compatibility
+    if ("serviceWorker" in navigator) {
+      try {
+        const reg = await navigator.serviceWorker.getRegistration();
+        if (reg?.waiting) {
+          reg.waiting.postMessage({ type: "SKIP_WAITING" });
+        } else if (reg?.installing) {
+          reg.installing.postMessage({ type: "SKIP_WAITING" });
+        }
+      } catch {
+        // Ignore
+      }
+    }
+
+    // 4. Safety fallback: if controllerchange doesn't fire within 800ms, force reload
+    setTimeout(() => {
+      doReload();
+    }, 800);
   };
 
   const dismiss = () => {
-    // Persist the dismissal for this session so the prompt doesn't re-appear
-    // on the next soft navigation / component remount.
+    isDismissedRef.current = true;
     markDismissed();
     setIsVisible(false);
   };
@@ -122,25 +180,50 @@ export function SwUpdatePrompt() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-x-4 bottom-4 z-[100] mx-auto flex w-full max-w-md items-center gap-3 rounded-xl border border-border bg-background/95 p-3 shadow-xl backdrop-blur">
-      <RefreshCw className="size-4 shrink-0 text-primary" aria-hidden="true" />
-      <p className="text-sm text-foreground">New version available. Refresh to update.</p>
+    <div
+      role="alert"
+      aria-live="polite"
+      className={cn(
+        "fixed inset-x-4 z-[100] mx-auto flex w-full max-w-md items-center gap-3",
+        "bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] lg:bottom-4",
+        "rounded-xl border border-border bg-background/95 p-3.5 shadow-2xl backdrop-blur",
+        "pointer-events-auto select-none touch-manipulation transition-all duration-200 animate-in fade-in slide-in-from-bottom-3"
+      )}
+    >
+      <RefreshCw
+        className={cn("size-4 shrink-0 text-primary", isUpdating && "animate-spin")}
+        aria-hidden="true"
+      />
+      <p className="text-sm font-medium text-foreground">
+        {isUpdating ? "Updating to latest version..." : "New version available."}
+      </p>
       <div className="ml-auto flex items-center gap-2">
         <button
           type="button"
           onClick={refreshToUpdate}
-          className="rounded-md bg-primary px-2.5 py-1 text-xs font-semibold text-primary-foreground transition hover:bg-primary/90"
+          disabled={isUpdating}
+          className={cn(
+            "inline-flex min-h-[36px] min-w-[72px] items-center justify-center rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground shadow-sm",
+            "transition-all hover:bg-primary/90 active:scale-95 disabled:pointer-events-none disabled:opacity-60",
+            "cursor-pointer touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          )}
         >
-          Refresh
+          {isUpdating ? "Updating..." : "Refresh"}
         </button>
-        <button
-          type="button"
-          onClick={dismiss}
-          className="rounded-md p-1 text-muted-foreground transition hover:bg-muted hover:text-foreground"
-          aria-label="Dismiss update prompt"
-        >
-          <X className="size-4" />
-        </button>
+        {!isUpdating && (
+          <button
+            type="button"
+            onClick={dismiss}
+            className={cn(
+              "inline-flex min-h-[36px] min-w-[36px] items-center justify-center rounded-lg p-2 text-muted-foreground",
+              "transition-all hover:bg-muted hover:text-foreground active:scale-95",
+              "cursor-pointer touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            )}
+            aria-label="Dismiss update prompt"
+          >
+            <X className="size-4" />
+          </button>
+        )}
       </div>
     </div>
   );
