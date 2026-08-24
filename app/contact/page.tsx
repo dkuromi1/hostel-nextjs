@@ -198,11 +198,11 @@ export default function ContactPage() {
           <div className="absolute bottom-1/3 -left-32 w-80 h-80 rounded-full bg-[var(--accent)]/[0.015] blur-3xl" />
         </div>
         
-        <div className="shell-container sm:px-6 lg:px-8 grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.1fr_0.9fr] lg:items-start relative z-10">
-          <div className="flex flex-col gap-6 lg:sticky lg:top-32">
+        <div className="shell-container px-0 sm:px-6 lg:px-8 grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.1fr_0.9fr] lg:items-start relative z-10">
+          <div className="flex flex-col gap-6 lg:sticky lg:top-32 px-4 sm:px-0">
 
             {siteConfig.features.showLocalExperienceMap ? (
-              <Reveal className="px-2 sm:px-0" delay={50}>
+              <Reveal delay={50}>
                 <div id="map" className="media-frame relative h-[500px] w-full overflow-hidden rounded-3xl scroll-mt-24 sm:scroll-mt-32">
                   <LocationMap />
                 </div>
@@ -210,8 +210,8 @@ export default function ContactPage() {
             ) : null}
           </div>
 
-          <Reveal delay={120}>
-            <Panel className="p-card-premium bg-white dark:bg-card shadow-xl border-[var(--border)] h-full">
+          <Reveal delay={120} className="h-full w-full">
+            <Panel className="h-full w-full rounded-none sm:rounded-2xl border-x-0 sm:border px-4 py-8 sm:p-card-premium bg-white dark:bg-card shadow-xl border-[var(--border)]">
               <SectionHeading
                 variant="simple"
                 eyebrow={siteCopyContent.contact.faq.eyebrow}

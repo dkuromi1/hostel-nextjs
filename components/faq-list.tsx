@@ -20,7 +20,7 @@ function FaqItem({ question, answer }: FaqItemProps) {
   return (
     <div
       className={cn(
-        "group rounded-2xl border border-[var(--brand-primary)]/20 bg-[var(--glass-bg)] p-5 shadow-sm transition-all duration-300",
+        "group rounded-2xl border border-[var(--brand-primary)]/20 bg-[var(--glass-bg)] p-4 sm:p-5 shadow-sm transition-all duration-300",
         isOpen && "border-[var(--brand-primary)]/20 bg-[var(--glass-bg)] shadow-sm"
       )}
     >
@@ -30,11 +30,11 @@ function FaqItem({ question, answer }: FaqItemProps) {
         aria-expanded={isOpen}
         aria-controls={panelId}
         onClick={() => setIsOpen((o) => !o)}
-        className="flex w-full cursor-pointer items-start justify-between gap-4 text-left outline-none"
+        className="relative flex w-full cursor-pointer items-start justify-between sm:gap-4 text-left outline-none"
       >
         <span
           className={cn(
-            "font-heading text-base font-medium transition-colors",
+            "font-heading text-base font-medium transition-colors pr-10 sm:pr-0",
             isOpen ? "text-[var(--brand-primary)]" : "text-[var(--text-heading)] group-hover:text-[var(--brand-primary)]"
           )}
         >
@@ -44,13 +44,13 @@ function FaqItem({ question, answer }: FaqItemProps) {
           animate={{ rotate: isOpen ? 45 : 0 }}
           transition={{ type: "spring", damping: 20, stiffness: 200 }}
           className={cn(
-            "mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full transition-all duration-0",
+            "absolute right-0 top-0 sm:static mt-0.5 flex size-7 sm:size-8 shrink-0 items-center justify-center rounded-full transition-all duration-0",
             isOpen
               ? "bg-[var(--brand-primary)]/15 text-[var(--brand-primary)]"
               : "bg-[var(--muted)] text-[var(--text-muted)] group-hover:bg-[var(--brand-primary)]/15 group-hover:text-[var(--brand-primary)]"
           )}
         >
-          <Plus className="size-4" />
+          <Plus className="size-3.5 sm:size-4" />
         </motion.span>
       </button>
 
@@ -70,7 +70,7 @@ function FaqItem({ question, answer }: FaqItemProps) {
             }}
             className="overflow-hidden"
           >
-            <div className="pt-2 pb-1 pr-6 text-sm leading-snug text-[var(--text-body-subtle)]">
+            <div className="pt-2 pb-1 pr-0 sm:pr-6 text-sm leading-snug text-[var(--text-body-subtle)]">
               {answer}
             </div>
           </motion.div>
