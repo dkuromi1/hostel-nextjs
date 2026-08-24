@@ -18,6 +18,7 @@ const LocationMap = dynamic(() => import("@/components/location-map").then(mod =
 const FaqList = dynamic(() => import("@/components/faq-list").then(mod => mod.FaqList), { ssr: true });
 const CtaStrip = dynamic(() => import("@/components/cta-strip").then(mod => mod.CtaStrip), { ssr: true });
 const Panel = dynamic(() => import("@/components/ui/panel").then(mod => mod.Panel), { ssr: true });
+const SwipableRow = dynamic(() => import("@/components/swipable-row").then(mod => mod.SwipableRow), { ssr: true });
 import { buildBreadcrumbSchema, buildFaqSchema, buildMetadata } from "@/lib/metadata";
 import {
   faqItems,
@@ -57,7 +58,7 @@ export default function ContactPage() {
         backgroundAlt={siteCopyContent.contact.hero.title}
         backgroundPosition="20% center"
       >
-        <div className="grid gap-[var(--layout-grid-gutter)]">
+        <div className="grid gap-[var(--layout-grid-gutter)] w-full min-w-0 max-w-full">
           <Panel className="relative p-6 sm:p-8 bg-white/95 dark:bg-zinc-900/90 backdrop-blur-lg shadow-2xl border-[var(--border)] overflow-visible !rounded-[var(--radius-3xl)]">
             {/* Offset backdrop sheet for contact panel tactility */}
             <div className="absolute -inset-px rounded-[var(--radius-3xl)] border border-[var(--border)] -z-10 bg-[var(--muted)]/40 opacity-30 translate-x-3 translate-y-3 dark:bg-card/25" />
@@ -134,8 +135,10 @@ export default function ContactPage() {
               </div>
             </div>
           </Panel>
-          <div className="grid gap-[var(--layout-grid-gutter)] sm:grid-cols-2">
-            <div className="group media-frame border-none bg-transparent relative min-h-[16rem] shadow-2xl">
+
+          {/* Desktop Banner Images (sm+) */}
+          <div className="hidden sm:grid gap-[var(--layout-grid-gutter)] sm:grid-cols-2">
+            <div className="group media-frame border-none bg-transparent relative min-h-[16rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-2xl">
               <Image
                 src="/images/hiking_1.jpg"
                 alt={siteCopyContent.contact.heroImages.streetAlt}
@@ -145,7 +148,7 @@ export default function ContactPage() {
                 sizes="(max-width: 640px) 100vw, 25vw"
               />
             </div>
-            <div className="group media-frame border-none bg-transparent relative min-h-[16rem] shadow-xl">
+            <div className="group media-frame border-none bg-transparent relative min-h-[16rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-xl">
               <Image
                 src="/images/scodrinon_play_2.webp"
                 alt={siteCopyContent.contact.heroImages.socialAlt}
@@ -155,6 +158,32 @@ export default function ContactPage() {
                 sizes="(max-width: 640px) 100vw, 25vw"
               />
             </div>
+          </div>
+
+          {/* Mobile-Only Swipable Row (< sm) */}
+          <div className="block sm:hidden w-full min-w-0 max-w-full overflow-hidden">
+            <SwipableRow itemCount={2} className="pb-1">
+              <div className="media-frame border-none bg-transparent relative w-[80vw] max-w-[340px] shrink-0 snap-center min-h-[17rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-xl">
+                <Image
+                  src="/images/hiking_1.jpg"
+                  alt={siteCopyContent.contact.heroImages.streetAlt}
+                  fill
+                  className="object-cover"
+                  loading="eager"
+                  sizes="(max-width: 640px) 80vw, 340px"
+                />
+              </div>
+              <div className="media-frame border-none bg-transparent relative w-[80vw] max-w-[340px] shrink-0 snap-center min-h-[17rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-xl">
+                <Image
+                  src="/images/scodrinon_play_2.webp"
+                  alt={siteCopyContent.contact.heroImages.socialAlt}
+                  fill
+                  className="object-cover"
+                  loading="eager"
+                  sizes="(max-width: 640px) 80vw, 340px"
+                />
+              </div>
+            </SwipableRow>
           </div>
         </div>
       </PageHero>
