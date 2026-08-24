@@ -322,9 +322,9 @@ export default function RoomsPage() {
           {/* Top section divider */}
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" aria-hidden="true" />
   
-          <div className="shell-container grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-            <Reveal className="lg:sticky lg:top-32">
-              <Panel className="p-card-premium">
+          <div className="shell-container px-0 sm:px-6 lg:px-8 grid gap-[var(--layout-grid-gutter)] lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+            <Reveal className="h-full lg:sticky lg:top-32">
+              <Panel className="h-full w-full rounded-none sm:rounded-2xl border-x-0 sm:border px-4 py-8 sm:p-card-premium">
                 <SectionHeading
                   eyebrow={siteCopyContent.rooms.includedStay.eyebrow}
                   variant="simple"
@@ -392,8 +392,8 @@ export default function RoomsPage() {
               </Panel>
             </Reveal>
   
-            <Reveal delay={120} className="lg:sticky lg:top-32">
-              <Panel className="p-card-premium">
+            <Reveal delay={120} className="h-full lg:sticky lg:top-32">
+              <Panel className="h-full w-full rounded-none sm:rounded-2xl border-x-0 sm:border px-4 py-8 sm:p-card-premium">
                 <SectionLabel className="mb-6">{siteCopyContent.rooms.extraHelp.label}</SectionLabel>
                 <h2 className="mt-4 heading-card text-[var(--text-heading)]">
                   {siteCopyContent.rooms.extraHelp.title}
