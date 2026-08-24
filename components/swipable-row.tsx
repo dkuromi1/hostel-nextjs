@@ -7,12 +7,14 @@ type SwipableRowProps = {
   children: ReactNode;
   itemCount: number;
   className?: string;
+  dotsClassName?: string;
 };
 
 export function SwipableRow({
   children,
   itemCount,
   className,
+  dotsClassName,
 }: SwipableRowProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -82,20 +84,24 @@ export function SwipableRow({
   };
 
   return (
-    <div className="flex flex-col gap-4 w-full min-w-0 max-w-full">
+    <div className="flex flex-col gap-4 w-full min-w-0">
       <div
         ref={scrollRef}
         className={cn(
-          "relative flex gap-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-3 touch-pan-x w-full min-w-0",
+          "relative flex gap-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-3 min-w-0 after:content-[''] after:w-px after:shrink-0 sm:after:hidden",
           className
         )}
       >
         {children}
       </div>
 
-      {/* Dots */}
+      {/* Dots – mobile only */}
       {itemCount > 1 && (
-        <div className="relative z-10 flex justify-center gap-2 pt-1" role="group" aria-label="Carousel navigation">
+        <div
+          className={cn("relative z-10 flex justify-center gap-2 pt-1 sm:hidden", dotsClassName)}
+          role="group"
+          aria-label="Carousel navigation"
+        >
           {Array.from({ length: itemCount }).map((_, i) => (
             <button
               key={i}

@@ -189,7 +189,6 @@ export const ICON_REGISTRY = {
   MapPinned,
   Home,
   // Social
-  Sparkles: Zap,
   Star,
   Users,
   MessageCircleMore,

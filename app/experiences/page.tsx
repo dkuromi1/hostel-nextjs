@@ -55,7 +55,11 @@ export default function ExperiencesPage() {
 
       {/* The Northbound Launchpad */}
       <PageHero
-        eyebrow={siteCopyContent.experiences.launchpad.eyebrow}
+        eyebrow={
+          <>
+            The&nbsp;Northbound <span className="inline-block">Launchpad</span>
+          </>
+        }
         title={siteCopyContent.experiences.launchpad.title}
         description={siteCopyContent.experiences.launchpad.description}
         backgroundImage="/images/hiking_2.jpg"
@@ -154,7 +158,7 @@ export default function ExperiencesPage() {
           ) : null}
 
           <Reveal id="adventure-cards" delay={100} className="scroll-mt-24 sm:scroll-mt-32">
-            <SwipableRow itemCount={thingsToDo.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-[var(--layout-grid-gutter)]">
+            <SwipableRow itemCount={thingsToDo.length} className="-mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-[var(--layout-grid-gutter)]">
               {thingsToDo.map((item) => (
                 <div key={item.title} className="min-w-[85%] snap-center sm:min-w-0 h-full">
                   <Panel className="group relative flex h-full flex-col overflow-hidden transition-all duration-300 bg-white dark:bg-card hover:border-[var(--brand-primary)]/20 hover:shadow-xl">

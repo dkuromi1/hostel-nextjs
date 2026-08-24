@@ -125,7 +125,7 @@ export function ImageCarousel({
                                 alt={img.alt}
                                 fill
                                 draggable={false} // prevent browser native image drag interfering with FM
-                                className="pointer-events-none object-cover"
+                                className="pointer-events-none object-cover editorial-image"
                                 sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 50vw, 700px"
                             />
                         ) : (

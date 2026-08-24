@@ -51,6 +51,7 @@ export default function Home() {
         hero={hero}
         tagline={siteConfig.tagline}
         backgroundAlt={siteCopyContent.home.hero.backgroundAlt}
+        whatsappUrl={siteConfig.whatsappUrl}
         guestRatingsProps={{
           copy: siteCopyContent.home.guestRatings,
           bookingUrl: siteConfig.bookingUrl,

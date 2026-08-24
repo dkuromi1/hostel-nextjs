@@ -46,24 +46,26 @@ export async function RegionalWeather({ config, variant = "default" }: RegionalW
 
   if (variant === "small") {
     return (
-      <div className="group flex w-fit items-center gap-3 rounded-xl border border-[var(--glass-border)] bg-[var(--glass-bg)] pl-2.5 pr-4 py-2 shadow-sm shadow-[var(--glass-shadow)]/10 backdrop-blur-md transition-all duration-300 hover:scale-[1.02]">
-        <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[var(--muted)] border border-[var(--border)] shadow-sm">
-          <Icon className={cn("size-5", details.colorClass)} strokeWidth={2} />
-        </div>
-        <div className="flex flex-col py-0.5">
-          <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[var(--brand-primary)] opacity-85 leading-none mb-1">
-            {config.label}
-          </span>
-          <div className="flex items-baseline gap-1.5 leading-none">
-            {config.sublabel && (
-              <span className="text-[10px] font-medium text-[var(--text-muted)] leading-none">
-                {config.sublabel}
+      <div className="group flex w-fit flex-col rounded-xl border border-[var(--glass-border)] bg-[var(--glass-bg)] px-3 py-2 shadow-sm shadow-[var(--glass-shadow)]/10 backdrop-blur-md transition-all duration-300 hover:scale-[1.02]">
+        <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[var(--brand-primary)] opacity-85 leading-none mb-1.5">
+          {config.label}
+        </span>
+        <div className="flex items-center gap-2.5">
+          <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-[var(--muted)] border border-[var(--border)] shadow-sm">
+            <Icon className={cn("size-4", details.colorClass)} strokeWidth={2} />
+          </div>
+          <div className="flex flex-col justify-center">
+            <div className="flex items-baseline gap-1.5 leading-none">
+              {config.sublabel && (
+                <span className="text-[10px] font-medium text-[var(--text-muted)] leading-none">
+                  {config.sublabel}
+                </span>
+              )}
+              <span className="text-sm font-bold text-[var(--text-heading)] leading-none">
+                {Math.round(temperature_2m)}°C
               </span>
-            )}
-            <span className="text-sm font-bold text-[var(--text-heading)] leading-none">
-              {Math.round(temperature_2m)}°C
-            </span>
-            <span className="text-[10px] font-medium text-[var(--text-muted)] leading-none">
+            </div>
+            <span className="text-[10px] font-medium text-[var(--text-muted)] leading-none mt-1">
               {details.label}
             </span>
           </div>

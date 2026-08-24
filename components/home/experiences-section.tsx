@@ -114,8 +114,8 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
               isEven
                 ? "rounded-[var(--radius-3xl)_var(--radius-3xl)_var(--radius-3xl)_0]"
                 : "rounded-[var(--radius-3xl)_var(--radius-3xl)_0_var(--radius-3xl)]",
-              "md:col-span-9 md:aspect-[16/10] md:shadow-2xl",
-              isEven ? "md:col-start-4" : "md:col-start-1",
+              "md:col-span-11 md:aspect-[16/10] md:shadow-2xl",
+              isEven ? "md:col-start-2" : "md:col-start-1",
               "lg:w-[55%] lg:aspect-[16/10]"
             );
 
@@ -127,10 +127,10 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                 : "rounded-[0_var(--radius-3xl)_var(--radius-3xl)_var(--radius-3xl)]",
               
               // Tablet overlapping grid
-              "md:col-span-9 md:-mt-8 md:mx-0 md:p-8 md:shadow-2xl",
+              "md:col-span-11 md:-mt-8 md:mx-0 md:p-8 md:shadow-2xl",
               isEven
-                ? "md:col-start-1 md:-mr-24"
-                : "md:col-start-4 md:-ml-24",
+                ? "md:col-start-1"
+                : "md:col-start-2",
               
               // Desktop flat block (card styles are fully reset here)
               "lg:col-span-5 lg:relative lg:z-auto lg:m-0 lg:p-0 lg:bg-transparent lg:border-0 lg:shadow-none lg:backdrop-blur-none lg:rounded-none",
@@ -205,7 +205,7 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
           </div>
 
           <Reveal delay={120}>
-            <SwipableRow itemCount={eventCards.length} className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-[var(--layout-grid-gutter)] lg:grid-cols-12">
+            <SwipableRow itemCount={eventCards.length} className="-mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-[var(--layout-grid-gutter)] lg:grid-cols-12">
               {eventCards.map((event, index) => {
                 // Alternating column span for an editorial layout
                 const isLargeCard = index === 0 || index === 3;
@@ -262,7 +262,6 @@ export function ExperiencesSection({ eventCards, experiencePillars, copy, showRe
                   </div>
                 );
               })}
-              <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
             </SwipableRow>
           </Reveal>
         </div>

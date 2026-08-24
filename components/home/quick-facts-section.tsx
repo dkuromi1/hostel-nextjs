@@ -60,9 +60,9 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
 
           {/* Title stacked to the right of icon */}
           <div className="flex flex-col gap-0.5 min-w-0">
-            <h3 className="font-heading text-xl font-bold tracking-tight text-[var(--text-heading)] leading-snug transition-colors duration-300 group-hover:text-gold">
+            <h2 className="font-heading text-xl font-bold tracking-tight text-[var(--text-heading)] leading-snug transition-colors duration-300 group-hover:text-gold">
               {fact.title}
-            </h3>
+            </h2>
             {/* Gold underline accent */}
             <div className="mt-2 h-px w-8 bg-gold/40 transition-all duration-300 group-hover:w-14 group-hover:bg-gold/70" />
           </div>
@@ -93,10 +93,9 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
   const factsContent = (
     <SwipableRow
       itemCount={quickFacts.length}
-      className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 items-stretch lg:flex lg:flex-wrap lg:justify-center lg:items-stretch gap-5 lg:gap-7"
+      className="-mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 items-stretch lg:flex lg:flex-wrap lg:justify-center lg:items-stretch gap-5 lg:gap-7"
     >
       {cards}
-      <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
     </SwipableRow>
   );
 

@@ -16,11 +16,11 @@ type HighlightItem = {
 };
 
 type PageHeroProps = {
-  eyebrow: string;
+  eyebrow: ReactNode;
   title: string;
   description: string;
   highlights?: readonly (string | HighlightItem)[];
-  highlightVariant?: "ledger" | "timeline" | "pills";
+  highlightVariant?: "ledger" | "timeline" | "pills" | "editorial";
   children: ReactNode;
   hideActions?: boolean;
   bookingChannels?: BusinessChannel[];
@@ -71,7 +71,7 @@ export function PageHero({
             fill
             priority
             fetchPriority="high"
-            className="object-cover"
+            className="object-cover editorial-image"
             style={{ objectPosition: backgroundPosition }}
             sizes="100vw"
           />
@@ -84,15 +84,15 @@ export function PageHero({
         hasBackground ? "w-full" : ""
       )}>
         <Reveal className="relative z-10 flex flex-col items-start gap-8 min-w-0 w-full max-w-full">
-          <div className="flex flex-wrap items-center justify-between gap-4 w-full sm:block">
+          <div className="flex items-center justify-between gap-3 w-full sm:block">
             <Eyebrow 
-              className={cn(hasBackground && "text-white")}
+              className={cn(hasBackground && "text-white", "min-w-0 shrink")}
               variant={hasBackground ? "footer" : "default"}
             >
               {eyebrow}
             </Eyebrow>
             {topRight && (
-              <div className="sm:hidden ml-auto">
+              <div className="sm:hidden shrink-0 ml-auto">
                 {topRight}
               </div>
             )}
@@ -218,76 +218,131 @@ export function PageHero({
                 })}
               </div>
             ) : (
-              /* Direction A: Curated Editorial Ledger (without numbers) */
-              <div className={cn(
-                "w-full rounded-2xl border backdrop-blur-xl transition-all duration-500 overflow-hidden",
-                hasBackground
-                  ? "border-white/15 bg-slate-950/45 shadow-[0_16px_40px_rgba(0,0,0,0.45)] ring-1 ring-white/10"
-                  : "border-[var(--border)] bg-card/80 shadow-lg"
-              )}>
-                <div className={cn(
-                  "divide-y",
-                  hasBackground ? "divide-white/10" : "divide-[var(--border)]"
-                )}>
-                  {highlights.map((item) => {
-                    const text = typeof item === "string" ? item : item.text;
-                    const mobileText = typeof item === "object" ? item.mobileText : undefined;
-                    const title = typeof item === "object" ? item.title : undefined;
-                    const Icon = typeof item === "object" && item.icon ? resolveIcon(item.icon) : resolveIcon("Check");
+              /* Direction A: Curated Editorial Magazine Flow with Amenity Bar */
+              (() => {
+                const isAmenityItem = (item: string | HighlightItem) => {
+                  if (typeof item === "string") return false;
+                  const titleLower = (item.title || "").toLowerCase();
+                  return titleLower.includes("essential") || titleLower.includes("amenit") || titleLower.includes("included");
+                };
 
-                    return (
-                      <div
-                        key={text}
-                        className={cn(
-                          "group relative flex items-start gap-3.5 sm:gap-4 p-4 sm:p-5 transition-colors duration-300",
-                          hasBackground ? "hover:bg-white/[0.05]" : "hover:bg-[var(--muted)]/50"
-                        )}
-                      >
-                        {/* Subtle icon badge */}
-                        <div className="flex shrink-0 pt-0.5">
+                const roomHighlights = highlights.filter(h => !isAmenityItem(h));
+                const amenityHighlights = highlights.filter(h => isAmenityItem(h));
+
+                return (
+                  <div className="w-full pt-2">
+                    <div className={cn(
+                      "flex flex-col divide-y",
+                      hasBackground ? "divide-white/10" : "divide-[var(--border)]"
+                    )}>
+                      {roomHighlights.map((item, index) => {
+                        const text = typeof item === "string" ? item : item.text;
+                        const mobileText = typeof item === "object" ? item.mobileText : undefined;
+                        const title = typeof item === "object" ? item.title : undefined;
+                        const indexStr = String(index + 1).padStart(2, "0");
+
+                        return (
+                          <div
+                            key={title || text}
+                            className={cn(
+                              "group relative flex items-baseline gap-3.5 sm:gap-4 py-3 sm:py-3.5 first:pt-0 last:pb-0 transition-colors duration-300"
+                            )}
+                          >
+                            {/* Serif Number Index */}
+                            <div className="flex shrink-0 select-none">
+                              <span className={cn(
+                                "font-serif text-sm sm:text-base font-semibold tracking-wider transition-colors duration-300",
+                                hasBackground 
+                                  ? "text-amber-300/90 group-hover:text-amber-200" 
+                                  : "text-[var(--brand-primary)] group-hover:text-[var(--brand-primary-hover)]"
+                              )}>
+                                {indexStr}
+                              </span>
+                            </div>
+
+                            {/* Content */}
+                            <div className="flex flex-1 flex-col gap-0.5 min-w-0">
+                              {title ? (
+                                <h3 className={cn(
+                                  "font-sans font-semibold text-sm sm:text-[0.95rem] leading-snug tracking-tight transition-colors duration-300",
+                                  hasBackground ? "text-white group-hover:text-amber-100" : "text-[var(--text-heading)]"
+                                )}>
+                                  {title}
+                                </h3>
+                              ) : null}
+                              <p className={cn(
+                                "text-xs sm:text-[13px] leading-relaxed font-normal transition-colors duration-300",
+                                hasBackground ? "text-white/75 group-hover:text-white/90" : "text-[var(--text-body-subtle)] group-hover:text-[var(--text-body)]"
+                              )}>
+                                {mobileText ? (
+                                  <>
+                                    <span className="sm:hidden">{mobileText}</span>
+                                    <span className="hidden sm:inline">{text}</span>
+                                  </>
+                                ) : (
+                                  text
+                                )}
+                              </p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {/* Amenity Bar for Standard Essentials */}
+                    {amenityHighlights.map((item) => {
+                      const text = typeof item === "string" ? item : item.text;
+                      const mobileText = typeof item === "object" ? item.mobileText : undefined;
+                      const title = typeof item === "object" && item.title ? item.title : "All rooms include";
+                      const Icon = typeof item === "object" && item.icon ? resolveIcon(item.icon) : resolveIcon("Check");
+
+                      return (
+                        <div
+                          key={text}
+                          className={cn(
+                            "mt-3.5 sm:mt-4 flex items-start sm:items-center gap-3 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 border backdrop-blur-md transition-all duration-300",
+                            hasBackground
+                              ? "border-white/12 bg-white/[0.06] text-white shadow-lg shadow-black/20"
+                              : "border-[var(--border)] bg-[var(--muted)]/60 text-[var(--text-body)] shadow-sm"
+                          )}
+                        >
                           <div className={cn(
-                            "flex size-8 items-center justify-center rounded-lg transition-colors duration-300",
-                            hasBackground 
-                              ? "bg-white/[0.08] text-white/90 group-hover:bg-white/[0.15] group-hover:text-white" 
-                              : "bg-[var(--muted)] text-[var(--text-heading)] group-hover:bg-[var(--primary)]/10 group-hover:text-[var(--primary)]"
+                            "flex size-6 shrink-0 items-center justify-center rounded-lg pt-0.5 sm:pt-0",
+                            hasBackground ? "text-amber-300" : "text-[var(--brand-primary)]"
                           )}>
-                            <Icon className="size-4" />
+                            <Icon className="size-3.5 sm:size-4" />
+                          </div>
+                          <div className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-2 text-xs leading-relaxed min-w-0">
+                            <span className={cn(
+                              "font-semibold shrink-0 tracking-tight",
+                              hasBackground ? "text-white" : "text-[var(--text-heading)]"
+                            )}>
+                              {title.toLowerCase().includes("essential") ? "All stays include:" : `${title}:`}
+                            </span>
+                            <span className={cn(
+                              "text-[11.5px] sm:text-xs",
+                              hasBackground ? "text-white/80" : "text-[var(--text-body-subtle)]"
+                            )}>
+                              {mobileText ? (
+                                <>
+                                  <span className="sm:hidden">{mobileText}</span>
+                                  <span className="hidden sm:inline">{text}</span>
+                                </>
+                              ) : (
+                                text
+                              )}
+                            </span>
                           </div>
                         </div>
-
-                        {/* Content */}
-                        <div className="flex flex-1 flex-col gap-1 min-w-0">
-                          {title ? (
-                            <h3 className={cn(
-                              "font-sans font-semibold text-sm sm:text-[0.95rem] leading-snug tracking-tight transition-colors duration-300",
-                              hasBackground ? "text-white group-hover:text-white" : "text-[var(--text-heading)]"
-                            )}>
-                              {title}
-                            </h3>
-                          ) : null}
-                          <p className={cn(
-                            "text-xs sm:text-[13px] leading-relaxed font-normal transition-colors duration-300",
-                            hasBackground ? "text-white/80 group-hover:text-white/95" : "text-[var(--text-body-subtle)] group-hover:text-[var(--text-body)]"
-                          )}>
-                            {mobileText ? (
-                              <>
-                                <span className="sm:hidden">{mobileText}</span>
-                                <span className="hidden sm:inline">{text}</span>
-                              </>
-                            ) : (
-                              text
-                            )}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
+                      );
+                    })}
+                  </div>
+                );
+              })()
             )
           ) : null}
         </Reveal>
-        <Reveal delay={120} className="relative min-w-0 w-full max-w-full">
+        <Reveal delay={120} className="relative min-w-0 w-full max-w-full lg:self-stretch lg:flex lg:flex-col lg:h-full">
           {children}
         </Reveal>
       </div>

@@ -32,7 +32,7 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
       <div className="shell-container space-y-14 relative z-10">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
-            eyebrow={`${roomsSection.titleEyebrowPrefix} ${roomTypes[0]?.price ?? ""}`}
+            eyebrow={roomTypes[0]?.price?.trim() ? `${roomsSection.titleEyebrowPrefix} ${roomTypes[0].price}` : roomsSection.titleEyebrowPrefix}
             title={roomsSection.title}
             description={roomsSection.description}
           />
@@ -85,16 +85,18 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
                             <h3 className="text-sm sm:text-base font-semibold tracking-tight text-white whitespace-nowrap">
                               {room.name}
                             </h3>
-                            <div className={cn(
-                              "flex items-baseline gap-0.5 shrink-0 bg-white/5 text-white border border-white/15 font-semibold rounded",
-                              isFirst ? "px-2.5 py-1 text-xs" : "px-2 py-0.5 text-[10px]"
-                            )}>
-                              <span>{room.price}</span>
-                              <span className={cn(
-                                "font-medium uppercase tracking-widest opacity-70",
-                                isFirst ? "text-[8px]" : "text-[7px]"
-                              )}>/night</span>
-                            </div>
+                            {room.price?.trim() ? (
+                              <div className={cn(
+                                "flex items-baseline gap-0.5 shrink-0 bg-white/5 text-white border border-white/15 font-semibold rounded",
+                                isFirst ? "px-2.5 py-1 text-xs" : "px-2 py-0.5 text-[10px]"
+                              )}>
+                                <span>{room.price}</span>
+                                <span className={cn(
+                                  "font-medium uppercase tracking-widest opacity-70",
+                                  isFirst ? "text-[8px]" : "text-[7px]"
+                                )}>/night</span>
+                              </div>
+                            ) : null}
                           </div>
                         </div>
                       </div>

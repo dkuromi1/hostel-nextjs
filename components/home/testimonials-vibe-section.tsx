@@ -23,7 +23,7 @@ export function TestimonialsVibeSection({ testimonials, extendReasons, copy }: T
   const reasonsContent = (
     <SwipableRow
       itemCount={extendReasons.length}
-      className="-mx-8 px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-[var(--layout-grid-gutter)]"
+      className="-mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-[var(--layout-grid-gutter)]"
     >
       {extendReasons.map((reason, index) => {
         const Icon = resolveIcon(reason.icon);
@@ -71,7 +71,6 @@ export function TestimonialsVibeSection({ testimonials, extendReasons, copy }: T
           </Reveal>
         );
       })}
-      <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
     </SwipableRow>
   );
 

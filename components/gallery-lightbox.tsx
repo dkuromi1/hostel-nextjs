@@ -191,7 +191,7 @@ export function GalleryLightbox({ currentId, isModal = false, galleryItems }: Ga
                                     e.stopPropagation();
                                     setShowControls(v => !v);
                                 }}
-                                className={cn(mediaClass, "pointer-events-auto")}
+                                className={cn(mediaClass, "pointer-events-auto editorial-image")}
                             />
                         )}
                     </motion.div>

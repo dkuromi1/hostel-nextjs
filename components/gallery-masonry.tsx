@@ -109,7 +109,7 @@ export function GalleryMasonry({
                                 width={w}
                                 height={h}
                                 priority={isPriority}
-                                className="w-full h-auto object-cover will-change-transform transition-transform duration-[400ms] [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                                className="w-full h-auto object-cover will-change-transform transition-transform duration-[400ms] [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 editorial-image"
                                 style={item.aspect ? { aspectRatio: item.aspect } : undefined}
                                 sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                             />

@@ -142,34 +142,34 @@ export default function RoomsPage() {
         backgroundImage="/images/rooms_3.jpg"
         backgroundAlt={siteCopyContent.rooms.hero.title}
       >
-        <div className="flex flex-col gap-6 w-full min-w-0 max-w-full md:grid md:gap-[var(--layout-grid-gutter)] md:grid-cols-[1.1fr_0.9fr]">
-          {/* Desktop Left Column: Tall Featured Room Image (md+) */}
-          <div className="hidden md:block group media-frame border-none bg-transparent relative min-h-[22rem] md:row-span-2 overflow-hidden rounded-[var(--radius-3xl)] shadow-2xl">
+        <div className="flex flex-col gap-6 w-full min-w-0 max-w-full md:grid md:gap-[var(--layout-grid-gutter)] md:grid-cols-[1.1fr_0.9fr] lg:grid-cols-2 lg:grid-rows-[minmax(0,1fr)_auto] lg:h-full">
+          {/* Desktop Left Column: Featured Room Image */}
+          <div className="hidden md:block group media-frame border-none bg-transparent relative min-h-[22rem] lg:min-h-0 md:row-span-2 lg:row-span-1 lg:h-full overflow-hidden rounded-[var(--radius-3xl)] shadow-2xl">
             <Image
               src="/images/rooms_2.webp"
               alt={siteCopyContent.rooms.heroImages.fourBedAlt}
               fill
               className="object-cover transition-transform duration-1000 group-hover:scale-105"
               loading="eager"
-              sizes="(max-width: 768px) 100vw, 40vw"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 40vw, 25vw"
             />
           </div>
 
-          {/* Desktop Right Column Top: Secondary Room Image (md+) */}
-          <div className="hidden md:block group media-frame border-none bg-transparent relative min-h-[14rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-xl">
+          {/* Desktop Right Column Top: Secondary Room Image */}
+          <div className="hidden md:block group media-frame border-none bg-transparent relative min-h-[14rem] lg:min-h-0 lg:h-full overflow-hidden rounded-[var(--radius-3xl)] shadow-xl">
             <Image
               src="/images/room_18bed2.jpg"
               alt={siteCopyContent.rooms.heroImages.podAlt}
               fill
               className="object-cover transition-transform duration-1000 group-hover:scale-105"
               loading="eager"
-              sizes="(max-width: 768px) 100vw, 25vw"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 25vw, 25vw"
             />
           </div>
 
           {/* Mobile-Only Swipable Row (< md) */}
-          <div className="block md:hidden w-full min-w-0 max-w-full overflow-hidden">
-            <SwipableRow itemCount={2} className="pb-1">
+          <div className="block md:hidden w-full min-w-0 max-w-full">
+            <SwipableRow itemCount={2} className="-mx-4 px-4 pb-1">
               <div className="media-frame border-none bg-transparent relative w-[80vw] max-w-[340px] shrink-0 snap-center min-h-[17rem] overflow-hidden rounded-[var(--radius-3xl)] shadow-xl">
                 <Image
                   src="/images/rooms_2.webp"
@@ -194,7 +194,7 @@ export default function RoomsPage() {
           </div>
 
           {/* Price Blurb Card */}
-          <div className="hidden md:block glass-panel rounded-[var(--radius-3xl)] p-card-premium min-w-0 w-full">
+          <div className="hidden md:block glass-panel rounded-[var(--radius-3xl)] p-card-premium min-w-0 w-full lg:col-span-full">
             <SectionLabel variant="emerald" className="mb-4">
               {siteCopyContent.rooms.heroPriceBlurb.labelPrefix}{" "}
               <strong>{primaryPricedRoom?.price ? `${primaryPricedRoom.price} / Night` : siteCopyContent.rooms.heroPriceBlurb.contactForRatesLabel}</strong>
@@ -242,11 +242,13 @@ export default function RoomsPage() {
 
 
                       {/* Price Badge - pointer-events-none to prevent blocking dots/arrows */}
-                      <div className="pointer-events-none absolute left-0 top-0 z-10 p-5 sm:inset-x-0 sm:bottom-0 sm:top-auto sm:px-6 sm:py-4">
-                        <Badge className="bg-white/20 text-white shadow-sm backdrop-blur-md pointer-events-auto">
-                          {room.price}/night
-                        </Badge>
-                      </div>
+                      {room.price?.trim() ? (
+                        <div className="pointer-events-none absolute left-0 top-0 z-10 p-5 sm:inset-x-0 sm:bottom-0 sm:top-auto sm:px-6 sm:py-4">
+                          <Badge className="bg-white/20 text-white shadow-sm backdrop-blur-md pointer-events-auto">
+                            {room.price}/night
+                          </Badge>
+                        </div>
+                      ) : null}
                     </div>
 
                     <div className="flex flex-1 flex-col justify-between p-card-premium bg-white dark:bg-card">

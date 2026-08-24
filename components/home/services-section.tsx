@@ -73,7 +73,7 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
   const servicesContent = (
     <SwipableRow
       itemCount={services.length}
-      className="-mx-8 px-8 sm:mx-auto sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-2 gap-[var(--layout-grid-gutter)] max-w-5xl"
+      className="-mx-4 px-4 sm:mx-auto sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-2 gap-[var(--layout-grid-gutter)] max-w-5xl"
     >
       {services.map((service, idx) => {
         const Icon = resolveIcon(service.icon);
@@ -140,7 +140,6 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
           </Reveal>
         );
       })}
-      <div className="w-12 flex-shrink-0 sm:hidden" aria-hidden="true" />
     </SwipableRow>
   );
 

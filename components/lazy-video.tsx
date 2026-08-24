@@ -41,7 +41,7 @@ export function LazyVideo({ src, poster, className, ...props }: LazyVideoProps) 
           src={src}
           poster={poster}
           {...props}
-          className="size-full object-cover"
+          className="absolute inset-0 size-full object-cover"
         >
           Your browser does not support the video tag.
         </video>

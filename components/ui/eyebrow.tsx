@@ -19,10 +19,10 @@ export function Eyebrow({
   return (
     <div
       className={cn(
-        "group relative inline-flex items-center overflow-hidden transition-all duration-300 text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] antialiased",
+        "group relative inline-flex items-center overflow-hidden transition-all duration-300 text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] antialiased leading-snug text-left",
         isGhost
           ? cn("bg-transparent border-none", variant === "footer" ? "text-white [text-shadow:0_2px_10px_rgba(0,0,0,0.3)]" : "text-[var(--text-heading)] dark:text-white")
-          : "rounded-full px-4 py-1.5",
+          : "rounded-2xl sm:rounded-full px-3.5 py-1.5 sm:px-4",
         !isGhost && variant === "default" && "bg-slate-200/40 dark:bg-white/10 border border-slate-300/30 dark:border-white/10 text-[var(--text-heading)] dark:text-white backdrop-blur-md shadow-sm hover:border-slate-400/40 dark:hover:border-white/30",
         !isGhost && variant === "sun" && "bg-amber-100/40 border border-amber-200/50 text-amber-950 backdrop-blur-md",
         !isGhost && variant === "footer" && "bg-white/10 border border-white/10 text-white backdrop-blur-md",

@@ -20,7 +20,7 @@ export function CinematicBreak() {
           src="/images/lake_shkoder.webp"
           alt="Lake Shkoder"
           fill
-          className="object-cover"
+          className="object-cover editorial-image"
         />
         <div className="absolute inset-0 bg-black/40" />
       </div>

@@ -11,7 +11,7 @@
     },
     "breakfastPrefix": "",
     "detailsLabel": "Details",
-    "credit": "Custom Built in Next.js 16",
+    "credit": "Custom Built in Next.js",
     "communityButton": "Join the Chat",
     "description": "Scodrinon Hostel sits on Kolë Idromeno Street, right in the middle of Shkoder's cafe life, rich local culture, and gateway to adventure. Message on WhatsApp for the quickest direct booking response.",
     "communityCaption": "Scan to join the guest group chat"
@@ -35,11 +35,22 @@
       "directBookingButton": "Book on WhatsApp",
       "directBookingLabel": "Direct Booking",
       "directBookingTitle": "Message the hostel and book direct",
-      "rooftopEyebrow": "Rooftop Terrace",
-      "roomImageAlt": "Privacy pod dorm room at Scodrinon Hostel",
       "directBookingDescription": "WhatsApp is the most direct way to confirm dates, room type, arrival time, and any trip planning.",
+      "rooftopImage": "/images/rooftop_social.webp",
       "rooftopImageAlt": "Guests enjoying the rooftop at Scodrinon Hostel",
-      "rooftopTitle": "Where sunset drinks turn into legendary stories."
+      "rooftopEyebrow": "Rooftop Terrace",
+      "rooftopTitle": "Where sunset drinks turn into legendary stories.",
+      "badgeEyebrow": "Undisputed",
+      "badgeTitleLine1": "Best View",
+      "badgeTitleLine2": "in Town",
+      "roomImage": "/images/rooms_1.webp",
+      "roomImageAlt": "Privacy pod dorm room at Scodrinon Hostel",
+      "roomLabel": "Signature Sleep",
+      "roomTitle": "Boutique dorms",
+      "videoSrc": "/videos/videoplayback.mp4",
+      "videoPoster": "/images/video-poster.webp",
+      "videoLabel": "Inside Look",
+      "videoTitle": "Step inside the hostel"
     },
     "whyStayLonger": {
       "eyebrow": "Why People Stay Longer",
@@ -47,7 +58,7 @@
       "description": "The draw is not one dramatic feature. It's the way the privacy, rooftop, location, and staff all work together so the stay feels easy from the start."
     },
     "roomsSection": {
-      "titleEyebrowPrefix": "Rooms from",
+      "titleEyebrowPrefix": "Rooms Types",
       "title": "Sleep properly, then head back out.",
       "description": "Every room keeps the basics right: heat and A/C, secure lockers, reading lights, sockets, and fast WiFi. The difference is how much privacy and calm you want around you.",
       "buttonLabel": "Explore Rooms",
@@ -177,8 +188,8 @@
     "pageTitle": "Rooms",
     "heroPriceBlurb": {
       "labelPrefix": "Beds From",
-      "title": "Hotel privacy at a hostel price.",
-      "description": "It's why so many guests book two nights and end up extending.",
+      "title": "Sleep in a place built with care, not cut corners.",
+      "description": "",
       "contactForRatesLabel": "Contact us for rates"
     },
     "testimonialsImages": {
@@ -213,8 +224,8 @@
     },
     "hero": {
       "eyebrow": "Rooms",
-      "title": "Sleep like you booked a thoughtful hostel, not a compromise.",
-      "description": "Scodrinon keeps the comfort side of the stay strong: privacy pods, smaller dorm options, shared kitchen, clean shared bathrooms, breakfast, and the essentials that matter."
+      "title": "Hotel privacy at a hostel price.",
+      "description": "Connect with fellow travelers on the rooftop terraces, then recharge in quiet comfort with privacy pods, smaller dorms, a shared kitchen, clean bathrooms, and fresh breakfast."
     }
   },
   "experiences": {

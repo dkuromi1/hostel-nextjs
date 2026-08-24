@@ -8,7 +8,7 @@
   },
   "address": {
     "label": "Rruga Kolë Idromeno, Shkodër, 4001, Albania",
-    "summary": "Shkoder, Albania",
+    "summary": "Shkodër, Albania",
     "streetAddress": "Kolë Idromeno Street",
     "addressLocality": "Shkoder",
     "postalCode": "4001",
@@ -45,8 +45,8 @@
     "hostelworldUrl": "https://www.hostelworld.com/hostels/p/325721/scodrinon-hostel/",
     "bookingRating": "9.3",
     "bookingReviews": "388",
-    "hostelworldRating": "9.4",
-    "hostelworldReviews": "141",
+    "hostelworldRating": "9.5",
+    "hostelworldReviews": "143",
     "channels": [
       {
         "id": "booking-com",
@@ -84,7 +84,7 @@
       "Shkoder pedestrian street",
       "boutique backpacker hostel"
     ],
-    "titleSuffix": "Shkoder, Albania",
+    "titleSuffix": "Shkodër, Albania",
     "locale": "en_US",
     "ogImage": "/images/promo_2.jpg"
   },

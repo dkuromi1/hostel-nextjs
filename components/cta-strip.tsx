@@ -46,7 +46,7 @@ export function CtaStrip({
             src={image}
             alt={alt}
             fill
-            className={cn("object-cover", imageClassName)}
+            className={cn("object-cover editorial-image", imageClassName)}
             sizes="(max-width: 1024px) 100vw, (max-width: 1400px) 50vw, 700px"
           />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.1),rgba(2,6,23,0.45))]" />
