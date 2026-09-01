@@ -61,8 +61,7 @@ export function DirectBookingCard({
           <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[1200ms] ease-in-out bg-gradient-to-r from-transparent via-white/[0.05] to-transparent skew-x-12" />
         </div>
 
-        {/* Top border highlight */}
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-primary)]/40 to-transparent pointer-events-none" />
+
 
         <div className="relative z-10 flex flex-col sm:flex-row flex-1 items-center sm:items-start gap-6 sm:gap-8 text-center sm:text-left">
           {/* Icon with pulsing ring */}
@@ -139,8 +138,7 @@ export function DirectBookingCard({
         <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[1200ms] ease-in-out bg-gradient-to-r from-transparent via-white/[0.06] to-transparent skew-x-12" />
       </div>
 
-      {/* Top border highlight */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-primary)]/40 to-transparent pointer-events-none" />
+
 
       <div className="relative z-10 flex items-center gap-5 mb-6">
         {/* Icon with pulsing ring */}

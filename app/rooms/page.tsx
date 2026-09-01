@@ -333,24 +333,15 @@ export default function RoomsPage() {
                   title={siteCopyContent.rooms.includedStay.title}
                   description={siteCopyContent.rooms.includedStay.description}
                 />
-                <div className="mt-8 grid gap-[var(--layout-grid-gutter)] sm:grid-cols-2">
+                <div className="mt-8 grid gap-[var(--layout-grid-gutter)]">
                   {freeServices.map((service, idx) => {
                     const Icon = resolveIcon(service.icon);
                     const theme = getFreeCardTheme(idx);
                     return (
                       <div
                         key={idx}
-                        className={cn(
-                          "group relative flex flex-col gap-5 rounded-[var(--radius-2xl)] border border-[var(--border)] bg-white/70 dark:bg-zinc-950/60 backdrop-blur-md p-6 transition-all duration-500 hover:shadow-2xl",
-                          theme.glowColor
-                        )}
+                        className="group relative flex flex-col gap-4 rounded-2xl border border-stone-200/80 dark:border-stone-800 bg-white dark:bg-zinc-900/70 p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
                       >
-                        {/* Offset layered background sheet for tactile visual depth */}
-                        <div className={cn(
-                          "absolute -inset-px rounded-[var(--radius-2xl)] border border-[var(--border)] -z-10 opacity-30 transition-all duration-500 translate-x-2 translate-y-2 group-hover:translate-x-3.5 group-hover:translate-y-3.5 dark:bg-card/25",
-                          theme.backdropBg
-                        )} />
-
                         {/* Horizontal Header: Icon + Title/Subheading side-by-side */}
                         <div className="flex items-center gap-4">
                           <div className={cn(
@@ -382,15 +373,6 @@ export default function RoomsPage() {
                     );
                   })}
                 </div>
-                <div className="mt-8 media-frame relative w-full aspect-[4/3] sm:aspect-[16/9]">
-                  <Image
-                    src="/images/rooftop_social_2.jpg"
-                    alt={siteCopyContent.rooms.extraHelp.imageAlt}
-                    fill
-                    className="object-cover object-[50%_30%]"
-                    sizes="(max-width: 1024px) 100vw, 38vw"
-                  />
-                </div>
               </Panel>
             </Reveal>
   
@@ -415,17 +397,8 @@ export default function RoomsPage() {
                     return (
                       <div
                         key={idx}
-                        className={cn(
-                          "group relative flex flex-col gap-5 rounded-[var(--radius-2xl)] border border-[var(--border)] bg-white/70 dark:bg-zinc-950/60 backdrop-blur-md p-6 transition-all duration-500 hover:shadow-2xl",
-                          theme.glowColor
-                        )}
+                        className="group relative flex flex-col gap-4 rounded-2xl border border-stone-200/80 dark:border-stone-800 bg-white dark:bg-zinc-900/70 p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
                       >
-                        {/* Offset layered background sheet for tactile visual depth */}
-                        <div className={cn(
-                          "absolute -inset-px rounded-[var(--radius-2xl)] border border-[var(--border)] -z-10 opacity-30 transition-all duration-500 translate-x-2 translate-y-2 group-hover:translate-x-3.5 group-hover:translate-y-3.5 dark:bg-card/25",
-                          theme.backdropBg
-                        )} />
-
                         {/* Horizontal Header: Icon + Title/Subheading side-by-side */}
                         <div className="flex items-center gap-4">
                           <div className={cn(
@@ -488,10 +461,10 @@ export default function RoomsPage() {
                 </div>
                 <div className="media-frame relative min-h-[12rem] lg:min-h-[15rem]">
                   <Image
-                    src="/images/ambiance_3.jpg"
+                    src="/images/rooftop_social_2.jpg"
                     alt={siteCopyContent.rooms.testimonialsImages.breakfastAlt}
                     fill
-                    className="object-cover object-[50%_40%]"
+                    className="object-cover object-[50%_30%]"
                     sizes="(max-width: 1024px) 50vw, 45vw"
                   />
                 </div>

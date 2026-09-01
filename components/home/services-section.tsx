@@ -79,16 +79,7 @@ export function IncludedServicesSection({ services, copy }: IncludedServicesSect
         const Icon = resolveIcon(service.icon);
         const theme = getCardTheme(idx);
         const cardContent = (
-          <div className={cn(
-            "group/service-card relative h-full flex flex-col gap-6 p-card rounded-[var(--radius-2xl)] border border-[var(--border)] bg-white/70 dark:bg-zinc-950/60 backdrop-blur-md transition-all duration-500 hover:shadow-2xl",
-            theme.glowColor
-          )}>
-            {/* Offset layered background sheet for tactile visual depth */}
-            <div className={cn(
-              "absolute -inset-px rounded-[var(--radius-2xl)] border border-[var(--border)] -z-10 opacity-30 transition-all duration-500 translate-x-2.5 translate-y-2.5 group-hover/service-card:translate-x-4 group-hover/service-card:translate-y-4 dark:bg-card/25",
-              theme.backdropBg
-            )} />
-
+          <div className="group/service-card relative h-full flex flex-col gap-5 p-6 rounded-2xl border border-stone-200/80 dark:border-stone-800 bg-white dark:bg-zinc-900/70 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
             {/* Horizontal Header: Icon + Title/Badge side-by-side */}
             <div className="flex items-center gap-4">
               {/* Glowing Icon Container */}

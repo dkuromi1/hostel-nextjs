@@ -77,7 +77,7 @@ export function RoomsSection({ roomsSection, roomTypes }: RoomsSectionProps) {
                       <ImageCarousel
                         images={room.images}
                         className="absolute inset-0 h-full rounded-none"
-                        autoPlayInterval={isFirst ? 7500 : 0}
+                        autoPlayInterval={0}
                       />
                       <div className="pointer-events-none absolute inset-0 z-10 flex p-5 sm:p-6 items-start justify-start">
                         <div className="bg-slate-950/40 border border-white/10 text-white shadow-2xl backdrop-blur-md px-4 py-2.5 pointer-events-auto transition-all duration-300 hover:bg-slate-950/55 w-fit rounded-lg">

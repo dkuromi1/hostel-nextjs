@@ -56,7 +56,7 @@
     },
     {
       "title": "Adventure Ready",
-      "description": "Transport and tour arrangements, and free secure luggage storage, all sorted from the hostel.",
+      "description": "Transport and tour arrangements, all sorted out from the hostel.",
       "icon": "Mountain",
       "subheading": "Trip Logistics"
     }
@@ -69,7 +69,7 @@
     },
     {
       "title": "Tours & Transport",
-      "description": "Hassle-free shuttle booking to Theth (€12), Valbona (€26), Shala River (€35 - includes €5 discount), and Komani Lake (€36).",
+      "description": "Hassle-free shuttle booking to Theth (€12), Valbona (€26), Shala River (€35 - includes €5 discount), and Komani Lake (€36). Secure luggage storage also available.",
       "icon": "Bus"
     },
     {
@@ -130,25 +130,25 @@
   "featuredMoments": [
     {
       "title": "Movie Nights and Socials",
-      "description": "Whether it’s rooftop raki or exploring the local craft beer scene, we prioritize memorable moments that make it easy for everyone to join.",
+      "description": "Whether it’s rooftop raki or local craft beer, we’re all about making it easy to connect and share memorable moments.",
       "image": "/images/local_food_night.jpeg",
       "alt": "Traditional food event at Scodrinon Hostel"
     },
     {
       "title": "Explore the Bicycle Capital",
-      "description": "Shkodër runs on two wheels. Grab a rental and explore the city's flat streets, lake paths, and cafes exactly how the locals do.",
+      "description": "Shkodër runs on two wheels. Grab a rental and explore the city's flat streets, lake paths, and cafes like the locals do.",
       "image": "/images/biking_in_shkodra.jpeg",
       "alt": "Bike tour event from Scodrinon Hostel"
     },
     {
       "title": "River Days at the Drin",
-      "description": "We head out to the river regularly for swimming and sun. These trips are a hostel favorite, a chance to relax and spend the afternoon with a great crew.",
+      "description": "We head to the river regularly for swimming and sun. It's a hostel favorite and the perfect way to spend the afternoon.",
       "image": "/images/drin_swimming_trip2.jpeg",
       "alt": "Guests enjoying an evening event at Scodrinon Hostel"
     },
     {
       "title": "Rooftop Magic",
-      "description": "The rooftop is the social heart of the hostel: mountain light at sunset, city views after dark, and a pulse that keeps going from the first drink to the last chat.",
+      "description": "The rooftop is our social heart. Mountain sunsets, iconic city views, and energy that flows from first drinks into late-night stories.",
       "image": "/images/rooftop_social_4_flare.jpg",
       "alt": "Guests relaxing on the Scodrinon Hostel rooftop at sunset"
     }
@@ -164,7 +164,7 @@
   "bookingAwardImage": "/images/booking_award.jpg",
   "experienceLogisticsFeatures": [
     {
-      "title": "Free Luggage Storage",
+      "title": "Luggage Storage",
       "description": "Drop your main backpack in our secure storage. Hike the Valbona to Theth trail carrying only what you actually need.",
       "icon": "Backpack"
     },

@@ -32,16 +32,16 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
           <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none select-none -z-10" aria-hidden="true">
             <div className="absolute inset-y-0 right-0 w-52 sm:w-60 lg:w-72 transition-transform duration-500 group-hover:scale-105">
               {/* Soft blending overlays */}
-              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[var(--glass-bg)]/40 to-[var(--glass-bg)] z-10" />
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--glass-bg)]/40 to-[var(--glass-bg)] z-10" />
+              <div className="absolute inset-0 bg-gradient-to-l from-transparent from-50% via-[var(--glass-bg)]/30 to-[var(--glass-bg)] z-10" />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent from-60% via-[var(--glass-bg)]/20 to-[var(--glass-bg)]/60 z-10" />
               {/* Diagonal brush/organic mask effect using modern CSS gradients */}
               <div 
                 className="absolute inset-0 w-full h-full bg-cover bg-center"
                 style={{
                   backgroundImage: `url(${fact.image})`,
                   backgroundPosition: fact.focus || "center",
-                  maskImage: "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.3) 85%, rgba(0,0,0,0) 100%)",
-                  WebkitMaskImage: "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.3) 85%, rgba(0,0,0,0) 100%)",
+                  maskImage: "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+                  WebkitMaskImage: "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
                 }}
               />
             </div>
@@ -52,9 +52,9 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
         <div className="flex items-center gap-4 relative z-10">
           {/* Glowing Icon Container */}
           <div className="relative">
-            <div className="absolute inset-0 rounded-xl bg-gold/15 blur-md scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true" />
-            <div className="relative flex size-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-amber-50 to-amber-100/60 dark:from-amber-900/30 dark:to-amber-800/20 border border-amber-200/60 dark:border-amber-700/30 shadow-sm">
-              <Icon className="size-5 text-gold transition-transform duration-300 group-hover:scale-110" />
+            <div className="absolute inset-0 rounded-xl bg-black/5 dark:bg-white/10 blur-md scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true" />
+            <div className="relative flex size-12 shrink-0 items-center justify-center rounded-xl bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 shadow-sm">
+              <Icon className="size-5 text-black dark:text-white transition-transform duration-300 group-hover:scale-110" />
             </div>
           </div>
 

@@ -58,7 +58,7 @@
       "description": "The draw is not one dramatic feature. It's the way the privacy, rooftop, location, and staff all work together so the stay feels easy from the start."
     },
     "roomsSection": {
-      "titleEyebrowPrefix": "Rooms Types",
+      "titleEyebrowPrefix": "Rooms",
       "title": "Sleep properly, then head back out.",
       "description": "Every room keeps the basics right: heat and A/C, secure lockers, reading lights, sockets, and fast WiFi. The difference is how much privacy and calm you want around you.",
       "buttonLabel": "Explore Rooms",
@@ -174,7 +174,7 @@
     "cta": {
       "eyebrow": "Ready to visit?",
       "title": "Got your dates? Let's get you booked.",
-      "description": "Drop us a message on WhatsApp and we'll confirm your bed right away. We can't wait to welcome you to Shkoder.",
+      "description": "Drop us a message on WhatsApp and we'll confirm your bed right away. We can't wait to welcome you to Shkoder!",
       "image": "/images/promo_2.jpg",
       "alt": "Promotional image for Scodrinon Hostel"
     }
@@ -183,7 +183,7 @@
     "chooseSetup": {
       "eyebrow": "Choose Your Setup",
       "title": "Two room styles, both built around a better night's sleep.",
-      "description": "You can stay social without giving up your own space. The pod dorm leans into privacy; the four-bed rooms lean into calm."
+      "description": "You can stay social without giving up your own space. The pod dorm prioritizes privacy; the four-bed rooms prioritize calm."
     },
     "pageTitle": "Rooms",
     "heroPriceBlurb": {
@@ -194,7 +194,7 @@
     },
     "testimonialsImages": {
       "socialAlt": "Social common area at Scodrinon Hostel",
-      "breakfastAlt": "Fresh breakfast served at Scodrinon Hostel"
+      "breakfastAlt": "Rooftop terrace social atmosphere at Scodrinon Hostel"
     },
     "metadata": {
       "title": "Rooms and Privacy Pods in Shkoder",
@@ -210,7 +210,7 @@
     },
     "extraHelp": {
       "label": "Extras Available",
-      "title": "Add breakfast, tours, or laundry without overcomplicating your stay.",
+      "title": "Add breakfast, tours, or laundry to simplify your stay.",
       "imageAlt": "Breakfast included at Scodrinon Hostel, Shkoder"
     },
     "heroImages": {
@@ -238,7 +238,7 @@
     "launchpad": {
       "eyebrow": "The Northbound Launchpad",
       "title": "Leave the heavy bags behind and head for the mountains.",
-      "description": "We've built Scodrinon to be the ultimate reset point for your Albanian Alps trek. Don't waste a day figuring out schedules. We handle the friction so you can focus on the trail."
+      "description": "We've built Scodrinon to be the ultimate reset point for your Albanian Alps trek. Don't waste a day figuring out schedules. We handle the organizing so you can focus on the trail."
     },
     "thingsToDo": {
       "eyebrow": "Beyond the Hostel",

@@ -31,14 +31,16 @@ export function HeroSection({ hero, tagline, backgroundAlt, whatsappUrl, guestRa
         />
         {/* Mobile atmosphere video background */}
         <video
-          src="/videos/videoplayback.mp4"
           poster="/images/video-poster.webp"
           autoPlay
           muted
           loop
           playsInline
+          preload="auto"
           className="block sm:hidden size-full object-cover"
-        />
+        >
+          <source src="/videos/videoplayback.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(to_bottom,rgba(2,6,23,0.4)_0%,rgba(2,6,23,0.5)_50%,rgba(2,6,23,0.95)_100%)]" />
       </div>
 

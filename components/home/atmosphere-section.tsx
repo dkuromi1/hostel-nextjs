@@ -117,7 +117,7 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
 
               {/* Room image */}
               <Reveal delay={60} className="flex min-w-0 relative z-20 w-full h-full">
-                <div className="media-frame !border-0 ring-1 ring-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_24px_70px_-42px_rgba(0,0,0,0.5)] relative w-full h-full aspect-[9/16] sm:aspect-[4/3] overflow-hidden">
+                <div className="media-frame !border-0 ring-1 ring-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_24px_70px_-42px_rgba(0,0,0,0.5)] relative w-full h-full aspect-[9/16] sm:aspect-[4/3] lg:aspect-auto overflow-hidden">
                   <Image
                     src={roomImage}
                     alt={atmosphere.roomImageAlt}
@@ -140,7 +140,7 @@ export function AtmosphereSection({ atmosphere, whatsappUrl }: AtmosphereSection
 
               {/* Video */}
               <Reveal delay={120} className="flex min-w-0 relative w-full h-full sm:row-span-2 lg:row-span-1">
-                <div className="media-frame !border-0 ring-1 ring-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_24px_70px_-42px_rgba(0,0,0,0.5)] relative w-full h-full overflow-hidden aspect-[9/16] sm:aspect-auto">
+                <div className="media-frame !border-0 ring-1 ring-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_24px_70px_-42px_rgba(0,0,0,0.5)] relative w-full h-full overflow-hidden aspect-[9/16] sm:aspect-auto lg:aspect-[4/3]">
                   <LazyVideo
                     src={videoSrc}
                     poster={videoPoster}
