@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Reveal } from "@/components/reveal";
 import { AnimatedText } from "@/components/animated-text";
 import { CompactGuestRatingsStrip } from "./guest-ratings";
 import { MessageCircleMore, ArrowRight } from "@/lib/icon-registry";
@@ -47,32 +46,32 @@ export function HeroSection({ hero, tagline, backgroundAlt, whatsappUrl, guestRa
         <div className="max-w-4xl space-y-8 sm:space-y-10">
           <div className="flex flex-col items-start gap-6">
             <div className="flex flex-col gap-5">
-              <p className="text-xs font-medium uppercase tracking-[0.25em] text-white/90 antialiased [text-shadow:0_2px_10px_rgba(0,0,0,0.6)]">
+              <p className="animate-hero-fade-up [animation-delay:80ms] text-xs font-medium uppercase tracking-[0.25em] text-white/90 antialiased [text-shadow:0_2px_10px_rgba(0,0,0,0.6)]">
                 {tagline}
               </p>
               <h1 className="heading-hero text-white">
                 <AnimatedText
                   text={hero.title1}
                   wordClassName="text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.7)]"
-                  delayOffset={0}
-                  immediate
+                  delayOffset={140}
+                  wordStaggerMs={60}
                 />
                 {" "}
                 <AnimatedText
                   text={hero.title2}
                   className="text-[var(--brand-accent)]"
                   wordClassName="text-[var(--brand-accent)] [text-shadow:0_2px_12px_rgba(0,0,0,0.7)]"
-                  delayOffset={100}
-                  immediate
+                  delayOffset={380}
+                  wordStaggerMs={60}
                 />
               </h1>
-              <p className="max-w-[50ch] text-hero-sub text-white/95 font-light antialiased [text-shadow:0_2px_10px_rgba(0,0,0,0.6)]">
+              <p className="animate-hero-fade-up [animation-delay:600ms] max-w-[50ch] text-hero-sub text-white/95 font-light antialiased [text-shadow:0_2px_10px_rgba(0,0,0,0.6)]">
                 {hero.description}
               </p>
             </div>
 
             {whatsappUrl && (
-              <Reveal delay={120} immediate className="flex w-full flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1 sm:w-auto">
+              <div className="animate-hero-fade-up [animation-delay:750ms] flex w-full flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1 sm:w-auto">
                 <a
                   href={whatsappUrl}
                   target="_blank"
@@ -90,12 +89,12 @@ export function HeroSection({ hero, tagline, backgroundAlt, whatsappUrl, guestRa
                   <span>Explore Rooms</span>
                   <ArrowRight className="size-4 shrink-0 transition-transform duration-300 group-hover/rooms:translate-x-1" />
                 </Link>
-              </Reveal>
+              </div>
             )}
 
-            <Reveal delay={180} immediate className="w-full max-w-3xl">
+            <div className="animate-hero-fade-up [animation-delay:900ms] w-full max-w-3xl">
               <CompactGuestRatingsStrip {...guestRatingsProps} />
-            </Reveal>
+            </div>
           </div>
         </div>
       </div>

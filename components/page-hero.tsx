@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 
 import { BookingActions } from "@/components/booking-actions";
-import { Reveal } from "@/components/reveal";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { cn } from "@/lib/utils";
 import { resolveIcon, type IconName } from "@/lib/icon-registry";
@@ -83,7 +82,7 @@ export function PageHero({
         "shell-container relative z-10 grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center min-w-0 w-full max-w-full",
         hasBackground ? "w-full" : ""
       )}>
-        <Reveal className="relative z-10 flex flex-col items-start gap-8 min-w-0 w-full max-w-full">
+        <div className="animate-hero-fade-up relative z-10 flex flex-col items-start gap-8 min-w-0 w-full max-w-full">
           <div className="flex items-center justify-between gap-3 w-full sm:block">
             <Eyebrow 
               className={cn(hasBackground && "text-white", "min-w-0 shrink")}
@@ -341,10 +340,10 @@ export function PageHero({
               })()
             )
           ) : null}
-        </Reveal>
-        <Reveal delay={120} className="relative min-w-0 w-full max-w-full lg:self-stretch lg:flex lg:flex-col lg:h-full">
+        </div>
+        <div className="animate-hero-fade-up [animation-delay:120ms] relative min-w-0 w-full max-w-full lg:self-stretch lg:flex lg:flex-col lg:h-full">
           {children}
-        </Reveal>
+        </div>
       </div>
     </section>
   );

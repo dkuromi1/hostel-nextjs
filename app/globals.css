@@ -741,3 +741,52 @@
     animation: none !important;
   }
 }
+
+/* ─── Hero Entrance Animations (Pure CSS) ──────────────────────────────────
+   Executes on initial HTML parse without waiting for JS hydration.
+─────────────────────────────────────────────────────────────────────────── */
+@keyframes hero-fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-fade-up {
+  animation: hero-fade-up 0.6s cubic-bezier(0.18, 1.12, 0.32, 1) both;
+  will-change: transform, opacity;
+}
+
+@keyframes hero-word-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  55% {
+    opacity: 1;
+    transform: translateY(-1.75px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-word {
+  display: inline-block;
+  animation: hero-word-pop 0.65s cubic-bezier(0.25, 1, 0.5, 1) both;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-fade-up,
+  .animate-hero-word {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
