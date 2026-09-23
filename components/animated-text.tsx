@@ -20,11 +20,7 @@ export function AnimatedText({
 
   return (
     <span className={cn("inline", className)}>
-      {/* Visually hidden full text for screen readers and SEO */}
-      <span className="sr-only">{text}</span>
-
-      {/* Animated word spans via pure CSS (instant first-paint execution) */}
-      <span aria-hidden="true" className="inline">
+      <span className="inline">
         {words.map((word, idx) => (
           <span
             key={idx}

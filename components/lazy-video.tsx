@@ -8,17 +8,22 @@ interface LazyVideoProps extends VideoHTMLAttributes<HTMLVideoElement> {
   src: string;
   poster?: string;
   className?: string;
+  loadOnInteraction?: boolean;
 }
 
-export function LazyVideo({ src, poster, className, ...props }: LazyVideoProps) {
-  const [isInView, setIsInView] = useState(false);
+export function LazyVideo({ src, poster, className, loadOnInteraction = false, ...props }: LazyVideoProps) {
+  const [shouldLoad, setShouldLoad] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (loadOnInteraction) {
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsInView(true);
+          setShouldLoad(true);
           observer.disconnect();
         }
       },
@@ -32,11 +37,11 @@ export function LazyVideo({ src, poster, className, ...props }: LazyVideoProps) 
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [loadOnInteraction]);
 
   return (
     <div ref={containerRef} className={cn("relative overflow-hidden", className)}>
-      {isInView ? (
+      {shouldLoad ? (
         <video
           src={src}
           poster={poster}
@@ -57,6 +62,18 @@ export function LazyVideo({ src, poster, className, ...props }: LazyVideoProps) 
           />
         )
       )}
+      {loadOnInteraction && !shouldLoad ? (
+        <button
+          type="button"
+          onClick={() => setShouldLoad(true)}
+          className="absolute inset-0 z-10 flex items-center justify-center"
+          aria-label="Play video"
+        >
+          <span className="flex size-14 items-center justify-center rounded-full border border-white/40 bg-black/45 pl-1 text-xl text-white shadow-lg backdrop-blur-sm transition-transform duration-200 hover:scale-105 focus-visible:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+            <span aria-hidden="true">▶</span>
+          </span>
+        </button>
+      ) : null}
     </div>
   );
 }

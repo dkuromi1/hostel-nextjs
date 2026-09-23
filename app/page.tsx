@@ -1,5 +1,6 @@
 import { CtaStrip } from "@/components/cta-strip";
 import { StructuredData } from "@/components/structured-data";
+import type { Metadata } from "next";
 import {
   buildFaqSchema,
   buildBusinessSchema,
@@ -35,12 +36,17 @@ const ExperiencesSection = dynamic(() => import("@/components/home/experiences-s
 const TestimonialsVibeSection = dynamic(() => import("@/components/home/testimonials-vibe-section").then(mod => mod.TestimonialsVibeSection), { ssr: true });
 const GuestRatingsSection = dynamic(() => import("@/components/home/guest-ratings").then(mod => mod.GuestRatingsSection), { ssr: true });
 
-export const metadata = buildMetadata({
-  title: siteCopyContent.home.metadata.title,
-  description: siteCopyContent.home.metadata.description,
-  path: "/",
-  image: siteCopyContent.home.metadata.image,
-});
+export const metadata: Metadata = {
+  ...buildMetadata({
+    title: siteCopyContent.home.metadata.title,
+    description: siteCopyContent.home.metadata.description,
+    path: "/",
+    image: siteCopyContent.home.metadata.image,
+  }),
+  title: {
+    absolute: "Scodrinon Hostel | Hostel in Shkodër, Albania",
+  },
+};
 
 export default function Home() {
   return (

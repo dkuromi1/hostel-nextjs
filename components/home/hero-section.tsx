@@ -36,7 +36,7 @@ export function HeroSection({ hero, tagline, backgroundAlt, whatsappUrl, guestRa
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
           className="block sm:hidden size-full object-cover"
         >
           <source src="/videos/videoplayback.mp4" type="video/mp4" />

@@ -53,7 +53,7 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
           {/* Glowing Icon Container */}
           <div className="relative">
             <div className="absolute inset-0 rounded-xl bg-black/5 dark:bg-white/10 blur-md scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true" />
-            <div className="relative flex size-12 shrink-0 items-center justify-center rounded-xl bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 shadow-sm">
+            <div className="relative flex size-12 shrink-0 items-center justify-center rounded-xl bg-transparent border border-zinc-200 dark:border-zinc-700 shadow-sm">
               <Icon className="size-5 text-black dark:text-white transition-transform duration-300 group-hover:scale-110" />
             </div>
           </div>
@@ -119,7 +119,7 @@ export function QuickFactsSection({ quickFacts, className }: QuickFactsSectionPr
 
         <div className="flex justify-center mb-10">
           <Reveal delay={50}>
-            <Eyebrow>YOUR CHOICE</Eyebrow>
+            <Eyebrow>WE OFFER</Eyebrow>
           </Reveal>
         </div>
 
